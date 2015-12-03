@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="product_machine_tree_view" model="ir.ui.view">
+            <field name="name">product.machine.tree</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view" />
+            <field name="arch" type="xml">
+                <field name="default_code" position="after">
+                    <field name="old_reference"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="product_machine_form_view" model="ir.ui.view">
+            <field name="name">product.machine.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view" />
+            <field name="arch" type="xml">
+                <field name="default_code" position="after">
+                    <field name="old_reference"/>
+                </field>
+                <notebook position="inside">
+                    <page string="Historic">
+                        <field name="product_moves_ids"/>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <record id="product_product_machine_search_view" model="ir.ui.view">
+            <field name="name">product.product.machine.search</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_search_form_view" />
+            <field name="arch" type="xml">
+                <field name="name" position="attributes">
+                    <attribute name="filter_domain">['|', '|', ('default_code', 'ilike', self),('name', 'ilike', self), ('old_reference', 'ilike', self)]</attribute>
+                </field>
+            </field>
+        </record>
+        
+    </data>
+</openerp>
