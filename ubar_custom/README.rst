@@ -8,8 +8,6 @@ Ubar custom
 
 * Changes all cycle labels for hours.
 
-* Added sale cost field to machine's details.
-
 * Added 'old refence' field to products. 
   The product's search is modified to allow the search also for this field.
   When this field is modified the old value and the new value are registered on

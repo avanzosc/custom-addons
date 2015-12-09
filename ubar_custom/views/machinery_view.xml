@@ -17,20 +17,6 @@
                 <field name="warrexpcy" position="attributes">
                     <attribute name="string">(or) hours</attribute>
                 </field>
-                <field name="ambit" position="after">
-                    <field name="sale_cost"/>
-                </field>
-            </field>
-        </record>
-
-        <record id="machiner_ubar_custom_tree_view" model="ir.ui.view" >
-            <field name="name">machine.ubar.custom.tree</field>
-            <field name="model">machinery</field>
-            <field name="inherit_id" ref="machine_manager.machine_view_tree" />
-            <field name="arch" type="xml">
-                <field name="year" position="after">
-                    <field name="sale_cost"/>
-                </field>
             </field>
         </record>
     </data>
