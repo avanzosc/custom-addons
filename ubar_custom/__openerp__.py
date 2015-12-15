@@ -10,16 +10,19 @@
     "website": "http://www.avanzosc.es",
     "contributors": [
         "Esther Martín <esthermartin@avanzosc.es>",
+        "Daniel Campos <danielcampos@avanzosc.es>",
         "Ana Juaristi <anajuaristi@avanzosc.es>",
     ],
     "depends": [
         "machine_manager",
+        "sale",
     ],
     "category": "Custom Modules",
     "data": [
         "views/machinery_view.xml",
         "views/product_view.xml",
         "views/product_move_view.xml",
+        "views/sale_order_view.xml",
     ],
-    "installable": True
+    "installable": True,
 }
