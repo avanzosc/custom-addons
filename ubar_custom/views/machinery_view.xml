@@ -1,0 +1,23 @@
+<openerp>
+    <data>
+        <record id="machiner_ubar_custom_form_view" model="ir.ui.view" >
+            <field name="name">machine.ubar.custom.form</field>
+            <field name="model">machinery</field>
+            <field name="inherit_id" ref="machine_manager.machines_view_form" />
+            <field name="arch" type="xml">
+                <field name="bcyl" position="attributes">
+                    <attribute name="string">Base hours</attribute>
+                </field>
+                <field name="purch_cycles" position="attributes">
+                    <attribute name="string">Hours at purchase</attribute>
+                </field>
+                <field name="actcycles" position="attributes">
+                    <attribute name="string">Actual hours</attribute>
+                </field>
+                <field name="warrexpcy" position="attributes">
+                    <attribute name="string">(or) hours</attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
