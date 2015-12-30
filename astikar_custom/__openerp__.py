@@ -12,11 +12,16 @@
     "website": "http://www.avanzosc.es",
     "contributors": [
         "Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>",
+        "Esther Martín <esthermartin@avanzosc.es",
     ],
     "depends": [
         "mrp_repair",
+        "mrp_repair_fee",
+        "mrp_repair_date",
         "web",
         "report",
+        "mrp_repair_proforma_report",
+        "account_payment_partner",
     ],
     "data": [
         "views/astikar_custom_view.xml",

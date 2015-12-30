@@ -6,3 +6,9 @@
 address.astikar_header {
   font-size: 10px;
 }
+
+p.astikar_p {
+  background-color: #d3d3d3;
+  width: 100%;
+  font-weight: bold;
+}

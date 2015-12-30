@@ -6,7 +6,7 @@
                 <div class="header">
                     <div class="row">
                         <div class="col-xs-6">
-                            <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" />
+                            <img src="/astikar_custom/static/src/img/astikar.png"/>
                         </div>
                     </div>
                     <div class="row">
@@ -15,13 +15,14 @@
                                      itemtype="http://schema.org/Organization">
                                 <span t-field="company.partner_id.street" /><br />
                                 <div class="col-xs-12" style="padding-left:0px;">
-                                <div class="col-xs-8" style="padding-left:0px;">
-                                <span t-field="company.partner_id.street2" /><br />
-                                <span t-field="company.partner_id.zip" /> - <span t-field="company.partner_id.city" /> (<span t-field="company.partner_id.state_id" />)<br /></div>
-                                <div class="col-xs-4" style="padding-left:0px;">Tel.: <span t-field="company.partner_id.phone"/><br />
-                                Fax: <span t-field="company.partner_id.fax" />
-                                </div></div>
-                                <span t-field="company.partner_id.website" />
+                                    <div class="col-xs-6" style="padding-left:0px;">
+                                        <span t-field="company.partner_id.street2" /><br />
+                                        <span t-field="company.partner_id.zip" /> - <span t-field="company.partner_id.city" /> (<span t-field="company.partner_id.state_id" />)<br />
+                                    </div>
+                                    <div class="col-xs-6" style="padding-left:0px;">Tel.: <span t-field="company.partner_id.phone"/><br />
+                                        Fax: <span t-field="company.partner_id.fax" />
+                                    </div>
+                                </div>
                             </address>
                         </div>
                     </div>
