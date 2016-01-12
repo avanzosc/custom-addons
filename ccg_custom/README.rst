@@ -3,15 +3,15 @@
    :alt: License: AGPL-3
 
 ==========
-Custom CCG
+CCG Custom
 ==========
 
 * Added packaging field to manufacturing orders.
 
 * Sale order and partner related fields are now invisible. Two new fields are
-  created for sale order and partner
+  created for sale order and partner.
 
-* Default field is added to product packaging.
+* Added check in product packaging in order to define a default one.
 
 
 Credits

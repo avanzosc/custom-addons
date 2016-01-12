@@ -5,10 +5,10 @@
 from openerp.tests import common
 
 
-class TestCustomCCG(common.TransactionCase):
+class TestCCGCustom(common.TransactionCase):
 
     def setUp(self):
-        super(TestCustomCCG, self).setUp()
+        super(TestCCGCustom, self).setUp()
         self.packaging_obj = self.env['product.packaging']
         self.product_packaging1 = self.packaging_obj.create({
             'product_tmpl_id': self.ref('product.product_product_6'),
