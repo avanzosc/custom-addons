@@ -13,9 +13,10 @@
         "Ana Juaristi <anajuaristi@avanzosc.es>",
     ],
     "depends": [
-        "product",
+        "procurement",
         "mrp",
         "mrp_production_sale_info",
+        "sale",
     ],
     "category": "Manufacturing",
     "data": [

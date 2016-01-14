@@ -9,15 +9,6 @@
                 <field name="date_planned" position="after">
                     <field name="product_packaging"/>
                 </field>
-                <field name="sale_order" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </field>
-                <field name="partner" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </field>
-                <field name="sale_line" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </field>
                 <field name="move_prod_id" position="after">
                     <field name="partner_id"/>
                     <field name="sale_order_id" domain="[('partner_id', '=', partner_id)]"/>
