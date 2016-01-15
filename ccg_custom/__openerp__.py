@@ -15,10 +15,9 @@
     "depends": [
         "procurement",
         "mrp",
-        "mrp_production_sale_info",
         "sale",
     ],
-    "category": "Manufacturing",
+    "category": "Custom Module",
     "data": [
         "views/mrp_production_view.xml",
         "views/product_packaging_view.xml",

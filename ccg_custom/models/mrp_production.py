@@ -11,12 +11,13 @@ class MrpProduction(models.Model):
     @api.multi
     def _default_product_packaging(self):
         packaging_obj = self.env['product.packaging']
-        default_packaging = packaging_obj.search([('is_default', '=', True)])
+        default_packaging = packaging_obj.search([('is_default', '=', True)],
+                                                 limit=1)
         return default_packaging and default_packaging[:1].id
 
     product_packaging = fields.Many2one(comodel_name='product.packaging',
                                         string='Packaging',
                                         default=_default_product_packaging)
-    partner_id = fields.Many2one(comodel_name='res.partner', string='Customer')
+    partner_id = fields.Many2one(comodel_name='res.partner', string='Partner')
     sale_order_id = fields.Many2one(comodel_name='sale.order',
                                     string='Sale order')

@@ -4,7 +4,7 @@
         <record id="mrp_production_packaging_view_form" model="ir.ui.view">
             <field name="name">mrp.production.packaging.form</field>
             <field name="model">mrp.production</field>
-            <field name="inherit_id" ref="mrp_production_sale_info.mrp_production_sale_info_form_view" />
+            <field name="inherit_id" ref="mrp.mrp_production_form_view" />
             <field name="arch" type="xml">
                 <field name="date_planned" position="after">
                     <field name="product_packaging"/>
