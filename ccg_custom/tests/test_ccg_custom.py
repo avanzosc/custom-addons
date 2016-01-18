@@ -10,8 +10,9 @@ class TestCCGCustom(common.TransactionCase):
     def setUp(self):
         super(TestCCGCustom, self).setUp()
         self.packaging_obj = self.env['product.packaging']
+        self.product_1 = self.env.ref('product.product_product_6')
         self.product_packaging1 = self.packaging_obj.create({
-            'product_tmpl_id': self.ref('product.product_product_6'),
+            'product_tmpl_id': self.product_1.product_tmpl_id.id,
             'ul': self.ref('product.product_ul_box'),
             'rows': 3,
             'is_default': True,
@@ -22,13 +23,16 @@ class TestCCGCustom(common.TransactionCase):
             (4, self.ref('stock.route_warehouse0_mto'))]
 
     def test_product_packaging_default(self):
-        self.mrp_production_obj = self.env['mrp.production']
-        self.mrp_production1 = self.mrp_production_obj.create({
-            'product_id': self.ref('product.product_product_6'),
-            'product_uom': self.ref('product.product_uom_unit')
+        mrp_production_obj = self.env['mrp.production']
+        mrp_production1 = mrp_production_obj.create({
+            'product_id': self.product_1.id,
+            'product_uom': self.ref('product.product_uom_unit'),
+            'product_qty': 1,
             })
+        res = mrp_production_obj.product_id_change(
+            mrp_production1.product_id.id, mrp_production1.product_qty)
         self.assertEqual(
-            self.mrp_production1.product_packaging, self.product_packaging1,
+            res['value']['product_packaging'], self.product_packaging1.id,
             'Product packaging are not the same')
 
     def test_mo_vals(self):
