@@ -6,8 +6,11 @@
             <field name="model">mrp.production</field>
             <field name="inherit_id" ref="mrp.mrp_production_form_view" />
             <field name="arch" type="xml">
+                <field name="product_id" position="after">
+                    <field name="product_tmpl_id" invisible="1"/>
+                </field>
                 <field name="date_planned" position="after">
-                    <field name="product_packaging"/>
+                    <field name="product_packaging" domain="[('product_tmpl_id', '=', product_tmpl_id)]"/>
                 </field>
                 <field name="move_prod_id" position="after">
                     <field name="partner_id"/>

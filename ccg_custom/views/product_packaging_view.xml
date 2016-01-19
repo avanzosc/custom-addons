@@ -11,5 +11,16 @@
                 </field>
             </field>
         </record>
+        <record id="product_packaging_default_without_product_view_form" model="ir.ui.view">
+            <field name="name">product.packaging.default.without.product.form</field>
+            <field name="model">product.packaging</field>
+            <field name="inherit_id" ref="product.product_packaging_form_view_without_product" />
+            <field name="arch" type="xml">
+                <field name="ean" position="after">
+                    <field name="is_default"/>
+                </field>
+            </field>
+        </record>
     </data>
+    
 </openerp>
