@@ -6,4 +6,4 @@ bank-payment
 
 # Add a repository url and branch if you need a forked version
 mrp-repair-addons https://github.com/avanzosc/mrp-repair-addons
-addons-vauxoo https://github.com/Vauxoo/addons-vauxoo
+avanzosc-addons https://github.com/avanzosc/odoo-addons master
