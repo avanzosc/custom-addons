@@ -21,9 +21,4 @@ class Schedule(models.Model):
                 complete_hour = str(int(line.hour)).zfill(2) + ':' + (
                     str(int((line.hour-int(line.hour))*60)).zfill(2))
                 result.append((line.id, convert(complete_hour, line)))
-        else:
-            for line in self:
-                complete_hour = str(int(line.hour)).zfill(2) + ':' + (
-                    str(int((line.hour-int(line.hour))*60)).zfill(2))
-                result.append((line.id, "%s,%s" % (complete_hour, line.id)))
         return result
