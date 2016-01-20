@@ -22,11 +22,15 @@
         "report",
         "mrp_repair_proforma_report",
         "account_payment_partner",
+        "base_user_signature_logo",
     ],
     "data": [
         "views/astikar_custom_view.xml",
         "views/astikar_layout_view.xml",
         "views/astikar_reports.xml",
+        "views/mrp_repair_fee_view.xml",
+        "views/mrp_repair_view.xml",
+        "views/res_users_view.xml",
     ],
     "installable": True,
 }
