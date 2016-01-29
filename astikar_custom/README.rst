@@ -14,6 +14,12 @@ Astikar Custom
 
 * The sequence of mrp_repair is created when you saved a new one.
 
+* Shortcuts from mrp_repair to supplier invoices and purchase orders.
+
+* New field repair_analytic_id in supplier invoices and purchase orders.
+
+* When a supplier invoice or purchase order is created from a repair, it will load repairs analytic account as default.
+
 
 Credits
 =======
@@ -23,4 +29,5 @@ Contributors
 ------------
 * Oihane Crucelaegui <oihanecrucelaegui@avanzosc.es>
 * Esther Martín <esthermartin@avanzosc.es>
+* Ainara Galdona <ainaragaldona@avanzosc.es>
 * Ana Juaristi <anajuaristi@avanzosc.es>

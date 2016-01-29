@@ -59,3 +59,28 @@ class TestAstikarCustom(common.TransactionCase):
                           self.mrp_repair_sequence.number_next_actual) +
                 suffix)
         return name
+
+    def test_shortcuts(self):
+        res = self.mrp_repair.action_show_purchase_order()
+        self.assertEqual(res.get('type', False), 'ir.actions.act_window')
+        res = self.mrp_repair.action_show_account_invoice()
+        self.assertEqual(res.get('type', False), 'ir.actions.act_window')
+        res = self.mrp_repair.action_show_purchase_order_lines()
+        self.assertEqual(res.get('type', False), 'ir.actions.act_window')
+        res = self.mrp_repair.action_show_account_invoice_lines()
+        self.assertEqual(res.get('type', False), 'ir.actions.act_window')
+
+    def test_invoice_line_product_change(self):
+        invoice_line = self.env.ref(
+            'account.demo_invoice_0_line_rpanrearpanelshe0')
+        inv = invoice_line.invoice_id
+        res = invoice_line.product_id_change(
+            invoice_line.product_id.id, invoice_line.uos_id.id,
+            qty=invoice_line.quantity, name=invoice_line.name,
+            type=inv.type, partner_id=inv.partner_id.id,
+            fposition_id=inv.fiscal_position.id,
+            price_unit=invoice_line.price_unit, currency_id=inv.currency_id.id,
+            company_id=inv.company_id.id)
+        if res.get('value', False) and 'account_analytic_id' in res['value']:
+            self.assertNotEqual(
+                res['value'].get('account_analytic_id', False), False)

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="invoice_supplier_form" model="ir.ui.view">
+            <field name="name">invoice.supplier.repair.analytic.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <field name="supplier_invoice_number" position="after">
+                    <field name="repair_analytic_id" groups="analytic.group_analytic_accounting" domain="[('type','!=','view'), ('company_id', '=', company_id), ('state','not in',('close','cancelled'))]"/>
+                </field>
+                <field name="invoice_line" position="attributes">
+                    <attribute name="context">{'default_account_analytic_id': repair_analytic_id, 'partner_id': partner_id, 'price_type': context.get('price_type') or False, 'type': type}</attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
