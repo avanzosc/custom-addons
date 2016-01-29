@@ -12,7 +12,8 @@
     "website": "http://www.avanzosc.es",
     "contributors": [
         "Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>",
-        "Esther Martín <esthermartin@avanzosc.es",
+        "Esther Martín <esthermartin@avanzosc.es>",
+        "Ainara Galdona <ainaragaldona@avanzosc.es>",
     ],
     "depends": [
         "mrp_repair",
@@ -23,6 +24,8 @@
         "mrp_repair_proforma_report",
         "account_payment_partner",
         "base_user_signature_logo",
+        "purchase",
+        "account"
     ],
     "data": [
         "views/astikar_custom_view.xml",
@@ -31,6 +34,8 @@
         "views/mrp_repair_fee_view.xml",
         "views/mrp_repair_view.xml",
         "views/res_users_view.xml",
+        "views/purchase_order_view.xml",
+        "views/account_invoice_view.xml"
     ],
     "installable": True,
 }
