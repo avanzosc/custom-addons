@@ -12,55 +12,49 @@
 
         <report id="report_mrp_repair_picking" string="Picking"
                 model="mrp.repair" report_type="qweb-pdf"
-                name="astikar_custom.mrp_repair_picking" />
+                name="astikar_custom.mrp_repair_picking"
+                file="astikar_custom.report_mrp_repair_picking"/>
+
+        <record id="report_mrp_repair_picking" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="astikar_custom.paperformat_astikar_header"/>
+        </record>
     </data>
 
     <data>
         <template id="mrp_repair_quotation" inherit_id="mrp_repair_proforma_report.report_mrprepair_proforma">
-            <xpath expr="//div[@class='row']" position="replace">
-                <div class="row">
-                    <div class="col-xs-6 pull-right">
-                        <div t-field="o.partner_id"
-                            t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}' />
-                              <p t-if="o.partner_id.vat">VAT: <span t-field="o.partner_id.vat"/></p>
-                    </div>
-                </div>
-            </xpath>
-            <xpath expr="//div[@class='page']/h2" position="replace">
+            <xpath expr="//t[@t-call='report.external_layout']" position="replace">
+                <t t-call="astikar_custom.astikar_external_layout">
+                <div class="page">
                 <h3>
                     <span t-if="o.state != 'draft' and o.proforma == False">ESKAERA ZK / PEDIDO Nº:</span>
                     <span t-if="o.state == 'draft' and o.proforma == False">AURREKONTU ZK / PRESUPUESTO Nº:</span>
                     <span t-if="o.proforma == True">Proforma ZKº:</span>
                     <span t-field="o.name"/>
                 </h3>
-            </xpath>
-            <xpath expr="//p[@t-field='o.quotation_notes']" position="replace"/>
-            <xpath expr="//div[@class='row mt32 mb32']" position="replace">
                     <div class="row mt32 mb32">
-                        <div t-if="o.product_id.name" class="col-xs-9">
-                            <strong>UNIDAD:</strong>
+                        <div t-if="o.product_id.name" class="col-xs-8">
+                            <strong>UNITATEA:</strong>
                             <span t-field="o.product_id.name"/>
                             <t t-if="o.lot_id">
                                 <span t-field="o.lot_id.name"/>
                             </t>
                         </div>
-                        <div class="col-xs-3 pull-right">
-                            <p t-esc="time.strftime('%Y-%m-%d')"/>
+                        <div class="col-xs-4 pull-right">
+                            <strong>DATA:</strong>
+                            <span t-esc="time.strftime('%Y-%m-%d')"/>
                         </div>
                     </div>
                     <div>
                         <strong><p t-field="o.quotation_notes"/></strong>
                     </div>
-            </xpath>
-            <xpath expr="//div[@class='page']/table[@class='table table-condensed']" position="replace">
                 <table class="table table-condensed">
                         <thead>
                             <tr>
-                                <th>Description</th>
-                                <th class="text-center">Tax</th>
-                                <th class="text-right">Quantity</th>
-                                <th class="text-right">Unit Price</th>
-                                <th class="text-right">Price</th>
+                                <th>AZALPENA</th>
+                                <th class="text-center">B.E.Z</th>
+                                <th class="text-right">KOPURUA</th>
+                                <th class="text-right">PREZIOA</th>
+                                <th class="text-right">ZENBATEKOA</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -114,8 +108,6 @@
                             </t>
                         </tbody>
                     </table>
-            </xpath>
-            <xpath expr="//div[@class='col-xs-4 pull-right']/.." position="after">
                 <div class="row">
                     <p><b>NOTA:</b> Si este presupuesto es de su conformidad, agradeceríamos remitiesen el mismo con su firma de conformidad o correspondiente pedido.</p>
                 </div>
@@ -129,7 +121,9 @@
                         <img t-if="o.create_uid.signature_logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.signature_logo" style="max-height: 70px;"/>
                     </div>
                 </div>
-                    </xpath>
+                </div>
+            </t>
+            </xpath>
         </template>
 
         <template id="mrp_repair_order">
@@ -139,7 +133,7 @@
                         <div class="page">
                             <div class="oe_structure" />
                             <div class="row">
-                                <div class="text-right">
+                                <div class="col-xs-12 text-right">
                                     <form>
                                         <h2>
                                             LAN-AGINDU ZK. <span t-field="o.name" />
@@ -158,7 +152,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr class="astikar_bigger">
                                         <td>
                                             <span
                                                 t-field="o.partner_id.ref" />
@@ -212,7 +206,7 @@
                                 <span><strong>ORD. ERABILTZEKE:</strong></span>
                                 <t t-esc="sum(l.product_uom_qty for l in o.fees_lines_to_invoice)- sum(l.product_uom_qty for l in o.fees_lines_no_to_invoice)"/>
                             </div>
-                            <p><b>UNITATEA: <span t-field="o.product_id"/></b></p>
+                            <p class="astikar_bigger"><b>UNITATEA: <span t-field="o.product_id"/></b></p>
                             <table class="table table-condensed astikar">
                                 <thead>
                                     <tr>
@@ -221,7 +215,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr class="astikar_bigger">
                                         <td>
                                             <span t-field="o.lot_id.ref" />
                                         </td>
@@ -286,18 +280,9 @@
         <template id="mrp_repair_picking">
             <t t-call="report.html_container">
                 <t t-foreach="docs" t-as="o">
-                    <t t-call="report.external_layout">
+                    <t t-call="astikar_custom.astikar_external_layout">
                         <div class="page">
                             <div class="oe_structure" />
-                            <div class="row">
-                                <div class="col-xs-6 pull-right">
-                                    <div t-field="o.address_id"
-                                        t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;, &quot;fax&quot;], &quot;no_marker&quot;: true}" />
-                                    <p t-if="o.partner_id.vat">
-                                        VAT:<span t-field="o.partner_id.vat" />
-                                    </p>
-                                </div>
-                            </div>
                             <h2>
                                 <span>ALBARAN ZK:</span>
                                 <span t-field="o.name" />
@@ -323,6 +308,7 @@
                                     <p t-esc="time.strftime('%Y-%m-%d')" />
                                 </div>
                             </div>
+                            <p class="lanak">EGINDAKO LANAK</p>
                             <p t-field="o.quotation_notes" />
                             <table class="table table-condensed">
                                 <thead>
@@ -338,7 +324,7 @@
                                     <t t-if="o.operations">
                                         <tr>
                                             <td colspan="5">
-                                                <strong>LÍNEAS DE MATERIAL</strong>
+                                                <strong>MATERIAL</strong>
                                             </td>
                                         </tr>
                                         <tr t-foreach="o.operations"
@@ -464,8 +450,10 @@
             </t>
         </template>
 
-        <template id="astikar_report_invoice_layouted" inherit_id="account.report_invoice_document">
-            <xpath expr="//div[@class='page']/h2" position="replace">
+        <template id="astikar_report_invoice_layouted" inherit_id="account_payment_partner.report_invoice_payment_mode">
+            <xpath expr="//t[@t-call='report.external_layout']" position="replace">
+                <t t-call="astikar_custom.astikar_external_layout">
+                <div class="page">
                 <h2>
                     <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">FAKTURA</span>
                     <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>
@@ -476,8 +464,6 @@
                     <span t-if="o.type == 'in_invoice'">HORNITZAILE FAKTURA</span>
                     <span t-field="o.number"/>
                 </h2>
-            </xpath>
-            <xpath expr="//div[@class='row mt32 mb32']" position="replace">
                 <div class="row mt32 mb32">
                     <div class="col-xs-4" t-if="o.date_invoice">
                         <strong>FAKTURA DATA:</strong>
@@ -492,14 +478,10 @@
                         <p t-field="o.partner_id.ref"/>
                     </div>
                 </div>
-            </xpath>
-            <xpath expr="//div[@class='row mt32 mb32']" position="after">
                 <div>
-                    <strong>EGINDAKO LANAK</strong>
+                    <p class="lanak">EGINDAKO LANAK</p>
                     <p><span t-field="o.comment"/></p>
                 </div>
-            </xpath>
-            <xpath expr="//table[@class='table table-condensed']" position="replace">
                 <table class="table table-condensed">
                     <thead>
                         <tr>
@@ -530,8 +512,6 @@
                         </tr>
                     </tbody>
                 </table>
-            </xpath>
-            <xpath expr="//div[@class='row']/div[@class='col-xs-4 pull-right']/table[@class='table table-condensed']" position="replace">
                 <table class="table table-condensed">
                     <tr class="border-black">
                         <td><strong>OINARRI ZERGAGARRIA</strong></td>
@@ -552,16 +532,14 @@
                         </td>
                     </tr>
                 </table>
-            </xpath>
-            <xpath expr="//div[@class='row']/div[@class='col-xs-6']/table[@class='table table-condensed']" position="replace"/>
-            <xpath expr="//div[@class='row']/div[@class='col-xs-6']/.." position="after">
-                <div>
+                <div class="box">
                     <p><strong>ORDAINTZEKO ERA: </strong><span t-field="o.payment_mode_id" /></p>
                     <p><strong>EPE MUGA: </strong><span t-field="o.date_due" /></p>
                     <p><strong>ZENBATEKOA: </strong><span t-field="o.amount_total" /></p>
                 </div>
+            </div>
+            </t>
             </xpath>
-            <xpath expr="//div[@class='page']/p[@t-if='o.comment']" position="replace"/>
          </template>
     </data>
 </openerp>
