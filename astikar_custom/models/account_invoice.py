@@ -6,16 +6,17 @@ from openerp import models, fields, api
 
 
 class AccountInvoice(models.Model):
-
     _inherit = 'account.invoice'
 
     repair_analytic_id = fields.Many2one(
         comodel_name='account.analytic.account',
         string="Repair Analytic Account")
+    repair_ids = fields.One2many(
+        comodel_name='mrp.repair', inverse_name='invoice_id',
+        string='Repair order')
 
 
 class AccountInvoiceLine(models.Model):
-
     _inherit = 'account.invoice.line'
 
     @api.multi

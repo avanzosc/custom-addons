@@ -477,6 +477,16 @@
                         <strong>BEZERO KODEA:</strong>
                         <p t-field="o.partner_id.ref"/>
                     </div>
+                    <t t-foreach="o.repair_ids" t-as="repairs">
+                        <div class="col-xs-4">
+                            <strong>UNITATEA:</strong>
+                            <p t-field="repairs.product_id"/>
+                        </div>
+                        <div class="col-xs-4">
+                            <strong>SERIE ZK/MATRIKULA: </strong>
+                            <p t-field="repairs.lot_id"/>
+                        </div>
+                    </t>
                 </div>
                 <div>
                     <p class="lanak">EGINDAKO LANAK</p>
@@ -512,26 +522,30 @@
                         </tr>
                     </tbody>
                 </table>
-                <table class="table table-condensed">
-                    <tr class="border-black">
-                        <td><strong>OINARRI ZERGAGARRIA</strong></td>
-                        <td class="text-right">
-                           <span t-field="o.amount_untaxed" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>B.E.Z.</td>
-                        <td class="text-right">
-                            <span t-field="o.amount_tax" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
-                        </td>
-                    </tr>
-                    <tr class="border-black">
-                        <td><strong>GUZTIRA</strong></td>
-                        <td class="text-right">
-                             <span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
-                        </td>
-                    </tr>
-                </table>
+                <div class="row">
+                <div class="col-xs-4 pull-right">
+                    <table class="table table-condensed">
+                        <tr class="border-black">
+                            <td><strong>OINARRI ZERGAGARRIA</strong></td>
+                            <td class="text-right">
+                               <span t-field="o.amount_untaxed" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>B.E.Z.</td>
+                            <td class="text-right">
+                                <span t-field="o.amount_tax" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                            </td>
+                        </tr>
+                        <tr class="border-black">
+                            <td><strong>GUZTIRA</strong></td>
+                            <td class="text-right">
+                                 <span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
                 <div class="box">
                     <p><strong>ORDAINTZEKO ERA: </strong><span t-field="o.payment_mode_id" /></p>
                     <p><strong>EPE MUGA: </strong><span t-field="o.date_due" /></p>
