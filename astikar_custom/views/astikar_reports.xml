@@ -467,24 +467,24 @@
                 <div class="row mt32 mb32">
                     <div class="col-xs-4" t-if="o.date_invoice">
                         <strong>FAKTURA DATA:</strong>
-                        <p t-field="o.date_invoice"/>
+                        <span t-field="o.date_invoice"/>
                     </div>
                     <div class="col-xs-4" t-if="o.origin">
                         <strong>ALBARAN ZK.:</strong>
-                        <p t-field="o.origin"/>
+                        <span t-field="o.origin"/>
                     </div>
                     <div class="col-xs-4" t-if="o.partner_id.ref">
                         <strong>BEZERO KODEA:</strong>
-                        <p t-field="o.partner_id.ref"/>
+                        <span t-field="o.partner_id.ref"/>
                     </div>
                     <t t-foreach="o.repair_ids" t-as="repairs">
-                        <div class="col-xs-4">
+                        <div class="col-xs-6" t-if="repairs.product_id">
                             <strong>UNITATEA:</strong>
-                            <p t-field="repairs.product_id"/>
+                            <span t-field="repairs.product_id"/>
                         </div>
-                        <div class="col-xs-4">
-                            <strong>SERIE ZK/MATRIKULA: </strong>
-                            <p t-field="repairs.lot_id"/>
+                        <div class="col-xs-4" t-if="repairs.lot_id">
+                            <strong>SERIE ZK/MATRIKULA:</strong>
+                            <span t-field="repairs.lot_id"/>
                         </div>
                     </t>
                 </div>
@@ -548,6 +548,17 @@
             </div>
                 <div class="box">
                     <p><strong>ORDAINTZEKO ERA: </strong><span t-field="o.payment_mode_id" /></p>
+                    <div t-if="o.payment_mode_id">
+                        <div t-if="o.payment_mode_id.name=='Transferencia bancaria' or o.payment_mode_id.name=='TRANSFERENCIA BANCARIA'">
+                            <p t-if="o.partner_bank_id"><strong>KONTUA: </strong><span t-field="o.partner_bank_id.bank_name"/> - <span t-field="o.partner_bank_id.acc_number"/></p>
+                        </div>
+                        <div t-if="'GIRO' in o.payment_mode_id.name">
+                            <p><strong>KONTUA: </strong>
+                            <t t-foreach="o.partner_id.bank_ids" t-as="bank">
+                                <span t-field="bank.bank_name"/> - <span t-field="bank.acc_number"/>
+                            </t></p>
+                        </div>
+                    </div>
                     <p><strong>EPE MUGA: </strong><span t-field="o.date_due" /></p>
                     <p><strong>ZENBATEKOA: </strong><span t-field="o.amount_total" /></p>
                 </div>
