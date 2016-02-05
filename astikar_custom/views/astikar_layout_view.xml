@@ -29,5 +29,52 @@
                 </div>
             </xpath>
         </template>
+
+        <template id="astikar_external_layout">
+            <!-- Multicompany -->
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+        
+            <t t-call="astikar_custom.astikar_external_layout_header" />
+            <t t-raw="0" />
+            <t t-call="report.external_layout_footer" />
+        </template>
+        <template id="astikar_external_layout_header">
+            <div class="header">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <img src="/astikar_custom/static/src/img/astikar.png"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <address class="mb0 astikar_header" itemscope="itemscope"
+                                 itemtype="http://schema.org/Organization">
+                        <span t-field="company.partner_id.street" /><br />
+                        <div class="col-xs-12" style="padding-left:0px;">
+                            <div class="col-xs-6" style="padding-left:0px;">
+                                <span t-field="company.partner_id.street2" /><br />
+                                <span t-field="company.partner_id.zip" /> - <span t-field="company.partner_id.city" /> (<span t-field="company.partner_id.state_id" />)<br />
+                            </div>
+                            <div class="col-xs-6" style="padding-left:0px;">Tel.: <span t-field="company.partner_id.phone"/><br />
+                                Fax: <span t-field="company.partner_id.fax" />
+                            </div>
+                        </div>
+                        </address>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 pull-right" style="margin-top:-45px;">
+                        <div t-field="o.partner_id"
+                              t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}' />
+                        <p t-if="o.partner_id.vat">VAT: <span t-field="o.partner_id.vat"/></p>
+                    </div>
+                </div>
+            </div>
+        </template>
     </data>
 </openerp>
