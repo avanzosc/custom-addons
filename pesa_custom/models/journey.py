@@ -8,4 +8,9 @@ from openerp import fields, models
 class Journey(models.Model):
     _name = 'journey'
 
+    def _default_company(self):
+        return self.env.user.company_id
+
     name = fields.Char(string='Name')
+    company_id = fields.Many2one(comodel_name='res.company', string='Company',
+                                 default=_default_company)
