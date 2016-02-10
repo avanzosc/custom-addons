@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-6 pull-right" style="margin-top:-45px;">
+                    <div class="col-xs-6 pull-right">
                         <div t-field="o.partner_id"
                               t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}' />
                         <p t-if="o.partner_id.vat">VAT: <span t-field="o.partner_id.vat"/></p>

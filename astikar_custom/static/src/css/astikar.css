@@ -28,4 +28,5 @@ p.astikar_p {
     float: none;
     display: block;
     width: 55%;
+    page-break-inside: avoid;
 }
