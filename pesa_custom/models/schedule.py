@@ -9,12 +9,10 @@ class Schedule(models.Model):
     _name = 'schedule'
     _rec_name = 'hour'
 
-    def _default_company(self):
-        return self.env.user.company_id
-
     hour = fields.Float('Hour', digits=(16, 2))
-    company_id = fields.Many2one(comodel_name='res.company', string='Company',
-                                 default=_default_company)
+    company_id = fields.Many2one(
+        comodel_name='res.company', string='Company', default=lambda self:
+        self.env['res.company']._company_default_get('schedule'))
 
     @api.multi
     def name_get(self):

@@ -12,10 +12,7 @@ class CrmClaim(models.Model):
     @api.depends('date_action_next', 'date_deadline')
     def _compute_calendar_date(self):
         for claim in self:
-            if claim.date_action_next:
-                claim.calendar_date = claim.date_action_next
-            else:
-                claim.calendar_date = claim.date_deadline
+            claim.calendar_date = claim.date_action_next or claim.date_deadline
 
     line = fields.Char(string='Line')
     real_line_id = fields.Many2one(comodel_name='real.line',

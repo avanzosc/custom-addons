@@ -19,14 +19,6 @@ class TestPesaCustom(common.TransactionCase):
         self.assertEqual([x[1] for x in res][0], '16:30',
                          'Schedule is not the same')
 
-    def test_journey_schedule_real_line(self):
-        journey1 = self.journey_model.create({'name': 'Journey1'})
-        self.assertEqual(journey1.company_id, self.env.user.company_id)
-        real_line1 = self.real_line_model.create({'name': 'Real Line 1'})
-        self.assertEqual(real_line1.company_id, self.env.user.company_id)
-        schedule1 = self.schedule_model.create({'hour': 8.0})
-        self.assertEqual(schedule1.company_id, self.env.user.company_id)
-
     def test_compute_calendar_date(self):
         crm_claim = self.env.ref('crm_claim.crm_claim_1')
         crm_claim.date_deadline = date.today().replace(month=3, day=15)
