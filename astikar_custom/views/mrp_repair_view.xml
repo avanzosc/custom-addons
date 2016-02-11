@@ -21,12 +21,15 @@
         <record id="mrp_repair.mrp_repair_buttons_view_form" model="ir.ui.view">
             <field name="name">mrp.repair.buttons.form</field>
             <field name="model">mrp.repair</field>
-            <field name="inherit_id" ref="mrp_repair.view_repair_order_form" />
+            <field name="inherit_id" ref="mrp_repair_analytic.view_repair_order_form_inh_repairwithanalityc" />
             <field name="arch" type="xml">
                 <h1>
                     <div class="oe_right oe_button_box" name="buttons">
                     </div>
                 </h1>
+                <field name="analytic_account" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
             </field>
         </record>
 

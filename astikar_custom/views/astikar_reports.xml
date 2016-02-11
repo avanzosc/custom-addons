@@ -44,9 +44,8 @@
                         <div t-if="o.product_id.name" class="col-xs-8">
                             <strong>UNITATEA:</strong>
                             <span t-field="o.product_id.name"/>
-                            <t t-if="o.lot_id">
-                                <span t-field="o.lot_id.name"/>
-                            </t>
+                            <p t-if="o.lot_id"><strong>SERIE ZK/MATRIKULA:</strong>
+                                <span t-field="o.lot_id.name"/></p>
                         </div>
                         <div class="col-xs-4 pull-right">
                             <strong>DATA:</strong>
@@ -117,6 +116,37 @@
                             </t>
                         </tbody>
                     </table>
+                     <div class="row">
+                                <div class="col-xs-4 pull-right">
+                                    <table class="table table-condensed">
+                                        <tr class="border-black">
+                                            <td>
+                                                <strong>OINARRI ZERGAGARRIA</strong>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="o.amount_untaxed"
+                                                    t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>B.E.Z.</td>
+                                            <td class="text-right">
+                                                <span t-field="o.amount_tax"
+                                                    t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}" />
+                                            </td>
+                                        </tr>
+                                        <tr class="border-black">
+                                            <td>
+                                                <strong>GUZTIRA</strong>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="o.amount_total"
+                                                    t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
                 <div class="row">
                     <p><b>NOTA:</b> Si este presupuesto es de su conformidad, agradeceríamos remitiesen el mismo con su firma de conformidad o correspondiente pedido.</p>
                 </div>
@@ -412,7 +442,7 @@
                             </table>
 
                             <div class="row">
-                                <div class="col-xs-4 pull-right">
+                                <div class="col-xs-4 pull-right" style="page-break-inside: avoid">
                                     <table class="table table-condensed">
                                         <tr class="border-black">
                                             <td>
@@ -528,7 +558,7 @@
                     </tbody>
                 </table>
                 <div class="row">
-                <div class="col-xs-4 pull-right">
+                <div class="col-xs-4 pull-right" style="page-break-inside: avoid">
                     <table class="table table-condensed">
                         <tr class="border-black">
                             <td><strong>OINARRI ZERGAGARRIA</strong></td>
@@ -586,7 +616,7 @@
                     <div class="row">
                         <div class="col-xs-6 pull-right" style="margin-top:160px;">
                             <div t-field="o.partner_id"
-                                  t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}' />
+                                  t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
                             <p t-if="o.partner_id.vat">VAT: <span t-field="o.partner_id.vat"/></p>
                         </div>
                     </div>
@@ -657,7 +687,7 @@
                     </tbody>
                 </table>
                 <div class="row">
-                <div class="col-xs-4 pull-right">
+                <div class="col-xs-4 pull-right" style="page-break-inside: avoid">
                     <table class="table table-condensed">
                         <tr class="border-black">
                             <td><strong>OINARRI ZERGAGARRIA</strong></td>

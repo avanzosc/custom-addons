@@ -14,6 +14,7 @@
                 </field>
             </field>
         </record>
+
         <record id="invoice_repair_view_form" model="ir.ui.view">
             <field name="name">invoice.repair.form</field>
             <field name="model">account.invoice</field>
@@ -21,6 +22,31 @@
             <field name="arch" type="xml">
                 <field name="fiscal_position" position="after">
                     <field name="repair_ids" invisible="1"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="invoice_repair_view_search" model="ir.ui.view">
+            <field name="name">invoice.repair.search</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <field name="period_id" position="after">
+                    <field name="payment_mode_id"/>
+                </field>
+                <filter string="Status" position="after">
+                    <filter string="Payment" context="{'group_by': 'payment_mode_id'}"/>
+                </filter>
+            </field>
+        </record>
+
+        <record id="invoice_repair_view_tree" model="ir.ui.view">
+            <field name="name">invoice.repair.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                    <field name="payment_mode_id"/>
                 </field>
             </field>
         </record>

@@ -19,6 +19,7 @@
         "mrp_repair",
         "mrp_repair_fee",
         "mrp_repair_date",
+        "mrp_repair_analytic",
         "web",
         "report",
         "mrp_repair_proforma_report",
