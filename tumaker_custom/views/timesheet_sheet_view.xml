@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="hr_timesheet_sheet_inh_form" model="ir.ui.view">
+            <field name="name">hr.timesheet.sheet.inh.form</field>
+            <field name="model">hr_timesheet_sheet.sheet</field>
+            <field name="inherit_id" ref="hr_timesheet_sheet.hr_timesheet_sheet_form"/>
+            <field name="arch" type="xml">
+                <field name="unit_amount" position="after">
+                    <field name="facturable_qty"/>
+                </field>
+            </field>
+        </record>
+
+    <record id="analytic_line_facturable_hours_form" model="ir.ui.view">
+            <field name="name">account.analytic.line.facturable.qty.form.inherit</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="account.view_account_analytic_line_tree"/>
+            <field name="arch" type="xml">
+                <field name="unit_amount" position="after">
+                    <field name="facturable_qty"/> 
+                </field>
+            </field>
+        </record>
+
+        <record id="account_analytic_consumed_hours_form" model="ir.ui.view">
+            <field name="name">account.analytic.consumed.hours.form.inherit</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="account_analytic_analysis.account_analytic_account_form_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='hours_quantity']/.." position="replace">
+                    <div attrs="{'invisible': [('consumed_hours','=',0)]}" class="oe_grey">
+                            <field name="consumed_hours" class="oe_inline"/> Units Consumed
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_project_kanban_consumed_inherited" model="ir.ui.view">
+            <field name="name">project.project.kanban.consumed.inherited</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project_timesheet.view_project_kanban_inherited"/>
+            <field name="arch" type="xml">
+                <field name="hours_quantity" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="hours_quantity" position="after">
+                    <field name="consumed_hours"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>
