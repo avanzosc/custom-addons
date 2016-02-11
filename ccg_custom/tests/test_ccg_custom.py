@@ -47,12 +47,12 @@ class TestCCGCustom(common.TransactionCase):
             }
         self.sale_order.order_line = [(0, 0, vals)]
         self.sale_order.action_button_confirm()
-        group = self.env['procurement.group'].search([
-            ('name', '=', self.sale_order.name)])
-        procurement_order = self.env['procurement.order'].search([
-            ('group_id', '=', group.id), ('state', '=', 'confirmed')])
-        procurement_order.run()
-        mrp_production = self.env['mrp.production'].search([
-            ('id', '=', procurement_order.production_id.id)])
-        self.assertEqual(mrp_production.sale_order_id, self.sale_order)
-        self.assertEqual(mrp_production.partner_id, self.sale_order.partner_id)
+        procurements = self.sale_order.mapped(
+            'order_line.procurement_ids.group_id.procurement_ids')
+        for procurement in procurements.filtered(
+                lambda x: x.state == 'confirmed'):
+            procurement.run()
+        productions = procurements.mapped('production_id')
+        for production in productions:
+            self.assertEqual(production.sale_order_id, self.sale_order)
+            self.assertEqual(production.partner_id, self.sale_order.partner_id)
