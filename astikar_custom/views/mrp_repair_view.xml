@@ -82,5 +82,22 @@
             </field>
         </record>
 
+        <record id="mrp_repair_location_view_tree" model="ir.ui.view">
+            <field name="name">mrp.repair.location.tree</field>
+            <field name="model">mrp.repair</field>
+            <field name="inherit_id" ref="mrp_repair.view_repair_order_tree" />
+            <field name="arch" type="xml">
+                <field name="address_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="location_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="location_dest_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+
     </data>
 </openerp>
