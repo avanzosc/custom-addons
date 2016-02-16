@@ -41,6 +41,17 @@
             </field>
         </record>
 
+        <record id="mrp_repair_end_date_view_form" model="ir.ui.view">
+            <field name="name">mrp.repair.buttons.form</field>
+            <field name="model">mrp.repair</field>
+            <field name="inherit_id" ref="mrp_repair_date.mrp_repair_view_form" />
+            <field name="arch" type="xml">
+                <field name="end_date" position="attributes">
+                    <attribute name="readonly">False</attribute>
+                </field>
+            </field>
+        </record>
+
         <record id="mrp_repair_view_form" model="ir.ui.view">
             <field name="name">mrp.repair.form</field>
             <field name="model">mrp.repair</field>
