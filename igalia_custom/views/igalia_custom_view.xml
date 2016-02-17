@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="custom_backend_favicon" name="igalia_custom backend_favicon" inherit_id="web.layout">
+            <xpath expr="//link[@rel='shortcut icon']" position="attributes">
+                <attribute name="href">/igalia_custom/static/src/img/favicon.ico</attribute>
+            </xpath>
+        </template>
+
+        <template id="igalia_custom_html" name="igalia_custom layout_html"
+                  inherit_id="report.layout">
+            <xpath expr="//head" position="inside">
+                <link rel="stylesheet" href="/igalia_custom/static/src/css/igalia.css" />
+            </xpath>
+        </template>
+
+        <template id="igalia_layout" name="igalia_custom layout"
+                  inherit_id="report.minimal_layout">
+            <xpath expr="//head" position="inside">
+                <link rel="stylesheet" href="/igalia_custom/static/src/css/igalia.css" />
+            </xpath>
+        </template>
+
+    </data>
+</openerp>
