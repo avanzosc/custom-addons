@@ -6,7 +6,7 @@
 Pesa custom
 ===========
 
-* New objects are created
+* New objects are created, multicompany
     - Real line
     - Journey
     - Schedule

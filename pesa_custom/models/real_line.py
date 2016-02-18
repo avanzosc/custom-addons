@@ -9,3 +9,6 @@ class RealLine(models.Model):
     _name = 'real.line'
 
     name = fields.Char(string='Name')
+    company_id = fields.Many2one(
+        comodel_name='res.company', string='Company', default=lambda self:
+        self.env['res.company']._company_default_get('real.line'))

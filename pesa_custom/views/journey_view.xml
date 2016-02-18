@@ -9,7 +9,7 @@
             <field name="model">journey</field>
             <field name="arch" type="xml">
                 <tree string="Journey" editable="top">
-                    <field name="name"/>
+                    <field name="name" required="True"/>
                 </tree>
             </field>
         </record>
