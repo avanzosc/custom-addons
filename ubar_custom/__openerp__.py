@@ -19,6 +19,7 @@
     ],
     "category": "Custom Modules",
     "data": [
+        "security/ir.model.access.csv",
         "views/machinery_view.xml",
         "views/product_view.xml",
         "views/product_move_view.xml",
