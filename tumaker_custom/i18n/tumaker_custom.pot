@@ -1,0 +1,190 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* tumaker_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-29 07:52+0000\n"
+"PO-Revision-Date: 2015-10-29 07:52+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: tumaker_custom
+#: model:ir.model,name:tumaker_custom.model_account_analytic_account
+msgid "Analytic Account"
+msgstr ""
+
+#. module: tumaker_custom
+#: model:ir.model,name:tumaker_custom.model_account_analytic_line
+msgid "Analytic Line"
+msgstr ""
+
+#. module: tumaker_custom
+#: field:sale.order,commitment2_date:0
+msgid "Commitment Date"
+msgstr ""
+
+#. module: tumaker_custom
+#: code:addons/tumaker_custom/models/account_analytic_line.py:104
+#, python-format
+msgid "Configuration Error!"
+msgstr ""
+
+#. module: tumaker_custom
+#: field:account.analytic.account,consumed_hours:0
+msgid "Consumed Hours"
+msgstr ""
+
+#. module: tumaker_custom
+#: view:website:tumaker_custom.report_tumaker_contract_summary
+msgid "Consumed:"
+msgstr ""
+
+#. module: tumaker_custom
+#: view:project.project:tumaker_custom.view_project_tree_structure
+msgid "Contact"
+msgstr ""
+
+#. module: tumaker_custom
+#: model:ir.actions.report.xml,name:tumaker_custom.action_tumaker_contract_summary
+msgid "Contract Summary"
+msgstr ""
+
+#. module: tumaker_custom
+#: view:website:tumaker_custom.report_tumaker_contract_summary
+msgid "Date"
+msgstr ""
+
+#. module: tumaker_custom
+#: help:sale.order,commitment2_date:0
+msgid "Date by which the products are sure to be delivered. This is a date that you can promise to the customer, based on the Product Lead Times."
+msgstr ""
+
+#. module: tumaker_custom
+#: view:website:tumaker_custom.report_tumaker_contract_summary
+msgid "End Date:"
+msgstr ""
+
+#. module: tumaker_custom
+#: field:account.analytic.line,facturable_qty:0
+msgid "Facturable qty"
+msgstr ""
+
+#. module: tumaker_custom
+#: view:website:tumaker_custom.report_tumaker_contract_summary
+msgid "Hours"
+msgstr ""
+
+#. module: tumaker_custom
+#: view:website:tumaker_custom.report_tumaker_contract_summary
+msgid "Ordered:"
+msgstr ""
+
+#. module: tumaker_custom
+#: view:project.project:tumaker_custom.view_project_tree_structure
+msgid "Parent"
+msgstr ""
+
+#. module: tumaker_custom
+#: code:addons/tumaker_custom/models/account_analytic_line.py:105
+#, python-format
+msgid "Please define income account for product '%s'."
+msgstr ""
+
+#. module: tumaker_custom
+#: model:ir.model,name:tumaker_custom.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: tumaker_custom
+#: model:ir.actions.act_window,name:tumaker_custom.action_project_hierarchy_tree
+#: model:ir.ui.menu,name:tumaker_custom.menu_project_hierarchy
+msgid "Project Hierarchy"
+msgstr ""
+
+#. module: tumaker_custom
+#: view:project.project:tumaker_custom.view_project_tree_structure
+msgid "Project Manager"
+msgstr ""
+
+#. module: tumaker_custom
+#: view:project.project:tumaker_custom.view_project_tree_structure
+msgid "Project Name"
+msgstr ""
+
+#. module: tumaker_custom
+#: view:project.project:tumaker_custom.view_project_tree_structure
+msgid "Projects"
+msgstr ""
+
+#. module: tumaker_custom
+#: model:ir.model,name:tumaker_custom.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr ""
+
+#. module: tumaker_custom
+#: view:website:tumaker_custom.report_tumaker_contract_summary
+msgid "Reference:"
+msgstr ""
+
+#. module: tumaker_custom
+#: view:website:tumaker_custom.report_tumaker_contract_summary
+msgid "Remaining:"
+msgstr ""
+
+#. module: tumaker_custom
+#: model:ir.model,name:tumaker_custom.model_sale_advance_payment_inv
+msgid "Sales Advance Payment Invoice"
+msgstr ""
+
+#. module: tumaker_custom
+#: model:ir.model,name:tumaker_custom.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: tumaker_custom
+#: model:ir.model,name:tumaker_custom.model_sale_order_line
+msgid "Sales Order Line"
+msgstr ""
+
+#. module: tumaker_custom
+#: view:website:tumaker_custom.report_tumaker_contract_summary
+msgid "Start Date:"
+msgstr ""
+
+#. module: tumaker_custom
+#: view:website:tumaker_custom.report_tumaker_contract_summary
+msgid "Summary"
+msgstr ""
+
+#. module: tumaker_custom
+#: field:sale.order,task_exists:0
+msgid "Task Exists"
+msgstr ""
+
+#. module: tumaker_custom
+#: field:sale.order.line,tasks:0
+msgid "Tasks"
+msgstr ""
+
+#. module: tumaker_custom
+#: view:account.analytic.account:tumaker_custom.account_analytic_consumed_hours_form
+msgid "Units Consumed"
+msgstr ""
+
+#. module: tumaker_custom
+#: view:website:tumaker_custom.report_tumaker_contract_summary
+msgid "VAT:"
+msgstr ""
+
+#. module: tumaker_custom
+#: view:sale.order:tumaker_custom.view_sale_commitment_orderfor
+msgid "View Task"
+msgstr ""
+

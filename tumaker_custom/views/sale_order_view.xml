@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="view_sale_commitment_orderfor" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit5</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_dates.view_sale_orderfor"/>
+            <field name="arch" type="xml">
+                <button name="action_view_invoice" position="before">
+                    <button name="action_view_task" string="View Task" type="object" class="oe_highlight"
+                            attrs="{'invisible': [('task_exists', '=', False)]}" groups="base.group_user"/>
+                </button>
+                <field name="invoice_exists" position="after">
+                    <field name="task_exists" invisible="1"/>
+                </field>
+                <field name="commitment_date" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="commitment_date" position="after">
+                    <field name="commitment2_date"/>
+                </field>
+            </field>
+        </record>
+        
+        <record id="view_order_tree_commitment_date" model="ir.ui.view">
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_dates.view_order_tree_date"/>
+            <field name="arch" type="xml">
+                <field name="commitment_date" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="commitment_date" position="after">
+                    <field name="commitment2_date"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Add requested_date and commitment_date on quotation view -->
+        <record id="view_quotation_tree_commitment_date" model="ir.ui.view">
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_dates.view_quotation_tree_date"/>
+            <field name="arch" type="xml">
+                <field name="commitment_date" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="commitment_date" position="after">
+                    <field name="commitment2_date"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>
