@@ -6,20 +6,34 @@
                 <attribute name="href">/igalia_custom/static/src/img/favicon.ico</attribute>
             </xpath>
         </template>
-
-        <template id="igalia_custom_html" name="igalia_custom layout_html"
-                  inherit_id="report.layout">
+        
+        <template id="igalia_custom_html" name="igalia_custom layout_html" inherit_id="report.layout">
             <xpath expr="//head" position="inside">
                 <link rel="stylesheet" href="/igalia_custom/static/src/css/igalia.css" />
             </xpath>
         </template>
-
-        <template id="igalia_layout" name="igalia_custom layout"
-                  inherit_id="report.minimal_layout">
+        
+        <template id="igalia_layout" name="igalia_custom layout" inherit_id="report.minimal_layout">
             <xpath expr="//head" position="inside">
                 <link rel="stylesheet" href="/igalia_custom/static/src/css/igalia.css" />
             </xpath>
         </template>
-
+        
+        <record id="paperformat_igalia" model="report.paperformat">
+            <field name="name">European A4 Igalia</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">35</field>
+            <field name="margin_bottom">30</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">32</field>
+            <field name="dpi">90</field>
+            <field name="report_ids" eval="[(4, ref('igalia_custom.report_invoice_printing'))]"/>
+        </record>
     </data>
 </openerp>
