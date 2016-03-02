@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-17 09:19+0000\n"
-"PO-Revision-Date: 2016-02-17 11:01+0100\n"
-"Last-Translator: Esther Martín <esthermarin@avanzosc.es>\n"
+"POT-Creation-Date: 2016-02-25 08:53+0000\n"
+"PO-Revision-Date: 2016-02-25 09:55+0100\n"
+"Last-Translator: Esther Martín <esthermartin@avanzosc.es>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,6 +17,168 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 
 #. module: igalia_custom
-#: field:product.product,dollar_price:0
+#: view:website:web.layout
+msgid "/igalia_custom/static/src/img/favicon.ico"
+msgstr "/igalia_custom/static/src/img/favicon.ico"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "Amount"
+msgstr "Importe"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "Base"
+msgstr "Base"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "Cancelled Invoice"
+msgstr "Factura cancelada"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "Comment:"
+msgstr "Comentario:"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "Description"
+msgstr "Descripción"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "Draft Invoice"
+msgstr "Factura borrador"
+
+#. module: igalia_custom
+#: model:ir.actions.report.xml,name:igalia_custom.report_invoice_printing
+msgid "Factura Igalia"
+msgstr "Factura Igalia"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "Fiscal Position Remark:"
+msgstr "Observaciones de la posición fiscal"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid ""
+"In case of delay in payment of the amount, shall accrue daily from the date "
+"of the\n"
+"                                    delay until actual payment of the debt, "
+"adding\n"
+"                                    interest for Igalia SL 1% per month."
+msgstr ""
+"En caso de retraso en el pago del importe, se devengará día a día, desde la "
+"fecha del retraso hasta eago efectivo de la deuda, un interés de demora a "
+"favor de Igalia S.L. del 1% mensual"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "Invoice Date:"
+msgstr "Fecha de factura:"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid ""
+"Not liable in accordance with Article 69 VAT Law 37/1992 modified by VAT Law "
+"28/2014."
+msgstr ""
+"No responsable de acuerdo con el Artículo 69 de la Ley 37/1992 del IVA "
+"modificada por la Ley 28/2014 del IVA."
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid ""
+"Not liable in accordance with Article 70 VAT Law 37/1992 modified by VAT Law "
+"28/2014."
+msgstr ""
+"No responsable de acuerdo con el Artículo 70 de la Ley 37/1992 del IVA "
+"modificada por la Ley 28/2014 del IVA."
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "PO Number:"
+msgstr "Nº pedido:"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "PRO-FORMA"
+msgstr "PRO-FORMA"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "Payment Term:"
+msgstr "Plazo de pago:"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid ""
+"Payment conditions according to budget/agreement or, in default, 15 days "
+"after invoice\n"
+"                                    date."
+msgstr "Condiciones de pago según presupuesto o en su defecto 15 dias f.f."
+
+#. module: igalia_custom
+#: field:product.template,dollar_price:0
 msgid "Price in dollars"
 msgstr "Precio en dólares"
+
+#. module: igalia_custom
+#: model:ir.model,name:igalia_custom.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "Refund"
+msgstr "Factura rectificativa"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "Supplier Invoice"
+msgstr "Factura de proveedor"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "Supplier Refund"
+msgstr "Factura rectificativa de proveedor"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "TIN:"
+msgstr "NIF:"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "Tax"
+msgstr "Impuesto"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "Taxes"
+msgstr "Impuestos"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid ""
+"This invoice does not justify the payment. Only bank receipt will do it."
+msgstr ""
+"La posesión de esta factura no justifica su abono ni el de los anteriores, "
+"para ello será necesario el justificante de pago bancario"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "Total"
+msgstr "Total"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.invoice_printing
+msgid "Total Without Taxes"
+msgstr "Base imponible"

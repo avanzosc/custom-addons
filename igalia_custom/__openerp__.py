@@ -14,12 +14,16 @@
         "Esther Martín <esthermartin@avanzosc.es>",
     ],
     "depends": [
-        "product"
+        "product",
+        "account",
+        "report",
+        "sale",
     ],
     "data": [
-        "views/igalia_custom_view.xml",
         "views/igalia_layout_view.xml",
         "views/product_view.xml",
+        "views/igalia_report_view.xml",
+        "views/igalia_custom_view.xml",
     ],
     "installable": True,
 }
