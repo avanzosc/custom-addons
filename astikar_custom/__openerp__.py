@@ -26,7 +26,8 @@
         "account_payment_partner",
         "base_user_signature_logo",
         "purchase",
-        "account"
+        "account",
+        "mrp_repair_estimated_qty"
     ],
     "data": [
         "views/astikar_custom_view.xml",

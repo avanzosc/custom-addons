@@ -112,14 +112,14 @@
                                                 <strong>OINARRI ZERGAGARRIA</strong>
                                             </td>
                                             <td class="text-right">
-                                                <span t-field="o.amount_untaxed"
+                                                <span t-field="o.amnt_untaxed"
                                                     t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>B.E.Z.</td>
                                             <td class="text-right">
-                                                <span t-field="o.amount_tax"
+                                                <span t-field="o.amnt_tax"
                                                     t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}" />
                                             </td>
                                         </tr>
@@ -128,7 +128,7 @@
                                                 <strong>GUZTIRA</strong>
                                             </td>
                                             <td class="text-right">
-                                                <span t-field="o.amount_total"
+                                                <span t-field="o.amnt_total"
                                                     t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}" />
                                             </td>
                                         </tr>
@@ -437,14 +437,14 @@
                                                 <strong>OINARRI ZERGAGARRIA</strong>
                                             </td>
                                             <td class="text-right">
-                                                <span t-field="o.amount_untaxed"
+                                                <span t-field="o.amnt_untaxed"
                                                     t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>B.E.Z.</td>
                                             <td class="text-right">
-                                                <span t-field="o.amount_tax"
+                                                <span t-field="o.amnt_tax"
                                                     t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}" />
                                             </td>
                                         </tr>
@@ -453,7 +453,7 @@
                                                 <strong>GUZTIRA</strong>
                                             </td>
                                             <td class="text-right">
-                                                <span t-field="o.amount_total"
+                                                <span t-field="o.amnt_total"
                                                     t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}" />
                                             </td>
                                         </tr>

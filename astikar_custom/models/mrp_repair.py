@@ -11,8 +11,41 @@ class MrpRepair(models.Model):
     def _defaul_quotation_notes(self):
         return self.env.user.company_id.sale_note
 
+    @api.depends('partner_id', 'operations', 'fees_lines', 'operations.tax_id',
+                 'operations.to_invoice', 'operations.price_unit',
+                 'operations.expected_qty', 'operations.product_uom_qty',
+                 'operations.product_id', 'fees_lines.to_invoice',
+                 'fees_lines.tax_id', 'fees_lines.price_unit',
+                 'fees_lines.product_uom_qty', 'fees_lines.product_id')
+    @api.multi
+    def _compute_repair_amount(self):
+        for repair in self:
+            untaxed = 0.0
+            taxed = 0.0
+            for line in repair.operations.filtered(lambda x: x.to_invoice):
+                untaxed += line.price_subtotal
+                qty = line.expected_qty or line.product_uom_qty
+                tax_calculate = line.tax_id.compute_all(
+                    line.price_unit, qty, line.product_id, repair.partner_id)
+                taxed += sum(x['amount'] for x in tax_calculate['taxes'])
+            for line in repair.fees_lines.filtered(lambda x: x.to_invoice):
+                untaxed += line.price_subtotal
+                tax_calculate = line.tax_id.compute_all(
+                    line.price_unit, line.product_uom_qty, line.product_id,
+                    repair.partner_id)
+                taxed += sum(x['amount'] for x in tax_calculate['taxes'])
+            repair.amnt_untaxed = untaxed
+            repair.amnt_tax = taxed
+            repair.amnt_total = untaxed + taxed
+
     name = fields.Char(default='/')
     quotation_notes = fields.Text(default=_defaul_quotation_notes)
+    amnt_untaxed = fields.Float(string='Untaxed Amount',
+                                compute='_compute_repair_amount', store=True)
+    amnt_tax = fields.Float(string='Taxes', compute='_compute_repair_amount',
+                            store=True)
+    amnt_total = fields.Float(string='Total', compute='_compute_repair_amount',
+                              store=True)
 
     @api.model
     def create(self, vals):
@@ -97,3 +130,35 @@ class MrpRepair(models.Model):
             "('purchase_id.type_id', '=', 'in_invoice')]",
             'context': self.env.context
             }
+
+
+class MrpRepairLine(models.Model):
+
+    _inherit = 'mrp.repair.line'
+
+    @api.multi
+    def write(self, vals):
+        if 'to_invoice' in vals:
+            vals['load_cost'] = not vals.get('to_invoice', False)
+        return super(MrpRepairLine, self).write(vals)
+
+    @api.model
+    def create(self, vals):
+        vals['load_cost'] = not vals.get('to_invoice', False)
+        return super(MrpRepairLine, self).create(vals)
+
+
+class MrpRepairFee(models.Model):
+
+    _inherit = 'mrp.repair.fee'
+
+    @api.multi
+    def write(self, vals):
+        if 'to_invoice' in vals:
+            vals['load_cost'] = not vals.get('to_invoice', False)
+        return super(MrpRepairFee, self).write(vals)
+
+    @api.model
+    def create(self, vals):
+        vals['load_cost'] = not vals.get('to_invoice', False)
+        return super(MrpRepairFee, self).create(vals)
