@@ -1,0 +1,36 @@
+<openerp>
+    <data>
+        <record id="event_key_code_view_form" model="ir.ui.view" >
+            <field name="name">event.key.code.form</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_form"/>
+            <field name="arch" type="xml">
+                <field name="organizer_id" position="after">
+                    <field name="key_code" />
+                </field>
+            </field>
+        </record>
+
+        <record id="event_key_code_view_tree" model="ir.ui.view" >
+            <field name="name">event.key.code.tree</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="key_code" />
+                </field>
+            </field>
+        </record>
+
+        <record id="event_key_code_view_search" model="ir.ui.view" >
+            <field name="name">event.key.code.search</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_search"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="key_code" />
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
