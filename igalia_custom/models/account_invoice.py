@@ -16,7 +16,6 @@ class AccountInvoice(models.Model):
             type, partner_id, date_invoice=date_invoice,
             payment_term=payment_term, partner_bank_id=partner_bank_id,
             company_id=company_id)
-        pricelist_id = False
         if partner_id:
             partner = self.env['res.partner'].browse(partner_id)
             if type in ('out_invoice', 'out_refund'):
@@ -24,7 +23,7 @@ class AccountInvoice(models.Model):
             elif type in ('in_invoice', 'in_refund'):
                 currency_id =\
                     partner.property_product_pricelist_purchase.currency_id
-        res['value']['currency_id'] = currency_id
+            res['value']['currency_id'] = currency_id
         return res
 
 
