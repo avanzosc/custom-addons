@@ -18,6 +18,7 @@
         "account",
         "report",
         "sale",
+        "account_invoice_pricelist",
     ],
     "data": [
         "views/igalia_layout_view.xml",
