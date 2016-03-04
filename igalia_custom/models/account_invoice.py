@@ -2,7 +2,7 @@
 # © 2015 Esther Martín - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-from openerp import models, fields, api
+from openerp import api, models
 
 
 class AccountInvoice(models.Model):
@@ -19,11 +19,8 @@ class AccountInvoice(models.Model):
         if partner_id:
             partner = self.env['res.partner'].browse(partner_id)
             if type in ('out_invoice', 'out_refund'):
-                currency_id = partner.property_product_pricelist.currency_id
-            elif type in ('in_invoice', 'in_refund'):
-                currency_id =\
-                    partner.property_product_pricelist_purchase.currency_id
-            res['value']['currency_id'] = currency_id
+                res['value']['currency_id'] =\
+                    partner.property_product_pricelist.currency_id
         return res
 
 
@@ -31,9 +28,10 @@ class AccountInvoiceLine(models.Model):
     _inherit = 'account.invoice.line'
 
     @api.multi
-    def product_id_change(self, product, uom_id, qty=0, name='', type='out_invoice',
-            partner_id=False, fposition_id=False, price_unit=False, currency_id=False,
-            company_id=None):
+    def product_id_change(
+            self, product, uom_id, qty=0, name='', type='out_invoice',
+            partner_id=False, fposition_id=False, price_unit=False,
+            currency_id=False, company_id=None):
         res = super(AccountInvoiceLine, self).product_id_change(
             product, uom_id, qty=qty, name=name, type=type,
             partner_id=partner_id, fposition_id=fposition_id,
@@ -43,6 +41,6 @@ class AccountInvoiceLine(models.Model):
             partner = self.env['res.partner'].browse(partner_id)
             pricelist = partner.property_product_pricelist
             price = pricelist.price_get(
-                    product, qty or 1.0, partner_id)
+                product, qty or 1.0, partner_id)
             res['value']['price_unit'] = price[pricelist.id]
         return res

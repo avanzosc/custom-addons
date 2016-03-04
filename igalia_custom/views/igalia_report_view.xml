@@ -3,6 +3,7 @@
     <data noupdate="1">
         <report id="report_invoice_printing" string="Factura Igalia" model="account.invoice"
             report_type="qweb-pdf" file="igalia_custom.report_invoice_printing" name="igalia_custom.invoice_printing"
+            attachment_use="True"
             />
     </data>
     <data>
@@ -142,7 +143,7 @@
                                         <p t-if="(l.id != %(base.europe)d)">
                                             Not liable in accordance with Article 70 VAT Law 37/1992 modified by VAT Law 28/2014.
                                         </p>
-                                        <p t-if="(l.id == %(base.europe)d)">
+                                        <p t-if="(l.id == %(base.europe)d) and (l.id != %(base.es)d)">
                                             Not liable in accordance with Article 69 VAT Law 37/1992 modified by VAT Law 28/2014.
                                         </p>
                                     </div>

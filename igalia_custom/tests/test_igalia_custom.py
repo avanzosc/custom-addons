@@ -28,13 +28,10 @@ class TestIgaliaCustom(common.TransactionCase):
             'pricelist_id': self.pricelist.id})
         self.partner.property_product_pricelist = self.pricelist
 
-
     def test_pricelist(self):
-        account_invoice = self.env.ref('account.demo_invoice_0')
+        account_invoice = self.env.ref('account.invoice_1')
         account_invoice.partner_id = self.partner
-        account_invoice.onchange_partner_id('out_invoice', self.partner.id)
-        print account_invoice.pricelist_id.name
-        self.assertEqual(account_invoice.currency_id,
+        res = account_invoice.onchange_partner_id(
+            'out_invoice', self.partner.id)
+        self.assertEqual(res['value'].get('currency_id'),
                          self.partner.property_product_pricelist.currency_id)
-        vals = {'product_id': self.product.id}
-        account_invoice.invoice_line = [(0,0, vals)]
