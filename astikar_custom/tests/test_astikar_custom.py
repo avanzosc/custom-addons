@@ -84,3 +84,42 @@ class TestAstikarCustom(common.TransactionCase):
         if res.get('value', False) and 'account_analytic_id' in res['value']:
             self.assertNotEqual(
                 res['value'].get('account_analytic_id', False), False)
+
+    def test_repair_totals(self):
+        product = self.env.ref('product.product_product_34')
+        repair_line_vals = {
+            'repair_id': self.mrp_repair.id,
+            'product_id': product.id,
+            'product_uom_qty': 0,
+            'expected_qty': 2,
+            'name': product.name,
+            'product_uom': product.uom_id.id,
+            'type': 'add',
+            'location_id': self.location,
+            'location_dest_id': product.property_stock_production.id,
+            'price_unit': 2,
+            'to_invoice': True}
+        fee_line_vals = {
+            'repair_id': self.mrp_repair.id,
+            'product_id': product.id,
+            'product_uom_qty': 3,
+            'name': product.name,
+            'product_uom': product.uom_id.id,
+            'location_id': self.location,
+            'location_dest_id': product.property_stock_production.id,
+            'price_unit': 2,
+            'to_invoice': True}
+        repair_line = self.env['mrp.repair.line'].create(repair_line_vals)
+        fee_line = self.env['mrp.repair.fee'].create(fee_line_vals)
+        self.assertEqual(self.mrp_repair.amnt_untaxed, 10,
+                         "Untaxed amount not correct")
+        self.assertEqual(self.mrp_repair.amnt_tax, 0,
+                         "Taxed amount not correct")
+        self.assertEqual(self.mrp_repair.amnt_total, 10,
+                         "Total amount not correct")
+        self.assertEqual(repair_line.load_cost, False, "Load cost updated")
+        self.assertEqual(fee_line.load_cost, False, "Load cost updated")
+        repair_line.to_invoice = False
+        fee_line.to_invoice = False
+        self.assertEqual(repair_line.load_cost, True, "Load cost updated")
+        self.assertEqual(fee_line.load_cost, True, "Load cost updated")

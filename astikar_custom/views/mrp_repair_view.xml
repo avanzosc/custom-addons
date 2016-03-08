@@ -15,6 +15,21 @@
                 <xpath expr="//field[@name='fees_lines_no_to_invoice']//field[@name='to_invoice']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+                <xpath expr="//field[@name='amount_untaxed']/.." position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='amount_untaxed']/.." position="before">
+                    <group class="oe_subtotal_footer oe_right">
+                        <field name="amnt_untaxed" sum="Untaxed amount"/>
+                        <field name="amnt_tax"/>
+                        <div class="oe_subtotal_footer_separator oe_inline">
+                            <label for="amnt_total" />
+                            <button name="button_dummy"
+                                states="draft" string="(update)" type="object" class="oe_edit_only oe_link"/>
+                        </div>
+                        <field name="amnt_total" nolabel="1" sum="Total amount" class="oe_subtotal_footer_separator"/>
+                    </group>
+                </xpath>
             </field>
         </record>
 
