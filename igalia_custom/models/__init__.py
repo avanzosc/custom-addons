@@ -4,3 +4,4 @@
 
 from . import product_template
 from . import account_invoice
+from . import account_analytic_line

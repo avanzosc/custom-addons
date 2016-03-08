@@ -19,6 +19,7 @@
         "report",
         "sale",
         "account_invoice_pricelist",
+        "hr_timesheet_invoice"
     ],
     "data": [
         "views/igalia_layout_view.xml",
