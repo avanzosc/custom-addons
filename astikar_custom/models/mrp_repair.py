@@ -138,25 +138,19 @@ class MrpRepairLine(models.Model):
 
     @api.multi
     def write(self, vals):
-        if 'to_invoice' in vals:
-            vals['load_cost'] = not vals.get('to_invoice', False)
+        if 'product_uom_qty'in vals:
+            vals['load_cost'] = bool(vals.get('product_uom_qty', 0.0))
         return super(MrpRepairLine, self).write(vals)
 
     @api.model
     def create(self, vals):
-        vals['load_cost'] = not vals.get('to_invoice', False)
+        vals['load_cost'] = bool(vals.get('product_uom_qty', 0.0))
         return super(MrpRepairLine, self).create(vals)
 
 
 class MrpRepairFee(models.Model):
 
     _inherit = 'mrp.repair.fee'
-
-    @api.multi
-    def write(self, vals):
-        if 'to_invoice' in vals:
-            vals['load_cost'] = not vals.get('to_invoice', False)
-        return super(MrpRepairFee, self).write(vals)
 
     @api.model
     def create(self, vals):
