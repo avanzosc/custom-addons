@@ -15,6 +15,7 @@
     "depends": [
         "crm_claim",
         "base_vat",
+        "crm_claim_company",
     ],
     "category": "Custom Modules",
     "data": [

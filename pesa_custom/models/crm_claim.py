@@ -24,4 +24,4 @@ class CrmClaim(models.Model):
     book_number = fields.Integer(string='Book number')
     book_page = fields.Integer(string='Book page')
     service_date = fields.Date(string='Service date')
-    calendar_date = fields.Date(compute='_compute_calendar_date')
+    calendar_date = fields.Date(compute='_compute_calendar_date', store=True)

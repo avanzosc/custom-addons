@@ -16,11 +16,25 @@
             <field name="model">schedule</field>
             <field name="arch" type="xml">
                 <tree string="Schedule" editable="top">
+                    <field name="company_id" groups="base.group_multi_company"/>
                     <field name="hour" widget="float_time"/>
                 </tree>
             </field>
         </record>
-
+        
+        <record id="schedule_view_search" model="ir.ui.view">
+            <field name="name">schedule.search</field>
+            <field name="model">schedule</field>
+            <field name="arch" type="xml">
+                <search string="Search schedule">
+                    <field name="company_id" />
+                    <group expand="0" string="Group By">
+                        <filter string="Company" domain="[]" context="{'group_by':'company_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
         <record id="action_schedule_view" model="ir.actions.act_window">
             <field name="name">schedule</field>
             <field name="type">ir.actions.act_window</field>
