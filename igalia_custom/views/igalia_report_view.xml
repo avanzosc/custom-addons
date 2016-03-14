@@ -2,9 +2,9 @@
 <openerp>
     <data noupdate="1">
         <report id="report_invoice_printing" string="Factura Igalia" model="account.invoice"
-            report_type="qweb-pdf" file="igalia_custom.report_invoice_printing_doc"
-            name="igalia_custom.report_invoice_printing_doc" attachment_use="True"
-            />
+        report_type="qweb-pdf" file="igalia_custom.report_invoice_printing_doc" name="igalia_custom.report_invoice_printing_doc"
+        attachment_use="True"
+        attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')" />
     </data>
     <data>
         <template id="invoice_printing">
@@ -96,41 +96,14 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="row" t-if="o.tax_line">
-                                <div class="col-xs-6">
-                                    <table class="table table-condensed">
-                                        <thead>
-                                            <tr>
-                                                <th>Tax</th>
-                                                <th class="text-right">Base</th>
-                                                <th class="text-right">Amount</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr t-foreach="o.tax_line" t-as="t">
-                                                <td>
-                                                    <span t-field="t.name"/>
-                                                </td>
-                                                <td class="text-right">
-                                                    <span t-field="t.base" t-field-options='{"widget": "monetary", "display_currency":
-                                                        "o.currency_id"}'/>
-                                                </td>
-                                                <td class="text-right">
-                                                    <span t-field="t.amount" t-field-options='{"widget": "monetary", "display_currency":
-                                                        "o.currency_id"}'/>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
                             <div t-if="o.comment" style="margin-top:10px;margin-bottom:50px;">
                                 <p t-field="o.comment"/>
                             </div>
                             <br/>
                             <div class="text-center">
                                 <p t-if="o.partner_bank_id">
-                                    BANK NAME:
+                                    <span t-field="o.partner_bank_id.bank_name"/>
+                                    :
                                     <span t-field="o.partner_bank_id.acc_number"/>
                                     BIC/SWIFT:
                                     <span t-field="o.partner_bank_id.bank_bic"/>
