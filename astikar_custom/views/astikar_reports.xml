@@ -152,7 +152,7 @@
                                 firma de conformidad o correspondiente pedido.
                             </p>
                         </div>
-                        <div class="row">
+                        <div class="row" style="page-break-inside: avoid">
                             <div class="col-xs-6">CONFORME CLIENTE</div>
                             <div class="col-xs-6">
                                 ASTIKAR, S.A.
@@ -483,7 +483,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" style="page-break-inside: avoid">
                                 <div class="col-xs-6">CONFORME CLIENTE</div>
                                 <div class="col-xs-6">
                                     ASTIKAR, S.A.
@@ -750,7 +750,7 @@
                                 </div>
                             </t>
                         </div>
-                        <div>
+                        <div t-if="o.comment">
                             <p class="lanak">EGINDAKO LANAK</p>
                             <p>
                                 <span t-field="o.comment"/>
