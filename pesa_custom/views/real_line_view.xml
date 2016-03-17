@@ -5,8 +5,23 @@
             <field name="model">real.line</field>
             <field name="arch" type="xml">
                 <tree string="Real line" editable="top">
+                    <field name="company_id" groups="base.group_multi_company"/>
                     <field name="name" required="True"/>
                 </tree>
+            </field>
+        </record>
+
+        <record id="real_line_view_search" model="ir.ui.view">
+            <field name="name">real.line.search</field>
+            <field name="model">real.line</field>
+            <field name="arch" type="xml">
+                <search string="Search real line">
+                    <field name="name" />
+                    <field name="company_id" />
+                    <group expand="0" string="Group By">
+                        <filter string="Company" domain="[]" context="{'group_by':'company_id'}"/>
+                    </group>
+                </search>
             </field>
         </record>
 
