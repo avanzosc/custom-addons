@@ -10,7 +10,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-6">
+                        <div class="col-xs-6" style="margin-left:15px;">
                             <address class="mb0 astikar_header" itemscope="itemscope" itemtype="http://schema.org/Organization">
                                 <span t-field="company.partner_id.street" />
                                 <br />
@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-6">
+                    <div class="col-xs-6" style="margin-left:15px;">
                         <address class="mb0 astikar_header" itemscope="itemscope" itemtype="http://schema.org/Organization">
                             <span t-field="company.partner_id.street" />
                             <br />
@@ -142,7 +142,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-6">
+                    <div class="col-xs-6" style="margin-left:15px;">
                         <address class="mb0 astikar_header" itemscope="itemscope" itemtype="http://schema.org/Organization">
                             <span t-field="company.partner_id.street" />
                             <br />

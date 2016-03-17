@@ -30,3 +30,11 @@ p.astikar_p {
     width: 35%;
     page-break-inside: avoid;
 }
+
+.vertical {
+  -webkit-transform: rotate(-90deg);
+  font-size: 10px;
+  position: relative;
+  left: -430px;
+  bottom: -300px;
+}
