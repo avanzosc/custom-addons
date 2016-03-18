@@ -1,0 +1,14 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_account_analytic_account_list">
+            <field name="name">account.analytic.account.list.contract</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="account_analytic_analysis.view_account_analytic_account_tree_c2c_3" />
+            <field name="arch" type="xml">
+                <field name="toinvoice_total" position="before">
+                    <field name="amount_max"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -14,10 +14,11 @@
         "Esther Martín <esthermartin@avanzosc.es>",
     ],
     "depends": [
-        "event",
+        "account_analytic_analysis", "event",
     ],
     "data": [
         "views/event_view.xml",
+        "views/account_analytic_view.xml"
     ],
     "installable": True,
 }
