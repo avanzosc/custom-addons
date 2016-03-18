@@ -48,5 +48,15 @@
                 </field>
             </field>
         </record>
+        <record id="sale_order_client_ref_view_search" model="ir.ui.view">
+            <field name="name">sale.order.client.ref.search</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter" />
+            <field name="arch" type="xml">
+                <filter string="Salesperson" position="after">
+                    <filter string="Reference" domain="[]" context="{'group_by':'client_order_ref'}"/>
+                </filter>
+            </field>
+        </record>
     </data>
 </openerp>
