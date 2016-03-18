@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-15 10:58+0000\n"
-"PO-Revision-Date: 2016-01-15 11:58+0100\n"
+"POT-Creation-Date: 2016-03-18 11:23+0000\n"
+"PO-Revision-Date: 2016-03-18 12:23+0100\n"
 "Last-Translator: Esther Martín <esthermartin@avanzosc.es>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -43,16 +43,16 @@ msgid "Procurement"
 msgstr "Abastecimiento"
 
 #. module: ccg_custom
+#: view:sale.order:ccg_custom.sale_order_client_ref_view_search
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: ccg_custom
 #: field:mrp.production,sale_order_id:0
 msgid "Sale order"
 msgstr "Pedido de venta"
 
 #. module: ccg_custom
-#: field:mrp.production,website_message_ids:0
-msgid "Website Messages"
-msgstr "Mensajes del sitio web"
-
-#. module: ccg_custom
-#: help:mrp.production,website_message_ids:0
-msgid "Website communication history"
-msgstr "Historial de comunicaciones del sitio web"
+#: view:sale.order:ccg_custom.sale_order_client_ref_view_search
+msgid "Salesperson"
+msgstr "Comercial"
