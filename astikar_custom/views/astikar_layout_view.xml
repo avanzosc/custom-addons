@@ -187,10 +187,10 @@
                             <span t-field="company.partner_id.phone"/>
                             <br />
                             Fax:
-                            <span t-field="company.partner_id.fax" />
-                            <div t-if="(o.partner_id.country_id.id != %(base.es)d)">
-                                <span t-field="o.partner_id.country_id"/>
-                            </div>
+                            <span t-field="company.partner_id.fax" /><br />
+                            <span t-if="(o.partner_id.country_id.id != %(base.es)d)">
+                                <span t-field="o.partner_id.country_id"/><br />
+                            </span>
                             <br />
                             <p t-if="o.partner_id.vat">
                                 VAT:

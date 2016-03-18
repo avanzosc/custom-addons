@@ -119,3 +119,34 @@ class TestAstikarCustom(common.TransactionCase):
                          "Total amount not correct")
         repair_line.product_uom_qty = 2
         self.assertEqual(repair_line.load_cost, True, "Load cost updated")
+
+    def test_compute_repair_count(self):
+        self.assertEqual(self.product.repair_line_count, 0)
+        repair_line_vals = {
+            'repair_id': self.mrp_repair.id,
+            'product_id': self.product.id,
+            'product_uom_qty': 0,
+            'expected_qty': 2,
+            'name': self.product.name,
+            'product_uom': self.product.uom_id.id,
+            'type': 'add',
+            'location_id': self.location,
+            'location_dest_id': self.product.property_stock_production.id,
+            'price_unit': 2,
+            'to_invoice': True}
+        self.env['mrp.repair.line'].create(repair_line_vals)
+        self.assertEqual(len(self.product.repair_line_ids), 1)
+        repair_line_vals2 = {
+            'repair_id': self.mrp_repair.id,
+            'product_id': self.product.id,
+            'product_uom_qty': 0,
+            'expected_qty': 2,
+            'name': self.product.name,
+            'product_uom': self.product.uom_id.id,
+            'type': 'remove',
+            'location_id': self.location,
+            'location_dest_id': self.product.property_stock_production.id,
+            'price_unit': 2,
+            'to_invoice': True}
+        self.env['mrp.repair.line'].create(repair_line_vals2)
+        self.assertEqual(len(self.product.repair_line_ids), 1)

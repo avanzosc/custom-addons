@@ -58,6 +58,22 @@
             <field name="header_spacing">65</field>
             <field name="dpi">90</field>
         </record>
+        
+        <record id="paperformat_astikar_quotation" model="report.paperformat">
+            <field name="name">European A4 Astikar Quotation</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">80</field>
+            <field name="margin_bottom">20</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">70</field>
+            <field name="dpi">90</field>
+        </record>
 
         <record id="paperformat_astikar_header" model="report.paperformat">
             <field name="name">European A4 Astikar Header</field>

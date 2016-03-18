@@ -145,20 +145,22 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="row">
-                            <p>
-                                <b>NOTA:</b>
-                                Si este presupuesto es de su conformidad, agradeceríamos remitiesen el mismo con su
-                                firma de conformidad o correspondiente pedido.
-                            </p>
-                        </div>
-                        <div class="row" style="page-break-inside: avoid">
-                            <div class="col-xs-6">CONFORME CLIENTE</div>
-                            <div class="col-xs-6">
-                                ASTIKAR, S.A.
-                                <p t-field="o.create_uid.partner_id"/>
-                                <img t-if="o.create_uid.signature_logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.signature_logo"
-                                    style="max-height:100px;"/>
+                        <div style="page-break-inside: avoid">
+                            <div class="row">
+                                <p>
+                                    <b>NOTA:</b>
+                                    Si este presupuesto es de su conformidad, agradeceríamos remitiesen el mismo con su
+                                    firma de conformidad o correspondiente pedido.
+                                </p>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">CONFORME CLIENTE</div>
+                                <div class="col-xs-6">
+                                    ASTIKAR, S.A.
+                                    <p t-field="o.create_uid.partner_id"/>
+                                    <img t-if="o.create_uid.signature_logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.signature_logo"
+                                        style="max-height:100px;"/>
+                                </div>
                             </div>
                         </div>
                     </div>

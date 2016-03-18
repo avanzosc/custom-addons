@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="product_repair_line_view_form" model="ir.ui.view" >
+            <field name="name">product.repair.line.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view" />
+            <field name="arch" type="xml">
+                <field name="lst_price" position="after">
+                    <field name="repair_line_ids" invisible="1"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="product_repair_action" model="ir.actions.act_window">
+            <field name="name">Repair</field>
+            <field name="res_model">mrp.repair.line</field>
+            <field name="view_id" ref="astikar_custom.mrp_repair_line_tree"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('product_id', '=', active_id)]</field>
+            <field name="context">{'search_default_product': active_id, 'default_product': active_id}</field>
+        </record>
+
+        <record id="product_form_view_repair_order_button" model="ir.ui.view">
+            <field name="name">product.product.repair.order</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="sale.product_form_view_sale_order_button"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='buttons']" position="inside">
+                    <button class="oe_inline oe_stat_button" name="%(astikar_custom.product_repair_action)d"
+                        type="action" icon="fa-strikethrough">
+                        <field string="Repair orders" name="repair_line_count" widget="statinfo" />
+                    </button>
+                </xpath>
+                <button name="action_view_sales" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </button>
+            </field>
+        </record>
+    </data>
+</openerp>
