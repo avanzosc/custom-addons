@@ -39,6 +39,8 @@
         "views/res_users_view.xml",
         "views/purchase_order_view.xml",
         "views/account_invoice_view.xml",
+        "views/mrp_repair_line_view.xml",
+        "views/product_view.xml",
     ],
     "installable": True,
 }
