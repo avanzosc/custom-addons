@@ -16,11 +16,13 @@
         "procurement",
         "mrp",
         "sale",
+        "sale_order_dates",
     ],
     "category": "Custom Module",
     "data": [
         "views/mrp_production_view.xml",
         "views/product_packaging_view.xml",
+        "views/sale_order_view.xml",
     ],
     "installable": True
 }
