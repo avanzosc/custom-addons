@@ -18,6 +18,8 @@ Ubar custom
 
 * Client order reference visible in sale order tree view
 
+* Product cost price in sale order line
+
 Credits
 =======
 
