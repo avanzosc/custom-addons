@@ -16,6 +16,8 @@
     "depends": [
         "machine_manager",
         "sale",
+        "report",
+        "account_payment_partner",
     ],
     "category": "Custom Modules",
     "data": [
@@ -24,6 +26,9 @@
         "views/product_view.xml",
         "views/product_move_view.xml",
         "views/sale_order_view.xml",
+        "reports/ubar_layout_view.xml",
+        "reports/ubar_reports.xml",
+        "reports/ubar_paperformat.xml",
     ],
     "installable": True,
 }
