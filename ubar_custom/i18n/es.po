@@ -1,0 +1,184 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ubar_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-30 08:24+0000\n"
+"PO-Revision-Date: 2016-03-30 13:16+0100\n"
+"Last-Translator: Esther Martín <esthermartin@avanzosc.es>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: ubar_custom
+#: view:machinery:ubar_custom.machiner_ubar_custom_form_view
+msgid "(or) hours"
+msgstr "(or) hours"
+
+#. module: ubar_custom
+#: view:machinery:ubar_custom.machiner_ubar_custom_form_view
+msgid "Actual hours"
+msgstr "Actual hours"
+
+#. module: ubar_custom
+#: view:website:account.report_invoice_document
+msgid "Amount"
+msgstr "Importe"
+
+#. module: ubar_custom
+#: view:website:account.report_invoice_document
+msgid "Bank Account:"
+msgstr "Cuenta bancaria:"
+
+#. module: ubar_custom
+#: view:machinery:ubar_custom.machiner_ubar_custom_form_view
+msgid "Base hours"
+msgstr "Base hours"
+
+#. module: ubar_custom
+#: field:sale.order.line,standard_price:0
+msgid "Cost Price"
+msgstr "Cost Price"
+
+#. module: ubar_custom
+#: field:product.move,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: ubar_custom
+#: field:product.move,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: ubar_custom
+#: view:website:account.report_invoice_document
+msgid "Date due:"
+msgstr "Fecha de vto:"
+
+#. module: ubar_custom
+#: view:website:account.report_invoice_document
+msgid "Description"
+msgstr "Descripción"
+
+#. module: ubar_custom
+#: view:website:account.report_invoice_document
+msgid "Discount (%)"
+msgstr "Descuento (%)"
+
+#. module: ubar_custom
+#: view:product.product:ubar_custom.product_machine_form_view
+msgid "Historic"
+msgstr "Historic"
+
+#. module: ubar_custom
+#: view:machinery:ubar_custom.machiner_ubar_custom_form_view
+msgid "Hours at purchase"
+msgstr "Hours at purchase"
+
+#. module: ubar_custom
+#: field:product.move,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: ubar_custom
+#: field:product.move,incoming:0
+msgid "Incoming"
+msgstr "Incoming"
+
+#. module: ubar_custom
+#: field:product.move,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: ubar_custom
+#: field:product.move,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: ubar_custom
+#: field:product.product,old_reference:0
+msgid "Old reference"
+msgstr "Old reference"
+
+#. module: ubar_custom
+#: field:product.move,outgoing:0
+msgid "Outgoing"
+msgstr "Outgoing"
+
+#. module: ubar_custom
+#: view:website:account.report_invoice_document
+msgid "Payment mode:"
+msgstr "Forma de pago:"
+
+#. module: ubar_custom
+#: model:ir.model,name:ubar_custom.model_product_product
+#: field:product.move,product_id:0
+msgid "Product"
+msgstr "Producto"
+
+#. module: ubar_custom
+#: field:product.product,product_moves_ids:0
+msgid "Product Moves"
+msgstr "Product Moves"
+
+#. module: ubar_custom
+#: view:product.move:ubar_custom.product_move_view_form
+#: view:product.move:ubar_custom.product_move_view_tree
+msgid "Product moves"
+msgstr "Product moves"
+
+#. module: ubar_custom
+#: view:website:account.report_invoice_document
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: ubar_custom
+#: model:ir.model,name:ubar_custom.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea pedido de venta"
+
+#. module: ubar_custom
+#: view:website:account.report_invoice_document
+msgid "Taxes (VAT 21%)"
+msgstr "Impuestos (IVA 21%)"
+
+#. module: ubar_custom
+#: code:addons/ubar_custom/models/product.py:21
+#, python-format
+msgid "The reference change from %s to %s"
+msgstr "La referencia ha cambiado de %s a %s"
+
+#. module: ubar_custom
+#: view:website:account.report_invoice_document
+msgid "Total"
+msgstr "Total"
+
+#. module: ubar_custom
+#: view:website:account.report_invoice_document
+msgid "Total Without Taxes"
+msgstr "Base imponible"
+
+#. module: ubar_custom
+#: view:website:account.report_invoice_document
+msgid "Unit Price"
+msgstr "Precio unidad"
+
+#. module: ubar_custom
+#: field:product.move,year:0
+msgid "Year"
+msgstr "Año"
+
+#. module: ubar_custom
+#: view:product.product:ubar_custom.product_product_machine_search_view
+msgid ""
+"['|', '|', ('default_code', 'ilike', self),('name', 'ilike', self), "
+"('old_reference', 'ilike', self)]"
+msgstr ""
+"['|', '|', ('default_code', 'ilike', self),('name', 'ilike', self), "
+"('old_reference', 'ilike', self)]"

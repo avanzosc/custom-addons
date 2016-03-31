@@ -16,9 +16,11 @@ Ubar custom
 * Product move object is created with year, incoming and outgoing fields.
   A new page is created on products to include a field linked to this object.
 
-* Client order reference visible in sale order tree view
+* Client order reference visible in sale order tree view.
 
-* Product cost price in sale order line
+* Product cost price in sale order line.
+
+* Custom report for invoices.
 
 Credits
 =======
