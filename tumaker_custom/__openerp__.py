@@ -9,7 +9,8 @@
                 "project_timesheet",
                 "sale_service",
                 "account_analytic_analysis",
-                "product_analytic"],
+                "product_analytic",
+                "purchase",],
     "author": "Avanzosc, S.L.",
     "contributors": [
         "Ainara Galdona <ainaragaldona@avanzosc.es>",
