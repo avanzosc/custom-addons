@@ -63,3 +63,30 @@ class TestIgaliaCustom(common.TransactionCase):
         acc = res.get('account_id', False)
         part_acc = self.partner.property_account_position.map_account(acc)
         self.assertEqual(acc, part_acc, "Account Not Correct")
+
+    def test_product_id_change(self):
+        acc_inv_vals = {
+            'partner_id': self.partner.id,
+            'payment_term': self.ref('account.account_payment_term'),
+            'journal_id': self.ref('account.expenses_journal'),
+            'currency_id': self.ref('base.EUR'),
+            'reference_type': 'none',
+            'company_id': self.ref('base.main_company'),
+            'pricelist_id': self.pricelist.id,
+            'type': 'out_invoice',
+            'account_id': self.ref('account.a_recv')}
+        acc_inv_line_vals = {
+            'product_id': self.product.id,
+            'account_id': self.ref('account.a_sale'),
+            'quantity': 1,
+            'name': 'Test',
+            'price_unit': self.product.list_price
+            }
+        acc_inv_vals['invoice_line'] = [(0, 0, acc_inv_line_vals)]
+        self.account_invoice = self.env['account.invoice'].create(acc_inv_vals)
+        res = self.env['account.invoice.line'].product_id_change(
+            self.product.id, self.product.uom_id.id, qty=1, type='out_invoice',
+            partner_id=self.partner.id)
+        self.assertEquals(self.partner.property_product_pricelist.price_get(
+            self.product.id, 1.0, self.partner.id)[self.pricelist.id],
+            res['value']['price_unit'])
