@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="ubar_report_invoice_layouted" inherit_id="account_payment_partner.report_invoice_payment_mode">
+            <xpath expr="//span[@t-if='o.partner_id.vat']" position="replace"/>
+            <xpath expr="//address" position="replace">
+                <div class="col-xs-12 pull-right">
+                    <div t-if="o.partner_id">
+                        <span t-field="o.partner_id.name"/>
+                        <br />
+                        <span t-field="o.partner_id.street"/>
+                        <br />
+                        <span t-field="o.partner_id.zip" /> - <span t-field="o.partner_id.city" /> <span t-if="o.partner_id.state_id">(<span t-field="o.partner_id.state_id" />)</span>
+                        <br />
+                        <span t-field="o.partner_id.country_id"/>
+                        <br />
+                        <p t-if="o.partner_id.vat">
+                            <p>CIF:
+                            <span t-field="o.partner_id.vat"/></p>
+                        </p>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[@class='page']/table[@class='table table-condensed']" position="replace">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th class="text-right">Unit Price</th>
+                            <th class="text-right" groups="sale.group_discount_per_so_line">Discount (%)</th>
+                            <th class="text-right">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+                        <tr t-foreach="o.invoice_line" t-as="l">
+                            <td>
+                                <span t-field="l.name"/>
+                            </td>
+                            <td>
+                                <span t-esc="str(round((l.quantity), 1))"/>
+                                <span t-field="l.uos_id"  groups="product.group_uom"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="l.price_unit"/>
+                            </td>
+                            <td class="text-right" groups="sale.group_discount_per_so_line">
+                                <span t-field="l.discount"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="l.price_subtotal" t-field-options='{"widget": "monetary", "display_currency":
+                                    "o.currency_id"}'/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </xpath>
+            <xpath expr="//div[@class='row']//table[@class='table table-condensed']" position="replace">
+                <table class="table table-condensed">
+                    <tr class="border-black">
+                        <td>
+                            <strong>Total Without Taxes</strong>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="o.amount_untaxed" t-field-options='{"widget": "monetary", "display_currency":
+                                "o.currency_id"}'/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Taxes (VAT 21%)</td>
+                        <td class="text-right">
+                            <span t-field="o.amount_tax" t-field-options='{"widget": "monetary", "display_currency":
+                                "o.currency_id"}'/>
+                        </td>
+                    </tr>
+                    <tr class="border-black">
+                        <td>
+                            <strong>Total</strong>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency":
+                                "o.currency_id"}'/>
+                        </td>
+                    </tr>
+                </table>
+            </xpath>
+            <xpath expr="//div[@t-if='o.tax_line']" position="replace"/>
+            <xpath expr="//p[@t-if='o.partner_bank_id']" position="replace"/>
+            <xpath expr="//p[@t-if='o.comment']" position="after">
+                <table>
+                    <tr t-if="o.comment"><td style="width:10%;"><strong>Comment:</strong></td><td style="width:60%;" t-esc="o.comment"/></tr>
+                    <tr t-if="o.payment_mode_id"><td><strong>Payment mode:</strong></td><td t-esc="o.payment_mode_id.name"/></tr>
+                    <tr t-if="o.payment_term.note"><td><strong>Payment Term:</strong></td><td t-esc="o.payment_term.note"/></tr>
+                    <tr t-if="o.date_due"><td><strong>Date due:</strong></td><td t-esc="o.date_due"/></tr>
+                    <tr t-if="o.payment_mode_id and o.payment_mode_id.name=='contado' or o.payment_mode_id.name=='CONTADO' or o.payment_mode_id.name=='Transferencia bancaria' or o.payment_mode_id.name=='TRANSFERENCIA BANCARIA'"><td><strong>Bank Account:</strong></td><td t-esc="o.partner_bank_id.acc_number"/></tr>
+                    <tr t-if="o.payment_mode_id and 'GIRO' in o.payment_mode_id.name">
+                        <td><strong>Bank Account:</strong></td>
+                            <td t-if="o.partner_id.bank_ids">
+                                **** **** **** ***<span t-esc="o.partner_id.bank_ids[0].acc_number[-6:]"/>
+                            </td>
+                        </tr>
+                </table>
+            </xpath>
+            <xpath expr="//p[@t-if='o.comment']" position="replace"/>
+            <xpath expr="//p[@t-if='o.payment_term.note']" position="replace"/>
+        </template>
+    </data>
+</openerp>
