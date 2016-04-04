@@ -30,6 +30,31 @@
         <template id="igalia_layout_footer">
             <div class="footer">
                 <div class="row">
+                    <div style="text-align:justify;font-size:10px;margin-left:50px;width:70%;margin-top:30px">
+                        <p t-if="o.partner_id.country_id">
+                            <div t-foreach="o.partner_id.country_id.country_group_ids" t-as="l" style="font-family: DejaVu Sans;">
+                                <p t-if="(l.id != %(base.europe)d)">
+                                    Not liable in accordance with Article 70 VAT Law 37/1992 modified by VAT Law 28/2014.
+                                </p>
+                                <p t-if="((l.id == %(base.europe)d) and (o.partner_id.country_id.id != %(base.es)d))">
+                                    Not liable in accordance with Article 69 VAT Law 37/1992 modified by VAT Law 28/2014.
+                                </p>
+                            </div>
+                            <p t-if=" not o.partner_id.country_id.country_group_ids">
+                                Not liable in accordance with Article 70 VAT Law 37/1992 modified by VAT Law 28/2014.
+                            </p>
+                        </p>
+                        <p>This invoice does not justify the payment. Only bank receipt will do it.</p>
+                        <p>
+                            Payment conditions according to budget/agreement or, in default, 15 days after invoice
+                            date.
+                        </p>
+                        <p>
+                            In case of delay in payment of the amount, shall accrue daily from the date of the
+                            delay until actual payment of the debt, adding interest
+                            for Igalia SL 1% per month.
+                        </p>
+                    </div>
                     <div class="col-xs-6">
                         <img src="/igalia_custom/static/src/img/igalia_footer.png" width="559" height="113"/>
                     </div>
