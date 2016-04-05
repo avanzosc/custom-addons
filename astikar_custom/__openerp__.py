@@ -29,6 +29,7 @@
         "account",
         "mrp_repair_estimated_qty",
         "account_invoice_line_stock_move_info",
+        "mrp_repair_stock_picking_out",
     ],
     "data": [
         "views/astikar_custom_view.xml",
@@ -41,6 +42,7 @@
         "views/account_invoice_view.xml",
         "views/mrp_repair_line_view.xml",
         "views/product_view.xml",
+        "views/stock_picking_view.xml",
     ],
     "installable": True,
 }

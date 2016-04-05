@@ -535,80 +535,111 @@
                                 </div>
                             </t>
                         </div>
-                        <div t-if="o.comment">
-                            <p class="lanak">EGINDAKO LANAK</p>
-                            <p>
-                                <span t-field="o.comment"/>
+                        <div>
+                            <p t-foreach="o.invoice_line.mapped('move.picking_id').sorted(key=lambda a:(a.date_done))" t-as="pick">
+                                <p class="lanak">EGINDAKO LANAK</p>
+                                <t style="border-top-style: hidden;" t-foreach="o.invoice_line" t-as="l">
+                                    <t t-foreach="l.move.picking_id.mrp_repair_ids" t-as="r">
+                                        <t t-if="pick.id == l.move.picking_id.id">
+                                            <div>
+                                                <div class="col-xs-4" style="padding-left:0">
+                                                    <strong>
+                                                        ORDEN DE REPARACIÓN: <i><span t-field="r.name"/></i>
+                                                    </strong>
+                                                </div>
+                                                <div class="col-xs-4" t-if="r.product_id" style="padding-left:0">
+                                                    <strong>UNITATEA:</strong>
+                                                    <span t-field="r.product_id.name"/>
+                                                </div>
+                                                <div class="col-xs-4" t-if="r.lot_id" style="padding-left:0">
+                                                    <strong>SERIE ZK/MATRIKULA:</strong>
+                                                    <span t-field="r.lot_id"/>
+                                                </div>
+                                            </div>
+                                            <p t-field="r.quotation_notes"/>
+                                            <table class="table table-condensed">
+                                                <thead>
+                                                    <tr>
+                                                        <th>AZALPENA</th>
+                                                        <th>KOPURUA</th>
+                                                        <th class="text-right">PREZIOA</th>
+                                                        <th class="text-right">B.E.Z.</th>
+                                                        <th class="text-right">ZENBATEKOA</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="invoice_tbody">
+                                                    <tr style="border-top-style: hidden;">
+                                                        <tr style="border-top-style: hidden;">
+                                                            <td colspan="4">
+                                                                <strong>
+                                                                    Albaran zenbakia:<i>(<span t-field="pick.name"/>)</i>
+                                                                </strong>
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="border-top-style: hidden;" t-foreach="o.invoice_line" t-as="l">
+                                                            <t t-if="pick.id == l.move.picking_id.id">
+                                                                <td>
+                                                                    <span t-field="l.name"/>
+                                                                </td>
+                                                                <td>
+                                                                    <span t-field="l.quantity"/>
+                                                                    <span t-field="l.uos_id"  groups="product.group_uom"/>
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    <span t-field="l.price_unit"/>
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    <span t-esc="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/>
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    <span t-field="l.price_subtotal" t-field-options='{"widget": "monetary", "display_currency":
+                                                                        "o.currency_id"}'/>
+                                                                </td>
+                                                            </t>
+                                                        </tr>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </t>
+                                    </t>
+                                </t>
                             </p>
+                        <p t-field="o.comment"/>
                         </div>
-                        <table class="table table-condensed">
-                            <thead>
-                                <tr>
-                                    <th>AZALPENA</th>
-                                    <th>KOPURUA</th>
-                                    <th class="text-right">PREZIOA</th>
-                                    <th class="text-right">B.E.Z.</th>
-                                    <th class="text-right">ZENBATEKOA</th>
-                                </tr>
-                            </thead>
-                            <tbody class="invoice_tbody">
-                                <tr style="border-top-style: hidden;" t-foreach="o.invoice_line.mapped('move.picking_id').sorted(key=lambda
-                                    a:(a.date_done))" t-as="pick">
-                                    <tr style="border-top-style: hidden;">
-                                        <td colspan="4">
-                                            <strong>
-                                                Albaran zenbakia:
-                                                <i>
-                                                    (
-                                                    <span t-field="pick.name"/>
-                                                    )
-                                                </i>
-                                            </strong>
+                        <t t-if="o.invoice_line.filtered(lambda x:not x.move)">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>AZALPENA</th>
+                                        <th>KOPURUA</th>
+                                        <th class="text-right">PREZIOA</th>
+                                        <th class="text-right">B.E.Z.</th>
+                                        <th class="text-right">ZENBATEKOA</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="invoice_tbody">
+                                    <tr t-foreach="o.invoice_line.filtered(lambda x:not x.move)" t-as="l">
+                                        <td>
+                                            <span t-field="l.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="l.quantity"/>
+                                            <span t-field="l.uos_id"  groups="product.group_uom"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="l.price_unit"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="l.price_subtotal" t-field-options='{"widget": "monetary", "display_currency":
+                                                "o.currency_id"}'/>
                                         </td>
                                     </tr>
-                                    <tr style="border-top-style: hidden;" t-foreach="o.invoice_line" t-as="l">
-                                        <t t-if="pick.id == l.move.picking_id.id">
-                                            <td>
-                                                <span t-field="l.product_id.name"/>
-                                            </td>
-                                            <td>
-                                                <span t-field="l.quantity"/>
-                                                <span t-field="l.uos_id"  groups="product.group_uom"/>
-                                            </td>
-                                            <td class="text-right">
-                                                <span t-field="l.price_unit"/>
-                                            </td>
-                                            <td class="text-right">
-                                                <span t-esc="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/>
-                                            </td>
-                                            <td class="text-right">
-                                                <span t-field="l.price_subtotal" t-field-options='{"widget": "monetary", "display_currency":
-                                                    "o.currency_id"}'/>
-                                            </td>
-                                        </t>
-                                    </tr>
-                                </tr>
-                                <tr t-foreach="o.invoice_line.filtered(lambda x:not x.move)" t-as="l">
-                                    <td>
-                                        <span t-field="l.product_id.name"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="l.quantity"/>
-                                        <span t-field="l.uos_id"  groups="product.group_uom"/>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-field="l.price_unit"/>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-esc="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-field="l.price_subtotal" t-field-options='{"widget": "monetary", "display_currency":
-                                            "o.currency_id"}'/>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </t>
                         <div class="row">
                             <div class="col-xs-4 pull-right" style="page-break-inside: avoid">
                                 <table class="table table-condensed">
@@ -750,80 +781,111 @@
                                 </div>
                             </t>
                         </div>
-                        <div t-if="o.comment">
-                            <p class="lanak">EGINDAKO LANAK</p>
-                            <p>
-                                <span t-field="o.comment"/>
+                        <div>
+                            <p t-foreach="o.invoice_line.mapped('move.picking_id').sorted(key=lambda a:(a.date_done))" t-as="pick">
+                                <p class="lanak">EGINDAKO LANAK</p>
+                                <t style="border-top-style: hidden;" t-foreach="o.invoice_line" t-as="l">
+                                    <t t-foreach="l.move.picking_id.mrp_repair_ids" t-as="r">
+                                        <t t-if="pick.id == l.move.picking_id.id">
+                                            <div>
+                                                <div class="col-xs-4" style="padding-left:0">
+                                                    <strong>
+                                                        ORDEN DE REPARACIÓN: <i><span t-field="r.name"/></i>
+                                                    </strong>
+                                                </div>
+                                                <div class="col-xs-4" t-if="r.product_id" style="padding-left:0">
+                                                    <strong>UNITATEA:</strong>
+                                                    <span t-field="r.product_id.name"/>
+                                                </div>
+                                                <div class="col-xs-4" t-if="r.lot_id" style="padding-left:0">
+                                                    <strong>SERIE ZK/MATRIKULA:</strong>
+                                                    <span t-field="r.lot_id"/>
+                                                </div>
+                                            </div>
+                                            <p t-field="r.quotation_notes"/>
+                                            <table class="table table-condensed">
+                                                <thead>
+                                                    <tr>
+                                                        <th>AZALPENA</th>
+                                                        <th>KOPURUA</th>
+                                                        <th class="text-right">PREZIOA</th>
+                                                        <th class="text-right">B.E.Z.</th>
+                                                        <th class="text-right">ZENBATEKOA</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="invoice_tbody">
+                                                    <tr style="border-top-style: hidden;">
+                                                        <tr style="border-top-style: hidden;">
+                                                            <td colspan="4">
+                                                                <strong>
+                                                                    Albaran zenbakia:<i>(<span t-field="pick.name"/>)</i>
+                                                                </strong>
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="border-top-style: hidden;" t-foreach="o.invoice_line" t-as="l">
+                                                            <t t-if="pick.id == l.move.picking_id.id">
+                                                                <td>
+                                                                    <span t-field="l.name"/>
+                                                                </td>
+                                                                <td>
+                                                                    <span t-field="l.quantity"/>
+                                                                    <span t-field="l.uos_id"  groups="product.group_uom"/>
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    <span t-field="l.price_unit"/>
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    <span t-esc="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/>
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    <span t-field="l.price_subtotal" t-field-options='{"widget": "monetary", "display_currency":
+                                                                        "o.currency_id"}'/>
+                                                                </td>
+                                                            </t>
+                                                        </tr>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </t>
+                                    </t>
+                                </t>
                             </p>
+                            <p t-field="o.comment"/>
                         </div>
-                        <table class="table table-condensed">
-                            <thead>
-                                <tr style="border-bottom-style: 1px;">
-                                    <th>AZALPENA</th>
-                                    <th>KOPURUA</th>
-                                    <th class="text-right">PREZIOA</th>
-                                    <th class="text-right">B.E.Z.</th>
-                                    <th class="text-right">ZENBATEKOA</th>
-                                </tr>
-                            </thead>
-                            <tbody class="invoice_tbody">
-                                <tr style="border-top-style: hidden;" t-foreach="o.invoice_line.mapped('move.picking_id').sorted(key=lambda
-                                    a:(a.date_done))" t-as="pick">
-                                    <tr style="border-top-style: hidden;">
-                                        <td colspan="4">
-                                            <strong>
-                                                Albaran zenbakia:
-                                                <i>
-                                                    (
-                                                    <span t-field="pick.name"/>
-                                                    )
-                                                </i>
-                                            </strong>
+                        <t t-if="o.invoice_line.filtered(lambda x:not x.move)">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr style="border-bottom-style: 1px;">
+                                        <th>AZALPENA</th>
+                                        <th>KOPURUA</th>
+                                        <th class="text-right">PREZIOA</th>
+                                        <th class="text-right">B.E.Z.</th>
+                                        <th class="text-right">ZENBATEKOA</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="invoice_tbody">
+                                    <tr t-foreach="o.invoice_line.filtered(lambda x:not x.move)" t-as="l">
+                                        <td>
+                                            <span t-field="l.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="l.quantity"/>
+                                            <span t-field="l.uos_id"  groups="product.group_uom"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="l.price_unit"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="l.price_subtotal" t-field-options='{"widget": "monetary", "display_currency":
+                                                "o.currency_id"}'/>
                                         </td>
                                     </tr>
-                                    <tr style="border-top-style: hidden;" t-foreach="o.invoice_line" t-as="l">
-                                        <t t-if="pick.id == l.move.picking_id.id">
-                                            <td>
-                                                <span t-field="l.product_id.name"/>
-                                            </td>
-                                            <td>
-                                                <span t-field="l.quantity"/>
-                                                <span t-field="l.uos_id"  groups="product.group_uom"/>
-                                            </td>
-                                            <td class="text-right">
-                                                <span t-field="l.price_unit"/>
-                                            </td>
-                                            <td class="text-right">
-                                                <span t-esc="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/>
-                                            </td>
-                                            <td class="text-right">
-                                                <span t-field="l.price_subtotal" t-field-options='{"widget": "monetary", "display_currency":
-                                                    "o.currency_id"}'/>
-                                            </td>
-                                        </t>
-                                    </tr>
-                                </tr>
-                                <tr t-foreach="o.invoice_line.filtered(lambda x:not x.move)" t-as="l">
-                                    <td>
-                                        <span t-field="l.product_id.name"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="l.quantity"/>
-                                        <span t-field="l.uos_id"  groups="product.group_uom"/>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-field="l.price_unit"/>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-esc="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-field="l.price_subtotal" t-field-options='{"widget": "monetary", "display_currency":
-                                            "o.currency_id"}'/>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </t>
                         <div class="row">
                             <div class="col-xs-4 pull-right" style="page-break-inside: avoid">
                                 <table class="table table-condensed">
@@ -861,8 +923,7 @@
                                         <span t-field="o.payment_mode_id" />
                                     </p>
                                     <div t-if="o.payment_mode_id">
-                                        <div t-if="o.payment_mode_id.name=='Transferencia bancaria' or o.payment_mode_id.name=='TRANSFERENCIA
-                                            BANCARIA'">
+                                        <div t-if="o.payment_mode_id.name=='Transferencia bancaria' or o.payment_mode_id.name=='TRANSFERENCIA BANCARIA'">
                                             <p t-if="o.partner_bank_id">
                                                 <strong>KONTUA:</strong>
                                                 <span t-field="o.partner_bank_id.bank_name"/>
