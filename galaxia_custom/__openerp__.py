@@ -14,11 +14,20 @@
         "Esther Martín <esthermartin@avanzosc.es>",
     ],
     "depends": [
-        "account_analytic_analysis", "event",
+        "account_analytic_analysis",
+        "event",
+        "sale_stock",
+        "sale_mrp",
+        "sale_product_variants_types",
+        "sale_order_line_attached_check",
+        "sale_order_line_performance",
+        "sale_service_recurrence_configurator",
+        "sale_order_line_service_view",
     ],
     "data": [
         "views/event_view.xml",
-        "views/account_analytic_view.xml"
+        "views/account_analytic_view.xml",
+        "views/sale_order_view.xml"
     ],
     "installable": True,
 }

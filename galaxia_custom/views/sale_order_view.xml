@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_order_form_service_view_inh_galaxia" model="ir.ui.view">
+            <field name="name">view.order.form.service.view.inh.galaxia</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_line_service_view.view_order_form_inh_service_view" />
+            <field name="arch" type="xml">
+                <tree string="NO SERVICE sales order lines" position="attributes">
+                    <attribute name="editable" />
+                </tree>
+                <tree string="SERVICE sales order lines" position="attributes">
+                    <attribute name="editable" />
+                </tree>
+                <xpath expr="//field[@name='no_service_order_line']/form//field[@name='product_id']" position="replace">
+                    <field name="product_id"
+                    domain="[('type','!=','service')]"
+                    context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':False, 'company_id': parent.company_id}"
+                    groups="base.group_user"
+                    on_change="product_id_change_with_wh(parent.pricelist_id,product_id,product_uom_qty,False,product_uos_qty,False,name,parent.partner_id, False, True, parent.date_order, product_packaging, parent.fiscal_position, False, parent.warehouse_id, context)"/>
+                </xpath>
+                <xpath expr="//field[@name='service_order_line']/form//field[@name='product_id']" position="replace">
+                    <field name="product_id"
+                    domain="[('type','=','service')]"
+                    context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':False, 'company_id': parent.company_id}"
+                    groups="base.group_user"
+                    on_change="product_id_change_with_wh(parent.pricelist_id,product_id,product_uom_qty,False,product_uos_qty,False,name,parent.partner_id, False, True, parent.date_order, product_packaging, parent.fiscal_position, False, parent.warehouse_id, context)"/>
+                </xpath>
+                <xpath expr="//field[@name='no_service_order_line']/tree//field[@name='product_id']" position="replace">
+                    <field name="product_id"
+                    domain="[('type','!=','service')]"
+                    context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+                    groups="base.group_user" 
+                    on_change="product_id_change_with_wh(parent.pricelist_id,product_id,product_uom_qty,False,product_uos_qty,False,name,parent.partner_id, False, True, parent.date_order, product_packaging, parent.fiscal_position, False, parent.warehouse_id, context)"/>
+                </xpath>
+                <xpath expr="//field[@name='service_order_line']/tree//field[@name='product_id']" position="replace">
+                    <field name="product_id"
+                    domain="[('type','=','service')]"
+                    context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+                    groups="base.group_user" 
+                    on_change="product_id_change_with_wh(parent.pricelist_id,product_id,product_uom_qty,False,product_uos_qty,False,name,parent.partner_id, False, True, parent.date_order, product_packaging, parent.fiscal_position, False, parent.warehouse_id, context)"/>
+                </xpath>
+                <xpath expr="//field[@name='no_service_order_line']/tree//field[@name='product_uom_qty']" position="replace">
+                    <field context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+                    name="product_uom_qty" 
+                    on_change="product_id_change_with_wh(parent.pricelist_id,product_id,product_uom_qty,product_uom,product_uos_qty,False,name,parent.partner_id, False, False, parent.date_order, product_packaging, parent.fiscal_position, True, parent.warehouse_id, context)"/>
+                </xpath>
+                <xpath expr="//field[@name='service_order_line']/tree//field[@name='product_uom_qty']" position="replace">
+                    <field context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+                    name="product_uom_qty" 
+                    on_change="product_id_change_with_wh(parent.pricelist_id,product_id,product_uom_qty,product_uom,product_uos_qty,False,name,parent.partner_id, False, False, parent.date_order, product_packaging, parent.fiscal_position, True, parent.warehouse_id, context)"/>
+                </xpath>
+                <xpath expr="//field[@name='no_service_order_line']/form//field[@name='product_uos_qty']" position="replace">
+                    <field context="{'partner_id':parent.partner_id, 'quantity':product_uos_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+                    name="product_uos_qty" class="oe_inline"
+                    on_change="product_id_change_with_wh(parent.pricelist_id,product_id,product_uom_qty,product_uom,product_uos_qty,product_uos,name,parent.partner_id, False, False, parent.date_order, product_packaging, parent.fiscal_position, True, parent.warehouse_id, context)"/>
+                 </xpath>
+                <xpath expr="//field[@name='service_order_line']/form//field[@name='product_uos_qty']" position="replace">
+                    <field context="{'partner_id':parent.partner_id, 'quantity':product_uos_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+                    name="product_uos_qty" class="oe_inline"
+                    on_change="product_id_change_with_wh(parent.pricelist_id,product_id,product_uom_qty,product_uom,product_uos_qty,product_uos,name,parent.partner_id, False, False, parent.date_order, product_packaging, parent.fiscal_position, True, parent.warehouse_id, context)"/>
+                 </xpath>
+                 <xpath expr="//field[@name='no_service_order_line']/form[@string='NO SERVICE sales order lines']/group/group/field[@name='tax_id']" position="after">
+                     <label for="delay"/>
+                     <div>
+                         <field name="delay" class="oe_inline"/> days
+                     </div>
+                 </xpath>
+                 <xpath expr="//field[@name='service_order_line']/form[@string='SERVICE sales order lines']/group/group/field[@name='tax_id']" position="after">
+                     <label for="delay"/>
+                     <div>
+                         <field name="delay" class="oe_inline"/> days
+                     </div>
+                 </xpath>
+                 <xpath expr="//field[@name='no_service_order_line']/form[@string='NO SERVICE sales order lines']/group/group/field[@name='tax_id']" position="before">
+                     <field name="product_tmpl_id" invisible="1"/>
+                     <field name="product_packaging" context="{'default_product_tmpl_id': product_tmpl_id, 'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}" on_change="product_packaging_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, parent.partner_id, product_packaging, True, context)" domain="[('product_tmpl_id','=',product_tmpl_id)]" groups="product.group_stock_packaging" />
+                 </xpath>
+                 <xpath expr="//field[@name='service_order_line']/form[@string='SERVICE sales order lines']/group/group/field[@name='tax_id']" position="before">
+                     <field name="product_tmpl_id" invisible="1"/>
+                     <field name="product_packaging" context="{'default_product_tmpl_id': product_tmpl_id, 'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}" on_change="product_packaging_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, parent.partner_id, product_packaging, True, context)" domain="[('product_tmpl_id','=',product_tmpl_id)]" groups="product.group_stock_packaging" />
+                 </xpath>
+                 <xpath expr="//field[@name='no_service_order_line']/tree[@string='NO SERVICE sales order lines']/field[@name='sequence']" position="after">
+                     <field name="delay" invisible="1"/>
+                 </xpath>
+                 <xpath expr="//field[@name='service_order_line']/tree[@string='SERVICE sales order lines']/field[@name='sequence']" position="after">
+                     <field name="delay" invisible="1"/>
+                 </xpath>
+                 <xpath expr="//field[@name='no_service_order_line']/tree[@string='NO SERVICE sales order lines']/field[@name='th_weight']" position="after">
+                     <field name="product_packaging" invisible="1"/>
+                 </xpath>
+                 <xpath expr="//field[@name='service_order_line']/tree[@string='SERVICE sales order lines']/field[@name='th_weight']" position="after">
+                     <field name="product_packaging" invisible="1"/>
+                 </xpath>
+                 <xpath expr="//field[@name='no_service_order_line']/form/group/group/field[@name='price_unit']" position="before">
+                      <field name="route_id" groups="sale_stock.group_route_so_lines"/>
+                 </xpath>
+                 <xpath expr="//field[@name='service_order_line']/form/group/group/field[@name='price_unit']" position="before">
+                      <field name="route_id" groups="sale_stock.group_route_so_lines"/>
+                 </xpath>
+                 <xpath expr="//field[@name='no_service_order_line']/tree/field[@name='price_unit']" position="before">
+                     <field name="route_id" groups="sale_stock.group_route_so_lines"/>
+                 </xpath>
+                 <xpath expr="//field[@name='service_order_line']/tree/field[@name='price_unit']" position="before">
+                     <field name="route_id" groups="sale_stock.group_route_so_lines"/>
+                 </xpath>
+                 <xpath expr="//field[@name='no_service_order_line']/form[@string='NO SERVICE sales order lines']/group/group/field[@name='address_allotment_id']" position="after">
+                     <field name="property_ids" widget="many2many_tags"
+                          groups="sale.group_mrp_properties"/>
+                 </xpath>
+                 <xpath expr="//field[@name='service_order_line']/form[@string='SERVICE sales order lines']/group/group/field[@name='address_allotment_id']" position="after">
+                     <field name="property_ids" widget="many2many_tags"
+                          groups="sale.group_mrp_properties"/>
+                 </xpath>
+                 <xpath expr="//field[@name='no_service_order_line']/tree//field[@name='product_id']" position="before">
+                     <field name="product_template" />
+                 </xpath>
+                 <xpath expr="//field[@name='service_order_line']/tree//field[@name='product_id']" position="before">
+                     <field name="product_template" />
+                 </xpath>
+                <xpath expr="//field[@name='no_service_order_line']/tree//field[@name='price_subtotal']" position="after">
+                    <field name="order_state" invisible="1"/>
+                    <button name="action_duplicate"
+                            state="draft"
+                            string="Duplicate"
+                            type="object"
+                            icon="STOCK_COPY"
+                            attrs="{'invisible': [('order_state', 'not in', ['draft', 'sent'])]}"
+                            help="Duplicate line" />
+                </xpath>
+                <xpath expr="//field[@name='service_order_line']/tree//field[@name='price_subtotal']" position="after">
+                    <field name="order_state" invisible="1"/>
+                    <button name="action_duplicate"
+                            state="draft"
+                            string="Duplicate"
+                            type="object"
+                            icon="STOCK_COPY"
+                            attrs="{'invisible': [('order_state', 'not in', ['draft', 'sent'])]}"
+                            help="Duplicate line" />
+                </xpath>
+                <xpath expr="//field[@name='no_service_order_line']/form//field[@name='product_id']" position="before">
+                    <field name="product_template" />
+                    <field name="product_attributes_count" invisible="1"/>
+                    <div colspan="4"
+                         attrs="{'invisible': [('product_attributes_count', '=', 0)]}">
+                        <label for="product_attributes" />
+                        <field name="product_attributes">
+                            <tree create="false" delete="false" editable="1">
+                                <field name="attribute" />
+                                <field name="possible_values"
+                                       invisible="1"
+                                       widget="many2many_tags" />
+                                <field name="value" />
+                                <field name="attr_type" invisible="1" />
+                                <field name="custom_value"
+                                    attrs="{'readonly':[('attr_type','!=','range')]}" />
+                                <field name="price_extra" readonly="True" />
+                            </tree>
+                        </field>
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='service_order_line']/form//field[@name='product_id']" position="before">
+                    <field name="product_template" />
+                    <field name="product_attributes_count" invisible="1"/>
+                    <div colspan="4"
+                         attrs="{'invisible': [('product_attributes_count', '=', 0)]}">
+                        <label for="product_attributes" />
+                        <field name="product_attributes">
+                            <tree create="false" delete="false" editable="1">
+                                <field name="attribute" />
+                                <field name="possible_values"
+                                       invisible="1"
+                                       widget="many2many_tags" />
+                                <field name="value" />
+                                <field name="attr_type" invisible="1" />
+                                <field name="custom_value"
+                                    attrs="{'readonly':[('attr_type','!=','range')]}" />
+                                <field name="price_extra" readonly="True" />
+                            </tree>
+                        </field>
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='no_service_order_line']//form//field[@name='price_unit']"
+                       position="after">
+                    <button name="update_price_unit"
+                            states="draft" string="(update)" type="object"
+                            class="oe_edit_only oe_link" colspan="2"
+                            attrs="{'invisible':[('product_id','!=',False)]}"/>
+                </xpath>
+                <xpath expr="//field[@name='service_order_line']//form//field[@name='price_unit']"
+                       position="after">
+                    <button name="update_price_unit"
+                            states="draft" string="(update)" type="object"
+                            class="oe_edit_only oe_link" colspan="2"
+                            attrs="{'invisible':[('product_id','!=',False)]}"/>
+                </xpath>
+                <xpath expr="//field[@name='service_order_line']//tree/field[@name='name']" position="after">
+                    <field name="attached" />
+                </xpath>
+                <xpath expr="//field[@name='service_order_line']//form//field[@name='price_unit']" position="after">
+                    <field name="attached" />
+                </xpath>
+                <xpath expr="//field[@name='service_order_line']//form//field[@name='address_allotment_id']" position="after">
+                    <field name="performance" widget="float_time" />
+                </xpath>
+                <xpath expr="//field[@name='service_order_line']//tree//field[@name='price_unit']" position="after">
+                    <field name="performance" widget="float_time" />
+                </xpath>
+                <xpath expr="//field[@name='service_order_line']/form//field[@name='invoice_lines']/.." position="before">
+                    <field name="recurring_service" invisible="1" />
+                    <group name="group_month_week_day" colspan="4" col="6"
+                           attrs="{'invisible': [('recurring_service','=',False)]}">
+                       <group name="group_month" colspan="2">
+                           <field name="january" />
+                           <field name="february" />
+                           <field name="march" />
+                           <field name="april" />
+                           <field name="may" />
+                           <field name="june" />
+                           <field name="july" />
+                           <field name="august" />
+                           <field name="september" />
+                           <field name="october" />
+                           <field name="november" />
+                           <field name="december" />
+                       </group>
+                       <group name="group_week" colspan="2">
+                           <field name="week1" />
+                           <field name="week2" />
+                           <field name="week3" />
+                           <field name="week4" />
+                           <field name="week5" />
+                       </group>
+                       <group name="group_day" colspan="2" >
+                           <field name="monday" />
+                           <field name="tuesday" />
+                           <field name="wednesday" />
+                           <field name="thursday" />
+                           <field name="friday" />
+                           <field name="saturday" />
+                           <field name="sunday" />
+                       </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
