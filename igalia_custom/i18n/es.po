@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-25 08:53+0000\n"
-"PO-Revision-Date: 2016-02-25 09:55+0100\n"
+"POT-Creation-Date: 2016-04-11 07:02+0000\n"
+"PO-Revision-Date: 2016-04-11 09:04+0100\n"
 "Last-Translator: Esther Martín <esthermartin@avanzosc.es>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -27,19 +27,19 @@ msgid "Amount"
 msgstr "Importe"
 
 #. module: igalia_custom
+#: model:ir.model,name:igalia_custom.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Línea analítica"
+
+#. module: igalia_custom
 #: view:website:igalia_custom.invoice_printing
-msgid "Base"
-msgstr "Base"
+msgid "BIC/SWIFT:"
+msgstr "BIC/SWIFT:"
 
 #. module: igalia_custom
 #: view:website:igalia_custom.invoice_printing
 msgid "Cancelled Invoice"
 msgstr "Factura cancelada"
-
-#. module: igalia_custom
-#: view:website:igalia_custom.invoice_printing
-msgid "Comment:"
-msgstr "Comentario:"
 
 #. module: igalia_custom
 #: view:website:igalia_custom.invoice_printing
@@ -57,24 +57,20 @@ msgid "Factura Igalia"
 msgstr "Factura Igalia"
 
 #. module: igalia_custom
-#: view:website:igalia_custom.invoice_printing
-msgid "Fiscal Position Remark:"
-msgstr "Observaciones de la posición fiscal"
-
-#. module: igalia_custom
-#: view:website:igalia_custom.invoice_printing
+#: view:website:igalia_custom.igalia_layout_footer
 msgid ""
 "In case of delay in payment of the amount, shall accrue daily from the date "
 "of the\n"
-"                                    delay until actual payment of the debt, "
-"adding\n"
-"                                    interest for Igalia SL 1% per month."
+"                            delay until actual payment of the debt, adding "
+"interest\n"
+"                            for Igalia SL 1% per month."
 msgstr ""
 "En caso de retraso en el pago del importe, se devengará día a día, desde la "
-"fecha del retraso hasta eago efectivo de la deuda, un interés de demora a "
+"fecha del retraso hasta pago efectivo de la deuda, un interés de demora a "
 "favor de Igalia S.L. del 1% mensual"
 
 #. module: igalia_custom
+#: model:ir.model,name:igalia_custom.model_account_invoice
 #: view:website:igalia_custom.invoice_printing
 msgid "Invoice"
 msgstr "Factura"
@@ -85,7 +81,12 @@ msgid "Invoice Date:"
 msgstr "Fecha de factura:"
 
 #. module: igalia_custom
-#: view:website:igalia_custom.invoice_printing
+#: model:ir.model,name:igalia_custom.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Línea de factura"
+
+#. module: igalia_custom
+#: view:website:igalia_custom.igalia_layout_footer
 msgid ""
 "Not liable in accordance with Article 69 VAT Law 37/1992 modified by VAT Law "
 "28/2014."
@@ -94,7 +95,7 @@ msgstr ""
 "modificada por la Ley 28/2014 del IVA."
 
 #. module: igalia_custom
-#: view:website:igalia_custom.invoice_printing
+#: view:website:igalia_custom.igalia_layout_footer
 msgid ""
 "Not liable in accordance with Article 70 VAT Law 37/1992 modified by VAT Law "
 "28/2014."
@@ -113,16 +114,11 @@ msgid "PRO-FORMA"
 msgstr "PRO-FORMA"
 
 #. module: igalia_custom
-#: view:website:igalia_custom.invoice_printing
-msgid "Payment Term:"
-msgstr "Plazo de pago:"
-
-#. module: igalia_custom
-#: view:website:igalia_custom.invoice_printing
+#: view:website:igalia_custom.igalia_layout_footer
 msgid ""
 "Payment conditions according to budget/agreement or, in default, 15 days "
 "after invoice\n"
-"                                    date."
+"                            date."
 msgstr "Condiciones de pago según presupuesto o en su defecto 15 dias f.f."
 
 #. module: igalia_custom
@@ -157,16 +153,11 @@ msgstr "NIF:"
 
 #. module: igalia_custom
 #: view:website:igalia_custom.invoice_printing
-msgid "Tax"
-msgstr "Impuesto"
-
-#. module: igalia_custom
-#: view:website:igalia_custom.invoice_printing
 msgid "Taxes"
 msgstr "Impuestos"
 
 #. module: igalia_custom
-#: view:website:igalia_custom.invoice_printing
+#: view:website:igalia_custom.igalia_layout_footer
 msgid ""
 "This invoice does not justify the payment. Only bank receipt will do it."
 msgstr ""
