@@ -18,7 +18,7 @@
             <field name="view_id" ref="astikar_custom.mrp_repair_line_tree"/>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">[('product_id', '=', active_id)]</field>
+            <field name="domain">[('product_id', '=', active_id), ('type', '=', 'add')]</field>
             <field name="context">{'search_default_product': active_id, 'default_product': active_id}</field>
         </record>
 
