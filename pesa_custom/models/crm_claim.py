@@ -14,6 +14,16 @@ class CrmClaim(models.Model):
         for claim in self:
             claim.calendar_date = claim.date_action_next or claim.date_deadline
 
+    @api.multi
+    @api.onchange('company_id')
+    def onchange_company_id(self):
+        if self.company_id:
+            return {'domain': {
+                    'real_line_id': [('company_id', '=', self.company_id.id)],
+                    'journey_id': [('company_id', '=', self.company_id.id)],
+                    'schedule_id': [('company_id', '=', self.company_id.id)],
+                    }}
+
     line = fields.Char(string='Line')
     real_line_id = fields.Many2one(comodel_name='real.line',
                                    string='Real line')
