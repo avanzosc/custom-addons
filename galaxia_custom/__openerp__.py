@@ -14,6 +14,7 @@
         "Esther Martín <esthermartin@avanzosc.es>",
     ],
     "depends": [
+        "analytic",
         "account_analytic_analysis",
         "event",
         "sale_stock",
