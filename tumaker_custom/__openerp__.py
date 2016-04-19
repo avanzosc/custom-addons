@@ -4,7 +4,7 @@
 
 {
     "name": "Tumaker custom",
-    "version": "1.0",
+    "version": "8.0.1.0.0",
     "depends": ["sale_order_dates",
                 "project_timesheet",
                 "sale_service",
@@ -30,7 +30,9 @@
              'views/project_view.xml',
              'views/report_contract_summary.xml',
              'views/purchase_order_view.xml',
-             'views/report_basque.xml',],
+             'views/report_basque.xml',
+             'views/stock_picking_view.xml',
+             ],
     "installable": True,
     "auto_install": False,
 }
