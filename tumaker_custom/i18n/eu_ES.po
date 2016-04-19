@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-19 10:52+0000\n"
-"PO-Revision-Date: 2016-04-19 12:55+0100\n"
+"POT-Creation-Date: 2016-04-19 10:53+0000\n"
+"PO-Revision-Date: 2016-04-19 12:54+0100\n"
 "Last-Translator: Esther Martín <esthermartin@avanzosc.es>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -24,12 +24,12 @@ msgstr "Albarana Euskeraz"
 #. module: tumaker_custom
 #: model:ir.model,name:tumaker_custom.model_account_analytic_account
 msgid "Analytic Account"
-msgstr "Cuenta analítica"
+msgstr "Kontu analitikoa"
 
 #. module: tumaker_custom
 #: model:ir.model,name:tumaker_custom.model_account_analytic_line
 msgid "Analytic Line"
-msgstr "Línea analítica"
+msgstr "Analytic Line"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
@@ -74,34 +74,34 @@ msgstr "Biltegiaren Helbidea:"
 #. module: tumaker_custom
 #: field:sale.order,commitment2_date:0
 msgid "Commitment Date"
-msgstr "Fecha de compromiso"
+msgstr "Commitment Date"
 
 #. module: tumaker_custom
 #: code:addons/tumaker_custom/models/account_analytic_line.py:90
 #, python-format
 msgid "Configuration Error!"
-msgstr "Error de configuración"
+msgstr "Configuration Error!"
 
 #. module: tumaker_custom
 #: field:account.analytic.account,consumed_hours:0
 #: field:project.project,consumed_hours:0
 msgid "Consumed Hours"
-msgstr "Horas consumidas"
+msgstr "Consumed Hours"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.report_tumaker_contract_summary
 msgid "Consumed:"
-msgstr "Consumidos:"
+msgstr "Consumed:"
 
 #. module: tumaker_custom
 #: view:project.project:tumaker_custom.view_project_tree_structure
 msgid "Contact"
-msgstr "Contacto"
+msgstr "Contact"
 
 #. module: tumaker_custom
 #: model:ir.actions.report.xml,name:tumaker_custom.action_tumaker_contract_summary
 msgid "Contract Summary"
-msgstr "Resumen de contrato"
+msgstr "Contract Summary"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
@@ -111,7 +111,7 @@ msgstr "Data:"
 #. module: tumaker_custom
 #: view:website:tumaker_custom.report_tumaker_contract_summary
 msgid "Date"
-msgstr "Fecha"
+msgstr "Data"
 
 #. module: tumaker_custom
 #: help:sale.order,commitment2_date:0
@@ -119,8 +119,8 @@ msgid ""
 "Date by which the products are sure to be delivered. This is a date that you "
 "can promise to the customer, based on the Product Lead Times."
 msgstr ""
-"Fecha en la que se prevee entregar los productos. Esta es la fecha que se le "
-"promete al cliente según los tiempos de entrega definidos en el producto."
+"Date by which the products are sure to be delivered. This is a date that you "
+"can promise to the customer, based on the Product Lead Times."
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
@@ -140,7 +140,7 @@ msgstr "Egoera"
 #. module: tumaker_custom
 #: view:website:tumaker_custom.report_tumaker_contract_summary
 msgid "End Date:"
-msgstr "Fecha fin:"
+msgstr "End Date:"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tumaker_report_picking
@@ -165,7 +165,7 @@ msgstr "Ezeztatutako Faktura"
 #. module: tumaker_custom
 #: field:account.analytic.line,facturable_qty:0
 msgid "Facturable qty"
-msgstr "Cantidad a facturar"
+msgstr "Facturable qty"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
@@ -226,7 +226,7 @@ msgstr "Hornitzailearen Helbidea:"
 #. module: tumaker_custom
 #: view:website:tumaker_custom.report_tumaker_contract_summary
 msgid "Hours"
-msgstr "Horas"
+msgstr "Hours"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
@@ -237,7 +237,7 @@ msgstr "IFZ:"
 #. module: tumaker_custom
 #: model:ir.model,name:tumaker_custom.model_account_invoice
 msgid "Invoice"
-msgstr "Factura"
+msgstr "Faktura"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tumaker_report_picking
@@ -288,12 +288,12 @@ msgstr "Ordena (Iturria)"
 #. module: tumaker_custom
 #: view:website:stock.report_picking
 msgid "Order code"
-msgstr "Código pedido"
+msgstr "Eskaera kodea"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.report_tumaker_contract_summary
 msgid "Ordered:"
-msgstr "Solicitadas:"
+msgstr "Eskatuta:"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
@@ -303,12 +303,12 @@ msgstr "PRO-FORMA"
 #. module: tumaker_custom
 #: view:project.project:tumaker_custom.view_project_tree_structure
 msgid "Parent"
-msgstr "Padre"
+msgstr "Parent"
 
 #. module: tumaker_custom
 #: view:website:stock.report_picking
 msgid "Partner code"
-msgstr "Código"
+msgstr "Kide kodea"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tumaker_report_picking
@@ -319,7 +319,7 @@ msgstr "Pisua"
 #: code:addons/tumaker_custom/models/account_analytic_line.py:91
 #, python-format
 msgid "Please define income account for product '%s'."
-msgstr "Por favor defina una cuenta de entrada para este producto '%s'."
+msgstr "Please define income account for product '%s'."
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
@@ -344,23 +344,23 @@ msgstr "Programatutako Data"
 #. module: tumaker_custom
 #: model:ir.model,name:tumaker_custom.model_project_project
 msgid "Project"
-msgstr "Proyecto"
+msgstr "Proiektua"
 
 #. module: tumaker_custom
 #: model:ir.actions.act_window,name:tumaker_custom.action_project_hierarchy_tree
 #: model:ir.ui.menu,name:tumaker_custom.menu_project_hierarchy
 msgid "Project Hierarchy"
-msgstr "Estructura de proyectos"
+msgstr "Project Hierarchy"
 
 #. module: tumaker_custom
 #: view:project.project:tumaker_custom.view_project_tree_structure
 msgid "Project Manager"
-msgstr "Responsable de proyecto"
+msgstr "Project Manager"
 
 #. module: tumaker_custom
 #: view:project.project:tumaker_custom.view_project_tree_structure
 msgid "Project Name"
-msgstr "Nombre del proyecto"
+msgstr "Project Name"
 
 #. module: tumaker_custom
 #: field:project.project,project_child_ids:0
@@ -370,37 +370,37 @@ msgstr "Project childs"
 #. module: tumaker_custom
 #: view:project.project:tumaker_custom.view_project_tree_structure
 msgid "Projects"
-msgstr "Proyectos"
+msgstr "Projects"
 
 #. module: tumaker_custom
 #: model:ir.model,name:tumaker_custom.model_purchase_order_line
 msgid "Purchase Order Line"
-msgstr "Línea pedido de compra"
+msgstr "Purchase Order Line"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.report_tumaker_contract_summary
 msgid "Reference:"
-msgstr "Referencia:"
+msgstr "Reference:"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.report_tumaker_contract_summary
 msgid "Remaining:"
-msgstr "Restantes:"
+msgstr "Remaining:"
 
 #. module: tumaker_custom
 #: field:account.invoice,sale_ids:0
 msgid "Sale Orders"
-msgstr "Pedidos de vena"
+msgstr "Sale Orders"
 
 #. module: tumaker_custom
 #: model:ir.model,name:tumaker_custom.model_sale_order
 msgid "Sales Order"
-msgstr "Pedido de venta"
+msgstr "Salmenta eskaria"
 
 #. module: tumaker_custom
 #: model:ir.model,name:tumaker_custom.model_sale_order_line
 msgid "Sales Order Line"
-msgstr "Línea pedido de venta"
+msgstr "Salmenta lerroa"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
@@ -410,7 +410,7 @@ msgstr "Serie-zbk."
 #. module: tumaker_custom
 #: view:website:tumaker_custom.report_tumaker_contract_summary
 msgid "Start Date:"
-msgstr "Fecha de inicio:"
+msgstr "Start Date:"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tumaker_report_picking
@@ -420,17 +420,17 @@ msgstr "Subtotala"
 #. module: tumaker_custom
 #: view:website:tumaker_custom.report_tumaker_contract_summary
 msgid "Summary"
-msgstr "Descripción"
+msgstr "Summary"
 
 #. module: tumaker_custom
 #: field:sale.order,task_exists:0
 msgid "Task Exists"
-msgstr "Existe tarea"
+msgstr "Task Exists"
 
 #. module: tumaker_custom
 #: field:sale.order.line,tasks:0
 msgid "Tasks"
-msgstr "Tareas"
+msgstr "Tasks"
 
 #. module: tumaker_custom
 #: view:purchase.order:tumaker_custom.purchase_order_form
@@ -442,17 +442,17 @@ msgstr "True"
 #. module: tumaker_custom
 #: view:account.analytic.account:tumaker_custom.account_analytic_consumed_hours_form
 msgid "Units Consumed"
-msgstr "Unidades consumidas"
+msgstr "Units Consumed"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.report_tumaker_contract_summary
 msgid "VAT:"
-msgstr "NIF:"
+msgstr "VAT:"
 
 #. module: tumaker_custom
 #: view:sale.order:tumaker_custom.view_sale_commitment_orderfor
 msgid "View Task"
-msgstr "Ver tarea"
+msgstr "View Task"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
