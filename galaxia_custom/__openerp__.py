@@ -24,11 +24,14 @@
         "sale_order_line_performance",
         "sale_service_recurrence_configurator",
         "sale_order_line_service_view",
+        "hr_contract_stages",
+        "hr_contract_history"
     ],
     "data": [
         "views/event_view.xml",
         "views/account_analytic_view.xml",
-        "views/sale_order_view.xml"
+        "views/sale_order_view.xml",
+        "views/hr_contract_view.xml"
     ],
     "installable": True,
 }
