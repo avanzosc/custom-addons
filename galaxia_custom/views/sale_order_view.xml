@@ -146,11 +146,11 @@
                         <label for="product_attributes" />
                         <field name="product_attributes">
                             <tree create="false" delete="false" editable="1">
-                                <field name="attribute" />
+                                <field name="attribute_id" />
                                 <field name="possible_values"
                                        invisible="1"
                                        widget="many2many_tags" />
-                                <field name="value" />
+                                <field name="value_id" />
                                 <field name="attr_type" invisible="1" />
                                 <field name="custom_value"
                                     attrs="{'readonly':[('attr_type','!=','range')]}" />
@@ -167,11 +167,11 @@
                         <label for="product_attributes" />
                         <field name="product_attributes">
                             <tree create="false" delete="false" editable="1">
-                                <field name="attribute" />
+                                <field name="attribute_id" />
                                 <field name="possible_values"
                                        invisible="1"
                                        widget="many2many_tags" />
-                                <field name="value" />
+                                <field name="value_id" />
                                 <field name="attr_type" invisible="1" />
                                 <field name="custom_value"
                                     attrs="{'readonly':[('attr_type','!=','range')]}" />
