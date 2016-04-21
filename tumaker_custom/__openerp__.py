@@ -32,6 +32,7 @@
              'views/purchase_order_view.xml',
              'views/report_basque.xml',
              'views/stock_picking_view.xml',
+             'wizard/stock_transfer_details_view.xml'
              ],
     "installable": True,
     "auto_install": False,

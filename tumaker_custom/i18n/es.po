@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-19 10:52+0000\n"
-"PO-Revision-Date: 2016-04-19 12:55+0100\n"
-"Last-Translator: Esther Martín <esthermartin@avanzosc.es>\n"
+"POT-Creation-Date: 2016-04-28 14:07+0000\n"
+"PO-Revision-Date: 2016-04-28 16:09+0100\n"
+"Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,6 +20,11 @@ msgstr ""
 #: model:ir.actions.report.xml,name:tumaker_custom.report_picking_basque
 msgid "Albarana Euskeraz"
 msgstr "Albarana Euskeraz"
+
+#. module: tumaker_custom
+#: field:stock.transfer_details,allow_zero_cost:0
+msgid "Allow Zero Costs"
+msgstr "Permitir costes a cero"
 
 #. module: tumaker_custom
 #: model:ir.model,name:tumaker_custom.model_account_analytic_account
@@ -235,11 +240,6 @@ msgid "IFZ:"
 msgstr "IFZ:"
 
 #. module: tumaker_custom
-#: model:ir.model,name:tumaker_custom.model_account_invoice
-msgid "Invoice"
-msgstr "Factura"
-
-#. module: tumaker_custom
 #: view:website:tumaker_custom.tumaker_report_picking
 msgid "Iturria"
 msgstr "Iturria"
@@ -311,6 +311,11 @@ msgid "Partner code"
 msgstr "Código"
 
 #. module: tumaker_custom
+#: model:ir.model,name:tumaker_custom.model_stock_transfer_details
+msgid "Picking wizard"
+msgstr "Asistente de albarán"
+
+#. module: tumaker_custom
 #: view:website:tumaker_custom.tumaker_report_picking
 msgid "Pisua"
 msgstr "Pisua"
@@ -330,6 +335,11 @@ msgstr "Posizio fiskala:"
 #: view:website:tumaker_custom.tu_maker_report_invoice
 msgid "Prezioa"
 msgstr "Prezioa"
+
+#. module: tumaker_custom
+#: view:stock.transfer_details:tumaker_custom.view_stock_enter_transfer_details
+msgid "Products To Move"
+msgstr "Productos a mover"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tumaker_report_picking
@@ -365,7 +375,7 @@ msgstr "Nombre del proyecto"
 #. module: tumaker_custom
 #: field:project.project,project_child_ids:0
 msgid "Project childs"
-msgstr "Project childs"
+msgstr "Hijos proyecto"
 
 #. module: tumaker_custom
 #: view:project.project:tumaker_custom.view_project_tree_structure
@@ -386,11 +396,6 @@ msgstr "Referencia:"
 #: view:website:tumaker_custom.report_tumaker_contract_summary
 msgid "Remaining:"
 msgstr "Restantes:"
-
-#. module: tumaker_custom
-#: field:account.invoice,sale_ids:0
-msgid "Sale Orders"
-msgstr "Pedidos de vena"
 
 #. module: tumaker_custom
 #: model:ir.model,name:tumaker_custom.model_sale_order
@@ -453,6 +458,12 @@ msgstr "NIF:"
 #: view:sale.order:tumaker_custom.view_sale_commitment_orderfor
 msgid "View Task"
 msgstr "Ver tarea"
+
+#. module: tumaker_custom
+#: code:addons/tumaker_custom/wizard/stock_transfer_details.py:20
+#, python-format
+msgid "You have some lines without costs."
+msgstr "Existe alguna línea del albarán con coste a cero."
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
