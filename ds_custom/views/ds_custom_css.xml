@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="report_minimal_layout_inherit_custom"
+                  inherit_id="report.minimal_layout">
+            <xpath expr="//body" position="attributes">
+                <attribute name="style">font-size:10;</attribute>
+            </xpath>
+        </template>
+        <template id="report_layout_inherit_custom"
+                  inherit_id="report.layout">
+            <xpath expr="//body" position="attributes">
+                <attribute name="style">font-size:10;</attribute>
+            </xpath>
+        </template>
+        <template id="external_layout_header"
+                inherit_id="report.external_layout_header">
+            <xpath expr="//div[@t-field='company.partner_id']" position="after">
+                <div>NIF: <span t-field="company.partner_id.vat"/></div>
+            </xpath>
+        </template>
+    </data>
+</openerp>
