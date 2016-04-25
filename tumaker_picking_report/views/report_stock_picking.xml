@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report id="report_valued_picking_tumaker" string="Albarán valorado"
+            model="stock.picking" report_type="qweb-pdf"
+            file="tumaker_picking_report.valued_stock_picking_report" name="tumaker_picking_report.report_picking_valued" />
+        <report id="report_no_valued_picking_tumaker" string="Albarán no valorado"
+            model="stock.picking" report_type="qweb-pdf"
+            file="tumaker_picking_report.valued_stock_picking_report" name="tumaker_picking_report.report_picking_no_valued" />
+    </data>
+</openerp>
