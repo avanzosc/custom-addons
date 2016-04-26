@@ -5,4 +5,5 @@
 from . import product
 from . import product_move
 from . import sale
-from . import stock_quant
+from . import stock
+from . import purchase

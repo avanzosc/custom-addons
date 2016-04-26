@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+        <template id="ubar_layout_html" name="ubar_custom layout_html"
+                  inherit_id="report.layout">
+            <xpath expr="//head" position="inside">
+                <link rel="stylesheet" href="/ubar_custom/static/src/css/ubar.css" />
+            </xpath>
+        </template>
+
+        <template id="ubar_layout" name="ubar_custom layout"
+                  inherit_id="report.minimal_layout">
+            <xpath expr="//head" position="inside">
+                <link rel="stylesheet" href="/ubar_custom/static/src/css/ubar.css" />
+            </xpath>
+        </template>
         <record id="report.paperformat_euro" model="report.paperformat">
             <field name="header_spacing">40</field>
         </record>
