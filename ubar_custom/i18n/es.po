@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-30 08:24+0000\n"
-"PO-Revision-Date: 2016-03-30 13:16+0100\n"
+"POT-Creation-Date: 2016-04-26 07:39+0000\n"
+"PO-Revision-Date: 2016-04-26 09:50+0100\n"
 "Last-Translator: Esther Martín <esthermartin@avanzosc.es>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -22,9 +22,14 @@ msgid "(or) hours"
 msgstr "(or) hours"
 
 #. module: ubar_custom
+#: view:website:account.report_invoice_document
+msgid "**** **** **** ***"
+msgstr "**** **** **** ***"
+
+#. module: ubar_custom
 #: view:machinery:ubar_custom.machiner_ubar_custom_form_view
 msgid "Actual hours"
-msgstr "Actual hours"
+msgstr "Horas actuales"
 
 #. module: ubar_custom
 #: view:website:account.report_invoice_document
@@ -39,22 +44,56 @@ msgstr "Cuenta bancaria:"
 #. module: ubar_custom
 #: view:machinery:ubar_custom.machiner_ubar_custom_form_view
 msgid "Base hours"
-msgstr "Base hours"
+msgstr "Horas base"
+
+#. module: ubar_custom
+#: view:website:account.report_invoice_document
+#: view:website:purchase.report_purchaseorder_document
+#: view:website:report.external_layout_header
+#: view:website:sale.report_saleorder_document
+msgid "CIF:"
+msgstr "CIF:"
+
+#. module: ubar_custom
+#: view:website:sale.report_saleorder_document
+msgid "CONFORME CLIENTE"
+msgstr "CONFORME CLIENTE"
+
+#. module: ubar_custom
+#: view:website:account.report_invoice_document
+#: view:website:purchase.report_purchaseorder_document
+msgid "Comment:"
+msgstr "Comentario:"
+
+#. module: ubar_custom
+#: view:website:sale.report_saleorder_document
+msgid "Comments:"
+msgstr "Comentarios:"
 
 #. module: ubar_custom
 #: field:sale.order.line,standard_price:0
 msgid "Cost Price"
-msgstr "Cost Price"
+msgstr "Precio coste"
 
 #. module: ubar_custom
 #: field:product.move,create_uid:0
 msgid "Created by"
-msgstr "Created by"
+msgstr "Creado por"
 
 #. module: ubar_custom
 #: field:product.move,create_date:0
 msgid "Created on"
-msgstr "Created on"
+msgstr "Creado en"
+
+#. module: ubar_custom
+#: view:website:stock.report_picking
+msgid "Date"
+msgstr "Fecha"
+
+#. module: ubar_custom
+#: view:website:purchase.report_purchaseorder_document
+msgid "Date Delivery."
+msgstr "Fecha entrega."
 
 #. module: ubar_custom
 #: view:website:account.report_invoice_document
@@ -62,9 +101,31 @@ msgid "Date due:"
 msgstr "Fecha de vto:"
 
 #. module: ubar_custom
+#: field:purchase.order,carrier_id:0
+msgid "Delivery method"
+msgstr "Método de envío:"
+
+#. module: ubar_custom
+#: view:website:purchase.report_purchaseorder_document
+msgid "Delivery method:"
+msgstr "Método de envío:"
+
+#. module: ubar_custom
 #: view:website:account.report_invoice_document
+#: view:website:purchase.report_purchaseorder_document
+#: view:website:sale.report_saleorder_document
 msgid "Description"
 msgstr "Descripción"
+
+#. module: ubar_custom
+#: view:website:purchase.report_purchaseorder_document
+msgid "Disc. (%)"
+msgstr "Desc. (%)"
+
+#. module: ubar_custom
+#: view:website:sale.report_saleorder_document
+msgid "Disc.(%)"
+msgstr "Desc.(%)"
 
 #. module: ubar_custom
 #: view:website:account.report_invoice_document
@@ -72,9 +133,35 @@ msgid "Discount (%)"
 msgstr "Descuento (%)"
 
 #. module: ubar_custom
+#: field:product.move,display_name:0
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: ubar_custom
+#: view:website:sale.report_saleorder_document
+msgid "Due date:"
+msgstr "Fecha vto:"
+
+#. module: ubar_custom
+#: view:website:report.external_layout_footer
+msgid "Email:"
+msgstr "Correo electrónico:"
+
+#. module: ubar_custom
+#: view:website:report.external_layout_footer
+#: view:website:sale.report_saleorder_document
+msgid "Fax:"
+msgstr "Fax:"
+
+#. module: ubar_custom
+#: view:website:purchase.report_purchaseorder_document
+msgid "Freight:"
+msgstr "Portes:"
+
+#. module: ubar_custom
 #: view:product.product:ubar_custom.product_machine_form_view
 msgid "Historic"
-msgstr "Historic"
+msgstr "Historico"
 
 #. module: ubar_custom
 #: view:machinery:ubar_custom.machiner_ubar_custom_form_view
@@ -89,54 +176,176 @@ msgstr "ID"
 #. module: ubar_custom
 #: field:product.move,incoming:0
 msgid "Incoming"
-msgstr "Incoming"
+msgstr "Recepción"
+
+#. module: ubar_custom
+#: view:website:sale.report_saleorder_document
+msgid "Invoice address:"
+msgstr "Dirección de facturación:"
+
+#. module: ubar_custom
+#: view:website:sale.report_saleorder_document
+msgid "Invoice and shipping address:"
+msgstr "Dirección de facturación y de envío:"
+
+#. module: ubar_custom
+#: field:product.move,__last_update:0
+msgid "Last Modified on"
+msgstr "Última modificación en"
 
 #. module: ubar_custom
 #: field:product.move,write_uid:0
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr "Última modificación por"
 
 #. module: ubar_custom
 #: field:product.move,write_date:0
 msgid "Last Updated on"
-msgstr "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: ubar_custom
+#: view:stock.quant:ubar_custom.ubar_quant_view_search
+#: field:stock.quant,manufacturer_id:0
+msgid "Manufacturer"
+msgstr "Fabricante"
+
+#. module: ubar_custom
+#: view:website:purchase.report_purchaseorder_document
+#: view:website:sale.report_saleorder_document
+msgid "Net Price"
+msgstr "Precio neto"
 
 #. module: ubar_custom
 #: field:product.product,old_reference:0
 msgid "Old reference"
-msgstr "Old reference"
+msgstr "Antigua referencia"
+
+#. module: ubar_custom
+#: view:website:stock.report_picking
+msgid "Order (Origin)"
+msgstr "Pedido (Origen)"
 
 #. module: ubar_custom
 #: field:product.move,outgoing:0
 msgid "Outgoing"
-msgstr "Outgoing"
+msgstr "Salida"
+
+#. module: ubar_custom
+#: view:website:report.external_layout_footer
+msgid "Page:"
+msgstr "Página:"
 
 #. module: ubar_custom
 #: view:website:account.report_invoice_document
+#: view:website:sale.report_saleorder_document
+msgid "Payment Term:"
+msgstr "Plazo de pago:"
+
+#. module: ubar_custom
+#: view:website:account.report_invoice_document
+#: view:website:purchase.report_purchaseorder_document
+#: view:website:sale.report_saleorder_document
 msgid "Payment mode:"
-msgstr "Forma de pago:"
+msgstr "Modo de pago:"
+
+#. module: ubar_custom
+#: view:website:report.external_layout_footer
+msgid "Phone:"
+msgstr "Teléfono:"
 
 #. module: ubar_custom
 #: model:ir.model,name:ubar_custom.model_product_product
 #: field:product.move,product_id:0
+#: view:stock.quant:ubar_custom.ubar_quant_view_search
 msgid "Product"
 msgstr "Producto"
 
 #. module: ubar_custom
+#: view:stock.quant:ubar_custom.ubar_quant_view_search
+msgid "Product Category"
+msgstr "Categoría producto"
+
+#. module: ubar_custom
 #: field:product.product,product_moves_ids:0
 msgid "Product Moves"
-msgstr "Product Moves"
+msgstr "Movimientos de producto"
+
+#. module: ubar_custom
+#: field:stock.quant,category_id:0
+msgid "Product category"
+msgstr "Categoría producto"
 
 #. module: ubar_custom
 #: view:product.move:ubar_custom.product_move_view_form
 #: view:product.move:ubar_custom.product_move_view_tree
 msgid "Product moves"
-msgstr "Product moves"
+msgstr "Movimientos de producto"
+
+#. module: ubar_custom
+#: model:ir.model,name:ubar_custom.model_purchase_order
+msgid "Purchase Order"
+msgstr "Pedido de compra"
+
+#. module: ubar_custom
+#: view:website:purchase.report_purchaseorder_document
+msgid "Purchase Order N°"
+msgstr "Pedido de compra N°"
+
+#. module: ubar_custom
+#: view:website:purchase.report_purchaseorder_document
+msgid "Qty"
+msgstr "Ctdad"
 
 #. module: ubar_custom
 #: view:website:account.report_invoice_document
+#: view:website:sale.report_saleorder_document
 msgid "Quantity"
 msgstr "Cantidad"
+
+#. module: ubar_custom
+#: model:ir.model,name:ubar_custom.model_stock_quant
+msgid "Quants"
+msgstr "Quants"
+
+#. module: ubar_custom
+#: view:website:sale.report_saleorder_document
+msgid "Reference:"
+msgstr "Referencia:"
+
+#. module: ubar_custom
+#: view:website:report.external_layout_footer
+msgid ""
+"Registro Mercantil de Gipuzkoa, Libro Sociedades, Tomo 1709, Folio 138, Hoja "
+"SS 14512, Inscripción 1º"
+msgstr ""
+"Registro Mercantil de Gipuzkoa, Libro Sociedades, Tomo 1709, Folio 138, Hoja "
+"SS 14512, Inscripción 1º"
+
+#. module: ubar_custom
+#: view:website:purchase.report_purchaseorder_document
+msgid "Request for Quotation N°"
+msgstr "Solicitud de presupuesto Nº"
+
+#. module: ubar_custom
+#: field:sale.order.line,move_ids:0
+msgid "Reservation"
+msgstr "Reserva"
+
+#. module: ubar_custom
+#: view:website:purchase.report_purchaseorder_document
+#: view:website:sale.report_saleorder_document
+msgid "Responsible:"
+msgstr "Responsable:"
+
+#. module: ubar_custom
+#: field:stock.move,sale_line_id:0
+msgid "Sale Order Line"
+msgstr "Línea pedido de venta"
+
+#. module: ubar_custom
+#: model:ir.model,name:ubar_custom.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
 
 #. module: ubar_custom
 #: model:ir.model,name:ubar_custom.model_sale_order_line
@@ -144,9 +353,40 @@ msgid "Sales Order Line"
 msgstr "Línea pedido de venta"
 
 #. module: ubar_custom
+#: help:stock.quant,category_id:0
+msgid "Select category for the current product"
+msgstr "Seleccionar categoría para producto"
+
+#. module: ubar_custom
+#: view:website:purchase.report_purchaseorder_document
+#: view:website:sale.report_saleorder_document
+msgid "Shipping address:"
+msgstr "Dirección de envío:"
+
+#. module: ubar_custom
+#: view:website:sale.report_saleorder_document
+msgid "Shipping:"
+msgstr "Transporte:"
+
+#. module: ubar_custom
+#: view:website:stock.report_picking
+msgid "State"
+msgstr "Estado"
+
+#. module: ubar_custom
+#: model:ir.model,name:ubar_custom.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de existencias"
+
+#. module: ubar_custom
 #: view:website:account.report_invoice_document
 msgid "Taxes (VAT 21%)"
 msgstr "Impuestos (IVA 21%)"
+
+#. module: ubar_custom
+#: view:website:sale.report_saleorder_document
+msgid "Taxes 21%"
+msgstr "Impuestos 21%"
 
 #. module: ubar_custom
 #: code:addons/ubar_custom/models/product.py:21
@@ -156,18 +396,47 @@ msgstr "La referencia ha cambiado de %s a %s"
 
 #. module: ubar_custom
 #: view:website:account.report_invoice_document
+#: view:website:sale.report_saleorder_document
 msgid "Total"
 msgstr "Total"
 
 #. module: ubar_custom
 #: view:website:account.report_invoice_document
+#: view:website:sale.report_saleorder_document
 msgid "Total Without Taxes"
 msgstr "Base imponible"
 
 #. module: ubar_custom
+#: view:website:report.external_layout_footer
+msgid "UBARISTI S.A."
+msgstr "UBARISTI S.A."
+
+#. module: ubar_custom
 #: view:website:account.report_invoice_document
+#: view:website:purchase.report_purchaseorder_document
+#: view:website:sale.report_saleorder_document
 msgid "Unit Price"
 msgstr "Precio unidad"
+
+#. module: ubar_custom
+#: view:website:sale.report_saleorder_document
+msgid "Validity date:"
+msgstr "Fecha de validez:"
+
+#. module: ubar_custom
+#: field:sale.order,guarantee_limit:0
+msgid "Warranty Expiration"
+msgstr "Expiración garantía"
+
+#. module: ubar_custom
+#: view:website:sale.report_saleorder_document
+msgid "Warranty:"
+msgstr "Garantía:"
+
+#. module: ubar_custom
+#: view:website:report.external_layout_footer
+msgid "Website:"
+msgstr "Sitio web:"
 
 #. module: ubar_custom
 #: field:product.move,year:0

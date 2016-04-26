@@ -5,6 +5,14 @@
 from openerp import models, fields
 
 
+class StockMove(models.Model):
+    _inherit = 'stock.move'
+
+    sale_line_id = fields.Many2one(
+        comodel_name='sale.order.line', string='Sale Order Line',
+        ondelete='set null', select=True, readonly=True)
+
+
 class StockQuant(models.Model):
     _inherit = 'stock.quant'
 

@@ -29,9 +29,8 @@
             <field name="inherit_id" ref="sale.view_order_form" />
             <field name="arch" type="xml">
                 <data>
-                  <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']"
-                        position="after">
-                    <field name="standard_price"/>
+                    <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="after">
+                        <field name="standard_price"/>
                     </xpath>
                 </data>
             </field>
@@ -47,6 +46,16 @@
                         <field name="standard_price"/>
                     </field>
                 </data>
+            </field>
+        </record>
+        <record id="guarantee_sale_order_view_form" model="ir.ui.view">
+            <field name="name">guarantee.sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_dates.view_sale_orderfor"/>
+            <field name="arch" type="xml">
+                <field name="effective_date" position="after">
+                    <field name="guarantee_limit"/>
+                </field>
             </field>
         </record>
     </data>
