@@ -300,12 +300,12 @@
                 </table>
             </xpath>
             <xpath expr="//p[@t-field='o.note']" position="after">
-                <table>
+                <table style="width:100%">
                     <tr t-if="o.validity_date and o.state in ['draft','sent']">
-                        <td style="width:20%;">
+                        <td width="15%">
                             <strong>Validity date:</strong>
                         </td>
-                        <td style="width:60%;" t-esc="o.validity_date"/>
+                        <td t-esc="o.validity_date"/>
                     </tr>
                     <tr t-if="o.payment_term.note and o.state not in ['draft','sent']">
                         <td>
@@ -314,7 +314,7 @@
                         <td t-esc="o.payment_term.note"/>
                     </tr>
                     <tr t-if="o.payment_mode_id">
-                        <td style="width:20%;">
+                        <td width="15%">
                             <strong>Payment mode:</strong>
                         </td>
                         <td t-esc="o.payment_mode_id.name"/>
@@ -461,7 +461,8 @@
                     </p>
                 </div>
             </xpath>
-            <xpath expr="//h2" position="replace">
+            <xpath expr="//h2[2]" position="replace"/>
+            <xpath expr="//h2[1]" position="replace">
                 <h2 t-if="o.state != 'draft'">Purchase Order N°<span t-field="o.name"/></h2>
                 <h2 t-if="o.state == 'draft'">Request for Quotation N°<span t-field="o.name"/></h2>
             </xpath>
