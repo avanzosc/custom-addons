@@ -7,6 +7,8 @@ Specific features for Tumaker.
 - Load product expense analytic account in purchase line.
 - Purchase Line analytic_account_id field required.
 - Specific views for Tumaker.
+- New control in picking transfer. If a incoming shipping has some lines with cost zero, the system will raise an error.
+  There is a check to avoid this raise in the transfer wizard.
 
 Credits
 =======
