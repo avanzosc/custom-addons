@@ -20,6 +20,8 @@ Pesa custom
     - Book page
     - Book number
 
+* If the claim came from another claim, the priority changes to very high.
+
 Credits
 =======
 

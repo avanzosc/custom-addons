@@ -19,6 +19,28 @@
             </field>
         </record>
 
+        <record id="crm_claim_priority_view_search" model="ir.ui.view" >
+            <field name="name">crm.claim.priority.search</field>
+            <field name="model">crm.claim</field>
+            <field name="inherit_id" ref="crm_claim.view_crm_case_claims_filter" />
+            <field name="arch" type="xml">
+                <filter string="Closure" position="after">
+                    <filter string="Priority" domain="[]" context="{'group_by':'priority'}" />
+                </filter>
+            </field>
+        </record>
+
+        <record id="crm_claim_priority_view_tree" model="ir.ui.view" >
+            <field name="name">crm.claim.priority.tree</field>
+            <field name="model">crm.claim</field>
+            <field name="inherit_id" ref="crm_claim.crm_case_claims_tree_view" />
+            <field name="arch" type="xml">
+                <field name="categ_id" position="after">
+                    <field name="priority"/>
+                </field>
+            </field>
+        </record>
+
         <record id="date_deadline_view_calendar" model="ir.ui.view">
             <field name="name">date.deadline.calendar</field>
             <field name="model">crm.claim</field>

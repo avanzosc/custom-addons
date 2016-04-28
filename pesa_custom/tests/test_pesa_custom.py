@@ -13,6 +13,7 @@ class TestPesaCustom(common.TransactionCase):
         self.schedule_model = self.env['schedule']
         self.crm_claim = self.env.ref('crm_claim.crm_claim_1')
         self.company = self.ref('base.main_company')
+        self.crm_claim2 = self.env.ref('crm_claim.crm_claim_2')
 
     def test_name_search(self):
         self.schedule1 = self.schedule_model.create({'hour': 16.5})
@@ -39,3 +40,8 @@ class TestPesaCustom(common.TransactionCase):
         schedule_res = self.schedule_model.search(
             (res['domain']['schedule_id']))
         self.assertEqual(schedule, schedule_res)
+
+    def test_compute_priority(self):
+        self.crm_claim.to_related_claims = [(4, self.crm_claim2.id, 0)]
+        self.assertEqual(self.crm_claim2.priority, '4')
+        self.assertEqual(self.crm_claim.priority, '1')
