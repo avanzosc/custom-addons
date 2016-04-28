@@ -16,6 +16,7 @@
         "crm_claim",
         "base_vat",
         "crm_claim_company",
+        "crm_claim_related",
     ],
     "category": "Custom Modules",
     "data": [
