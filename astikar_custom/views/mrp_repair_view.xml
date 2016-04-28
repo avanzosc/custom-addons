@@ -115,7 +115,7 @@
                     <attribute name="invisible">1</attribute>
                 </field>
                 <tree string="Repairs order" position="attributes">
-                    <attribute name="colors">"gray:state in ('done','cancel','not_invoice');black:state not in ('done','cancel');blue:state=='draft'</attribute>
+                    <attribute name="colors">gray:state in ('done','cancel','not_invoice');black:state not in ('done','cancel');blue:state=='draft'</attribute>
                 </tree>
             </field>
         </record>
