@@ -569,7 +569,7 @@
                                     <tr style="border-top-style: hidden;" t-foreach="o.invoice_line" t-as="l">
                                         <t t-if="pick.id == l.move.picking_id.id">
                                             <td>
-                                                <span t-field="l.product_id.name"/>
+                                                <span t-field="l.name"/>
                                             </td>
                                             <td>
                                                 <span t-field="l.quantity"/>
@@ -590,7 +590,7 @@
                                 </tr>
                                 <tr t-foreach="o.invoice_line.filtered(lambda x:not x.move)" t-as="l">
                                     <td>
-                                        <span t-field="l.product_id.name"/>
+                                        <span t-field="l.name"/>
                                     </td>
                                     <td>
                                         <span t-field="l.quantity"/>
@@ -784,7 +784,7 @@
                                     <tr style="border-top-style: hidden;" t-foreach="o.invoice_line" t-as="l">
                                         <t t-if="pick.id == l.move.picking_id.id">
                                             <td>
-                                                <span t-field="l.product_id.name"/>
+                                                <span t-field="l.name"/>
                                             </td>
                                             <td>
                                                 <span t-field="l.quantity"/>
@@ -805,7 +805,7 @@
                                 </tr>
                                 <tr t-foreach="o.invoice_line.filtered(lambda x:not x.move)" t-as="l">
                                     <td>
-                                        <span t-field="l.product_id.name"/>
+                                        <span t-field="l.name"/>
                                     </td>
                                     <td>
                                         <span t-field="l.quantity"/>
