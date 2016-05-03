@@ -23,6 +23,7 @@ Astikar Custom
 
 * New state "Not to invoice" on mrp_repairs.
 
+* Stock history can be group by product type.
 
 
 Credits

@@ -1,0 +1,24 @@
+<openerp>
+    <data>
+        <record id="stock_history_product_type_view_search" model="ir.ui.view" >
+            <field name="name">stock.history.product.type.search</field>
+            <field name="model">stock.history</field>
+            <field name="inherit_id" ref="stock_account.view_stock_history_report_search"/>
+            <field name="arch" type="xml">
+                <filter string="Move" position="after">
+                    <filter string="Product Type" domain="[]" context="{'group_by':'product_type'}"/>
+                </filter>
+            </field>
+        </record>
+        <record id="stock_history_product_type_view_tree" model="ir.ui.view" >
+            <field name="name">stock.history.product.type.tree</field>
+            <field name="model">stock.history</field>
+            <field name="inherit_id" ref="stock_account.view_stock_history_report_tree"/>
+            <field name="arch" type="xml">
+                <field name="inventory_value" position="after">
+                    <field name="product_type"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

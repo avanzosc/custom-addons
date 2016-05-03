@@ -529,7 +529,7 @@
                                     <strong>UNITATEA:</strong>
                                     <span t-field="repairs.product_id.name"/>
                                 </div>
-                                <div class="col-xs-4" t-if="repairs.lot_id">
+                                <div class="col-xs-6" t-if="repairs.lot_id">
                                     <strong>SERIE ZK/MATRIKULA:</strong>
                                     <span t-field="repairs.lot_id"/>
                                 </div>
@@ -744,7 +744,7 @@
                                     <strong>UNITATEA:</strong>
                                     <span t-field="repairs.product_id.name"/>
                                 </div>
-                                <div class="col-xs-4" t-if="repairs.lot_id">
+                                <div class="col-xs-6" t-if="repairs.lot_id">
                                     <strong>SERIE ZK/MATRIKULA:</strong>
                                     <span t-field="repairs.lot_id"/>
                                 </div>
