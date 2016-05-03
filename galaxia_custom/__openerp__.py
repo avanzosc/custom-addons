@@ -4,7 +4,6 @@
 
 {
     "name": "Galaxia - Custom",
-    "summary": "",
     "version": "8.0.1.0.0",
     "category": "Custom Module",
     "license": "AGPL-3",
@@ -17,9 +16,9 @@
         "analytic",
         "account_analytic_analysis",
         "event",
-        "sale_stock",
         "sale_mrp",
-        "sale_product_variants_types",
+        "sale_product_variants",
+        "product_variants_types",
         "sale_order_line_attached_check",
         "sale_order_line_performance",
         "sale_service_recurrence_configurator",
