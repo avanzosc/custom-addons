@@ -147,8 +147,8 @@
                               <tbody>
                                 <tr t-foreach="o.pack_operation_ids" t-as="pack_operation">
                                     <td>
-                                        <t t-if="move.product_id.customer_ids">
-                                            <t t-foreach="move.product_id.customer_ids" t-as="customer">
+                                        <t t-if="pack_operation.product_id.customer_ids">
+                                            <t t-foreach="pack_operation.product_id.customer_ids" t-as="customer">
                                                 <t t-if="customer.name==o.partner_id">
                                                     <span t-field="customer.product_code"/>
                                                 </t>
@@ -338,8 +338,8 @@
                               <tbody>
                                 <tr t-foreach="o.pack_operation_ids" t-as="pack_operation">
                                     <td>
-                                        <t t-if="move.product_id.customer_ids">
-                                            <t t-foreach="move.product_id.customer_ids" t-as="customer">
+                                        <t t-if="pack_operation.product_id.customer_ids">
+                                            <t t-foreach="pack_operation.product_id.customer_ids" t-as="customer">
                                                 <t t-if="customer.name==o.partner_id">
                                                     <span t-field="customer.product_code"/>
                                                 </t>
