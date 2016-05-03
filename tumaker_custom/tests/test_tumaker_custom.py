@@ -19,6 +19,8 @@ class TestTumakerCustom(common.TransactionCase):
         self.sale_model = self.env['sale.order']
         self.partner_id = self.ref('base.res_partner_5')
         self.pricelist_id = self.ref('purchase.list0')
+        self.picking = self.env.ref('stock.incomming_shipment')
+        self.wiz_obj = self.env['stock.transfer_details']
         analytic_vals = {
             'name': 'Analytic test',
             'type': 'normal',
@@ -155,3 +157,20 @@ class TestTumakerCustom(common.TransactionCase):
             [('analytic_account_id', 'in', analytic_acc.child_ids.ids)])
         self.assertEqual(self.project.project_child_ids.ids, childs.ids,
                          "Project Child field is not correct")
+
+    def test_do_detailed_transfer(self):
+        self.picking.action_confirm()
+        self.assertEqual(self.picking.state, 'assigned')
+        for line in self.picking.move_lines:
+            line.price_unit = 0
+        self.picking.do_enter_transfer_details()
+        wiz = self.wiz_obj.with_context({
+            'active_id': self.picking.id,
+            'active_ids': [self.picking.id],
+            'active_model': 'stock.picking'
+        }).create({'picking_id': self.picking.id})
+        with self.assertRaises(exceptions.Warning):
+            wiz.do_detailed_transfer()
+        wiz.allow_zero_cost = True
+        wiz.do_detailed_transfer()
+        self.assertEqual(self.picking.state, 'done')
