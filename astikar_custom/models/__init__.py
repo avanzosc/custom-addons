@@ -6,3 +6,4 @@ from . import mrp_repair
 from . import purchase_order
 from . import account_invoice
 from . import product_product
+from . import stock_account

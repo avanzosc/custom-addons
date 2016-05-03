@@ -53,6 +53,9 @@
                     <div class="oe_right oe_button_box" name="buttons">
                     </div>
                 </h1>
+                <field name="state" widget="statusbar" position="attributes">
+                    <attribute name="statusbar_visible">draft,confirmed,not_invoice,done</attribute>
+                </field>
             </field>
         </record>
 
@@ -111,6 +114,9 @@
                 <field name="location_dest_id" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </field>
+                <tree string="Repairs order" position="attributes">
+                    <attribute name="colors">gray:state in ('done','cancel','not_invoice');black:state not in ('done','cancel');blue:state=='draft'</attribute>
+                </tree>
             </field>
         </record>
 

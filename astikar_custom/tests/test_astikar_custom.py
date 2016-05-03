@@ -14,6 +14,7 @@ class TestAstikarCustom(common.TransactionCase):
         self.mrp_repair_sequence = self.browse_ref('mrp_repair.seq_mrp_repair')
         self.product = self.browse_ref('product.product_product_3')
         self.location = self.ref('stock.location_inventory')
+        self.mrp_repair1 = self.env.ref('mrp_repair.mrp_repair_rmrp1')
         self.mrp_repair = self.mrp_repair_model.create({
             'product_id': self.product.id,
             'product_uom': self.product.uom_id.id,
@@ -150,3 +151,12 @@ class TestAstikarCustom(common.TransactionCase):
             'to_invoice': True}
         self.env['mrp.repair.line'].create(repair_line_vals2)
         self.assertEqual(len(self.product.repair_line_ids), 1)
+
+    def test_repair_action_done(self):
+        self.mrp_repair.signal_workflow('repair_confirm')
+        self.assertEqual(self.mrp_repair.state, 'confirmed')
+        self.mrp_repair.signal_workflow('repair_ready')
+        self.assertEqual(self.mrp_repair.state, 'under_repair')
+        self.assertEqual(self.mrp_repair.state, 'under_repair')
+        self.mrp_repair.signal_workflow('action_repair_end')
+        self.assertEqual(self.mrp_repair.state, 'not_invoice')

@@ -18,7 +18,12 @@ Astikar Custom
 
 * New field repair_analytic_id in supplier invoices and purchase orders.
 
-* When a supplier invoice or purchase order is created from a repair, it will load repairs analytic account as default.
+* When a supplier invoice or purchase order is created from a repair, it will
+  load repairs analytic account as default.
+
+* New state "Not to invoice" on mrp_repairs.
+
+* Stock history can be group by product type.
 
 
 Credits

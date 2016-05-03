@@ -46,6 +46,33 @@ class MrpRepair(models.Model):
                             store=True)
     amnt_total = fields.Float(string='Total', compute='_compute_repair_amount',
                               store=True)
+    state = fields.Selection([
+        ('draft', 'Quotation'), ('cancel', 'Cancelled'),
+        ('confirmed', 'Confirmed'), ('under_repair', 'Under Repair'),
+        ('ready', 'Ready to Repair'), ('2binvoiced', 'To be Invoiced'),
+        ('invoice_except', 'Invoice Exception'),
+        ('not_invoice', 'Not to invoice'), ('done', 'Repaired')
+        ], 'Status', readonly=True, track_visibility='onchange', copy=False,
+        help=' * The \'Draft\' status is used when a user is encoding a new \
+        and unconfirmed repair order. \
+        \n* The \'Confirmed\' status is used when a user confirms the repair \
+        order. \
+        \n* The \'Ready to Repair\' status is used to start to repairing, \
+        user can start repairing only after repair order is confirmed. \
+        \n* The \'To be Invoiced\' status is used to generate the invoice \
+        before or after repairing done. \
+        \n* The \'Not to Invoiced\' status is set when repairing is completed \
+        but is not going to be invoiced. \
+        \n* The \'Done\' status is set when repairing is completed.\
+        \n* The \'Cancelled\' status is used when user cancel repair order.')
+
+    @api.multi
+    def action_repair_done(self):
+        result = super(MrpRepair, self).action_repair_done()
+        for order in self:
+            if (order.invoice_method == 'none'):
+                self.write({'state': 'not_invoice'})
+        return result
 
     @api.model
     def create(self, vals):
