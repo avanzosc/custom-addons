@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_template_dsportal_user,product.template ds portal use,product.model_product_template,group_ds_portal_user,1,0,0,0
+access_product_product_dsportal_user,product.product ds portal use,product.model_product_product,group_ds_portal_user,1,0,0,0
+access_product_uom_dsportal_user,product.uom ds portal,product.model_product_uom,group_ds_portal_user,1,0,0,0
+access_stock_location_dsportal_user,stock.location.dsportal,stock.model_stock_location,group_ds_portal_user,1,0,0,0
+access_stock_quant_user,stock.quant dsportal,stock.model_stock_quant,group_ds_portal_user,1,0,0,0
