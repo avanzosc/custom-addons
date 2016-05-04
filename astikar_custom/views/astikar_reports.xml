@@ -20,7 +20,7 @@
                         <h3>
                             <span t-if="o.state != 'draft' and o.proforma == False">ESKAERA ZK / PEDIDO Nº:</span>
                             <span t-if="o.state == 'draft' and o.proforma == False">AURREKONTU ZK / PRESUPUESTO Nº:</span>
-                            <span t-if="o.proforma == True">Proforma ZKº:</span>
+                            <span t-if="o.proforma == True">PROFORMA ZKº:</span>
                             <span t-field="o.name"/>
                         </h3>
                         <div class="row mt32 mb32">
@@ -54,11 +54,13 @@
                             </thead>
                             <tbody>
                                 <t t-if="o.operations">
-                                    <tr>
-                                        <td colspan="5">
-                                            <strong>LÍNEAS DE MATERIAL</strong>
-                                        </td>
-                                    </tr>
+                                    <t t-if="not o.proforma">
+                                        <tr>
+                                            <td colspan="5">
+                                                <strong>LÍNEAS DE MATERIAL</strong>
+                                            </td>
+                                        </tr>
+                                    </t>
                                     <tr t-foreach="o.operations" t-as="line">
                                         <t t-if="(line.to_invoice is True)">
                                             <td>
@@ -68,7 +70,8 @@
                                                 <span t-esc="','.join(map( lambda x: x.name, line.tax_id))"/>
                                             </td>
                                             <td class="text-right">
-                                                <span t-field="line.expected_qty"/>
+                                                <t t-if="not o.proforma"><span t-field="line.expected_qty"/></t>
+                                                <t t-if="o.proforma"><span t-field="line.product_uom_qty"/></t>
                                                 <span groups="product.group_uom" t-field="line.product_uom.name"/>
                                             </td>
                                             <td class="text-right">
@@ -82,11 +85,13 @@
                                     </tr>
                                 </t>
                                 <t t-if="o.fees_lines">
+                                    <t t-if="not o.proforma">
                                     <tr>
                                         <td colspan="5">
-                                            <strong>MANO DE OBRA</strong>
+                                             <strong>MANO DE OBRA</strong>
                                         </td>
                                     </tr>
+                                    </t>
                                     <tr t-foreach="o.fees_lines" t-as="fees">
                                         <t t-if="fees.to_invoice is True">
                                             <td>
@@ -145,24 +150,61 @@
                                 </table>
                             </div>
                         </div>
-                        <div style="page-break-inside: avoid">
-                            <div class="row">
-                                <p>
-                                    <b>NOTA:</b>
-                                    Si este presupuesto es de su conformidad, agradeceríamos remitiesen el mismo con su
-                                    firma de conformidad o correspondiente pedido.
-                                </p>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">CONFORME CLIENTE</div>
-                                <div class="col-xs-6">
-                                    ASTIKAR, S.A.
-                                    <p t-field="o.create_uid.partner_id"/>
-                                    <img t-if="o.create_uid.signature_logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.signature_logo"
-                                        style="max-height:100px;"/>
+                        <t t-if="o.proforma">
+                            <div class="box">
+                                <div style="margin-left:10px; margin-top:10px;page-break-inside: avoid">
+                                    <p>
+                                        <strong>ORDAINTZEKO ERA:</strong>
+                                        <span t-field="o.partner_id.customer_payment_mode" />
+                                    </p>
+                                    <div t-if="o.partner_id.customer_payment_mode">
+                                        <div t-if="o.partner_id.customer_payment_mode.name=='Transferencia bancaria' or o.partner_id.customer_payment_mode.name=='TRANSFERENCIA BANCARIA'">
+                                            <p t-if="o.partner_id.customer_payment_mode.bank_id">
+                                                <strong>KONTUA:</strong>
+                                                <span t-field="o.partner_id.customer_payment_mode.bank_id.bank_name"/>
+                                                -
+                                                <span t-field="o.partner_id.customer_payment_mode.bank_id.acc_number"/>
+                                            </p>
+                                        </div>
+                                        <div t-if="'GIRO' in o.partner_id.customer_payment_mode.name">
+                                            <p>
+                                                <strong>KONTUA:</strong>
+                                                <t t-foreach="o.partner_id.bank_ids" t-as="bank">
+                                                    <span t-field="bank.bank_name"/>
+                                                    -
+                                                    <span t-field="bank.acc_number"/>
+                                                </t>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <strong>ZENBATEKOA:</strong>
+                                        <span t-field="o.amnt_total" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}"/>
+                                    </p>
                                 </div>
                             </div>
-                        </div>
+                        </t>
+                        <t t-if="not o.proforma">
+                            <div style="page-break-inside: avoid">
+                                <div class="row">
+                                    <p>
+                                        <b>NOTA:</b>
+                                        Si este presupuesto es de su conformidad, agradeceríamos remitiesen el mismo con su
+                                        firma de conformidad o correspondiente pedido.
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">CONFORME CLIENTE</div>
+                                    <div class="col-xs-6">
+                                        ASTIKAR, S.A.
+                                        <p t-field="o.create_uid.partner_id"/>
+                                        <img t-if="o.create_uid.signature_logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.signature_logo"
+                                            style="max-height:100px;"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
                     </div>
                 </t>
             </xpath>
