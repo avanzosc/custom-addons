@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="crm_responsible_view_tree" model="ir.ui.view">
+            <field name="name">claim.responsible.tree</field>
+            <field name="model">crm.claim.responsible</field>
+            <field name="arch" type="xml">
+                <tree string="Responsible" editable="top">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="crm_responsible_view_search" model="ir.ui.view">
+            <field name="name">claim.responsible.search</field>
+            <field name="model">crm.claim.responsible</field>
+            <field name="arch" type="xml">
+                <search string="Responsible">
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+        <record id="crm_responsible_act" model="ir.actions.act_window">
+            <field name="name">Responsible</field>
+            <field name="res_model">crm.claim.responsible</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="crm_responsible_view_tree"/>
+        </record>
+
+        <menuitem action="crm_responsible_act" id="menu_crm_responsible_act" sequence="2"
+            parent="crm_claim.menu_config_claim" groups="base.group_no_one"/>
+    </data>
+</openerp>

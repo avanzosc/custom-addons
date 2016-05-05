@@ -5,3 +5,5 @@ access_pesa_schedule,schedule,model_schedule,group_pesa_manager,1,1,1,1
 access_pesa_real_line_user,real.line,model_real_line,group_pesa_user,1,0,0,0
 access_pesa_journey_user,journey,model_journey,group_pesa_user,1,0,0,0
 access_pesa_schedule_user,schedule,model_schedule,group_pesa_user,1,0,0,0
+access_claim_responsible_user,crm.claim.responsible.user,model_crm_claim_responsible,base.group_sale_salesman,1,0,0,0
+access_claim_responsible_manager,crm.claim.responsible.manager,model_crm_claim_responsible,base.group_sale_manager,1,1,1,1

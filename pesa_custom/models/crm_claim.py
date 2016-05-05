@@ -5,6 +5,13 @@
 from openerp import api, fields, models
 
 
+class CrmClaimResponsible(models.Model):
+    _name = 'crm.claim.responsible'
+    _description = 'Claim responsible'
+
+    name = fields.Char()
+
+
 class CrmClaim(models.Model):
     _inherit = 'crm.claim'
 
@@ -47,3 +54,5 @@ class CrmClaim(models.Model):
                                  ('2', 'Normal'), ('3', 'High'),
                                  ('4', 'Highest')], string='Priority',
                                 compute='_compute_priority', store=True)
+    claim_responsible_id = fields.Many2one(
+        comodel_name='crm.claim.responsible', string='Claim responsible')

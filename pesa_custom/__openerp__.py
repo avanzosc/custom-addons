@@ -27,6 +27,7 @@
         "views/crm_claim_view.xml",
         "views/schedule_view.xml",
         "views/res_partner_view.xml",
+        "views/claim_responsible_view.xml",
     ],
     "installable": True
 }
