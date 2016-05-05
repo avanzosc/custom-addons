@@ -16,6 +16,7 @@
         "crm_claim",
         "base_vat",
         "crm_claim_company",
+        "crm_claim_related",
     ],
     "category": "Custom Modules",
     "data": [
@@ -26,6 +27,7 @@
         "views/crm_claim_view.xml",
         "views/schedule_view.xml",
         "views/res_partner_view.xml",
+        "views/claim_responsible_view.xml",
     ],
     "installable": True
 }

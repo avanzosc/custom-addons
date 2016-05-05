@@ -5,6 +5,13 @@
 from openerp import api, fields, models
 
 
+class CrmClaimResponsible(models.Model):
+    _name = 'crm.claim.responsible'
+    _description = 'Claim responsible'
+
+    name = fields.Char()
+
+
 class CrmClaim(models.Model):
     _inherit = 'crm.claim'
 
@@ -24,6 +31,14 @@ class CrmClaim(models.Model):
                     'schedule_id': [('company_id', '=', self.company_id.id)],
                     }}
 
+    @api.multi
+    @api.depends('from_related_claims', 'to_related_claims')
+    def _compute_priority(self):
+        if self.from_related_claims:
+            self.priority = '4'
+        else:
+            self.priority = '1'
+
     line = fields.Char(string='Line')
     real_line_id = fields.Many2one(comodel_name='real.line',
                                    string='Real line')
@@ -35,3 +50,9 @@ class CrmClaim(models.Model):
     book_page = fields.Integer(string='Book page')
     service_date = fields.Date(string='Service date')
     calendar_date = fields.Date(compute='_compute_calendar_date', store=True)
+    priority = fields.Selection([('0', 'Lowest'), ('1', 'Low'),
+                                 ('2', 'Normal'), ('3', 'High'),
+                                 ('4', 'Highest')], string='Priority',
+                                compute='_compute_priority', store=True)
+    claim_responsible_id = fields.Many2one(
+        comodel_name='crm.claim.responsible', string='Claim responsible')

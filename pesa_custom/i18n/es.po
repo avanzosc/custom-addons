@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-17 09:18+0000\n"
-"PO-Revision-Date: 2016-01-27 13:21+0100\n"
+"POT-Creation-Date: 2016-05-05 09:15+0000\n"
+"PO-Revision-Date: 2016-05-05 11:16+0100\n"
 "Last-Translator: Esther Martín <esthermartin@avanzosc.es>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -27,6 +27,11 @@ msgid "Book page"
 msgstr "Hoja libro"
 
 #. module: pesa_custom
+#: field:crm.claim,calendar_date:0
+msgid "Calendar date"
+msgstr "Fecha calendario"
+
+#. module: pesa_custom
 #: view:res.partner:pesa_custom.pesa_partner_view_form
 msgid "Check Validity"
 msgstr "Verificar validez"
@@ -37,9 +42,29 @@ msgid "Claim"
 msgstr "Reclamación"
 
 #. module: pesa_custom
+#: view:crm.claim:pesa_custom.crm_claim_priority_view_search
+#: field:crm.claim,claim_responsible_id:0
+msgid "Claim responsible"
+msgstr "Responsable reclamación"
+
+#. module: pesa_custom
+#: view:crm.claim:pesa_custom.date_deadline_view_calendar
 #: model:ir.ui.menu,name:pesa_custom.pesa_claims_group_view
 msgid "Claims"
 msgstr "Reclamaciones"
+
+#. module: pesa_custom
+#: view:crm.claim:pesa_custom.crm_claim_priority_view_search
+msgid "Closure"
+msgstr "Cierre"
+
+#. module: pesa_custom
+#: view:journey:pesa_custom.journey_view_search field:journey,company_id:0
+#: view:real.line:pesa_custom.real_line_view_search
+#: field:real.line,company_id:0 view:schedule:pesa_custom.schedule_view_search
+#: field:schedule,company_id:0
+msgid "Company"
+msgstr "Compañía"
 
 #. module: pesa_custom
 #: model:ir.actions.act_window,help:pesa_custom.action_journey_view
@@ -57,16 +82,22 @@ msgid "Create real lines"
 msgstr "Crea líneas reales"
 
 #. module: pesa_custom
-#: field:journey,create_uid:0 field:real.line,create_uid:0
-#: field:schedule,create_uid:0
+#: field:crm.claim.responsible,create_uid:0 field:journey,create_uid:0
+#: field:real.line,create_uid:0 field:schedule,create_uid:0
 msgid "Created by"
 msgstr "Creado por"
 
 #. module: pesa_custom
-#: field:journey,create_date:0 field:real.line,create_date:0
-#: field:schedule,create_date:0
+#: field:crm.claim.responsible,create_date:0 field:journey,create_date:0
+#: field:real.line,create_date:0 field:schedule,create_date:0
 msgid "Created on"
 msgstr "Creado en"
+
+#. module: pesa_custom
+#: field:crm.claim.responsible,display_name:0 field:journey,display_name:0
+#: field:real.line,display_name:0 field:schedule,display_name:0
+msgid "Display Name"
+msgstr "Mostrar nombre"
 
 #. module: pesa_custom
 #: field:crm.claim,driver_id:0
@@ -74,31 +105,44 @@ msgid "Driver"
 msgstr "Conductor"
 
 #. module: pesa_custom
+#: view:journey:pesa_custom.journey_view_search
+#: view:real.line:pesa_custom.real_line_view_search
+#: view:schedule:pesa_custom.schedule_view_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: pesa_custom
 #: field:schedule,hour:0
 msgid "Hour"
 msgstr "Hora"
 
 #. module: pesa_custom
-#: field:journey,id:0 field:real.line,id:0 field:schedule,id:0
+#: field:crm.claim.responsible,id:0 field:journey,id:0 field:real.line,id:0
+#: field:schedule,id:0
 msgid "ID"
 msgstr "ID"
 
 #. module: pesa_custom
-#: field:crm.claim,journey_id:0
 #: model:ir.ui.menu,name:pesa_custom.pesa_journey_option_view
 #: view:journey:pesa_custom.journey_view_tree
 msgid "Journey"
 msgstr "Trayecto"
 
 #. module: pesa_custom
-#: field:journey,write_uid:0 field:real.line,write_uid:0
-#: field:schedule,write_uid:0
+#: field:crm.claim.responsible,__last_update:0 field:journey,__last_update:0
+#: field:real.line,__last_update:0 field:schedule,__last_update:0
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: pesa_custom
+#: field:crm.claim.responsible,write_uid:0 field:journey,write_uid:0
+#: field:real.line,write_uid:0 field:schedule,write_uid:0
 msgid "Last Updated by"
 msgstr "Última actualización por"
 
 #. module: pesa_custom
-#: field:journey,write_date:0 field:real.line,write_date:0
-#: field:schedule,write_date:0
+#: field:crm.claim.responsible,write_date:0 field:journey,write_date:0
+#: field:real.line,write_date:0 field:schedule,write_date:0
 msgid "Last Updated on"
 msgstr "Última actualización en"
 
@@ -108,7 +152,8 @@ msgid "Line"
 msgstr "Línea"
 
 #. module: pesa_custom
-#: field:journey,name:0 field:real.line,name:0
+#: field:crm.claim.responsible,name:0 field:journey,name:0
+#: field:real.line,name:0
 msgid "Name"
 msgstr "Nombre"
 
@@ -129,12 +174,25 @@ msgid "Pesa Master User"
 msgstr "Usuario maestro Pesa"
 
 #. module: pesa_custom
+#: view:crm.claim:pesa_custom.crm_claim_priority_view_search
+msgid "Priority"
+msgstr "Prioridad"
+
+#. module: pesa_custom
 #: field:crm.claim,real_line_id:0
 #: model:ir.actions.act_window,name:pesa_custom.action_real_line_view
 #: model:ir.ui.menu,name:pesa_custom.pesa_real_line_option_view
 #: view:real.line:pesa_custom.real_line_view_tree
 msgid "Real line"
 msgstr "Línea real"
+
+#. module: pesa_custom
+#: view:crm.claim.responsible:pesa_custom.crm_responsible_view_search
+#: view:crm.claim.responsible:pesa_custom.crm_responsible_view_tree
+#: model:ir.actions.act_window,name:pesa_custom.crm_responsible_act
+#: model:ir.ui.menu,name:pesa_custom.menu_crm_responsible_act
+msgid "Responsible"
+msgstr "Responsable"
 
 #. module: pesa_custom
 #: field:crm.claim,schedule_id:0
@@ -145,9 +203,29 @@ msgid "Schedule"
 msgstr "Horario"
 
 #. module: pesa_custom
-#: field:crm.claim,service_date:0
-msgid "Service date"
-msgstr "Fecha de servicio"
+#: view:journey:pesa_custom.journey_view_search
+msgid "Search journey"
+msgstr "Buscar trayecto"
+
+#. module: pesa_custom
+#: view:real.line:pesa_custom.real_line_view_search
+msgid "Search real line"
+msgstr "Buscar línea real"
+
+#. module: pesa_custom
+#: view:schedule:pesa_custom.schedule_view_search
+msgid "Search schedule"
+msgstr "Buscar horario"
+
+#. module: pesa_custom
+#: field:crm.claim,responsible_id:0
+msgid "Team Leader"
+msgstr "Jefe equipo"
+
+#. module: pesa_custom
+#: field:crm.claim,member_ids:0
+msgid "Team Members"
+msgstr "Miembros equipo"
 
 #. module: pesa_custom
 #: view:res.partner:pesa_custom.pesa_partner_view_form
@@ -157,9 +235,9 @@ msgstr "Por ejemplo, ESA00000000"
 #. module: pesa_custom
 #: model:ir.actions.act_window,name:pesa_custom.action_journey_view
 msgid "journey"
-msgstr "Trayecto"
+msgstr "trayecto"
 
 #. module: pesa_custom
 #: model:ir.actions.act_window,name:pesa_custom.action_schedule_view
 msgid "schedule"
-msgstr "Horario"
+msgstr "horario"
