@@ -34,10 +34,11 @@ class CrmClaim(models.Model):
     @api.multi
     @api.depends('from_related_claims', 'to_related_claims')
     def _compute_priority(self):
-        if self.from_related_claims:
-            self.priority = '4'
-        else:
-            self.priority = '1'
+        for claim in self:
+            if claim.from_related_claims:
+                claim.priority = '4'
+            else:
+                claim.priority = '1'
 
     line = fields.Char(string='Line')
     real_line_id = fields.Many2one(comodel_name='real.line',
