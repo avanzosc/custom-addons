@@ -67,6 +67,9 @@
                 <field name="end_date" position="attributes">
                     <attribute name="readonly">False</attribute>
                 </field>
+                <field name="end_date" position="after">
+                    <field name="date_due" attrs="{'invisible': [('proforma', '=', False)]}"/>
+                </field>
             </field>
         </record>
 

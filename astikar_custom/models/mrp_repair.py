@@ -38,6 +38,20 @@ class MrpRepair(models.Model):
             repair.amnt_tax = taxed
             repair.amnt_total = untaxed + taxed
 
+    @api.multi
+    @api.depends('partner_id', 'partner_id.property_payment_term')
+    def _compute_date_due(self):
+        for repair in self:
+            if repair.partner_id and repair.partner_id.property_payment_term:
+                pterm = self.env['account.payment.term'].browse(
+                    self.partner_id.property_payment_term.id)
+                pterm_list = pterm.compute(
+                    value=1, date_ref=False)[0]
+                if pterm_list:
+                    repair.date_due = max(line[0] for line in pterm_list)
+            else:
+                repair.date_due = fields.Date.from_string(fields.Date.today())
+
     name = fields.Char(default='/')
     quotation_notes = fields.Text(default=_defaul_quotation_notes)
     amnt_untaxed = fields.Float(string='Untaxed Amount',
@@ -65,6 +79,7 @@ class MrpRepair(models.Model):
         but is not going to be invoiced. \
         \n* The \'Done\' status is set when repairing is completed.\
         \n* The \'Cancelled\' status is used when user cancel repair order.')
+    date_due = fields.Date(compute='_compute_date_due')
 
     @api.multi
     def action_repair_done(self):
