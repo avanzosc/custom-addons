@@ -9,6 +9,7 @@ Specific features for Tumaker.
 - Specific views for Tumaker.
 - New control in picking transfer. If a incoming shipping has some lines with cost zero, the system will raise an error.
   There is a check to avoid this raise in the transfer wizard.
+- Project editable in sale order
 
 Credits
 =======
