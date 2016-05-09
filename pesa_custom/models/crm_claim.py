@@ -57,3 +57,4 @@ class CrmClaim(models.Model):
                                 compute='_compute_priority', store=True)
     claim_responsible_id = fields.Many2one(
         comodel_name='crm.claim.responsible', string='Claim responsible')
+    name = fields.Char(required=False)
