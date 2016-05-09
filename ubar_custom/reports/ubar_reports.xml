@@ -456,7 +456,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Taxes</td>
+                                <td>Taxes 21%</td>
                                 <td class="text-right">
                                     <span t-field="o.amount_tax" />
                                 </td>
@@ -471,6 +471,21 @@
                     </div>
                 </div>
                 </t>
+                <div class="box" style="float:right;">
+                    <div style="margin-left:10px; margin-top:10px;font-size:12px;page-break-inside: avoid;">
+                        <table>
+                            <tr>
+                                <td>
+                                    <strong>FIRMA CONFORMIDAD</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="100">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </xpath>
         </template>
         <!--Pedido de compra -->
