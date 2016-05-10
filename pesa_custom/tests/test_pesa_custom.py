@@ -49,6 +49,17 @@ class TestPesaCustom(common.TransactionCase):
         self.assertEqual(self.crm_claim2.priority, '4')
         self.assertEqual(self.crm_claim.priority, '1')
 
+    def test_wiz_make_call(self):
+        wiz = self.env['make.call'].create({})
+        view_wiz = wiz.create_call()
+        self.assertEqual(
+            view_wiz['view_id'], self.ref('crm.crm_case_phone_form_view'))
+        phonecall_wiz = self.env['crm.phonecall'].browse(view_wiz['res_id'])
+        phonecall_wiz.name = 'Wizard test'
+        view2 = phonecall_wiz.hang_up_call()
+        self.assertEqual(
+            view2['view_id'], self.ref('crm.crm_case_phone_form_view'))
+
     def test_hang_up_call(self):
         phonecall = self.phonecall_model.create({'name': 'Test'})
         phonecall.make_call()
