@@ -154,15 +154,6 @@ class TestAstikarCustom(common.TransactionCase):
         self.env['mrp.repair.line'].create(repair_line_vals2)
         self.assertEqual(len(self.product.repair_line_ids), 1)
 
-    def test_repair_action_done(self):
-        self.mrp_repair.signal_workflow('repair_confirm')
-        self.assertEqual(self.mrp_repair.state, 'confirmed')
-        self.mrp_repair.signal_workflow('repair_ready')
-        self.assertEqual(self.mrp_repair.state, 'under_repair')
-        self.assertEqual(self.mrp_repair.state, 'under_repair')
-        self.mrp_repair.signal_workflow('action_repair_end')
-        self.assertEqual(self.mrp_repair.state, 'not_invoice')
-
     def test_compute_date_due(self):
         self.assertEqual(fields.Date.today(), self.mrp_repair.date_due)
         self.mrp_repair.partner_id = self.ref('base.res_partner_2')

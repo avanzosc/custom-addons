@@ -53,9 +53,6 @@
                     <div class="oe_right oe_button_box" name="buttons">
                     </div>
                 </h1>
-                <field name="state" widget="statusbar" position="attributes">
-                    <attribute name="statusbar_visible">draft,confirmed,not_invoice,done</attribute>
-                </field>
             </field>
         </record>
 
@@ -117,11 +114,26 @@
                 <field name="location_dest_id" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </field>
+                <field name="state" position="after">
+                    <field name="invoice_method"/>
+                </field>
                 <tree string="Repairs order" position="attributes">
-                    <attribute name="colors">gray:state in ('done','cancel','not_invoice');black:state not in ('done','cancel');blue:state=='draft'</attribute>
+                    <attribute name="colors">gray:state in ('done','cancel');gray:invoice_method=='none';black:state not in ('done','cancel');blue:state=='draft'</attribute>
                 </tree>
             </field>
         </record>
-
+        <record id="mrp_repair_invoice_view_search" model="ir.ui.view">
+            <field name="name">mrp.repair.invoice.search</field>
+            <field name="model">mrp.repair</field>
+            <field name="inherit_id" ref="mrp_repair.view_repair_order_form_filter" />
+            <field name="arch" type="xml">
+                 <filter string="Company" position="after">
+                     <filter name="method_invoice" string="Invoice method" domain="[]" context="{'group_by':'invoice_method'}" />
+                 </filter>
+                 <filter string="Invoiced" position="after">
+                    <filter name="not_to_invoice" string="Not to invoice" domain="[('invoice_method','=','none')]"/>
+                 </filter>
+            </field>
+        </record>
     </data>
 </openerp>
