@@ -14,10 +14,14 @@
         "Ainara Galdona <ainaragaldona@avanzosc.es>",
     ],
     "depends": [
-        "base",
+        "base", "crm_partner_assign", "portal", "portal_sale", "website"
     ],
     "data": [
-        "views/ds_custom_css.xml"
+        "security/ds_portal_security.xml",
+        'security/ir.model.access.csv',
+        "views/ds_custom_css.xml",
+        "views/portal_view.xml",
+        "views/ds_custom_web_view.xml"
     ],
     "installable": True,
 }
