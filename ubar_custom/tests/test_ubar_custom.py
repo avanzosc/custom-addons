@@ -9,9 +9,13 @@ class TestUbarCustom(common.TransactionCase):
 
     def setUp(self):
         super(TestUbarCustom, self).setUp()
-        self.product = self.browse_ref('product.product_product_6')
-        self.product.old_reference = 'LA001'
         self.product_model = self.env['product.product']
+        self.product = self.product_model.create({
+            'name': 'Product Test',
+            'uom_id': self.ref('product.product_uom_unit'),
+            'default_code': 'A1PT',
+            'old_reference': 'LA001',
+            })
 
     def test_name_search(self):
         product_ids = self.product_model.name_search(name='LA001', args=None)
@@ -24,10 +28,9 @@ class TestUbarCustom(common.TransactionCase):
 
     def test_old_reference_change(self):
         message_count = len(self.product.message_ids)
-        self.product.write({'old_reference': 'LA001'})
         self.assertEquals(len(self.product.message_ids), message_count,
                           "There must not have been created a new message.")
-        self.product.write({'old_reference': 'LA002'})
+        self.product.old_reference = 'LA002'
         self.assertEquals(len(self.product.message_ids), message_count + 1,
                           "There must have been created a new message.")
 
