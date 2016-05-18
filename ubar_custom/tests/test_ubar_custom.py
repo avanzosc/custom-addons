@@ -31,7 +31,10 @@ class TestUbarCustom(common.TransactionCase):
         self.assertEquals(len(self.product.message_ids), message_count,
                           "There must not have been created a new message.")
         self.product.old_reference = 'LA002'
-        self.assertEquals(len(self.product.message_ids), message_count + 1,
+        message_ids = self.env['mail.message'].search(
+                                          [('res_id', '=', self.product.id),
+                                           ('model', '=', 'product.product')])
+        self.assertEquals(len(message_ids), message_count + 1,
                           "There must have been created a new message.")
 
     def test_product_id_change(self):
