@@ -19,7 +19,7 @@ msgstr ""
 #. module: ubar_custom
 #: view:machinery:ubar_custom.machiner_ubar_custom_form_view
 msgid "(or) hours"
-msgstr "(o) horas"
+msgstr "(u) horas"
 
 #. module: ubar_custom
 #: view:website:account.report_invoice_document

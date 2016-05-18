@@ -20,3 +20,11 @@ class StockQuant(models.Model):
         related='product_id.manufacturer', string='Manufacturer', store=True)
     category_id = fields.Many2one(
         related='product_id.categ_id', string='Product category', store=True)
+
+
+class StockProductionLot(models.Model):
+    _inherit = 'stock.production.lot'
+
+    account_analytic_ids = fields.One2many(
+        comodel_name='account.analytic.account', string='Anaylitic account',
+        inverse_name='lot_id')

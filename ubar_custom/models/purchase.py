@@ -10,3 +10,11 @@ class PurchaseOrder(models.Model):
 
     carrier_id = fields.Many2one(
         comodel_name='delivery.carrier', string='Delivery method')
+
+
+class PurchaseOrderLine(models.Model):
+    _inherit = 'purchase.order.line'
+
+    product_category = fields.Many2one(
+        comodel_name='product.category', related='product_id.categ_id',
+        store=True)

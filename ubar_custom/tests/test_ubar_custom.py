@@ -31,7 +31,10 @@ class TestUbarCustom(common.TransactionCase):
         self.assertEquals(len(self.product.message_ids), message_count,
                           "There must not have been created a new message.")
         self.product.old_reference = 'LA002'
-        self.assertEquals(len(self.product.message_ids), message_count + 1,
+        message_ids = self.env['mail.message'].search([
+            ('res_id', '=', self.product.id),
+            ('model', '=', 'product.product')])
+        self.assertEquals(len(message_ids), message_count + 1,
                           "There must have been created a new message.")
 
     def test_product_id_change(self):
@@ -58,3 +61,11 @@ class TestUbarCustom(common.TransactionCase):
         self.assertEqual(
             self.product.standard_price, res['value'].get('standard_price', 0),
             'Different standard price')
+
+    def test_select_procurements(self):
+        self.product.select_procurements()
+        routes = self.env['stock.location.route'].search(
+            ['&', ('product_selectable', '=', True),
+             ('id', '!=', self.env.ref('mrp.route_warehouse0_manufacture').id)
+             ])
+        self.assertEqual(len(routes), len(self.product.route_ids))

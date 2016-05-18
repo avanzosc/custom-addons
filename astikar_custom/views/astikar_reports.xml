@@ -23,6 +23,11 @@
                             <span t-if="o.proforma == True">PROFORMA ZKº:</span>
                             <span t-field="o.name"/>
                         </h3>
+                        <t t-if="o.proforma">
+                            <p style="-webkit-transform: rotate(-90deg);font-size: 10px;position: relative;left: -355px;bottom:-250px">
+                                Inscrita en el Registro Mercantil de Guipúzcoa, Libro Sociedades, Tomo 1253, Folio 43, Hoja nº SS-5095, Inscrición 1º - N.I.F. A-20432670
+                            </p>
+                        </t>
                         <div class="row mt32 mb32">
                             <div t-if="o.product_id.name" class="col-xs-8">
                                 <strong>UNITATEA:</strong>
@@ -149,42 +154,46 @@
                                     </tr>
                                 </table>
                             </div>
-                        </div>
-                        <t t-if="o.proforma">
-                            <div class="box">
-                                <div style="margin-left:10px; margin-top:10px;page-break-inside: avoid">
-                                    <p>
-                                        <strong>ORDAINTZEKO ERA:</strong>
-                                        <span t-field="o.partner_id.customer_payment_mode" />
-                                    </p>
-                                    <div t-if="o.partner_id.customer_payment_mode">
-                                        <div t-if="o.partner_id.customer_payment_mode.name=='Transferencia bancaria' or o.partner_id.customer_payment_mode.name=='TRANSFERENCIA BANCARIA'">
-                                            <p t-if="o.partner_id.customer_payment_mode.bank_id">
-                                                <strong>KONTUA:</strong>
-                                                <span t-field="o.partner_id.customer_payment_mode.bank_id.bank_name"/>
-                                                -
-                                                <span t-field="o.partner_id.customer_payment_mode.bank_id.acc_number"/>
-                                            </p>
-                                        </div>
-                                        <div t-if="'GIRO' in o.partner_id.customer_payment_mode.name">
-                                            <p>
-                                                <strong>KONTUA:</strong>
-                                                <t t-foreach="o.partner_id.bank_ids" t-as="bank">
-                                                    <span t-field="bank.bank_name"/>
+                            <t t-if="o.proforma">
+                                <div style="border-width: 1px;border-style: solid;font-size: 10px;margin-left: 15px;width: 35%;page-break-inside: avoid;">
+                                    <div style="margin-left:10px; margin-top:10px">
+                                        <p>
+                                            <strong>ORDAINTZEKO ERA:</strong>
+                                            <span t-field="o.partner_id.customer_payment_mode" />
+                                        </p>
+                                        <div t-if="o.partner_id.customer_payment_mode">
+                                            <div t-if="o.partner_id.customer_payment_mode.name=='Transferencia bancaria' or o.partner_id.customer_payment_mode.name=='TRANSFERENCIA BANCARIA'">
+                                                <p t-if="o.partner_id.customer_payment_mode.bank_id">
+                                                    <strong>KONTUA:</strong>
+                                                    <span t-field="o.partner_id.customer_payment_mode.bank_id.bank_name"/>
                                                     -
-                                                    <span t-field="bank.acc_number"/>
-                                                </t>
-                                            </p>
+                                                    <span t-field="o.partner_id.customer_payment_mode.bank_id.acc_number"/>
+                                                </p>
+                                            </div>
+                                            <div t-if="'GIRO' in o.partner_id.customer_payment_mode.name">
+                                                <p>
+                                                    <strong>KONTUA:</strong>
+                                                    <t t-foreach="o.partner_id.bank_ids" t-as="bank">
+                                                        <span t-field="bank.bank_name"/>
+                                                        -
+                                                        <span t-field="bank.acc_number"/>
+                                                    </t>
+                                                </p>
+                                            </div>
                                         </div>
+                                        <p>
+                                            <strong>EPE MUGA:</strong>
+                                            <span t-field="o.date_due" />
+                                        </p>
+                                        <p>
+                                            <strong>ZENBATEKOA:</strong>
+                                            <span t-field="o.amnt_total" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                    &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}"/>
+                                        </p>
                                     </div>
-                                    <p>
-                                        <strong>ZENBATEKOA:</strong>
-                                        <span t-field="o.amnt_total" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
-                                                &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}"/>
-                                    </p>
                                 </div>
-                            </div>
-                        </t>
+                            </t>
+                        </div>
                         <t t-if="not o.proforma">
                             <div style="page-break-inside: avoid">
                                 <div class="row">
@@ -546,7 +555,7 @@
                     <div class="page">
                         <h2>
                             <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">FAKTURA</span>
-                            <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>
+                            <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PROFORMA</span>
                             <span t-if="o.type == 'out_invoice' and o.state == 'draft'">ZIRIBORRO FAKTURA</span>
                             <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">KANTZELATUTAKO FAKTURA</span>
                             <span t-if="o.type == 'out_refund'">Refund</span>
@@ -764,7 +773,7 @@
                     <div class="page">
                         <h2>
                             <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">FAKTURA</span>
-                            <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>
+                            <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PROFORMA</span>
                             <span t-if="o.type == 'out_invoice' and o.state == 'draft'">ZIRIBORRO FAKTURA</span>
                             <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">KANTZELATUTAKO FAKTURA</span>
                             <span t-if="o.type == 'out_refund'">Refund</span>
