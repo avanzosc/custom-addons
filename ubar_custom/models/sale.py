@@ -9,13 +9,13 @@ import openerp.addons.decimal_precision as dp
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
-    standard_price = fields.Float('Cost Price',
+    standard_price = fields.Float(string='Cost Price',
                                   digits=dp.get_precision('Product Price'))
     move_ids = fields.One2many(
         comodel_name='stock.move', inverse_name='sale_line_id',
         string='Reservation', readonly=True, ondelete='set null')
     product_category = fields.Many2one(
-        comodel_name='product.category', related='product_tmpl_id.categ_id',
+        comodel_name='product.category', related='product_id.categ_id',
         store=True)
     type_id = fields.Many2one(
         comodel_name='sale.order.type', related='order_id.type_id', store=True)

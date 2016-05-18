@@ -14,15 +14,6 @@ class ProductProduct(models.Model):
         string='Product Moves')
 
     @api.multi
-    def select_procurements(self):
-        self.ensure_one()
-        routes = self.env['stock.location.route'].search(
-            ['&', ('product_selectable', '=', True),
-             ('id', '!=', self.env.ref('mrp.route_warehouse0_manufacture').id)
-             ])
-        self.route_ids = [(4, route_id.id) for route_id in routes]
-
-    @api.multi
     def write(self, vals):
         if ('old_reference' in vals and
                 self.old_reference != vals.get('old_reference')):
@@ -48,15 +39,20 @@ class ProductProduct(models.Model):
                               limit=limit, context=context)
         return self.name_get(cr, user, ids, context=context)
 
+    @api.multi
+    def select_procurements(self):
+        for template in self.mapped('product_tmpl_id'):
+            template.select_procurements()
+
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
     @api.multi
     def select_procurements(self):
-        self.ensure_one()
         routes = self.env['stock.location.route'].search(
             ['&', ('product_selectable', '=', True),
              ('id', '!=', self.env.ref('mrp.route_warehouse0_manufacture').id)
              ])
-        self.route_ids = [(4, route_id.id) for route_id in routes]
+        for template in self:
+            template.route_ids = [(4, route_id.id) for route_id in routes]
