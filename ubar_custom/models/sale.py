@@ -14,6 +14,11 @@ class SaleOrderLine(models.Model):
     move_ids = fields.One2many(
         comodel_name='stock.move', inverse_name='sale_line_id',
         string='Reservation', readonly=True, ondelete='set null')
+    product_category = fields.Many2one(
+        comodel_name='product.category', related='product_tmpl_id.categ_id',
+        store=True)
+    type_id = fields.Many2one(
+        comodel_name='sale.order.type', related='order_id.type_id', store=True)
 
     @api.multi
     def product_id_change(self, pricelist, product, qty=0, uom=False,

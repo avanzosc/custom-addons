@@ -7,3 +7,4 @@ from . import product_move
 from . import sale
 from . import stock
 from . import purchase
+from . import account_analytic
