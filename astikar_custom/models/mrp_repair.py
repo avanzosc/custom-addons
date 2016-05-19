@@ -142,7 +142,7 @@ class MrpRepair(models.Model):
                 'account.view_account_invoice_filter').id,
             'domain': "[('account_analytic_id', '=', " +
             str(self.analytic_account.id) + "),"
-            "('purchase_id.type_id', '=', 'in_invoice')]",
+            "('invoice_id.type', '=', 'in_invoice')]",
             'context': self.env.context
             }
 
