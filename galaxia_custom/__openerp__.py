@@ -18,11 +18,13 @@
         "event",
         "sale_mrp",
         "sale_product_variants",
+        "sale_stock_product_variants",
         "product_variants_types",
         "sale_order_line_attached_check",
         "sale_order_line_performance",
         "sale_service_recurrence_configurator",
         "sale_order_line_service_view",
+        "website_quote_not_unlink"
     ],
     "data": [
         "views/event_view.xml",
