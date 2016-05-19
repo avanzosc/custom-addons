@@ -12,6 +12,12 @@
                 <tree string="SERVICE sales order lines" position="attributes">
                     <attribute name="editable" />
                 </tree>
+                 <xpath expr="//field[@name='no_service_order_line']/tree//field[@name='product_id']" position="before">
+                     <field name="product_tmpl_id" />
+                 </xpath>
+                 <xpath expr="//field[@name='service_order_line']/tree//field[@name='product_id']" position="before">
+                     <field name="product_tmpl_id" />
+                 </xpath>
                 <xpath expr="//field[@name='no_service_order_line']/form//field[@name='product_id']" position="replace">
                     <field name="product_id" domain="[('type','!=','service')]"
                            context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':False, 'company_id': parent.company_id}"
@@ -68,12 +74,11 @@
                          <field name="delay" class="oe_inline"/> days
                      </div>
                  </xpath>
+                 
                  <xpath expr="//field[@name='no_service_order_line']/form[@string='NO SERVICE sales order lines']/group/group/field[@name='tax_id']" position="before">
-                     <field name="product_tmpl_id" invisible="1"/>
                      <field name="product_packaging" context="{'default_product_tmpl_id': product_tmpl_id, 'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}" on_change="product_packaging_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, parent.partner_id, product_packaging, True, context)" domain="[('product_tmpl_id','=',product_tmpl_id)]" groups="product.group_stock_packaging" />
                  </xpath>
                  <xpath expr="//field[@name='service_order_line']/form[@string='SERVICE sales order lines']/group/group/field[@name='tax_id']" position="before">
-                     <field name="product_tmpl_id" invisible="1"/>
                      <field name="product_packaging" context="{'default_product_tmpl_id': product_tmpl_id, 'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}" on_change="product_packaging_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, parent.partner_id, product_packaging, True, context)" domain="[('product_tmpl_id','=',product_tmpl_id)]" groups="product.group_stock_packaging" />
                  </xpath>
                  <xpath expr="//field[@name='no_service_order_line']/tree[@string='NO SERVICE sales order lines']/field[@name='sequence']" position="after">
@@ -107,12 +112,6 @@
                  <xpath expr="//field[@name='service_order_line']/form[@string='SERVICE sales order lines']/group/group/field[@name='address_allotment_id']" position="after">
                      <field name="property_ids" widget="many2many_tags"
                           groups="sale.group_mrp_properties"/>
-                 </xpath>
-                 <xpath expr="//field[@name='no_service_order_line']/tree//field[@name='product_id']" position="before">
-                     <field name="product_tmpl_id" />
-                 </xpath>
-                 <xpath expr="//field[@name='service_order_line']/tree//field[@name='product_id']" position="before">
-                     <field name="product_tmpl_id" />
                  </xpath>
                 <xpath expr="//field[@name='no_service_order_line']/tree//field[@name='price_subtotal']" position="after">
                     <field name="order_state" invisible="1"/>
