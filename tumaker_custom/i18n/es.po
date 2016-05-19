@@ -487,7 +487,7 @@ msgstr "Impuesto"
 #: view:purchase.order.line:tumaker_custom.purchase_order_line_form
 #: view:purchase.order.line:tumaker_custom.purchase_order_line_form2
 msgid "True"
-msgstr "Verdadero"
+msgstr "True"
 
 #. module: tumaker_custom
 #: view:account.analytic.account:tumaker_custom.account_analytic_consumed_hours_form
