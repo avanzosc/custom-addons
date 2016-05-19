@@ -30,6 +30,7 @@
         "purchase_order_line_view",
         "sale_order_line_view",
         "mrp",
+        "account_analytic_analysis",
     ],
     "category": "Custom Modules",
     "data": [

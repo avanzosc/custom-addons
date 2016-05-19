@@ -2,7 +2,7 @@
 # (c) 2015 Esther Martín - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-from openerp import models, fields
+from openerp import api, models, fields
 
 
 class StockMove(models.Model):
@@ -16,10 +16,19 @@ class StockMove(models.Model):
 class StockQuant(models.Model):
     _inherit = 'stock.quant'
 
+    @api.multi
+    @api.depends('account_analytic_ids.quant_id')
+    def _compute_to_invoice(self):
+        self.to_invoice = self.account_analytic_ids.remaining_ca
+
     manufacturer_id = fields.Many2one(
         related='product_id.manufacturer', string='Manufacturer', store=True)
     category_id = fields.Many2one(
         related='product_id.categ_id', string='Product category', store=True)
+    account_analytic_ids = fields.One2many(
+        comodel_name='account.analytic.account', inverse_name='quant_id',
+        string='Account Analytic')
+    to_invoice = fields.Float(compute='_compute_to_invoice')
 
 
 class StockProductionLot(models.Model):

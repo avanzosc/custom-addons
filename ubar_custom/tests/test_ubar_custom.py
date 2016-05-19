@@ -16,6 +16,8 @@ class TestUbarCustom(common.TransactionCase):
             'default_code': 'A1PT',
             'old_reference': 'LA001',
             })
+        self.analytic = self.env.ref('account.analytic_consultancy')
+        self.quant_model = self.env['stock.quant']
 
     def test_name_search(self):
         product_ids = self.product_model.name_search(name='LA001', args=None)
@@ -69,3 +71,14 @@ class TestUbarCustom(common.TransactionCase):
              ('id', '!=', self.env.ref('mrp.route_warehouse0_manufacture').id)
              ])
         self.assertEqual(len(routes), len(self.product.route_ids))
+
+    def test_compute_to_invoice(self):
+        self.analytic.lot_id = self.ref('stock.lot_icecream_0')
+        quant = self.quant_model.create({
+            'lot_id': self.ref('stock.lot_icecream_0'),
+            'qty': 1.0,
+            'location_id': self.ref('stock.stock_location_stock'),
+            'product_id': self.ref('stock.product_icecream'),
+            })
+        self.analytic.quant_id = quant
+        self.assertEqual(self.analytic.remaining_ca, quant.to_invoice)
