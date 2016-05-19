@@ -22,6 +22,12 @@ Pesa custom
 
 * If the claim came from another claim, the priority changes to very high.
 
+* New menu to make a call. When you make a call from this menu option, the
+  timer of the call will start.
+
+* New object for the responsible of the claim.
+
+
 Credits
 =======
 

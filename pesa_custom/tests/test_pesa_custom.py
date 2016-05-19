@@ -4,6 +4,8 @@
 
 import openerp.tests.common as common
 from datetime import datetime, date
+from openerp import fields
+from dateutil.relativedelta import relativedelta
 
 
 class TestPesaCustom(common.TransactionCase):
@@ -14,6 +16,7 @@ class TestPesaCustom(common.TransactionCase):
         self.crm_claim = self.env.ref('crm_claim.crm_claim_1')
         self.company = self.ref('base.main_company')
         self.crm_claim2 = self.env.ref('crm_claim.crm_claim_2')
+        self.phonecall_model = self.env['crm.phonecall']
 
     def test_name_search(self):
         self.schedule1 = self.schedule_model.create({'hour': 16.5})
@@ -45,3 +48,27 @@ class TestPesaCustom(common.TransactionCase):
         self.crm_claim.to_related_claims = [(4, self.crm_claim2.id, 0)]
         self.assertEqual(self.crm_claim2.priority, '4')
         self.assertEqual(self.crm_claim.priority, '1')
+
+    def test_wiz_make_call(self):
+        wiz = self.env['make.call'].create({})
+        view_wiz = wiz.create_call()
+        self.assertEqual(
+            view_wiz['view_id'], self.ref('crm.crm_case_phone_form_view'))
+        phonecall_wiz = self.env['crm.phonecall'].browse(view_wiz['res_id'])
+        phonecall_wiz.name = 'Wizard test'
+        view2 = phonecall_wiz.hang_up_call()
+        self.assertEqual(
+            view2['view_id'], self.ref('crm.crm_case_phone_form_view'))
+
+    def test_hang_up_call(self):
+        phonecall = self.phonecall_model.create({'name': 'Test'})
+        phonecall.make_call()
+        now = fields.Datetime.now()
+        self.assertEqual(phonecall.date_open, now)
+        phonecall.date_open = \
+            fields.Datetime.from_string(phonecall.date_open) - \
+            relativedelta(seconds=30)
+        view = phonecall.hang_up_call()
+        self.assertEqual(
+            view['view_id'], self.ref('crm.crm_case_phone_form_view'))
+        self.assertEqual(phonecall.duration, 0.5)
