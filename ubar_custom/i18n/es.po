@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-26 07:39+0000\n"
-"PO-Revision-Date: 2016-04-26 09:50+0100\n"
+"POT-Creation-Date: 2016-05-09 10:03+0000\n"
+"PO-Revision-Date: 2016-05-13 10:09+0100\n"
 "Last-Translator: Esther Martín <esthermartin@avanzosc.es>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. module: ubar_custom
 #: view:machinery:ubar_custom.machiner_ubar_custom_form_view
 msgid "(or) hours"
-msgstr "(or) hours"
+msgstr "(u) horas"
 
 #. module: ubar_custom
 #: view:website:account.report_invoice_document
@@ -118,6 +118,11 @@ msgid "Description"
 msgstr "Descripción"
 
 #. module: ubar_custom
+#: view:website:stock.report_picking
+msgid "Destination"
+msgstr "Destino"
+
+#. module: ubar_custom
 #: view:website:purchase.report_purchaseorder_document
 msgid "Disc. (%)"
 msgstr "Desc. (%)"
@@ -126,6 +131,11 @@ msgstr "Desc. (%)"
 #: view:website:sale.report_saleorder_document
 msgid "Disc.(%)"
 msgstr "Desc.(%)"
+
+#. module: ubar_custom
+#: view:website:stock.report_picking
+msgid "Discount"
+msgstr "Descuento"
 
 #. module: ubar_custom
 #: view:website:account.report_invoice_document
@@ -146,6 +156,11 @@ msgstr "Fecha vto:"
 #: view:website:report.external_layout_footer
 msgid "Email:"
 msgstr "Correo electrónico:"
+
+#. module: ubar_custom
+#: view:website:stock.report_picking
+msgid "FIRMA CONFORMIDAD"
+msgstr "FIRMA CONFORMIDAD"
 
 #. module: ubar_custom
 #: view:website:report.external_layout_footer
@@ -180,6 +195,7 @@ msgstr "Recepción"
 
 #. module: ubar_custom
 #: view:website:sale.report_saleorder_document
+#: view:website:stock.report_picking
 msgid "Invoice address:"
 msgstr "Dirección de facturación:"
 
@@ -196,7 +212,7 @@ msgstr "Última modificación en"
 #. module: ubar_custom
 #: field:product.move,write_uid:0
 msgid "Last Updated by"
-msgstr "Última modificación por"
+msgstr "Última actualización por"
 
 #. module: ubar_custom
 #: field:product.move,write_date:0
@@ -212,6 +228,7 @@ msgstr "Fabricante"
 #. module: ubar_custom
 #: view:website:purchase.report_purchaseorder_document
 #: view:website:sale.report_saleorder_document
+#: view:website:stock.report_picking
 msgid "Net Price"
 msgstr "Precio neto"
 
@@ -257,6 +274,7 @@ msgstr "Teléfono:"
 #: model:ir.model,name:ubar_custom.model_product_product
 #: field:product.move,product_id:0
 #: view:stock.quant:ubar_custom.ubar_quant_view_search
+#: view:website:stock.report_picking
 msgid "Product"
 msgstr "Producto"
 
@@ -299,6 +317,7 @@ msgstr "Ctdad"
 #. module: ubar_custom
 #: view:website:account.report_invoice_document
 #: view:website:sale.report_saleorder_document
+#: view:website:stock.report_picking
 msgid "Quantity"
 msgstr "Cantidad"
 
@@ -370,6 +389,11 @@ msgstr "Transporte:"
 
 #. module: ubar_custom
 #: view:website:stock.report_picking
+msgid "Source"
+msgstr "Origen"
+
+#. module: ubar_custom
+#: view:website:stock.report_picking
 msgid "State"
 msgstr "Estado"
 
@@ -385,6 +409,7 @@ msgstr "Impuestos (IVA 21%)"
 
 #. module: ubar_custom
 #: view:website:sale.report_saleorder_document
+#: view:website:stock.report_picking
 msgid "Taxes 21%"
 msgstr "Impuestos 21%"
 
@@ -397,12 +422,14 @@ msgstr "La referencia ha cambiado de %s a %s"
 #. module: ubar_custom
 #: view:website:account.report_invoice_document
 #: view:website:sale.report_saleorder_document
+#: view:website:stock.report_picking
 msgid "Total"
 msgstr "Total"
 
 #. module: ubar_custom
 #: view:website:account.report_invoice_document
 #: view:website:sale.report_saleorder_document
+#: view:website:stock.report_picking
 msgid "Total Without Taxes"
 msgstr "Base imponible"
 
@@ -442,12 +469,3 @@ msgstr "Sitio web:"
 #: field:product.move,year:0
 msgid "Year"
 msgstr "Año"
-
-#. module: ubar_custom
-#: view:product.product:ubar_custom.product_product_machine_search_view
-msgid ""
-"['|', '|', ('default_code', 'ilike', self),('name', 'ilike', self), "
-"('old_reference', 'ilike', self)]"
-msgstr ""
-"['|', '|', ('default_code', 'ilike', self),('name', 'ilike', self), "
-"('old_reference', 'ilike', self)]"

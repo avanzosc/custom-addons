@@ -38,3 +38,21 @@ class ProductProduct(models.Model):
                                ('old_reference', operator, name)],
                               limit=limit, context=context)
         return self.name_get(cr, user, ids, context=context)
+
+    @api.multi
+    def select_procurements(self):
+        for template in self.mapped('product_tmpl_id'):
+            template.select_procurements()
+
+
+class ProductTemplate(models.Model):
+    _inherit = 'product.template'
+
+    @api.multi
+    def select_procurements(self):
+        routes = self.env['stock.location.route'].search(
+            ['&', ('product_selectable', '=', True),
+             ('id', '!=', self.env.ref('mrp.route_warehouse0_manufacture').id)
+             ])
+        for template in self:
+            template.route_ids = [(4, route_id.id) for route_id in routes]

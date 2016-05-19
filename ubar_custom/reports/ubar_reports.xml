@@ -433,12 +433,64 @@
                                         <span t-field="move.reserved_availability"/> <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
                                     </t>
                                     <t t-if="o.state != 'partially_available'">
-                                        <span t-field="move.product_uom_qty"/> <span t-field="move.product_uom" groups="product.group_uom"/>
+                                        <span t-esc="int(move.product_uom_qty)"/> <span t-field="move.product_uom" groups="product.group_uom"/>
                                     </t>
                                 </td>
                                 <t t-if="o.picking_type_id.code == 'outgoing'"><td class="text-right"><span t-field="move.procurement_id.sale_line_id.discount"/></td></t>
                                 <t t-if="o.picking_type_id.code != 'outgoing'"><td><span t-field="move.location_dest_id"/></td></t>
-                                <t t-if="o.picking_type_id.code == 'outgoing'"><td class="text-right"><span t-field="move.sale_price_subtotal"/></td></t>
+                                <t t-if="o.picking_type_id.code == 'outgoing'"><td class="text-right"><span t-field="move.sale_price_subtotal" /></td></t>
+                            </t>
+                        </tr>
+                    </tbody>
+                </table>
+            </xpath>
+            <xpath expr="//table[@t-if='o.pack_operation_ids']" position="replace">
+                <table class="table table-condensed" t-if="o.pack_operation_ids">
+                    <thead>
+                        <tr>
+                            <th><strong>Product</strong></th>
+                            <t t-if="o.picking_type_id.code != 'incoming'"><th><strong>Source</strong></th></t>
+                            <th class="text-right"><strong>Quantity</strong></th>
+                            <t t-if="o.picking_type_id.code == 'outgoing'"><th class="text-right"><strong>Discount</strong></th></t>
+                            <t t-if="o.picking_type_id.code != 'outgoing'"><th><strong>Destination</strong></th></t>
+                            <t t-if="o.picking_type_id.code == 'outgoing'"><th class="text-right"><strong>Net Price</strong></th></t>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="o.pack_operation_ids" t-as="pack_operation">
+                            <td>
+                                <span t-field="pack_operation.product_id"/>
+                                <t t-if="not pack_operation.product_id and pack_operation.package_id">
+                                    <span  t-field="pack_operation.package_id"/>
+                                </t>
+                            </td>
+                            <t t-if="o.picking_type_id.code != 'incoming'">
+                                <td>
+                                    <span t-field="pack_operation.location_id"/>
+                                    <span t-if="pack_operation.package_id">:</span>
+                                    <span t-field="pack_operation.package_id"/>
+                                    <span t-if="pack_operation.lot_id">:</span>
+                                    <span t-field="pack_operation.lot_id"/>
+                                </td>
+                            </t>
+                            <td class="text-right">
+                                <span t-esc="int(pack_operation.product_qty)"/>
+                                <span t-field="pack_operation.product_uom_id" groups="product.group_uom"/>
+                            </td>
+                            <t t-foreach="pack_operation.linked_move_operation_ids" t-as="move_operation">
+                                <td class="text-right">
+                                    <span t-field="move_operation.move_id.procurement_id.sale_line_id.discount" />
+                                </td>
+                                <t t-if="o.picking_type_id.code != 'outgoing'">
+                                    <td>
+                                        <span t-field="pack_operation.location_dest_id"/>
+                                        <span t-if="pack_operation.result_package_id">:</span>
+                                        <span t-field="pack_operation.result_package_id"/>
+                                    </td>
+                                </t>
+                                <td class="text-right">
+                                    <span t-field="move_operation.move_id.sale_price_subtotal" />
+                                </td>
                             </t>
                         </tr>
                     </tbody>
@@ -456,7 +508,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Taxes</td>
+                                <td>Taxes 21%</td>
                                 <td class="text-right">
                                     <span t-field="o.amount_tax" />
                                 </td>
@@ -471,6 +523,21 @@
                     </div>
                 </div>
                 </t>
+                <div class="box" style="float:right;">
+                    <div style="margin-left:10px; margin-top:10px;font-size:12px;page-break-inside: avoid;">
+                        <table>
+                            <tr>
+                                <td>
+                                    <strong>FIRMA CONFORMIDAD</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="100">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </xpath>
         </template>
         <!--Pedido de compra -->
