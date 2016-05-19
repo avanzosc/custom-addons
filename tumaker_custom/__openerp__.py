@@ -15,6 +15,8 @@
                 "account_invoice_line_lot",
                 "account_payment_partner",
                 "delivery",
+                "stock_valued_picking_report",
+                "warning"
                 ],
     "author": "Avanzosc, S.L.",
     "contributors": [
@@ -32,6 +34,8 @@
              'views/purchase_order_view.xml',
              'views/report_basque.xml',
              'views/stock_picking_view.xml',
+             'views/stock_quant_view.xml',
+             'views/account_invoice_view.xml',
              'wizard/stock_transfer_details_view.xml'
              ],
     "installable": True,

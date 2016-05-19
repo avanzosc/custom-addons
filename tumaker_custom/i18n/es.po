@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-28 14:07+0000\n"
-"PO-Revision-Date: 2016-04-28 16:09+0100\n"
+"POT-Creation-Date: 2016-05-19 13:42+0000\n"
+"PO-Revision-Date: 2016-05-19 15:44+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,6 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
 "X-Generator: Poedit 1.5.4\n"
+
+#. module: tumaker_custom
+#: view:stock.quant:tumaker_custom.quant_search_view
+msgid "Active Product"
+msgstr "Producto Activo"
 
 #. module: tumaker_custom
 #: model:ir.actions.report.xml,name:tumaker_custom.report_picking_basque
@@ -128,6 +133,11 @@ msgstr ""
 "promete al cliente según los tiempos de entrega definidos en el producto."
 
 #. module: tumaker_custom
+#: view:website:account.report_invoice_document
+msgid "Date due:"
+msgstr "Date due:"
+
+#. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
 msgid "Deskontua (%)"
 msgstr "Deskontua (%)"
@@ -215,6 +225,16 @@ msgstr "Helmuga"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
+msgid "Helmuga data:"
+msgstr "Helmuga data:"
+
+#. module: tumaker_custom
+#: field:account.invoice,not_warning:0
+msgid "Hide Warning Message"
+msgstr "Ocultar mensaje de aviso"
+
+#. module: tumaker_custom
+#: view:website:tumaker_custom.tu_maker_report_invoice
 msgid "Hornitzaile Faktura"
 msgstr "Hornitzaile Faktura"
 
@@ -238,6 +258,16 @@ msgstr "Horas"
 #: view:website:tumaker_custom.tumaker_report_picking
 msgid "IFZ:"
 msgstr "IFZ:"
+
+#. module: tumaker_custom
+#: model:ir.model,name:tumaker_custom.model_stock_inventory_line
+msgid "Inventory Line"
+msgstr "Línea inventario"
+
+#. module: tumaker_custom
+#: model:ir.model,name:tumaker_custom.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tumaker_report_picking
@@ -337,9 +367,19 @@ msgid "Prezioa"
 msgstr "Prezioa"
 
 #. module: tumaker_custom
+#: view:website:stock.report_picking
+msgid "Product code"
+msgstr "Código de producto"
+
+#. module: tumaker_custom
 #: view:stock.transfer_details:tumaker_custom.view_stock_enter_transfer_details
 msgid "Products To Move"
 msgstr "Productos a mover"
+
+#. module: tumaker_custom
+#: view:website:tumaker_custom.tumaker_report_picking
+msgid "Produktu kodea"
+msgstr "Produktu kodea"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tumaker_report_picking
@@ -375,7 +415,7 @@ msgstr "Nombre del proyecto"
 #. module: tumaker_custom
 #: field:project.project,project_child_ids:0
 msgid "Project childs"
-msgstr "Hijos proyecto"
+msgstr "Hijos de proyecto"
 
 #. module: tumaker_custom
 #: view:project.project:tumaker_custom.view_project_tree_structure
@@ -438,11 +478,16 @@ msgid "Tasks"
 msgstr "Tareas"
 
 #. module: tumaker_custom
+#: view:stock.picking:tumaker_custom.view_picking_form_valued
+msgid "Taxes"
+msgstr "Impuesto"
+
+#. module: tumaker_custom
 #: view:purchase.order:tumaker_custom.purchase_order_form
 #: view:purchase.order.line:tumaker_custom.purchase_order_line_form
 #: view:purchase.order.line:tumaker_custom.purchase_order_line_form2
 msgid "True"
-msgstr "True"
+msgstr "Verdadero"
 
 #. module: tumaker_custom
 #: view:account.analytic.account:tumaker_custom.account_analytic_consumed_hours_form
@@ -458,6 +503,13 @@ msgstr "NIF:"
 #: view:sale.order:tumaker_custom.view_sale_commitment_orderfor
 msgid "View Task"
 msgstr "Ver tarea"
+
+#. module: tumaker_custom
+#: view:account.invoice:tumaker_custom.invoice_form
+#: view:account.invoice:tumaker_custom.invoice_supplier_form
+#: field:account.invoice,warning:0
+msgid "Warning"
+msgstr "Aviso"
 
 #. module: tumaker_custom
 #: code:addons/tumaker_custom/wizard/stock_transfer_details.py:20
@@ -489,3 +541,8 @@ msgstr "Zerga"
 #: view:website:tumaker_custom.tumaker_report_picking
 msgid "Zergak"
 msgstr "Zergak"
+
+#. module: tumaker_custom
+#: view:sale.order:tumaker_custom.view_order_form
+msgid "{'readonly': [('state', 'in', 'done')]}"
+msgstr "{'readonly': [('state', 'in', 'done')]}"
