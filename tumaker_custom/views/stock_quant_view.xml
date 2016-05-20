@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="quant_search_view" model="ir.ui.view">
+            <field name="name">stock.quant.active.products.search</field>
+            <field name="model">stock.quant</field>
+            <field name="inherit_id" ref="stock.quant_search_view"/>
+            <field name="arch" type="xml">
+                <field name="product_id" position="before">
+                    <filter string="Active Product" name="active_products" domain="[('product_id.active', '=', True)]"/>
+                </field>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="stock.location_open_quants">
+            <field name="context">{'search_default_active_products':1, 'search_default_productgroup': 1}</field>
+        </record>
+        <record model="ir.actions.act_window" id="stock.quantsact">
+            <field name="context">{'search_default_active_products':1, 'search_default_internal_loc': 1}</field>
+        </record>
+    </data>
+</openerp>

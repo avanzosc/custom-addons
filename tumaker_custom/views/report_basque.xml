@@ -270,7 +270,14 @@
                 </t>
              </t>
         </template>
-        
+        <template id="tumaker_report_invoice_inherit" inherit_id="account.report_invoice_document">
+            <xpath expr="//p[@t-field='o.reference']/.." position="after">
+                <div class="col-xs-2" t-if="o.date_due">
+                     <strong>Date due:</strong>
+                     <p t-field="o.date_due"/>
+                </div>
+            </xpath>
+        </template>
         <template id="tu_maker_report_invoice">
             <t t-call="report.html_container">
                 <t t-foreach="docs" t-as="o">
@@ -318,6 +325,10 @@
                                 <div class="col-xs-2" t-if="o.reference">
                                     <strong>Erreferenzia:</strong>
                                     <p t-field="o.reference"/>
+                                </div>
+                                <div class="col-xs-2" t-if="o.date_due">
+                                    <strong>Helmuga data:</strong>
+                                    <p t-field="o.date_due"/>
                                 </div>
                             </div>
                             

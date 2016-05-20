@@ -12,5 +12,19 @@
                 </field>
             </field>
         </record>
+        
+        <record id="view_picking_form_valued" model="ir.ui.view">
+            <field name="name">stock.picking.valued.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock_valued_picking_report.view_picking_form_valued"/>
+            <field name="arch" type="xml">
+                <group name="subtotal_footer" position="attributes">
+                    <attribute name="attrs"></attribute>
+                </group>
+                <page string="Taxes" position="attributes">
+                    <attribute name="attrs"></attribute>
+                </page>
+            </field>
+        </record>
     </data>
 </openerp>
