@@ -163,3 +163,28 @@ class TestAstikarCustom(common.TransactionCase):
         self.assertEqual(
             fields.Date.to_string(date + relativedelta(days=payment_days)),
             self.mrp_repair.date_due)
+
+    def test_product_id_change(self):
+        sale_vals = {
+            'partner_id': self.ref('base.res_partner_1'),
+            'partner_shipping_id': self.ref('base.res_partner_1'),
+            'partner_invoice_id': self.ref('base.res_partner_1'),
+            'pricelist_id': self.env.ref('product.list0').id}
+        sale_line_vals = {
+            'product_id': self.product.id,
+            'name': self.product.name,
+            'product_uos_qty': 7,
+            'product_uom': self.product.uom_id.id,
+            'price_unit': self.product.list_price}
+        sale_vals['order_line'] = [(0, 0, sale_line_vals)]
+        self.sale_order = self.env['sale.order'].create(sale_vals)
+        line = self.sale_order.order_line[0]
+        res = self.env['sale.order.line'].product_id_change(
+            self.sale_order.pricelist_id.id, line.product_id.id,
+            qty=line.product_uom_qty, qty_uos=line. product_uos_qty,
+            name=line.name, partner_id=self.sale_order.partner_id.id,
+            update_tax=True, date_order=self.sale_order.date_order,
+            fiscal_position=self.sale_order.fiscal_position.id)
+        self.assertEqual(
+            self.product.standard_price, res['value'].get('standard_price', 0),
+            'Different standard price')

@@ -118,7 +118,7 @@
                     <field name="invoice_method"/>
                 </field>
                 <tree string="Repairs order" position="attributes">
-                    <attribute name="colors">gray:state in ('done','cancel');gray:invoice_method=='none';black:state not in ('done','cancel');blue:state=='draft'</attribute>
+                    <attribute name="colors">gray:state in ('done','cancel');gray:invoice_method=='none' and state=='done';black:state not in ('done','cancel');blue:state=='draft'</attribute>
                 </tree>
             </field>
         </record>
