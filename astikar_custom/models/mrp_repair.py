@@ -146,6 +146,12 @@ class MrpRepair(models.Model):
             'context': self.env.context
             }
 
+    @api.multi
+    def action_repair_done(self):
+        result = super(MrpRepair, self).action_repair_done()
+        self.create_repair_cost()
+        return result
+
 
 class MrpRepairLine(models.Model):
 
