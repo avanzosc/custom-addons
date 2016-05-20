@@ -26,4 +26,3 @@ class SaleOrderLine(models.Model):
             product = product_obj.browse(product)
             res['value']['standard_price'] = product.standard_price
         return res
-

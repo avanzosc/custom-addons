@@ -24,7 +24,7 @@
                             <span t-field="o.name"/>
                         </h3>
                         <t t-if="o.proforma">
-                            <p style="-webkit-transform: rotate(-90deg);font-size: 10px;position: relative;left: -355px;bottom:-250px">
+                            <p style="-webkit-transform: rotate(-90deg);font-size: 10px;position: relative;left: -430px;bottom:-300px">
                                 Inscrita en el Registro Mercantil de Guipúzcoa, Libro Sociedades, Tomo 1253, Folio 43, Hoja nº SS-5095, Inscrición 1º - N.I.F. A-20432670
                             </p>
                         </t>
