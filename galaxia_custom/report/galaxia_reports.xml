@@ -3,6 +3,26 @@
     <data>
         
         <template id="galaxia_invoice_report" inherit_id="account_payment_partner.report_invoice_payment_mode">
+            <xpath expr="//div[@class='row']/div[@class='col-xs-5 col-xs-offset-7']" position="replace">
+                <div class="col-xs-6" style="font-size:12px">
+                    <strong>Tax Data</strong>
+                    <address t-field="o.partner_id" t-field-options='{"widget": "contact", "fields": ["address",
+                        "name"], "no_marker": true}' />
+                    <p t-if="o.partner_id.vat">
+                        VAT:
+                        <span t-field="o.partner_id.vat"/>
+                    </p>
+                </div>
+                <div class="col-xs-5 col-xs-offset-1" style="font-size:12px">
+                    <strong>Invoice address</strong>
+                    <address t-field="o.partner_id" t-field-options='{"widget": "contact", "fields": ["address",
+                        "name"], "no_marker": true}' />
+                    <span t-if="o.partner_id.vat">
+                        TIN:
+                        <span t-field="o.partner_id.vat"/>
+                    </span>
+                </div>
+            </xpath>
             <xpath expr="//table[@class='table table-condensed']" position="replace">
                 <table class="table table-condensed">
                     <thead>
@@ -16,8 +36,16 @@
                     <tbody class="invoice_tbody">
                         <tr t-foreach="o.invoice_line" t-as="l">
                             <td>
-                                <span t-field="l.name"/><br/>
-                                Instalaciones: <span t-field="l.account_analytic_id.agreement_address.name"/> <span t-field="l.account_analytic_id.agreement_address.street"/> <span t-field="l.account_analytic_id.agreement_address.zip"/> <span t-field="l.account_analytic_id.agreement_address.city"/> <span t-field="l.account_analytic_id.agreement_address.state_id"/>
+                                <span t-field="l.name"/>
+                                <br/>
+                                <div t-if="l.account_analytic_id.agreement_address">
+                                    Instalaciones:
+                                    <span t-field="l.account_analytic_id.agreement_address.name"/>
+                                    <span t-field="l.account_analytic_id.agreement_address.street"/>
+                                    <span t-field="l.account_analytic_id.agreement_address.zip"/>
+                                    <span t-field="l.account_analytic_id.agreement_address.city"/>
+                                    <span t-field="l.account_analytic_id.agreement_address.state_id"/>
+                                </div>
                             </td>
                             <td>
                                 <span t-field="l.quantity"/>

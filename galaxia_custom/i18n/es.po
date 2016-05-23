@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-23 08:45+0000\n"
-"PO-Revision-Date: 2016-05-23 10:46+0100\n"
+"POT-Creation-Date: 2016-05-23 09:45+0000\n"
+"PO-Revision-Date: 2016-05-23 11:46+0100\n"
 "Last-Translator: Esther Martín <esthermartin@avanzosc.es>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -88,8 +88,13 @@ msgstr "Fax:"
 
 #. module: galaxia_custom
 #: view:website:account.report_invoice_document
-msgid "Insalaciones:"
+msgid "Instalaciones:"
 msgstr "Instalaciones:"
+
+#. module: galaxia_custom
+#: view:website:account.report_invoice_document
+msgid "Invoice address"
+msgstr "Dirección facturación"
 
 #. module: galaxia_custom
 #: field:event.event,key_code:0
@@ -127,6 +132,16 @@ msgid "Sales Order Line"
 msgstr "Línea pedido de venta"
 
 #. module: galaxia_custom
+#: view:website:account.report_invoice_document
+msgid "TIN:"
+msgstr "NIF:"
+
+#. module: galaxia_custom
+#: view:website:account.report_invoice_document
+msgid "Tax Data"
+msgstr "Datos fiscales"
+
+#. module: galaxia_custom
 #: view:website:report.external_layout_header
 msgid "Tel.:"
 msgstr "Tel.:"
@@ -135,6 +150,11 @@ msgstr "Tel.:"
 #: view:website:account.report_invoice_document
 msgid "Total:"
 msgstr "Total:"
+
+#. module: galaxia_custom
+#: view:website:account.report_invoice_document
+msgid "VAT:"
+msgstr "NIF:"
 
 #. module: galaxia_custom
 #: view:website:report.external_layout_footer

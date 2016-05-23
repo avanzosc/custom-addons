@@ -14,8 +14,8 @@
         </template>
         
         <record id="report.paperformat_euro" model="report.paperformat">
-            <field name="margin_top">50</field>
-            <field name="header_spacing">45</field>
+            <field name="margin_top">55</field>
+            <field name="header_spacing">50</field>
             <field name="margin_bottom">15</field>
         </record>
     </data>
