@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="astikar_layout_html" name="astikar_custom layout_html" inherit_id="report.layout">
+            <xpath expr="//head" position="inside">
+                <link rel="stylesheet" href="/galaxia_custom/static/src/css/galaxia.css" />
+            </xpath>
+        </template>
+        
+        <template id="astikar_layout" name="astikar_custom layout" inherit_id="report.minimal_layout">
+            <xpath expr="//head" position="inside">
+                <link rel="stylesheet" href="/galaxia_custom/static/src/css/galaxia.css" />
+            </xpath>
+        </template>
+        
+        <record id="report.paperformat_euro" model="report.paperformat">
+            <field name="margin_top">55</field>
+            <field name="header_spacing">50</field>
+            <field name="margin_bottom">15</field>
+        </record>
+    </data>
+</openerp>

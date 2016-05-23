@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="external_layout_header" inherit_id="report.external_layout_header">
+            <xpath expr="//div[@class='header']" position="replace">
+                <div class="header">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <img src="/galaxia_custom/static/src/img/galaxia.png"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <address class="mb0 galaxia_header" itemscope="itemscope" itemtype="http://schema.org/Organization">
+                                <div class="col-xs-12" style="padding-left:0px;">
+                                    <div class="col-xs-6 verde" style="padding-left:0px;">
+                                        <span t-field="company.partner_id.street" />
+                                        <br />
+                                        <span t-field="company.partner_id.zip" />
+                                        -
+                                        <span t-field="company.partner_id.city" />
+                                        (
+                                        <span t-field="company.partner_id.state_id" />
+                                        )
+                                        <br />
+                                        <div style="color:red">
+                                            E-mail: <span t-field="company.partner_id.email" />
+                                            <br />
+                                            <span t-field="company.website" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 verde" style="padding-left:0px;">
+                                        Tel.:
+                                        <span t-field="company.partner_id.phone"/>
+                                        <br />
+                                        Fax:
+                                        <span t-field="company.partner_id.fax" />
+                                    </div>
+                                </div>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+        
+        <template id="external_layout_footer" inherit_id="report.external_layout_footer">
+            <xpath expr="//div[@class='footer']" position="replace">
+                <div class="footer">
+                    <div class="text-center" style="border-top: 1px solid black;">
+                        <ul t-if="not company.custom_footer" class="list-inline">
+                            <li t-if="company.email">
+                                Email:
+                                <span t-field="company.email"/>
+                            </li>
+                            
+                            <li t-if="company.website">&amp;bull;</li>
+                            <li t-if="company.website">
+                                Website:
+                                <span t-field="company.website"/>
+                            </li>
+                        </ul>
+                        
+                        <t t-if="company.custom_footer">
+                            <span t-raw="company.rml_footer"/>
+                        </t>
+                        
+                        <ul class="list-inline">
+                            <li>Page:</li>
+                            <li>
+                                <span class="page"/>
+                            </li>
+                            <li>/</li>
+                            <li>
+                                <span class="topage"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</openerp>

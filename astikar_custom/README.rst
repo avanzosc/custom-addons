@@ -25,6 +25,7 @@ Astikar Custom
 
 * Stock history can be group by product type.
 
+* Product cost price in sale order line.
 
 Credits
 =======
