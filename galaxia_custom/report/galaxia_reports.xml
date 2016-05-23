@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <template id="galaxia_invoice_report" inherit_id="account_payment_partner.report_invoice_payment_mode">
+            <xpath expr="//table[@class='table table-condensed']" position="replace">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th class="text-right" groups="sale.group_discount_per_so_line">Discount (%)</th>
+                            <th class="text-right">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+                        <tr t-foreach="o.invoice_line" t-as="l">
+                            <td>
+                                <span t-field="l.name"/><br/>
+                                Instalaciones: <span t-field="l.account_analytic_id.agreement_address.name"/> <span t-field="l.account_analytic_id.agreement_address.street"/> <span t-field="l.account_analytic_id.agreement_address.zip"/> <span t-field="l.account_analytic_id.agreement_address.city"/> <span t-field="l.account_analytic_id.agreement_address.state_id"/>
+                            </td>
+                            <td>
+                                <span t-field="l.quantity"/>
+                            </td>
+                            <td class="text-right" groups="sale.group_discount_per_so_line">
+                                <span t-field="l.discount"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="l.price_subtotal" t-field-options='{"widget": "monetary", "display_currency":
+                                    "o.currency_id"}'/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </xpath>
+            <xpath expr="//div[@t-if='o.tax_line']" position="replace"/>
+            <xpath expr="//p[@t-if='o.comment']" position="after">
+                <p t-if="o.payment_mode_id">
+                    <strong>Payment Mode:</strong>
+                    <span t-field="o.payment_mode_id.name"/>
+                </p>
+                <p t-if="o.date_due">
+                    <strong>Date due:</strong>
+                    <span t-field="o.date_due"/>
+                </p>
+            </xpath>
+            <xpath expr="//p[@t-if='o.comment']" position="replace"/>
+            <xpath expr="//p[@t-if='o.payment_mode_id.note']" position="replace"/>
+            <xpath expr="//p[@t-if='o.fiscal_position.note']" position="replace"/>
+            <xpath expr="//p[@t-if='o.partner_bank_id']" position="after">
+                <p t-if="o.amount_total">
+                    <strong>Total:</strong>
+                    <span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                </p>
+                <p t-if="o.comment">
+                    <strong>Comment:</strong>
+                    <span t-field="o.comment"/>
+                </p>
+            </xpath>
+        </template>
+    </data>
+</openerp>
