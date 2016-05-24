@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_order_form">
+            <field name="name">sale.order.form.view</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="after">
+                        <field name="standard_price"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        <!-- inherited view sale order line form view -->
+        <record model="ir.ui.view" id="view_order_line_form2">
+            <field name="name">view.order.line.form2</field>
+            <field name="model">sale.order.line</field>
+            <field name="inherit_id" ref="sale.view_order_line_form2" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="price_unit" position="after">
+                        <field name="standard_price"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+    </data>
+</openerp>
