@@ -17,9 +17,12 @@ class StockQuant(models.Model):
     _inherit = 'stock.quant'
 
     @api.multi
-    @api.depends('account_analytic_ids.quant_id')
+    @api.depends('account_analytic_ids')
     def _compute_to_invoice(self):
-        self.to_invoice = self.account_analytic_ids.remaining_ca
+        for line in self:
+            account = line.account_analytic_ids.filtered(
+                lambda x: x.date < fields.Date.today() and x.state == 'open')
+            line.to_invoice = account[:1].remaining_ca or 0.0
 
     manufacturer_id = fields.Many2one(
         related='product_id.manufacturer', string='Manufacturer', store=True)
