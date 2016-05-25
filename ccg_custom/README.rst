@@ -15,8 +15,9 @@ CCG Custom
 
 * Requested_date and commitment_date are now invisible on sale order tree.
 
-* Client_order_ref is visible on sale orders
+* Client_order_ref is visible on sale orders.
 
+* Reference field is visible on supplier invoices.
 
 Credits
 =======
