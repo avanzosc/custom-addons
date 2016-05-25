@@ -22,8 +22,7 @@ class StockQuant(models.Model):
         for line in self:
             account = line.account_analytic_ids.filtered(
                 lambda x: x.date < fields.Date.today() and x.state == 'open')
-            if account:
-                line.to_invoice = account.remaining_ca
+            line.to_invoice = account[:1].remaining_ca or 0.0
 
     manufacturer_id = fields.Many2one(
         related='product_id.manufacturer', string='Manufacturer', store=True)
