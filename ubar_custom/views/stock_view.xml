@@ -20,6 +20,7 @@
                 <field name="company_id" position="after">
                     <field name="category_id"/>
                     <field name="manufacturer_id"/>
+                    <field name="to_invoice"/>
                 </field>
             </field>
         </record>

@@ -23,5 +23,17 @@
                 </field>
             </field>
         </record>
+
+        <record id="account_analytic_account_lot_view_form" model="ir.ui.view">
+            <field name="name">account.analytic.account.lot.form</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="account.view_account_analytic_account_list"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="lot_id"/>
+                </field>
+            </field>
+        </record>
+        
     </data>
 </openerp>
