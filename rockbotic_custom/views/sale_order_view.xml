@@ -1,0 +1,17 @@
+<openerp>
+    <data>
+        <record id="view_order_form_inh_rockbotic" model="ir.ui.view" >
+            <field name="name">view.order.form.inh.rockbotic</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_line_performance.view_order_form_inh_line_performance"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']//form//field[@name='performance']" position="attributes">
+                    <attribute name="string">Duration</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//tree//field[@name='performance']" position="attributes">
+                    <attribute name="string">Duration</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
