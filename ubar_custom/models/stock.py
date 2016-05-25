@@ -17,7 +17,7 @@ class StockQuant(models.Model):
     _inherit = 'stock.quant'
 
     @api.multi
-    @api.depends('account_analytic_ids.quant_id')
+    @api.depends('account_analytic_ids')
     def _compute_to_invoice(self):
         for line in self:
             account = line.account_analytic_ids.filtered(
