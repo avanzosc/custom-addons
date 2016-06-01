@@ -23,6 +23,8 @@
                     </span>
                 </div>
             </xpath>
+            <xpath expr="//div[@t-if='o.origin']" position="replace"/>
+            <xpath expr="//div[@t-if='o.partner_id.ref']" position="replace"/>
             <xpath expr="//table[@class='table table-condensed']" position="replace">
                 <table class="table table-condensed">
                     <thead>
@@ -67,6 +69,12 @@
                     <strong>Payment Mode:</strong>
                     <span t-field="o.payment_mode_id.name"/>
                 </p>
+                <t t-if="o.payment_mode_id.name == 'TRANSFERENCIA CLP'">
+                    <p t-if="o.partner_bank_id">
+                        <strong>Bank Account:</strong>
+                        <span t-field="o.partner_bank_id.bank_name"/> <span t-field="o.partner_bank_id.acc_number"/>
+                    </p>
+                </t>
                 <p t-if="o.date_due">
                     <strong>Date due:</strong>
                     <span t-field="o.date_due"/>
@@ -85,6 +93,7 @@
                     <span t-field="o.comment"/>
                 </p>
             </xpath>
+            <xpath expr="//p[@t-if='o.partner_bank_id']" position="replace"/>
         </template>
     </data>
 </openerp>
