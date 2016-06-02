@@ -23,6 +23,7 @@
         "views/mrp_production_view.xml",
         "views/product_packaging_view.xml",
         "views/sale_order_view.xml",
+        "views/account_invoice_view.xml",
     ],
     "installable": True
 }
