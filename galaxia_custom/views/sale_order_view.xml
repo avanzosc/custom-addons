@@ -211,5 +211,31 @@
                 </xpath>
             </field>
         </record>
+        <record id="view_order_form_sale_create_event_inh_galaxia" model="ir.ui.view">
+            <field name="name">view.order.form.sale.create.event.inh.galaxia</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_create_event.view_order_form_inh_sale_create_event" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']//form//field[@name='apply_performance_by_quantity']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//tree//field[@name='apply_performance_by_quantity']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_order_form_line_performance_inh_galaxia" model="ir.ui.view">
+            <field name="name">view.order.form.line.performance.inh.galaxia</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_line_performance.view_order_form_inh_line_performance" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']//form//field[@name='apply_performance']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//tree//field[@name='apply_performance']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
     </data>
 </openerp>
