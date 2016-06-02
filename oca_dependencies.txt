@@ -11,3 +11,5 @@ purchase-workflow
 mrp-repair-addons https://github.com/avanzosc/mrp-repair-addons
 avanzosc-addons https://github.com/avanzosc/odoo-addons master
 vauxoo-addons https://github.com/Vauxoo/addons-vauxoo
+event-wip https://bitbucket.org/avanzosc/event-wip
+
