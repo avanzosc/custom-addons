@@ -23,6 +23,8 @@
                     </span>
                 </div>
             </xpath>
+            <xpath expr="//div[@t-if='o.origin']" position="replace"/>
+            <xpath expr="//div[@t-if='o.partner_id.ref']" position="replace"/>
             <xpath expr="//table[@class='table table-condensed']" position="replace">
                 <table class="table table-condensed">
                     <thead>
@@ -83,6 +85,20 @@
                 <p t-if="o.comment">
                     <strong>Comment:</strong>
                     <span t-field="o.comment"/>
+                </p>
+            </xpath>
+            <xpath expr="//p[@t-if='o.partner_bank_id']" position="replace">
+                <p t-if="o.partner_bank_id">
+                    <strong>Bank Account:</strong>
+                    <t t-if="o.payment_mode_id and 'RECIBO DOMICILIADO' in o.payment_mode_id.name">
+                        <t t-if="o.partner_id.bank_ids">
+                            **** **** **** ***
+                            <span t-esc="o.partner_id.bank_ids[0].acc_number[-6:]"/>
+                        </t>
+                    </t>
+                    <t t-if="o.payment_mode_id and 'RECIBO DOMICILIADO' not in o.payment_mode_id.name">
+                        <span t-field="o.partner_bank_id.acc_number"/>
+                    </t>
                 </p>
             </xpath>
         </template>
