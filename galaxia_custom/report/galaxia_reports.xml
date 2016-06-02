@@ -69,12 +69,6 @@
                     <strong>Payment Mode:</strong>
                     <span t-field="o.payment_mode_id.name"/>
                 </p>
-                <t t-if="o.payment_mode_id.name == 'TRANSFERENCIA CLP'">
-                    <p t-if="o.partner_bank_id">
-                        <strong>Bank Account:</strong>
-                        <span t-field="o.partner_bank_id.bank_name"/> <span t-field="o.partner_bank_id.acc_number"/>
-                    </p>
-                </t>
                 <p t-if="o.date_due">
                     <strong>Date due:</strong>
                     <span t-field="o.date_due"/>
@@ -93,7 +87,20 @@
                     <span t-field="o.comment"/>
                 </p>
             </xpath>
-            <xpath expr="//p[@t-if='o.partner_bank_id']" position="replace"/>
+            <xpath expr="//p[@t-if='o.partner_bank_id']" position="replace">
+                <p t-if="o.partner_bank_id">
+                    <strong>Bank Account:</strong>
+                    <t t-if="o.payment_mode_id and 'RECIBO DOMICILIADO' in o.payment_mode_id.name">
+                        <t t-if="o.partner_id.bank_ids">
+                            **** **** **** ***
+                            <span t-esc="o.partner_id.bank_ids[0].acc_number[-6:]"/>
+                        </t>
+                    </t>
+                    <t t-if="o.payment_mode_id and 'RECIBO DOMICILIADO' not in o.payment_mode_id.name">
+                        <span t-field="o.partner_bank_id.acc_number"/>
+                    </t>
+                </p>
+            </xpath>
         </template>
     </data>
 </openerp>
