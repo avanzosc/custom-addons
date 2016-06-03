@@ -9,6 +9,8 @@ class TestCCGCustom(common.TransactionCase):
 
     def setUp(self):
         super(TestCCGCustom, self).setUp()
+        self.account_model = self.env['account.analytic.account']
+        self.project_model = self.env['project.project']
         self.packaging_obj = self.env['product.packaging']
         self.product_1 = self.env.ref('product.product_product_6')
         self.product_packaging1 = self.packaging_obj.create({
@@ -36,8 +38,16 @@ class TestCCGCustom(common.TransactionCase):
             'Product packaging are not the same')
 
     def test_mo_vals(self):
+        account_vals = {'name': 'account procurement service project',
+                        'date_start': '2025-01-15',
+                        'date': '2025-02-28'}
+        self.account = self.account_model.create(account_vals)
+        project_vals = {'name': 'project 1',
+                        'analytic_account_id': self.account.id}
+        self.project = self.project_model.create(project_vals)
         self.sale_order = self.env['sale.order'].create(
-            {'partner_id': self.ref('base.res_partner_2')})
+            {'partner_id': self.ref('base.res_partner_2'),
+             'project_id': self.account.id})
         vals = {
             'order_id': self.sale_order.id,
             'product_id': self.product.id,
