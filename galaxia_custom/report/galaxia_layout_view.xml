@@ -6,7 +6,8 @@
                 <div class="header">
                     <div class="row">
                         <div class="col-xs-6">
-                            <img src="/galaxia_custom/static/src/img/galaxia.png"/>
+                            <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height:107px;max-width:247px"/>
+                            <img t-if="not company.logo" src="/galaxia_custom/static/src/img/galaxia.png"/>
                         </div>
                     </div>
                     <div class="row">
@@ -14,27 +15,31 @@
                             <address class="mb0 galaxia_header" itemscope="itemscope" itemtype="http://schema.org/Organization">
                                 <div class="col-xs-12" style="padding-left:0px;">
                                     <div class="col-xs-6 verde" style="padding-left:0px;">
-                                        <span t-field="company.partner_id.street" />
+                                        <span t-field="company.street" />
                                         <br />
-                                        <span t-field="company.partner_id.zip" />
+                                        <span t-field="company.zip" />
                                         -
-                                        <span t-field="company.partner_id.city" />
+                                        <span t-field="company.city" />
                                         (
-                                        <span t-field="company.partner_id.state_id" />
+                                        <span t-field="company.state_id" />
                                         )
                                         <br />
                                         <div style="color:red">
-                                            E-mail: <span t-field="company.partner_id.email" />
-                                            <br />
-                                            <span t-field="company.website" />
+                                            <t t-if="company.email">
+                                                E-mail: <span t-field="company.email" />
+                                                <br />
+                                            </t>
+                                            <t t-if="company.website">
+                                                <span t-field="company.website" />
+                                            </t>
                                         </div>
                                     </div>
                                     <div class="col-xs-6 verde" style="padding-left:0px;">
                                         Tel.:
-                                        <span t-field="company.partner_id.phone"/>
+                                        <span t-field="company.phone"/>
                                         <br />
                                         Fax:
-                                        <span t-field="company.partner_id.fax" />
+                                        <span t-field="company.fax" />
                                     </div>
                                 </div>
                             </address>
