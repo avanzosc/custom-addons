@@ -29,7 +29,9 @@
         "account",
         "mrp_repair_estimated_qty",
         "account_invoice_line_stock_move_info",
-        "stock_account"
+        "stock_account",
+        "stock_valued_picking_report",
+        "delivery",
     ],
     "data": [
         "views/astikar_custom_view.xml",
