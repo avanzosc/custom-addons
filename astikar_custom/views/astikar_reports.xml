@@ -973,7 +973,12 @@
                         <tr t-foreach="o.move_lines" t-as="move">
                             <t t-if="(o.state != 'partially_available') or (move.reserved_availability > 0)">
                                 <td>
-                                    <span t-field="move.procurement_id.sale_line_id.name"/>
+                                    <t t-if="move.procurement_id.sale_line_id.name">
+                                        <span t-field="move.procurement_id.sale_line_id.name"/>
+                                    </t>
+                                    <t t-if="not move.procurement_id.sale_line_id.name">
+                                        <span t-field="move.product_id"/>
+                                    </t>
                                 </td>
                                 <td class="text-right">
                                     <t t-if="o.state == 'partially_available'">
@@ -1024,9 +1029,14 @@
                         <tr t-foreach="o.pack_operation_ids" t-as="pack_operation">
                             <t t-foreach="pack_operation.linked_move_operation_ids" t-as="move_operation">
                                 <td>
-                                    <span t-field="move_operation.move_id.procurement_id.sale_line_id.name"/>
+                                    <t t-if="move_operation.move_id.procurement_id.sale_line_id.name">
+                                        <span t-field="move_operation.move_id.procurement_id.sale_line_id.name"/>
+                                    </t>
+                                    <t t-if="not move_operation.move_id.procurement_id.sale_line_id.name">
+                                        <span t-field="pack_operation.product_id"/>
+                                    </t>
                                     <t t-if="not pack_operation.product_id and pack_operation.package_id">
-                                        <span  t-field="pack_operation.package_id"/>
+                                        <span t-field="pack_operation.package_id"/>
                                     </t>
                                 </td>
                                 <td class="text-right">
@@ -1076,15 +1086,15 @@
                         </table>
                     </div>
                 </div>
-                    <div class="row" style="page-break-inside: avoid">
-                                <div class="col-xs-6">CONFORME CLIENTE</div>
-                                <div class="col-xs-6">
-                                    ASTIKAR, S.A.
-                                    <p t-field="o.create_uid.partner_id"/>
-                                    <img t-if="o.create_uid.signature_logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.signature_logo"
-                                        style="max-height:100px;"/>
-                                </div>
-                            </div>
+                <div class="row" style="page-break-inside: avoid">
+                    <div class="col-xs-6">CONFORME CLIENTE</div>
+                    <div class="col-xs-6">
+                        ASTIKAR, S.A.
+                        <p t-field="o.create_uid.partner_id"/>
+                        <img t-if="o.create_uid.signature_logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.signature_logo"
+                            style="max-height:100px;"/>
+                    </div>
+                </div>
             </xpath>
         </template>
         <template id="picking_report" inherit_id="stock.report_picking">
