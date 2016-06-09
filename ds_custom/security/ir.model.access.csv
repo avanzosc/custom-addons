@@ -4,3 +4,4 @@ access_product_product_dsportal_user,product.product ds portal use,product.model
 access_product_uom_dsportal_user,product.uom ds portal,product.model_product_uom,group_ds_portal_user,1,0,0,0
 access_stock_location_dsportal_user,stock.location.dsportal,stock.model_stock_location,group_ds_portal_user,1,0,0,0
 access_stock_quant_user,stock.quant dsportal,stock.model_stock_quant,group_ds_portal_user,1,0,0,0
+access_credit_control,credit.control.line dsportal,account_credit_control.model_credit_control_line,group_ds_portal_user,1,0,0,0

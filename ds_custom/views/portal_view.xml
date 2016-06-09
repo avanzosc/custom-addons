@@ -1,36 +1,9 @@
 <?xml version="1.0"?>
 <openerp>
-    <data>
-        <record id="action_products_portal" model="ir.actions.act_window">
-            <field name="name">Products</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">product.product</field>
-            <field name="view_mode">kanban</field>
-            <field name="context">{}</field>
-        </record>
-
-        <menuitem name="Products" id="portal_products_menu"
-            parent="portal.portal_menu" sequence="30" groups="base.group_portal"/>
-        <menuitem name="Variantes de producto" id="portal_products"
-            parent="portal_products_menu" action="action_products_portal"
-            sequence="10" />
-
-       <record id="action_products_category_portal" model="ir.actions.act_window">
-            <field name="name">Products by Category</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">product.product</field>
-            <field name="view_mode">kanban</field>
-            <field name="context">{"group_by":"categ_id"}</field>
-        </record>
-        <menuitem name="Productos por categoria" id="portal_category_products"
-            parent="portal_products_menu" action="action_products_category_portal"
-            sequence="20" />
-    </data>
     <data noupdate="1">
+        <delete model='website.menu' search="[('name', '=', 'Contact us')]"/>
+        <delete model='website.menu' search="[('name', '=', 'Shop')]"/>
         <record id="portal.portal_messages" model="ir.ui.menu">
-            <field name="groups_id" eval="[(3, ref('base.group_portal'))]"/>
-        </record>
-        <record id="portal_sale.portal_quotations" model="ir.ui.menu">
             <field name="groups_id" eval="[(3, ref('base.group_portal'))]"/>
         </record>
         <record id="crm_partner_assign.portal_leads" model="ir.ui.menu">
@@ -39,14 +12,20 @@
         <record id="portal.portal_messages" model="ir.ui.menu">
             <field name="groups_id" eval="[(4, ref('ds_custom.group_portal_view_user'))]"/>
         </record>
-        <record id="portal_sale.portal_quotations" model="ir.ui.menu">
-            <field name="groups_id" eval="[(4, ref('ds_custom.group_portal_view_user'))]"/>
-        </record>
         <record id="crm_partner_assign.portal_leads" model="ir.ui.menu">
             <field name="groups_id" eval="[(4, ref('ds_custom.group_portal_view_user'))]"/>
         </record>
-<!--         <delete model="ir.ui.menu" id="portal.portal_messages" /> -->
-<!--         <delete model="ir.ui.menu" id="portal_sale.portal_quotations" /> -->
-<!--         <delete model="ir.ui.menu" id="crm_partner_assign.portal_leads" /> -->
+
+        <menuitem name="Tienda" id="portal_shop_menu"
+            parent="portal.portal_menu" sequence="40" groups="base.group_portal"/>
+        <record id="action_sale_shop" model="ir.actions.act_url">
+                <field name="name">Shale shop</field>
+                <field name="type">ir.actions.act_url</field>
+                <field name="target">self</field>
+                <field name="url">http://ds-spain.com/shop</field>
+        </record>
+        <menuitem name="Sale shop" id="website_portal_menu"
+            parent="portal_shop_menu" action="action_sale_shop"
+            sequence="10" />
     </data>
 </openerp>

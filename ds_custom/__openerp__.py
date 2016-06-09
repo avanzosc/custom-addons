@@ -12,11 +12,13 @@
     "website": "http://www.avanzosc.es",
     "contributors": [
         "Ainara Galdona <ainaragaldona@avanzosc.es>",
+        "Daniel Campos <danielcampos@avanzosc.es>"
     ],
-    "depends": [
-        "base", "crm_partner_assign", "portal", "portal_sale", "website",
-        "stock", "purchase",
-    ],
+
+    "depends": ["account_credit_control", "base", "crm_partner_assign",
+                "portal", "portal_sale", "purchase", "stock", "website",
+                "website_sale"
+                ],
     "data": [
         "security/ds_portal_security.xml",
         'security/ir.model.access.csv',
@@ -25,6 +27,8 @@
         "views/ds_custom_web_view.xml",
         "views/ds_custom_picking_report.xml",
         "views/res_partner_view.xml",
+        # "views/product_view.xml"
+        # Código desabilitado a petición de Alejandro
     ],
     "installable": True,
 }
