@@ -6,3 +6,4 @@ from . import sale_order_line
 from . import event_event
 from . import account_analytic_account
 from . import res_company
+from . import product
