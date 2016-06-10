@@ -14,7 +14,9 @@
                 "purchase",
                 "stock",
                 "mrp",
-                "product_brand"],
-    "data": ["views/product_view.xml"],
+                "product_brand",
+                "sale_margin"],
+    "data": ["views/product_view.xml",
+             "views/sale_order_view.xml"],
     "installable": True,
 }
