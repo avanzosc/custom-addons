@@ -29,6 +29,7 @@
         "sale_order_create_event"
     ],
     "data": [
+        "views/product_view.xml",
         "views/event_view.xml",
         "views/account_analytic_view.xml",
         "views/sale_order_view.xml",
