@@ -93,6 +93,51 @@
                     </tr>
                 </table>
             </xpath>
+            <xpath expr="//p[@t-if='o.comment']" position="before">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Valor Inicial</th>
+                            <th>Cuotas</th>
+                            <th class="text-right">Duración</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="o.invoice_line.mapped('account_analytic_id')" t-as="account" >
+                            <tr>
+                                <td colspan="4">
+                                    <strong>
+                                        Contrato:
+                                        <i>
+                                            (
+                                            <span t-field="account.name"/>
+                                            )
+                                        </i>
+                                    </strong>
+                                </td>
+                            </tr>
+                            <tr t-foreach="o.invoice_line" t-as="l">
+                                <t t-if="account.id == l.account_analytic_id.id">
+                                    <td>
+                                        <span t-field="account.amount_max"/>
+                                    </td>
+                                    <td>
+                                        <t t-foreach="account.recurring_invoice_line_ids" t-as="line" >
+                                            <span t-field="line.name"/> - <span t-field="line.price_unit"/>€
+                                            <br/>
+                                        </t>
+                                    </td>
+                                    <td class="text-right">
+                                        <t t-if="account.date and account.date_start">
+                                            <t t-esc="abs(datetime.datetime.strptime(account.date,'%Y-%m-%d') - datetime.datetime.strptime(account.date_start,'%Y-%m-%d')).days/30"/>
+                                        </t>
+                                    </td>
+                                </t>
+                            </tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </xpath>
             <xpath expr="//div[@t-if='o.tax_line']" position="replace"/>
             <xpath expr="//p[@t-if='o.partner_bank_id']" position="replace"/>
             <xpath expr="//p[@t-if='o.comment']" position="after">
@@ -121,9 +166,7 @@
                         </td>
                         <td t-esc="o.date_due"/>
                     </tr>
-                    <tr t-if="o.payment_mode_id and o.payment_mode_id.name=='contado' or o.payment_mode_id.name=='CONTADO'
-                        or o.payment_mode_id.name=='Transferencia bancaria' or o.payment_mode_id.name=='TRANSFERENCIA
-                        BANCARIA'">
+                    <tr t-if="o.payment_mode_id and o.payment_mode_id.name=='contado' or o.payment_mode_id.name=='CONTADO' or o.payment_mode_id.name=='Transferencia bancaria' or o.payment_mode_id.name=='TRANSFERENCIA BANCARIA'">
                         <td>
                             <strong>Bank Account:</strong>
                         </td>
