@@ -116,23 +116,24 @@
                                     </strong>
                                 </td>
                             </tr>
-                            <tr t-foreach="o.invoice_line" t-as="l">
-                                <t t-if="account.id == l.account_analytic_id.id">
-                                    <td>
-                                        <span t-field="account.amount_max"/>
-                                    </td>
-                                    <td>
-                                        <t t-foreach="account.recurring_invoice_line_ids" t-as="line" >
-                                            <span t-field="line.name"/> - <span t-field="line.price_unit"/>€
-                                            <br/>
-                                        </t>
-                                    </td>
-                                    <td class="text-right">
-                                        <t t-if="account.date and account.date_start">
-                                            <t t-esc="abs(datetime.datetime.strptime(account.date,'%Y-%m-%d') - datetime.datetime.strptime(account.date_start,'%Y-%m-%d')).days/30"/>
-                                        </t>
-                                    </td>
-                                </t>
+                            <tr>
+                                <td>
+                                    <span t-field="account.amount_max"/>
+                                </td>
+                                <td>
+                                    <t t-foreach="account.recurring_invoice_line_ids" t-as="line" >
+                                        <span t-field="line.name"/>
+                                        -
+                                        <span t-field="line.price_unit"/>
+                                        €
+                                        <br/>
+                                    </t>
+                                </td>
+                                <td class="text-right">
+                                    <t t-if="account.date and account.date_start">
+                                        <t t-esc="abs(datetime.datetime.strptime(account.date,'%Y-%m-%d') - datetime.datetime.strptime(account.date_start,'%Y-%m-%d')).days/30"/> meses
+                                    </t>
+                                </td>
                             </tr>
                         </tr>
                     </tbody>
