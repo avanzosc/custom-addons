@@ -12,6 +12,14 @@
                 <field name="invoice_line" position="attributes">
                     <attribute name="context">{'default_account_analytic_id': repair_analytic_id, 'partner_id': partner_id, 'price_type': context.get('price_type') or False, 'type': type}</attribute>
                 </field>
+                <xpath expr="//notebook/page[@string='Invoice']" position="before">
+                    <page string="Warning" attrs="{'invisible': [('not_warning', '=', True)]}">
+                        <group>
+                            <field name="not_warning"/>
+                        </group>
+                        <field name="warning"/>
+                    </page>
+                </xpath>
             </field>
         </record>
 
@@ -23,6 +31,14 @@
                 <field name="fiscal_position" position="after">
                     <field name="repair_ids" invisible="1"/>
                 </field>
+                <xpath expr="//notebook/page[@string='Invoice Lines']" position="before">
+                    <page string="Warning" attrs="{'invisible': [('not_warning', '=', True)]}">
+                        <group>
+                            <field name="not_warning"/>
+                        </group>
+                        <field name="warning"/>
+                    </page>
+                </xpath>
             </field>
         </record>
 
