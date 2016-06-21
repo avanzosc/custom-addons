@@ -32,6 +32,7 @@
         "stock_account",
         "stock_valued_picking_report",
         "delivery",
+        "warning",
     ],
     "data": [
         "views/astikar_custom_view.xml",

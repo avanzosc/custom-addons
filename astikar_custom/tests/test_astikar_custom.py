@@ -188,3 +188,11 @@ class TestAstikarCustom(common.TransactionCase):
         self.assertEqual(
             self.product.standard_price, res['value'].get('standard_price', 0),
             'Different standard price')
+
+    def test_create_invoice(self):
+        self.mrp_repair1.partner_id.invoice_warn = 'warning'
+        self.mrp_repair1.partner_id.invoice_warn_msg = 'Warning invoice'
+        self.mrp_repair1.invoice_method = 'b4repair'
+        self.mrp_repair1.signal_workflow('repair_confirm')
+        self.mrp_repair1.action_invoice_create()
+        self.assertFalse(self.mrp_repair1.invoice_id.not_warning)
