@@ -33,6 +33,7 @@
         "views/event_view.xml",
         "views/account_analytic_view.xml",
         "views/sale_order_view.xml",
+        "views/account_view.xml",
         "report/galaxia_custom_view.xml",
         "report/galaxia_layout_view.xml",
         "report/galaxia_reports.xml",

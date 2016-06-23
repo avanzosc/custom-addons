@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="balance_move_line_tree" model="ir.ui.view">
+            <field name="name">balance.move.line.tree</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_move_line_tree" />
+            <field name="arch" type="xml">
+                <field name="company_id" position="after">
+                    <field name="balance"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
