@@ -9,23 +9,25 @@ class AccountAnalyticAccount(models.Model):
     _name = "account.analytic.account"
     _inherit = "account.analytic.account"
 
-    @api.one
+    @api.multi
     @api.depends('line_ids', 'line_ids.facturable_qty')
-    def _calc_consumed_hours(self):
-        lines = self.line_ids.filtered(lambda x: x.journal_id.type ==
-                                       'general')
-        self.consumed_hours = sum([a.facturable_qty for a in lines])
+    def _compute_consumed_hours(self):
+        for record in self:
+            lines = record.line_ids.filtered(lambda x: x.journal_id.type ==
+                                             'general')
+            record.consumed_hours = sum([a.facturable_qty for a in lines])
 
-    @api.one
+    @api.multi
     @api.depends('quantity_max', 'consumed_hours')
-    def _remaining_hours_calc(self):
-        self.remaining_hours = (self.quantity_max and
-                                (self.quantity_max - self.consumed_hours) or
-                                0.0)
+    def _compute_remaining_hours_calc(self):
+        for record in self:
+            record.remaining_hours = (
+                record.quantity_max and (record.quantity_max -
+                                         record.consumed_hours) or 0.0)
 
-    consumed_hours = fields.Float(compute='_calc_consumed_hours',
+    consumed_hours = fields.Float(compute='_compute_consumed_hours',
                                   string="Consumed Hours", store=True)
-    remaining_hours = fields.Float(compute='_remaining_hours_calc',
+    remaining_hours = fields.Float(compute='_compute_remaining_hours_calc',
                                    string='Remaining Time',
                                    help='Computed using the formula: Maximum '
                                    'Time - Total Worked Time', store=True)
