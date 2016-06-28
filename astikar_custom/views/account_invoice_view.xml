@@ -66,5 +66,17 @@
                 </field>
             </field>
         </record>
+
+        <!--Account move line-->
+        <record id="show_account_move_view_search" model="ir.ui.view">
+            <field name="name">show.account.move.search</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account_due_list.view_payments_filter"/>
+            <field name="arch" type="xml">
+                 <filter string="Salesperson" position="after">
+                    <filter name="group_account" string="Account" icon="terp-sale" domain="[]" context="{'group_by':'account_id'}"/>
+                </filter>
+            </field>
+        </record>
     </data>
 </openerp>
