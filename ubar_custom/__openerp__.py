@@ -31,6 +31,7 @@
         "sale_order_line_view",
         "mrp",
         "account_analytic_analysis",
+        "account_due_list",
     ],
     "category": "Custom Modules",
     "data": [
