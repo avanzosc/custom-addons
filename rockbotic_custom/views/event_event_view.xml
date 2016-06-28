@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_event_form_inh_rockbotic" model="ir.ui.view" >
+            <field name="name">view.event.form.inh.rockbotic</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_form"/>
+            <field name="arch" type="xml">
+                <page string="Description" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </page>
+                <page string="Event Details" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </page>
+            </field>
+        </record>
+        <record id="view_event_form_inh2_rockbotic" model="ir.ui.view" >
+            <field name="name">view.event.form.inh2.rockbotic</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="website_event_track.view_event_form"/>
+            <field name="arch" type="xml">
+                <page string="Sponsorships" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </page>
+            </field>
+        </record>
+        <record id="view_event_form_inh3_rockbotic" model="ir.ui.view" >
+            <field name="name">view.event.form.inh3.rockbotic</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event_sale.view_event_form"/>
+            <field name="arch" type="xml">
+                <page string="Badge" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </page>
+                <xpath expr="//tree[@string='Payments']//field[@name='product_id']" position="after">
+                    <field name="ampa_partner" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
