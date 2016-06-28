@@ -68,7 +68,10 @@ class TestTumakerCustom(common.TransactionCase):
             'partner_shipping_id': self.ref('base.res_partner_1'),
             'partner_invoice_id': self.ref('base.res_partner_1'),
             'project_id': self.project.id,
-            'pricelist_id': self.env.ref('product.list0').id}
+            'pricelist_id': self.env.ref('product.list0').id,
+            'project_by_task': 'no',
+            'product_category': 1,
+            'payer': 'student'}
         sale_line_vals = {
             'product_id': self.stockable_product.id,
             'name': self.stockable_product.name,

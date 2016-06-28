@@ -47,7 +47,10 @@ class TestCCGCustom(common.TransactionCase):
         self.project = self.project_model.create(project_vals)
         self.sale_order = self.env['sale.order'].create(
             {'partner_id': self.ref('base.res_partner_2'),
-             'project_id': self.account.id})
+             'project_id': self.account.id,
+             'project_by_task': 'no',
+             'product_category': 1,
+             'payer': 'student'})
         vals = {
             'order_id': self.sale_order.id,
             'product_id': self.product.id,

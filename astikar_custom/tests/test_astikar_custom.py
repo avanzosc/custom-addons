@@ -175,7 +175,10 @@ class TestAstikarCustom(common.TransactionCase):
             'name': self.product.name,
             'product_uos_qty': 7,
             'product_uom': self.product.uom_id.id,
-            'price_unit': self.product.list_price}
+            'price_unit': self.product.list_price,
+            'project_by_task': 'no',
+            'product_category': 1,
+            'payer': 'student'}
         sale_vals['order_line'] = [(0, 0, sale_line_vals)]
         self.sale_order = self.env['sale.order'].create(sale_vals)
         line = self.sale_order.order_line[0]

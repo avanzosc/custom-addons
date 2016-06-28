@@ -1,19 +1,23 @@
 # -*- coding: utf-8 -*-
-# (c) 2016 Alfredo de la Fuente - AvanzOSC
+# (c) 2025 Alfredo de la Fuente - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 import openerp.tests.common as common
 
 
-class TestGalaxiaCustom(common.TransactionCase):
+class TestRockboticCustom(common.TransactionCase):
 
     def setUp(self):
-        super(TestGalaxiaCustom, self).setUp()
+        super(TestRockboticCustom, self).setUp()
+        self.sale_model = self.env['sale.order']
         self.account_model = self.env['account.analytic.account']
         self.project_model = self.env['project.project']
-        self.sale_model = self.env['sale.order']
+        self.event_model = self.env['event.event']
+        self.procurement_model = self.env['procurement.order']
+        self.wiz_add_model = self.env['wiz.event.append.assistant']
+        self.registration_model = self.env['event.registration']
         account_vals = {'name': 'account procurement service project',
-                        'date_start': '2016-01-15',
-                        'date': '2016-02-28'}
+                        'date_start': '2025-01-15',
+                        'date': '2025-02-28'}
         self.account = self.account_model.create(account_vals)
         project_vals = {'name': 'project 1',
                         'analytic_account_id': self.account.id}
@@ -32,10 +36,12 @@ class TestGalaxiaCustom(common.TransactionCase):
             'partner_invoice_id': self.ref('base.res_partner_1'),
             'pricelist_id': self.env.ref('product.list0').id,
             'project_id': self.account.id,
-            'project_by_task': 'no'}
+            'project_by_task': 'yes',
+            'product_category': 1,
+            'payer': 'student'}
         sale_line_vals = {
-            'product_tmpl_id': service_product.id,
-            'product_type': False,
+            'partner_id': self.ref('base.res_partner_1'),
+            'product_id': service_product.id,
             'name': service_product.name,
             'product_uom_qty': 7,
             'product_uos_qty': 7,
@@ -48,14 +54,27 @@ class TestGalaxiaCustom(common.TransactionCase):
             'week5': True,
             'tuesday': True,
             'thursday': True,
-            'project_by_task': 'no',
-            'product_category': 1,
-            'payer': 'student'}
+            'start_date': '2025-01-15',
+            'start_hour': 8.00,
+            'end_date': '2025-02-28',
+            'end_hour': 12.00}
         sale_vals['order_line'] = [(0, 0, sale_line_vals)]
         self.sale_order = self.sale_model.create(sale_vals)
 
-    def test_galaxia_custom(self):
-        self.sale_order.order_line[0]._compute_product_type()
-        self.assertNotEqual(
-            len(self.sale_order.order_line), 0,
-            'Sale order withour lines')
+    def test_rockbotic_custom(self):
+        self.sale_order.action_button_confirm()
+        cond = [('sale_order', '=', self.sale_order.id)]
+        event = self.event_model.search(cond)
+        self.assertNotEqual(len(event), 0, 'Event no generated')
+        wiz_vals = {'min_event': event.id,
+                    'max_event': event.id,
+                    'min_from_date': '2025-01-20 00:00:00',
+                    'max_to_date': '2025-01-31 00:00:00',
+                    'from_date': '2025-01-20',
+                    'to_date': '2025-01-31',
+                    'partner': self.env.ref('base.res_partner_26').id}
+        wiz = self.wiz_add_model.create(wiz_vals)
+        wiz.with_context({'active_ids': [event.id]}).action_append()
+        registration = event.registration_ids[0]
+        self.wiz_add_model._create_account_for_not_employee_from_wizard(
+            event, registration)
