@@ -17,6 +17,7 @@ class TestTumakerCustom(common.TransactionCase):
         self.invoice_model = self.env['account.invoice']
         self.location_obj = self.env['stock.location']
         self.sale_model = self.env['sale.order']
+        self.product_model = self.env['product.product']
         self.partner_id = self.ref('base.res_partner_5')
         self.pricelist_id = self.ref('purchase.list0')
         self.picking = self.env.ref('stock.incomming_shipment')
@@ -83,6 +84,7 @@ class TestTumakerCustom(common.TransactionCase):
         sale_vals['order_line'] = [(0, 0, sale_line_vals),
                                    (0, 0, sale_line_vals2)]
         self.sale_order = self.sale_model.create(sale_vals)
+        self.black_product = self.env.ref('product.product_product_4b')
 
     def test_analytic_computed_vals(self):
         self.assertEqual(
@@ -174,3 +176,33 @@ class TestTumakerCustom(common.TransactionCase):
         wiz.allow_zero_cost = True
         wiz.do_detailed_transfer()
         self.assertEqual(self.picking.state, 'done')
+
+    def test_product_search_name(self):
+        res = self.product_model.name_search('Black')
+        searched_products = [x[0] for x in res]
+        self.assertTrue((self.black_product.id in searched_products),
+                        "No black product searched")
+
+    def test_product_search_name_negative(self):
+        res = self.product_model.name_search('Black', operator="!=")
+        searched_products = [x[0] for x in res]
+        self.assertTrue((self.black_product.id not in searched_products),
+                        "Black product searched")
+
+    def test_product_search_non_exists_product(self):
+        res = self.product_model.name_search('NotExists')
+        self.assertTrue((not res), 'Product searched')
+
+    def test_product_search_no_name(self):
+        res = self.product_model.name_search(False)
+        searched_products = [x[0] for x in res]
+        res2 = self.product_model.search([])
+        self.assertEqual(searched_products, res2.ids,
+                         'Not all Product searched')
+
+    def test_product_search_pattern(self):
+        self.black_product.default_code = 'COD25'
+        res = self.product_model.name_search('[COD25]')
+        searched_products = [x[0] for x in res]
+        self.assertTrue((self.black_product.id in searched_products),
+                        "Black product searched")
