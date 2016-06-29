@@ -11,12 +11,16 @@
     "contributors": [
         "Ana Juaristi <anajuaristi@avanzosc.es>",
         "Alfredo de la Fuente <alfredodelafuente@avanzosc.es>",
+        "Esther Martín <esthermartin@avanzosc.es>",
     ],
     "depends": [
-        "sale_order_create_event"
+        "sale_order_create_event",
+        "report",
     ],
     "data": [
         "views/sale_order_view.xml",
+        "report/rockbotic_custom_view.xml",
+        "report/rockbotic_reports.xml",
     ],
     "installable": True,
 }
