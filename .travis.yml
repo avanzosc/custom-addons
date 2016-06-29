@@ -19,14 +19,16 @@ env:
   - VERSION="8.0" TESTS="0" LINT_CHECK="0"
   matrix:
   - LINT_CHECK="1"
-  - TESTS="1" ODOO_REPO="odoo/odoo" EXCLUDE="ubar_custom,astikar_custom,galaxia_custom"
-  - TESTS="1" ODOO_REPO="OCA/OCB" EXCLUDE="ubar_custom,astikar_custom,galaxia_custom"
+  - TESTS="1" ODOO_REPO="odoo/odoo" EXCLUDE="ubar_custom,astikar_custom,galaxia_custom,rockbotic_custom"
+  - TESTS="1" ODOO_REPO="OCA/OCB" EXCLUDE="ubar_custom,astikar_custom,galaxia_custom,rockbotic_custom"
   - TESTS="1" ODOO_REPO="odoo/odoo" INCLUDE="ubar_custom"
   - TESTS="1" ODOO_REPO="OCA/OCB" INCLUDE="ubar_custom"
   - TESTS="1" ODOO_REPO="odoo/odoo" INCLUDE="astikar_custom"
   - TESTS="1" ODOO_REPO="OCA/OCB" INCLUDE="astikar_custom"
   - TESTS="1" ODOO_REPO="odoo/odoo" INCLUDE="galaxia_custom"
   - TESTS="1" ODOO_REPO="OCA/OCB" INCLUDE="galaxia_custom"
+  - TESTS="1" ODOO_REPO="odoo/odoo" INCLUDE="rockbotic_custom"
+  - TESTS="1" ODOO_REPO="OCA/OCB" INCLUDE="rockbotic_custom"
 
 virtualenv:
   system_site_packages: true

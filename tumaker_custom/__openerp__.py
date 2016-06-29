@@ -17,7 +17,8 @@
                 "account_payment_partner",
                 "delivery",
                 "stock_valued_picking_report",
-                "warning"
+                "warning",
+                "product_pricelist_rules",
                 ],
     "author": "Avanzosc, S.L.",
     "contributors": [
