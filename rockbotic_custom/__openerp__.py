@@ -13,10 +13,14 @@
         "Alfredo de la Fuente <alfredodelafuente@avanzosc.es>",
     ],
     "depends": [
-        "sale_order_create_event"
+        "event_sale",
+        "event_registration_analytic",
+        "website_event_track"
     ],
     "data": [
+        "views/event_event_view.xml",
         "views/sale_order_view.xml",
+        "views/res_partner_view.xml",
     ],
     "installable": True,
 }
