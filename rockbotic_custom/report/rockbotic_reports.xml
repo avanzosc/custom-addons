@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="rockbotic_sale_report" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//t[@t-call='report.external_layout']" position="replace">
+                <t t-call="report.html_container">
+                    <t t-if="o and 'company_id' in o">
+                        <t t-set="company" t-value="o.company_id"/>
+                    </t>
+                    <t t-if="not o or not 'company_id' in o">
+                        <t t-set="company" t-value="res_company"/>
+                    </t>
+                    <div class="header">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <img src="/rockbotic_custom/static/src/img/rockbotic.png"/>
+                            </div>
+                            <div class="col-xs-7" style="background-color:#00B0F0;border-radius: 50px;height:50px">
+                                <span style="color:white;margin-left:15px;">FICHA DE INSCRIPCIÓN</span>
+                                <div style="background-color:#FFFFFF;border-radius: 10px;">
+                                    <span t-field="o.partner_id" style="margin-left:15px;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page">
+                        <div class="row">
+                            <table class="table-condensed red">
+                                <t t-set="i" t-value="1"/>
+                                <tr>
+                                    <th>Nº</th>
+                                    <th>I</th>
+                                    <th>CURSO</th>
+                                    <th>DÍA</th>
+                                    <th>HORARIO</th>
+                                </tr>
+                                <tbody>
+                                    <tr t-foreach="o.order_line" t-as="l">
+                                        <td>
+                                            <span t-esc="i"/>
+                                        </td>
+                                        <t t-set="i" t-value="i+1"/>
+                                        <td/>
+                                        <td>
+                                            <span t-esc="l.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-if="l.monday">Lunes</span>
+                                            <span t-if="l.tuesday">Martes</span>
+                                            <span t-if="l.wednesday">Miércoles</span>
+                                            <span t-if="l.thursday">Jueves</span>
+                                            <span t-if="l.friday">Viernes</span>
+                                            <span t-if="l.saturday">Sábado</span>
+                                            <span t-if="l.sunday">Domingo</span>
+                                        </td>
+                                        <td class="text-right">
+                                            <t t-esc="'%02d:%02d' % (int(str(l.start_hour).split('.')[0]), int(float(str('%.2f'
+                                                % l.start_hour).split('.')[1])/100*60))"
+                                                />
+                                            a
+                                            <t t-esc="'%02d:%02d' % (int(str(l.end_hour).split('.')[0]), int(float(str('%.2f'
+                                                % l.end_hour).split('.')[1])/100*60))"
+                                                />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <img src="/rockbotic_custom/static/src/img/robot1.png" style="max-width:150px;margin-left:30px"/>
+                        </div>
+                        <table class="table-condensed" style="width: 30%">
+                            <tr>
+                                <th style="background-color: #92D050;">PRECIO</th>
+                                <th style="background-color: #92D050;">SOCIOS</th>
+                                <td style="border: 1px solid #92D050;">
+                                    <strong>
+                                        <span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                    </strong>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <table class="table-condensed blue" style="" >
+                            <tr>
+                                <th colspan="4" class="text-center">DATOS DEL ALUMNO</th>
+                            </tr>
+                            <tr>
+                                <th style="width:10%;">NOMBRE</th>
+                                <td>
+                                </td>
+                                <th>APELLIDOS</th>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <th style="width:10%;">EDAD</th>
+                                <td/>
+                                <th>CURSO</th>
+                                <td/>
+                            </tr>
+                        </table>
+                        <br/>
+                        <table class="table-condensed" style="page-break-inside: avoid;width:100%;">
+                            <tr>
+                                <th class="text-center" style="background-color:black;">INSTRUCCIONES DE INSCRIPCIÓN</th>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid black;">
+                                    Fecha límite de inscripción: 23 de septiembre. Tras esta fecha no se tramitarán nuevas
+                                    solicitudes hasta 15 días después de empezar las
+                                    clases. La inscripción requiere la entrega del
+                                    presente documento debidamente cumplimentado en
+                                    el AMPA del centro. Ratios de alumnxs INFANTIL:
+                                    mínimo 8 - máximo 10. PRIMARIA: mínimo 9 - máximo
+                                    15.
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <table class="table-condensed grey1" style="width: 100%;margin:0px;">
+                            <tr>
+                                <th class="text-center" colspan="5">DATOS DEL PADRE, MADRE O TUTOR - Referencia de la orden de domiciliación:</th>
+                            </tr>
+                            <tr>
+                                <th style="width:10%;">NOMBRE</th>
+                                <td style="width:50%;"/>
+                                <th style="width:10%;">APELLIDOS</th>
+                                <td style="width:50%;"/>
+                            </tr>
+                            <tr>
+                                <th style="width:10%;">DIRECCIÓN</th>
+                                <td colspan="3"/>
+                            </tr>
+                            <tr>
+                                <th style="width:10%;">C.P.</th>
+                                <td style="width:50%;"/>
+                                <th style="width:10%;">POBLACIÓN</th>
+                                <td style="width:50%;"/>
+                            </tr>
+                            <tr>
+                                <th style="width:10%;">PROVINCIA</th>
+                                <td style="width:50%;"/>
+                                <th style="width:10%;">DNI</th>
+                                <td style="width:50%;"/>
+                            </tr>
+                            <tr>
+                                <th style="width:10%;">EMAIL</th>
+                                <td style="width:50%;"/>
+                                <th style="width:10%;">TELÉFONO</th>
+                                <td style="width:50%;"/>
+                            </tr>
+                        </table>
+                        <br/>
+                        <div class="row">
+                            <table class="table-condensed grey1">
+                                <tr>
+                                    <th class="text-center">FIRMA</th>
+                                </tr>
+                                <tr>
+                                    <td style="height:50px;"/>
+                                </tr>
+                            </table>
+                            <table class="table-condensed grey" style="width: 80%;">
+                                <tr>
+                                    <th style="width:20%;">Nº CUENTA IBAN</th>
+                                    <td style="width:10%;"/>
+                                    <td style="width:10%;"/>
+                                    <td style="width:10%;"/>
+                                    <td style="width:10%;"/>
+                                    <td style="width:10%;"/>
+                                    <td style="width:10%;"/>
+                                </tr>
+                            </table>
+                            <div class="col-xs-2 pull-right">
+                                <table class="table-condensed">
+                                    <tr>
+                                        <th style="background-color: #7F7F7F;">SOCIO</th>
+                                        <td style="width:100px;border: 1px solid #7F7F7F"/>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="col-xs-6 pull-right">
+                                <table class="table-condensed" style="width: 85%;color:#7F7F7F;">
+                                    <tr>
+                                        <td class="text-left" style="width:15%;">EN</td>
+                                        <td style="width:10%;"/>
+                                        <td style="width:10%;">A</td>
+                                        <td style="width:10%;"/>
+                                        <td style="width:10%;">201</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <br/>
+                        <table class="table-condensed grey">
+                            <tr>
+                                <th class="text-center" style="width:40%;">DATOS DEL ACREEDOR</th>
+                                <th class="text-center">Orden de Domicialiación de Débito Directo SEPA</th>
+                            </tr>
+                            <tr style="font-size:9px; color:#7F7F7F;">
+                                <td>
+                                    <p>
+                                        Nombre del Acreedor: LUNA TIC DESIGN S.L. / CIF: B86715067
+                                        <br/>
+                                        Dirección: Francisco Cabo, 16 28015 (Madrid) – ESPAÑA
+                                    </p>
+                                    <p>
+                                        Nota: Sus derechos en relación con la anterior orden de domiciliación se explican
+                                        en el extracto que puede solicitar a su banco.
+                                        ©ROCKBOTIC es una marca registrada propiedad
+                                        de LUNA TIC DESIGN S.L.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Mediante la firma de este Formulario de Orden de domiciliación, usted autoriza a :
+                                        <ul style="list-style-type: circle;margin-left:30px;">
+                                            <li>
+                                                LUNA TIC DESIGN S.L. a enviar órdenes a su entidad financiera para adeudar su cuenta.
+                                            </li>
+                                            <li>
+                                                Su banco para adeudar los importes correspondientes en su cuenta de acuerdo con las
+                                                órdenes de Luna TIC DESIGN S.L.
+                                            </li>
+                                        </ul>
+                                        Como parte de sus derechos, tiene derecho a ser reembolsado por su banco en virtud
+                                        de los términos y condiciones del acuerdo
+                                        suscrito con su banco. Dicho reeembolso deberá
+                                        reclamarse en un plazo de 8 semanas a partir
+                                        de la fecha de cargo en su cuenta
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <div class="row">
+                            <img src="/rockbotic_custom/static/src/img/robot2.png" style="max-width: 100px;float:left;"/>
+                            <table class="table-condensed" style="width: 85%;page-break-inside: avoid;">
+                                <tr>
+                                    <th style="background-color: #002060;" colspan="6">AUTORIZACIONES SOBRE IMÁGENES</th>
+                                </tr>
+                                <tr style="font-size: 9px;">
+                                    <td style="color:#002060;border-radius:10px;border: 1px solid #002060" colspan="6">
+                                        Autorizo a LUNA TIC DESIGN S.L. a publicar imágenes y vídeos del alumno en el desarrollo
+                                        de esta actividad extraescolar con carácter
+                                        informativo o divulgativo de la s dinámidas
+                                        realizas en sus medios de promoción, tales
+                                        como:
+                                    </td>
+                                </tr>
+                                <tr style="font-size: 9px;color:#002060;border:1px solid #002060; border-top-style: hidden;">
+                                    <td colspan="2">REVISTAS</td>
+                                    <td colspan="2" class="text-center">
+                                        SITIO WEB WWW.ROCKBOTIC.COM
+                                        <br/>
+                                        Y EN EL BLOG CONTENIDO EN DICHO SITIO WEB
+                                    </td>
+                                    <td colspan="2" class="text-center">
+                                        PERFILES CORPORATIVOS OFICIALES "ROCKBOTIC" EN LAS REDES SOCIALES
+                                        <br/>
+                                        Facebook, Twitter, Youtube, Instagram y Google Plus
+                                    </td>
+                                </tr>
+                                <tr style="font-size: 9px;color:#002060;border:1px solid #002060; border-top-style: hidden;">
+                                    <td>SI</td>
+                                    <td>NO</td>
+                                    <td class="text-right">SI</td>
+                                    <td>NO</td>
+                                    <td class="text-right">SI</td>
+                                    <td>NO</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <table class="table-condensed" style="width: 80%;float: left;page-break-inside: avoid;
+                                font-size: 8px;">
+                                <tr>
+                                    <th style="background-color: #7030A0;">LEY DE PROTECCIÓN DE DATOSDE CARÁCTER PERSONAL</th>
+                                </tr>
+                                <tr>
+                                    <td style="color:#7030A0; border: 1px solid #7030A0">
+                                        <p>
+                                            De acuerdo con lo que establece la Ley Orgánica 15/1999, de 13 de diciembre, de Protección
+                                            de Datos de Carácter Personal, le informamos
+                                            que tanto sus datos como los de su hijo/a
+                                            recogidos a partir del presente formulario
+                                            serán incorporados a un fichero denominado
+                                            “Alumnos”, bajo la responsabilidad de
+                                            LUNA TIC DESIGN SL, con la finalidad de
+                                            llevar a cabo la matriculación, organización,
+                                            gestión y facturación de la actividad
+                                            formativa contratada. Puede ejercer sus
+                                            derechos, y los de su hijo/a, de acceso,
+                                            rectificación, cancelación, y oposición
+                                            mediante un escrito a nuestra dirección:
+                                            C/Francisco Cabo, 16, LOCAL 28029, Madrid,
+                                            o a la dirección de correo-e info@rockbotic.com,
+                                            identificando claramente el derecho que
+                                            ejercita e identificándose a través del
+                                            DNI o libro de familia. Mientras no nos
+                                            comunique lo contrario, entenderemos que
+                                            sus datos y los de su hijo/a no han sido
+                                            modificados y que se compromete a notificarnos
+                                            cualquier variación y que tenemos el consentimiento
+                                            para utilizarlos con la finalidad de impartir
+                                            la formación en la que usted ha matriculado
+                                            a su hijo/a y cumplir con las obligaciones
+                                            propias de un centro de formación, entre
+                                            las cuales se encuentran la gestión de
+                                            la formación de su hijo/a y su evaluación,
+                                            así como la remisión de aquellas circulares
+                                            informativas a los padres. Al rellenar
+                                            el presente formulario usted autoriza
+                                            expresamente el tratamiento de sus datos
+                                            de carácter personal y los de su hijo/a,
+                                            para la finalidad espeicada, por parte
+                                            de LUNA TIC DESIGN SL
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <img src="/rockbotic_custom/static/src/img/robot3.png" style="max-width: 100px;margin-left:30px"/>
+                        </div>
+                        <br/>
+                        <div align="center">
+                            <table class="table-condensed" style="page-break-inside:avoid; width: 75%; ">
+                                <tr>
+                                    <th style="background-color: #2E75B5;">PROCEDIMIENTO PARA ALTAS Y BAJAS DURANE EL CURSO ESCOLAR</th>
+                                </tr>
+                                <tr style="color:#2E75B5;border: 1px solid #2E75B5;">
+                                    <td>
+                                        <p>
+                                            Para cualquier modificación en las ALTAS/BAJAS de los alumnos a lo largo del curso,
+                                            el procedimiento será el siguiente:
+                                        </p>
+                                        <p>
+                                            <strong>BAJAS</strong>
+                                        </p>
+                                        <p>
+                                            Comunicar a través de mail a inscripciones@rockbotic.com entre el día 5 y 25 de cada
+                                            mes la baja que producirá efecto en el
+                                            mes siguiente. En el mail ha de constar:
+                                            Nombre y dos apellidos del alumno, curso
+                                            y nombre del colegio en el que está recibiendo
+                                            robótica. Desde el mismo mail contestaremos
+                                            dando acuse de recibo y confirmando la
+                                            recepción.
+                                        </p>
+                                        <p>
+                                            <strong>ALTAS</strong>
+                                        </p>
+                                        <p>
+                                            Completar este mismo formulario, imprimirlo, firmarlo y entregarlo en la oficina de
+                                            la AMPA. Confirmaremos la incorporación
+                                            poniéndonos en contacto con los padres
+                                            o tutores a través del mail facilitado.
+                                            También se puede rellenar la inscripción,
+                                            firmar, escanear y enviar por mail a:
+                                            inscripciones@rockboctic.com
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</openerp>

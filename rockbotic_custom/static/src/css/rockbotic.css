@@ -1,0 +1,59 @@
+th{
+  border-radius: 10px;
+  color: white;
+}
+
+.red {
+  width:75%;
+  float:left;
+}
+
+.red th{
+  background-color: #FF0000;
+}
+
+.red td{
+  border: 1px solid #FF0000;
+}
+
+.blue {
+  page-break-inside: avoid;
+  width: 100%;
+}
+
+.blue th{
+  background-color: #00B0F0;
+}
+
+.blue td{
+  width:50%;
+  border: 1px solid #00B0F0;
+}
+
+.grey {
+  page-break-inside: avoid; width: 100%;
+}
+
+.grey th{
+  background-color: #7F7F7F;
+}
+
+.grey td {
+  border: 1px solid #7F7F7F
+}
+
+.grey1 {
+  width:15%;
+  float:left;
+  margin-right:7px;
+  margin-left:15px;
+  page-break-inside:avoid;
+}
+
+.grey1 th{
+  background-color: #7F7F7F;
+}
+
+.grey1 td{
+  border: 1px solid #7F7F7F;
+}

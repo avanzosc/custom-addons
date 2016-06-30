@@ -7,6 +7,7 @@ Rockbotic custom
 ================
 
 * Personalized sale order line form
+* Custom reports
 
 
 Credits
@@ -17,3 +18,4 @@ Contributors
 ------------
 * Ana Juaristi <anajuaristi@avanzosc.es>
 * Alfredo de la Fuente <alfredodelafuente@avanzosc.es>
+* Esther Martín <esthermartin@avanzosc.es>
