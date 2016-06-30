@@ -15,44 +15,36 @@
                             <div class="col-xs-5">
                                 <img src="/rockbotic_custom/static/src/img/rockbotic.png"/>
                             </div>
-                            <div class="col-xs-7">
-                                <table style="background-color:#00B0F0;width:100%;">
-                                    <tr>
-                                        <th style="color:white;">FICHA DE INSCRIPCIÓN</th>
-                                    </tr>
-                                    <tr>
-                                        <td style="background-color:white">
-                                            <span t-field="o.partner_id"/>
-                                        </td>
-                                    </tr>
-                                </table>
+                            <div class="col-xs-7" style="background-color:#00B0F0;border-radius: 50px;height:50px">
+                                <span style="color:white;margin-left:15px;">FICHA DE INSCRIPCIÓN</span>
+                                <div style="background-color:#FFFFFF;border-radius: 10px;">
+                                    <span t-field="o.partner_id" style="margin-left:15px;"/>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="page">
                         <div class="row">
-                            <table class="table-condensed" style="width:75%;float:left;">
+                            <table class="table-condensed red">
                                 <t t-set="i" t-value="1"/>
-                                <thead style="background-color: #FF0000;color:white;">
-                                    <tr>
-                                        <th>Nº</th>
-                                        <th>I</th>
-                                        <th>CURSO</th>
-                                        <th>DÍA</th>
-                                        <th>HORARIO</th>
-                                    </tr>
-                                </thead>
+                                <tr>
+                                    <th>Nº</th>
+                                    <th>I</th>
+                                    <th>CURSO</th>
+                                    <th>DÍA</th>
+                                    <th>HORARIO</th>
+                                </tr>
                                 <tbody>
                                     <tr t-foreach="o.order_line" t-as="l">
-                                        <td style="border: 1px solid #FF0000">
+                                        <td>
                                             <span t-esc="i"/>
                                         </td>
                                         <t t-set="i" t-value="i+1"/>
-                                        <td style="border: 1px solid #FF0000"/>
-                                        <td style="border: 1px solid #FF0000">
+                                        <td/>
+                                        <td>
                                             <span t-esc="l.name"/>
                                         </td>
-                                        <td class="text-right" style="border: 1px solid #FF0000">
+                                        <td>
                                             <span t-if="l.monday">Lunes</span>
                                             <span t-if="l.tuesday">Martes</span>
                                             <span t-if="l.wednesday">Miércoles</span>
@@ -61,7 +53,7 @@
                                             <span t-if="l.saturday">Sábado</span>
                                             <span t-if="l.sunday">Domingo</span>
                                         </td>
-                                        <td class="text-right" style="border: 1px solid #FF0000">
+                                        <td class="text-right">
                                             <t t-esc="'%02d:%02d' % (int(str(l.start_hour).split('.')[0]), int(float(str('%.2f'
                                                 % l.start_hour).split('.')[1])/100*60))"
                                                 />
@@ -77,39 +69,38 @@
                         </div>
                         <table class="table-condensed" style="width: 30%">
                             <tr>
-                                <th style="background-color: #92D050;color:white;">PRECIO</th>
-                                <th style="background-color: #92D050;color:white;">SOCIOS</th>
+                                <th style="background-color: #92D050;">PRECIO</th>
+                                <th style="background-color: #92D050;">SOCIOS</th>
                                 <td style="border: 1px solid #92D050;">
                                     <strong>
-                                        <span t-field="o.amount_total"/>
+                                        <span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
                                     </strong>
                                 </td>
                             </tr>
                         </table>
                         <br/>
-                        <table class="table-condensed" style="page-break-inside: avoid;width: 100%;border-collapse:
-                            collapse;color: white;" >
+                        <table class="table-condensed blue" style="" >
                             <tr>
-                                <th colspan="4" class="text-center" style="background-color: #00B0F0;color:white;">DATOS DEL ALUMNO</th>
+                                <th colspan="4" class="text-center">DATOS DEL ALUMNO</th>
                             </tr>
                             <tr>
-                                <td style="width:10%;background-color: #00B0F0;">NOMBRE</td>
-                                <td style="width:50%;border: 1px solid #00B0F0">
+                                <th style="width:10%;">NOMBRE</th>
+                                <td>
                                 </td>
-                                <td style="background-color: #00B0F0;">APELLIDOS</td>
-                                <td style="width:50%;border: 1px solid #00B0F0"/>
+                                <th>APELLIDOS</th>
+                                <td/>
                             </tr>
                             <tr>
-                                <td style="width:10%;background-color: #00B0F0;">EDAD</td>
-                                <td style="width:50%;border: 1px solid #00B0F0"/>
-                                <td style="background-color: #00B0F0;">CURSO</td>
-                                <td style="width:50%;border: 1px solid #00B0F0"/>
+                                <th style="width:10%;">EDAD</th>
+                                <td/>
+                                <th>CURSO</th>
+                                <td/>
                             </tr>
                         </table>
                         <br/>
-                        <table class="table-condensed redondo" style="page-break-inside: avoid;width:100%;">
+                        <table class="table-condensed" style="page-break-inside: avoid;width:100%;">
                             <tr>
-                                <th class="text-center" style="background-color:black;color: white;">INSTRUCCIONES DE INSCRIPCIÓN</th>
+                                <th class="text-center" style="background-color:black;">INSTRUCCIONES DE INSCRIPCIÓN</th>
                             </tr>
                             <tr>
                                 <td style="border: 1px solid black;">
@@ -124,70 +115,70 @@
                             </tr>
                         </table>
                         <br/>
-                        <table class="table-condensed" style="page-break-inside:avoid; width: 100%;color:
-                            white;">
+                        <table class="table-condensed grey1" style="width: 100%;margin:0px;">
                             <tr>
-                                <th class="text-center" style="background-color: #7F7F7F;color:white;" colspan="5">DATOS DEL PADRE, MADRE O TUTOR - Referencia de la orden de domiciliación:</th>
+                                <th class="text-center" colspan="5">DATOS DEL PADRE, MADRE O TUTOR - Referencia de la orden de domiciliación:</th>
                             </tr>
                             <tr>
-                                <td style="width:10%;background-color: #7F7F7F;">NOMBRE</td>
-                                <td style="width:50%;border: 1px solid #7F7F7F"/>
-                                <td style="width:10%;background-color: #7F7F7F;">APELLIDOS</td>
-                                <td style="width:50%;border: 1px solid #7F7F7F"/>
+                                <th style="width:10%;">NOMBRE</th>
+                                <td style="width:50%;"/>
+                                <th style="width:10%;">APELLIDOS</th>
+                                <td style="width:50%;"/>
                             </tr>
                             <tr>
-                                <td style="width:10%;background-color: #7F7F7F;">DIRECCIÓN</td>
-                                <td style="border: 1px solid #7F7F7F" colspan="3"/>
+                                <th style="width:10%;">DIRECCIÓN</th>
+                                <td colspan="3"/>
                             </tr>
                             <tr>
-                                <td style="width:10%;background-color: #7F7F7F;">C.P.</td>
-                                <td style="width:50%;border: 1px solid #7F7F7F"/>
-                                <td style="width:10%;background-color: #7F7F7F;">POBLACIÓN</td>
-                                <td style="width:50%;border: 1px solid #7F7F7F"/>
+                                <th style="width:10%;">C.P.</th>
+                                <td style="width:50%;"/>
+                                <th style="width:10%;">POBLACIÓN</th>
+                                <td style="width:50%;"/>
                             </tr>
                             <tr>
-                                <td style="width:10%;background-color: #7F7F7F;">PROVINCIA</td>
-                                <td style="width:50%;border: 1px solid #7F7F7F"/>
-                                <td style="width:10%;background-color: #7F7F7F;">DNI</td>
-                                <td style="width:50%;border: 1px solid #7F7F7F"/>
+                                <th style="width:10%;">PROVINCIA</th>
+                                <td style="width:50%;"/>
+                                <th style="width:10%;">DNI</th>
+                                <td style="width:50%;"/>
                             </tr>
                             <tr>
-                                <td style="width:10%;background-color: #7F7F7F;">EMAIL</td>
-                                <td style="width:50%;border: 1px solid #7F7F7F"/>
-                                <td style="width:10%;background-color: #7F7F7F;">TELÉFONO</td>
-                                <td style="width:50%;border: 1px solid #7F7F7F"/>
+                                <th style="width:10%;">EMAIL</th>
+                                <td style="width:50%;"/>
+                                <th style="width:10%;">TELÉFONO</th>
+                                <td style="width:50%;"/>
                             </tr>
                         </table>
                         <br/>
                         <div class="row">
-                            <table class="table-condensed" style="width:15%;float:left;margin-right:7px;margin-left:15px;">
+                            <table class="table-condensed grey1">
                                 <tr>
-                                    <th class="text-center" style="background-color: #7F7F7F;color:white;">FIRMA</th>
+                                    <th class="text-center">FIRMA</th>
                                 </tr>
                                 <tr>
-                                    <td style="height:50px;border: 1px solid #7F7F7F"/>
+                                    <td style="height:50px;"/>
                                 </tr>
                             </table>
-                            <table class="table-condensed" style="width: 80%;">
+                            <table class="table-condensed grey" style="width: 80%;">
                                 <tr>
-                                    <th style="width:20%;background-color: #7F7F7F;color:white;">Nº CUENTA IBAN</th>
-                                    <td style="width:10%;border: 1px solid #7F7F7F;color:white;"/>
-                                    <td style="width:10%;border: 1px solid #7F7F7F;color:white;"/>
-                                    <td style="width:10%;border: 1px solid #7F7F7F;color:white;"/>
-                                    <td style="width:10%;border: 1px solid #7F7F7F;color:white;"/>
-                                    <td style="width:10%;border: 1px solid #7F7F7F;color:white;"/>
-                                    <td style="width:10%;border: 1px solid #7F7F7F;color:white;"/>
+                                    <th style="width:20%;">Nº CUENTA IBAN</th>
+                                    <td style="width:10%;"/>
+                                    <td style="width:10%;"/>
+                                    <td style="width:10%;"/>
+                                    <td style="width:10%;"/>
+                                    <td style="width:10%;"/>
+                                    <td style="width:10%;"/>
                                 </tr>
                             </table>
                             <div class="col-xs-2 pull-right">
                                 <table class="table-condensed">
                                     <tr>
-                                        <th style="background-color: #7F7F7F;color:white;">SOCIO</th>
+                                        <th style="background-color: #7F7F7F;">SOCIO</th>
                                         <td style="width:100px;border: 1px solid #7F7F7F"/>
                                     </tr>
                                 </table>
                             </div>
-                            <br/><br/>
+                            <br/>
+                            <br/>
                             <div class="col-xs-6 pull-right">
                                 <table class="table-condensed" style="width: 85%;color:#7F7F7F;">
                                     <tr>
@@ -201,13 +192,13 @@
                             </div>
                         </div>
                         <br/>
-                        <table class="table-condensed" style="page-break-inside: avoid; width: 100%;">
+                        <table class="table-condensed grey">
                             <tr>
-                                <th class="text-center" style="width:40%;background-color: #7F7F7F;color:white;">DATOS DEL ACREEDOR</th>
-                                <th class="text-center" style="background-color: #7F7F7F;color:white;">Orden de Domicialiación de Débito Directo SEPA</th>
+                                <th class="text-center" style="width:40%;">DATOS DEL ACREEDOR</th>
+                                <th class="text-center">Orden de Domicialiación de Débito Directo SEPA</th>
                             </tr>
                             <tr style="font-size:9px; color:#7F7F7F;">
-                                <td style="border: 1px solid #7F7F7F">
+                                <td>
                                     <p>
                                         Nombre del Acreedor: LUNA TIC DESIGN S.L. / CIF: B86715067
                                         <br/>
@@ -220,7 +211,7 @@
                                         de LUNA TIC DESIGN S.L.
                                     </p>
                                 </td>
-                                <td style="border: 1px solid #7F7F7F">
+                                <td>
                                     <p>
                                         Mediante la firma de este Formulario de Orden de domiciliación, usted autoriza a :
                                         <ul style="list-style-type: circle;margin-left:30px;">
@@ -243,10 +234,10 @@
                         </table>
                         <br/>
                         <div class="row">
-                            <img src="/rockbotic_custom/static/src/img/robot2.png" style="max-width: 100px;"/>
-                            <table class="table-condensed" style="width: 85%;float: right;page-break-inside: avoid;">
+                            <img src="/rockbotic_custom/static/src/img/robot2.png" style="max-width: 100px;float:left;"/>
+                            <table class="table-condensed" style="width: 85%;page-break-inside: avoid;">
                                 <tr>
-                                    <th style="background-color: #002060;color:white;" colspan="6">AUTORIZACIONES SOBRE IMÁGENES</th>
+                                    <th style="background-color: #002060;" colspan="6">AUTORIZACIONES SOBRE IMÁGENES</th>
                                 </tr>
                                 <tr style="font-size: 9px;">
                                     <td style="color:#002060;border-radius:10px;border: 1px solid #002060" colspan="6">
@@ -257,8 +248,7 @@
                                         como:
                                     </td>
                                 </tr>
-                                <tr style="font-size: 9px;color:#002060;border:1px solid #002060; border-top-style:
-                                    hidden;">
+                                <tr style="font-size: 9px;color:#002060;border:1px solid #002060; border-top-style: hidden;">
                                     <td colspan="2">REVISTAS</td>
                                     <td colspan="2" class="text-center">
                                         SITIO WEB WWW.ROCKBOTIC.COM
@@ -271,8 +261,7 @@
                                         Facebook, Twitter, Youtube, Instagram y Google Plus
                                     </td>
                                 </tr>
-                                <tr style="font-size: 9px;color:#002060;border:1px solid #002060; border-top-style:
-                                    hidden;">
+                                <tr style="font-size: 9px;color:#002060;border:1px solid #002060; border-top-style: hidden;">
                                     <td>SI</td>
                                     <td>NO</td>
                                     <td class="text-right">SI</td>
@@ -287,7 +276,7 @@
                             <table class="table-condensed" style="width: 80%;float: left;page-break-inside: avoid;
                                 font-size: 8px;">
                                 <tr>
-                                    <th style="background-color: #7030A0;color:white;">LEY DE PROTECCIÓN DE DATOSDE CARÁCTER PERSONAL</th>
+                                    <th style="background-color: #7030A0;">LEY DE PROTECCIÓN DE DATOSDE CARÁCTER PERSONAL</th>
                                 </tr>
                                 <tr>
                                     <td style="color:#7030A0; border: 1px solid #7030A0">
@@ -337,7 +326,7 @@
                         <div align="center">
                             <table class="table-condensed" style="page-break-inside:avoid; width: 75%; ">
                                 <tr>
-                                    <th style="background-color: #2E75B5;color:white;">PROCEDIMIENTO PARA ALTAS Y BAJAS DURANE EL CURSO ESCOLAR</th>
+                                    <th style="background-color: #2E75B5;">PROCEDIMIENTO PARA ALTAS Y BAJAS DURANE EL CURSO ESCOLAR</th>
                                 </tr>
                                 <tr style="color:#2E75B5;border: 1px solid #2E75B5;">
                                     <td>
