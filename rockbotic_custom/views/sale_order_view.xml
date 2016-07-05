@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
+        <record id="view_sales_order_filter_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.sales.order.filter.inh.rockbotic</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter" />
+            <field name="arch" type="xml">
+                <filter string="Salesperson" position="before">
+                    <filter string="town" domain="[]" context="{'group_by':'city'}"/>
+                    <filter string="District" domain="[]" context="{'group_by':'street2'}"/>
+                </filter>
+            </field>
+        </record>
         <record id="view_order_form_sale_create_event_inh_rockbotic" model="ir.ui.view">
             <field name="name">view.order.form.sale.create.event.inh.rockbotic</field>
             <field name="model">sale.order</field>
@@ -12,6 +23,16 @@
                 <xpath expr="//field[@name='order_line']//tree//field[@name='apply_performance_by_quantity']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+            </field>
+        </record>
+        <record id="view_order_form2_inh_planned_line_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.order.form2.inh.planned.line.inh.rockbotic</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="event_planned_by_sale_line.view_order_form2_inh_planned_line" />
+            <field name="arch" type="xml">
+                <field name="product_category" position="attributes">
+                    <attribute name="domain">[('show_in_sales_order','=',True)]</attribute>
+                </field>
             </field>
         </record>
     </data>
