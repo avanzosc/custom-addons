@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_crm_case_leads_filter_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.crm.case.leads.filter.inh.rockbotic</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.view_crm_case_leads_filter" />
+            <field name="arch" type="xml">
+                <filter string="Salesperson" position="before">
+                    <filter string="town" domain="[]" context="{'group_by':'city'}"/>
+                    <filter string="District" domain="[]" context="{'group_by':'street2'}"/>
+                </filter>
+            </field>
+        </record>
+        <record id="view_crm_case_opportunities_filter_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.crm.case.opportunities.filter.inh.rockbotic</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter" />
+            <field name="arch" type="xml">
+                <filter string="Salesperson" position="before">
+                    <filter string="town" domain="[]" context="{'group_by':'city'}"/>
+                    <filter string="District" domain="[]" context="{'group_by':'street2'}"/>
+                </filter>
+            </field>
+        </record>
+    </data>
+</openerp>

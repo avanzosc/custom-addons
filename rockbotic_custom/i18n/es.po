@@ -1,0 +1,667 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* rockbotic_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-05 14:56+0000\n"
+"PO-Revision-Date: 2016-07-05 16:58+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: rockbotic_custom
+#: view:website:web.layout
+msgid "/rockbotic_custom/static/src/img/favicon.ico"
+msgstr "/rockbotic_custom/static/src/img/favicon.ico"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "ALTAS"
+msgstr "ALTAS"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "APELLIDOS"
+msgstr "APELLIDOS"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "AUTORIZACIONES SOBRE IMÁGENES"
+msgstr "AUTORIZACIONES SOBRE IMÁGENES"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid ""
+"Autorizo a LUNA TIC DESIGN S.L. a publicar imágenes y vídeos del alumno en "
+"el desarrollo\n"
+"                                        de esta actividad extraescolar con "
+"carácter\n"
+"                                        informativo o divulgativo de la s "
+"dinámidas\n"
+"                                        realizas en sus medios de promoción, "
+"tales\n"
+"                                        como:"
+msgstr ""
+"Autorizo a LUNA TIC DESIGN S.L. a publicar imágenes y vídeos del alumno en "
+"el desarrollo\n"
+"                                        de esta actividad extraescolar con "
+"carácter\n"
+"                                        informativo o divulgativo de la s "
+"dinámidas\n"
+"                                        realizas en sus medios de promoción, "
+"tales\n"
+"                                        como:"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "BAJAS"
+msgstr "BAJAS"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "C.P."
+msgstr "C.P."
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "CURSO"
+msgstr "CURSO"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid ""
+"Como parte de sus derechos, tiene derecho a ser reembolsado por su banco en "
+"virtud\n"
+"                                        de los términos y condiciones del "
+"acuerdo\n"
+"                                        suscrito con su banco. Dicho "
+"reeembolso deberá\n"
+"                                        reclamarse en un plazo de 8 semanas "
+"a partir\n"
+"                                        de la fecha de cargo en su cuenta"
+msgstr ""
+"Como parte de sus derechos, tiene derecho a ser reembolsado por su banco en "
+"virtud\n"
+"                                        de los términos y condiciones del "
+"acuerdo\n"
+"                                        suscrito con su banco. Dicho "
+"reeembolso deberá\n"
+"                                        reclamarse en un plazo de 8 semanas "
+"a partir\n"
+"                                        de la fecha de cargo en su cuenta"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid ""
+"Completar este mismo formulario, imprimirlo, firmarlo y entregarlo en la "
+"oficina de\n"
+"                                            la AMPA. Confirmaremos la "
+"incorporación\n"
+"                                            poniéndonos en contacto con los "
+"padres\n"
+"                                            o tutores a través del mail "
+"facilitado.\n"
+"                                            También se puede rellenar la "
+"inscripción,\n"
+"                                            firmar, escanear y enviar por "
+"mail a:\n"
+"                                            inscripciones@rockboctic.com"
+msgstr ""
+"Completar este mismo formulario, imprimirlo, firmarlo y entregarlo en la "
+"oficina de\n"
+"                                            la AMPA. Confirmaremos la "
+"incorporación\n"
+"                                            poniéndonos en contacto con los "
+"padres\n"
+"                                            o tutores a través del mail "
+"facilitado.\n"
+"                                            También se puede rellenar la "
+"inscripción,\n"
+"                                            firmar, escanear y enviar por "
+"mail a:\n"
+"                                            inscripciones@rockboctic.com"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid ""
+"Comunicar a través de mail a inscripciones@rockbotic.com entre el día 5 y 25 "
+"de cada\n"
+"                                            mes la baja que producirá efecto "
+"en el\n"
+"                                            mes siguiente. En el mail ha de "
+"constar:\n"
+"                                            Nombre y dos apellidos del "
+"alumno, curso\n"
+"                                            y nombre del colegio en el que "
+"está recibiendo\n"
+"                                            robótica. Desde el mismo mail "
+"contestaremos\n"
+"                                            dando acuse de recibo y "
+"confirmando la\n"
+"                                            recepción."
+msgstr ""
+"Comunicar a través de mail a inscripciones@rockbotic.com entre el día 5 y 25 "
+"de cada\n"
+"                                            mes la baja que producirá efecto "
+"en el\n"
+"                                            mes siguiente. En el mail ha de "
+"constar:\n"
+"                                            Nombre y dos apellidos del "
+"alumno, curso\n"
+"                                            y nombre del colegio en el que "
+"está recibiendo\n"
+"                                            robótica. Desde el mismo mail "
+"contestaremos\n"
+"                                            dando acuse de recibo y "
+"confirmando la\n"
+"                                            recepción."
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "DATOS DEL ACREEDOR"
+msgstr "DATOS DEL ACREEDOR"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "DATOS DEL ALUMNO"
+msgstr "DATOS DEL ALUMNO"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid ""
+"DATOS DEL PADRE, MADRE O TUTOR - Referencia de la orden de domiciliación:"
+msgstr ""
+"DATOS DEL PADRE, MADRE O TUTOR - Referencia de la orden de domiciliación:"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "DIRECCIÓN"
+msgstr "DIRECCIÓN"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "DNI"
+msgstr "DNI"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid ""
+"De acuerdo con lo que establece la Ley Orgánica 15/1999, de 13 de diciembre, "
+"de Protección\n"
+"                                            de Datos de Carácter Personal, "
+"le informamos\n"
+"                                            que tanto sus datos como los de "
+"su hijo/a\n"
+"                                            recogidos a partir del presente "
+"formulario\n"
+"                                            serán incorporados a un fichero "
+"denominado\n"
+"                                            “Alumnos”, bajo la "
+"responsabilidad de\n"
+"                                            LUNA TIC DESIGN SL, con la "
+"finalidad de\n"
+"                                            llevar a cabo la matriculación, "
+"organización,\n"
+"                                            gestión y facturación de la "
+"actividad\n"
+"                                            formativa contratada. Puede "
+"ejercer sus\n"
+"                                            derechos, y los de su hijo/a, de "
+"acceso,\n"
+"                                            rectificación, cancelación, y "
+"oposición\n"
+"                                            mediante un escrito a nuestra "
+"dirección:\n"
+"                                            C/Francisco Cabo, 16, LOCAL "
+"28029, Madrid,\n"
+"                                            o a la dirección de correo-e "
+"info@rockbotic.com,\n"
+"                                            identificando claramente el "
+"derecho que\n"
+"                                            ejercita e identificándose a "
+"través del\n"
+"                                            DNI o libro de familia. Mientras "
+"no nos\n"
+"                                            comunique lo contrario, "
+"entenderemos que\n"
+"                                            sus datos y los de su hijo/a no "
+"han sido\n"
+"                                            modificados y que se compromete "
+"a notificarnos\n"
+"                                            cualquier variación y que "
+"tenemos el consentimiento\n"
+"                                            para utilizarlos con la "
+"finalidad de impartir\n"
+"                                            la formación en la que usted ha "
+"matriculado\n"
+"                                            a su hijo/a y cumplir con las "
+"obligaciones\n"
+"                                            propias de un centro de "
+"formación, entre\n"
+"                                            las cuales se encuentran la "
+"gestión de\n"
+"                                            la formación de su hijo/a y su "
+"evaluación,\n"
+"                                            así como la remisión de aquellas "
+"circulares\n"
+"                                            informativas a los padres. Al "
+"rellenar\n"
+"                                            el presente formulario usted "
+"autoriza\n"
+"                                            expresamente el tratamiento de "
+"sus datos\n"
+"                                            de carácter personal y los de su "
+"hijo/a,\n"
+"                                            para la finalidad espeicada, por "
+"parte\n"
+"                                            de LUNA TIC DESIGN SL"
+msgstr ""
+"De acuerdo con lo que establece la Ley Orgánica 15/1999, de 13 de diciembre, "
+"de Protección\n"
+"                                            de Datos de Carácter Personal, "
+"le informamos\n"
+"                                            que tanto sus datos como los de "
+"su hijo/a\n"
+"                                            recogidos a partir del presente "
+"formulario\n"
+"                                            serán incorporados a un fichero "
+"denominado\n"
+"                                            “Alumnos”, bajo la "
+"responsabilidad de\n"
+"                                            LUNA TIC DESIGN SL, con la "
+"finalidad de\n"
+"                                            llevar a cabo la matriculación, "
+"organización,\n"
+"                                            gestión y facturación de la "
+"actividad\n"
+"                                            formativa contratada. Puede "
+"ejercer sus\n"
+"                                            derechos, y los de su hijo/a, de "
+"acceso,\n"
+"                                            rectificación, cancelación, y "
+"oposición\n"
+"                                            mediante un escrito a nuestra "
+"dirección:\n"
+"                                            C/Francisco Cabo, 16, LOCAL "
+"28029, Madrid,\n"
+"                                            o a la dirección de correo-e "
+"info@rockbotic.com,\n"
+"                                            identificando claramente el "
+"derecho que\n"
+"                                            ejercita e identificándose a "
+"través del\n"
+"                                            DNI o libro de familia. Mientras "
+"no nos\n"
+"                                            comunique lo contrario, "
+"entenderemos que\n"
+"                                            sus datos y los de su hijo/a no "
+"han sido\n"
+"                                            modificados y que se compromete "
+"a notificarnos\n"
+"                                            cualquier variación y que "
+"tenemos el consentimiento\n"
+"                                            para utilizarlos con la "
+"finalidad de impartir\n"
+"                                            la formación en la que usted ha "
+"matriculado\n"
+"                                            a su hijo/a y cumplir con las "
+"obligaciones\n"
+"                                            propias de un centro de "
+"formación, entre\n"
+"                                            las cuales se encuentran la "
+"gestión de\n"
+"                                            la formación de su hijo/a y su "
+"evaluación,\n"
+"                                            así como la remisión de aquellas "
+"circulares\n"
+"                                            informativas a los padres. Al "
+"rellenar\n"
+"                                            el presente formulario usted "
+"autoriza\n"
+"                                            expresamente el tratamiento de "
+"sus datos\n"
+"                                            de carácter personal y los de su "
+"hijo/a,\n"
+"                                            para la finalidad espeicada, por "
+"parte\n"
+"                                            de LUNA TIC DESIGN SL"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Dirección: Francisco Cabo, 16 28015 (Madrid) – ESPAÑA"
+msgstr "Dirección: Francisco Cabo, 16 28015 (Madrid) – ESPAÑA"
+
+#. module: rockbotic_custom
+#: view:crm.lead:rockbotic_custom.view_crm_case_leads_filter_inh_rockbotic
+#: view:crm.lead:rockbotic_custom.view_crm_case_opportunities_filter_inh_rockbotic
+#: view:res.partner:rockbotic_custom.view_res_partner_filter_inh_rockbotic
+#: view:sale.order:rockbotic_custom.view_sales_order_filter_inh_rockbotic
+#: field:sale.order,street2:0
+msgid "District"
+msgstr "Districto"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Domingo"
+msgstr "Domingo"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "DÍA"
+msgstr "DÍA"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "EDAD"
+msgstr "EDAD"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "EMAIL"
+msgstr "EMAIL"
+
+#. module: rockbotic_custom
+#: help:sale.order.line,decimal_pfmc:0
+msgid "Estimated time for completion the task"
+msgstr "Tiempo estimado para completar la tarea"
+
+#. module: rockbotic_custom
+#: model:ir.model,name:rockbotic_custom.model_event_event
+msgid "Event"
+msgstr "Evento"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "FICHA DE INSCRIPCIÓN"
+msgstr "FICHA DE INSCRIPCIÓN"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "FIRMA"
+msgstr "FIRMA"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Facebook, Twitter, Youtube, Instagram y Google Plus"
+msgstr "Facebook, Twitter, Youtube, Instagram y Google Plus"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid ""
+"Fecha límite de inscripción: 23 de septiembre. Tras esta fecha no se "
+"tramitarán nuevas\n"
+"                                    solicitudes hasta 15 días después de "
+"empezar las\n"
+"                                    clases. La inscripción requiere la "
+"entrega del\n"
+"                                    presente documento debidamente "
+"cumplimentado en\n"
+"                                    el AMPA del centro. Ratios de alumnxs "
+"INFANTIL:\n"
+"                                    mínimo 8 - máximo 10. PRIMARIA: mínimo 9 "
+"- máximo\n"
+"                                    15."
+msgstr ""
+"Fecha límite de inscripción: 23 de septiembre. Tras esta fecha no se "
+"tramitarán nuevas\n"
+"                                    solicitudes hasta 15 días después de "
+"empezar las\n"
+"                                    clases. La inscripción requiere la "
+"entrega del\n"
+"                                    presente documento debidamente "
+"cumplimentado en\n"
+"                                    el AMPA del centro. Ratios de alumnxs "
+"INFANTIL:\n"
+"                                    mínimo 8 - máximo 10. PRIMARIA: mínimo 9 "
+"- máximo\n"
+"                                    15."
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "HORARIO"
+msgstr "HORARIO"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "INSTRUCCIONES DE INSCRIPCIÓN"
+msgstr "INSTRUCCIONES DE INSCRIPCIÓN"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Jueves"
+msgstr "Jueves"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "LEY DE PROTECCIÓN DE DATOSDE CARÁCTER PERSONAL"
+msgstr "LEY DE PROTECCIÓN DE DATOSDE CARÁCTER PERSONAL"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid ""
+"LUNA TIC DESIGN S.L. a enviar órdenes a su entidad financiera para adeudar "
+"su cuenta."
+msgstr ""
+"LUNA TIC DESIGN S.L. a enviar órdenes a su entidad financiera para adeudar "
+"su cuenta."
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Lunes"
+msgstr "Lunes"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Martes"
+msgstr "Martes"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid ""
+"Mediante la firma de este Formulario de Orden de domiciliación, usted "
+"autoriza a :"
+msgstr ""
+"Mediante la firma de este Formulario de Orden de domiciliación, usted "
+"autoriza a :"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Miércoles"
+msgstr "Miércoles"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "NOMBRE"
+msgstr "NOMBRE"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Nombre del Acreedor: LUNA TIC DESIGN S.L. / CIF: B86715067"
+msgstr "Nombre del Acreedor: LUNA TIC DESIGN S.L. / CIF: B86715067"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid ""
+"Nota: Sus derechos en relación con la anterior orden de domiciliación se "
+"explican\n"
+"                                        en el extracto que puede solicitar a "
+"su banco.\n"
+"                                        ©ROCKBOTIC es una marca registrada "
+"propiedad\n"
+"                                        de LUNA TIC DESIGN S.L."
+msgstr ""
+"Nota: Sus derechos en relación con la anterior orden de domiciliación se "
+"explican\n"
+"                                        en el extracto que puede solicitar a "
+"su banco.\n"
+"                                        ©ROCKBOTIC es una marca registrada "
+"propiedad\n"
+"                                        de LUNA TIC DESIGN S.L."
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Nº"
+msgstr "Nº"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Nº CUENTA IBAN"
+msgstr "Nº CUENTA IBAN"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Orden de Domicialiación de Débito Directo SEPA"
+msgstr "Orden de Domicialiación de Débito Directo SEPA"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "PERFILES CORPORATIVOS OFICIALES \"ROCKBOTIC\" EN LAS REDES SOCIALES"
+msgstr "PERFILES CORPORATIVOS OFICIALES \"ROCKBOTIC\" EN LAS REDES SOCIALES"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "POBLACIÓN"
+msgstr "POBLACIÓN"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "PRECIO"
+msgstr "PRECIO"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "PROCEDIMIENTO PARA ALTAS Y BAJAS DURANE EL CURSO ESCOLAR"
+msgstr "PROCEDIMIENTO PARA ALTAS Y BAJAS DURANE EL CURSO ESCOLAR"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "PROVINCIA"
+msgstr "PROVINCIA"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid ""
+"Para cualquier modificación en las ALTAS/BAJAS de los alumnos a lo largo del "
+"curso,\n"
+"                                            el procedimiento será el "
+"siguiente:"
+msgstr ""
+"Para cualquier modificación en las ALTAS/BAJAS de los alumnos a lo largo del "
+"curso,\n"
+"                                            el procedimiento será el "
+"siguiente:"
+
+#. module: rockbotic_custom
+#: model:ir.model,name:rockbotic_custom.model_res_partner
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: rockbotic_custom
+#: field:sale.order.line,decimal_pfmc:0
+msgid "Performance"
+msgstr "Performance"
+
+#. module: rockbotic_custom
+#: view:res.partner:rockbotic_custom.view_res_partner_filter_inh_rockbotic
+msgid "Persons"
+msgstr "Personas"
+
+#. module: rockbotic_custom
+#: model:ir.model,name:rockbotic_custom.model_product_category
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "REVISTAS"
+msgstr "REVISTAS"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "SITIO WEB WWW.ROCKBOTIC.COM"
+msgstr "SITIO WEB WWW.ROCKBOTIC.COM"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "SOCIO"
+msgstr "SOCIO"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "SOCIOS"
+msgstr "SOCIOS"
+
+#. module: rockbotic_custom
+#: model:ir.model,name:rockbotic_custom.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: rockbotic_custom
+#: model:ir.model,name:rockbotic_custom.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea pedido de venta"
+
+#. module: rockbotic_custom
+#: view:crm.lead:rockbotic_custom.view_crm_case_leads_filter_inh_rockbotic
+#: view:crm.lead:rockbotic_custom.view_crm_case_opportunities_filter_inh_rockbotic
+#: view:sale.order:rockbotic_custom.view_sales_order_filter_inh_rockbotic
+msgid "Salesperson"
+msgstr "Comercial"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid ""
+"Su banco para adeudar los importes correspondientes en su cuenta de acuerdo "
+"con las\n"
+"                                                órdenes de Luna TIC DESIGN S."
+"L."
+msgstr ""
+"Su banco para adeudar los importes correspondientes en su cuenta de acuerdo "
+"con las\n"
+"                                                órdenes de Luna TIC DESIGN S."
+"L."
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Sábado"
+msgstr "Sábado"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "TELÉFONO"
+msgstr "TELÉFONO"
+
+#. module: rockbotic_custom
+#: field:sale.order,city:0
+msgid "Town"
+msgstr "Población"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Viernes"
+msgstr "Viernes"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Y EN EL BLOG CONTENIDO EN DICHO SITIO WEB"
+msgstr "Y EN EL BLOG CONTENIDO EN DICHO SITIO WEB"
+
+#. module: rockbotic_custom
+#: field:product.category,show_in_sales_order:0
+msgid "show in sale order"
+msgstr "Mostrar en pedidos de venta"
+
+#. module: rockbotic_custom
+#: view:crm.lead:rockbotic_custom.view_crm_case_leads_filter_inh_rockbotic
+#: view:crm.lead:rockbotic_custom.view_crm_case_opportunities_filter_inh_rockbotic
+#: view:res.partner:rockbotic_custom.view_res_partner_filter_inh_rockbotic
+#: view:sale.order:rockbotic_custom.view_sales_order_filter_inh_rockbotic
+msgid "town"
+msgstr "Población"

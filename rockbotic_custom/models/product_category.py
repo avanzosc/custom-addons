@@ -4,7 +4,7 @@
 from openerp import models, fields
 
 
-class SaleOrderLine(models.Model):
-    _inherit = 'sale.order.line'
+class ProductCategory(models.Model):
+    _inherit = 'product.category'
 
-    apply_performance_by_quantity = fields.Boolean(default=False)
+    show_in_sales_order = fields.Boolean('show in sale order', default=False)
