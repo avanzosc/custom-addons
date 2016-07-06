@@ -345,7 +345,7 @@ msgstr "Dirección: Francisco Cabo, 16 28015 (Madrid) – ESPAÑA"
 #: view:sale.order:rockbotic_custom.view_sales_order_filter_inh_rockbotic
 #: field:sale.order,street2:0
 msgid "District"
-msgstr "Districto"
+msgstr "Distrito"
 
 #. module: rockbotic_custom
 #: view:website:sale.report_saleorder_document
