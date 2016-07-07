@@ -10,6 +10,6 @@ class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     base_lst_price = fields.Float(
-        'Base Sale Price', digits_compute=dp.get_precision('Product Price'))
+        'Base Sale Price', digits=dp.get_precision('Product Price'))
     base_standard_price = fields.Float(
-        'Base Cost Price', digits_compute=dp.get_precision('Product Price'))
+        'Base Cost Price', digits=dp.get_precision('Product Price'))

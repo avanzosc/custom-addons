@@ -12,6 +12,9 @@
                 <tree string="SERVICE sales order lines" position="attributes">
                     <attribute name="editable" />
                 </tree>
+                <field name="amount_untaxed" position="before">
+                    <field name="total_performance" widget="float_time" />
+                </field>
                  <xpath expr="//field[@name='no_service_order_line']/tree//field[@name='product_id']" position="before">
                      <field name="product_tmpl_id" />
                  </xpath>
@@ -169,9 +172,11 @@
                 </xpath>
                 <xpath expr="//field[@name='service_order_line']//form//field[@name='address_allotment_id']" position="after">
                     <field name="performance" widget="float_time" />
+                    <field name="decimal_pfmc" digits="(14, 3)"/>
                 </xpath>
                 <xpath expr="//field[@name='service_order_line']//tree//field[@name='price_unit']" position="after">
                     <field name="performance" widget="float_time" />
+                    <field name="decimal_pfmc" string="Decimal Performance" digits="(14, 3)"/>
                 </xpath>
                 <xpath expr="//field[@name='service_order_line']/form//field[@name='invoice_lines']/.." position="before">
                     <field name="recurring_service" invisible="1" />
