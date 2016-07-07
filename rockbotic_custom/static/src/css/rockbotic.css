@@ -1,19 +1,21 @@
 th{
   border-radius: 10px;
-  color: white;
 }
 
 .red {
   width:75%;
   float:left;
+  border-radius: 50px;
 }
 
 .red th{
   background-color: #FF0000;
+  color: white;
 }
 
 .red td{
   border: 1px solid #FF0000;
+  border-radius: 50px;
 }
 
 .blue {
@@ -23,6 +25,7 @@ th{
 
 .blue th{
   background-color: #00B0F0;
+  color: white;
 }
 
 .blue td{
@@ -36,6 +39,7 @@ th{
 
 .grey th{
   background-color: #7F7F7F;
+  color: white;
 }
 
 .grey td {
@@ -52,6 +56,7 @@ th{
 
 .grey1 th{
   background-color: #7F7F7F;
+  color: white;
 }
 
 .grey1 td{
