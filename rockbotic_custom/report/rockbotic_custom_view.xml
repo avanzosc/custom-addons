@@ -7,15 +7,13 @@
             </xpath>
         </template>
 
-        <template id="rockbotic_layout_html" name="rockbotic_custom layout_html"
-                  inherit_id="report.layout">
+        <template id="rockbotic_layout_html" name="rockbotic_custom layout_html" inherit_id="report.layout">
             <xpath expr="//head" position="inside">
                 <link rel="stylesheet" href="/rockbotic_custom/static/src/css/rockbotic.css" />
             </xpath>
         </template>
 
-        <template id="rockbotic_layout" name="rockbotic_custom layout"
-                  inherit_id="report.minimal_layout">
+        <template id="rockbotic_layout" name="rockbotic_custom layout" inherit_id="report.minimal_layout">
             <xpath expr="//head" position="inside">
                 <link rel="stylesheet" href="/rockbotic_custom/static/src/css/rockbotic.css" />
             </xpath>

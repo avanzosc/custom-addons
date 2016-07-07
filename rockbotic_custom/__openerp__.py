@@ -21,7 +21,7 @@
         "sale_order_line_performance",
         "sale_service_recurrence_configurator",
         "event_planned_by_sale_line",
-        "report",
+        "event_report",
     ],
     "data": [
         "views/sale_order_view.xml",
