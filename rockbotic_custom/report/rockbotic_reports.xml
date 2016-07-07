@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <report id="report_rockbotic_sale_report" string="Ficha de inscripción" model="sale.order"
-            report_type="qweb-pdf" file="rockbotic_custom.rockbotic_sale_report" name="rockbotic_custom.rockbotic_sale_report"
-            />
-    </data>
-    <data>
-        <template id="rockbotic_sale_report">
-            <t t-foreach="docs" t-as="o">
+        <template id="rockbotic_sale_report" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//t[@t-call='report.external_layout']" position="replace">
                 <t t-call="report.html_container">
                     <t t-if="o and 'company_id' in o">
                         <t t-set="company" t-value="o.company_id"/>
@@ -23,7 +18,7 @@
                             <div class="col-xs-7" style="background-color:#00B0F0;border-radius: 50px;height:50px">
                                 <span style="color:white;margin-left:15px;">FICHA DE INSCRIPCIÓN</span>
                                 <div style="background-color:#FFFFFF;border-radius: 10px;">
-                                    <span t-field="o.partner_shipping_id" style="margin-left:15px;"/>
+                                    <span t-field="o.partner_id" style="margin-left:15px;"/>
                                 </div>
                             </div>
                         </div>
@@ -74,18 +69,17 @@
                         </div>
                         <table class="table-condensed" style="width: 30%">
                             <tr>
-                                <th style="background-color: #92D050;color:white;">PRECIO</th>
-                                <th style="background-color: #92D050;color:white;">SOCIOS</th>
+                                <th style="background-color: #92D050;">PRECIO</th>
+                                <th style="background-color: #92D050;">SOCIOS</th>
                                 <td style="border: 1px solid #92D050;">
                                     <strong>
-                                        <span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency":
-                                            "o.currency_id"}'/>
+                                        <span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
                                     </strong>
                                 </td>
                             </tr>
                         </table>
                         <br/>
-                        <table class="table-condensed blue">
+                        <table class="table-condensed blue" style="" >
                             <tr>
                                 <th colspan="4" class="text-center">DATOS DEL ALUMNO</th>
                             </tr>
@@ -106,11 +100,17 @@
                         <br/>
                         <table class="table-condensed" style="page-break-inside: avoid;width:100%;">
                             <tr>
-                                <th class="text-center" style="background-color:black;color:white;">INSTRUCCIONES DE INSCRIPCIÓN</th>
+                                <th class="text-center" style="background-color:black;">INSTRUCCIONES DE INSCRIPCIÓN</th>
                             </tr>
                             <tr>
                                 <td style="border: 1px solid black;">
-                                    <span t-field="o.note"/>
+                                    Fecha límite de inscripción: 23 de septiembre. Tras esta fecha no se tramitarán nuevas
+                                    solicitudes hasta 15 días después de empezar las
+                                    clases. La inscripción requiere la entrega del
+                                    presente documento debidamente cumplimentado en
+                                    el AMPA del centro. Ratios de alumnxs INFANTIL:
+                                    mínimo 8 - máximo 10. PRIMARIA: mínimo 9 - máximo
+                                    15.
                                 </td>
                             </tr>
                         </table>
@@ -172,7 +172,7 @@
                             <div class="col-xs-2 pull-right">
                                 <table class="table-condensed">
                                     <tr>
-                                        <th style="background-color: #7F7F7F;color:white;">SOCIO</th>
+                                        <th style="background-color: #7F7F7F;">SOCIO</th>
                                         <td style="width:100px;border: 1px solid #7F7F7F"/>
                                     </tr>
                                 </table>
@@ -237,7 +237,7 @@
                             <img src="/rockbotic_custom/static/src/img/robot2.png" style="max-width: 100px;float:left;"/>
                             <table class="table-condensed" style="width: 85%;page-break-inside: avoid;">
                                 <tr>
-                                    <th style="background-color: #002060;color:white;" colspan="6">AUTORIZACIONES SOBRE IMÁGENES</th>
+                                    <th style="background-color: #002060;" colspan="6">AUTORIZACIONES SOBRE IMÁGENES</th>
                                 </tr>
                                 <tr style="font-size: 9px;">
                                     <td style="color:#002060;border-radius:10px;border: 1px solid #002060" colspan="6">
@@ -248,8 +248,7 @@
                                         como:
                                     </td>
                                 </tr>
-                                <tr style="font-size: 9px;color:#002060;border:1px solid #002060; border-top-style:
-                                    hidden;">
+                                <tr style="font-size: 9px;color:#002060;border:1px solid #002060; border-top-style: hidden;">
                                     <td colspan="2">REVISTAS</td>
                                     <td colspan="2" class="text-center">
                                         SITIO WEB WWW.ROCKBOTIC.COM
@@ -262,8 +261,7 @@
                                         Facebook, Twitter, Youtube, Instagram y Google Plus
                                     </td>
                                 </tr>
-                                <tr style="font-size: 9px;color:#002060;border:1px solid #002060; border-top-style:
-                                    hidden;">
+                                <tr style="font-size: 9px;color:#002060;border:1px solid #002060; border-top-style: hidden;">
                                     <td>SI</td>
                                     <td>NO</td>
                                     <td class="text-right">SI</td>
@@ -278,7 +276,7 @@
                             <table class="table-condensed" style="width: 80%;float: left;page-break-inside: avoid;
                                 font-size: 8px;">
                                 <tr>
-                                    <th style="background-color: #7030A0;color:white;">LEY DE PROTECCIÓN DE DATOSDE CARÁCTER PERSONAL</th>
+                                    <th style="background-color: #7030A0;">LEY DE PROTECCIÓN DE DATOSDE CARÁCTER PERSONAL</th>
                                 </tr>
                                 <tr>
                                     <td style="color:#7030A0; border: 1px solid #7030A0">
@@ -328,7 +326,7 @@
                         <div align="center">
                             <table class="table-condensed" style="page-break-inside:avoid; width: 75%; ">
                                 <tr>
-                                    <th style="background-color: #2E75B5;color:white;">PROCEDIMIENTO PARA ALTAS Y BAJAS DURANE EL CURSO ESCOLAR</th>
+                                    <th style="background-color: #2E75B5;">PROCEDIMIENTO PARA ALTAS Y BAJAS DURANE EL CURSO ESCOLAR</th>
                                 </tr>
                                 <tr style="color:#2E75B5;border: 1px solid #2E75B5;">
                                     <td>
@@ -367,7 +365,7 @@
                         </div>
                     </div>
                 </t>
-            </t>
+            </xpath>
         </template>
     </data>
 </openerp>
