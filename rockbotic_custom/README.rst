@@ -8,6 +8,7 @@ Rockbotic custom
 
 * Custom leads and opportunities search view, sale order line form.
 * Custom reports.
+* Access rules for Marketing responsible on mail.followers
 
 
 Credits

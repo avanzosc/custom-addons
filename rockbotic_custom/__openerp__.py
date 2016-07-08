@@ -17,6 +17,8 @@
         "product",
         "purchase",
         "crm",
+        "mail",
+        "marketing",
         "sale_order_create_event",
         "sale_order_line_performance",
         "sale_service_recurrence_configurator",
@@ -30,6 +32,7 @@
         "views/product_category_view.xml",
         "report/rockbotic_custom_view.xml",
         "report/rockbotic_reports.xml",
+        "views/access_rules.xml",
     ],
     "installable": True,
 }
