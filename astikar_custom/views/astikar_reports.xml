@@ -727,12 +727,12 @@
                                         </p>
                                     </div>
                                     <t t-if="o.move_id">
-                                        <t t-foreach="o.move_id.line_id" t-as="mline">
+                                        <t t-foreach="o.move_id.line_id.sorted(key=lambda a:(a.date_maturity))" t-as="mline">
                                             <t t-if="mline.account_id == o.account_id">
                                                 <p>
-                                                    <strong>EPE MUGA</strong>
+                                                    <strong>EPE MUGA:</strong>
                                                     <span t-field="mline.date_maturity"/>
-                                                    <strong class="text-right">ZENBATEKOA</strong>
+                                                    <strong class="text-right">ZENBATEKOA:</strong>
                                                     <span t-field="mline.debit"/>
                                                 </p>
                                             </t>
@@ -956,12 +956,12 @@
                                         </p>
                                     </div>
                                     <t t-if="o.move_id">
-                                        <t t-foreach="o.move_id.line_id" t-as="mline">
+                                        <t t-foreach="o.move_id.line_id.sorted(key=lambda a:(a.date_maturity))" t-as="mline">
                                             <t t-if="mline.account_id == o.account_id">
                                                 <p>
-                                                <strong>EPE MUGA</strong>
+                                                <strong>EPE MUGA:</strong>
                                                     <span t-field="mline.date_maturity"/>
-                                                <strong class="text-right">ZENBATEKOA</strong>
+                                                <strong class="text-right">ZENBATEKOA:</strong>
                                                     <span t-field="mline.debit"/>
                                                 </p>
                                             </t>
