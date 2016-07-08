@@ -716,14 +716,28 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <p>
-                                        <strong>EPE MUGA:</strong>
-                                        <span t-field="o.date_due" />
-                                    </p>
-                                    <p>
-                                        <strong>ZENBATEKOA:</strong>
-                                        <span t-field="o.amount_total" />
-                                    </p>
+                                    <div t-if="not o.move_id">
+                                        <p>
+                                            <strong>EPE MUGA:</strong>
+                                            <span t-field="o.date_due" />
+                                        </p>
+                                        <p>
+                                            <strong>ZENBATEKOA:</strong>
+                                            <span t-field="o.amount_total" />
+                                        </p>
+                                    </div>
+                                    <t t-if="o.move_id">
+                                        <t t-foreach="o.move_id.line_id" t-as="mline">
+                                            <t t-if="mline.account_id == o.account_id">
+                                                <p>
+                                                    <strong>EPE MUGA</strong>
+                                                    <span t-field="mline.date_maturity"/>
+                                                    <strong class="text-right">ZENBATEKOA</strong>
+                                                    <span t-field="mline.debit"/>
+                                                </p>
+                                            </t>
+                                        </t>
+                                    </t>
                                 </div>
                             </div>
                         </div>
@@ -931,14 +945,28 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <p>
-                                        <strong>EPE MUGA:</strong>
-                                        <span t-field="o.date_due" />
-                                    </p>
-                                    <p>
-                                        <strong>ZENBATEKOA:</strong>
-                                        <span t-field="o.amount_total" />
-                                    </p>
+                                    <div t-if="not o.move_id">
+                                        <p>
+                                            <strong>EPE MUGA:</strong>
+                                            <span t-field="o.date_due" />
+                                        </p>
+                                        <p>
+                                            <strong>ZENBATEKOA:</strong>
+                                            <span t-field="o.amount_total" />
+                                        </p>
+                                    </div>
+                                    <t t-if="o.move_id">
+                                        <t t-foreach="o.move_id.line_id" t-as="mline">
+                                            <t t-if="mline.account_id == o.account_id">
+                                                <p>
+                                                <strong>EPE MUGA</strong>
+                                                    <span t-field="mline.date_maturity"/>
+                                                <strong class="text-right">ZENBATEKOA</strong>
+                                                    <span t-field="mline.debit"/>
+                                                </p>
+                                            </t>
+                                        </t>
+                                    </t>
                                 </div>
                             </div>
                         </div>
