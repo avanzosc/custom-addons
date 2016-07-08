@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-05 14:56+0000\n"
-"PO-Revision-Date: 2016-07-05 16:58+0100\n"
+"POT-Creation-Date: 2016-07-07 14:45+0000\n"
+"PO-Revision-Date: 2016-07-07 16:46+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,30 @@ msgstr ""
 #: view:website:web.layout
 msgid "/rockbotic_custom/static/src/img/favicon.ico"
 msgstr "/rockbotic_custom/static/src/img/favicon.ico"
+
+#. module: rockbotic_custom
+#: model:ir.actions.act_window,help:rockbotic_custom.action_partner_families_form
+#: model:ir.actions.act_window,help:rockbotic_custom.action_partner_student_form
+msgid ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                Click to add a contact in your address book.\n"
+"              </p><p>\n"
+"                Odoo helps you easily track all activities related to\n"
+"                a customer: discussions, history of business opportunities,\n"
+"                documents, etc.\n"
+"              </p>\n"
+"            "
+msgstr ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                Pulsa para añadir un contacto a tu lista de direcciones.\n"
+"              </p><p>\n"
+"                Odoo le ayuda a llevar de forma sencilla un registro de "
+"todas las actividades\n"
+"                relacionadas con un cliente: conversaciones, historial de "
+"las oportunidades de negocio, \n"
+"                 documentos, etc\n"
+"              </p>\n"
+"            "
 
 #. module: rockbotic_custom
 #: view:website:sale.report_saleorder_document
@@ -162,6 +186,11 @@ msgstr ""
 "                                            dando acuse de recibo y "
 "confirmando la\n"
 "                                            recepción."
+
+#. module: rockbotic_custom
+#: view:res.partner:rockbotic_custom.view_res_partner_filter_inh_rockbotic
+msgid "Country"
+msgstr "País"
 
 #. module: rockbotic_custom
 #: view:website:sale.report_saleorder_document
@@ -368,16 +397,6 @@ msgid "EMAIL"
 msgstr "EMAIL"
 
 #. module: rockbotic_custom
-#: help:sale.order.line,decimal_pfmc:0
-msgid "Estimated time for completion the task"
-msgstr "Tiempo estimado para completar la tarea"
-
-#. module: rockbotic_custom
-#: model:ir.model,name:rockbotic_custom.model_event_event
-msgid "Event"
-msgstr "Evento"
-
-#. module: rockbotic_custom
 #: view:website:sale.report_saleorder_document
 msgid "FICHA DE INSCRIPCIÓN"
 msgstr "FICHA DE INSCRIPCIÓN"
@@ -391,6 +410,12 @@ msgstr "FIRMA"
 #: view:website:sale.report_saleorder_document
 msgid "Facebook, Twitter, Youtube, Instagram y Google Plus"
 msgstr "Facebook, Twitter, Youtube, Instagram y Google Plus"
+
+#. module: rockbotic_custom
+#: model:ir.actions.act_window,name:rockbotic_custom.action_partner_families_form
+#: model:ir.ui.menu,name:rockbotic_custom.families_option_view
+msgid "Families"
+msgstr "Familias"
 
 #. module: rockbotic_custom
 #: view:website:sale.report_saleorder_document
@@ -456,6 +481,11 @@ msgstr ""
 #: view:website:sale.report_saleorder_document
 msgid "Lunes"
 msgstr "Lunes"
+
+#. module: rockbotic_custom
+#: field:res.partner,magazine:0
+msgid "Magazine"
+msgstr "Revista"
 
 #. module: rockbotic_custom
 #: view:website:sale.report_saleorder_document
@@ -564,16 +594,6 @@ msgid "Partner"
 msgstr "Empresa"
 
 #. module: rockbotic_custom
-#: field:sale.order.line,decimal_pfmc:0
-msgid "Performance"
-msgstr "Performance"
-
-#. module: rockbotic_custom
-#: view:res.partner:rockbotic_custom.view_res_partner_filter_inh_rockbotic
-msgid "Persons"
-msgstr "Personas"
-
-#. module: rockbotic_custom
 #: model:ir.model,name:rockbotic_custom.model_product_category
 msgid "Product Category"
 msgstr "Categoría de producto"
@@ -616,6 +636,17 @@ msgid "Salesperson"
 msgstr "Comercial"
 
 #. module: rockbotic_custom
+#: field:res.partner,social_networks:0
+msgid "Social networks"
+msgstr "Redes sociales"
+
+#. module: rockbotic_custom
+#: model:ir.actions.act_window,name:rockbotic_custom.action_partner_student_form
+#: model:ir.ui.menu,name:rockbotic_custom.student_option_view
+msgid "Students"
+msgstr "Estudiantes"
+
+#. module: rockbotic_custom
 #: view:website:sale.report_saleorder_document
 msgid ""
 "Su banco para adeudar los importes correspondientes en su cuenta de acuerdo "
@@ -649,9 +680,20 @@ msgid "Viernes"
 msgstr "Viernes"
 
 #. module: rockbotic_custom
+#: field:res.partner,web_blog:0
+msgid "Web/Blog"
+msgstr "Web/Blog"
+
+#. module: rockbotic_custom
 #: view:website:sale.report_saleorder_document
 msgid "Y EN EL BLOG CONTENIDO EN DICHO SITIO WEB"
 msgstr "Y EN EL BLOG CONTENIDO EN DICHO SITIO WEB"
+
+#. module: rockbotic_custom
+#: view:crm.make.sale:rockbotic_custom.view_crm_make_sale_inh_rockbotic
+#: view:sale.order:rockbotic_custom.view_order_form2_inh_planned_line_inh_rockbotic
+msgid "[('show_in_sales_order','=',True)]"
+msgstr "[('show_in_sales_order','=',True)]"
 
 #. module: rockbotic_custom
 #: field:product.category,show_in_sales_order:0

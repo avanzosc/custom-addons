@@ -6,8 +6,9 @@
 Rockbotic custom
 ================
 
-* Custom leads and opportunities search view, sale order line form.
-* Custom reports.
+* Personalized leads, opportunities search view, and sale order line, event
+  form.
+* Custom reports
 
 
 Credits

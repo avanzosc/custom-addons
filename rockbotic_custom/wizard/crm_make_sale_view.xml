@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_crm_make_sale_inh_rockbotic">
+            <field name="name">view.crm.make.sale.inh.rockbotic</field>
+            <field name="model">crm.make.sale</field>
+            <field name="inherit_id" ref="sale_crm_event_planned_by_sale_line.view_crm_make_sale_inh_event_planned"/>
+            <field name="arch" type="xml">
+                <field name="product_category" position="attributes">
+                    <attribute name="domain">[('show_in_sales_order','=',True)]</attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
