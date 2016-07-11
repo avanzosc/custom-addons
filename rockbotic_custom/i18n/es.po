@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-05 14:56+0000\n"
-"PO-Revision-Date: 2016-07-05 16:58+0100\n"
+"POT-Creation-Date: 2016-07-11 07:55+0000\n"
+"PO-Revision-Date: 2016-07-11 09:56+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -22,22 +22,46 @@ msgid "/rockbotic_custom/static/src/img/favicon.ico"
 msgstr "/rockbotic_custom/static/src/img/favicon.ico"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: model:ir.actions.act_window,help:rockbotic_custom.action_partner_families_form
+#: model:ir.actions.act_window,help:rockbotic_custom.action_partner_student_form
+msgid ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                Click to add a contact in your address book.\n"
+"              </p><p>\n"
+"                Odoo helps you easily track all activities related to\n"
+"                a customer: discussions, history of business opportunities,\n"
+"                documents, etc.\n"
+"              </p>\n"
+"            "
+msgstr ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                Pulsa para añadir un contacto a tu lista de direcciones.\n"
+"              </p><p>\n"
+"                Odoo le ayuda a llevar de forma sencilla un registro de "
+"todas las actividades\n"
+"                relacionadas con un cliente: conversaciones, historial de "
+"las oportunidades de negocio, \n"
+"                 documentos, etc\n"
+"              </p>\n"
+"            "
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "ALTAS"
 msgstr "ALTAS"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "APELLIDOS"
 msgstr "APELLIDOS"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "AUTORIZACIONES SOBRE IMÁGENES"
 msgstr "AUTORIZACIONES SOBRE IMÁGENES"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid ""
 "Autorizo a LUNA TIC DESIGN S.L. a publicar imágenes y vídeos del alumno en "
 "el desarrollo\n"
@@ -60,22 +84,22 @@ msgstr ""
 "                                        como:"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "BAJAS"
 msgstr "BAJAS"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "C.P."
 msgstr "C.P."
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "CURSO"
 msgstr "CURSO"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid ""
 "Como parte de sus derechos, tiene derecho a ser reembolsado por su banco en "
 "virtud\n"
@@ -98,7 +122,7 @@ msgstr ""
 "                                        de la fecha de cargo en su cuenta"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid ""
 "Completar este mismo formulario, imprimirlo, firmarlo y entregarlo en la "
 "oficina de\n"
@@ -129,7 +153,7 @@ msgstr ""
 "                                            inscripciones@rockboctic.com"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid ""
 "Comunicar a través de mail a inscripciones@rockbotic.com entre el día 5 y 25 "
 "de cada\n"
@@ -164,34 +188,39 @@ msgstr ""
 "                                            recepción."
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:res.partner:rockbotic_custom.view_res_partner_filter_inh_rockbotic
+msgid "Country"
+msgstr "País"
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "DATOS DEL ACREEDOR"
 msgstr "DATOS DEL ACREEDOR"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "DATOS DEL ALUMNO"
 msgstr "DATOS DEL ALUMNO"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid ""
 "DATOS DEL PADRE, MADRE O TUTOR - Referencia de la orden de domiciliación:"
 msgstr ""
 "DATOS DEL PADRE, MADRE O TUTOR - Referencia de la orden de domiciliación:"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "DIRECCIÓN"
 msgstr "DIRECCIÓN"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "DNI"
 msgstr "DNI"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid ""
 "De acuerdo con lo que establece la Ley Orgánica 15/1999, de 13 de diciembre, "
 "de Protección\n"
@@ -334,7 +363,7 @@ msgstr ""
 "                                            de LUNA TIC DESIGN SL"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Dirección: Francisco Cabo, 16 28015 (Madrid) – ESPAÑA"
 msgstr "Dirección: Francisco Cabo, 16 28015 (Madrid) – ESPAÑA"
 
@@ -348,103 +377,73 @@ msgid "District"
 msgstr "Distrito"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Domingo"
 msgstr "Domingo"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "DÍA"
 msgstr "DÍA"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "EDAD"
 msgstr "EDAD"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "EMAIL"
 msgstr "EMAIL"
 
 #. module: rockbotic_custom
-#: help:sale.order.line,decimal_pfmc:0
-msgid "Estimated time for completion the task"
-msgstr "Tiempo estimado para completar la tarea"
-
-#. module: rockbotic_custom
-#: model:ir.model,name:rockbotic_custom.model_event_event
-msgid "Event"
-msgstr "Evento"
-
-#. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "FICHA DE INSCRIPCIÓN"
 msgstr "FICHA DE INSCRIPCIÓN"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "FIRMA"
 msgstr "FIRMA"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Facebook, Twitter, Youtube, Instagram y Google Plus"
 msgstr "Facebook, Twitter, Youtube, Instagram y Google Plus"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
-msgid ""
-"Fecha límite de inscripción: 23 de septiembre. Tras esta fecha no se "
-"tramitarán nuevas\n"
-"                                    solicitudes hasta 15 días después de "
-"empezar las\n"
-"                                    clases. La inscripción requiere la "
-"entrega del\n"
-"                                    presente documento debidamente "
-"cumplimentado en\n"
-"                                    el AMPA del centro. Ratios de alumnxs "
-"INFANTIL:\n"
-"                                    mínimo 8 - máximo 10. PRIMARIA: mínimo 9 "
-"- máximo\n"
-"                                    15."
-msgstr ""
-"Fecha límite de inscripción: 23 de septiembre. Tras esta fecha no se "
-"tramitarán nuevas\n"
-"                                    solicitudes hasta 15 días después de "
-"empezar las\n"
-"                                    clases. La inscripción requiere la "
-"entrega del\n"
-"                                    presente documento debidamente "
-"cumplimentado en\n"
-"                                    el AMPA del centro. Ratios de alumnxs "
-"INFANTIL:\n"
-"                                    mínimo 8 - máximo 10. PRIMARIA: mínimo 9 "
-"- máximo\n"
-"                                    15."
+#: model:ir.actions.act_window,name:rockbotic_custom.action_partner_families_form
+#: model:ir.ui.menu,name:rockbotic_custom.families_option_view
+msgid "Families"
+msgstr "Familias"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: model:ir.actions.report.xml,name:rockbotic_custom.report_rockbotic_sale_report
+msgid "Ficha de inscripción"
+msgstr "Ficha de inscripción"
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "HORARIO"
 msgstr "HORARIO"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "INSTRUCCIONES DE INSCRIPCIÓN"
 msgstr "INSTRUCCIONES DE INSCRIPCIÓN"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Jueves"
 msgstr "Jueves"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "LEY DE PROTECCIÓN DE DATOSDE CARÁCTER PERSONAL"
 msgstr "LEY DE PROTECCIÓN DE DATOSDE CARÁCTER PERSONAL"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid ""
 "LUNA TIC DESIGN S.L. a enviar órdenes a su entidad financiera para adeudar "
 "su cuenta."
@@ -453,17 +452,22 @@ msgstr ""
 "su cuenta."
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Lunes"
 msgstr "Lunes"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: field:res.partner,magazine:0
+msgid "Magazine"
+msgstr "Revista"
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Martes"
 msgstr "Martes"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid ""
 "Mediante la firma de este Formulario de Orden de domiciliación, usted "
 "autoriza a :"
@@ -472,22 +476,22 @@ msgstr ""
 "autoriza a :"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Miércoles"
 msgstr "Miércoles"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "NOMBRE"
 msgstr "NOMBRE"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Nombre del Acreedor: LUNA TIC DESIGN S.L. / CIF: B86715067"
 msgstr "Nombre del Acreedor: LUNA TIC DESIGN S.L. / CIF: B86715067"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid ""
 "Nota: Sus derechos en relación con la anterior orden de domiciliación se "
 "explican\n"
@@ -506,47 +510,47 @@ msgstr ""
 "                                        de LUNA TIC DESIGN S.L."
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Nº"
 msgstr "Nº"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Nº CUENTA IBAN"
 msgstr "Nº CUENTA IBAN"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Orden de Domicialiación de Débito Directo SEPA"
 msgstr "Orden de Domicialiación de Débito Directo SEPA"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "PERFILES CORPORATIVOS OFICIALES \"ROCKBOTIC\" EN LAS REDES SOCIALES"
 msgstr "PERFILES CORPORATIVOS OFICIALES \"ROCKBOTIC\" EN LAS REDES SOCIALES"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "POBLACIÓN"
 msgstr "POBLACIÓN"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "PRECIO"
 msgstr "PRECIO"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "PROCEDIMIENTO PARA ALTAS Y BAJAS DURANE EL CURSO ESCOLAR"
 msgstr "PROCEDIMIENTO PARA ALTAS Y BAJAS DURANE EL CURSO ESCOLAR"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "PROVINCIA"
 msgstr "PROVINCIA"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid ""
 "Para cualquier modificación en las ALTAS/BAJAS de los alumnos a lo largo del "
 "curso,\n"
@@ -564,37 +568,27 @@ msgid "Partner"
 msgstr "Empresa"
 
 #. module: rockbotic_custom
-#: field:sale.order.line,decimal_pfmc:0
-msgid "Performance"
-msgstr "Performance"
-
-#. module: rockbotic_custom
-#: view:res.partner:rockbotic_custom.view_res_partner_filter_inh_rockbotic
-msgid "Persons"
-msgstr "Personas"
-
-#. module: rockbotic_custom
 #: model:ir.model,name:rockbotic_custom.model_product_category
 msgid "Product Category"
 msgstr "Categoría de producto"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "REVISTAS"
 msgstr "REVISTAS"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "SITIO WEB WWW.ROCKBOTIC.COM"
 msgstr "SITIO WEB WWW.ROCKBOTIC.COM"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "SOCIO"
 msgstr "SOCIO"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "SOCIOS"
 msgstr "SOCIOS"
 
@@ -616,7 +610,18 @@ msgid "Salesperson"
 msgstr "Comercial"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: field:res.partner,social_networks:0
+msgid "Social networks"
+msgstr "Redes sociales"
+
+#. module: rockbotic_custom
+#: model:ir.actions.act_window,name:rockbotic_custom.action_partner_student_form
+#: model:ir.ui.menu,name:rockbotic_custom.student_option_view
+msgid "Students"
+msgstr "Estudiantes"
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid ""
 "Su banco para adeudar los importes correspondientes en su cuenta de acuerdo "
 "con las\n"
@@ -629,12 +634,12 @@ msgstr ""
 "L."
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Sábado"
 msgstr "Sábado"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "TELÉFONO"
 msgstr "TELÉFONO"
 
@@ -644,14 +649,25 @@ msgid "Town"
 msgstr "Población"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Viernes"
 msgstr "Viernes"
 
 #. module: rockbotic_custom
-#: view:website:sale.report_saleorder_document
+#: field:res.partner,web_blog:0
+msgid "Web/Blog"
+msgstr "Web/Blog"
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Y EN EL BLOG CONTENIDO EN DICHO SITIO WEB"
 msgstr "Y EN EL BLOG CONTENIDO EN DICHO SITIO WEB"
+
+#. module: rockbotic_custom
+#: view:crm.make.sale:rockbotic_custom.view_crm_make_sale_inh_rockbotic
+#: view:sale.order:rockbotic_custom.view_order_form2_inh_planned_line_inh_rockbotic
+msgid "[('show_in_sales_order','=',True)]"
+msgstr "[('show_in_sales_order','=',True)]"
 
 #. module: rockbotic_custom
 #: field:product.category,show_in_sales_order:0

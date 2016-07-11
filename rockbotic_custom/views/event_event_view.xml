@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_event_form_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.form.inh.rockbotic</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="website_event_track.view_event_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Sponsorships']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_event_form2_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.form2.inh.rockbotic</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event_sale.view_event_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Badge']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
