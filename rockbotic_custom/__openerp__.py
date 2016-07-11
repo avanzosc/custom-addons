@@ -28,7 +28,7 @@
         "website_event_track",
         "partner_group",
         "partner_contact_birthdate",
-        "report",
+        "event_report",
     ],
     "data": [
         "wizard/crm_make_sale_view.xml",
