@@ -393,7 +393,7 @@
                                             <tr t-foreach="o.taxes" t-as="tax">
                                                 <td></td><td></td><td></td>
                                                 <td><span t-field="tax.name" /></td>
-                                                <td> - </td>
+                                                <td>  :  </td>
                                                 <td><span t-field="tax.amount" /></td>
                                             </tr>
                                         </table>
