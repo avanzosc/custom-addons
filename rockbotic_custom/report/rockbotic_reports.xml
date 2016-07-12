@@ -248,8 +248,7 @@
                                         como:
                                     </td>
                                 </tr>
-                                <tr style="font-size: 9px;color:#002060;border:1px solid #002060; border-top-style:
-                                    hidden;">
+                                <tr style="font-size: 9px;color:#002060;border:1px solid #002060; border-top-style:hidden;">
                                     <td colspan="2">REVISTAS</td>
                                     <td colspan="2" class="text-center">
                                         SITIO WEB WWW.ROCKBOTIC.COM
@@ -368,6 +367,155 @@
                     </div>
                 </t>
             </t>
+        </template>
+        <template id="rockbotic_event" inherit_id="event_report.event_document">
+            <xpath expr="//t[@t-call='report.html_container']" position="replace">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.html_container">
+                        <t t-if="o and 'company_id' in o">
+                            <t t-set="company" t-value="o.company_id"/>
+                        </t>
+                        <t t-if="not o or not 'company_id' in o">
+                            <t t-set="company" t-value="res_company"/>
+                        </t>
+                        <div class="header">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <img src="/rockbotic_custom/static/src/img/rockbotic.png"/>
+                                </div>
+                                <div class="col-xs-7" style="background-color:#00B0F0;border-radius: 50px;height:50px">
+                                    <span style="color:white;margin-left:15px;">LISTADO PROVISIONAL DE INSCRITOS</span>
+                                    <div style="background-color:#FFFFFF;border-radius: 10px;">
+                                        <span t-field="o.address_id.name" style="margin-left:15px;"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page">
+                            <h4>ROBÓTICA EDUCATIVA Y PROGRAMACIÓN DE VIDEOJUEGOS</h4>
+                            <br/>
+                            <div class="row">
+                                <table class="table table-condensed" style="width:35%;float:left;margin-right:15px;">
+                                    <tr style="border-top-style: hidden;">
+                                        <th style="background-color: #FF0000;width:30%;color:white;border-top-style: hidden;">CURSO</th>
+                                        <td style="border-bottom: 1px solid #FF0000;">
+                                            <span t-field="o.sale_order_line"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="background-color: #FF0000;color:white;border-top-style: hidden;">DÍA/S</th>
+                                        <td style="border-bottom: 1px solid #FF0000;">
+                                            <span t-if="o.sale_order_line.monday">Lunes</span>
+                                            <span t-if="o.sale_order_line.tuesday">Martes</span>
+                                            <span t-if="o.sale_order_line.wednesday">Miércoles</span>
+                                            <span t-if="o.sale_order_line.thursday">Jueves</span>
+                                            <span t-if="o.sale_order_line.friday">Viernes</span>
+                                            <span t-if="o.sale_order_line.saturday">Sábado</span>
+                                            <span t-if="o.sale_order_line.sunday">Domingo</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="background-color: #FF0000;color:white;border-top-style: hidden;">HORARIO</th>
+                                        <td style="border-bottom: 1px solid #FF0000;">
+                                            <t t-esc="'%02d:%02d' % (int(str(o.sale_order_line.start_hour).split('.')[0]), int(float(str('%.2f'
+                                                % o.sale_order_line.start_hour).split('.')[1])/100*60))"
+                                                />
+                                            -
+                                            <t t-esc="'%02d:%02d' % (int(str(o.sale_order_line.end_hour).split('.')[0]), int(float(str('%.2f'
+                                                % o.sale_order_line.end_hour).split('.')[1])/100*60))"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="table table-condensed" style="width:35%;float:left;margin-right:15px;">
+                                    <tr style="border-top-style: hidden;">
+                                        <th style="background-color: #92D050;width:30%;color:white;border-top-style: hidden;">PROFESOR/A</th>
+                                        <td style="border-bottom: 1px solid #FF0000;">
+                                            <t t-foreach="o.employee_registration_ids" t-as="p">
+                                                <span t-field="p.name"/>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="background-color: #ED7D31;color:white;border-top-style: hidden;">TÉCNICO/A</th>
+                                        <td style="border-bottom: 1px solid #FF0000;">
+                                            <span t-field="o.user_id"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="background-color: #7F7F7F;color:white;border-top-style: hidden;">GRUPO</th>
+                                        <td style="border-bottom: 1px solid #7F7F7F;">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <img src="/rockbotic_custom/static/src/img/robot1.png" style="max-width:150px;margin-top:-30px;"/>
+                            </div>
+                            <div>
+                                <table class="table table-condensed">
+                                    <thead style="background-color:#00B0F0;border-radius: 50px;height:50px;color:white;">
+                                        <tr style="border-bottom-style:hidden;">
+                                            <th>Nº</th>
+                                            <th>NOMBRE COMPLETO</th>
+                                            <th>EDAD</th>
+                                            <th>CURSO</th>
+                                            <th>NIVEL ROBÓTICA</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="o.no_employee_registration_ids" t-as="l">
+                                            <td style="border-bottom: 1px solid #00B0F0;">
+                                                <span t-field="l.nb_register"/>
+                                            </td>
+                                            <td style="border-bottom: 1px solid #00B0F0;">
+                                                <span t-field="l.name"/>
+                                            </td>
+                                            <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                                <t t-if="l.partner_id.birthdate_date">
+                                                    <span t-esc="(datetime.datetime.today() -datetime.datetime.strptime(l.partner_id.birthdate_date,'%Y-%m-%d')).days/360"/>
+                                                </t>
+                                            </td>
+                                            <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                                <span t-field="o.sale_order_line"/>
+                                            </td>
+                                            <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div align="center">
+                                    <table class="table table-condensed" style="border: 1px solid black;width:30%;">
+                                        <tr>
+                                            <td style="border: 1px solid black;">TOTAL INSCRITOS</td>
+                                            <td style="border: 1px solid black;">
+                                                <span t-esc="len(o.no_employee_registration_ids)"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <div class="row">
+                                <div class="col-xs-3" style="height:170px;">
+                                    <img src="/rockbotic_custom/static/src/img/robot2.png" style="max-width:130px;bottom:0px;left:0px;position:absolute;"/>
+                                </div>
+                                <div class="col-xs-6" style="height:170px;">
+                                    <div style="position: absolute;bottom: 15px;text-align: center;left: 0;right:0;">
+                                        Fecha - Hora:
+                                        <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')"/>
+                                        Página
+                                        <span class="page"/>
+                                        de
+                                        <span class="topage"/>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3" style="height:170px;">
+                                    <img src="/rockbotic_custom/static/src/img/robot3.png" style="max-width:100px"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </xpath>
         </template>
     </data>
 </openerp>

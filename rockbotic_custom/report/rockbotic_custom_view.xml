@@ -18,12 +18,6 @@
                 <link rel="stylesheet" href="/rockbotic_custom/static/src/css/rockbotic.css" />
             </xpath>
         </template>
-
-        <record id="report.paperformat_euro" model="report.paperformat">
-            <field name="margin_top">35</field>
-            <field name="header_spacing">30</field>
-            <field name="margin_bottom">20</field>
-        </record>
-
+        
     </data>
 </openerp>
