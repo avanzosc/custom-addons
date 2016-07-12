@@ -39,6 +39,7 @@
         "views/event_event_view.xml",
         "report/rockbotic_custom_view.xml",
         "report/rockbotic_reports.xml",
+        "report/rockbotic_paperformat.xml",
         "views/access_rules.xml",
     ],
     "installable": True,
