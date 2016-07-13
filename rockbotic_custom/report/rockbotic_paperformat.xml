@@ -9,8 +9,8 @@
         </record>
         
         <record id="rockbotic_event_paperformat" model="report.paperformat">
-            <field name="margin_top">35</field>
-            <field name="header_spacing">30</field>
+            <field name="margin_top">40</field>
+            <field name="header_spacing">35</field>
             <field name="margin_bottom">50</field>
             <field name="name">European A4 Event</field>
             <field name="default" eval="True" />
