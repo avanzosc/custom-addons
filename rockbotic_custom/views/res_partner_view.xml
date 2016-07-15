@@ -11,6 +11,10 @@
                     <filter string="District" domain="[]" context="{'group_by':'street2'}"/>
                     <separator/>
                 </filter>
+                <field name="name" position="after">
+                    <field name="is_company" />
+                    <field name="is_group" />
+                </field>
             </field>
         </record>
         <record id="birthdate_date_inh_rockbotic" model="ir.ui.view">
@@ -19,6 +23,8 @@
             <field name="inherit_id" ref="partner_contact_birthdate.birthdate_date" />
             <field name="arch" type="xml">
                 <field name="birthdate_date" position="after">
+                    <newline/>
+                    <separator string="Authorizations on images" colspan="4"/>
                     <field name="magazine" />
                     <field name="web_blog" />
                     <field name="social_networks" />
@@ -31,7 +37,7 @@
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
-            <field name="domain">[]</field>
+            <field name="domain">[('customer', '=', True), ('is_company', '=', True), ('is_group', '=', True)]</field>
             <field name="context">{'default_customer':1, 'search_default_customer':1, 'default_is_company':1, 'search_default_is_company':1, 'default_is_group':1, 'search_default_is_group':1}</field>
             <field name="filter" eval="True"/>
             <field name="help" type="html">
@@ -50,7 +56,7 @@
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
-            <field name="domain">[]</field>
+            <field name="domain">[('customer', '=', True), ('is_company', '=', True), ('is_group', '=', False)]</field>
             <field name="context">{'default_customer':1, 'search_default_customer':1, 'default_is_company':1, 'search_default_is_company':1, 'default_is_group':0, 'search_default_is_group':0}</field>
             <field name="filter" eval="True"/>
             <field name="help" type="html">
@@ -73,7 +79,7 @@
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
-            <field name="domain">[]</field>
+            <field name="domain">[('customer', '=', True), ('is_company', '=', False), ('is_group', '=', False)]</field>
             <field name="context">{'default_customer':1, 'search_default_customer':1, 'default_is_company':0, 'search_default_is_company':0, 'default_is_group':0, 'search_default_is_group':0}</field>
             <field name="filter" eval="True"/>
             <field name="help" type="html">
