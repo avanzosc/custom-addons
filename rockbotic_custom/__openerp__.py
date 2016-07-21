@@ -29,6 +29,7 @@
         "website_event_track",
         "partner_group",
         "partner_contact_birthdate",
+        "partner_student_course",
     ],
     "data": [
         "wizard/crm_make_sale_view.xml",
