@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-19 13:42+0000\n"
-"PO-Revision-Date: 2016-05-19 15:44+0100\n"
+"POT-Creation-Date: 2016-07-22 11:13+0000\n"
+"PO-Revision-Date: 2016-07-22 13:10+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -87,7 +87,12 @@ msgid "Commitment Date"
 msgstr "Fecha de compromiso"
 
 #. module: tumaker_custom
-#: code:addons/tumaker_custom/models/account_analytic_line.py:90
+#: model:ir.model,name:tumaker_custom.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: tumaker_custom
+#: code:addons/tumaker_custom/models/account_analytic_line.py:92
 #, python-format
 msgid "Configuration Error!"
 msgstr "Error de configuración"
@@ -135,7 +140,17 @@ msgstr ""
 #. module: tumaker_custom
 #: view:website:account.report_invoice_document
 msgid "Date due:"
-msgstr "Date due:"
+msgstr "Fecha de vencimiento:"
+
+#. module: tumaker_custom
+#: field:product.product,quote_description:0
+msgid "Description for the quote"
+msgstr "Description for the quote"
+
+#. module: tumaker_custom
+#: field:product.product,website_description:0
+msgid "Description for the website"
+msgstr "Description for the website"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
@@ -351,7 +366,7 @@ msgid "Pisua"
 msgstr "Pisua"
 
 #. module: tumaker_custom
-#: code:addons/tumaker_custom/models/account_analytic_line.py:91
+#: code:addons/tumaker_custom/models/account_analytic_line.py:93
 #, python-format
 msgid "Please define income account for product '%s'."
 msgstr "Por favor defina una cuenta de entrada para este producto '%s'."
@@ -365,6 +380,11 @@ msgstr "Posizio fiskala:"
 #: view:website:tumaker_custom.tu_maker_report_invoice
 msgid "Prezioa"
 msgstr "Prezioa"
+
+#. module: tumaker_custom
+#: model:ir.model,name:tumaker_custom.model_product_product
+msgid "Product"
+msgstr "Producto"
 
 #. module: tumaker_custom
 #: view:website:stock.report_picking
@@ -415,7 +435,7 @@ msgstr "Nombre del proyecto"
 #. module: tumaker_custom
 #: field:project.project,project_child_ids:0
 msgid "Project childs"
-msgstr "Hijos de proyecto"
+msgstr "Project childs"
 
 #. module: tumaker_custom
 #: view:project.project:tumaker_custom.view_project_tree_structure
