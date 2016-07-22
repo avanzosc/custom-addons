@@ -35,5 +35,15 @@
                 </field>
             </field>
         </record>
+        <record id="view_order_form3_inh_planned_line_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.order.form23.inh.planned.line.inh.rockbotic</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_product_variants.sale_order_extended_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/tree//field[@name='product_tmpl_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
     </data>
 </openerp>
