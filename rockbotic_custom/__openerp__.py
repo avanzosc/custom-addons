@@ -23,6 +23,7 @@
         "sale_order_line_performance",
         "sale_service_recurrence_configurator",
         "sale_crm_event_planned_by_sale_line",
+        "sale_product_variants",
         "event_sale",
         "event_planned_by_sale_line",
         "website_event_track",

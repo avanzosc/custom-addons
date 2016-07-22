@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-15 09:11+0000\n"
-"PO-Revision-Date: 2016-07-15 11:12+0100\n"
+"POT-Creation-Date: 2016-07-22 08:38+0000\n"
+"PO-Revision-Date: 2016-07-22 10:39+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -380,7 +380,7 @@ msgstr "Dirección: Francisco Cabo, 16 28015 (Madrid) – ESPAÑA"
 #: view:sale.order:rockbotic_custom.view_sales_order_filter_inh_rockbotic
 #: field:sale.order,street2:0
 msgid "District"
-msgstr "Districto"
+msgstr "Distrito"
 
 #. module: rockbotic_custom
 #: view:website:event_report.event_document
@@ -532,6 +532,11 @@ msgstr "NOMBRE"
 #: view:website:event_report.event_document
 msgid "NOMBRE COMPLETO"
 msgstr "NOMBRE COMPLETO"
+
+#. module: rockbotic_custom
+#: field:res.partner,no_sexual_offenses:0
+msgid "Negative certificate sexual offenses"
+msgstr "Certificado negativo delitos sexuales"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_sale_report
@@ -748,12 +753,6 @@ msgstr "Web/Blog"
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Y EN EL BLOG CONTENIDO EN DICHO SITIO WEB"
 msgstr "Y EN EL BLOG CONTENIDO EN DICHO SITIO WEB"
-
-#. module: rockbotic_custom
-#: view:crm.make.sale:rockbotic_custom.view_crm_make_sale_inh_rockbotic
-#: view:sale.order:rockbotic_custom.view_order_form2_inh_planned_line_inh_rockbotic
-msgid "[('show_in_sales_order','=',True)]"
-msgstr "[('show_in_sales_order','=',True)]"
 
 #. module: rockbotic_custom
 #: field:product.category,show_in_sales_order:0
