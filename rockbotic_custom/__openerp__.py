@@ -29,7 +29,7 @@
         "website_event_track",
         "partner_group",
         "partner_contact_birthdate",
-        "event_report",
+        "partner_student_course",
     ],
     "data": [
         "wizard/crm_make_sale_view.xml",
@@ -39,6 +39,7 @@
         "views/product_category_view.xml",
         "views/event_event_view.xml",
         "report/rockbotic_custom_view.xml",
+        "report/rockbotic_layout_view.xml",
         "report/rockbotic_reports.xml",
         "report/rockbotic_paperformat.xml",
         "views/access_rules.xml",

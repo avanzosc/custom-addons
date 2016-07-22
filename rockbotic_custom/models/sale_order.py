@@ -11,6 +11,7 @@ class SaleOrder(models.Model):
         'Town', related='partner_shipping_id.city', store=True)
     street2 = fields.Char(
         'District', related="partner_shipping_id.street2", store=True)
+    registration_note = fields.Text()
 
 
 class SaleOrderLine(models.Model):

@@ -4,6 +4,9 @@
         <report id="report_rockbotic_sale_report" string="Ficha de inscripción" model="sale.order"
             report_type="qweb-pdf" file="rockbotic_custom.rockbotic_sale_report" name="rockbotic_custom.rockbotic_sale_report"
             />
+        <report id="report_rockbotic_event" string="Listado Provisional Inscripciones" model="event.event"
+            report_type="qweb-pdf" file="rockbotic_custom.rockbotic_event" name="rockbotic_custom.rockbotic_event"
+            />
     </data>
     <data>
         <template id="rockbotic_sale_report">
@@ -110,7 +113,7 @@
                             </tr>
                             <tr>
                                 <td style="border: 1px solid black;">
-                                    <span t-field="o.note"/>
+                                    <span t-field="o.registration_note"/>
                                 </td>
                             </tr>
                         </table>
@@ -368,8 +371,8 @@
                 </t>
             </t>
         </template>
-        <template id="rockbotic_event" inherit_id="event_report.event_document">
-            <xpath expr="//t[@t-call='report.html_container']" position="replace">
+        <template id="rockbotic_sale_order" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//t[@t-call='report.external_layout']" position="replace">
                 <t t-foreach="docs" t-as="o">
                     <t t-call="report.html_container">
                         <t t-if="o and 'company_id' in o">
@@ -383,139 +386,461 @@
                                 <div class="col-xs-5">
                                     <img src="/rockbotic_custom/static/src/img/rockbotic.png"/>
                                 </div>
-                                <div class="col-xs-7" style="background-color:#00B0F0;border-radius: 50px;height:50px">
-                                    <span style="color:white;margin-left:15px;">LISTADO PROVISIONAL DE INSCRITOS</span>
-                                    <div style="background-color:#FFFFFF;border-radius: 10px;">
-                                        <span t-field="o.address_id.name" style="margin-left:15px;"/>
-                                    </div>
+                                <div class="col-xs-7">
+                                    <span t-field="company.partner_id"/>
+                                    <br/>
+                                    <span t-field="company.partner_id.street"/>
+                                    <span t-field="company.partner_id.zip"/>
+                                    <span t-field="company.partner_id.city"/>
+                                    (
+                                    <span t-field="company.partner_id.country_id"/>
+                                    )
+                                    <br/>
+                                    VAT:
+                                    <span t-field="company.partner_id.vat"/>
+                                    <br/>
+                                    Tel:
+                                    <span t-field="company.partner_id.phone"/>
+                                    <br/>
+                                    E-mail:
+                                    <span t-field="company.partner_id.email" />
                                 </div>
                             </div>
                         </div>
                         <div class="page">
-                            <h4>ROBÓTICA EDUCATIVA Y PROGRAMACIÓN DE VIDEOJUEGOS</h4>
-                            <br/>
                             <div class="row">
-                                <table class="table table-condensed" style="width:35%;float:left;margin-right:15px;">
-                                    <tr style="border-top-style: hidden;">
-                                        <th style="background-color: #FF0000;width:30%;color:white;border-top-style: hidden;">CURSO</th>
-                                        <td style="border-bottom: 1px solid #FF0000;">
-                                            <span t-field="o.sale_order_line"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th style="background-color: #FF0000;color:white;border-top-style: hidden;">DÍA/S</th>
-                                        <td style="border-bottom: 1px solid #FF0000;">
-                                            <span t-if="o.sale_order_line.monday">Lunes</span>
-                                            <span t-if="o.sale_order_line.tuesday">Martes</span>
-                                            <span t-if="o.sale_order_line.wednesday">Miércoles</span>
-                                            <span t-if="o.sale_order_line.thursday">Jueves</span>
-                                            <span t-if="o.sale_order_line.friday">Viernes</span>
-                                            <span t-if="o.sale_order_line.saturday">Sábado</span>
-                                            <span t-if="o.sale_order_line.sunday">Domingo</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th style="background-color: #FF0000;color:white;border-top-style: hidden;">HORARIO</th>
-                                        <td style="border-bottom: 1px solid #FF0000;">
-                                            <t t-esc="'%02d:%02d' % (int(str(o.sale_order_line.start_hour).split('.')[0]), int(float(str('%.2f'
-                                                % o.sale_order_line.start_hour).split('.')[1])/100*60))"
-                                                />
-                                            -
-                                            <t t-esc="'%02d:%02d' % (int(str(o.sale_order_line.end_hour).split('.')[0]), int(float(str('%.2f'
-                                                % o.sale_order_line.end_hour).split('.')[1])/100*60))"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <table class="table table-condensed" style="width:35%;float:left;margin-right:15px;">
-                                    <tr style="border-top-style: hidden;">
-                                        <th style="background-color: #92D050;width:30%;color:white;border-top-style: hidden;">PROFESOR/A</th>
-                                        <td style="border-bottom: 1px solid #FF0000;">
-                                            <t t-foreach="o.employee_registration_ids" t-as="p">
-                                                <span t-field="p.name"/>
-                                            </t>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th style="background-color: #ED7D31;color:white;border-top-style: hidden;">TÉCNICO/A</th>
-                                        <td style="border-bottom: 1px solid #FF0000;">
-                                            <span t-field="o.user_id"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th style="background-color: #7F7F7F;color:white;border-top-style: hidden;">GRUPO</th>
-                                        <td style="border-bottom: 1px solid #7F7F7F;">
-                                        </td>
-                                    </tr>
-                                </table>
-                                <img src="/rockbotic_custom/static/src/img/robot1.png" style="max-width:150px;margin-top:-30px;"/>
-                            </div>
-                            <div>
-                                <table class="table table-condensed">
-                                    <thead style="background-color:#00B0F0;border-radius: 50px;height:50px;color:white;">
-                                        <tr style="border-bottom-style:hidden;">
-                                            <th>Nº</th>
-                                            <th>NOMBRE COMPLETO</th>
-                                            <th>EDAD</th>
-                                            <th>CURSO</th>
-                                            <th>NIVEL ROBÓTICA</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr t-foreach="o.no_employee_registration_ids" t-as="l">
-                                            <td style="border-bottom: 1px solid #00B0F0;">
-                                                <span t-field="l.nb_register"/>
-                                            </td>
-                                            <td style="border-bottom: 1px solid #00B0F0;">
-                                                <span t-field="l.name"/>
-                                            </td>
-                                            <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
-                                                <t t-if="l.partner_id.birthdate_date">
-                                                    <span t-esc="(datetime.datetime.today() -datetime.datetime.strptime(l.partner_id.birthdate_date,'%Y-%m-%d')).days/360"/>
-                                                </t>
-                                            </td>
-                                            <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
-                                                <span t-field="o.sale_order_line"/>
-                                            </td>
-                                            <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div align="center">
-                                    <table class="table table-condensed" style="border: 1px solid black;width:30%;">
-                                        <tr>
-                                            <td style="border: 1px solid black;">TOTAL INSCRITOS</td>
-                                            <td style="border: 1px solid black;">
-                                                <span t-esc="len(o.no_employee_registration_ids)"/>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                <div style="background-color:#00B0F0;-moz-border-radius: 100px 0 0 100px; -webkit-border-radius:
+                                    100px 0 0 100px; border-radius: 100px 0 0 100px;"
+                                    class="col-xs-3">
+                                    <h2>
+                                        <span t-if="o.state not in ['draft','sent']">Presupuesto</span>
+                                        <span t-if="o.state in ['draft','sent']">Pedido</span>
+                                    </h2>
+                                </div>
+                                <div class="col-xs-9" style="padding-left:15%;">
+                                    <div class="col-xs-3">
+                                        <img src="/rockbotic_custom/static/src/img/square.png"/>
+                                        CLIENTE
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <address t-field="o.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;,
+                                            &quot;fields&quot;: [&quot;address&quot;,
+                                            &quot;name&quot;], &quot;no_marker&quot;:
+                                            true}"/>
+                                        <span t-if="o.partner_id.vat">
+                                            TIN:
+                                            <span t-field="o.partner_id.vat"/>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <h2 class="col-xs-6">
+                                    Nº
+                                    <span t-field="o.name"/>
+                                </h2>
+                                <h3 class="col-xs-6" t-if="o.date_order">
+                                    Fecha:
+                                    <span t-field="o.date_order" t-field-options='{"widget": "date"}'/>
+                                </h3>
+                            </div>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Taxes</th>
+                                        <th class="text-right">Quantity</th>
+                                        <th class="text-right">Unit Price</th>
+                                        <th groups="sale.group_discount_per_so_line">Disc.(%)</th>
+                                        <th class="text-right">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="sale_tbody">
+                                    <tr t-foreach="o.order_line" t-as="l">
+                                        <td>
+                                            <span t-field="l.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="', '.join(map(lambda x: x.name, l.tax_id))"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="l.product_uom_qty"/>
+                                            <span groups="product.group_uom" t-field="l.product_uom"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="l.price_unit"/>
+                                        </td>
+                                        <td groups="sale.group_discount_per_so_line">
+                                            <span t-field="l.discount"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="l.price_subtotal" t-field-options='{"widget": "monetary", "display_currency":
+                                                "o.pricelist_id.currency_id"}'/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="footer">
                             <div class="row">
-                                <div class="col-xs-3" style="height:170px;">
-                                    <img src="/rockbotic_custom/static/src/img/robot2.png" style="max-width:130px;bottom:0px;left:0px;position:absolute;"/>
+                                <div class="col-xs-10">
+                                    <span t-field="o.note"/>
                                 </div>
-                                <div class="col-xs-6" style="height:170px;">
-                                    <div style="position: absolute;bottom: 15px;text-align: center;left: 0;right:0;">
-                                        Fecha - Hora:
-                                        <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')"/>
-                                        Página
-                                        <span class="page"/>
-                                        de
-                                        <span class="topage"/>
-                                    </div>
-                                </div>
-                                <div class="col-xs-3" style="height:170px;">
-                                    <img src="/rockbotic_custom/static/src/img/robot3.png" style="max-width:100px"/>
+                                <div class="pull-right">
+                                    <img src="/rockbotic_custom/static/src/img/robot.png" style="max-width:100px;"/>
                                 </div>
                             </div>
                         </div>
                     </t>
                 </t>
             </xpath>
+        </template>
+        <template id="rockbotic_account_invoice" inherit_id="account.report_invoice_document">
+            <xpath expr="//t[@t-call='report.external_layout']" position="replace">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.html_container">
+                        <t t-if="o and 'company_id' in o">
+                            <t t-set="company" t-value="o.company_id"/>
+                        </t>
+                        <t t-if="not o or not 'company_id' in o">
+                            <t t-set="company" t-value="res_company"/>
+                        </t>
+                        <div class="header">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <img src="/rockbotic_custom/static/src/img/rockbotic.png"/>
+                                </div>
+                                <div class="col-xs-7">
+                                    <span t-field="company.partner_id"/>
+                                    <br/>
+                                    <span t-field="company.partner_id.street"/>
+                                    <span t-field="company.partner_id.zip"/>
+                                    <span t-field="company.partner_id.city"/>
+                                    (
+                                    <span t-field="company.partner_id.country_id"/>
+                                    )
+                                    <br/>
+                                    VAT:
+                                    <span t-field="company.partner_id.vat"/>
+                                    <br/>
+                                    Tel:
+                                    <span t-field="company.partner_id.phone"/>
+                                    <br/>
+                                    E-mail:
+                                    <span t-field="company.partner_id.email" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page">
+                            <div class="row">
+                                <div style="background-color:#00B0F0;-moz-border-radius: 100px 0 0 100px; -webkit-border-radius:
+                                    100px 0 0 100px; border-radius: 100px 0 0 100px;"
+                                    class="col-xs-3">
+                                    <h2 style="margin-left:15px;margin-top:10px;">
+                                        <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">Invoice</span>
+                                        <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>
+                                        <span t-if="o.type == 'out_invoice' and o.state == 'draft'">Draft Invoice</span>
+                                        <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice</span>
+                                        <span t-if="o.type == 'out_refund'">Refund</span>
+                                        <span t-if="o.type == 'in_refund'">Supplier Refund</span>
+                                        <span t-if="o.type == 'in_invoice'">Supplier Invoice</span>
+                                    </h2>
+                                </div>
+                                <div class="col-xs-9" style="padding-left:15%;">
+                                    <div class="col-xs-3">
+                                        <img src="/rockbotic_custom/static/src/img/square.png"/>
+                                        CLIENTE
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <address t-field="o.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;,
+                                            &quot;fields&quot;: [&quot;address&quot;,
+                                            &quot;name&quot;], &quot;no_marker&quot;:
+                                            true}"/>
+                                        <span t-if="o.partner_id.vat">
+                                            TIN:
+                                            <span t-field="o.partner_id.vat"/>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h2 class="col-xs-6">
+                                    Nº
+                                    <span t-field="o.number"/>
+                                </h2>
+                                <h3 class="col-xs-6" t-if="o.date_invoice">
+                                    Fecha:
+                                    <span t-field="o.date_invoice"/>
+                                </h3>
+                            </div>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Quantity</th>
+                                        <th class="text-right">Unit Price</th>
+                                        <th class="text-right" groups="sale.group_discount_per_so_line">Discount (%)</th>
+                                        <th class="text-right">Taxes</th>
+                                        <th class="text-right">Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="invoice_tbody">
+                                    <tr t-foreach="o.invoice_line" t-as="l">
+                                        <td>
+                                            <span t-field="l.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="l.quantity"/>
+                                            <span t-field="l.uos_id" groups="product.group_uom"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="l.price_unit"/>
+                                        </td>
+                                        <td class="text-right" groups="sale.group_discount_per_so_line">
+                                            <span t-field="l.discount"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="l.price_subtotal" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div class="row">
+                                <div class="col-xs-4 pull-right">
+                                    <table class="table table-condensed">
+                                        <tr class="border-black">
+                                            <td>
+                                                <strong>Total Without Taxes</strong>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="o.amount_untaxed" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                    &quot;display_currency&quot;:
+                                                    &quot;o.currency_id&quot;}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Taxes</td>
+                                            <td class="text-right">
+                                                <span t-field="o.amount_tax" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                    &quot;display_currency&quot;:
+                                                    &quot;o.currency_id&quot;}"/>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-black">
+                                            <td>
+                                                <strong>Total</strong>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="o.amount_total" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                    &quot;display_currency&quot;:
+                                                    &quot;o.currency_id&quot;}"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="row" t-if="o.tax_line">
+                                <div class="col-xs-6">
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>Tax</th>
+                                                <th class="text-right">Base</th>
+                                                <th class="text-right">Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr t-foreach="o.tax_line" t-as="t">
+                                                <td>
+                                                    <span t-field="t.name"/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-field="t.base" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                        &quot;display_currency&quot;:
+                                                        &quot;o.currency_id&quot;}"/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-field="t.amount" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                        &quot;display_currency&quot;:
+                                                        &quot;o.currency_id&quot;}"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <p t-if="o.payment_term.note">
+                                <strong>Payment Term:</strong>
+                                <span t-field="o.payment_term.note"/>
+                            </p>
+                        </div>
+                        <div class="footer">
+                            <div class="row">
+                                <div class="col-xs-10">
+                                    <span t-field="o.comment"/>
+                                </div>
+                                <div class="pull-right">
+                                    <img src="/rockbotic_custom/static/src/img/robot.png" style="max-width:100px;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </xpath>
+        </template>
+        <template id="rockbotic_event">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="report.html_container">
+                    <t t-if="o and 'company_id' in o">
+                        <t t-set="company" t-value="o.company_id"/>
+                    </t>
+                    <t t-if="not o or not 'company_id' in o">
+                        <t t-set="company" t-value="res_company"/>
+                    </t>
+                    <div class="header">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <img src="/rockbotic_custom/static/src/img/rockbotic.png"/>
+                            </div>
+                            <div class="col-xs-7" style="background-color:#00B0F0;border-radius: 50px;height:50px">
+                                <span style="color:white;margin-left:15px;">LISTADO PROVISIONAL DE INSCRITOS</span>
+                                <div style="background-color:#FFFFFF;border-radius: 10px;">
+                                    <span t-field="o.address_id.name" style="margin-left:15px;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page">
+                        <h4>ROBÓTICA EDUCATIVA Y PROGRAMACIÓN DE VIDEOJUEGOS</h4>
+                        <br/>
+                        <div class="row">
+                            <table class="table table-condensed" style="width:35%;float:left;margin-right:15px;">
+                                <tr style="border-top-style: hidden;">
+                                    <th style="background-color: #FF0000;width:30%;color:white;border-top-style: hidden;">CURSO</th>
+                                    <td style="border-bottom: 1px solid #FF0000;">
+                                        <span t-field="o.sale_order_line"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="background-color: #FF0000;color:white;border-top-style: hidden;">DÍA/S</th>
+                                    <td style="border-bottom: 1px solid #FF0000;">
+                                        <span t-if="o.sale_order_line.monday">Lunes</span>
+                                        <span t-if="o.sale_order_line.tuesday">Martes</span>
+                                        <span t-if="o.sale_order_line.wednesday">Miércoles</span>
+                                        <span t-if="o.sale_order_line.thursday">Jueves</span>
+                                        <span t-if="o.sale_order_line.friday">Viernes</span>
+                                        <span t-if="o.sale_order_line.saturday">Sábado</span>
+                                        <span t-if="o.sale_order_line.sunday">Domingo</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="background-color: #FF0000;color:white;border-top-style: hidden;">HORARIO</th>
+                                    <td style="border-bottom: 1px solid #FF0000;">
+                                        <t t-esc="'%02d:%02d' % (int(str(o.sale_order_line.start_hour).split('.')[0]), int(float(str('%.2f'
+                                            % o.sale_order_line.start_hour).split('.')[1])/100*60))"
+                                            />
+                                        -
+                                        <t t-esc="'%02d:%02d' % (int(str(o.sale_order_line.end_hour).split('.')[0]), int(float(str('%.2f'
+                                            % o.sale_order_line.end_hour).split('.')[1])/100*60))"/>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="table table-condensed" style="width:35%;float:left;margin-right:15px;">
+                                <tr style="border-top-style: hidden;">
+                                    <th style="background-color: #92D050;width:30%;color:white;border-top-style: hidden;">PROFESOR/A</th>
+                                    <td style="border-bottom: 1px solid #FF0000;">
+                                        <t t-foreach="o.employee_registration_ids" t-as="p">
+                                            <span t-field="p.name"/>
+                                        </t>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="background-color: #ED7D31;color:white;border-top-style: hidden;">COORDINADOR/A</th>
+                                    <td style="border-bottom: 1px solid #FF0000;">
+                                        <span t-field="o.user_id"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="background-color: #7F7F7F;color:white;border-top-style: hidden;">GRUPO</th>
+                                    <td style="border-bottom: 1px solid #7F7F7F;">
+                                    </td>
+                                </tr>
+                            </table>
+                            <img src="/rockbotic_custom/static/src/img/robot1.png" style="max-width:150px;margin-top:-30px;"/>
+                        </div>
+                        <div>
+                            <table class="table table-condensed">
+                                <thead style="background-color:#00B0F0;border-radius: 50px;height:50px;color:white;">
+                                    <tr style="border-bottom-style:hidden;">
+                                        <th>Nº</th>
+                                        <th>NOMBRE COMPLETO</th>
+                                        <th>EDAD</th>
+                                        <th>CURSO</th>
+                                        <th>NIVEL ROBÓTICA</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="o.no_employee_registration_ids" t-as="l">
+                                        <td style="border-bottom: 1px solid #00B0F0;">
+                                            <span t-field="l.nb_register"/>
+                                        </td>
+                                        <td style="border-bottom: 1px solid #00B0F0;">
+                                            <span t-field="l.name"/>
+                                        </td>
+                                        <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                            <t t-if="l.partner_id.birthdate_date">
+                                                <span t-esc="(datetime.datetime.today() -datetime.datetime.strptime(l.partner_id.birthdate_date,'%Y-%m-%d')).days/360"/>
+                                            </t>
+                                        </td>
+                                        <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                            <span t-field="o.sale_order_line"/>
+                                        </td>
+                                        <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                            <span t-field="o.partner_id.student_rockbotic_level"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div align="center">
+                                <table class="table table-condensed" style="border: 1px solid black;width:30%;">
+                                    <tr>
+                                        <td style="border: 1px solid black;">TOTAL INSCRITOS</td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="len(o.no_employee_registration_ids)"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-xs-3" style="height:170px;">
+                                <img src="/rockbotic_custom/static/src/img/robot2.png" style="max-width:130px;bottom:0px;left:0px;position:absolute;"/>
+                            </div>
+                            <div class="col-xs-6" style="height:170px;">
+                                <div style="position: absolute;bottom: 15px;text-align: center;left: 0;right:0;">
+                                    Fecha - Hora:
+                                    <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')"/>
+                                    Página
+                                    <span class="page"/>
+                                    de
+                                    <span class="topage"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-3" style="height:170px;">
+                                <img src="/rockbotic_custom/static/src/img/robot3.png" style="max-width:100px"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
         </template>
     </data>
 </openerp>

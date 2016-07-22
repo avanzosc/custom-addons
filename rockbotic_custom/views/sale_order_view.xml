@@ -43,6 +43,19 @@
                 <xpath expr="//field[@name='order_line']/tree//field[@name='product_tmpl_id']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+	    </field>
+        </record>
+        <record id="registration_sale_order_view_form" model="ir.ui.view">
+            <field name="name">registration.sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <page string="Other Information" position="after">
+                    <page string="Registration Information">
+                        <separator string="Registration notes"/>
+                        <field name="registration_note" nolabel="1"/>
+                    </page>
+                </page>
             </field>
         </record>
     </data>

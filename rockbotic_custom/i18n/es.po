@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-07-22 08:38+0000\n"
 "PO-Revision-Date: 2016-07-22 10:39+0100\n"
-"Last-Translator: <>\n"
+"Last-Translator: Esther Martín <esthermartin@avanzosc.es>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -61,6 +61,11 @@ msgid "AUTORIZACIONES SOBRE IMÁGENES"
 msgstr "AUTORIZACIONES SOBRE IMÁGENES"
 
 #. module: rockbotic_custom
+#: view:website:account.report_invoice_document
+msgid "Amount"
+msgstr "Importe"
+
+#. module: rockbotic_custom
 #: view:res.partner:rockbotic_custom.birthdate_date_inh_rockbotic
 msgid "Authorizations on images"
 msgstr "Autorizaciones sobre imágenes"
@@ -94,15 +99,36 @@ msgid "BAJAS"
 msgstr "BAJAS"
 
 #. module: rockbotic_custom
+#: view:website:account.report_invoice_document
+msgid "Base"
+msgstr "Base"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "C.P."
 msgstr "C.P."
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:account.report_invoice_document
+#: view:website:sale.report_saleorder_document
+msgid "CLIENTE"
+msgstr "CLIENTE"
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.rockbotic_event
+msgid "COORDINADOR/A"
+msgstr "COORDINADOR/A"
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.rockbotic_event
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "CURSO"
 msgstr "CURSO"
+
+#. module: rockbotic_custom
+#: view:website:account.report_invoice_document
+msgid "Cancelled Invoice"
+msgstr "Factura cancelada"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_sale_report
@@ -369,9 +395,25 @@ msgstr ""
 "                                            de LUNA TIC DESIGN SL"
 
 #. module: rockbotic_custom
+#: view:website:account.report_invoice_document
+#: view:website:sale.report_saleorder_document
+msgid "Description"
+msgstr "Descripción"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Dirección: Francisco Cabo, 16 28015 (Madrid) – ESPAÑA"
 msgstr "Dirección: Francisco Cabo, 16 28015 (Madrid) – ESPAÑA"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Disc.(%)"
+msgstr "Desc.(%)"
+
+#. module: rockbotic_custom
+#: view:website:account.report_invoice_document
+msgid "Discount (%)"
+msgstr "Descuento (%)"
 
 #. module: rockbotic_custom
 #: view:crm.lead:rockbotic_custom.view_crm_case_leads_filter_inh_rockbotic
@@ -383,10 +425,15 @@ msgid "District"
 msgstr "Distrito"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:rockbotic_custom.rockbotic_event
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Domingo"
 msgstr "Domingo"
+
+#. module: rockbotic_custom
+#: view:website:account.report_invoice_document
+msgid "Draft Invoice"
+msgstr "Factura borrador"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_sale_report
@@ -394,12 +441,19 @@ msgid "DÍA"
 msgstr "DÍA"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:rockbotic_custom.rockbotic_event
 msgid "DÍA/S"
 msgstr "DÍA/S"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:account.report_invoice_document
+#: view:website:report.external_layout_header
+#: view:website:sale.report_saleorder_document
+msgid "E-mail:"
+msgstr "E-mail:"
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.rockbotic_event
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "EDAD"
 msgstr "EDAD"
@@ -408,11 +462,6 @@ msgstr "EDAD"
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "EMAIL"
 msgstr "EMAIL"
-
-#. module: rockbotic_custom
-#: help:sale.order.line,decimal_pfmc:0
-msgid "Estimated time for completion the task"
-msgstr "Tiempo estimado para completar la tarea"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_sale_report
@@ -436,9 +485,15 @@ msgid "Families"
 msgstr "Familias"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:rockbotic_custom.rockbotic_event
 msgid "Fecha - Hora:"
 msgstr "Fecha - Hora:"
+
+#. module: rockbotic_custom
+#: view:website:account.report_invoice_document
+#: view:website:sale.report_saleorder_document
+msgid "Fecha:"
+msgstr "Fecha:"
 
 #. module: rockbotic_custom
 #: model:ir.actions.report.xml,name:rockbotic_custom.report_rockbotic_sale_report
@@ -446,12 +501,12 @@ msgid "Ficha de inscripción"
 msgstr "Ficha de inscripción"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:rockbotic_custom.rockbotic_event
 msgid "GRUPO"
 msgstr "GRUPO"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:rockbotic_custom.rockbotic_event
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "HORARIO"
 msgstr "HORARIO"
@@ -462,7 +517,12 @@ msgid "INSTRUCCIONES DE INSCRIPCIÓN"
 msgstr "INSTRUCCIONES DE INSCRIPCIÓN"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:account.report_invoice_document
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.rockbotic_event
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Jueves"
 msgstr "Jueves"
@@ -473,7 +533,7 @@ msgid "LEY DE PROTECCIÓN DE DATOSDE CARÁCTER PERSONAL"
 msgstr "LEY DE PROTECCIÓN DE DATOSDE CARÁCTER PERSONAL"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:rockbotic_custom.rockbotic_event
 msgid "LISTADO PROVISIONAL DE INSCRITOS"
 msgstr "LISTADO PROVISIONAL DE INSCRITOS"
 
@@ -487,7 +547,12 @@ msgstr ""
 "su cuenta."
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: model:ir.actions.report.xml,name:rockbotic_custom.report_rockbotic_event
+msgid "Listado Provisional Inscripciones"
+msgstr "Listado Provisional Inscripciones"
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.rockbotic_event
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Lunes"
 msgstr "Lunes"
@@ -498,7 +563,7 @@ msgid "Magazine"
 msgstr "Revista"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:rockbotic_custom.rockbotic_event
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Martes"
 msgstr "Martes"
@@ -513,13 +578,13 @@ msgstr ""
 "autoriza a :"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:rockbotic_custom.rockbotic_event
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Miércoles"
 msgstr "Miércoles"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:rockbotic_custom.rockbotic_event
 msgid "NIVEL ROBÓTICA"
 msgstr "NIVEL ROBÓTICA"
 
@@ -529,7 +594,7 @@ msgid "NOMBRE"
 msgstr "NOMBRE"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:rockbotic_custom.rockbotic_event
 msgid "NOMBRE COMPLETO"
 msgstr "NOMBRE COMPLETO"
 
@@ -563,8 +628,10 @@ msgstr ""
 "                                        de LUNA TIC DESIGN S.L."
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:account.report_invoice_document
+#: view:website:rockbotic_custom.rockbotic_event
 #: view:website:rockbotic_custom.rockbotic_sale_report
+#: view:website:sale.report_saleorder_document
 msgid "Nº"
 msgstr "Nº"
 
@@ -577,6 +644,11 @@ msgstr "Nº CUENTA IBAN"
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Orden de Domicialiación de Débito Directo SEPA"
 msgstr "Orden de Domicialiación de Débito Directo SEPA"
+
+#. module: rockbotic_custom
+#: view:sale.order:rockbotic_custom.registration_sale_order_view_form
+msgid "Other Information"
+msgstr "Otra información"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_sale_report
@@ -594,12 +666,17 @@ msgid "PRECIO"
 msgstr "PRECIO"
 
 #. module: rockbotic_custom
+#: view:website:account.report_invoice_document
+msgid "PRO-FORMA"
+msgstr "PRO-FORMA"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "PROCEDIMIENTO PARA ALTAS Y BAJAS DURANE EL CURSO ESCOLAR"
 msgstr "PROCEDIMIENTO PARA ALTAS Y BAJAS DURANE EL CURSO ESCOLAR"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:rockbotic_custom.rockbotic_event
 msgid "PROFESOR/A"
 msgstr "PROFESOR/A"
 
@@ -627,9 +704,24 @@ msgid "Partner"
 msgstr "Empresa"
 
 #. module: rockbotic_custom
-#: field:sale.order.line,decimal_pfmc:0
-msgid "Performance"
-msgstr "Performance"
+#: view:website:account.report_invoice_document
+msgid "Payment Term:"
+msgstr "Plazo de pago:"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Pedido"
+msgstr "Pedido"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Presupuesto"
+msgstr "Presupuesto"
+
+#. module: rockbotic_custom
+#: view:website:sale.report_saleorder_document
+msgid "Price"
+msgstr "Precio"
 
 #. module: rockbotic_custom
 #: model:ir.model,name:rockbotic_custom.model_product_category
@@ -637,9 +729,15 @@ msgid "Product Category"
 msgstr "Categoría de producto"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:rockbotic_custom.rockbotic_event
 msgid "Página"
 msgstr "Página"
+
+#. module: rockbotic_custom
+#: view:website:account.report_invoice_document
+#: view:website:sale.report_saleorder_document
+msgid "Quantity"
+msgstr "Cantidad"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_sale_report
@@ -647,9 +745,29 @@ msgid "REVISTAS"
 msgstr "REVISTAS"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:rockbotic_custom.rockbotic_event
 msgid "ROBÓTICA EDUCATIVA Y PROGRAMACIÓN DE VIDEOJUEGOS"
 msgstr "ROBÓTICA EDUCATIVA Y PROGRAMACIÓN DE VIDEOJUEGOS"
+
+#. module: rockbotic_custom
+#: view:website:account.report_invoice_document
+msgid "Refund"
+msgstr "Factura rectificativa"
+
+#. module: rockbotic_custom
+#: view:sale.order:rockbotic_custom.registration_sale_order_view_form
+msgid "Registration Information"
+msgstr "Información de registro"
+
+#. module: rockbotic_custom
+#: field:sale.order,registration_note:0
+msgid "Registration note"
+msgstr "Nota de registro"
+
+#. module: rockbotic_custom
+#: view:sale.order:rockbotic_custom.registration_sale_order_view_form
+msgid "Registration notes"
+msgstr "Notas del registro"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_sale_report
@@ -708,7 +826,17 @@ msgstr ""
 "L."
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:account.report_invoice_document
+msgid "Supplier Invoice"
+msgstr "Factura de proveedor"
+
+#. module: rockbotic_custom
+#: view:website:account.report_invoice_document
+msgid "Supplier Refund"
+msgstr "Factura rectificativa de proveedor"
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.rockbotic_event
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Sábado"
 msgstr "Sábado"
@@ -719,14 +847,43 @@ msgid "TELÉFONO"
 msgstr "TELÉFONO"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:account.report_invoice_document
+#: view:website:sale.report_saleorder_document
+msgid "TIN:"
+msgstr "NIF:"
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.rockbotic_event
 msgid "TOTAL INSCRITOS"
 msgstr "TOTAL INSCRITOS"
 
 #. module: rockbotic_custom
-#: field:sale.order,total_performance:0
-msgid "Total Performance"
-msgstr "Total Performance"
+#: view:website:account.report_invoice_document
+msgid "Tax"
+msgstr "Impuesto"
+
+#. module: rockbotic_custom
+#: view:website:account.report_invoice_document
+#: view:website:sale.report_saleorder_document
+msgid "Taxes"
+msgstr "Impuestos"
+
+#. module: rockbotic_custom
+#: view:website:account.report_invoice_document
+#: view:website:report.external_layout_header
+#: view:website:sale.report_saleorder_document
+msgid "Tel:"
+msgstr "Tel:"
+
+#. module: rockbotic_custom
+#: view:website:account.report_invoice_document
+msgid "Total"
+msgstr "Total"
+
+#. module: rockbotic_custom
+#: view:website:account.report_invoice_document
+msgid "Total Without Taxes"
+msgstr "Base imponible"
 
 #. module: rockbotic_custom
 #: field:sale.order,city:0
@@ -734,12 +891,20 @@ msgid "Town"
 msgstr "Población"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
-msgid "TÉCNICO/A"
-msgstr "TÉCNICO/A"
+#: view:website:account.report_invoice_document
+#: view:website:sale.report_saleorder_document
+msgid "Unit Price"
+msgstr "Precio unidad"
 
 #. module: rockbotic_custom
-#: view:website:event_report.event_document
+#: view:website:account.report_invoice_document
+#: view:website:report.external_layout_header
+#: view:website:sale.report_saleorder_document
+msgid "VAT:"
+msgstr "NIF:"
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.rockbotic_event
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Viernes"
 msgstr "Viernes"
