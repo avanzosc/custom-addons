@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-19 10:53+0000\n"
-"PO-Revision-Date: 2016-04-19 12:54+0100\n"
+"POT-Creation-Date: 2016-07-22 11:15+0000\n"
+"PO-Revision-Date: 2016-07-22 13:12+0100\n"
 "Last-Translator: Esther Martín <esthermartin@avanzosc.es>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,9 +17,19 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 
 #. module: tumaker_custom
+#: view:stock.quant:tumaker_custom.quant_search_view
+msgid "Active Product"
+msgstr "Active Product"
+
+#. module: tumaker_custom
 #: model:ir.actions.report.xml,name:tumaker_custom.report_picking_basque
 msgid "Albarana Euskeraz"
 msgstr "Albarana Euskeraz"
+
+#. module: tumaker_custom
+#: field:stock.transfer_details,allow_zero_cost:0
+msgid "Allow Zero Costs"
+msgstr "Allow Zero Costs"
 
 #. module: tumaker_custom
 #: model:ir.model,name:tumaker_custom.model_account_analytic_account
@@ -74,10 +84,15 @@ msgstr "Biltegiaren Helbidea:"
 #. module: tumaker_custom
 #: field:sale.order,commitment2_date:0
 msgid "Commitment Date"
-msgstr "Commitment Date"
+msgstr "Konpromezu data"
 
 #. module: tumaker_custom
-#: code:addons/tumaker_custom/models/account_analytic_line.py:90
+#: model:ir.model,name:tumaker_custom.model_res_company
+msgid "Companies"
+msgstr "Companies"
+
+#. module: tumaker_custom
+#: code:addons/tumaker_custom/models/account_analytic_line.py:92
 #, python-format
 msgid "Configuration Error!"
 msgstr "Configuration Error!"
@@ -118,9 +133,22 @@ msgstr "Data"
 msgid ""
 "Date by which the products are sure to be delivered. This is a date that you "
 "can promise to the customer, based on the Product Lead Times."
-msgstr ""
-"Date by which the products are sure to be delivered. This is a date that you "
-"can promise to the customer, based on the Product Lead Times."
+msgstr "Produktuak bezeroari bidali behar zaizkioneko data."
+
+#. module: tumaker_custom
+#: view:website:account.report_invoice_document
+msgid "Date due:"
+msgstr "Iraungitze data:"
+
+#. module: tumaker_custom
+#: field:product.product,quote_description:0
+msgid "Description for the quote"
+msgstr "Description for the quote"
+
+#. module: tumaker_custom
+#: field:product.product,website_description:0
+msgid "Description for the website"
+msgstr "Description for the website"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
@@ -210,6 +238,16 @@ msgstr "Helmuga"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
+msgid "Helmuga data:"
+msgstr "Helmuga data:"
+
+#. module: tumaker_custom
+#: field:account.invoice,not_warning:0
+msgid "Hide Warning Message"
+msgstr "Hide Warning Message"
+
+#. module: tumaker_custom
+#: view:website:tumaker_custom.tu_maker_report_invoice
 msgid "Hornitzaile Faktura"
 msgstr "Hornitzaile Faktura"
 
@@ -233,6 +271,11 @@ msgstr "Hours"
 #: view:website:tumaker_custom.tumaker_report_picking
 msgid "IFZ:"
 msgstr "IFZ:"
+
+#. module: tumaker_custom
+#: model:ir.model,name:tumaker_custom.model_stock_inventory_line
+msgid "Inventory Line"
+msgstr "Inventory Line"
 
 #. module: tumaker_custom
 #: model:ir.model,name:tumaker_custom.model_account_invoice
@@ -311,12 +354,17 @@ msgid "Partner code"
 msgstr "Kide kodea"
 
 #. module: tumaker_custom
+#: model:ir.model,name:tumaker_custom.model_stock_transfer_details
+msgid "Picking wizard"
+msgstr "Picking wizard"
+
+#. module: tumaker_custom
 #: view:website:tumaker_custom.tumaker_report_picking
 msgid "Pisua"
 msgstr "Pisua"
 
 #. module: tumaker_custom
-#: code:addons/tumaker_custom/models/account_analytic_line.py:91
+#: code:addons/tumaker_custom/models/account_analytic_line.py:93
 #, python-format
 msgid "Please define income account for product '%s'."
 msgstr "Please define income account for product '%s'."
@@ -330,6 +378,26 @@ msgstr "Posizio fiskala:"
 #: view:website:tumaker_custom.tu_maker_report_invoice
 msgid "Prezioa"
 msgstr "Prezioa"
+
+#. module: tumaker_custom
+#: model:ir.model,name:tumaker_custom.model_product_product
+msgid "Product"
+msgstr "Produktua"
+
+#. module: tumaker_custom
+#: view:website:stock.report_picking
+msgid "Product code"
+msgstr "Product code"
+
+#. module: tumaker_custom
+#: view:stock.transfer_details:tumaker_custom.view_stock_enter_transfer_details
+msgid "Products To Move"
+msgstr "Products To Move"
+
+#. module: tumaker_custom
+#: view:website:tumaker_custom.tumaker_report_picking
+msgid "Produktu kodea"
+msgstr "Produktu kodea"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tumaker_report_picking
@@ -388,11 +456,6 @@ msgid "Remaining:"
 msgstr "Remaining:"
 
 #. module: tumaker_custom
-#: field:account.invoice,sale_ids:0
-msgid "Sale Orders"
-msgstr "Sale Orders"
-
-#. module: tumaker_custom
 #: model:ir.model,name:tumaker_custom.model_sale_order
 msgid "Sales Order"
 msgstr "Salmenta eskaria"
@@ -433,6 +496,11 @@ msgid "Tasks"
 msgstr "Tasks"
 
 #. module: tumaker_custom
+#: view:stock.picking:tumaker_custom.view_picking_form_valued
+msgid "Taxes"
+msgstr "Taxes"
+
+#. module: tumaker_custom
 #: view:purchase.order:tumaker_custom.purchase_order_form
 #: view:purchase.order.line:tumaker_custom.purchase_order_line_form
 #: view:purchase.order.line:tumaker_custom.purchase_order_line_form2
@@ -453,6 +521,19 @@ msgstr "VAT:"
 #: view:sale.order:tumaker_custom.view_sale_commitment_orderfor
 msgid "View Task"
 msgstr "View Task"
+
+#. module: tumaker_custom
+#: view:account.invoice:tumaker_custom.invoice_form
+#: view:account.invoice:tumaker_custom.invoice_supplier_form
+#: field:account.invoice,warning:0
+msgid "Warning"
+msgstr "Warning"
+
+#. module: tumaker_custom
+#: code:addons/tumaker_custom/wizard/stock_transfer_details.py:20
+#, python-format
+msgid "You have some lines without costs."
+msgstr "You have some lines without costs."
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
@@ -478,3 +559,8 @@ msgstr "Zerga"
 #: view:website:tumaker_custom.tumaker_report_picking
 msgid "Zergak"
 msgstr "Zergak"
+
+#. module: tumaker_custom
+#: view:sale.order:tumaker_custom.view_order_form
+msgid "{'readonly': [('state', 'in', 'done')]}"
+msgstr "{'readonly': [('state', 'in', 'done')]}"
