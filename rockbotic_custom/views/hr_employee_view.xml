@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_employee_form_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.employee.form.inh.rockbotic</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form" />
+            <field name="arch" type="xml">
+                <field name="country_id" position="before">
+                    <field name="no_sexual_offenses" />
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

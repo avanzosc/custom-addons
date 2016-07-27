@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-22 08:38+0000\n"
-"PO-Revision-Date: 2016-07-22 10:39+0100\n"
-"Last-Translator: Esther Martín <esthermartin@avanzosc.es>\n"
+"POT-Creation-Date: 2016-07-27 08:43+0000\n"
+"PO-Revision-Date: 2016-07-27 10:45+0100\n"
+"Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -464,6 +464,16 @@ msgid "EMAIL"
 msgstr "EMAIL"
 
 #. module: rockbotic_custom
+#: model:ir.model,name:rockbotic_custom.model_hr_employee
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: rockbotic_custom
+#: help:sale.order.line,decimal_pfmc:0
+msgid "Estimated time for completion the task"
+msgstr "Tiempo estimado para completar la tarea"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "FICHA DE INSCRIPCIÓN"
 msgstr "FICHA DE INSCRIPCIÓN"
@@ -599,7 +609,7 @@ msgid "NOMBRE COMPLETO"
 msgstr "NOMBRE COMPLETO"
 
 #. module: rockbotic_custom
-#: field:res.partner,no_sexual_offenses:0
+#: field:hr.employee,no_sexual_offenses:0
 msgid "Negative certificate sexual offenses"
 msgstr "Certificado negativo delitos sexuales"
 
@@ -712,6 +722,11 @@ msgstr "Plazo de pago:"
 #: view:website:sale.report_saleorder_document
 msgid "Pedido"
 msgstr "Pedido"
+
+#. module: rockbotic_custom
+#: field:sale.order.line,decimal_pfmc:0
+msgid "Performance"
+msgstr "Rendimiento"
 
 #. module: rockbotic_custom
 #: view:website:sale.report_saleorder_document
@@ -879,6 +894,11 @@ msgstr "Tel:"
 #: view:website:account.report_invoice_document
 msgid "Total"
 msgstr "Total"
+
+#. module: rockbotic_custom
+#: field:sale.order,total_performance:0
+msgid "Total Performance"
+msgstr "Total rendimiento"
 
 #. module: rockbotic_custom
 #: view:website:account.report_invoice_document
