@@ -22,9 +22,6 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="partner_contact_birthdate.birthdate_date" />
             <field name="arch" type="xml">
-                <field name="birthdate_date" position="before">
-                    <field name="no_sexual_offenses" />
-                </field>
                 <field name="birthdate_date" position="after">
                     <newline/>
                     <separator string="Authorizations on images" colspan="4"/>
