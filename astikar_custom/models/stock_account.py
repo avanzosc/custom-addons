@@ -24,10 +24,9 @@ class StockHistory(models.Model):
                 product_categ_id,
                 SUM(quantity) as quantity,
                 date,
-                SUM(price_unit_on_quant * quantity) / SUM(quantity) as
-                    price_unit_on_quant,
-                source,
-                product_type
+                COALESCE(SUM(price_unit_on_quant * quantity) /
+                        NULLIF(SUM(quantity), 0), 0) as price_unit_on_quant,
+                source, product_type
                 FROM
                 ((SELECT
                     stock_move.id AS id,
@@ -64,9 +63,7 @@ class StockHistory(models.Model):
                 WHERE (quant.qty>0 AND stock_move.state = 'done' AND
                        dest_location.usage in ('internal', 'transit'))
                   AND (
-                    (source_location.company_id is null
-                        and dest_location.company_id is not null) or
-                    (source_location.company_id is not null and
+                    not (source_location.company_id is null and
                         dest_location.company_id is null) or
                     source_location.company_id != dest_location.company_id or
                     source_location.usage not in ('internal', 'transit'))
@@ -78,7 +75,7 @@ class StockHistory(models.Model):
                     source_location.company_id AS company_id,
                     stock_move.product_id AS product_id,
                     product_template.categ_id AS product_categ_id,
-                    quant.qty AS quantity,
+                    - quant.qty AS quantity,
                     stock_move.date AS date,
                     quant.cost as price_unit_on_quant,
                     stock_move.origin AS source,
@@ -106,10 +103,8 @@ class StockHistory(models.Model):
                 WHERE (quant.qty>0 AND stock_move.state = 'done' AND
                        source_location.usage in ('internal', 'transit'))
                  AND (
-                    (dest_location.company_id is null and
-                        source_location.company_id is not null) or
-                    (dest_location.company_id is not null and
-                        source_location.company_id is null) or
+                    not (dest_location.company_id is null
+                    and source_location.company_id is null) or
                     dest_location.company_id != source_location.company_id or
                     dest_location.usage not in ('internal', 'transit'))
                 ))
