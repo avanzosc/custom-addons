@@ -724,7 +724,7 @@
                                 <tr style="border-top-style: hidden;">
                                     <th style="background-color: #FF0000;width:30%;color:white;border-top-style: hidden;">CURSO</th>
                                     <td style="border-bottom: 1px solid #FF0000;">
-                                        <span t-field="o.sale_order_line"/>
+                                        <span t-field="o.sale_order_line.courses"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -769,6 +769,7 @@
                                 <tr>
                                     <th style="background-color: #7F7F7F;color:white;border-top-style: hidden;">GRUPO</th>
                                     <td style="border-bottom: 1px solid #7F7F7F;">
+                                        <span t-field="o.sale_order"/>-<span t-field="o.sale_order_line.sequence"/>
                                     </td>
                                 </tr>
                             </table>
@@ -799,10 +800,10 @@
                                             </t>
                                         </td>
                                         <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
-                                            <span t-field="o.sale_order_line"/>
+                                            <span t-field="l.partner_id.student_course"/> <span t-field="l.partner_id.student_class"/>
                                         </td>
                                         <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
-                                            <span t-field="o.partner_id.student_rockbotic_level"/>
+                                            <span t-field="l.partner_id.student_rockbotic_level"/>
                                         </td>
                                     </tr>
                                 </tbody>
