@@ -20,6 +20,14 @@
                 <field name="commitment_date" position="after">
                     <field name="commitment2_date"/>
                 </field>
+                <field name="project_id" position="after">
+                    <field name="show_sale_note"/>
+                </field>
+                <notebook position="inside">
+                    <page string="Sale Notes">
+                        <field name="sale_note" nolabel="1"/>
+                    </page>
+                </notebook>
             </field>
         </record>
         

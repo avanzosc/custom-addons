@@ -6,7 +6,6 @@ from openerp import models, fields, api
 
 
 class SaleOrder(models.Model):
-
     _inherit = 'sale.order'
 
     @api.multi
@@ -42,6 +41,8 @@ class SaleOrder(models.Model):
                                  store=True)
     shipped = fields.Boolean(compute='_compute_get_shipped',
                              string='Delivered', store=True)
+    show_sale_note = fields.Boolean(default=True)
+    sale_note = fields.Text()
 
     @api.multi
     def action_view_task(self):
@@ -61,7 +62,6 @@ class SaleOrder(models.Model):
 
 
 class SaleOrderLine(models.Model):
-
     _inherit = 'sale.order.line'
 
     tasks = fields.One2many('project.task', 'sale_line_id', 'Tasks')
