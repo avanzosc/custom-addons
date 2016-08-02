@@ -206,3 +206,13 @@ class TestTumakerCustom(common.TransactionCase):
         searched_products = [x[0] for x in res]
         self.assertTrue((self.black_product.id in searched_products),
                         "Black product searched")
+
+    def test_default_sale_note(self):
+        note = 'Test Sale Note'
+        self.env.user.company_id.sale_note_report = note
+        sale = self.sale_model.new(
+            self.sale_model.default_get(['sale_note']))
+        self.assertTrue(sale.sale_note)
+        self.assertEqual(sale.sale_note,
+                         self.env.user.company_id.sale_note_report)
+        self.assertEqual(sale.sale_note, note)

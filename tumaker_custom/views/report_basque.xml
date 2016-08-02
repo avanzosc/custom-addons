@@ -458,5 +458,33 @@
                 </t>
             </t>
         </template>
+        <template id="sale_report_payment" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//p[@t-if='o.payment_term.note']" position="after">
+                <p t-if="o.payment_mode_id">
+                    <strong>Payment Mode:</strong>
+                    <t t-if="o.payment_mode_id.note">
+                        <span t-field="o.payment_mode_id.note"/>
+                    </t>
+                    <t t-if="not o.payment_mode_id.note">
+                        <span t-field="o.payment_mode_id.name"/>
+                    </t>
+                </p>
+                <p t-if="o.show_sale_note and o.sale_note">
+                    <strong>Sale Note</strong>
+                    <span t-field="o.sale_note"/>
+                </p>
+            </xpath>
+            <xpath expr="//p[@t-if='o.payment_term.note']" position="replace">
+                <p t-if="o.payment_term">
+                    <strong>Payment Term:</strong>
+                    <t t-if="o.payment_term.note">
+                        <span t-field="o.payment_term.note"/>
+                    </t>
+                    <t t-if="not o.payment_term.note">
+                        <span t-field="o.payment_term.name"/>
+                    </t>
+                </p>
+            </xpath>
+        </template>
     </data>
 </openerp>
