@@ -38,7 +38,8 @@
              'views/stock_picking_view.xml',
              'views/stock_quant_view.xml',
              'views/account_invoice_view.xml',
-             'wizard/stock_transfer_details_view.xml'
+             'views/res_company_view.xml',
+             'wizard/stock_transfer_details_view.xml',
              ],
     "installable": True,
     "auto_install": False,

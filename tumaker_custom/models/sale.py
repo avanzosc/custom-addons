@@ -31,6 +31,10 @@ class SaleOrder(models.Model):
                            group.procurement_ids])
             sale.shipped = val
 
+    @api.multi
+    def _default_sale_note(self):
+        return self.env.user.company_id.sale_note_report
+
     requested_date = fields.Datetime(readonly=False)
     commitment2_date = fields.Datetime(
         string="Commitment Date",
@@ -42,7 +46,7 @@ class SaleOrder(models.Model):
     shipped = fields.Boolean(compute='_compute_get_shipped',
                              string='Delivered', store=True)
     show_sale_note = fields.Boolean(default=True)
-    sale_note = fields.Text()
+    sale_note = fields.Text(default=_default_sale_note)
 
     @api.multi
     def action_view_task(self):

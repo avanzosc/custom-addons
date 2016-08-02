@@ -153,6 +153,11 @@ msgid "Description for the website"
 msgstr "Description for the website"
 
 #. module: tumaker_custom
+#: view:res.company:tumaker_custom.sale_note_report_company_view_form
+msgid "Default note for sale reports..."
+msgstr "Nota por defecto para informes de pedidos..."
+
+#. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
 msgid "Deskontua (%)"
 msgstr "Deskontua (%)"
@@ -309,6 +314,11 @@ msgstr "Kide kodea"
 #: view:website:tumaker_custom.tumaker_report_picking
 msgid "Kompromisu Data"
 msgstr "Kompromisu Data"
+
+#. module: tumaker_custom
+#: view:res.company:tumaker_custom.sale_note_report_company_view_form
+msgid "Note for Sale Reports"
+msgstr "Nota para Informes de pedido"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tu_maker_report_invoice
@@ -481,6 +491,11 @@ msgstr "Notas del pedido"
 #: field:sale.order,sale_note:0
 msgid "Sale note"
 msgstr "Notas del pedido"
+
+#. module: tumaker_custom
+#: field:res.company,sale_note_report:0
+msgid "Sale note report"
+msgstr "Nota para informe de ventas"
 
 #. module: tumaker_custom
 #: model:ir.model,name:tumaker_custom.model_sale_order

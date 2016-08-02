@@ -10,3 +10,4 @@ class ResCompany(models.Model):
     _inherit = 'res.company'
 
     rml_footer = fields.Text(translate=True)
+    sale_note_report = fields.Text()
