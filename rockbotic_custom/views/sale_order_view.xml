@@ -33,6 +33,14 @@
                 <field name="product_category" position="attributes">
                     <attribute name="domain">[('show_in_sales_order','=',True)]</attribute>
                 </field>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='start_date']" position="replace" />
+                <xpath expr="//field[@name='order_line']/tree/field[@name='end_date']" position="replace" />
+                <xpath expr="//field[@name='order_line']/tree/field[@name='end_hour']" position="after" >
+                    <field name="start_date" string="Start date"
+                            attrs="{'invisible':[('project_by_task','=','no')]}" />
+                    <field name="end_date" string="End date"
+                            attrs="{'invisible':[('project_by_task','=','no')]}" />
+                </xpath>
             </field>
         </record>
         <record id="view_order_form3_inh_planned_line_inh_rockbotic" model="ir.ui.view">
@@ -40,7 +48,7 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale_product_variants.sale_order_extended_form_view" />
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='order_line']/tree//field[@name='product_tmpl_id']" position="attributes">
+                <xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
 	    </field>
@@ -56,6 +64,22 @@
                         <field name="registration_note" nolabel="1"/>
                     </page>
                 </page>
+            </field>
+        </record>
+        <record id="view_order_form_line_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.order.form.line.inh.rockbotic</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_line_performance.view_order_form_inh_line_performance" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']//tree//field[@name='apply_performance']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//tree//field[@name='performance']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//tree//field[@name='decimal_pfmc']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
             </field>
         </record>
     </data>
