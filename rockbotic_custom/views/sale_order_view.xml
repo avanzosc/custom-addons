@@ -82,5 +82,38 @@
                 </xpath>
             </field>
         </record>
+        <record id="view_quotation_tree_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.quotation.tree.inh.rockbotic</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree" />
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="partner_shipping_id" />
+                </field>
+            </field>
+        </record>
+        <record id="view_order_tree_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.order.tree.inh.rockbotic</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree" />
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="partner_shipping_id" />
+                </field>
+            </field>
+        </record>
+        <record id="view_sales_order_filter_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.sales.order.filter.inh.rockbotic</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter" />
+            <field name="arch" type="xml">
+                <filter string="Salesperson" position="after">
+                    <filter string="Delivery Address" domain="[]" context="{'group_by':'partner_shipping_id'}"/>
+                </filter>
+                <field name="name" position="after">
+                    <field name="partner_shipping_id" />
+                </field>
+            </field>
+        </record>
     </data>
 </openerp>
