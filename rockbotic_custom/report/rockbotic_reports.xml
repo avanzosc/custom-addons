@@ -21,7 +21,7 @@
                     <div class="header">
                         <div class="row">
                             <div class="col-xs-5">
-                                <img src="/rockbotic_custom/static/src/img/rockbotic.png"/>
+                                <img src="/rockbotic_custom/static/src/img/rockbotic.png" style="max-height:107;max-width:247"/>
                             </div>
                             <div class="col-xs-7" style="background-color:#00B0F0;border-radius: 50px;height:50px">
                                 <span style="color:white;margin-left:15px;">FICHA DE INSCRIPCIÓN</span>
@@ -384,7 +384,7 @@
                         <div class="header">
                             <div class="row">
                                 <div class="col-xs-5">
-                                    <img src="/rockbotic_custom/static/src/img/rockbotic.png"/>
+                                    <img src="/rockbotic_custom/static/src/img/rockbotic.png" style="max-height:107;max-width:247"/>
                                 </div>
                                 <div class="col-xs-7">
                                     <span t-field="company.partner_id"/>
@@ -435,14 +435,13 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <h2 class="col-xs-6">
-                                    Nº
-                                    <span t-field="o.name"/>
-                                </h2>
-                                <h3 class="col-xs-6" t-if="o.date_order">
+                                <p class="col-xs-6" style="font-size:18px">
+                                    Nº: <span t-field="o.name"/>
+                                </p>
+                                <p class="col-xs-6" t-if="o.date_order" style="font-size:16px">
                                     Fecha:
                                     <span t-field="o.date_order" t-field-options='{"widget": "date"}'/>
-                                </h3>
+                                </p>
                             </div>
                             <table class="table table-condensed">
                                 <thead>
@@ -508,7 +507,7 @@
                         <div class="header">
                             <div class="row">
                                 <div class="col-xs-5">
-                                    <img src="/rockbotic_custom/static/src/img/rockbotic.png"/>
+                                    <img src="/rockbotic_custom/static/src/img/rockbotic.png" style="max-height:107;max-width:247"/>
                                 </div>
                                 <div class="col-xs-7">
                                     <span t-field="company.partner_id"/>
@@ -564,14 +563,13 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <h2 class="col-xs-6">
-                                    Nº
-                                    <span t-field="o.number"/>
-                                </h2>
-                                <h3 class="col-xs-6" t-if="o.date_invoice">
+                                <p class="col-xs-6" style="font-size:18px">
+                                    Nº: <span t-field="o.number"/>
+                                </p>
+                                <p class="col-xs-6" t-if="o.date_invoice" style="font-size:16px">
                                     Fecha:
                                     <span t-field="o.date_invoice"/>
-                                </h3>
+                                </p>
                             </div>
                             <table class="table table-condensed">
                                 <thead>
@@ -706,7 +704,7 @@
                     <div class="header">
                         <div class="row">
                             <div class="col-xs-5">
-                                <img src="/rockbotic_custom/static/src/img/rockbotic.png"/>
+                                <img src="/rockbotic_custom/static/src/img/rockbotic.png" style="max-height:107;max-width:247"/>
                             </div>
                             <div class="col-xs-7" style="background-color:#00B0F0;border-radius: 50px;height:50px">
                                 <span style="color:white;margin-left:15px;">LISTADO PROVISIONAL DE INSCRITOS</span>
