@@ -10,3 +10,4 @@ class ResPartner(models.Model):
     magazine = fields.Boolean(string='Magazine', default=False)
     web_blog = fields.Boolean(string='Web/Blog', default=False)
     social_networks = fields.Boolean(string='Social networks', default=False)
+    student_rockbotic_level = fields.Char(string='Rockbotic level')

@@ -20,7 +20,7 @@
         <record id="birthdate_date_inh_rockbotic" model="ir.ui.view">
             <field name="name">birthdate.date.inh.rockbotic</field>
             <field name="model">res.partner</field>
-            <field name="inherit_id" ref="partner_contact_birthdate.birthdate_date" />
+            <field name="inherit_id" ref="partner_student_course.birthdate_date_form_view_inh_student_course" />
             <field name="arch" type="xml">
                 <field name="birthdate_date" position="after">
                     <newline/>
@@ -28,6 +28,9 @@
                     <field name="magazine" />
                     <field name="web_blog" />
                     <field name="social_networks" />
+                </field>
+                <field name="student_class" position="after">
+                    <field name="student_rockbotic_level" />
                 </field>
             </field>
         </record>
