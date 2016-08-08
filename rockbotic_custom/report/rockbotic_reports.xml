@@ -413,8 +413,8 @@
                                     100px 0 0 100px; border-radius: 100px 0 0 100px;"
                                     class="col-xs-3">
                                     <h2>
-                                        <span t-if="o.state not in ['draft','sent']">Presupuesto</span>
-                                        <span t-if="o.state in ['draft','sent']">Pedido</span>
+                                        <span t-if="o.state in ['draft','sent']">Presupuesto</span>
+                                        <span t-if="o.state not in ['draft','sent']">Pedido</span>
                                     </h2>
                                 </div>
                                 <div class="col-xs-9" style="padding-left:15%;">
@@ -785,23 +785,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr t-foreach="o.no_employee_registration_ids" t-as="l">
+                                    <t t-set="i" t-value="1" /> 
+                                    <tr t-foreach="o.no_employee_registration_ids.mapped('partner_id').sorted(key=lambda a:(a.student_course, a.student_class))" t-as="l">
                                         <td style="border-bottom: 1px solid #00B0F0;">
-                                            <span t-field="l.nb_register"/>
+                                            <span t-esc="i"/>
+                                            <t t-set="i" t-value="i+1"/> 
                                         </td>
                                         <td style="border-bottom: 1px solid #00B0F0;">
                                             <span t-field="l.name"/>
                                         </td>
                                         <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
-                                            <t t-if="l.partner_id.birthdate_date">
-                                                <span t-esc="(datetime.datetime.today() -datetime.datetime.strptime(l.partner_id.birthdate_date,'%Y-%m-%d')).days/360"/>
-                                            </t>
+                                            <span t-field="l.student_age"/>
                                         </td>
                                         <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
-                                            <span t-field="l.partner_id.student_course"/> <span t-field="l.partner_id.student_class"/>
+                                            <span t-field="l.student_course"/> <span t-field="l.student_class"/>
                                         </td>
                                         <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
-                                            <span t-field="l.partner_id.student_rockbotic_level"/>
+                                            <span t-field="l.student_rockbotic_level"/>
                                         </td>
                                     </tr>
                                 </tbody>
