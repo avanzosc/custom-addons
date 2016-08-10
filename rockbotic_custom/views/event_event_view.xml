@@ -21,5 +21,25 @@
                 </xpath>
             </field>
         </record>
+        <record id="view_event_search_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.search.inh.rockbotic</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_search" />
+            <field name="arch" type="xml">
+                <filter string="Responsible" position="before">
+                    <filter string="Centre" context="{'group_by':'address_id'}"/>
+                </filter>
+            </field>
+        </record>
+        <record id="view_event_tree_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.tree.inh.rockbotic</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_tree" />
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="address_id" string="Centre"/> 
+                </field>
+            </field>
+        </record>
     </data>
 </openerp>

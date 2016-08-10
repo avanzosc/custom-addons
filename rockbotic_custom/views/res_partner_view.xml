@@ -12,6 +12,7 @@
                     <separator/>
                 </filter>
                 <field name="name" position="after">
+                    <field name="state_id" string="Town"/>
                     <field name="is_company" />
                     <field name="is_group" />
                 </field>

@@ -31,6 +31,7 @@
         "partner_contact_birthdate",
         "partner_student_course",
         "hr",
+        'account'
     ],
     "data": [
         "wizard/crm_make_sale_view.xml",
@@ -40,6 +41,7 @@
         "views/product_category_view.xml",
         "views/event_event_view.xml",
         "views/hr_employee_view.xml",
+        "views/account_invoice_view.xml",
         "report/rockbotic_custom_view.xml",
         "report/rockbotic_layout_view.xml",
         "report/rockbotic_reports.xml",
