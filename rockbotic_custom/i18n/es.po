@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-27 08:43+0000\n"
-"PO-Revision-Date: 2016-07-27 10:45+0100\n"
+"POT-Creation-Date: 2016-08-10 13:22+0000\n"
+"PO-Revision-Date: 2016-08-10 15:25+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -129,6 +129,12 @@ msgstr "CURSO"
 #: view:website:account.report_invoice_document
 msgid "Cancelled Invoice"
 msgstr "Factura cancelada"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search_inh_rockbotic
+#: view:event.event:rockbotic_custom.view_event_tree_inh_rockbotic
+msgid "Centre"
+msgstr "Centro"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_sale_report
@@ -395,6 +401,11 @@ msgstr ""
 "                                            de LUNA TIC DESIGN SL"
 
 #. module: rockbotic_custom
+#: view:sale.order:rockbotic_custom.view_sales_order_filter_inh_rockbotic
+msgid "Delivery Address"
+msgstr "Dirección entrega"
+
+#. module: rockbotic_custom
 #: view:website:account.report_invoice_document
 #: view:website:sale.report_saleorder_document
 msgid "Description"
@@ -419,7 +430,6 @@ msgstr "Descuento (%)"
 #: view:crm.lead:rockbotic_custom.view_crm_case_leads_filter_inh_rockbotic
 #: view:crm.lead:rockbotic_custom.view_crm_case_opportunities_filter_inh_rockbotic
 #: view:res.partner:rockbotic_custom.view_res_partner_filter_inh_rockbotic
-#: view:sale.order:rockbotic_custom.view_sales_order_filter_inh_rockbotic
 #: field:sale.order,street2:0
 msgid "District"
 msgstr "Distrito"
@@ -467,6 +477,11 @@ msgstr "EMAIL"
 #: model:ir.model,name:rockbotic_custom.model_hr_employee
 msgid "Employee"
 msgstr "Empleado"
+
+#. module: rockbotic_custom
+#: view:sale.order:rockbotic_custom.view_order_form2_inh_planned_line_inh_rockbotic
+msgid "End date"
+msgstr "Fecha fin"
 
 #. module: rockbotic_custom
 #: help:sale.order.line,decimal_pfmc:0
@@ -530,6 +545,11 @@ msgstr "INSTRUCCIONES DE INSCRIPCIÓN"
 #: view:website:account.report_invoice_document
 msgid "Invoice"
 msgstr "Factura"
+
+#. module: rockbotic_custom
+#: view:account.invoice:rockbotic_custom.view_account_invoice_filter_inh_rockbotic
+msgid "Journal"
+msgstr "Diario"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_event
@@ -638,10 +658,8 @@ msgstr ""
 "                                        de LUNA TIC DESIGN S.L."
 
 #. module: rockbotic_custom
-#: view:website:account.report_invoice_document
 #: view:website:rockbotic_custom.rockbotic_event
 #: view:website:rockbotic_custom.rockbotic_sale_report
-#: view:website:sale.report_saleorder_document
 msgid "Nº"
 msgstr "Nº"
 
@@ -649,6 +667,12 @@ msgstr "Nº"
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Nº CUENTA IBAN"
 msgstr "Nº CUENTA IBAN"
+
+#. module: rockbotic_custom
+#: view:website:account.report_invoice_document
+#: view:website:sale.report_saleorder_document
+msgid "Nº:"
+msgstr "Nº:"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_sale_report
@@ -785,6 +809,11 @@ msgid "Registration notes"
 msgstr "Notas del registro"
 
 #. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search_inh_rockbotic
+msgid "Responsible"
+msgstr "Responsable"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "SITIO WEB WWW.ROCKBOTIC.COM"
 msgstr "SITIO WEB WWW.ROCKBOTIC.COM"
@@ -820,6 +849,11 @@ msgstr "Comercial"
 #: field:res.partner,social_networks:0
 msgid "Social networks"
 msgstr "Redes sociales"
+
+#. module: rockbotic_custom
+#: view:sale.order:rockbotic_custom.view_order_form2_inh_planned_line_inh_rockbotic
+msgid "Start date"
+msgstr "Fecha inicio"
 
 #. module: rockbotic_custom
 #: model:ir.actions.act_window,name:rockbotic_custom.action_partner_student_form
@@ -898,7 +932,7 @@ msgstr "Total"
 #. module: rockbotic_custom
 #: field:sale.order,total_performance:0
 msgid "Total Performance"
-msgstr "Total rendimiento"
+msgstr "Total Performance"
 
 #. module: rockbotic_custom
 #: view:website:account.report_invoice_document
@@ -906,6 +940,7 @@ msgid "Total Without Taxes"
 msgstr "Base imponible"
 
 #. module: rockbotic_custom
+#: view:res.partner:rockbotic_custom.view_res_partner_filter_inh_rockbotic
 #: field:sale.order,city:0
 msgid "Town"
 msgstr "Población"
@@ -940,6 +975,12 @@ msgid "Y EN EL BLOG CONTENIDO EN DICHO SITIO WEB"
 msgstr "Y EN EL BLOG CONTENIDO EN DICHO SITIO WEB"
 
 #. module: rockbotic_custom
+#: view:crm.make.sale:rockbotic_custom.view_crm_make_sale_inh_rockbotic
+#: view:sale.order:rockbotic_custom.view_order_form2_inh_planned_line_inh_rockbotic
+msgid "[('show_in_sales_order','=',True)]"
+msgstr "[('show_in_sales_order','=',True)]"
+
+#. module: rockbotic_custom
 #: field:product.category,show_in_sales_order:0
 msgid "show in sale order"
 msgstr "Mostrar en pedidos de venta"
@@ -948,6 +989,5 @@ msgstr "Mostrar en pedidos de venta"
 #: view:crm.lead:rockbotic_custom.view_crm_case_leads_filter_inh_rockbotic
 #: view:crm.lead:rockbotic_custom.view_crm_case_opportunities_filter_inh_rockbotic
 #: view:res.partner:rockbotic_custom.view_res_partner_filter_inh_rockbotic
-#: view:sale.order:rockbotic_custom.view_sales_order_filter_inh_rockbotic
 msgid "town"
 msgstr "Población"
