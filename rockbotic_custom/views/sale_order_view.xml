@@ -66,10 +66,19 @@
             <field name="arch" type="xml">
                 <page string="Other Information" position="after">
                     <page string="Registration Information">
+                        <group>
+                            <field name="no_pa_price"/>
+                        </group>
                         <separator string="Registration notes"/>
                         <field name="registration_note" nolabel="1"/>
                     </page>
                 </page>
+                <xpath expr="//field[@name='order_line']/form//field[@name='name']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/form//field[@name='name']" position="after">
+                    <field name="real_name"/>
+                </xpath>
             </field>
         </record>
         <record id="view_order_form_line_inh_rockbotic" model="ir.ui.view">
