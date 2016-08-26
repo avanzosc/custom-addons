@@ -3,7 +3,7 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 {
     "name": "Rockbotic - Custom",
-    "version": "8.0.1.1.0",
+    "version": "8.0.1.2.0",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -31,7 +31,8 @@
         "partner_contact_birthdate",
         "partner_student_course",
         "hr",
-        'account'
+        "account",
+        "report_custom_filename",
     ],
     "data": [
         "wizard/crm_make_sale_view.xml",
