@@ -1193,5 +1193,15 @@
                 </table>
             </xpath>
         </template>
+        <template id="purchase_account_analytic" inherit_id="purchase.report_purchaseorder_document">
+            <xpath expr="//th[strong[text()='Taxes']]" position="after">
+                <th><strong>Account Analytic</strong></th>
+            </xpath>
+            <xpath expr="//td[span[@t-field='line.date_planned']]" position="before">
+                <td>
+                    <span t-field="line.account_analytic_id"/>
+                </td>
+            </xpath>
+        </template>
     </data>
 </openerp>
