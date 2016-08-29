@@ -37,7 +37,7 @@
                                 <t t-set="i" t-value="1"/>
                                 <tr>
                                     <th>Nº</th>
-                                    <th>I</th>
+                                    <th class="text-center">&#10003;</th>
                                     <th>CURSO</th>
                                     <th>DÍA</th>
                                     <th>HORARIO</th>
@@ -103,16 +103,20 @@
                                 <th colspan="4" class="text-center">DATOS DEL ALUMNO</th>
                             </tr>
                             <tr>
-                                <th style="width:10%;">NOMBRE</th>
+                                <th>NOMBRE</th>
                                 <td>
                                 </td>
                                 <th>APELLIDOS</th>
                                 <td/>
                             </tr>
                             <tr>
-                                <th style="width:10%;">EDAD</th>
+                                <th style="width:20%">FECHA DE NACIMIENTO</th>
                                 <td/>
                                 <th>CURSO</th>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <th colspan="3">NÚMERO DE CURSOS DE EXTRAESCOLAR HECHOS CON ROCKBOTIC</th>
                                 <td/>
                             </tr>
                         </table>
