@@ -39,6 +39,7 @@
              'views/stock_quant_view.xml',
              'views/account_invoice_view.xml',
              'views/res_company_view.xml',
+             'views/product_view.xml',
              'wizard/stock_transfer_details_view.xml',
              ],
     "installable": True,
