@@ -184,7 +184,7 @@ class TestTumakerCustom(common.TransactionCase):
                         "No black product searched")
 
     def test_product_search_name_negative(self):
-        res = self.product_model.name_search('Black', operator="!=")
+        res = self.product_model.name_search('Black', operator="not like")
         searched_products = [x[0] for x in res]
         self.assertTrue((self.black_product.id not in searched_products),
                         "Black product searched")
@@ -193,16 +193,37 @@ class TestTumakerCustom(common.TransactionCase):
         res = self.product_model.name_search('NotExists')
         self.assertTrue((not res), 'Product searched')
 
-    def test_product_search_no_name(self):
-        res = self.product_model.name_search(False)
-        searched_products = [x[0] for x in res]
-        res2 = self.product_model.search([])
-        self.assertEqual(searched_products, res2.ids,
-                         'Not all Product searched')
-
     def test_product_search_pattern(self):
         self.black_product.default_code = 'COD25'
-        res = self.product_model.name_search('[COD25]')
+        res = self.product_model.name_search('COD25')
+        searched_products = [x[0] for x in res]
+        self.assertTrue((self.black_product.id in searched_products),
+                        "Black product searched")
+
+    def test_product_ean_search(self):
+        self.black_product.ean13 = '8431311550618'
+        res = self.product_model.name_search('131155')
+        searched_products = [x[0] for x in res]
+        self.assertTrue((self.black_product.id in searched_products),
+                        "Black product searched")
+
+    def test_product_search_suppinfo(self):
+        suppinfo_model = self.env['product.supplierinfo']
+        suppinfo_model.create({
+            'product_tmpl_id': self.black_product.product_tmpl_id.id,
+            'name': self.partner_id,
+            'product_name': 'TestName',
+            'type': 'customer'})
+        suppinfo_model.create({
+            'product_tmpl_id': self.black_product.product_tmpl_id.id,
+            'name': self.partner_id,
+            'product_code': 'CODXXTEST',
+            'type': 'supplier'})
+        res = self.product_model.name_search('TestName')
+        searched_products = [x[0] for x in res]
+        self.assertTrue((self.black_product.id in searched_products),
+                        "Black product searched")
+        res = self.product_model.name_search('CODXXTEST')
         searched_products = [x[0] for x in res]
         self.assertTrue((self.black_product.id in searched_products),
                         "Black product searched")
