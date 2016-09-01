@@ -11,12 +11,11 @@ class ProductProduct(models.Model):
     _rec_name = 'supercode'
 
     @api.multi
-    @api.depends('default_code', 'name', 'ean13',
-                 'attribute_value_ids.name',
-                 'customer_ids.product_code',
-                 'customer_ids.product_name',
-                 'supplier_ids.product_code',
-                 'supplier_ids.product_name')
+    @api.depends('default_code', 'name', 'ean13', 'product_tmpl_id.name',
+                 'attribute_value_ids', 'attribute_value_ids.name',
+                 'customer_ids', 'customer_ids.product_code',
+                 'customer_ids.product_name', 'supplier_ids',
+                 'supplier_ids.product_code', 'supplier_ids.product_name')
     def _compute_supercode(self):
         for product in self:
             val = []
