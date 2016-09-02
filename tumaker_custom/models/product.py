@@ -14,19 +14,16 @@ class ProductProduct(models.Model):
     @api.depends('default_code', 'name', 'ean13', 'product_tmpl_id.name',
                  'attribute_value_ids', 'attribute_value_ids.name',
                  'customer_ids', 'customer_ids.product_code',
-                 'customer_ids.product_name', 'supplier_ids',
-                 'supplier_ids.product_code', 'supplier_ids.product_name')
+                 'supplier_ids', 'supplier_ids.product_code')
     def _compute_supercode(self):
         for product in self:
             val = []
             for attribute_value in product.attribute_value_ids:
                 val.append(attribute_value.name)
             for supplier in product.supplier_ids:
-                val += [(supplier.product_code or ''),
-                        (supplier.product_name or '')]
+                val += [(supplier.product_code or '')]
             for customer in product.customer_ids:
-                val += [(customer.product_code or ''),
-                        (customer.product_name or '')]
+                val += [(customer.product_code or '')]
             if product.default_code:
                 val.append(product.default_code)
             if product.name:
