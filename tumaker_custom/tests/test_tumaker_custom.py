@@ -212,7 +212,7 @@ class TestTumakerCustom(common.TransactionCase):
         suppinfo_model.create({
             'product_tmpl_id': self.black_product.product_tmpl_id.id,
             'name': self.partner_id,
-            'product_name': 'TestName',
+            'product_code': 'TestName',
             'type': 'customer'})
         suppinfo_model.create({
             'product_tmpl_id': self.black_product.product_tmpl_id.id,
