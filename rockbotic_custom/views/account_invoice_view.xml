@@ -11,5 +11,16 @@
                 </filter>
             </field>
         </record>
+
+        <record id="account_invoice_supplier_number_view_tree" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.number.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree" />
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="supplier_invoice_number" invisible="context.get('type', False)=='out_invoice'"/>
+                </field>
+            </field>
+        </record>
     </data>
 </openerp>
