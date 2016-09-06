@@ -435,6 +435,12 @@ msgid "District"
 msgstr "Distrito"
 
 #. module: rockbotic_custom
+#: view:event.track:rockbotic_custom.view_event_track_search_inh_rockbotic
+#: field:event.track,address_id:0
+msgid "Location"
+msgstr "Ubicación"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_event
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Domingo"

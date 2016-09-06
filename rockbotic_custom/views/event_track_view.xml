@@ -33,5 +33,54 @@
                 </xpath>
             </field>
         </record>
+        <record id="view_event_track_inh3_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.track.inh3.rockbotic</field>
+            <field name="model">event.track</field>
+            <field name="inherit_id" ref="website_event_track.view_event_track_form" />
+            <field name="arch" type="xml">
+                <field name="location_id" position="after">
+                    <field name="address_id" />
+                </field>
+                <field name="location_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+        <record id="view_event_track_search_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.track.search.inh.rockbotic</field>
+            <field name="model">event.track</field>
+            <field name="inherit_id" ref="website_event_track.view_event_track_search" />
+            <field name="arch" type="xml">
+                <field name="event_id" position="after">
+                    <field name="address_id" />
+                </field>
+                <filter string="Event" position="after">
+                    <filter string="Location" context="{'group_by':'address_id'}"/>
+                </filter>
+            </field>
+        </record>
+        <record id="view_event_track_tree_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.track.tree.inh.rockbotic</field>
+            <field name="model">event.track</field>
+            <field name="inherit_id" ref="website_event_track.view_event_track_tree" />
+            <field name="arch" type="xml">
+                <field name="event_id" position="after">
+                    <field name="address_id" />
+                </field>
+            </field>
+        </record>
+        <record id="view_event_track_graph_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.track.graph.inh.rockbotic</field>
+            <field name="model">event.track</field>
+            <field name="inherit_id" ref="website_event_track.view_event_track_graph" />
+            <field name="arch" type="xml">
+                <field name="location_id" position="after">
+                    <field name="address_id" />
+                </field>
+                <field name="location_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
     </data>
 </openerp>
