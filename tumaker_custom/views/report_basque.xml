@@ -441,9 +441,14 @@
                                 <strong>Ordaintze data:</strong>
                                 <span t-field="o.payment_term.note"/>
                             </p>
-                            <p t-if="o.payment_mode_id.note">
+                            <p t-if="o.payment_mode_id">
                                 <strong>Ordaintzeko modua:</strong>
-                                <span t-field="o.payment_mode_id.note" />
+                                <t t-if="o.payment_mode_id.note">
+                                    <span t-field="o.payment_mode_id.note"/>
+                                </t>
+                                <t t-if="not o.payment_mode_id.note">
+                                    <span t-field="o.payment_mode_id.name"/>
+                                </t>
                             </p>
                             <p t-if="o.partner_bank_id">
                                 <strong>Bankoa:</strong>
