@@ -16,18 +16,28 @@ class ProductProduct(models.Model):
                  'customer_ids', 'customer_ids.product_code',
                  'supplier_ids', 'supplier_ids.product_code')
     def _compute_supercode(self):
+        ir_trans_obj = self.env['ir.translation']
         for product in self:
             val = []
-            for attribute_value in product.attribute_value_ids:
+            for attribute_value in product.attribute_value_ids.filtered(
+                    lambda x: x.name):
                 val.append(attribute_value.name)
-            for supplier in product.supplier_ids:
-                val += [(supplier.product_code or '')]
-            for customer in product.customer_ids:
-                val += [(customer.product_code or '')]
+                val.append(ir_trans_obj._get_source(
+                    'product.attribute.value,name', 'model', 'es_ES',
+                    source=attribute_value.name, res_id=attribute_value.id))
+            for supplier in product.supplier_ids.filtered(lambda x:
+                                                          x.product_code):
+                val.append(supplier.product_code)
+            for customer in product.customer_ids.filtered(lambda x:
+                                                          x.product_code):
+                val.append(customer.product_code)
             if product.default_code:
                 val.append(product.default_code)
             if product.name:
                 val.append(product.name)
+                val.append(ir_trans_obj._get_source(
+                    'product.template,name', 'model', 'es_ES',
+                    source=product.name, res_id=product.product_tmpl_id.id))
             if product.ean13:
                 val.append(product.ean13)
             product.supercode = " ".join(val)
