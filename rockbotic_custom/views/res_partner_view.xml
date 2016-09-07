@@ -24,24 +24,7 @@
             <field name="inherit_id" ref="base.view_partner_tree" />
             <field name="arch" type="xml">
                 <field name="display_name" position="after">
-                    <field name="name" />
                     <field name="city" string="Town"/>
-                </field>
-                <field name="display_name" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </field>
-            </field>
-        </record>
-        <record id="res_partner_kanban_view_inh_rockbotic" model="ir.ui.view">
-            <field name="name">res.partner.kanban.view.inh.rockbotic</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.res_partner_kanban_view" />
-            <field name="arch" type="xml">
-                <field name="display_name" position="after">
-                    <field name="name" />
-                </field>
-                <field name="display_name" position="attributes">
-                    <attribute name="invisible">1</attribute>
                 </field>
             </field>
         </record>
