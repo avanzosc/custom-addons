@@ -804,7 +804,7 @@
                                 <tr style="border-top-style: hidden;">
                                     <th style="background-color: #92D050;width:30%;color:white;border-top-style: hidden;">PROFESOR/A</th>
                                     <td style="border-bottom: 1px solid #FF0000;">
-                                        <t t-foreach="o.employee_registration_ids" t-as="p">
+                                        <t t-foreach="o.employee_registration_ids.filtered(lambda a: a.state != 'cancel')" t-as="p">
                                             <span t-field="p.name"/>
                                         </t>
                                     </td>
@@ -837,7 +837,7 @@
                                 </thead>
                                 <tbody>
                                     <t t-set="i" t-value="1" /> 
-                                    <tr t-foreach="o.no_employee_registration_ids.mapped('partner_id').sorted(key=lambda a:(a.student_course, a.student_class))" t-as="l">
+                                    <tr t-foreach="o.no_employee_registration_ids.filtered(lambda a: a.state != 'cancel').mapped('partner_id').sorted(key=lambda a:(a.student_course, a.student_class))" t-as="l">
                                         <td style="border-bottom: 1px solid #00B0F0;">
                                             <span t-esc="i"/>
                                             <t t-set="i" t-value="i+1"/> 
@@ -862,7 +862,7 @@
                                     <tr>
                                         <td style="border: 1px solid black;">TOTAL INSCRITOS</td>
                                         <td style="border: 1px solid black;">
-                                            <span t-esc="len(o.no_employee_registration_ids)"/>
+                                            <span t-esc="len(o.no_employee_registration_ids.filtered(lambda a: a.state != 'cancel'))"/>
                                         </td>
                                     </tr>
                                 </table>
