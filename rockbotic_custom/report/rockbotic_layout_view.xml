@@ -6,7 +6,7 @@
                 <div class="header">
                     <div class="row">
                         <div class="col-xs-5">
-                            <img src="/rockbotic_custom/static/src/img/rockbotic.png"/>
+                            <img src="/rockbotic_custom/static/src/img/rockbotic.png" style="max-height:107;max-width:247"/>
                         </div>
                         <div class="col-xs-7">
                             <span t-field="company.partner_id"/><br/>
