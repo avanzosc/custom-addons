@@ -420,8 +420,6 @@
                                     <span t-field="company.partner_id.email" />
                                 </div>
                             </div>
-                        </div>
-                        <div class="page">
                             <div class="row">
                                 <div style="background-color:#00B0F0;-moz-border-radius: 100px 0 0 100px; -webkit-border-radius:
                                     100px 0 0 100px; border-radius: 100px 0 0 100px;"
@@ -457,6 +455,8 @@
                                     <span t-field="o.date_order" t-field-options='{"widget": "date"}'/>
                                 </p>
                             </div>
+                        </div>
+                        <div class="page">
                             <table class="table table-condensed">
                                 <thead>
                                     <tr>
@@ -543,11 +543,6 @@
                                     <span t-field="company.partner_id.email" />
                                 </div>
                             </div>
-                        </div>
-                        <div class="page">
-                            <div style="-webkit-transform: rotate(-90deg);font-size: 10px;position: relative;left: -355px;bottom:-450px">
-                                <span t-field="company.company_registry"/>
-                            </div>
                             <div class="row">
                                 <div style="background-color:#00B0F0;-moz-border-radius: 100px 0 0 100px; -webkit-border-radius: 100px 0 0 100px; border-radius: 100px 0 0 100px;" class="col-xs-4">
                                     <h3 style="margin-left:15px;margin-top:10px;color:white;font-weight: bold;">
@@ -574,7 +569,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <br/><br/>
                             <div class="row">
                                 <p class="col-xs-3" t-if="o.number" style="font-size:18px">
                                     <strong>Nº: </strong><span t-field="o.number"/>
@@ -586,6 +580,11 @@
                                 <p class="col-xs-4" t-if="o.name" style="font-size:16px">
                                     <strong>Ref proveedor: </strong><span t-field="o.name"/>
                                 </p>
+                            </div>
+                        </div>
+                        <div class="page">
+                            <div style="-webkit-transform: rotate(-90deg);font-size: 10px;position: relative;left: -355px;bottom:-450px">
+                                <span t-field="company.company_registry"/>
                             </div>
                             <table class="table table-condensed">
                                 <thead>
