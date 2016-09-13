@@ -34,6 +34,7 @@
         "hr",
         "account",
         "report_custom_filename",
+        "l10n_es",
     ],
     "data": [
         "wizard/crm_make_sale_view.xml",
@@ -46,6 +47,7 @@
         "views/event_track_presence_view.xml",
         "views/hr_employee_view.xml",
         "views/account_invoice_view.xml",
+        "views/res_company_view.xml",
         "report/rockbotic_custom_view.xml",
         "report/rockbotic_layout_view.xml",
         "report/rockbotic_reports.xml",
