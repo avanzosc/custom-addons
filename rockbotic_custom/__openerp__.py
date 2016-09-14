@@ -48,6 +48,7 @@
         "views/hr_employee_view.xml",
         "views/account_invoice_view.xml",
         "views/res_company_view.xml",
+        "views/account_view.xml",
         "report/rockbotic_custom_view.xml",
         "report/rockbotic_layout_view.xml",
         "report/rockbotic_reports.xml",
