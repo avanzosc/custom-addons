@@ -729,9 +729,10 @@
                                 <strong>Dirección:</strong>
                                 <span t-field="o.partner_bank_id.street"/>
                             </t>
-                        </div>
-                        <div t-if="o.invoice_line.filtered(lambda a: a.invoice_line_tax_id.id == %(l10n_es.account_tax_template_s_iva0)d)">
-                            <p t-field="company.vat_exempt_note"/>
+                            <br/><br/>
+                            <div t-if="o.invoice_line.filtered(lambda a: a.invoice_line_tax_id.tax_exempt)">
+                                <p t-field="company.vat_exempt_note"/>
+                            </div>
                         </div>
                         <div class="footer">
                             <div class="row">

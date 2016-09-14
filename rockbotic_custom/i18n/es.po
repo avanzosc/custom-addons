@@ -51,6 +51,11 @@ msgid "ALTAS"
 msgstr "ALTAS"
 
 #. module: rockbotic_custom
+#: view:website:rockbotic_custom.account_tax_exempt_view_form
+msgid "Tax exempt"
+msgstr "IVA exento"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "APELLIDOS"
 msgstr "APELLIDOS"
