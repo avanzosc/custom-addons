@@ -4,6 +4,15 @@
 from openerp import models, fields, api
 
 
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
+
+    @api.multi
+    def action_button_confirm(self):
+        return super(SaleOrder, self.with_context(
+            without_sale_name=True)).action_button_confirm()
+
+
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
