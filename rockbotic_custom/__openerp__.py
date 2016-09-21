@@ -32,9 +32,10 @@
         "partner_contact_birthdate",
         "partner_student_course",
         "hr",
-        "account",
         "report_custom_filename",
         "l10n_es",
+        "event_group_description",
+        "account_payment_partner",
     ],
     "data": [
         "wizard/crm_make_sale_view.xml",

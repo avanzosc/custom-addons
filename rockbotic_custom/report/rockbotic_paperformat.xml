@@ -26,8 +26,8 @@
         </record>
         
         <record id="rockbotic_sale_invoice_paperformat" model="report.paperformat">
-            <field name="margin_top">55</field>
-            <field name="header_spacing">50</field>
+            <field name="margin_top">65</field>
+            <field name="header_spacing">60</field>
             <field name="margin_bottom">35</field>
             <field name="name">European A4 Sale/Invoice</field>
             <field name="default" eval="True" />
