@@ -2,13 +2,13 @@
 <openerp>
     <data>
         <report id="report_rockbotic_sale_report" string="Ficha de inscripción" model="sale.order"
-            report_type="qweb-pdf" file="rockbotic_custom.rockbotic_sale_report" name="rockbotic_custom.rockbotic_sale_report"
+            report_type="qweb-pdf" file="rockbotic_custom.report_sale_printing_doc" name="rockbotic_custom.report_sale_printing_doc"
             />
         <report id="report_rockbotic_event" string="Listado Provisional Inscripciones" model="event.event"
-            report_type="qweb-pdf" file="rockbotic_custom.rockbotic_event" name="rockbotic_custom.rockbotic_event"
-            />
+            report_type="qweb-pdf" file="rockbotic_custom.report_event_doc" name="rockbotic_custom.report_event_doc"
+           />
         <report id="report_event_track_document" string="Listado de Asistencia para Sesión" model="event.track"
-        report_type="qweb-pdf" file="event_report.report_event_document" name="rockbotic_custom.event_track_document"/>
+        report_type="qweb-pdf" file="event_report.report_event_track_doc" name="rockbotic_custom.report_event_track_doc"/>
     </data>
     <data>
         <template id="rockbotic_sale_report">
@@ -223,24 +223,18 @@
                                         <br/>
                                         Dirección: Francisco Cabo, 16 28015 (Madrid) – ESPAÑA
                                     </p>
-                                    <p>
-                                        Nota: Sus derechos en relación con la anterior orden de domiciliación se explican
+                                    <p>Nota: Sus derechos en relación con la anterior orden de domiciliación se explican
                                         en el extracto que puede solicitar a su banco.
                                         ©ROCKBOTIC es una marca registrada propiedad
-                                        de LUNA TIC DESIGN S.L.
-                                    </p>
+                                        de LUNA TIC DESIGN S.L.</p>
                                 </td>
                                 <td>
                                     <p>
                                         Mediante la firma de este Formulario de Orden de domiciliación, usted autoriza a :
                                         <ul style="list-style-type: circle;margin-left:30px;">
-                                            <li>
-                                                LUNA TIC DESIGN S.L. a enviar órdenes a su entidad financiera para adeudar su cuenta.
-                                            </li>
-                                            <li>
-                                                Su banco para adeudar los importes correspondientes en su cuenta de acuerdo con las
-                                                órdenes de Luna TIC DESIGN S.L.
-                                            </li>
+                                            <li>LUNA TIC DESIGN S.L. a enviar órdenes a su entidad financiera para adeudar su cuenta.</li>
+                                            <li>Su banco para adeudar los importes correspondientes en su cuenta de acuerdo con las
+                                                órdenes de Luna TIC DESIGN S.L.</li>
                                         </ul>
                                         Como parte de sus derechos, tiene derecho a ser reembolsado por su banco en virtud
                                         de los términos y condiciones del acuerdo
@@ -259,13 +253,11 @@
                                     <th style="background-color: #002060;color:white;" colspan="6">AUTORIZACIONES SOBRE IMÁGENES</th>
                                 </tr>
                                 <tr style="font-size: 9px;">
-                                    <td style="color:#002060;border-radius:10px;border: 1px solid #002060" colspan="6">
-                                        Autorizo a LUNA TIC DESIGN S.L. a publicar imágenes y vídeos del alumno en el desarrollo
+                                    <td style="color:#002060;border-radius:10px;border: 1px solid #002060" colspan="6">Autorizo a LUNA TIC DESIGN S.L. a publicar imágenes y vídeos del alumno en el desarrollo
                                         de esta actividad extraescolar con carácter
                                         informativo o divulgativo de la s dinámidas
                                         realizas en sus medios de promoción, tales
-                                        como:
-                                    </td>
+                                        como:</td>
                                 </tr>
                                 <tr style="font-size: 9px;color:#002060;border:1px solid #002060; border-top-style:hidden;">
                                     <td colspan="2">REVISTAS</td>
@@ -296,46 +288,13 @@
                             <table class="table-condensed" style="width: 80%;float: left;page-break-inside: avoid;
                                 font-size: 8px;">
                                 <tr>
-                                    <th style="background-color: #7030A0;color:white;">LEY DE PROTECCIÓN DE DATOSDE CARÁCTER PERSONAL</th>
+                                    <th style="background-color: #7030A0;color:white;">LEY DE PROTECCIÓN DE DATOS DE CARÁCTER PERSONAL</th>
                                 </tr>
                                 <tr>
                                     <td style="color:#7030A0; border: 1px solid #7030A0">
                                         <p>
-                                            De acuerdo con lo que establece la Ley Orgánica 15/1999, de 13 de diciembre, de Protección
-                                            de Datos de Carácter Personal, le informamos
-                                            que tanto sus datos como los de su hijo/a
-                                            recogidos a partir del presente formulario
-                                            serán incorporados a un fichero denominado
-                                            “Alumnos”, bajo la responsabilidad de
-                                            LUNA TIC DESIGN SL, con la finalidad de
-                                            llevar a cabo la matriculación, organización,
-                                            gestión y facturación de la actividad
-                                            formativa contratada. Puede ejercer sus
-                                            derechos, y los de su hijo/a, de acceso,
-                                            rectificación, cancelación, y oposición
-                                            mediante un escrito a nuestra dirección:
-                                            C/Francisco Cabo, 16, LOCAL 28029, Madrid,
-                                            o a la dirección de correo-e info@rockbotic.com,
-                                            identificando claramente el derecho que
-                                            ejercita e identificándose a través del
-                                            DNI o libro de familia. Mientras no nos
-                                            comunique lo contrario, entenderemos que
-                                            sus datos y los de su hijo/a no han sido
-                                            modificados y que se compromete a notificarnos
-                                            cualquier variación y que tenemos el consentimiento
-                                            para utilizarlos con la finalidad de impartir
-                                            la formación en la que usted ha matriculado
-                                            a su hijo/a y cumplir con las obligaciones
-                                            propias de un centro de formación, entre
-                                            las cuales se encuentran la gestión de
-                                            la formación de su hijo/a y su evaluación,
-                                            así como la remisión de aquellas circulares
-                                            informativas a los padres. Al rellenar
-                                            el presente formulario usted autoriza
-                                            expresamente el tratamiento de sus datos
-                                            de carácter personal y los de su hijo/a,
-                                            para la finalidad espeicada, por parte
-                                            de LUNA TIC DESIGN SL
+                                            De acuerdo con lo que establece la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal, le informamos que tanto sus datos como los de su hijo/a recogidos a partir del presente formulario serán incorporados a un fichero denominado “Alumnos”, bajo la responsabilidad de LUNA TIC DESIGN SL, con la finalidad de llevar a cabo la matriculación, organización, gestión y facturación de la actividad formativa contratada. Puede ejercer sus derechos, y los de su hijo/a, de acceso, rectificación, cancelación, y oposición mediante un escrito a nuestra dirección: C/Francisco Cabo, 16, LOCAL 28029, Madrid, o a la dirección de correo-e info@rockbotic.com, identificando claramente el derecho que ejercita e identificándose a través del DNI o libro de familia. Mientras no nos comunique lo contrario, entenderemos que sus datos y los de su hijo/a no han sido modificados y que se
+                                            compromete a notificarnos cualquier variación y que tenemos el consentimiento para utilizarlos con la finalidad de impartir la formación en la que usted ha matriculado a su hijo/a y cumplir con las obligaciones propias de un centro de formación, entre las cuales se encuentran la gestión de la formación de su hijo/a y su evaluación, así como la remisión de aquellas circulares informativas a los padres. Al rellenar el presente formulario usted autoriza expresamente el tratamiento de sus datos de carácter personal y los de su hijo/a, para la finalidad espeicada, por parte de LUNA TIC DESIGN SL
                                         </p>
                                     </td>
                                 </tr>
@@ -350,35 +309,29 @@
                                 </tr>
                                 <tr style="color:#2E75B5;border: 1px solid #2E75B5;">
                                     <td>
-                                        <p>
-                                            Para cualquier modificación en las ALTAS/BAJAS de los alumnos a lo largo del curso,
-                                            el procedimiento será el siguiente:
-                                        </p>
+                                        <p>Para cualquier modificación en las ALTAS/BAJAS de los alumnos a lo largo del curso,
+                                            el procedimiento será el siguiente:</p>
                                         <p>
                                             <strong>BAJAS</strong>
                                         </p>
-                                        <p>
-                                            Comunicar a través de mail a inscripciones@rockbotic.com entre el día 5 y 25 de cada
+                                        <p>Comunicar a través de mail a inscripciones@rockbotic.com entre el día 5 y 25 de cada
                                             mes la baja que producirá efecto en el
                                             mes siguiente. En el mail ha de constar:
                                             Nombre y dos apellidos del alumno, curso
                                             y nombre del colegio en el que está recibiendo
                                             robótica. Desde el mismo mail contestaremos
                                             dando acuse de recibo y confirmando la
-                                            recepción.
-                                        </p>
+                                            recepción.</p>
                                         <p>
                                             <strong>ALTAS</strong>
                                         </p>
-                                        <p>
-                                            Completar este mismo formulario, imprimirlo, firmarlo y entregarlo en la oficina de
+                                        <p>Completar este mismo formulario, imprimirlo, firmarlo y entregarlo en la oficina de
                                             la AMPA. Confirmaremos la incorporación
                                             poniéndonos en contacto con los padres
                                             o tutores a través del mail facilitado.
                                             También se puede rellenar la inscripción,
                                             firmar, escanear y enviar por mail a:
-                                            inscripciones@rockboctic.com
-                                        </p>
+                                            inscripciones@rockboctic.com</p>
                                     </td>
                                 </tr>
                             </table>
@@ -585,7 +538,7 @@
                             </div>
                         </div>
                         <div class="page">
-                            <div style="-webkit-transform: rotate(-90deg);font-size: 10px;position: relative;left: -355px;bottom:-450px">
+                            <div style="-webkit-transform: rotate(-90deg);font-size: 10px;position: relative;left: -355px;bottom:-350px">
                                 <span t-field="company.company_registry"/>
                             </div>
                             <table class="table table-condensed">
@@ -657,7 +610,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="row" t-if="o.tax_line">
+                            <div class="row" t-if="o.tax_line and o.invoice_line.filtered(lambda a: a.invoice_line_tax_id.tax_exempt)">
                                 <div class="col-xs-6">
                                     <table class="table table-condensed">
                                         <thead>
@@ -730,7 +683,7 @@
                                 <span t-field="o.partner_bank_id.street"/>
                             </t>
                             <br/><br/>
-                            <div t-if="o.invoice_line.filtered(lambda a: a.invoice_line_tax_id.tax_exempt)">
+                            <div t-if="o.invoice_line.filtered(lambda a: a.invoice_line_tax_id.tax_exempt)" style="font-size: 8px; width: 50%;page-break-inside: avoid;" class="pull-right">
                                 <p t-field="company.vat_exempt_note"/>
                             </div>
                         </div>
@@ -1050,6 +1003,26 @@
                 </t>
             </t>
         </template>
-        
+        <template id="report_sale_printing_doc">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'rockbotic_custom.rockbotic_sale_report')"/>
+                </t>
+            </t>
+        </template>
+        <template id="report_event_doc">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'organizer_id.lang', 'rockbotic_custom.rockbotic_event')"/>
+                </t>
+            </t>
+        </template>
+        <template id="report_event_track_doc">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'address_id.lang', 'rockbotic_custom.event_track_document')"/>
+                </t>
+            </t>
+        </template>
     </data>
 </openerp>
