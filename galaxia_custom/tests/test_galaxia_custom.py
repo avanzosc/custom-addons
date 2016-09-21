@@ -52,6 +52,7 @@ class TestGalaxiaCustom(common.TransactionCase):
         self.sale_order = self.sale_model.create(sale_vals)
 
     def test_galaxia_custom(self):
+        self.sale_order.action_button_confirm()
         self.sale_order.order_line[0]._compute_product_type()
         self.assertNotEqual(
             len(self.sale_order.order_line), 0,

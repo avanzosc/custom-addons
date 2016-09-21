@@ -227,6 +227,9 @@
                 <xpath expr="//field[@name='order_line']//tree//field[@name='apply_performance_by_quantity']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+                <field name="project_id" position="attributes">
+                    <attribute name="context">{'partner_id':partner_invoice_id, 'manager_id': user_id, 'default_use_tasks':True,'default_pricelist_id':pricelist_id, 'default_type': 'contract', 'default_sale': active_id}</attribute>
+                </field>
             </field>
         </record>
         <record id="view_order_form_line_performance_inh_galaxia" model="ir.ui.view">
