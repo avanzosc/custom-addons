@@ -390,10 +390,13 @@
                                         CLIENTE
                                     </div>
                                     <div class="col-xs-6">
-                                        <address t-field="o.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;,
-                                            &quot;fields&quot;: [&quot;address&quot;,
-                                            &quot;name&quot;], &quot;no_marker&quot;:
-                                            true}"/>
+                                        <span t-field="o.partner_id.name"/>
+                                        <br/>
+                                        <span t-field="o.partner_id.street"/>
+                                        <br/>
+                                        <span t-field="o.partner_id.zip"/>
+                                        -
+                                        <span t-field="o.partner_id.city"/>
                                         <span t-if="o.partner_id.vat">
                                             TIN:
                                             <span t-field="o.partner_id.vat"/>
@@ -516,7 +519,13 @@
                                         CLIENTE
                                     </div>
                                     <div class="col-xs-6">
-                                        <address t-field="o.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;,                                             &quot;fields&quot;: [&quot;address&quot;,                                             &quot;name&quot;], &quot;no_marker&quot;:                                             true}"/>
+                                        <span t-field="o.partner_id.name"/>
+                                        <br/>
+                                        <span t-field="o.partner_id.street"/>
+                                        <br/>
+                                        <span t-field="o.partner_id.zip"/>
+                                        -
+                                        <span t-field="o.partner_id.city"/>
                                         <span t-if="o.partner_id.vat">
                                             TIN:
                                             <span t-field="o.partner_id.vat"/>
