@@ -19,6 +19,7 @@
                 "stock_valued_picking_report",
                 "warning",
                 "product_pricelist_rules",
+                "account_due_list"
                 ],
     "author": "Avanzosc, S.L.",
     "contributors": [
@@ -40,6 +41,7 @@
              'views/account_invoice_view.xml',
              'views/res_company_view.xml',
              'views/product_view.xml',
+             'views/account_move_line_view.xml',
              'wizard/stock_transfer_details_view.xml',
              ],
     "installable": True,

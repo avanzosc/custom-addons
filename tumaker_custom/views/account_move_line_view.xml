@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_payments_filter" model="ir.ui.view">
+            <field name="name">Payments Select</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account_due_list.view_payments_filter"/>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <filter string="Due Date" position="after">
+                   <filter string="Week" icon="terp-go-month" domain="[]" context="{'group_by':'date_maturity:week'}"/>
+                </filter>
+            </field>
+        </record>
+    </data>
+</openerp>
