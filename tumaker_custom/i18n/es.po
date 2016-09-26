@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-01 10:05+0000\n"
-"PO-Revision-Date: 2016-08-01 12:07+0100\n"
-"Last-Translator: Esther Martín <esthermartin@avanzosc.es>\n"
+"POT-Creation-Date: 2016-09-26 11:15+0000\n"
+"PO-Revision-Date: 2016-09-26 13:18+0100\n"
+"Last-Translator: Ainara Galdona <ainaragaldona@avanzosc.es>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -92,6 +92,7 @@ msgid "Companies"
 msgstr "Compañías"
 
 #. module: tumaker_custom
+#: code:addons/tumaker_custom/models/account_analytic_line.py:90
 #: code:addons/tumaker_custom/models/account_analytic_line.py:92
 #, python-format
 msgid "Configuration Error!"
@@ -140,17 +141,7 @@ msgstr ""
 #. module: tumaker_custom
 #: view:website:account.report_invoice_document
 msgid "Date due:"
-msgstr "Fecha de vencimiento:"
-
-#. module: tumaker_custom
-#: field:product.product,quote_description:0
-msgid "Description for the quote"
-msgstr "Description for the quote"
-
-#. module: tumaker_custom
-#: field:product.product,website_description:0
-msgid "Description for the website"
-msgstr "Description for the website"
+msgstr "Vencimiento:"
 
 #. module: tumaker_custom
 #: view:res.company:tumaker_custom.sale_note_report_company_view_form
@@ -166,6 +157,11 @@ msgstr "Deskontua (%)"
 #: view:website:tumaker_custom.tu_maker_report_invoice
 msgid "Deskripzioa:"
 msgstr "Deskripzioa:"
+
+#. module: tumaker_custom
+#: view:account.move.line:tumaker_custom.view_payments_filter
+msgid "Due Date"
+msgstr "Fecha vencimiento"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tumaker_report_picking
@@ -386,6 +382,7 @@ msgid "Pisua"
 msgstr "Pisua"
 
 #. module: tumaker_custom
+#: code:addons/tumaker_custom/models/account_analytic_line.py:91
 #: code:addons/tumaker_custom/models/account_analytic_line.py:93
 #, python-format
 msgid "Please define income account for product '%s'."
@@ -533,6 +530,11 @@ msgid "Summary"
 msgstr "Descripción"
 
 #. module: tumaker_custom
+#: field:product.product,supercode:0
+msgid "Supercode"
+msgstr "Supercódigo"
+
+#. module: tumaker_custom
 #: field:sale.order,task_exists:0
 msgid "Task Exists"
 msgstr "Existe tarea"
@@ -577,6 +579,11 @@ msgid "Warning"
 msgstr "Aviso"
 
 #. module: tumaker_custom
+#: view:account.move.line:tumaker_custom.view_payments_filter
+msgid "Week"
+msgstr "Semana"
+
+#. module: tumaker_custom
 #: code:addons/tumaker_custom/wizard/stock_transfer_details.py:20
 #, python-format
 msgid "You have some lines without costs."
@@ -606,3 +613,8 @@ msgstr "Zerga"
 #: view:website:tumaker_custom.tumaker_report_picking
 msgid "Zergak"
 msgstr "Zergak"
+
+#. module: tumaker_custom
+#: view:sale.order:tumaker_custom.view_order_form
+msgid "{'readonly': [('state', 'in', 'done')]}"
+msgstr "{'readonly': [('state', 'in', 'done')]}"
