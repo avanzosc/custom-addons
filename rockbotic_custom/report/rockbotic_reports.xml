@@ -610,7 +610,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="row" t-if="o.tax_line and o.invoice_line.filtered(lambda a: a.invoice_line_tax_id.tax_exempt)">
+                            <div class="row" t-if="not o.tax_line and o.invoice_line.filtered(lambda a: a.invoice_line_tax_id.tax_exempt)">
                                 <div class="col-xs-6">
                                     <table class="table table-condensed">
                                         <thead>
