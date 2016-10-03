@@ -8,3 +8,4 @@ from . import account_invoice
 from . import product_product
 from . import stock_account
 from . import sale
+from . import res_partner
