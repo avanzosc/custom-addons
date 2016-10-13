@@ -1054,8 +1054,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr t-foreach="o.pack_operation_ids" t-as="pack_operation">
-                            <t t-foreach="pack_operation.linked_move_operation_ids" t-as="move_operation">
+                        <t t-foreach="o.pack_operation_ids" t-as="pack_operation">
+                            <tr t-foreach="pack_operation.linked_move_operation_ids" t-as="move_operation">
                                 <td>
                                     <t t-if="move_operation.move_id.procurement_id.sale_line_id.name">
                                         <span t-field="move_operation.move_id.procurement_id.sale_line_id.name"/>
@@ -1068,8 +1068,14 @@
                                     </t>
                                 </td>
                                 <td class="text-right">
-                                    <span t-field="pack_operation.product_qty"/>
-                                    <span t-field="pack_operation.product_uom_id" groups="product.group_uom"/>
+                                    <t t-if="not move_operation.move_id">
+                                        <span t-field="pack_operation.product_qty"/>
+                                        <span t-field="pack_operation.product_uom_id" groups="product.group_uom"/>
+                                    </t>
+                                    <t t-if="move_operation.move_id">
+                                        <span t-field="move_operation.move_id.product_qty"/>
+                                        <span t-field="move_operation.move_id.product_uom_id" groups="product.group_uom"/>
+                                    </t>
                                 </td>
                                 <td class="text-right">
                                     <span t-field="move_operation.move_id.procurement_id.sale_line_id.price_unit" />
@@ -1084,8 +1090,8 @@
                                 <td class="text-right">
                                     <span t-field="move_operation.move_id.sale_price_subtotal" />
                                 </td>
-                            </t>
-                        </tr>
+                            </tr>
+                        </t>
                     </tbody>
                 </table>
             </xpath>
@@ -1113,6 +1119,9 @@
                             </tr>
                         </table>
                     </div>
+                </div>
+                <div t-if="o.note">
+                    <span t-field="o.note"/>
                 </div>
                 <div class="row" style="page-break-inside: avoid">
                     <div class="col-xs-6">CONFORME CLIENTE</div>
@@ -1186,7 +1195,12 @@
                                 <span t-field="o.origin"/>
                             </td>
                             <td>
-                                <span t-field="o.date"/>
+                                <t t-if="o.picking_type_id.code == 'outgoing'">
+                                    <span t-field="o.sale_id.date_order" t-field-options='{"format": "dd/MM/yyyy"}'/>
+                                </t>
+                                <t t-if="o.picking_type_id.code != 'outgoing'">
+                                    <span t-field="o.date"/>
+                                </t>
                             </td>
                         </tr>
                     </tbody>
