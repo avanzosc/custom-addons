@@ -10,3 +10,10 @@ class AccountTax(models.Model):
 
     tax_exempt = fields.Boolean(
         string='Tax exempt', default=False)
+
+
+class AccountAnalyticAccont(models.Model):
+    _inherit = 'account.analytic.account'
+
+    recurring_first_day = fields.Boolean(default=True)
+    recurring_last_day = fields.Boolean(default=False)
