@@ -47,6 +47,7 @@
         "views/mrp_repair_line_view.xml",
         "views/product_view.xml",
         "views/stock_history_view.xml",
+        "views/stock_quant_view.xml",
     ],
     "installable": True,
 }
