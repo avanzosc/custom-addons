@@ -2,7 +2,8 @@
 # © 2015 Esther Martín - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-from openerp import models, fields, tools
+from openerp import api, models, fields, tools
+from openerp.addons import decimal_precision as dp
 
 
 class StockHistory(models.Model):
@@ -112,3 +113,18 @@ class StockHistory(models.Model):
                 GROUP BY move_id, location_id, company_id, product_id,
                 product_categ_id, date, source, product_type
             )""")
+
+
+class StockQuant(models.Model):
+    _inherit = 'stock.quant'
+
+    @api.multi
+    @api.depends("product_id", "product_id.standard_price", "qty")
+    def _compute_standard_value(self):
+        for record in self:
+            record.standard_value = (record.product_id.standard_price *
+                                     record.qty)
+
+    standard_value = fields.Float(
+        string="Standard Value", store=True, compute="_compute_standard_value",
+        digits=dp.get_precision('Product Price'))

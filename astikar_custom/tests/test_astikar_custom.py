@@ -13,6 +13,7 @@ class TestAstikarCustom(common.TransactionCase):
         super(TestAstikarCustom, self).setUp()
         self.ir_sequence_model = self.env['ir.sequence']
         self.mrp_repair_model = self.env['mrp.repair']
+        self.quant_model = self.env['stock.quant']
         self.mrp_repair_sequence = self.browse_ref('mrp_repair.seq_mrp_repair')
         self.product = self.browse_ref('product.product_product_3')
         self.location = self.ref('stock.location_inventory')
@@ -196,3 +197,15 @@ class TestAstikarCustom(common.TransactionCase):
         self.mrp_repair1.signal_workflow('repair_confirm')
         self.mrp_repair1.action_invoice_create()
         self.assertFalse(self.mrp_repair1.invoice_id.not_warning)
+
+    def test_quant_valuation(self):
+        self.product.sudo().write({'cost_method': 'real',
+                                   'standard_price': 20,
+                                   'manual_standard_cost': 35})
+        quant = self.quant_model.create(
+            {'product_id': self.product.id,
+             'cost': 20,
+             'location_id': self.location,
+             'qty': 5})
+        self.assertEqual(quant.standard_value, (20 * 5),
+                         "Incorrect Manual Value for quant.")
