@@ -15,6 +15,7 @@ class SaleOrder(models.Model):
     no_pa_price = fields.Float(
         string='No PA price', help='Price for those partners that do not '
         'belong to the Parents Association')
+    print_sum = fields.Boolean(default=False)
 
 
 class SaleOrderLine(models.Model):
