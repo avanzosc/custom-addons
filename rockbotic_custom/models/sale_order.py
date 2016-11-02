@@ -29,6 +29,6 @@ class SaleOrderLine(models.Model):
     week4 = fields.Boolean(default=True)
     week5 = fields.Boolean(default=True)
     week6 = fields.Boolean(default=True)
-    real_name = fields.Text(
+    real_name = fields.Html(
         string='Description', help='This field will contain the description '
         'of the product that will be used in the report')
