@@ -6,5 +6,5 @@ from . import product_category
 from . import res_partner
 from . import hr_employee
 from . import res_company
-from . import event_track
+from . import event
 from . import account
