@@ -32,6 +32,12 @@ msgid "AUTORIZACIONES SOBRE IMÁGENES"
 msgstr "AUTORIZACIONES SOBRE IMÁGENES"
 
 #. module: rockbotic_custom
+#: view:event.registration:rockbotic_custom.event_registration_info_view_search
+#: field:event.registration,address_id:0
+msgid "Address"
+msgstr "Ubicación"
+
+#. module: rockbotic_custom
 #: view:website:account.report_invoice_document
 msgid "Amount"
 msgstr "Importe"
@@ -403,6 +409,16 @@ msgid "Event"
 msgstr "Evento"
 
 #. module: rockbotic_custom
+#: view:event.registration:rockbotic_custom.event_registration_info_view_form
+msgid "Event Information"
+msgstr "Información del evento"
+
+#. module: rockbotic_custom
+#: model:ir.model,name:rockbotic_custom.model_event_registration
+msgid "Event Registration"
+msgstr "Registro evento"
+
+#. module: rockbotic_custom
 #: model:ir.model,name:rockbotic_custom.model_event_track
 msgid "Event Tracks"
 msgstr "Sesiones del evento"
@@ -520,6 +536,18 @@ msgid "Listado Provisional Inscripciones"
 msgstr "Listado Provisional Inscripciones"
 
 #. module: rockbotic_custom
+#: model:ir.actions.report.xml,name:rockbotic_custom.report_event_track_document
+msgid "Listado de Asistencia para Sesión"
+msgstr "Listado de Asistencia para Sesión"
+
+#. module: rockbotic_custom
+#: view:event.track:rockbotic_custom.view_event_track_search_inh_rockbotic
+#: field:event.track,address_id:0
+msgid "Location"
+msgstr "Ubicación"
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.event_track_document
 #: view:website:rockbotic_custom.rockbotic_event
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "Lunes"
@@ -554,6 +582,11 @@ msgid "Miércoles"
 msgstr "Miércoles"
 
 #. module: rockbotic_custom
+#: field:event.registration,parent_mobile:0
+msgid "Mobile"
+msgstr "Móvil"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.event_track_document
 #: view:website:rockbotic_custom.rockbotic_event
 msgid "NIVEL ROBÓTICA"
@@ -574,6 +607,11 @@ msgstr "NOMBRE"
 #: view:website:rockbotic_custom.rockbotic_event
 msgid "NOMBRE COMPLETO"
 msgstr "NOMBRE COMPLETO"
+
+#. module: rockbotic_custom
+#: field:event.registration,parent_name:0
+msgid "Name"
+msgstr "Nombre"
 
 #. module: rockbotic_custom
 #: field:hr.employee,no_sexual_offenses:0
@@ -643,6 +681,12 @@ msgid "Orden de Domicialiación de Débito Directo SEPA"
 msgstr "Orden de Domicialiación de Débito Directo SEPA"
 
 #. module: rockbotic_custom
+#: view:event.registration:rockbotic_custom.event_registration_info_view_search
+#: field:event.registration,organizer_id:0
+msgid "Organizer"
+msgstr "Organizador"
+
+#. module: rockbotic_custom
 #: view:sale.order:rockbotic_custom.registration_sale_order_view_form
 msgid "Other Information"
 msgstr "Otra información"
@@ -697,6 +741,16 @@ msgstr ""
 "siguiente:"
 
 #. module: rockbotic_custom
+#: field:event.registration,parent_id:0
+msgid "Parent"
+msgstr "Padre"
+
+#. module: rockbotic_custom
+#: view:event.registration:rockbotic_custom.event_registration_info_view_form
+msgid "Partner Information"
+msgstr "Información sobre el partner"
+
+#. module: rockbotic_custom
 #: model:ir.model,name:rockbotic_custom.model_res_partner
 msgid "Partner"
 msgstr "Empresa"
@@ -720,6 +774,11 @@ msgstr "Pedido"
 #: field:sale.order.line,decimal_pfmc:0
 msgid "Performance"
 msgstr "Rendim."
+
+#. module: rockbotic_custom
+#: field:res.partner,presence_ids:0
+msgid "Presences"
+msgstr "Presencias"
 
 #. module: rockbotic_custom
 #: view:website:sale.report_saleorder_document
@@ -783,6 +842,11 @@ msgstr "Factura rectificativa"
 #: view:sale.order:rockbotic_custom.registration_sale_order_view_form
 msgid "Registration Information"
 msgstr "Información de registro"
+
+#. module: rockbotic_custom
+#: view:event.registration:rockbotic_custom.event_registration_info_view_search
+msgid "Registration Month"
+msgstr "Mes de registro"
 
 #. module: rockbotic_custom
 #: field:sale.order,registration_note:0

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="event_registration_info_view_tree" model="ir.ui.view">
+            <field name="name">event.registration.info.tree</field>
+            <field name="model">event.registration</field>
+            <field name="inherit_id" ref="event.view_event_registration_tree" />
+            <field name="arch" type="xml">
+                <field name="create_date" position="after">
+                    <field name="address_id" />
+                    <field name="organizer_id" />
+                    <field name="user_id" />
+                </field>
+                <field name="email" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="partner_id" position="after">
+                    <field name="parent_name" />
+                    <field name="parent_mobile" />
+                    <field name="parent_email" />
+                </field>
+            </field>
+        </record>
+        
+        <record id="event_registration_info_view_form" model="ir.ui.view">
+            <field name="name">event.registration.info.form</field>
+            <field name="model">event.registration</field>
+            <field name="inherit_id" ref="event.view_event_registration_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//group/group//field[@name='partner_id']/../.." position="after">
+                    <group>
+                        <group>
+                            <separator string="Event Information" colspan="2"/>
+                            <field name="address_id"/>
+                            <field name="organizer_id"/>
+                            <field name="user_id"/>
+                        </group>
+                        <group>
+                            <separator string="Partner Information" colspan="2"/>
+                            <field name="parent_name"/>
+                            <field name="parent_mobile"/>
+                            <field name="parent_email"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <record id="event_registration_info_view_search" model="ir.ui.view">
+            <field name="name">event.registration.info.search</field>
+            <field name="model">event.registration</field>
+            <field name="inherit_id" ref="event.view_registration_search" />
+            <field name="arch" type="xml">
+                <filter string="Registration Month" position="after">
+                    <filter string="Organizer" domain="[]" context="{'group_by': 'organizer_id'}"/>
+                    <filter string="Address" domain="[]" context="{'group_by': 'address_id'}"/>
+                </filter>
+            </field>
+        </record>
+    </data>
+</openerp>
