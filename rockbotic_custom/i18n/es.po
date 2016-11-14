@@ -611,7 +611,12 @@ msgstr "NOMBRE COMPLETO"
 #. module: rockbotic_custom
 #: field:event.registration,parent_name:0
 msgid "Name"
-msgstr "Nombre"
+msgstr "Nombre del responsable"
+
+#. module: rockbotic_custom
+#: field:event.registration,partner_id:0
+msgid "Partner"
+msgstr "Nombre del niño"
 
 #. module: rockbotic_custom
 #: field:hr.employee,no_sexual_offenses:0

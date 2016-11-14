@@ -2,16 +2,22 @@
 <openerp>
     <data>
         <report id="report_rockbotic_sale_report" string="Ficha de inscripción" model="sale.order"
-            report_type="qweb-pdf" file="rockbotic_custom.report_sale_printing_doc" name="rockbotic_custom.report_sale_printing_doc"
-            />
+            report_type="qweb-pdf" file="rockbotic_custom.report_sale_printing" name="rockbotic_custom.report_sale_printing"/>
+        
         <report id="report_rockbotic_event" string="Listado Provisional Inscripciones" model="event.event"
-            report_type="qweb-pdf" file="rockbotic_custom.report_event_doc" name="rockbotic_custom.report_event_doc"
-           />
+            report_type="qweb-pdf" file="rockbotic_custom.report_event" name="rockbotic_custom.report_event"/>
+        
+        <report id="report_rockbotic_event_partner_info" string="Listado Inscripciones" model="event.event"
+            report_type="qweb-pdf" file="rockbotic_custom.report_event_partner_info" name="rockbotic_custom.report_event_partner_info" />
+        
+        <report id="report_rockbotic_event_partner_nodata" string="Listado Inscripciones faltan datos" model="event.event"
+            report_type="qweb-pdf" file="rockbotic_custom.report_event_partner_nodata" name="rockbotic_custom.report_event_partner_nodata" />
+        
         <report id="report_event_track_document" string="Listado de Asistencia para Sesión" model="event.track"
-        report_type="qweb-pdf" file="event_report.report_event_track_doc" name="rockbotic_custom.report_event_track_doc"/>
+            report_type="qweb-pdf" file="event_report.report_event_track" name="rockbotic_custom.report_track" />
     </data>
     <data>
-        <template id="rockbotic_sale_report">
+        <template id="report_sale_printing_doc">
             <t t-call="report.html_container">
                 <t t-if="o and 'company_id' in o">
                     <t t-set="company" t-value="o.company_id"/>
@@ -732,7 +738,7 @@
                 </t>
             </xpath>
         </template>
-        <template id="rockbotic_event">
+        <template id="report_event_doc">
             <t t-call="report.html_container">
                 <t t-if="o and 'company_id' in o">
                     <t t-set="company" t-value="o.company_id"/>
@@ -883,7 +889,315 @@
             </t>
         </template>
         
-        <template id="event_track_document">
+        <template id="report_event_partner_info_doc">
+            <t t-call="report.html_container">
+                <t t-if="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id"/>
+                </t>
+                <t t-if="not o or not 'company_id' in o">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+                <div class="header">
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <img src="/rockbotic_custom/static/src/img/rockbotic.png" style="max-height:107;max-width:247"/>
+                        </div>
+                        <div class="col-xs-7" style="background-color:#00B0F0;border-radius: 50px;height:50px">
+                            <span style="color:white;margin-left:15px;">LISTADO DE INSCRITOS</span>
+                            <div style="background-color:#FFFFFF;border-radius: 10px;">
+                                <span t-field="o.address_id.name" style="margin-left:15px;"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page">
+                    <h4>ROBÓTICA EDUCATIVA Y PROGRAMACIÓN DE VIDEOJUEGOS</h4>
+                    <br/>
+                    <div class="row">
+                        <table class="table table-condensed" style="width:35%;float:left;margin-right:15px;">
+                            <tr style="border-top-style: hidden;">
+                                <th style="background-color: #FF0000;width:30%;color:white;border-top-style: hidden;">CURSO</th>
+                                <td style="border-bottom: 1px solid #FF0000;">
+                                    <span t-field="o.sale_order_line.courses"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="background-color: #FF0000;color:white;border-top-style: hidden;">DÍA/S</th>
+                                <td style="border-bottom: 1px solid #FF0000;">
+                                    <span t-if="o.sale_order_line.monday">Lunes</span>
+                                    <span t-if="o.sale_order_line.tuesday">Martes</span>
+                                    <span t-if="o.sale_order_line.wednesday">Miércoles</span>
+                                    <span t-if="o.sale_order_line.thursday">Jueves</span>
+                                    <span t-if="o.sale_order_line.friday">Viernes</span>
+                                    <span t-if="o.sale_order_line.saturday">Sábado</span>
+                                    <span t-if="o.sale_order_line.sunday">Domingo</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="background-color: #FF0000;color:white;border-top-style: hidden;">HORARIO</th>
+                                <td style="border-bottom: 1px solid #FF0000;">
+                                    <t t-esc="'%02d:%02d' % (int(str(o.sale_order_line.start_hour).split('.')[0]), int(float(str('%.2f'
+                                            % o.sale_order_line.start_hour).split('.')[1])/100*60))"
+                                            />
+                                    -
+                                    <t t-esc="'%02d:%02d' % (int(str(o.sale_order_line.end_hour).split('.')[0]), int(float(str('%.2f'
+                                            % o.sale_order_line.end_hour).split('.')[1])/100*60))"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table table-condensed" style="width:35%;float:left;margin-right:15px;">
+                            <tr style="border-top-style: hidden;">
+                                <th style="background-color: #92D050;width:30%;color:white;border-top-style: hidden;">PROFESOR/A</th>
+                                <td style="border-bottom: 1px solid #FF0000;">
+                                    <t t-foreach="o.employee_registration_ids.filtered(lambda a: a.state != 'cancel')" t-as="p">
+                                        <span t-field="p.name"/>
+                                    </t>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="background-color: #ED7D31;color:white;border-top-style: hidden;">COORDINADOR/A</th>
+                                <td style="border-bottom: 1px solid #FF0000;">
+                                    <span t-field="o.user_id"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="background-color: #7F7F7F;color:white;border-top-style: hidden;">GRUPO</th>
+                                <td style="border-bottom: 1px solid #7F7F7F;">
+                                    <span t-field="o.sale_order"/>
+                                    -
+                                    <span t-field="o.sale_order_line.sequence"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <img src="/rockbotic_custom/static/src/img/robot1.png" style="max-width:150px;margin-top:-30px;"/>
+                    </div>
+                    <div>
+                        <table class="table table-condensed">
+                            <thead style="background-color:#00B0F0;border-radius: 50px;height:50px;color:white;">
+                                <tr style="border-bottom-style:hidden;">
+                                    <th>Nº</th>
+                                    <th>NOMBRE COMPLETO</th>
+                                    <th>RESPONSABLE</th>
+                                    <th>EMAIL</th>
+                                    <th>TLF.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="1" />
+                                <tr t-foreach="o.no_employee_registration_ids.filtered(lambda a: a.state in ('draft', 'open')).mapped('partner_id').sorted(key=lambda a:(a.name, a.student_course, a.student_class))" t-as="l">
+                                    <td style="border-bottom: 1px solid #00B0F0;">
+                                        <span t-esc="i"/>
+                                        <t t-set="i" t-value="i+1"/>
+                                    </td>
+                                    <td style="border-bottom: 1px solid #00B0F0;">
+                                        <span t-field="l.name"/>
+                                    </td>
+                                    <td style="border-bottom: 1px solid #00B0F0;">
+                                        <span t-field="l.parent_id.name"/>
+                                    </td>
+                                    <td style="border-bottom: 1px solid #00B0F0;">
+                                        <span t-field="l.parent_id.email"/>
+                                    </td>
+                                    <td style="border-bottom: 1px solid #00B0F0;">
+                                        <span t-field="l.parent_id.mobile"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div align="center">
+                            <table class="table table-condensed" style="border: 1px solid black;width:30%;">
+                                <tr>
+                                    <td style="border: 1px solid black;">TOTAL INSCRITOS</td>
+                                    <td style="border: 1px solid black;">
+                                        <span t-esc="len(o.no_employee_registration_ids.filtered(lambda a: a.state in ('draft','open')))"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="row">
+                        <div class="col-xs-3" style="height:170px;">
+                            <img src="/rockbotic_custom/static/src/img/robot2.png" style="max-width:130px;bottom:0px;left:0px;position:absolute;"/>
+                        </div>
+                        <div class="col-xs-6" style="height:170px;">
+                            <div style="position: absolute;bottom: 15px;text-align: center;left: 0;right:0;">
+                                Fecha - Hora:
+                                <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')"/>
+                                Página
+                                <span class="page"/>
+                                de
+                                <span class="topage"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-3" style="height:170px;">
+                            <img src="/rockbotic_custom/static/src/img/robot3.png" style="max-width:100px"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+        
+        <template id="report_event_partner_nodata_doc">
+            <t t-call="report.html_container">
+                <t t-if="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id"/>
+                </t>
+                <t t-if="not o or not 'company_id' in o">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+                <div class="header">
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <img src="/rockbotic_custom/static/src/img/rockbotic.png" style="max-height:107;max-width:247"/>
+                        </div>
+                        <div class="col-xs-7" style="background-color:#00B0F0;border-radius: 50px;height:50px">
+                            <span style="color:white;margin-left:15px;">LISTADO DE INSCRITOS, FALTAN DATOS</span>
+                            <div style="background-color:#FFFFFF;border-radius: 10px;">
+                                <span t-field="o.address_id.name" style="margin-left:15px;"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page">
+                    <div class="row">
+                        <table class="table table-condensed" style="width:35%;float:left;margin-right:15px;">
+                            <tr style="border-top-style: hidden;">
+                                <th style="background-color: #FF0000;width:30%;color:white;border-top-style: hidden;">CURSO</th>
+                                <td style="border-bottom: 1px solid #FF0000;">
+                                    <span t-field="o.sale_order_line.courses"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="background-color: #FF0000;color:white;border-top-style: hidden;">DÍA/S</th>
+                                <td style="border-bottom: 1px solid #FF0000;">
+                                    <span t-if="o.sale_order_line.monday">Lunes</span>
+                                    <span t-if="o.sale_order_line.tuesday">Martes</span>
+                                    <span t-if="o.sale_order_line.wednesday">Miércoles</span>
+                                    <span t-if="o.sale_order_line.thursday">Jueves</span>
+                                    <span t-if="o.sale_order_line.friday">Viernes</span>
+                                    <span t-if="o.sale_order_line.saturday">Sábado</span>
+                                    <span t-if="o.sale_order_line.sunday">Domingo</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="background-color: #FF0000;color:white;border-top-style: hidden;">HORARIO</th>
+                                <td style="border-bottom: 1px solid #FF0000;">
+                                    <t t-esc="'%02d:%02d' % (int(str(o.sale_order_line.start_hour).split('.')[0]), int(float(str('%.2f'
+                                            % o.sale_order_line.start_hour).split('.')[1])/100*60))"
+                                            />
+                                    -
+                                    <t t-esc="'%02d:%02d' % (int(str(o.sale_order_line.end_hour).split('.')[0]), int(float(str('%.2f'
+                                            % o.sale_order_line.end_hour).split('.')[1])/100*60))"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table table-condensed" style="width:35%;float:left;margin-right:15px;">
+                            <tr style="border-top-style: hidden;">
+                                <th style="background-color: #92D050;width:30%;color:white;border-top-style: hidden;">PROFESOR/A</th>
+                                <td style="border-bottom: 1px solid #FF0000;">
+                                    <t t-foreach="o.employee_registration_ids.filtered(lambda a: a.state != 'cancel')" t-as="p">
+                                        <span t-field="p.name"/>
+                                    </t>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="background-color: #ED7D31;color:white;border-top-style: hidden;">COORDINADOR/A</th>
+                                <td style="border-bottom: 1px solid #FF0000;">
+                                    <span t-field="o.user_id"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="background-color: #7F7F7F;color:white;border-top-style: hidden;">GRUPO</th>
+                                <td style="border-bottom: 1px solid #7F7F7F;">
+                                    <span t-field="o.sale_order"/>
+                                    -
+                                    <span t-field="o.sale_order_line.sequence"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <table class="table table-condensed">
+                            <thead style="background-color:#00B0F0;border-radius: 50px;height:50px;color:white;">
+                                <tr style="border-bottom-style:hidden;">
+                                    <th>NOMBRE COMPLETO</th>
+                                    <th>FECHA NACIMIENTO</th>
+                                    <th>ETIQUETAS HIJO</th>
+                                    <th>RESPONSABLE</th>
+                                    <th>DIRECCIÓN</th>
+                                    <th>TLF.</th>
+                                    <th>MVL.</th>
+                                    <th>EMAIL</th>
+                                    <th>ETIQUETAS</th>
+                                    <th>CUENTA</th>
+                                    <th>MANDATOS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="1" />
+                                <tr t-foreach="o.no_employee_registration_ids.filtered(lambda a: a.state in ('draft', 'open')).mapped('partner_id').sorted(key=lambda a:(a.name, a.student_course, a.student_class))" t-as="l">
+                                    <td style="border-bottom: 1px solid #00B0F0;">
+                                        <span t-field="l.name"/>
+                                    </td>
+                                    <td style="border-bottom: 1px solid #00B0F0;">
+                                        <span t-field="l.birthdate_date"/>
+                                    </td>
+                                    <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                        <t t-foreach="l.category_id" t-as="cat">
+                                            <span t-field="cat.name"/>
+                                        </t>
+                                    </td>
+                                    <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                        <span t-field="l.parent_id.name"/>
+                                    </td>
+                                    <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                        <span t-field="l.parent_id.street"/>
+                                    </td>
+                                    <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                        <span t-field="l.parent_id.phone"/>
+                                    </td>
+                                    <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                        <span t-field="l.parent_id.mobile"/>
+                                    </td>
+                                    <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                        <span t-field="l.parent_id.email"/>
+                                    </td>
+                                    
+                                    <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                        <t t-foreach="l.parent_id.category_id" t-as="cat">
+                                            <span t-field="cat.name"/>
+                                        </t>
+                                    </td>
+                                    <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                        <t t-foreach="l.parent_id.bank_ids" t-as="bank">
+                                            <span t-field="bank.bank_name"/>
+                                            -
+                                            <span t-field="bank.acc_number"/>
+                                        </t>
+                                    </td>
+                                    <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                        <span t-esc="len(l.parent_id.mapped('bank_ids.mandate_ids').filtered(lambda x: x.format == 'sepa').filtered(lambda x: x.state == 'valid'))"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div align="center">
+                            <table class="table table-condensed" style="border: 1px solid black;width:30%;">
+                                <tr>
+                                    <td style="border: 1px solid black;">TOTAL INSCRITOS</td>
+                                    <td style="border: 1px solid black;">
+                                        <span t-esc="len(o.no_employee_registration_ids.filtered(lambda a: a.state in ('draft','open')))"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+        <template id="report_track_doc">
             <t t-call="report.html_container">
                 <t t-if="o and 'company_id' in o">
                     <t t-set="company" t-value="o.company_id"/>
@@ -1033,24 +1347,40 @@
                 </div>
             </t>
         </template>
-        <template id="report_sale_printing_doc">
+        
+        <template id="report_sale_printing">
             <t t-call="report.html_container">
                 <t t-foreach="doc_ids" t-as="doc_id">
-                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'rockbotic_custom.rockbotic_sale_report')"/>
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'rockbotic_custom.report_sale_printing_doc')"/>
                 </t>
             </t>
         </template>
-        <template id="report_event_doc">
+        <template id="report_event">
             <t t-call="report.html_container">
                 <t t-foreach="doc_ids" t-as="doc_id">
-                    <t t-raw="translate_doc(doc_id, doc_model, 'organizer_id.lang', 'rockbotic_custom.rockbotic_event')"/>
+                    <t t-raw="translate_doc(doc_id, doc_model, 'organizer_id.lang', 'rockbotic_custom.report_event_doc')"/>
                 </t>
             </t>
         </template>
-        <template id="report_event_track_doc">
+        <template id="report_event_partner_info">
             <t t-call="report.html_container">
                 <t t-foreach="doc_ids" t-as="doc_id">
-                    <t t-raw="translate_doc(doc_id, doc_model, 'address_id.lang', 'rockbotic_custom.event_track_document')"/>
+                    <t t-raw="translate_doc(doc_id, doc_model, 'organizer_id.lang', 'rockbotic_custom.report_event_partner_info_doc')"/>
+                </t>
+            </t>
+        </template>
+        <template id="report_event_partner_nodata">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'organizer_id.lang', 'rockbotic_custom.report_event_partner_nodata_doc')"/>
+                </t>
+            </t>
+        </template>
+        
+        <template id="report_track">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'address_id.lang', 'rockbotic_custom.report_track_doc')"/>
                 </t>
             </t>
         </template>
