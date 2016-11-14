@@ -15,6 +15,13 @@
         
         <report id="report_event_track_document" string="Listado de Asistencia para Sesión" model="event.track"
             report_type="qweb-pdf" file="event_report.report_event_track" name="rockbotic_custom.report_track" />
+        
+        <report id="report_rockbotic_registrations" string="Listado registros" model="event.registration"
+            report_type="qweb-pdf" file="event_report.report_registrations" name="rockbotic_custom.report_registrations" />
+        
+        <report id="report_rockbotic_nodata_registration" string="Ficha de inscripción" model="event.registration"
+            report_type="qweb-pdf" file="event_report.report_nodata_registration" name="rockbotic_custom.report_nodata_registration"/>
+        
     </data>
     <data>
         <template id="report_sale_printing_doc">
@@ -1152,16 +1159,16 @@
                                     <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
                                         <span t-field="l.parent_id.name"/>
                                     </td>
-                                    <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                    <td style="border-bottom: 1px solid #00B0F0;">
                                         <span t-field="l.parent_id.street"/>
                                     </td>
-                                    <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                    <td style="border-bottom: 1px solid #00B0F0;">
                                         <span t-field="l.parent_id.phone"/>
                                     </td>
-                                    <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                    <td style="border-bottom: 1px solid #00B0F0;">
                                         <span t-field="l.parent_id.mobile"/>
                                     </td>
-                                    <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                    <td style="border-bottom: 1px solid #00B0F0;">
                                         <span t-field="l.parent_id.email"/>
                                     </td>
                                     
@@ -1347,7 +1354,350 @@
                 </div>
             </t>
         </template>
-        
+        <template id="report_registrations_doc">
+            <t t-call="report.external_layout">
+                <div class="page">
+                    
+                    <table class="table table-condensed">
+                        <tbody>
+                            <thead style="background-color:#00B0F0;border-radius: 50px;height:50px;color:white;">
+                                <tr style="border-bottom-style:hidden;">
+                                    <th>NOMBRE COMPLETO</th>
+                                    <th>FECHA NACIMIENTO</th>
+                                    <th>ETIQUETAS HIJO</th>
+                                    <th>RESPONSABLE</th>
+                                    <th>DIRECCIÓN</th>
+                                    <th>TLF.</th>
+                                    <th>MVL.</th>
+                                    <th>EMAIL</th>
+                                    <th>ETIQUETAS</th>
+                                    <th>CUENTA</th>
+                                    <th>MANDATOS</th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="docs.mapped('organizer_id').sorted(key=lambda a:(a.name))" t-as="doc">
+                                <t t-foreach="docs.sorted(key=lambda a:(a.organizer_id.name))" t-as="reg" style="border-top-style: hidden;">
+                                    <t t-if="doc.id == reg.organizer_id.id">
+                                        <tr style="border-top-style: hidden;">
+                                            <td colspan="11">
+                                                <h4>
+                                                    <strong>
+                                                        <span t-field="reg.organizer_id.name"/>
+                                                    </strong>
+                                                </h4>
+                                            </td>
+                                        </tr>
+                                        <tbody>
+                                            <t t-set="i" t-value="1" />
+                                            <tr>
+                                                <td style="border-bottom: 1px solid #00B0F0;">
+                                                    <span t-field="reg.name"/>
+                                                </td>
+                                                <td style="border-bottom: 1px solid #00B0F0;">
+                                                    <span t-field="reg.partner_id.birthdate_date"/>
+                                                </td>
+                                                <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                                    <t t-foreach="reg.partner_id.category_id" t-as="cat">
+                                                        <span t-field="cat.name"/>
+                                                    </t>
+                                                </td>
+                                                <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                                    <span t-field="reg.parent_id.name"/>
+                                                </td>
+                                                <td style="border-bottom: 1px solid #00B0F0;">
+                                                    <span t-field="reg.parent_id.street"/>
+                                                </td>
+                                                <td style="border-bottom: 1px solid #00B0F0;">
+                                                    <span t-field="reg.parent_id.phone"/>
+                                                </td>
+                                                <td style="border-bottom: 1px solid #00B0F0;">
+                                                    <span t-field="reg.parent_id.mobile"/>
+                                                </td>
+                                                <td style="border-bottom: 1px solid #00B0F0;">
+                                                    <span t-field="reg.parent_id.email"/>
+                                                </td>
+                                                
+                                                <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                                    <t t-foreach="reg.parent_id.category_id" t-as="cat">
+                                                        <span t-field="cat.name"/>
+                                                    </t>
+                                                </td>
+                                                <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                                    <t t-foreach="reg.parent_id.bank_ids" t-as="bank">
+                                                        <span t-field="bank.bank_name"/>
+                                                        -
+                                                        <span t-field="bank.acc_number"/>
+                                                    </t>
+                                                </td>
+                                                <td class="text-right" style="border-bottom: 1px solid #00B0F0;">
+                                                    <span t-esc="len(reg.parent_id.mapped('bank_ids.mandate_ids').filtered(lambda x: x.format == 'sepa').filtered(lambda x: x.state == 'valid'))"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </t>
+                                </t>
+                            </t>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </t>
+        </template>
+        <template id="report_nodata_registration_doc">
+            <t t-call="report.html_container">
+                <t t-if="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id"/>
+                </t>
+                <t t-if="not o or not 'company_id' in o">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+                <div class="header">
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <img src="/rockbotic_custom/static/src/img/rockbotic.png" style="max-height:107;max-width:247"/>
+                        </div>
+                        <div class="col-xs-7" style="background-color:#00B0F0;border-radius: 50px;height:50px">
+                            <span style="color:white;margin-left:15px;">FICHA DE INSCRIPCIÓN</span>
+                            <div style="background-color:#FFFFFF;border-radius: 10px;">
+                                <span t-field="o.organizer_id" style="margin-left:15px;"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page">
+                    <table class="table-condensed blue">
+                        <tr>
+                            <th colspan="4" class="text-center">DATOS DEL ALUMNO</th>
+                        </tr>
+                        <tr>
+                            <th>NOMBRE</th>
+                            <td>
+                                <span t-field="o.partner_id.name"/>
+                            </td>
+                            <th>APELLIDOS</th>
+                            <td>
+                                <span t-field="o.partner_id.name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width:20%">FECHA DE NACIMIENTO</th>
+                            <td>
+                                <span t-field="o.partner_id.birthdate_date"/>
+                            </td>
+                            <th>CURSO</th>
+                            <td>
+                                <span t-field="o.partner_id.student_course"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <table class="table-condensed grey1" style="width: 100%;margin:0px;">
+                        <tr>
+                            <th class="text-center" colspan="5">DATOS DEL PADRE, MADRE O TUTOR - Referencia de la orden de domiciliación:</th>
+                        </tr>
+                        <tr>
+                            <th style="width:10%;">NOMBRE</th>
+                            <td style="width:50%;">
+                                <span t-field="o.partner_id.parent_id.name"/>
+                            </td>
+                            <th style="width:10%;">APELLIDOS</th>
+                            <td style="width:50%;">
+                                <span t-field="o.partner_id.parent_id.name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width:10%;">DIRECCIÓN</th>
+                            <td colspan="3">
+                                <span t-field="o.partner_id.parent_id.street"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width:10%;">C.P.</th>
+                            <td style="width:50%;">
+                                <span t-field="o.partner_id.parent_id.zip"/>
+                            </td>
+                            <th style="width:10%;">POBLACIÓN</th>
+                            <td style="width:50%;">
+                                <span t-field="o.partner_id.parent_id.city"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width:10%;">PROVINCIA</th>
+                            <td style="width:50%;">
+                                <span t-field="o.partner_id.parent_id.state_id"/>
+                            </td>
+                            <th style="width:10%;">DNI</th>
+                            <td style="width:50%;">
+                                <span t-field="o.partner_id.parent_id.vat"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width:10%;">EMAIL</th>
+                            <td style="width:50%;">
+                                <span t-field="o.partner_id.parent_id.email"/>
+                            </td>
+                            <th style="width:10%;">TELÉFONO</th>
+                            <td style="width:50%;">
+                                <span t-field="o.partner_id.parent_id.mobile"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <div class="row">
+                        <table class="table-condensed grey1">
+                            <tr>
+                                <th class="text-center">FIRMA</th>
+                            </tr>
+                            <tr>
+                                <td style="height:50px;"/>
+                            </tr>
+                        </table>
+                        <table class="table-condensed grey" style="width: 80%;">
+                            <tr>
+                                <th style="width:20%;">Nº CUENTA IBAN</th>
+                                <t t-if="o.partner_id.parent_id.bank_ids">
+                                    <t t-foreach="o.partner_id.parent_id.bank_ids" t-as="bank">
+                                        <td style="width:10%;"><span t-esc="bank.acc_number[:4]"/></td>
+                                        <td style="width:10%;"><span t-esc="bank.acc_number[4:9]"/></td>
+                                        <td style="width:10%;"><span t-esc="bank.acc_number[10:15]"/></td>
+                                        <td style="width:10%;"><span t-esc="bank.acc_number[15:20]"/></td>
+                                        <td style="width:10%;"><span t-esc="bank.acc_number[20:24]"/></td>
+                                        <td style="width:10%;"><span t-esc="bank.acc_number[-4:]"/></td>
+                                    </t>
+                                </t>
+                            </tr>
+                        </table>
+                        <div class="col-xs-2 pull-right">
+                            <table class="table-condensed">
+                                <tr>
+                                    <th style="background-color: #7F7F7F;color:white;">SOCIO</th>
+                                    <td style="width:100px;border: 1px solid #7F7F7F"/>
+                                </tr>
+                            </table>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="col-xs-6 pull-right">
+                            <table class="table-condensed" style="width: 85%;color:#7F7F7F;">
+                                <tr>
+                                    <td class="text-left" style="width:15%;">EN</td>
+                                    <td style="width:10%;"/>
+                                    <td style="width:10%;">A</td>
+                                    <td style="width:10%;"/>
+                                    <td style="width:10%;">201</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br/>
+                    <table class="table-condensed grey">
+                        <tr>
+                            <th class="text-center" style="width:40%;">DATOS DEL ACREEDOR</th>
+                            <th class="text-center">Orden de Domicialiación de Débito Directo SEPA</th>
+                        </tr>
+                        <tr style="font-size:9px; color:#7F7F7F;">
+                            <td>
+                                <p>
+                                    Nombre del Acreedor: LUNA TIC DESIGN S.L. / CIF: B86715067
+                                    <br/>
+                                    Dirección: Francisco Cabo, 16 28015 (Madrid) – ESPAÑA
+                                </p>
+                                <p>Nota: Sus derechos en relación con la anterior orden de domiciliación se explican
+                                        en el extracto que puede solicitar a su banco.
+                                        ©ROCKBOTIC es una marca registrada propiedad
+                                        de LUNA TIC DESIGN S.L.</p>
+                            </td>
+                            <td>
+                                <p>
+                                    Mediante la firma de este Formulario de Orden de domiciliación, usted autoriza a :
+                                    <ul style="list-style-type: circle;margin-left:30px;">
+                                        <li>LUNA TIC DESIGN S.L. a enviar órdenes a su entidad financiera para adeudar su cuenta.</li>
+                                        <li>Su banco para adeudar los importes correspondientes en su cuenta de acuerdo con las
+                                                órdenes de Luna TIC DESIGN S.L.</li>
+                                    </ul>
+                                    Como parte de sus derechos, tiene derecho a ser reembolsado por su banco en virtud
+                                        de los términos y condiciones del acuerdo
+                                        suscrito con su banco. Dicho reeembolso deberá
+                                        reclamarse en un plazo de 8 semanas a partir
+                                        de la fecha de cargo en su cuenta
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <div class="row">
+                        <img src="/rockbotic_custom/static/src/img/robot2.png" style="max-width: 100px;float:left;"/>
+                        <table class="table-condensed" style="width: 85%;page-break-inside: avoid;">
+                            <tr>
+                                <th style="background-color: #002060;color:white;" colspan="6">AUTORIZACIONES SOBRE IMÁGENES</th>
+                            </tr>
+                            <tr style="font-size: 9px;">
+                                <td style="color:#002060;border-radius:10px;border: 1px solid #002060" colspan="6">Autorizo a LUNA TIC DESIGN S.L. a publicar imágenes y vídeos del alumno en el desarrollo
+                                        de esta actividad extraescolar con carácter
+                                        informativo o divulgativo de la s dinámidas
+                                        realizas en sus medios de promoción, tales
+                                        como:</td>
+                            </tr>
+                            <tr style="font-size: 9px;color:#002060;border:1px solid #002060; border-top-style:hidden;">
+                                <td colspan="2">REVISTAS</td>
+                                <td colspan="2" class="text-center">
+                                    SITIO WEB WWW.ROCKBOTIC.COM
+                                    <br/>
+                                    Y EN EL BLOG CONTENIDO EN DICHO SITIO WEB
+                                </td>
+                                <td colspan="2" class="text-center">
+                                    PERFILES CORPORATIVOS OFICIALES "ROCKBOTIC" EN LAS REDES SOCIALES
+                                    <br/>
+                                    Facebook, Twitter, Youtube, Instagram y Google Plus
+                                </td>
+                            </tr>
+                            <tr style="font-size: 9px;color:#002060;border:1px solid #002060; border-top-style:
+                                    hidden;">
+                                <td>SI</td>
+                                <td>NO</td>
+                                <td class="text-right">SI</td>
+                                <td>NO</td>
+                                <td class="text-right">SI</td>
+                                <td>NO</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <table class="table-condensed" style="width: 80%;float: left;page-break-inside: avoid;
+                                font-size: 8px;">
+                            <tr>
+                                <th style="background-color: #7030A0;color:white;">LEY DE PROTECCIÓN DE DATOS DE CARÁCTER PERSONAL</th>
+                            </tr>
+                            <tr>
+                                <td style="color:#7030A0; border: 1px solid #7030A0">
+                                    <p>
+                                        De acuerdo con lo que establece la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal, le informamos que tanto sus datos como los de su hijo/a recogidos a partir del presente formulario serán incorporados a un fichero denominado “Alumnos”, bajo la responsabilidad de LUNA TIC DESIGN SL, con la finalidad de llevar a cabo la matriculación, organización, gestión y facturación de la actividad formativa contratada. Puede ejercer sus derechos, y los de su hijo/a, de acceso, rectificación, cancelación, y oposición mediante un escrito a nuestra dirección: C/Francisco Cabo, 16, LOCAL 28029, Madrid, o a la dirección de correo-e info@rockbotic.com, identificando claramente el derecho que ejercita e identificándose a través del DNI o libro de familia. Mientras no nos comunique lo contrario, entenderemos que sus datos y los de su hijo/a no han sido modificados y que se
+                                        compromete a notificarnos cualquier variación y que tenemos el consentimiento para utilizarlos con la finalidad de impartir la formación en la que usted ha matriculado a su hijo/a y cumplir con las obligaciones propias de un centro de formación, entre las cuales se encuentran la gestión de la formación de su hijo/a y su evaluación, así como la remisión de aquellas circulares informativas a los padres. Al rellenar el presente formulario usted autoriza expresamente el tratamiento de sus datos de carácter personal y los de su hijo/a, para la finalidad espeicada, por parte de LUNA TIC DESIGN SL
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                        <img src="/rockbotic_custom/static/src/img/robot3.png" style="max-width: 100px;margin-left:30px"/>
+                    </div>
+                    <br/>
+                </div>
+            </t>
+        </template>
+        <template id="report_nodata_registration">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'rockbotic_custom.report_nodata_registration_doc')"/>
+                </t>
+            </t>
+        </template>
+        <template id="report_registrations">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'rockbotic_custom.report_registrations_doc')"/>
+                </t>
+            </t>
+        </template>
         <template id="report_sale_printing">
             <t t-call="report.html_container">
                 <t t-foreach="doc_ids" t-as="doc_id">
