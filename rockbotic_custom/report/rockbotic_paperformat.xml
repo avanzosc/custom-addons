@@ -7,7 +7,7 @@
             <field name="header_spacing">30</field>
             <field name="margin_bottom">20</field>
         </record>
-        
+
         <record id="rockbotic_event_paperformat" model="report.paperformat">
             <field name="margin_top">40</field>
             <field name="header_spacing">35</field>
@@ -22,9 +22,11 @@
             <field name="margin_right">7</field>
             <field name="header_line" eval="False" />
             <field name="dpi">90</field>
-            <field name="report_ids" eval="[(4, ref('rockbotic_custom.report_rockbotic_event'))]"/>
+            <field name="report_ids"
+                   eval="[(4, ref('rockbotic_custom.report_rockbotic_event')),
+                          (4, ref('rockbotic_custom.report_rockbotic_nodata_registration'))]"/>
         </record>
-        
+
         <record id="rockbotic_sale_invoice_paperformat" model="report.paperformat">
             <field name="margin_top">70</field>
             <field name="header_spacing">65</field>
@@ -39,8 +41,9 @@
             <field name="margin_right">7</field>
             <field name="header_line" eval="False" />
             <field name="dpi">90</field>
-            <field name="report_ids" eval="[(4, ref('account.account_invoices')),(4,
-                ref('sale.report_sale_order'))]" />
+            <field name="report_ids"
+                   eval="[(4, ref('account.account_invoices')),
+                          (4, ref('sale.report_sale_order'))]" />
         </record>
 
         <record id="rockbotic_event_registration_nodata" model="report.paperformat">
@@ -57,6 +60,9 @@
             <field name="header_line" eval="False" />
             <field name="header_spacing">25</field>
             <field name="dpi">90</field>
+            <field name="report_ids"
+                   eval="[(4, ref('rockbotic_custom.report_rockbotic_registrations')),
+                          (4, ref('rockbotic_custom.report_rockbotic_event_partner_nodata'))]" />
         </record>
     </data>
 </openerp>
