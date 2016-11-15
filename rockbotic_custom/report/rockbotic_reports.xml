@@ -17,7 +17,7 @@
             report_type="qweb-pdf" file="event_report.report_event_track" name="rockbotic_custom.report_track" />
 
         <report id="report_rockbotic_registrations" string="Listado registros" model="event.registration"
-            report_type="qweb-pdf" file="event_report.report_registrations" name="rockbotic_custom.report_registrations" />
+            report_type="qweb-pdf" file="event_report.report_registrations_doc" name="rockbotic_custom.report_registrations_doc"/>
 
         <report id="report_rockbotic_nodata_registration" string="Ficha de inscripción" model="event.registration"
             report_type="qweb-pdf" file="event_report.report_nodata_registration" name="rockbotic_custom.report_nodata_registration"/>
@@ -1316,7 +1316,6 @@
                                             </td>
                                         </tr>
                                         <tbody>
-                                            <t t-set="i" t-value="1" />
                                             <tr>
                                                 <td style="border-bottom: 1px solid #00B0F0;">
                                                     <span t-field="reg.name"/>
@@ -1463,12 +1462,8 @@
                                 <th colspan="4" class="text-center">DATOS DEL ALUMNO</th>
                             </tr>
                             <tr>
-                                <th style="width:10%;">NOMBRE</th>
-                                <td style="width:50%;">
-                                    <span t-field="o.partner_id.name"/>
-                                </td>
-                                <th style="width:10%;">APELLIDOS</th>
-                                <td style="width:50%;">
+                                <th colspan="1">NOMBRE y APELLIDOS</th>
+                                <td colspan="3">
                                     <span t-field="o.partner_id.name"/>
                                 </td>
                             </tr>
@@ -1490,12 +1485,8 @@
                                 <th class="text-center" colspan="5">DATOS DEL PADRE, MADRE O TUTOR - Referencia de la orden de domiciliación:</th>
                             </tr>
                             <tr>
-                                <th style="width:10%;">NOMBRE</th>
-                                <td style="width:50%;">
-                                    <span t-field="o.partner_id.parent_id.name"/>
-                                </td>
-                                <th style="width:10%;">APELLIDOS</th>
-                                <td style="width:50%;">
+                                <th>NOMBRE y APELLIDOS</th>
+                                <td colspan="3">
                                     <span t-field="o.partner_id.parent_id.name"/>
                                 </td>
                             </tr>
@@ -1594,14 +1585,6 @@
             <t t-call="report.html_container">
                 <t t-foreach="doc_ids" t-as="doc_id">
                     <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'rockbotic_custom.report_nodata_registration_doc')"/>
-                </t>
-            </t>
-        </template>
-
-        <template id="report_registrations">
-            <t t-call="report.html_container">
-                <t t-foreach="doc_ids" t-as="doc_id">
-                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'rockbotic_custom.report_registrations_doc')"/>
                 </t>
             </t>
         </template>

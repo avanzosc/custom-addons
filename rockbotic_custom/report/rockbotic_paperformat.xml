@@ -23,8 +23,7 @@
             <field name="header_line" eval="False" />
             <field name="dpi">90</field>
             <field name="report_ids"
-                   eval="[(4, ref('rockbotic_custom.report_rockbotic_event')),
-                          (4, ref('rockbotic_custom.report_rockbotic_nodata_registration'))]"/>
+                   eval="[(4, ref('rockbotic_custom.report_rockbotic_event'))]"/>
         </record>
 
         <record id="rockbotic_sale_invoice_paperformat" model="report.paperformat">
@@ -63,6 +62,24 @@
             <field name="report_ids"
                    eval="[(4, ref('rockbotic_custom.report_rockbotic_registrations')),
                           (4, ref('rockbotic_custom.report_rockbotic_event_partner_nodata'))]" />
+        </record>
+        
+        <record id="rockbotic_event_paperformat" model="report.paperformat">
+            <field name="margin_top">40</field>
+            <field name="header_spacing">35</field>
+            <field name="margin_bottom">0</field>
+            <field name="name">European A4 Event No footer</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+            <field name="report_ids"
+                   eval="[(4, ref('rockbotic_custom.report_rockbotic_nodata_registration'))]"/>
         </record>
     </data>
 </openerp>

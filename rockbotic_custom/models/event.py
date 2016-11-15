@@ -15,8 +15,9 @@ class EventTrack(models.Model):
 class EventRegistration(models.Model):
     _inherit = 'event.registration'
 
-    address_id = fields.Many2one(string='Address', comodel_name='res.partner',
-                                 related='event_id.address_id', store=True)
+    address_id = fields.Many2one(
+        comodel_name='res.partner', string='Address',
+        related='event_id.address_id', store=True)
     organizer_id = fields.Many2one(
         string='Organizer', comodel_name='res.partner',
         related='event_id.organizer_id', store=True)
