@@ -45,7 +45,7 @@ class SaleOrder(models.Model):
                                  store=True)
     shipped = fields.Boolean(compute='_compute_get_shipped',
                              string='Delivered', store=True)
-    show_sale_note = fields.Boolean(default=True)
+    show_sale_note = fields.Boolean()
     sale_note = fields.Text(default=_default_sale_note)
 
     @api.multi
