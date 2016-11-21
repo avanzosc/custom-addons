@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="mrp_routing_workcenter_tree_view_inh_monteloeder" model="ir.ui.view">
+            <field name="name">mrp.routing.workcenter.tree.view.inh.monteloeder</field>
+            <field name="model">mrp.routing.workcenter</field>
+            <field name="inherit_id" ref="mrp_operations_extension.mrp_routing_workcenter_tree_view_inh" />
+            <field name="arch" type="xml">
+                <field name="cycle_nbr" position="attributes">
+                    <attribute name="sum"></attribute>
+                    <attribute name="min">Min</attribute>
+                    <attribute name="string">Cycle capacity</attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
