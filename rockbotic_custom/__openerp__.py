@@ -38,7 +38,6 @@
         "account_payment_partner",
         "account_analytic_analysis_recurring_day",
         "website_quote",
-        "event_registration_sepa",
     ],
     "data": [
         "wizard/crm_make_sale_view.xml",
