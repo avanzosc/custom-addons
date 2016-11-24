@@ -17,6 +17,71 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 
 #. module: rockbotic_custom
+#: model:ir.ui.menu,name:rockbotic_custom.teacher_portal_menu
+msgid "Teacher portal"
+msgstr "Portal profesor"
+
+#. module: rockbotic_custom
+#: model:ir.ui.menu,name:rockbotic_custom.teacher_portal_main_group_view
+msgid "Main"
+msgstr "Principal"
+
+#. module: rockbotic_custom
+#: model:ir.ui.menu,name:rockbotic_custom.teacher_portal_absences_group_view
+msgid "Absences"
+msgstr "Ausencias"
+
+#. module: rockbotic_custom
+#: model:ir.ui.menu,name:rockbotic_custom.teacher_portal_messaging_group_view
+msgid "Messaging"
+msgstr "Mensajería"
+
+#. module: rockbotic_custom
+#: model:ir.ui.menu,name:rockbotic_custom.teacher_portal_main_track_option_view
+msgid "Sessions - assists"
+msgstr "Sesiones - asistencias"
+
+#. module: rockbotic_custom
+#: model:ir.ui.menu,name:rockbotic_custom.teacher_portal_main_event_option_view
+msgid "Events"
+msgstr "Eventos"
+
+#. module: rockbotic_custom
+#: model:ir.ui.menu,name:rockbotic_custom.teacher_portal_main_claim_option_view
+msgid "Claims"
+msgstr "Reclamaciones"
+
+#. module: rockbotic_custom
+#: model:ir.ui.menu,name:rockbotic_custom.teacher_portal_main_note_option_view
+msgid "Notes"
+msgstr "Notas"
+
+#. module: rockbotic_custom
+#: model:ir.ui.menu,name:rockbotic_custom.teacher_portal_main_leave_request_option_view
+msgid "Leave Request"
+msgstr "Petición de ausencia"
+
+#. module: rockbotic_custom
+#: model:ir.ui.menu,name:rockbotic_custom.teacher_portal_messaging_inbox_option_view
+msgid "Inbox"
+msgstr "Bandeja de entrada"
+
+#. module: rockbotic_custom
+#: model:ir.ui.menu,name:rockbotic_custom.teacher_portal_messaging_tome_option_view
+msgid "To: me"
+msgstr "Para: mí"
+
+#. module: rockbotic_custom
+#: model:ir.ui.menu,name:rockbotic_custom.teacher_portal_messaging_todo_option_view
+msgid "To-do"
+msgstr "Por realizar"
+
+#. module: rockbotic_custom
+#: model:ir.ui.menu,name:rockbotic_custom.teacher_portal_messaging_archives_option_view
+msgid "Archives"
+msgstr "Archivados"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_sale_report
 msgid "ALTAS"
 msgstr "ALTAS"
