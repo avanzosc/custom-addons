@@ -39,8 +39,12 @@
         "account_analytic_analysis_recurring_day",
         "website_quote",
         "event_registration_sepa",
+        "event_track_info",
+        "note",
+        "portal"
     ],
     "data": [
+        "security/ir.model.access.csv",
         "wizard/crm_make_sale_view.xml",
         "views/sale_order_view.xml",
         "views/crm_lead_view.xml",

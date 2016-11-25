@@ -82,5 +82,42 @@
                 </field>
             </field>
         </record>
+        <menuitem id="teacher_portal_menu" name="Teacher portal"
+                  groups="event.group_event_user"/>
+        <menuitem id="teacher_portal_main_group_view" name="Main"
+                  parent="teacher_portal_menu" groups="event.group_event_user"/>
+        <menuitem id="teacher_portal_main_track_option_view" name="Sessions - assists"
+                  action="website_event_track.action_event_track" 
+                  parent="teacher_portal_main_group_view"
+                  groups="event.group_event_user" />
+        <menuitem id="teacher_portal_main_event_option_view" name="Events"
+                  action="event.action_event_view" 
+                  parent="teacher_portal_main_group_view"
+                  groups="event.group_event_user" />
+        <menuitem id="teacher_portal_main_claim_option_view" name="Claims"
+                  action="crm_claim.crm_case_categ_claim0" 
+                  parent="teacher_portal_main_group_view"/>
+        <menuitem id="teacher_portal_main_note_option_view" name="Notes"
+                  action="note.action_note_note" 
+                  parent="teacher_portal_main_group_view"/>
+        <menuitem id="teacher_portal_absences_group_view" name="Absences"
+                  parent="teacher_portal_menu" groups="event.group_event_user"/>
+        <menuitem id="teacher_portal_main_leave_request_option_view" name="Leave Request"
+                  action="hr_holidays.request_approve_holidays" 
+                  parent="teacher_portal_absences_group_view"/>
+        <menuitem id="teacher_portal_messaging_group_view" name="Messaging"
+                  parent="teacher_portal_menu" groups="event.group_event_user"/>
+        <menuitem id="teacher_portal_messaging_inbox_option_view" name="Inbox"
+                  action="portal.action_mail_inbox_feeds_portal" 
+                  parent="teacher_portal_messaging_group_view"/>
+        <menuitem name="To: me" id="teacher_portal_messaging_tome_option_view"
+                  action="mail.action_mail_to_me_feeds"
+                  parent="teacher_portal_messaging_group_view"/>
+        <menuitem name="To-do" id="teacher_portal_messaging_todo_option_view"
+                  action="portal.action_mail_star_feeds_portal"
+                  parent="teacher_portal_messaging_group_view"/>
+        <menuitem id="teacher_portal_messaging_archives_option_view" name="Archives"
+                  action="portal.action_mail_archives_feeds_portal" 
+                  parent="teacher_portal_messaging_group_view"/>
     </data>
 </openerp>
