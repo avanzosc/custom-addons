@@ -23,6 +23,15 @@ class TestCCGCustom(common.TransactionCase):
         self.product.route_ids = [
             (4, self.ref('mrp.route_warehouse0_manufacture')),
             (4, self.ref('stock.route_warehouse0_mto'))]
+        self.partner1 = self.env.ref('base.res_partner_5')
+        self.partner2 = self.env.ref('base.res_partner_4')
+        self.partner2.parent_id = self.ref('base.res_partner_2')
+        self.env['product.supplierinfo'].create(
+            {'name': self.partner1.id,
+             'product_tmpl_id': self.product_1.product_tmpl_id.id,
+             'type': 'customer',
+             'product_name': 'NameTest',
+             'product_code': 'CodeTest'})
 
     def test_product_packaging_default(self):
         mrp_production_obj = self.env['mrp.production']
@@ -66,3 +75,15 @@ class TestCCGCustom(common.TransactionCase):
         for production in productions:
             self.assertEqual(production.sale_order_id, self.sale_order)
             self.assertEqual(production.partner_id, self.sale_order.partner_id)
+
+    def test_real_name_code(self):
+        self.assertEqual(self.product_1.get_real_name(self.partner1),
+                         'NameTest')
+        self.assertEqual(self.product_1.get_real_code(self.partner1),
+                         'CodeTest')
+        self.assertEqual(self.product_1.get_real_name(self.partner1),
+                         'NameTest')
+        self.assertEqual(self.product_1.get_real_name(self.partner2),
+                         self.product_1.name)
+        self.assertEqual(self.product_1.get_real_code(self.partner2),
+                         self.product_1.default_code)
