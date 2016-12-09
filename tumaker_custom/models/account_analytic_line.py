@@ -6,7 +6,6 @@ from openerp import models, fields, api, exceptions, _
 
 
 class AccountAnalyticAccount(models.Model):
-    _name = "account.analytic.account"
     _inherit = "account.analytic.account"
 
     @api.multi
@@ -25,12 +24,31 @@ class AccountAnalyticAccount(models.Model):
                 record.quantity_max and (record.quantity_max -
                                          record.consumed_hours) or 0.0)
 
+    @api.multi
+    @api.depends('consumed_hours', 'quantity_max')
+    def _compute_overdue_quantity(self):
+        for record in self:
+            value = False
+            if record.quantity_max > 0:
+                value = bool(record.consumed_hours > record.quantity_max)
+            record.is_overdue_quantity = value
+
     consumed_hours = fields.Float(compute='_compute_consumed_hours',
                                   string="Consumed Hours", store=True)
     remaining_hours = fields.Float(compute='_compute_remaining_hours_calc',
                                    string='Remaining Time',
                                    help='Computed using the formula: Maximum '
                                    'Time - Total Worked Time', store=True)
+    is_overdue_quantity = fields.Boolean(compute="_compute_overdue_quantity",
+                                         string='Overdue Quantity',
+                                         store=True, method=False)
+
+    def __init__(self, pool, cr):
+        super(AccountAnalyticAccount, self).__init__(pool, cr)
+        for model, store in pool._store_function.iteritems():
+            pool._store_function[model] = [
+                x for x in store if x[0] != 'account.analytic.account' and
+                x[1] != 'is_overdue_quantity']
 
 
 class AccountAnalyticLine(models.Model):
