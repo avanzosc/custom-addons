@@ -58,6 +58,7 @@
         "report/rockbotic_custom_view.xml",
         "report/rockbotic_layout_view.xml",
         "report/rockbotic_reports.xml",
+        "report/rockbotic_presences_report.xml",
         "report/rockbotic_paperformat.xml",
         "views/access_rules.xml",
     ],

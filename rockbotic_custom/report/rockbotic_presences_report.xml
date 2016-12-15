@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+        <report id="report_rockbotic_presence" string="Registro de asistencias"
+                model="event.event" report_type="qweb-pdf"
+                file="event_report.report_presences"
+                name="rockbotic_custom.report_presences" />
+    </data>
+
+    <data>
+        <template id="report_presences">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'organizer_id.lang', 'rockbotic_custom.report_presences_doc')"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_presences_doc">
+            <t t-call="report.html_container">
+                <t t-if="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id"/>
+                </t>
+                <t t-if="not o or not 'company_id' in o">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+                <div class="header">
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <img src="/rockbotic_custom/static/src/img/rockbotic.png" style="max-height:107;max-width:247"/>
+                        </div>
+                        <div class="col-xs-7" style="background-color:#00B0F0;border-radius: 50px;height:50px">
+                            <span style="color:white;margin-left:15px;">REGISTRO DE ASISTENCIAS</span>
+                            <div style="background-color:#FFFFFF;border-radius: 10px;">
+                                <span t-field="o.address_id.name" style="margin-left:15px;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page">
+                    <h4>ROBÓTICA EDUCATIVA Y PROGRAMACIÓN DE VIDEOJUEGOS</h4>
+                    <br/>
+                    <div class="row">
+                        <table class="table table-condensed" style="width:35%;float:left;margin-right:15px;">
+                            <tr style="border-top-style: hidden;">
+                                <th style="background-color: #FF0000;width:30%;color:white;border-top-style: hidden;">CURSO</th>
+                                <td style="border-bottom: 1px solid #FF0000;">
+                                    <span t-field="o.sale_order_line.courses"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="background-color: #FF0000;color:white;border-top-style: hidden;">DÍA/S</th>
+                                <td style="border-bottom: 1px solid #FF0000;">
+                                    <span t-if="o.sale_order_line.monday">Lunes</span>
+                                    <span t-if="o.sale_order_line.tuesday">Martes</span>
+                                    <span t-if="o.sale_order_line.wednesday">Miércoles</span>
+                                    <span t-if="o.sale_order_line.thursday">Jueves</span>
+                                    <span t-if="o.sale_order_line.friday">Viernes</span>
+                                    <span t-if="o.sale_order_line.saturday">Sábado</span>
+                                    <span t-if="o.sale_order_line.sunday">Domingo</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="background-color: #FF0000;color:white;border-top-style: hidden;">HORARIO</th>
+                                <td style="border-bottom: 1px solid #FF0000;">
+                                    <t t-esc="'%02d:%02d' % (int(str(o.sale_order_line.start_hour).split('.')[0]), int(float(str('%.2f'
+                                            % o.sale_order_line.start_hour).split('.')[1])/100*60))"
+                                            />
+                                    -
+                                    <t t-esc="'%02d:%02d' % (int(str(o.sale_order_line.end_hour).split('.')[0]), int(float(str('%.2f'
+                                            % o.sale_order_line.end_hour).split('.')[1])/100*60))"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table table-condensed" style="width:35%;float:left;margin-right:15px;">
+                            <tr style="border-top-style: hidden;">
+                                <th style="background-color: #92D050;width:30%;color:white;border-top-style: hidden;">PROFESOR/A</th>
+                                <td style="border-bottom: 1px solid #FF0000;">
+                                    <t t-foreach="o.employee_registration_ids.filtered(lambda a: a.state != 'cancel')" t-as="p">
+                                        <span t-field="p.name"/>
+                                    </t>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="background-color: #ED7D31;color:white;border-top-style: hidden;">COORDINADOR/A</th>
+                                <td style="border-bottom: 1px solid #FF0000;">
+                                    <span t-field="o.user_id"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="background-color: #7F7F7F;color:white;border-top-style: hidden;">GRUPO</th>
+                                <td style="border-bottom: 1px solid #7F7F7F;">
+                                    <span t-field="o.sale_order"/>
+                                    -
+                                    <span t-field="o.sale_order_line.sequence"/>
+                                </td>
+                            </tr><tr>
+                                <th style="background-color: #7F7F7F;color:white;border-top-style: hidden;">Nº SESIONES</th>
+                                <td style="border-bottom: 1px solid #7F7F7F;">
+                                    <span t-esc="len(o.track_ids)"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <img src="/rockbotic_custom/static/src/img/robot1.png" style="max-width:150px;margin-top:-30px;"/>
+                    </div>
+                    <div>
+                        <t t-set="presences"
+                           t-value="o.mapped('track_ids.no_employee_presences')" />
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th />
+                                    <th>ALUMNO</th>
+                                    <th>PENDIENTES</th>
+                                    <th>ASISTIDAS</th>
+                                    <th>CANCELADAS</th>
+                                    <th>AUSENCIAS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="presences.mapped('partner').sorted(key=lambda a:(a.name, a.student_course, a.student_class))" t-as="partner">
+                                    <t t-set="partner_id" t-value="partner.id" />
+                                    <t t-set="count_completed" t-value="0" />
+                                    <t t-set="count_pending" t-value="0" />
+                                    <t t-set="count_missing" t-value="0" />
+                                    <t t-set="count_cancelled" t-value="0" />
+                                    <t t-foreach="presences" t-as="p">
+                                        <t t-if="p.partner.id == partner_id and p.state == 'pending' and not p.notes">
+                                            <t t-set="count_pending" t-value="count_pending + 1" />
+                                        </t>
+                                        <t t-if="p.partner.id == partner_id and p.state == 'completed'">
+                                            <t t-set="count_completed" t-value="count_completed + 1" />
+                                        </t>
+                                        <t t-if="p.partner.id == partner_id and p.state == 'canceled'">
+                                            <t t-set="count_cancelled" t-value="count_cancelled + 1" />
+                                        </t>
+                                        <t t-if="p.partner.id == partner_id and p.state == 'pending' and p.notes">
+                                            <t t-set="count_missing" t-value="count_missing + 1" />
+                                        </t>
+                                    </t>
+                                    <tr>
+                                        <td>
+                                            <span t-esc="partner_index + 1" />
+                                        </td>
+                                        <td>
+                                            <span t-field="partner.name" />
+                                        </td>
+                                        <td>
+                                            <span t-esc="count_pending" />
+                                        </td>
+                                        <td>
+                                            <span t-esc="count_completed" />
+                                        </td>
+                                        <td>
+                                            <span t-esc="count_cancelled" />
+                                        </td>
+                                        <td>
+                                            <span t-esc="count_missing" />
+                                        </td>
+                                    </tr>
+                                    <t  t-foreach="presences.filtered(lambda p: p.state == 'pending' and p.notes)" t-as="pending">
+                                    <tr t-if="pending.partner.id == partner_id">
+                                        <td colspan="2">
+                                            <span t-field="pending.session_date"
+                                                  t-field-options='{"format": "dd-MM-yyyy"}' />
+                                        </td>
+                                        <td colspan="4">
+                                            <span t-esc="pending.notes" />
+                                        </td>
+                                    </tr>
+                                    </t>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="row">
+                        <div class="col-xs-3" style="height:170px;">
+                            <img src="/rockbotic_custom/static/src/img/robot2.png" style="max-width:130px;bottom:0px;left:0px;position:absolute;"/>
+                        </div>
+                        <div class="col-xs-6" style="height:170px;">
+                            <div style="position: absolute;bottom: 15px;text-align: center;left: 0;right:0;">
+                                Fecha - Hora:
+                                <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')"/>
+                                Página
+                                <span class="page"/>
+                                de
+                                <span class="topage"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-3" style="height:170px;">
+                            <img src="/rockbotic_custom/static/src/img/robot3.png" style="max-width:100px"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</openerp>
