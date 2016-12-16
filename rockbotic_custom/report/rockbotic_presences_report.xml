@@ -41,6 +41,7 @@
                     <h4>ROBÓTICA EDUCATIVA Y PROGRAMACIÓN DE VIDEOJUEGOS</h4>
                     <br/>
                     <div class="row">
+                        <div width="100%">
                         <table class="table table-condensed" style="width:35%;float:left;margin-right:15px;">
                             <tr style="border-top-style: hidden;">
                                 <th style="background-color: #FF0000;width:30%;color:white;border-top-style: hidden;">CURSO</th>
@@ -103,10 +104,10 @@
                         </table>
                         <img src="/rockbotic_custom/static/src/img/robot1.png" style="max-width:150px;margin-top:-30px;"/>
                     </div>
-                    <div>
+                    <div width="100%">
                         <t t-set="presences"
                            t-value="o.mapped('track_ids.no_employee_presences')" />
-                        <table class="table table-condensed">
+                        <table class="table-condensed red" style="width:100%">
                             <thead>
                                 <tr>
                                     <th />
@@ -139,32 +140,32 @@
                                         </t>
                                     </t>
                                     <tr>
-                                        <td>
+                                        <td style="border-left-style:hidden;border-right-style:hidden">
                                             <span t-esc="partner_index + 1" />
                                         </td>
-                                        <td>
+                                        <td style="border-left-style:hidden;border-right-style:hidden">
                                             <span t-field="partner.name" />
                                         </td>
-                                        <td>
+                                        <td style="width:10%;text-align:center;border-left-style:hidden;border-right-style:hidden">
                                             <span t-esc="count_pending" />
                                         </td>
-                                        <td>
+                                        <td style="width:10%;text-align:center;border-left-style:hidden;border-right-style:hidden">
                                             <span t-esc="count_completed" />
                                         </td>
-                                        <td>
+                                        <td style="width:10%;text-align:center;border-left-style:hidden;border-right-style:hidden">
                                             <span t-esc="count_cancelled" />
                                         </td>
-                                        <td>
+                                        <td style="width:10%;text-align:center;border-left-style:hidden;border-right-style:hidden">
                                             <span t-esc="count_missing" />
                                         </td>
                                     </tr>
                                     <t  t-foreach="presences.filtered(lambda p: p.state == 'pending' and p.notes)" t-as="pending">
-                                    <tr t-if="pending.partner.id == partner_id">
-                                        <td colspan="2">
+                                    <tr t-if="pending.partner.id == partner_id" style="border-top-style:hidden;border-bottom-style:1px solid">
+                                        <td colspan="2" style="text-align:right;padding-right:15px;border-left-style:hidden;border-right-style:hidden">
                                             <span t-field="pending.session_date"
                                                   t-field-options='{"format": "dd-MM-yyyy"}' />
                                         </td>
-                                        <td colspan="4">
+                                        <td colspan="4" style="border-left-style:hidden;border-right-style:hidden">
                                             <span t-esc="pending.notes" />
                                         </td>
                                     </tr>
@@ -173,24 +174,17 @@
                             </tbody>
                         </table>
                     </div>
+                    </div>
                 </div>
                 <div class="footer">
-                    <div class="row">
-                        <div class="col-xs-3" style="height:170px;">
-                            <img src="/rockbotic_custom/static/src/img/robot2.png" style="max-width:130px;bottom:0px;left:0px;position:absolute;"/>
-                        </div>
-                        <div class="col-xs-6" style="height:170px;">
-                            <div style="position: absolute;bottom: 15px;text-align: center;left: 0;right:0;">
-                                Fecha - Hora:
-                                <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')"/>
-                                Página
-                                <span class="page"/>
-                                de
-                                <span class="topage"/>
-                            </div>
-                        </div>
-                        <div class="col-xs-3" style="height:170px;">
-                            <img src="/rockbotic_custom/static/src/img/robot3.png" style="max-width:100px"/>
+                    <div class="col-xs-12">
+                        <div style="bottom: 15px;text-align: center;left: 0;right:0;">
+                            Fecha - Hora:
+                            <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')"/>
+                            Página
+                            <span class="page"/>
+                            de
+                            <span class="topage"/>
                         </div>
                     </div>
                 </div>
