@@ -31,12 +31,12 @@ class TestTumakerCustom(common.TransactionCase):
             }
         self.analytic_id = self.analytic_model.create(analytic_vals)
         self.product_id = self.env.ref('product.product_product_6')
-        acc = (self.product_id.property_account_expense.id or
-               self.product_id.categ_id.property_account_expense_categ.id)
+        self.acc = (self.product_id.property_account_expense.id or
+                    self.product_id.categ_id.property_account_expense_categ.id)
         analytic_line_vals = {
             'account_id': self.analytic_id.id,
             'name': 'Test line',
-            'general_account_id': acc,
+            'general_account_id': self.acc,
             'journal_id': self.ref('hr_timesheet.analytic_journal'),
             'product_id': self.product_id.id,
             'amount': 25,
@@ -93,6 +93,21 @@ class TestTumakerCustom(common.TransactionCase):
         self.assertEqual(
             self.analytic_id.remaining_hours, 75,
             'Analytic invalid remaining hours')
+        self.assertFalse(self.analytic_id.is_overdue_quantity)
+        analytic_line_vals = {
+            'account_id': self.analytic_id.id,
+            'name': 'Test line',
+            'general_account_id': self.acc,
+            'journal_id': self.ref('hr_timesheet.analytic_journal'),
+            'product_id': self.product_id.id,
+            'amount': 25,
+            'unit_amount': 10,
+            'facturable_qty': 100,
+            'to_invoice': self.ref(
+                'hr_timesheet_invoice.timesheet_invoice_factor1')
+            }
+        self.analytic_line_model.create(analytic_line_vals)
+        self.assertTrue(self.analytic_id.is_overdue_quantity)
 
     def test_analytic_line_prepare_invoice_line(self):
         invoices = self.analytic_id.line_ids.invoice_cost_create()
