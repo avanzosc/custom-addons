@@ -138,23 +138,50 @@
                 <div class="page">
                     <div class="row">
                         <div class="col-xs-4 pull-right">
-                            <span t-field="o.partner_invoice_id.name"/>
-                            <br/>
-                            <span t-field="o.partner_invoice_id.street"/>
-                            <br/>
-                            <span t-field="o.partner_invoice_id.zip"/>
-                            -
-                            <span t-field="o.partner_invoice_id.city"/>
-                            <br/>
-                            <t t-if="o.partner_invoice_id.state_id">
-                                <span t-field="o.partner_invoice_id.state_id"/>
+                            <t t-if="o.partner_invoice_id.partner_group">
+                                <span t-field="o.partner_invoice_id.partner_group.name"/>
+                                <br/>
+                                <span t-field="o.partner_invoice_id.partner_group.street"/>
+                                <br/>
+                                <span t-field="o.partner_invoice_id.partner_group.zip"/>
+                                -
+                                <span t-field="o.partner_invoice_id.partner_group.city"/>
+                                <br/>
+                                <t t-if="o.partner_invoice_id.partner_group.state_id">
+                                    <span t-field="o.partner_invoice_id.partner_group.state_id"/>
+                                </t>
+                            </t>
+                            <t t-if="o.partner_invoice_id.parent_id and o.partner_invoice_id.parent_id.partner_group">
+                                <span t-field="o.partner_invoice_id.parent_id.partner_group.name"/>
+                                <br/>
+                                <span t-field="o.partner_invoice_id.parent_id.partner_group.street"/>
+                                <br/>
+                                <span t-field="o.partner_invoice_id.parent_id.partner_group.zip"/>
+                                -
+                                <span t-field="o.partner_invoice_id.parent_id.partner_group.city"/>
+                                <br/>
+                                <t t-if="o.partner_invoice_id.parent_id.partner_group.state_id">
+                                    <span t-field="o.partner_invoice_id.parent_id.partner_group.state_id"/>
+                                </t>
+                            </t>
+                            <t t-if="not o.partner_invoice_id.partner_group and not o.partner_invoice_id.parent_id">
+                                <span t-field="o.partner_invoice_id.name"/>
+                                <br/>
+                                <span t-field="o.partner_invoice_id.street"/>
+                                <br/>
+                                <span t-field="o.partner_invoice_id.zip"/>
+                                -
+                                <span t-field="o.partner_invoice_id.city"/>
+                                <br/>
+                                <t t-if="o.partner_invoice_id.state_id">
+                                    <span t-field="o.partner_invoice_id.state_id"/>
+                                </t>
                             </t>
                         </div>
                     </div><br/>
                     <div class="row">
                         <div class="col-xs-4 pull-right">
                             <span>FECHA: ENERO</span>
-    
                             <span t-esc="time.strftime('%Y')"/>
                         </div>
                     </div><br/>
@@ -167,10 +194,14 @@
                     </div>
                     <br/>
                     <div>
-                        <span>CENTRO:</span>
+                        <span>
+                            <b>CENTRO:</b>
+                        </span>
                         <span t-field="o.partner_invoice_id.name"/>
                         <br/>
-                        <span>CONTRATO:</span>
+                        <span>
+                            <b>CONTRATO:</b>
+                        </span>
                         <span t-field="o.project_id.code"/>
                     </div>
                     <br/>
@@ -207,11 +238,14 @@
                         <t t-if="o.project_id.recurring_interval == 6">
                             <span>SEMESTRAL</span>
                         </t>
+                        <t t-if="o.project_id.recurring_interval == 12">
+                            <span>ANUAL</span>
+                        </t>
                     </div>
                     <div>
                         <span>NUEVO PRECIO CUOTA:</span>
                         <t t-foreach="o.project_id.recurring_invoice_line_ids" t-as="line">
-                            <span t-field="line.price_unit"/>
+                            <span t-esc="str(round(line.price_unit, 2)).replace('.', ',')"/>
                             € + IVA
                         </t>
                         <br/>
@@ -222,9 +256,8 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-4 pull-right">
-                            <img t-if="o.create_uid.signature_logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.signature_logo"
-                                            style="max-height:100px;"/>
-                            <span t-field="o.user_id.name"/>
+                            <img src="/galaxia_custom/static/src/img/firma.png" style="max-height:100px;"/>
+                            <p>IGOR ARRIETA ESTEVEZ</p>
                         </div>
                     </div>
                 </div>
