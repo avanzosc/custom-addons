@@ -26,7 +26,8 @@
         "sale_service_recurrence_configurator",
         "sale_order_line_service_view",
         "website_quote_not_unlink",
-        "sale_order_create_event"
+        "sale_order_create_event",
+        "base_user_signature_logo",
     ],
     "data": [
         "views/product_view.xml",

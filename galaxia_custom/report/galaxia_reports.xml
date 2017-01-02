@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+        <report id="report_rockbotic_sale_report" string="Cuotas" model="sale.order"
+            report_type="qweb-pdf" file="galaxia_custom.report_sale_cuota_printing" name="galaxia_custom.report_sale_cuota_printing"/>
+    </data>
+    <data>
         
         <template id="galaxia_invoice_report" inherit_id="account_payment_partner.report_invoice_payment_mode">
             <xpath expr="//div[@class='row']/div[@class='col-xs-5 col-xs-offset-7']" position="replace">
@@ -128,6 +132,111 @@
                     </t>
                 </p>
             </xpath>
+        </template>
+        <template id="report_sale_cuota">
+            <t t-call="report.external_layout">
+                <div class="page">
+                    <div class="row">
+                        <div class="col-xs-4 pull-right">
+                            <span t-field="o.partner_invoice_id.name"/>
+                            <br/>
+                            <span t-field="o.partner_invoice_id.street"/>
+                            <br/>
+                            <span t-field="o.partner_invoice_id.zip"/>
+                            -
+                            <span t-field="o.partner_invoice_id.city"/>
+                            <br/>
+                            <t t-if="o.partner_invoice_id.state_id">
+                                <span t-field="o.partner_invoice_id.state_id"/>
+                            </t>
+                        </div>
+                    </div><br/>
+                    <div class="row">
+                        <div class="col-xs-4 pull-right">
+                            <span>FECHA: ENERO</span>
+    
+                            <span t-esc="time.strftime('%Y')"/>
+                        </div>
+                    </div><br/>
+                    <div class="text-center">
+                        <span>
+                            <b>
+                                <u>ACTUALIZACIÓN DE PRECIOS SERVICIO</u>
+                            </b>
+                        </span>
+                    </div>
+                    <br/>
+                    <div>
+                        <span>CENTRO:</span>
+                        <span t-field="o.partner_invoice_id.name"/>
+                        <br/>
+                        <span>CONTRATO:</span>
+                        <span t-field="o.project_id.code"/>
+                    </div>
+                    <br/>
+                    <div style="width:90%;text-align:justify;">
+                        Muy Sres. Nuestros:
+                        <br/><br/>
+                        <div style="text-indent: 25px;">Nos dirigimos a Vds., para actualizar los precios, relativos a los servicios de limpieza que les prestamos, 
+                            siguiendo el condicionado que estructura nuestra relación comercial.</div>
+                        <br/>
+                        <div style="text-indent: 25px;">La valoración de los gastos de personal basándonos en el convenio del sector que incluye incrementos para este
+                        año desde el 1 de enero y así como en el incremento en el costo de materiales, útiles, maquinaria y vehículos y en los costes de gestión de
+                        dichos servicios, nos sitúan en la necesidad de establecer un nuevo precio, indicando al pie de la presente y se mantendrá en vigor desde 1 
+                        de Enero hasta el próximo 31 de Diciembre del presente año.</div>
+                        <br/>
+                        <div style="text-indent: 25px;">Aprovechamos la oportunidad para agradecerles la confianza que vienen depositando en nuetros servicios y quedamos a
+                        su disposición para resolver cualquier consulta.</div>
+                        <br/>
+                        
+                    </div>
+                    <div>
+                        VIGENCIA PRECIO POR Nº DE CUOTAS:
+                        <t t-if="o.project_id.recurring_interval == 1">
+                            <span>MENSUAL</span>
+                        </t>
+                        <t t-if="o.project_id.recurring_interval == 2">
+                            <span>BIMENSUAL</span>
+                        </t>
+                        <t t-if="o.project_id.recurring_interval == 3">
+                            <span>TRIMESTRAL</span>
+                        </t>
+                        <t t-if="o.project_id.recurring_interval == 4">
+                            <span>CUATRIMESTRAL</span>
+                        </t>
+                        <t t-if="o.project_id.recurring_interval == 6">
+                            <span>SEMESTRAL</span>
+                        </t>
+                    </div>
+                    <div>
+                        <span>NUEVO PRECIO CUOTA:</span>
+                        <t t-foreach="o.project_id.recurring_invoice_line_ids" t-as="line">
+                            <span t-field="line.price_unit"/>
+                            € + IVA
+                        </t>
+                        <br/>
+                        <br/>
+                        El precio se regirá bajo las condiciones generales.
+                        <br/>
+                        Sin otro particular, les saluda atentamente.
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 pull-right">
+                            <img t-if="o.create_uid.signature_logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.signature_logo"
+                                            style="max-height:100px;"/>
+                            <span t-field="o.user_id.name"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+        
+        <template id="report_sale_cuota_printing">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'galaxia_custom.report_sale_cuota')"/>
+                </t>
+            </t>
         </template>
     </data>
 </openerp>
