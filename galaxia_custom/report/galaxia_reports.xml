@@ -197,7 +197,7 @@
                         <span>
                             <b>CENTRO:</b>
                         </span>
-                        <span t-field="o.partner_id.name"/>
+                        <span t-field="o.complete_name"/>
                         <br/>
                         <span>
                             <b>CONTRATO:</b>
