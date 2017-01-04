@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <report id="report_rockbotic_sale_report" string="Cuotas" model="sale.order"
-            report_type="qweb-pdf" file="galaxia_custom.report_sale_cuota_printing" name="galaxia_custom.report_sale_cuota_printing"/>
+        <report id="report_galaxia_analytic_report" string="Cuotas" model="account.analytic.account"
+            report_type="qweb-pdf" file="galaxia_custom.report_analytic_cuota_printing" name="galaxia_custom.report_analytic_cuota_printing" />
     </data>
     <data>
         
@@ -133,48 +133,48 @@
                 </p>
             </xpath>
         </template>
-        <template id="report_sale_cuota">
+        <template id="report_analytic_cuota">
             <t t-call="report.external_layout">
                 <div class="page">
                     <div class="row">
                         <div class="col-xs-4 pull-right">
-                            <t t-if="o.partner_invoice_id.partner_group">
-                                <span t-field="o.partner_invoice_id.partner_group.name"/>
+                            <t t-if="o.partner_id.partner_group">
+                                <span t-field="o.partner_id.partner_group.name"/>
                                 <br/>
-                                <span t-field="o.partner_invoice_id.partner_group.street"/>
+                                <span t-field="o.partner_id.partner_group.street"/>
                                 <br/>
-                                <span t-field="o.partner_invoice_id.partner_group.zip"/>
+                                <span t-field="o.partner_id.partner_group.zip"/>
                                 -
-                                <span t-field="o.partner_invoice_id.partner_group.city"/>
+                                <span t-field="o.partner_id.partner_group.city"/>
                                 <br/>
-                                <t t-if="o.partner_invoice_id.partner_group.state_id">
-                                    <span t-field="o.partner_invoice_id.partner_group.state_id"/>
+                                <t t-if="o.partner_id.partner_group.state_id">
+                                    <span t-field="o.partner_id.partner_group.state_id"/>
                                 </t>
                             </t>
-                            <t t-if="o.partner_invoice_id.parent_id and o.partner_invoice_id.parent_id.partner_group">
-                                <span t-field="o.partner_invoice_id.parent_id.partner_group.name"/>
+                            <t t-if="o.partner_id.parent_id and o.partner_id.parent_id.partner_group">
+                                <span t-field="o.partner_id.parent_id.partner_group.name"/>
                                 <br/>
-                                <span t-field="o.partner_invoice_id.parent_id.partner_group.street"/>
+                                <span t-field="o.partner_id.parent_id.partner_group.street"/>
                                 <br/>
-                                <span t-field="o.partner_invoice_id.parent_id.partner_group.zip"/>
+                                <span t-field="o.partner_id.parent_id.partner_group.zip"/>
                                 -
-                                <span t-field="o.partner_invoice_id.parent_id.partner_group.city"/>
+                                <span t-field="o.partner_id.parent_id.partner_group.city"/>
                                 <br/>
-                                <t t-if="o.partner_invoice_id.parent_id.partner_group.state_id">
-                                    <span t-field="o.partner_invoice_id.parent_id.partner_group.state_id"/>
+                                <t t-if="o.partner_id.parent_id.partner_group.state_id">
+                                    <span t-field="o.partner_id.parent_id.partner_group.state_id"/>
                                 </t>
                             </t>
-                            <t t-if="not o.partner_invoice_id.partner_group and not o.partner_invoice_id.parent_id">
-                                <span t-field="o.partner_invoice_id.name"/>
+                            <t t-if="not o.partner_id.partner_group and not o.partner_id.parent_id">
+                                <span t-field="o.partner_id.name"/>
                                 <br/>
-                                <span t-field="o.partner_invoice_id.street"/>
+                                <span t-field="o.partner_id.street"/>
                                 <br/>
-                                <span t-field="o.partner_invoice_id.zip"/>
+                                <span t-field="o.partner_id.zip"/>
                                 -
-                                <span t-field="o.partner_invoice_id.city"/>
+                                <span t-field="o.partner_id.city"/>
                                 <br/>
-                                <t t-if="o.partner_invoice_id.state_id">
-                                    <span t-field="o.partner_invoice_id.state_id"/>
+                                <t t-if="o.partner_id.state_id">
+                                    <span t-field="o.partner_id.state_id"/>
                                 </t>
                             </t>
                         </div>
@@ -197,12 +197,12 @@
                         <span>
                             <b>CENTRO:</b>
                         </span>
-                        <span t-field="o.partner_invoice_id.name"/>
+                        <span t-field="o.partner_id.name"/>
                         <br/>
                         <span>
                             <b>CONTRATO:</b>
                         </span>
-                        <span t-field="o.project_id.code"/>
+                        <span t-field="o.code"/>
                     </div>
                     <br/>
                     <div style="width:90%;text-align:justify;">
@@ -223,28 +223,28 @@
                     </div>
                     <div>
                         VIGENCIA PRECIO POR Nº DE CUOTAS:
-                        <t t-if="o.project_id.recurring_interval == 1">
+                        <t t-if="o.recurring_interval == 1">
                             <span>MENSUAL</span>
                         </t>
-                        <t t-if="o.project_id.recurring_interval == 2">
+                        <t t-if="o.recurring_interval == 2">
                             <span>BIMENSUAL</span>
                         </t>
-                        <t t-if="o.project_id.recurring_interval == 3">
+                        <t t-if="o.recurring_interval == 3">
                             <span>TRIMESTRAL</span>
                         </t>
-                        <t t-if="o.project_id.recurring_interval == 4">
+                        <t t-if="o.recurring_interval == 4">
                             <span>CUATRIMESTRAL</span>
                         </t>
-                        <t t-if="o.project_id.recurring_interval == 6">
+                        <t t-if="o.recurring_interval == 6">
                             <span>SEMESTRAL</span>
                         </t>
-                        <t t-if="o.project_id.recurring_interval == 12">
+                        <t t-if="o.recurring_interval == 12">
                             <span>ANUAL</span>
                         </t>
                     </div>
                     <div>
                         <span>NUEVO PRECIO CUOTA:</span>
-                        <t t-foreach="o.project_id.recurring_invoice_line_ids" t-as="line">
+                        <t t-foreach="o.recurring_invoice_line_ids" t-as="line">
                             <span t-esc="str(round(line.price_unit, 2)).replace('.', ',')"/>
                             € + IVA
                         </t>
@@ -264,10 +264,10 @@
             </t>
         </template>
         
-        <template id="report_sale_cuota_printing">
+        <template id="report_analytic_cuota_printing">
             <t t-call="report.html_container">
                 <t t-foreach="doc_ids" t-as="doc_id">
-                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'galaxia_custom.report_sale_cuota')"/>
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'galaxia_custom.report_analytic_cuota')"/>
                 </t>
             </t>
         </template>
