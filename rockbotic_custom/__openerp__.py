@@ -63,4 +63,5 @@
         "views/access_rules.xml",
     ],
     "installable": True,
+    "application": True,
 }

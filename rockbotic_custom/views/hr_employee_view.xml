@@ -1,14 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <record id="view_employee_form_inh_rockbotic" model="ir.ui.view">
-            <field name="name">view.employee.form.inh.rockbotic</field>
+        <record id="hr_employee_rbk_form_view" model="ir.ui.view">
+            <field name="name">hr.employee.rbk.form</field>
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_form" />
             <field name="arch" type="xml">
                 <field name="country_id" position="before">
-                    <field name="no_sexual_offenses" />
+                    <label for="no_sexual_offenses" />
+                    <div>
+                        <field name="no_sexual_offenses" nolabel="1"
+                               class="oe_inline" />
+                        <field name="no_sexual_offenses_certificate_date"
+                               nolabel="1" class="oe_inline" />
+                    </div>
+                    <field name="no_sexual_offenses_certificate" />
+                    <div colspan="2" attrs="{'invisible':[('no_sexual_offenses_certificate','=',False)]}"
+                         class="oe_read_only">
+                        <field name="certificate_link" widget="url" nolabel="1"
+                               text="(validate)" class="oe_inline" />
+                    </div>
                 </field>
+            </field>
+        </record>
+
+        <record id="hr_employee_rbk_search_view" model="ir.ui.view">
+            <field name="name">hr.employee.rbk.search</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter" />
+            <field name="arch" type="xml">
+                <group string="Group By" position="before">
+                    <separator />
+                    <filter string="Sexual Offenses Certificate Negative"
+                            name="no_sexual_offenses_filter"
+                            domain="[('no_sexual_offenses','=',True)]" />
+                    <filter string="Sexual Offenses Certificate Positive"
+                            name="sexual_offenses_filter"
+                            domain="[('no_sexual_offenses','=',False)]" />
+                </group>
+                <group string="Group By" position="inside">
+                    <filter string="Sexual Offenses Certificate Date"
+                            name="sexual_offenses_date_group" domain="[]"
+                            context="{'group_by':'no_sexual_offenses_certificate_date'}"/>
+                </group>
+            </field>
+        </record>
+
+        <record id="hr_employee_rbk_tree_view" model="ir.ui.view">
+            <field name="name">hr.employee.rbk.tree</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree" />
+            <field name="arch" type="xml">
+                <tree position="inside">
+                    <field name="no_sexual_offenses" invisible="1" />
+                    <field name="no_sexual_offenses_certificate_date"
+                           invisible="1" />
+                </tree>
             </field>
         </record>
     </data>
