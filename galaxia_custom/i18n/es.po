@@ -185,3 +185,8 @@ msgstr "NIF:"
 #: view:sale.order:galaxia_custom.view_order_form_service_view_inh_galaxia
 msgid "days"
 msgstr "días"
+
+#. module: galaxia_custom
+#: model:res.request.link,name:galaxia_custom.req_link_hr_holidays
+msgid "Leaves"
+msgstr "Ausencias"
