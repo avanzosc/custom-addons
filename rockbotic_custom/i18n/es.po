@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-02 17:08+0000\n"
-"PO-Revision-Date: 2017-01-02 17:08+0000\n"
+"POT-Creation-Date: 2017-01-10 13:48+0000\n"
+"PO-Revision-Date: 2017-01-10 13:48+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -99,8 +99,12 @@ msgid "AUTORIZACIONES SOBRE IMÁGENES"
 msgstr "AUTORIZACIONES SOBRE IMÁGENES"
 
 #. module: rockbotic_custom
-#: view:event.registration:rockbotic_custom.event_registration_info_view_search
 #: view:res.partner:rockbotic_custom.res_partner_contact_form_view
+msgid "Address"
+msgstr "Dirección"
+
+#. module: rockbotic_custom
+#: view:event.registration:rockbotic_custom.event_registration_info_view_search
 msgid "Address"
 msgstr "Ubicación"
 
@@ -189,6 +193,21 @@ msgstr "Factura cancelada"
 #: view:event.event:rockbotic_custom.view_event_tree_inh_rockbotic
 msgid "Centre"
 msgstr "Centro"
+
+#. module: rockbotic_custom
+#: field:hr.employee,no_sexual_offenses_certificate_date:0
+msgid "Certificate Date"
+msgstr "Fecha del certificado"
+
+#. module: rockbotic_custom
+#: field:hr.employee,certificate_link:0
+msgid "Certificate Validation Link"
+msgstr "Enlace de verificación del certificado"
+
+#. module: rockbotic_custom
+#: field:hr.employee,no_sexual_offenses_certificate:0
+msgid "Certificate Verification Code"
+msgstr "Código de verificación del certificado"
 
 #. module: rockbotic_custom
 #: view:res.partner:rockbotic_custom.res_partner_contact_form_view
@@ -513,6 +532,11 @@ msgid "GRUPO"
 msgstr "GRUPO"
 
 #. module: rockbotic_custom
+#: view:hr.employee:rockbotic_custom.hr_employee_rbk_search_view
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
@@ -532,6 +556,11 @@ msgstr "IBAN:"
 #: view:website:rockbotic_custom.report_sale_printing_doc
 msgid "INSTRUCCIONES DE INSCRIPCIÓN"
 msgstr "INSTRUCCIONES DE INSCRIPCIÓN"
+
+#. module: rockbotic_custom
+#: help:hr.employee,no_sexual_offenses:0
+msgid "If check is selected it means that the employee has a negative certificate of sexual offenses."
+msgstr "Si se marca el siguiente check significa que el empleado tiene un certificado negativo de delitos sexuales."
 
 #. module: rockbotic_custom
 #: view:website:account.report_invoice_document
@@ -1025,6 +1054,21 @@ msgid "Salesperson"
 msgstr "Comercial"
 
 #. module: rockbotic_custom
+#: view:hr.employee:rockbotic_custom.hr_employee_rbk_search_view
+msgid "Sexual Offenses Certificate Date"
+msgstr "Fecha del certificado"
+
+#. module: rockbotic_custom
+#: view:hr.employee:rockbotic_custom.hr_employee_rbk_search_view
+msgid "Sexual Offenses Certificate Negative"
+msgstr "Certificado negativo"
+
+#. module: rockbotic_custom
+#: view:hr.employee:rockbotic_custom.hr_employee_rbk_search_view
+msgid "Sexual Offenses Certificate Positive"
+msgstr "Certificado positivo"
+
+#. module: rockbotic_custom
 #: field:res.partner,social_networks:0
 msgid "Social networks"
 msgstr "Redes sociales"
@@ -1209,6 +1253,11 @@ msgstr "Viernes"
 #: field:res.partner,web_blog:0
 msgid "Web/Blog"
 msgstr "Web/Blog"
+
+#. module: rockbotic_custom
+#: help:hr.employee,no_sexual_offenses_certificate:0
+msgid "With this code you can validate the certificate."
+msgstr "Con este código puedes validar el certificado."
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_footer
