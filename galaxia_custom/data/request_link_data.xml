@@ -5,11 +5,8 @@
             <field name="name">Leaves</field>
             <field name="object">hr.holidays</field>
         </record>
-        <delete id="product.req_link_product" model="res.request.link"/>
         <delete id="account_voucher.req_link_voucher" model="res.request.link"/>
-        <delete id="project.req_link_project" model="res.request.link"/>
         <delete id="stock.req_link_tracking" model="res.request.link"/>
-        <delete id="base.req_link_partner" model="res.request.link"/>
         <delete id="quality_control_mrp.req_link_mrp_production" model="res.request.link"/>
         <delete id="quality_control_stock.req_link_stock_production_lot" model="res.request.link"/>
     </data>
