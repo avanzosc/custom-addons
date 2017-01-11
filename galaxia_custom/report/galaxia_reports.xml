@@ -267,7 +267,7 @@
             </t>
         </template>
         <template id="report_sale_information_footer">
-            <t t-call="report.external_layout">
+            <t t-call="galaxia_custom.galaxia_footer_information">
                 <div class="page">
                     <div class="oe_structure"/>
                     <div class="row">
@@ -396,36 +396,6 @@
                     <div class="oe_structure"/>
                     
                 </div>
-                <xpath expr="//div[@class='footer']" position="replace">
-                    <div class="footer">
-                        <table class="table table-condensed" style="width: 100%">
-                            <tbody>
-                                <tr style="border-top-style: hidden;">
-                                    <td>
-                                        <strong>Fecha realización:</strong>
-                                    </td>
-                                    <td/>
-                                    <td class="text-right">
-                                        <strong>Firma y sello conformidad realización del servicio:</strong>
-                                    </td>
-                                </tr>
-                                <tr style="border-top-style: hidden;">
-                                    <td>
-                                        <strong>Horas dedicadas:</strong>
-                                    </td>
-                                    <td/>
-                                    <td/>
-                                </tr>
-                                <tr style="border-top-style: hidden;">
-                                    <td>
-                                        <strong>Equipo que lo realiza.:</strong>
-                                    </td>
-                                    <td/>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </xpath>
             </t>
         </template>
         

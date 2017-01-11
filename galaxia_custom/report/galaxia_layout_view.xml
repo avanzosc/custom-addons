@@ -75,5 +75,52 @@
                 </div>
             </xpath>
         </template>
+        
+        <template id="galaxia_footer_information">
+            <!-- Multicompany -->
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id">
+                </t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company">
+                </t>
+            </t>
+            
+            <t t-call="report.external_layout_header" />
+            <t t-raw="0" />
+            <t t-call="galaxia_custom.galaxia_footer" />
+        </template>
+        
+        <template id="galaxia_footer">
+            <div class="footer">
+                <table class="table table-condensed" style="width: 100%">
+                    <tbody>
+                        <tr style="border-top-style: hidden;">
+                            <td>
+                                <strong>Fecha realización:</strong>
+                            </td>
+                            <td/>
+                            <td class="text-right">
+                                <strong>Firma y sello conformidad realización del servicio:</strong>
+                            </td>
+                        </tr>
+                        <tr style="border-top-style: hidden;">
+                            <td>
+                                <strong>Horas dedicadas:</strong>
+                            </td>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr style="border-top-style: hidden;">
+                            <td>
+                                <strong>Equipo que lo realiza.:</strong>
+                            </td>
+                            <td/>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </template>
     </data>
 </openerp>
