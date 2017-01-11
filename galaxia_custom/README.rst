@@ -8,6 +8,12 @@ Galaxia Custom
 
 * Added key code field to events.
 
+* Custom reports for sale orders and invoices.
+
+* Two new fields on producst, base_list_price and base_standard_price.
+
+* Increase the size of company_registry field.
+
 
 Credits
 =======
@@ -16,3 +22,5 @@ Credits
 Contributors
 ------------
 * Esther Martín <esthermartin@avanzosc.es>
+* Daniel Campos <danielcampos@avanzosc.es>
+* Ana Juaristi <anajuaristi@avanzosc.es>

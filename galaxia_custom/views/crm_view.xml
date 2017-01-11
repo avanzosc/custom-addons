@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="crm_editable_view_tree" model="ir.ui.view">
+            <field name="name">crm.editable.tree</field>
+            <field name="model">crm.phonecall</field>
+            <field name="inherit_id" ref="crm.crm_case_inbound_phone_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="editable"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="req_link_hr_holidays" model="res.request.link">
+            <field name="name">Leaves</field>
+            <field name="object">hr.holidays</field>
+        </record>
+    </data>
+</openerp>
