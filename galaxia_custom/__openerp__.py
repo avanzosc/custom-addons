@@ -43,9 +43,9 @@
         "views/sale_order_view.xml",
         "views/account_view.xml",
         "views/crm_view.xml",
-        "report/galaxia_custom_view.xml",
         "report/galaxia_layout_view.xml",
         "report/galaxia_reports.xml",
+        "report/galaxia_custom_view.xml",
     ],
     "installable": True,
 }

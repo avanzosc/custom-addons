@@ -5,9 +5,5 @@
             <field name="name">Leaves</field>
             <field name="object">hr.holidays</field>
         </record>
-        <delete id="account_voucher.req_link_voucher" model="res.request.link"/>
-        <delete id="stock.req_link_tracking" model="res.request.link"/>
-        <delete id="quality_control_mrp.req_link_mrp_production" model="res.request.link"/>
-        <delete id="quality_control_stock.req_link_stock_production_lot" model="res.request.link"/>
     </data>
 </openerp>
