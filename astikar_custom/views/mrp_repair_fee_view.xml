@@ -14,5 +14,9 @@
                 </field>
             </field>
         </record>
+        
+        <record id="mrp_repair_fee.action_mrp_repair_fee" model="ir.actions.act_window">
+            <field name="context">{'default_is_from_menu': 1}</field>
+        </record>
     </data>
 </openerp>

@@ -167,6 +167,8 @@ class MrpRepairFee(models.Model):
 
     _inherit = 'mrp.repair.fee'
 
+    is_from_menu = fields.Boolean(string='Created from menu', default=False)
+
     @api.model
     def create(self, vals):
         vals['load_cost'] = not vals.get('to_invoice', False)
