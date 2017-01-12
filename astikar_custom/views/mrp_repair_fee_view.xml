@@ -15,8 +15,20 @@
             </field>
         </record>
         
+        <record id="mrp_repair_fee_menu_view_search" model="ir.ui.view">
+            <field name="name">mrp.repair.fee.menu.search</field>
+            <field name="model">mrp.repair.fee</field>
+            <field name="inherit_id" ref="mrp_repair_fee.mrp_repair_fee_view_search" />
+            <field name="arch" type="xml">
+                <filter string="Fees to not invoice" position="after">
+                    <filter string="Created from menu" name="is_from_menu" domain="[('is_from_menu','=',True)]"/>
+                    <filter string="Created from R.O" domain="[('is_from_menu','=',False)]"/>
+                </filter>
+            </field>
+        </record>
+        
         <record id="mrp_repair_fee.action_mrp_repair_fee" model="ir.actions.act_window">
-            <field name="context">{'default_is_from_menu': 1}</field>
+            <field name="context">{'search_default_is_from_menu': 1, 'default_is_from_menu': 1}</field>
         </record>
     </data>
 </openerp>

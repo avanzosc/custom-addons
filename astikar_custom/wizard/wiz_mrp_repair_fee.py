@@ -11,5 +11,6 @@ class WizMrpRepairFee(models.TransientModel):
     @api.multi
     def show_mrp_repair_fee(self):
         res = super(WizMrpRepairFee, self).show_mrp_repair_fee()
-        res['context'].update({'default_is_from_menu': True})
+        res['context'].update({'search_default_is_from_menu': True,
+                               'default_is_from_menu': True})
         return res
