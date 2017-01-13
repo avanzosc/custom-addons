@@ -209,3 +209,11 @@ class TestAstikarCustom(common.TransactionCase):
              'qty': 5})
         self.assertEqual(quant.standard_value, (20 * 5),
                          "Incorrect Manual Value for quant.")
+
+    def test_wizard_mrp_repair_fee(self):
+        wiz = self.env['wiz.mrp.repair.fee'].create({
+            'imputation_date': fields.Date.today(),
+        })
+        res = wiz.show_mrp_repair_fee()
+        self.assertTrue(res['context']['default_is_from_menu'])
+        self.assertTrue(res['context']['search_default_is_from_menu'])
