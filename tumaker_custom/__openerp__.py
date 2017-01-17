@@ -42,6 +42,7 @@
              'views/res_company_view.xml',
              'views/product_view.xml',
              'views/account_move_line_view.xml',
+             'views/report_purchase_order.xml',
              'wizard/stock_transfer_details_view.xml',
              ],
     "installable": True,
