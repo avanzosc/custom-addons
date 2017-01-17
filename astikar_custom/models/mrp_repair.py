@@ -43,9 +43,7 @@ class MrpRepair(models.Model):
     def _compute_date_due(self):
         for repair in self:
             if repair.partner_id and repair.partner_id.property_payment_term:
-                pterm = self.env['account.payment.term'].browse(
-                    self.partner_id.property_payment_term.id)
-                pterm_list = pterm.compute(
+                pterm_list = repair.partner_id.property_payment_term.compute(
                     value=1, date_ref=False)[0]
                 if pterm_list:
                     repair.date_due = max(line[0] for line in pterm_list)
@@ -166,6 +164,8 @@ class MrpRepairLine(models.Model):
 class MrpRepairFee(models.Model):
 
     _inherit = 'mrp.repair.fee'
+
+    is_from_menu = fields.Boolean(string='Created from menu', default=False)
 
     @api.model
     def create(self, vals):
