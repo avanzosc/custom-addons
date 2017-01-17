@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="purchase_report_tumaker" inherit_id="purchase.report_purchaseorder_document">
+            <xpath expr='//h2[@t-if="o.state == &apos;draft&apos;"]' position="replace"/>
+            <xpath expr='//h2[@t-if="o.state != &apos;draft&apos;"]' position="attributes">
+                <attribute name="t-if">o.state</attribute>
+            </xpath>
+        </template>
+    </data>
+</openerp>
