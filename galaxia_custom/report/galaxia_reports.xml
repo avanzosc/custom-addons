@@ -96,7 +96,35 @@
                     </tbody>
                 </table>
             </xpath>
-            <xpath expr="//div[@t-if='o.tax_line']" position="replace"/>
+            <xpath expr="//div[@t-if='o.tax_line']" position="replace">
+                <div class="row" t-if="o.tax_line and len(o.tax_line) &gt; 1">
+                    <div class="col-xs-6">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Tax</th>
+                                    <th class="text-right">Base</th>
+                                    <th class="text-right">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.tax_line" t-as="t">
+                                    <td>
+                                        <span t-field="t.name"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="t.base" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="t.amount" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </xpath>
+            
             <xpath expr="//p[@t-if='o.comment']" position="after">
                 <p t-if="o.payment_mode_id">
                     <strong>Payment Mode:</strong>

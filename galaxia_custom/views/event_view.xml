@@ -28,8 +28,8 @@
             <field name="model">event.event</field>
             <field name="inherit_id" ref="event.view_event_search"/>
             <field name="arch" type="xml">
-                <field name="name" position="after">
-                    <field name="key_code" />
+                <field name="name" position="before">
+                    <field name="project_id" />
                 </field>
             </field>
         </record>
