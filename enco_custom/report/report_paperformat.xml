@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="report.paperformat_euro" model="report.paperformat">
+            <field name="margin_top">45</field>
+            <field name="header_spacing">40</field>
+            <field name="margin_bottom">20</field>
+        </record>
+    </data>
+</openerp>
