@@ -128,3 +128,4 @@ class StockQuant(models.Model):
     standard_value = fields.Float(
         string="Standard Value", store=True, compute="_compute_standard_value",
         digits=dp.get_precision('Product Price'))
+    categ_id = fields.Many2one(related='product_id.categ_id', store=True)
