@@ -37,6 +37,7 @@
     ],
     "data": [
         "data/request_link_data.xml",
+        "data/decimal_precision_data.xml",
         "views/product_view.xml",
         "views/event_view.xml",
         "views/account_analytic_view.xml",
