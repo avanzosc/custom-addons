@@ -34,6 +34,8 @@
         "quality_control_mrp",
         "quality_control_stock",
         "crm",
+        "product_upgrade_sale_cost_price",
+        "product_variant_cost_price"
     ],
     "data": [
         "data/request_link_data.xml",
