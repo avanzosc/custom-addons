@@ -15,7 +15,7 @@
     ],
     "depends": [
         "base", "crm_partner_assign", "portal", "portal_sale", "website",
-        "stock",
+        "stock", "purchase",
     ],
     "data": [
         "security/ds_portal_security.xml",
@@ -23,7 +23,8 @@
         "views/ds_custom_css.xml",
         "views/portal_view.xml",
         "views/ds_custom_web_view.xml",
-        "views/ds_custom_picking_report.xml"
+        "views/ds_custom_picking_report.xml",
+        "views/res_partner_view.xml",
     ],
     "installable": True,
 }

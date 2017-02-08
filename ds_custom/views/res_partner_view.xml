@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="base.action_partner_supplier_form" model="ir.actions.act_window">
+            <field name="domain">[('supplier','=',True)]</field>
+        </record>
+        <record id="base.action_partner_form" model="ir.actions.act_window">
+            <field name="domain">[('customer','=',True)]</field>
+        </record>
+        <record id="base.action_partner_customer_form" model="ir.actions.act_window">
+            <field name="domain">[('customer','=',True)]</field>
+        </record>
+    </data>
+</openerp>
