@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="account_invoice_order_view_tree" model="ir.ui.view">
+            <field name="name">account.invoice.order.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="default_order">date_invoice DESC</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="external_layout_header" inherit_id="report.external_layout_header">
+            <xpath expr="//div[@t-field='company.partner_id']" position="replace">
+                <span t-field="company.name"/>
+                <br/>
+                <span t-field="company.vat"/>
+                <br/>
+                <span t-field="company.partner_id.street"/>
+                <br/>
+                <span t-field="company.partner_id.zip"/>
+                -
+                <span t-field="company.partner_id.city"/>
+                <br/>
+                <span t-field="company.partner_id.state_id"/>
+            </xpath>
+        </template>
+    </data>
+</openerp>
