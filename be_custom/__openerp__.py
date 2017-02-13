@@ -14,10 +14,11 @@
         "Esther Martín <esthermartin@avanzosc.es>",
     ],
     "depends": [
-        "report",
+        "account",
     ],
     "data": [
         "report/layout_view.xml",
+        "views/account_invoice_view.xml",
     ],
     "installable": True,
 }
