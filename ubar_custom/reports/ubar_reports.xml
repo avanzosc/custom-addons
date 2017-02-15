@@ -540,7 +540,7 @@
                     </tbody>
                 </table>
             </xpath>
-            <xpath expr="//table[4]" position="replace">
+            <xpath expr="//div[@class='row']/div[@class='col-xs-4 pull-right']/.." position="replace">
                 <t t-if="o.picking_type_id.code == 'outgoing'">
                 <div class="row">
                     <div class="col-xs-4 pull-right">
