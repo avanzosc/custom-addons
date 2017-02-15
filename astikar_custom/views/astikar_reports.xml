@@ -1095,7 +1095,7 @@
                     </tbody>
                 </table>
             </xpath>
-            <xpath expr="//table[4]" position="replace">
+            <xpath expr="//div[@class='row']/div[@class='col-xs-4 pull-right']/.." position="replace">
                 <div class="row">
                     <div class="col-xs-4 pull-right">
                         <table class="table table-condensed">
