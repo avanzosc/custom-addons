@@ -15,9 +15,9 @@
                     <attribute name="invisible">1</attribute>
                 </field>
                 <field name="partner_id" position="after">
-                    <field name="parent_name" />
-                    <field name="parent_mobile" />
-                    <field name="parent_email" />
+                    <field name="parent_name" readonly="1"/>
+                    <field name="parent_mobile" readonly="1"/>
+                    <field name="parent_email" readonly="1"/>
                 </field>
             </field>
         </record>
@@ -46,9 +46,9 @@
                         </group>
                         <group>
                             <separator string="Partner Information" colspan="2"/>
-                            <field name="parent_name"/>
-                            <field name="parent_mobile"/>
-                            <field name="parent_email"/>
+                            <field name="parent_name" readonly="1"/>
+                            <field name="parent_mobile" readonly="1"/>
+                            <field name="parent_email" readonly="1"/>
                         </group>
                     </group>
                 </xpath>
