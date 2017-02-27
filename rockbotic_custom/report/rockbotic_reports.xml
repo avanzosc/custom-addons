@@ -1594,8 +1594,8 @@
                 </t>
                 <div class="header">
                     <div class="row">
-                        <div class="col-xs-5 pull-right">
-                            <img src="/rockbotic_custom/static/src/img/rockbotic.png" style="max-width: 100px;float:right;margin-top:80px"/>
+                        <div class="col-xs-5">
+                            <img src="/rockbotic_custom/static/src/img/rockbotic.png" style="max-height:107;max-width:247"/>
                         </div>
                     </div>
                 </div>
@@ -1609,14 +1609,10 @@
                         <table class="table table-condensed" style="border-top-style:hidden">
                             <tr>
                                 <td>NOMBRE COMPLETO DEL TRABADOR</td>
-                                <td>
-                                    <div style="width: 100%; border: 2px solid; height: 20px;" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>FECHA INCORPORACIÓN A LA EMPRESA</td>
-                                <td>
-                                    <div style="width: 300px; border: 2px solid; height: 20px;" />
+                                <td style="width: 60%">
+                                    <div style="width: 100%; border: 1px solid; height: 20px;" >
+                                        <span t-field="o.employee_id.name"/>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -1627,39 +1623,43 @@
                             <thead>
                                 <tr>
                                     <th>FECHA DEL 1º DÍA DE VACACIONES</th>
-                                    <th>FECHA INCORPORACIÓN</th>
+                                    <th>FECHA FIN DE VACACIONES</th>
                                     <th>TOTAL DÍAS SOLICITADOS</th>
+                                    <t t-if="o.name">
+                                        <th>MOTIVO</th>
+                                    </t>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <t t-if="o.state=='validate'">
+                                <t t-if="o.state=='validate'">
+                                    <tr>
+                                        <td>
                                             <span t-field="o.date_from" t-field-options='{"format": "dd/MM/yyyy"}'/>
-                                        </t>
-                                    </td>
-                                    <td>
-                                        <t t-if="o.state=='validate'">
+                                        </td>
+                                        <td>
                                             <span t-field="o.date_to" t-field-options='{"format": "dd/MM/yyyy"}'/>
-                                        </t>
-                                    </td>
-                                    <td class="text-center">
-                                        <t t-if="o.state=='validate'">
+                                        </td>
+                                        <td class="text-center">
                                             <span t-esc="int(o.number_of_days_temp)"/> día/s
+                                        </td>
+                                        <t t-if="o.name">
+                                            <td>
+                                                <span t-field="o.name"/>
+                                            </td>
                                         </t>
-                                    </td>
-                                </tr>
+                                    </tr>
+                                </t>
                             </tbody>
                         </table>
                     </div><br/><br/>
                     <div class="row">
                         <div class="col-xs-6">
                             FIRMA DEL TRABAJADOR
-                            <div style="width: 300px; border: 2px solid; height: 100px;" />
+                            <div style="width: 300px; border: 1px solid; height: 100px;" />
                         </div>
                         <div class="col-xs-5 col-xs-offset-1">
                             VISTO BUENO DEL RESPONSABLE
-                            <div style="width: 300px; border: 2px solid; height: 100px;" />
+                            <div style="width: 300px; border: 1px solid; height: 100px;" />
                         </div>
                     </div>
                     
