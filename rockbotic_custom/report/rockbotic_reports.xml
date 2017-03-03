@@ -498,7 +498,7 @@
                             </div>
                         </div>
                         <div class="page">
-                            <div style="-webkit-transform: rotate(-90deg);font-size: 10px;position: relative;left: -355px;bottom:-350px">
+                            <div style="-webkit-transform: rotate(-90deg);font-size: 10px;position: relative;left: -430px;bottom:-350px">
                                 <span t-field="company.company_registry"/>
                             </div>
                             <table class="table table-condensed" style="font-size:9pt">
@@ -1608,7 +1608,7 @@
                     <div>
                         <table class="table table-condensed" style="border-top-style:hidden">
                             <tr>
-                                <td>NOMBRE COMPLETO DEL TRABADOR</td>
+                                <td>NOMBRE COMPLETO DEL TRABAJADOR</td>
                                 <td style="width: 60%">
                                     <div style="width: 100%; border: 1px solid; height: 20px;" >
                                         <span t-field="o.employee_id.name"/>
