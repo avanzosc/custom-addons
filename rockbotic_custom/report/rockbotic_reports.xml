@@ -610,15 +610,9 @@
                                 </t>
                                 <br/>
                             </t>
-                            <t t-if="o.payment_term">
-                                <strong>Payment Term:</strong>
-                                <t t-if="o.payment_term.note">
-                                    <span t-field="o.payment_term.note"/>
-                                </t>
-                                <t t-if="not o.payment_term.note">
-                                    <span t-field="o.payment_term.name"/>
-                                </t>
-                                <br/>
+                            <t t-if="o.date_due">
+                                <strong>Date due:</strong>
+                                <span t-field="o.date_due" />
                             </t>
                             <t t-if="o.partner_bank_id">
                                 <strong>Número de cuenta:</strong>
