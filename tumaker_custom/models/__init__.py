@@ -7,7 +7,7 @@ from . import sale
 from . import account_analytic_line
 from . import project
 from . import purchase_order
-from . import stock_inventory
+from . import stock
 from . import account_invoice
 from . import product
 from . import res_partner
