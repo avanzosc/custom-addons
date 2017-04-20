@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="account.action_account_analytic_account_tree2" model="ir.actions.act_window">
+            <field name="context">{'from_date': context.get('from_date'), 'to_date': context.get('to_date')}</field>
+        </record>
+        <record id="account.action_account_tree1" model="ir.actions.act_window">
+            <field name="context">{'account_id':active_id, 'from_date': context.get('from_date'), 'to_date': context.get('to_date')}</field>
+        </record>
+    </data>
+</openerp>

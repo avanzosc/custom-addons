@@ -26,6 +26,7 @@
         "views/product_view.xml",
         "views/igalia_report_view.xml",
         "views/igalia_custom_view.xml",
+        "views/account_analytic_view.xml"
     ],
     "installable": True,
 }
