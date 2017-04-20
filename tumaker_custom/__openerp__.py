@@ -30,6 +30,7 @@
     "website": "http://www.avanzosc.es",
     "complexity": "easy",
     "data": ['security/ir.model.access.csv',
+             'data/cron_data.xml',
              'views/sale_order_view.xml',
              'views/account_analytic_account_view.xml',
              'views/timesheet_sheet_view.xml',
@@ -46,6 +47,7 @@
              'views/report_purchase_order.xml',
              'views/res_partner_view.xml',
              'wizard/stock_transfer_details_view.xml',
+             'report/account_entries_report_view.xml'
              ],
     "installable": True,
     "auto_install": False,

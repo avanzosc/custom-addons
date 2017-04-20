@@ -252,3 +252,44 @@ class TestTumakerCustom(common.TransactionCase):
         self.assertEqual(sale.sale_note,
                          self.env.user.company_id.sale_note_report)
         self.assertEqual(sale.sale_note, note)
+
+    def test_do_detailed_transfer_more_qty(self):
+        purchase_line_vals = {
+            'product_id': self.product_id.id,
+            'order_id': self.purchase_id.id,
+            'product_qty': 15,
+            'price_unit': 20,
+            'name': 'test purchase line',
+            'date_planned': fields.Date.today()
+        }
+        self.purchase_line_model.create(purchase_line_vals)
+        self.purchase_id.signal_workflow('purchase_confirm')
+        picking = self.purchase_id.mapped('order_line.move_ids.picking_id')[:1]
+        self.assertEqual(picking.state, 'assigned')
+        picking.do_enter_transfer_details()
+        pre_line_count = len(picking.move_lines)
+        for line in picking.move_lines:
+            self.assertTrue(line.purchase_line_id)
+        wiz = self.wiz_obj.with_context({
+            'active_id': picking.id,
+            'active_ids': [picking.id],
+            'active_model': 'stock.picking'
+        }).create({'picking_id': picking.id})
+        wiz.item_ids[:1].quantity += 3
+        wiz.do_detailed_transfer()
+        post_line_count = len(picking.move_lines)
+        self.assertNotEqual(pre_line_count, post_line_count)
+        for line in picking.move_lines:
+            self.assertTrue(line.purchase_line_id)
+
+    def test_get_move_analysis_report(self):
+        invoice = self.env.ref('account.invoice_1')
+        invoice.journal_id.update_posted = True
+        invoice.signal_workflow('invoice_cancel')
+        invoice.action_cancel_draft()
+        invoice.invoice_line.write({'product_id': self.product_id.id})
+        invoice.signal_workflow('invoice_open')
+        rep_model = self.env['account.entries.report']
+        self.assertTrue(rep_model.search([('product_id', '!=', False)]))
+        self.assertFalse(rep_model.search(
+            [('product_id', '!=', False), ('product_categ_id', '=', False)]))
