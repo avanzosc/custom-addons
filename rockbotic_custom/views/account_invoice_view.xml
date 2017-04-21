@@ -9,6 +9,9 @@
                 <filter name="group_by_partner_id" position="before">
                     <filter string="Journal" context="{'group_by':'journal_id'}"/>
                 </filter>
+                <filter name="group_by_partner_id" position="after">
+                    <filter string="Event" context="{'group_by':'event_id'}"/>
+                </filter>
             </field>
         </record>
 

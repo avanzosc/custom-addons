@@ -449,6 +449,7 @@ msgstr "Tiempo estimado para completar la tarea"
 
 #. module: rockbotic_custom
 #: view:event.track:rockbotic_custom.view_event_track_search_inh_rockbotic
+#: view:account.invoice:rockbotic_custom.view_account_invoice_filter_inh_rockbotic
 msgid "Event"
 msgstr "Evento"
 
