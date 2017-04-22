@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="sale_order_shipped_view_search" model="ir.ui.view">
+            <field name="name">sale.order.shipped.search</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <filter string="Done" position="after">
+                    <filter string="Shipped" domain="[('shipped','=',True)]" help="Picking done"/>
+                    <filter string="Not shipped" domain="[('shipped','=',False)]" help="Picking is not transferred"/>
+                </filter>
+            </field>
+        </record>
+
+        <record id="sale_order_shipped_view_tree" model="ir.ui.view">
+            <field name="name">sale.order.shipped.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <field name="state" position="after">
+                    <field name="shipped"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

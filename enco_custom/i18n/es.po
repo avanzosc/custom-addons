@@ -1,0 +1,73 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* enco_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-25 09:29+0000\n"
+"PO-Revision-Date: 2016-11-25 10:30+0100\n"
+"Last-Translator: Esther Martín <esthermartin@avanzosc.es>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: enco_custom
+#: model:ir.model,name:enco_custom.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: enco_custom
+#: view:sale.order:enco_custom.sale_order_shipped_view_search
+msgid "Done"
+msgstr "Realizado"
+
+#. module: enco_custom
+#: view:website:report.external_layout_footer
+msgid "Email:"
+msgstr "Correo electrónico:"
+
+#. module: enco_custom
+#: view:sale.order:enco_custom.sale_order_shipped_view_search
+msgid "Not shipped"
+msgstr "No entregado"
+
+#. module: enco_custom
+#: view:website:report.external_layout_footer
+msgid "Page:"
+msgstr "Página:"
+
+#. module: enco_custom
+#: view:website:report.external_layout_footer
+msgid "Phone:"
+msgstr "Teléfono:"
+
+#. module: enco_custom
+#: view:sale.order:enco_custom.sale_order_shipped_view_search
+msgid "Picking done"
+msgstr "Albarán transferido"
+
+#. module: enco_custom
+#: view:sale.order:enco_custom.sale_order_shipped_view_search
+msgid "Picking is not transferred"
+msgstr "El albarán aún no se ha transferido"
+
+#. module: enco_custom
+#: view:sale.order:enco_custom.sale_order_shipped_view_search
+msgid "Shipped"
+msgstr "Entregado"
+
+#. module: enco_custom
+#: view:website:report.external_layout_footer
+#: view:website:report.external_layout_header
+msgid "VAT:"
+msgstr "CIF:"
+
+#. module: enco_custom
+#: view:website:report.external_layout_footer
+msgid "Website:"
+msgstr "Sitio web:"
