@@ -16,7 +16,7 @@
     "depends": [
         "product",
         "purchase",
-        "crm",
+        "crm_claim",
         "mail",
         "marketing",
         "sale_order_create_event",
@@ -39,7 +39,8 @@
         "account_analytic_analysis_recurring_day",
         "website_quote",
         "event_registration_sepa",
-        "event_track_info"
+        "event_track_info",
+        "project_issue"
     ],
     "data": [
         "wizard/crm_make_sale_view.xml",

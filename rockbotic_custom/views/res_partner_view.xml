@@ -18,7 +18,48 @@
                 </field>
             </field>
         </record>
-
+        <record id="view_res_partner_form_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.res.partner.form.inh.rockbotic</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="crm_claim.view_claim_res_partner_info_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='claim_count']/.." position="attributes">
+                    <attribute name="context"></attribute>
+                    <attribute name="type">object</attribute>
+                    <attribute name="name">show_crm_claims_from_partner</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="res_partner_issues_button_view_inh_rockbotic" model="ir.ui.view">
+            <field name="name">res.partner.issues.button.view.inh.rockbotic</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="project_issue.res_partner_issues_button_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='issue_count']/.." position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_partners_form_crm_calls_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.partners.form.crm.calls.inh.rockbotic</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="crm.view_partners_form_crm_calls" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='phonecall_count']/.." position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_task_partner_info_form_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.task.partner.info.form.inh.rockbotic</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="project.view_task_partner_info_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='task_count']/.." position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
         <record id="view_partner_tree_inh_rockbotic" model="ir.ui.view">
             <field name="name">view.partner.tree.inh.rockbotic</field>
             <field name="model">res.partner</field>
@@ -29,7 +70,6 @@
                 </field>
             </field>
         </record>
-
         <record id="birthdate_date_inh_rockbotic" model="ir.ui.view">
             <field name="name">birthdate.date.inh.rockbotic</field>
             <field name="model">res.partner</field>
@@ -70,7 +110,6 @@
                 </field>
             </field>
         </record>
-
         <record model="ir.ui.view" id="res_partner_contact_kanban_view">
             <field name="name">res.partner.contact.kanban</field>
             <field name="model">res.partner</field>
@@ -141,7 +180,6 @@
                 </kanban>
             </field>
         </record>
-
         <record model="ir.ui.view" id="res_partner_contact_form_view">
             <field name="name">res.partner.contact.form</field>
             <field name="model">res.partner</field>

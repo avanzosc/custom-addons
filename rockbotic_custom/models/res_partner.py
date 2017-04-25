@@ -1,11 +1,18 @@
 # -*- coding: utf-8 -*-
 # (c) 2016 Alfredo de la Fuente - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
-from openerp import models, fields
+from openerp import models, fields, api
 
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
+
+    @api.multi
+    def _compute_claim_count(self):
+        claim_obj = self.env['crm.claim']
+        for partner in self:
+            partner.claim_count = len(claim_obj.search(
+                [('partner_id', 'child_of', partner.ids)]))
 
     magazine = fields.Boolean(string='Magazine', default=False)
     web_blog = fields.Boolean(string='Web/Blog', default=False)
@@ -25,3 +32,16 @@ class ResPartner(models.Model):
         comodel_name='res.partner', inverse_name='parent_id',
         string='Contacts',
         domain=[('active', '=', True), ('registered_partner', '=', False)])
+    claim_count = fields.Integer(compute='_compute_claim_count')
+
+    @api.multi
+    def show_crm_claims_from_partner(self):
+        claim_obj = self.env['crm.claim']
+        claims = claim_obj.search([('partner_id', 'child_of', self.ids)])
+        res = {'view_mode': 'tree,form',
+               'res_model': 'crm.claim',
+               'view_id': False,
+               'type': 'ir.actions.act_window',
+               'view_type': 'form',
+               'domain': [('id', 'in', claims.ids)]}
+        return res
