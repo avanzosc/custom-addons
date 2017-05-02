@@ -10,9 +10,9 @@ class TestCCGCustom(common.TransactionCase):
     def setUp(self):
         super(TestCCGCustom, self).setUp()
         self.account_model = self.env['account.analytic.account']
-        self.project_model = self.env['project.project']
         self.packaging_obj = self.env['product.packaging']
         self.product_1 = self.env.ref('product.product_product_6')
+        self.partner_model = self.env['res.partner']
         self.product_packaging1 = self.packaging_obj.create({
             'product_tmpl_id': self.product_1.product_tmpl_id.id,
             'ul': self.ref('product.product_ul_box'),
@@ -51,9 +51,6 @@ class TestCCGCustom(common.TransactionCase):
                         'date_start': '2025-01-15',
                         'date': '2025-02-28'}
         self.account = self.account_model.create(account_vals)
-        project_vals = {'name': 'project 1',
-                        'analytic_account_id': self.account.id}
-        self.project = self.project_model.create(project_vals)
         self.sale_order = self.env['sale.order'].create(
             {'partner_id': self.ref('base.res_partner_2'),
              'project_id': self.account.id})
@@ -87,3 +84,7 @@ class TestCCGCustom(common.TransactionCase):
                          self.product_1.name)
         self.assertEqual(self.product_1.get_real_code(self.partner2),
                          self.product_1.default_code)
+
+    def test_default_user(self):
+        partner = self.partner_model.create({'name': 'Testing'})
+        self.assertEqual(partner.user_id.id, self.env.uid)
