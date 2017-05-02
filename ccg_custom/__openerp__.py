@@ -15,11 +15,13 @@
     "depends": [
         "procurement",
         "mrp",
-        "sale",
         "sale_order_dates",
+        "crm_claim",
     ],
     "category": "Custom Module",
     "data": [
+        "security/security.xml",
+        "security/ir.model.access.csv",
         "views/mrp_production_view.xml",
         "views/product_packaging_view.xml",
         "views/sale_order_view.xml",
