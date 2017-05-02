@@ -17,6 +17,7 @@
         "mrp",
         "sale_order_dates",
         "crm_claim",
+        "product_supplierinfo_for_customer",
     ],
     "category": "Custom Module",
     "data": [
