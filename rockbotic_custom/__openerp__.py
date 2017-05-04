@@ -40,7 +40,7 @@
         "website_quote",
         "event_registration_sepa",
         "event_track_info",
-        "project_issue"
+        "project_issue",
     ],
     "data": [
         "wizard/crm_make_sale_view.xml",
