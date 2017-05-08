@@ -18,6 +18,7 @@
         "sale_order_dates",
         "crm_claim",
         "product_supplierinfo_for_customer",
+        "sale_stock",
     ],
     "category": "Custom Module",
     "data": [
