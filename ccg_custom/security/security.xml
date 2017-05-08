@@ -72,5 +72,39 @@
             <field name="domain_force">[(1,'=',1)]</field>
             <field name="groups" eval="[(4, ref('base.group_sale_salesman_all_leads'))]"/>
         </record>
+        <!-- product supplierinfo -->
+        <record id="supplierinfo_personal_rule" model="ir.rule">
+            <field name="name">Personal Customer Supplierinfo</field>
+            <field ref="product.model_product_supplierinfo" name="model_id"/>
+            <field name="domain_force">[('name.user_id','=',user.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_sale_salesman'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record id="supplierinfo_all_rule" model="ir.rule">
+            <field name="name">All supplierinfo</field>
+            <field ref="product.model_product_supplierinfo" name="model_id"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('base.group_sale_salesman_all_leads'))]"/>
+        </record>
+        <!-- pricelist supplierinfo -->
+        <record id="pricelistsupplierinfo_personal_rule" model="ir.rule">
+            <field name="name">Personal Customer Pricelist Supplierinfo</field>
+            <field ref="product.model_pricelist_partnerinfo" name="model_id"/>
+            <field name="domain_force">[('partner.user_id','=',user.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_sale_salesman'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record id="supplierinfo_all_rule" model="ir.rule">
+            <field name="name">All Pricelist Supplierinfo</field>
+            <field ref="product.model_pricelist_partnerinfo" name="model_id"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('base.group_sale_salesman_all_leads'))]"/>
+        </record>
     </data>
 </openerp>

@@ -58,5 +58,7 @@
                 </filter>
             </field>
         </record>
+        
+        <menuitem id="base.menu_invoiced" name="Invoicing" parent="base.menu_base_partner" sequence="5" groups="base.group_sale_salesman_all_leads"/>
     </data>
 </openerp>
