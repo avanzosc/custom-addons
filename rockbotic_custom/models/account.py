@@ -2,7 +2,7 @@
 # © 2016 Esther Martín - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-from openerp import models, fields
+from openerp import api, models, fields
 
 
 class AccountTax(models.Model):
@@ -17,3 +17,11 @@ class AccountAnalyticAccont(models.Model):
 
     recurring_first_day = fields.Boolean(default=True)
     recurring_last_day = fields.Boolean(default=False)
+
+    @api.model
+    def _prepare_invoice_data(self, contract):
+        res = super(AccountAnalyticAccont,
+                    self)._prepare_invoice_data(contract)
+        if 'comment' in res and not res['comment']:
+            del res['comment']
+        return res
