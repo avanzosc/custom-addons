@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-19 11:40+0000\n"
-"PO-Revision-Date: 2017-04-19 17:29+0100\n"
+"POT-Creation-Date: 2017-05-18 08:03+0000\n"
+"PO-Revision-Date: 2017-05-18 10:07+0100\n"
 "Last-Translator: Ainara Galdona <ainaragaldona@avanzosc.es>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -32,6 +32,11 @@ msgid "Allow Zero Costs"
 msgstr "Permitir costes a cero"
 
 #. module: tumaker_custom
+#: view:stock.move:tumaker_custom.view_move_search
+msgid "Analytic"
+msgstr "Analítica"
+
+#. module: tumaker_custom
 #: model:ir.model,name:tumaker_custom.model_account_analytic_account
 msgid "Analytic Account"
 msgstr "Cuenta analítica"
@@ -40,6 +45,11 @@ msgstr "Cuenta analítica"
 #: model:ir.model,name:tumaker_custom.model_account_analytic_line
 msgid "Analytic Line"
 msgstr "Línea analítica"
+
+#. module: tumaker_custom
+#: field:stock.move,analytic_account:0
+msgid "Analytic account"
+msgstr "Cuenta analítica"
 
 #. module: tumaker_custom
 #: field:res.partner,application_ids:0
@@ -166,9 +176,19 @@ msgstr ""
 "promete al cliente según los tiempos de entrega definidos en el producto."
 
 #. module: tumaker_custom
+#: field:stock.move,date_done:0
+msgid "Date done"
+msgstr "Fecha realizado"
+
+#. module: tumaker_custom
 #: view:website:account.report_invoice_document
 msgid "Date due:"
 msgstr "Vencimiento:"
+
+#. module: tumaker_custom
+#: help:stock.move,date_done:0
+msgid "Date of Completion"
+msgstr "Fecha de realización"
 
 #. module: tumaker_custom
 #: view:res.company:tumaker_custom.sale_note_report_company_view_form
@@ -500,6 +520,11 @@ msgid "Payment Term:"
 msgstr "Plazo de pago:"
 
 #. module: tumaker_custom
+#: model:ir.model,name:tumaker_custom.model_stock_picking
+msgid "Picking List"
+msgstr "Albarán"
+
+#. module: tumaker_custom
 #: model:ir.model,name:tumaker_custom.model_stock_transfer_details
 msgid "Picking wizard"
 msgstr "Asistente de albarán"
@@ -602,6 +627,12 @@ msgid "Raise Error"
 msgstr "Raise Error"
 
 #. module: tumaker_custom
+#: model:ir.actions.act_window,name:tumaker_custom.action_move_receipts_form
+#: model:ir.ui.menu,name:tumaker_custom.menu_stock_receipts_view
+msgid "Receipts Moves"
+msgstr "Material recibido"
+
+#. module: tumaker_custom
 #: view:website:tumaker_custom.report_tumaker_contract_summary
 msgid "Reference:"
 msgstr "Referencia:"
@@ -687,6 +718,16 @@ msgid "Start Date:"
 msgstr "Fecha de inicio:"
 
 #. module: tumaker_custom
+#: model:ir.model,name:tumaker_custom.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento stock"
+
+#. module: tumaker_custom
+#: field:stock.move,price_subtotal:0
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#. module: tumaker_custom
 #: view:website:tumaker_custom.tumaker_report_picking
 msgid "Subtotala"
 msgstr "Subtotala"
@@ -715,6 +756,11 @@ msgstr "Tareas"
 #: view:stock.picking:tumaker_custom.view_picking_form_valued
 msgid "Taxes"
 msgstr "Impuesto"
+
+#. module: tumaker_custom
+#: view:stock.move:tumaker_custom.view_move_search
+msgid "Transferred"
+msgstr "Transferido"
 
 #. module: tumaker_custom
 #: view:purchase.order:tumaker_custom.purchase_order_form

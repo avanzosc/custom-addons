@@ -12,7 +12,7 @@ account-payment
 avanzosc-addons https://github.com/avanzosc/odoo-addons
 mrp-repair-addons https://github.com/avanzosc/mrp-repair-addons
 crm-addons https://github.com/avanzosc/crm-addons
+hr-addons https://github.com/avanzosc/hr-addons
 event-wip https://github.com/avanzosc/event-wip
 vauxoo-addons https://github.com/Vauxoo/addons-vauxoo
 serviciosbaeza-addons https://github.com/serviciosbaeza/serviciosbaeza-odoo-addons
-
