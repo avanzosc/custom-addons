@@ -11,7 +11,7 @@
                 "sale_service",
                 "account_analytic_analysis",
                 "product_analytic",
-                "purchase",
+                "purchase_discount",
                 "stock",
                 "account_invoice_line_lot",
                 "account_payment_partner",
@@ -19,7 +19,7 @@
                 "stock_valued_picking_report",
                 "warning",
                 "product_pricelist_rules",
-                "account_due_list"
+                "account_due_list",
                 ],
     "author": "Avanzosc, S.L.",
     "contributors": [

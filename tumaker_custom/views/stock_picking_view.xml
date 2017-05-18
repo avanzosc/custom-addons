@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <openerp>
     <data>
+
         <record id="date_done_stock_picking_view_form" model="ir.ui.view">
             <field name="name">date.done.stock.picking.form</field>
             <field name="model">stock.picking</field>
@@ -12,7 +13,7 @@
                 </field>
             </field>
         </record>
-        
+
         <record id="view_picking_form_valued" model="ir.ui.view">
             <field name="name">stock.picking.valued.form</field>
             <field name="model">stock.picking</field>
@@ -26,5 +27,46 @@
                 </page>
             </field>
         </record>
+
+        <record id="stock_move_tree" model="ir.ui.view">
+            <field name="name">Stock Moves</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.stock_move_tree"/>
+            <field name="arch" type="xml">
+                <field name="state" position="before">
+                    <field name="analytic_account"/>
+                    <field name="purchase_price_unit"/>
+                    <field name="purchase_discount"/>
+                    <field name="price_subtotal"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_move_search" model="ir.ui.view">
+            <field name="name">stock.move.search</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_search"/>
+            <field name="arch" type="xml">
+                <filter name="groupby_date" position="after">
+                    <filter name="groupby_analytic" string="Analytic" context="{'group_by':'analytic_account'}" />
+                    <filter name="groupby_datedone" string="Transferred" context="{'group_by':'date_done'}" />
+                </filter>
+            </field>
+        </record>
+
+        <record id="action_move_receipts_form" model="ir.actions.act_window">
+            <field name="name">Receipts Moves</field>
+            <field name="res_model">stock.move</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('purchase_line_id', '!=', False)]</field>
+            <field name="context">{'search_default_groupby_analytic':1, 'search_default_groupby_datedone':1}</field>
+            <field name="view_id" ref="stock.stock_move_tree"/>
+            <field name="search_view_id" ref="stock.view_move_search"/>
+        </record>
+
+        <menuitem action="action_move_receipts_form" id="menu_stock_receipts_view"
+                  parent="stock.menu_traceability" sequence="1"/>
     </data>
 </openerp>
