@@ -293,3 +293,10 @@ class TestTumakerCustom(common.TransactionCase):
         self.assertTrue(rep_model.search([('product_id', '!=', False)]))
         self.assertFalse(rep_model.search(
             [('product_id', '!=', False), ('product_categ_id', '=', False)]))
+
+    def test_move_compute_subtotal(self):
+        for move in self.picking.move_lines:
+            subtotal = (
+                move.purchase_line_id.price_unit * move.product_uom_qty *
+                (1 - (move.purchase_line_id.discount / 100)))
+            self.assertEqual(move.price_subtotal, subtotal)
