@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="crm_lead_extended_view_form" model="ir.ui.view">
+            <field name="name">crm.lead.extended.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_leads"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="before">
+                    <field name="school_id"/>
+                    <field name="event_id"/>
+                    <field name="account_type"/>
+                    <field name="account_number"/>
+                </field>
+                <field name="email_from" position="before">
+                    <field name="birth_date"/>
+                    <field name="course" />
+                    <field name="rockbotic_before" />
+                    <field name="vat" />
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
