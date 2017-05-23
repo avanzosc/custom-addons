@@ -1,24 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+        <record model="ir.actions.act_window" id="crm_lead_enroll_action">
+            <field name="name">Enrollments</field>
+            <field name="res_model">crm.lead</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('type','=','enroll')]</field>
+            <field name="view_id" ref="crm.crm_case_tree_view_leads"/>
+            <field name="search_view_id" ref="crm.view_crm_case_leads_filter"/>
+        </record>
+
+        <menuitem name="Enrollments" id="crm_lead_enroll_menu"
+                  parent="base.menu_sales"
+                  sequence="4" action="crm_lead_enroll_action"/>
+
         <record id="crm_lead_extended_view_form" model="ir.ui.view">
             <field name="name">crm.lead.extended.form</field>
             <field name="model">crm.lead</field>
             <field name="inherit_id" ref="crm.crm_case_form_view_leads"/>
             <field name="arch" type="xml">
+                <button name="%(crm.action_crm_lead2opportunity_partner)d"
+                        position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </button>
+                <button name="%(crm.action_crm_lead2opportunity_partner)d"
+                        position="after">
+                    <button name="button_convert2opportunity" string="Convert to Opportunity"
+                            type="object" help="Convert to Opportunity"
+                            class="oe_highlight"/>
+                </button>
+                <field name="partner_name" position="after">
+                    <field name="vat" />
+                </field>
+                <field name="partner_id" position="before">
+                    <field name="rockbotic_before" />
+                </field>
+                <field name="partner_id" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                </field>
+                <field name="partner_id" position="after">
+                    <field name="parent_id" readonly="True" />
+                </field>
                 <field name="user_id" position="before">
-                    <field name="school_id"/>
-                    <field name="event_id"/>
-                    <field name="account_type"/>
+                    <field name="school_id" widget="selection" />
+                    <field name="event_id" widget="selection" />
                     <field name="account_number"/>
                 </field>
-                <field name="email_from" position="before">
-                    <field name="birth_date"/>
+                <xpath expr="//field[@name='contact_name']/.." position="after">
+                    <field name="birth_date" />
                     <field name="course" />
-                    <field name="rockbotic_before" />
-                    <field name="vat" />
+                </xpath>
+                <field name="opt_out" position="after">
+                    <field name="journal_permission" />
+                    <field name="blog_permission" />
+                    <field name="media_permission" />
                 </field>
             </field>
         </record>
+
     </data>
 </openerp>

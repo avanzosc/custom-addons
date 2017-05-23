@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="res_partner_enroll_search_form_view" model="ir.ui.view">
+            <field name="name">res.partner.enroll.search.form</field>
+            <field name="model">res.partner.enroll.search</field>
+            <field name="arch" type="xml">
+                <form string="Select Partners">
+                    <group name="name">
+                        <field name="rockbotic_before" invisible="1" />
+                        <field name="item_ids" nolabel="1" colspan="4"
+                               attrs="{'invisible': [('rockbotic_before', '=', False)]}">
+                            <tree editable="top" create="false">
+                                <field name="checked" />
+                                <field name="partner_id" />
+                                <field name="parent_partner_id" />
+                                <field name="parent_vat" />
+                            </tree>
+                        </field>
+                        <div class="oe_clear" />
+                        <field name="partner_id" class="oe_inline"
+                               attrs="{'readonly': [('rockbotic_before', '=', True)]}"/>
+                        <field name="parent_id" class="oe_inline" />
+                    </group>
+                    <footer>
+                        <button name="action_apply_same_parent"
+                                string="Create Opportunity (same parent)"
+                                type="object" class="oe_highlight"
+                                attrs="{'invisible': [('rockbotic_before', '=', False)]}" />
+                        <button name="action_apply" string="Create Opportunity" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="res_partner_enroll_search_action"
+                model="ir.actions.act_window">
+            <field name="name">Search existing partner for enrollment</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner.enroll.search</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="res_partner_enroll_search_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>
