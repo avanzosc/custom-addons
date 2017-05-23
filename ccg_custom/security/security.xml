@@ -100,7 +100,7 @@
             <field name="perm_create" eval="False"/>
             <field name="perm_unlink" eval="False"/>
         </record>
-        <record id="supplierinfo_all_rule" model="ir.rule">
+        <record id="partnerinfo_all_rule" model="ir.rule">
             <field name="name">All Pricelist Supplierinfo</field>
             <field ref="product.model_pricelist_partnerinfo" name="model_id"/>
             <field name="domain_force">[(1,'=',1)]</field>
