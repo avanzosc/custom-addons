@@ -1332,3 +1332,38 @@ msgstr "Mostrar en pedidos de venta"
 msgid "town"
 msgstr "Población"
 
+#. module: rockbotic_custom
+#: code:addons/rockbotic_custom/models/event.py:34
+#, python-format
+msgid "Email template not found for event registration"
+msgstr "Plantilla de email no encontrada para registro de evento"
+
+#. module: rockbotic_custom
+#: field:event.event,sale_order_payer:0
+msgid "Event payer"
+msgstr "Pagador evento"
+
+#. module: rockbotic_custom
+#: code:addons/rockbotic_custom/models/event.py:20
+#, python-format
+msgid "The father of the student %s, without email."
+msgstr "El padre del estudiante %s, sin email."
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_form_inh_rockbotic3
+msgid "Send email to parents"
+msgstr "Mandar email a los padres"
+
+#. module: rockbotic_custom
+#: code:addons/rockbotic_custom/models/hr_holidays.py:24
+#, python-format
+msgid ""
+"<span><span style=\"font-weight: bold;\">Date start:</span> {} <span style="
+"\"font-weight: bold;\">Date end:</span> {} <span style=\"font-weight: bold;"
+"\">days:</span> {}<br></span>{}"
+msgstr ""
+"<span><span style=\"font-weight: bold;\">Fecha inicio:</span> {} <span style="
+"\"font-weight: bold;\">Fecha fin:</span> {} <span style=\"font-weight: bold;"
+"\">días:</span> {}<br></span>{}"
+
+

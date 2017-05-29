@@ -2,6 +2,7 @@
 # Copyright © 2017 Alfredo de la Fuente - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 import openerp.tests.common as common
+from openerp import exceptions
 
 
 class TestRockboticCustom(common.TransactionCase):
@@ -11,7 +12,16 @@ class TestRockboticCustom(common.TransactionCase):
         self.claim_model = self.env['crm.claim']
         self.invoice_model = self.env['account.invoice']
         self.ir_values_obj = self.env['ir.values']
+        self.partner_model = self.env['res.partner']
+        self.holiday_model = self.env['hr.holidays']
+        self.contract_model = self.env['hr.contract']
+        self.wiz_workable_model = self.env['wiz.calculate.workable.festive']
+        self.message_model = self.env['mail.message']
+        self.parent = self.partner_model.create({
+            'name': 'Parent Partner',
+        })
         self.partner = self.browse_ref('base.res_partner_address_20')
+        self.partner.parent_id = self.parent.id
         claim_vals = {'name': 'Rockbotic test',
                       'partner_id': self.partner.id}
         self.claim = self.claim_model.create(claim_vals)
@@ -20,6 +30,14 @@ class TestRockboticCustom(common.TransactionCase):
         self.comment = u'Testing ir value'
         self.ir_values_obj.set_default(
             'account.invoice', 'comment', self.comment)
+        event_vals = {'name': 'test rockbotic_custom',
+                      'date_begin': '2025-01-20 15:00:00',
+                      'date_end': '2025-01-30 16:00:00'}
+        self.event = self.env['event.event'].create(event_vals)
+        registration_vals = {'event_id': self.event.id,
+                             'partner_id': self.partner.id}
+        self.registration = self.env['event.registration'].create(
+            registration_vals)
 
     def test_rockbotic_custom(self):
         self.assertEqual(self.partner.claim_count, 1,
@@ -34,3 +52,46 @@ class TestRockboticCustom(common.TransactionCase):
         invoice = self.invoice_model.search([
             ('origin', '=', self.contract.code)])
         self.assertEqual(invoice.comment, self.comment)
+
+    def test_send_email(self):
+        self.parent.write({'email': 'test@test.com',
+                           'notify_email': 'none'})
+        self.event._send_email_to_registrations('email body')
+        self.parent.email = False
+        with self.assertRaises(exceptions.Warning):
+            self.event._validate_registrations_email()
+        self.env.ref(
+            'event_registration_mass_mailing.email_template_event'
+            '_registration', False).unlink()
+        with self.assertRaises(exceptions.Warning):
+            self.event._send_email_to_registrations('email body')
+
+    def test_button_validate_holiday(self):
+        contract = self.contract_model.create({
+            'name': u'Contract {}'.format(self.partner.name),
+            'employee_id': self.ref('hr.employee_fp'),
+            'partner': self.partner.id,
+            'type_id': self.ref('hr_contract.hr_contract_type_emp'),
+            'wage': 500,
+            'date_start': '2025-01-01'})
+        workable_wiz = self.wiz_workable_model.with_context(
+            active_id=contract.id).create({})
+        workable_wiz.button_calculate_workables_and_festives()
+        holiday_vals = {
+            'name': 'Rockbotic holiday',
+            'holiday_status_id': self.ref('hr_holidays.holiday_status_sl'),
+            'employee_id': self.ref('hr.employee_fp'),
+            'date_from': '2025-06-01 08:00:00',
+            'date_to': '2025-06-15 18:00:00'}
+        holiday = self.holiday_model.create(holiday_vals)
+        holiday.button_validate_holiday()
+        subtype_id = self.ref(
+            'hr_holidays.mt_holidays_confirmed')
+        cond = [('model', '=', 'hr.holidays'),
+                ('res_id', '=', holiday.id),
+                ('subtype_id', '=', subtype_id)]
+        message = self.message_model.search(cond, limit=1)
+        self.assertEquals(len(message), 1,
+                          'Message with holidays not found')
+        self.assertIn('Date start:', message.body,
+                      'Date start not found in message body')
