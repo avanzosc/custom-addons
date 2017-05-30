@@ -21,7 +21,6 @@
                 </field>
             </field>
         </record>
-        
         <record id="event_registration_info_view_form" model="ir.ui.view">
             <field name="name">event.registration.info.form</field>
             <field name="model">event.registration</field>
@@ -64,6 +63,18 @@
                     <filter string="Address" domain="[]" context="{'group_by': 'address_id'}"/>
                 </filter>
             </field>
+        </record>
+        <record id="event_registration_mass_mailing.email_template_event_registration" model="email.template">
+            <field name="partner_to">${object.partner_id.parent_id.id}</field>
+            <field name="email_to">${object.parent_email}</field>
+        </record>
+        <record id="event_registration_mass_mailing.action_event_registration_mass_mail" model="ir.actions.act_window">
+            <field name="context" eval="{
+                'default_composition_mode': 'mass_mail',
+                'default_use_template': True,
+                'default_partner_to': '${object.partner_id.parent_id.id}',
+                'default_template_id': ref('event_registration_mass_mailing.email_template_event_registration')}"
+            />
         </record>
     </data>
 </openerp>

@@ -41,5 +41,29 @@
                 </field>
             </field>
         </record>
+        <record id="view_event_form_inh_rockbotic2" model="ir.ui.view">
+            <field name="name">view.event.form.inh.rockbotic2</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_form"/>
+            <field name="arch" type="xml">
+                <field name="organizer_id" position="after">
+                    <field name="sale_order_payer" invisible="1"/>
+                </field>
+            </field>
+        </record>
+        <record id="view_event_form_inh_rockbotic3" model="ir.ui.view">
+            <field name="name">view.event.form.inh.rockbotic3</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event_track_assistant.view_event_form_inh_assistant"/>
+            <field name="arch" type="xml">
+                <button name="button_mass_mailing_to_organizer" position="attributes">
+                    <attribute name="attrs">{'invisible': [('sale_order_payer', '!=', 'school')]}</attribute>
+                </button>
+                <button name="button_mass_mailing_to_registrations" position="attributes">
+                    <attribute name="attrs">{'invisible': [('sale_order_payer', '!=', 'student')]}</attribute>
+                    <attribute name="string">Send email to parents</attribute>
+                </button>
+            </field>
+        </record>
     </data>
 </openerp>
