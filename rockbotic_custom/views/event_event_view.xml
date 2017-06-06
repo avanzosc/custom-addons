@@ -66,4 +66,14 @@
             </field>
         </record>
     </data>
+    <data noupdate="1">
+        <act_window name="Send email to registrations with evaluations"
+            res_model="wiz.send.email.event.evaluation"
+            src_model="event.event"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            id="action_event_evaluation_mass_mail"
+            />
+    </data>
 </openerp>
