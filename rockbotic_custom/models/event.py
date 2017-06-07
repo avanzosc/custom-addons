@@ -65,3 +65,50 @@ class EventRegistration(models.Model):
     parent_name = fields.Char(related='parent_id.name')
     parent_mobile = fields.Char(related='parent_id.mobile')
     parent_email = fields.Char(related='parent_id.email')
+    submitted_evaluation = fields.Selection(
+        [('yes', _('Yes')),
+         ('no', 'No')], string='Submitted evaluation', default='no')
+    submitted_evaluation_error = fields.Char(
+        string='Submitted evaluation error')
+
+    def _send_email_to_registrations_with_evaluation(self, body):
+        attachment_obj = self.env['ir.attachment']
+        template = self.env.ref(
+            'rockbotic_custom.email_template_event_registration_evaluation',
+            False)
+        if not template:
+            raise exceptions.Warning(
+                _("Email template not found to send evaluations to event"
+                  " registration"))
+        for registration in self:
+            vals = {'submitted_evaluation': 'no'}
+            cond = [('res_model', '=', 'event.registration'),
+                    ('res_id', '=', registration.id)]
+            attachments = attachment_obj.search(cond)
+            if len(attachments) == 0:
+                vals['submitted_evaluation_error'] = _('Attachment not found')
+            elif len(attachments) > 1:
+                vals['submitted_evaluation_error'] = _('Found more than one '
+                                                       'attachment')
+            elif not registration.partner_id.parent_id:
+                vals['submitted_evaluation_error'] = _('Student without '
+                                                       'parent')
+            elif not registration.partner_id.parent_id.email:
+                vals['submitted_evaluation_error'] = _('Parent without email')
+            else:
+                wizard = self.env['mail.compose.message'].with_context(
+                    default_composition_mode='mass_mail',
+                    default_template_id=template.id,
+                    default_use_template=True,
+                    default_attachment_ids=[(6, 0, attachments.ids)],
+                    active_id=registration.id,
+                    active_ids=registration.ids,
+                    active_model='event.registration',
+                    default_model='event.registration',
+                    default_res_id=registration.id,
+                    force_send=True
+                ).create({'body': body})
+                wizard.send_mail()
+                vals = {'submitted_evaluation': 'yes',
+                        'submitted_evaluation_error': ''}
+            registration.write(vals)

@@ -17,6 +17,9 @@ class TestRockboticCustom(common.TransactionCase):
         self.contract_model = self.env['hr.contract']
         self.wiz_workable_model = self.env['wiz.calculate.workable.festive']
         self.message_model = self.env['mail.message']
+        self.email_model = self.env['wiz.send.email.registration.evaluation']
+        self.email2_model = self.env['wiz.send.email.event.evaluation']
+        self.attachment_model = self.env['ir.attachment']
         self.parent = self.partner_model.create({
             'name': 'Parent Partner',
         })
@@ -95,3 +98,67 @@ class TestRockboticCustom(common.TransactionCase):
                           'Message with holidays not found')
         self.assertIn('Date start:', message.body,
                       'Date start not found in message body')
+
+    def test_employee_certificate(self):
+        employee = self.env.ref('hr.employee_fp')
+        employee.identification_id = '123456789'
+        employee._compute_certificate_link()
+        self.assertIn('123456789', employee.certificate_link,
+                      'Bad employee certificate link')
+
+    def test_send_email_with_evaluations(self):
+        registration_vals = {'event_id': self.event.id,
+                             'partner_id': self.partner.id}
+        registration = self.env['event.registration'].create(
+            registration_vals)
+        wiz = self.email_model.create({})
+        wiz.default_get(['body'])
+        wiz.with_context(active_ids=registration.ids).button_send_email()
+        self.assertEqual(
+            registration.submitted_evaluation, 'no',
+            'Bad send evaluation 1')
+        self.attachment_model.create({
+            'name': 'attachment 1',
+            'res_model': 'event.registration',
+            'res_id': registration.id})
+        attachment2 = self.attachment_model.create({
+            'name': 'attachment 2',
+            'res_model': 'event.registration',
+            'res_id': registration.id})
+        wiz.with_context(active_ids=registration.ids).button_send_email()
+        self.assertEqual(
+            registration.submitted_evaluation, 'no',
+            'Bad send evaluation 2')
+        attachment2.unlink()
+        parent = registration.partner_id.parent_id
+        registration.partner_id.parent_id = False
+        wiz.with_context(active_ids=registration.ids).button_send_email()
+        self.assertEqual(
+            registration.submitted_evaluation, 'no',
+            'Bad send evaluation 3')
+        registration.partner_id.parent_id = parent
+        registration.partner_id.parent_id.email = ''
+        wiz.with_context(active_ids=registration.ids).button_send_email()
+        self.assertEqual(
+            registration.submitted_evaluation, 'no',
+            'Bad send evaluation 4')
+        registration.partner_id.parent_id.email = 'parent@email.com'
+        wiz.with_context(active_ids=registration.ids).button_send_email()
+        self.assertEqual(
+            registration.submitted_evaluation, 'yes',
+            'Bad send evaluation 5')
+        wiz2 = self.email2_model.create({})
+        wiz2.default_get(['body'])
+        wiz2.with_context(active_ids=self.event.ids).button_send_email()
+        self.assertEqual(
+            registration.submitted_evaluation, 'yes',
+            'Bad send evaluation 6')
+        self.env.ref(
+            'rockbotic_custom.email_template_event_registration_evaluation',
+            False).unlink()
+        with self.assertRaises(exceptions.Warning):
+            registration._send_email_to_registrations_with_evaluation('body')
+        with self.assertRaises(exceptions.Warning):
+            wiz.default_get(['body'])
+        with self.assertRaises(exceptions.Warning):
+            wiz2.default_get(['body'])

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="wiz_send_email_registration_evaluation_form">
+            <field name="name">wiz.send.email.registration.evaluation.form</field>
+            <field name="model">wiz.send.email.registration.evaluation</field>
+            <field name="arch" type="xml">
+                <form string="Send email with evaluations to event registrations" version="7.0">
+                    <p>Registry attachments will be automatically send</p>
+                    <group>
+                        <separator string="Email body" colspan="4" />
+                        <field name="body" required="True" nolabel="1"/>
+                    </group>
+                    <footer>
+                        <button name="button_send_email" type="object"
+                            string="Send email" class="oe_highlight" />
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>
