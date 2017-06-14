@@ -14,7 +14,7 @@ class HrHolidays(models.Model):
             'hr_holidays.mt_holidays_confirmed', False)
         super(HrHolidays, self).button_validate_holiday()
         if subtype:
-            for holiday in self:
+            for holiday in self.filtered(lambda x: x.type == 'remove'):
                 cond = [('model', '=', 'hr.holidays'),
                         ('res_id', '=', holiday.id),
                         ('subtype_id', '=', subtype.id)]
