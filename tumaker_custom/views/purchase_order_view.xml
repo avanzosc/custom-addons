@@ -11,6 +11,9 @@
                 <xpath expr="//field[@name='order_line']//field[@name='account_analytic_id']" position="attributes">
                     <attribute name="required">True</attribute>
                 </xpath>
+                <field name="origin" position="attributes">
+                    <attribute name="attrs"/>
+                </field>
             </field>
         </record>
 
