@@ -14,6 +14,8 @@ class TestGalaxiaCustom(common.TransactionCase):
         self.sale_model = self.env['sale.order']
         self.event_model = self.env['event.event']
         self.wiz_add_model = self.env['wiz.event.append.assistant']
+        self.work_model = self.env['project.task.work']
+        self.export_model = self.env['wiz.export.presence.information']
         account_vals = {'name': 'account procurement service project',
                         'date_start': '2016-01-15',
                         'date': '2016-02-28'}
@@ -49,8 +51,13 @@ class TestGalaxiaCustom(common.TransactionCase):
             'february': True,
             'week4': True,
             'week5': True,
+            'monday': True,
             'tuesday': True,
-            'thursday': True}
+            'wednesday': True,
+            'thursday': True,
+            'friday': True,
+            'saturday': True,
+            'sunday': True}
         sale_vals['order_line'] = [(0, 0, sale_line_vals)]
         self.sale_order = self.sale_model.create(sale_vals)
         self.partner = self.env['res.partner'].create({
@@ -83,8 +90,26 @@ class TestGalaxiaCustom(common.TransactionCase):
         add_wiz = self.wiz_add_model.with_context(
             active_ids=event.ids).browse(dict_add_wiz.get('res_id'))
         add_wiz.action_append()
+        presences = event.mapped('track_ids.presences')
+        res = self.export_model.with_context(
+            active_ids=presences.ids).export_csv()
+        self.assertEquals(res.get('res_model'), 'wiz.export.csv',
+                          'Bad excel generation')
         session = event.track_ids[0]
         session.presences[0]._compute_allowed_partner_ids()
         self.assertEqual(len(session.allowed_partner_ids),
                          len(session.presences[0].allowed_partner_ids),
                          'Bad allowed partners')
+        project = self.env.ref('project.project_project_5')
+        project.members = [(6, 0, [self.env.user.id])]
+        work_vals = {'project': project.id,
+                     'task_id': self.ref('project.project_task_24'),
+                     'user_id': self.ref('base.user_demo'),
+                     'name': 'Test project_task_work menu',
+                     'hours': 5}
+        work = self.work_model.create(work_vals)
+        work.onchange_project()
+        self.assertEquals(work.project_manager_id, work.project.user_id,
+                          'Bad project manager in task imputation')
+        self.assertEquals(work.project_members_ids, work.project.members,
+                          'Bad project members in task imputation')

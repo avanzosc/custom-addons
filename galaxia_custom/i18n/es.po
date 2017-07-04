@@ -303,3 +303,27 @@ msgstr "Su referencia:"
 msgid "days"
 msgstr "días"
 
+#. module: galaxia_custom
+#: view:project.task.work:galaxia_custom.project_task_work_search_inh_galaxiacustom
+#: field:project.task.work,day:0
+msgid "Day of the week"
+msgstr "Día de la semana"
+
+#. module: galaxia_custom
+#: view:project.task.work:galaxia_custom.project_task_work_search_inh_galaxiacustom
+#: field:project.task.work,project_manager_id:0
+msgid "Project manager"
+msgstr "Responsable proyecto"
+
+#. module: galaxia_custom
+#: model:ir.actions.act_window,name:galaxia_custom.action_export_presences_information
+#: view:wiz.export.presence.information:galaxia_custom.wiz_export_presences_information_form_view
+msgid "Export presences information"
+msgstr "Exportar información de presencias"
+
+#. module: galaxia_custom
+#: model:ir.actions.act_window,name:galaxia_custom.action_export_presences_information
+#: view:wiz.export.presence.information:galaxia_custom.wiz_export_presences_information_form_view
+msgid "Export presences information"
+msgstr "Exportar información de presencias"
+
