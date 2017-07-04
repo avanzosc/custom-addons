@@ -12,7 +12,7 @@ class HrHolidays(models.Model):
         message_obj = self.env['mail.message']
         subtype = self.env.ref(
             'hr_holidays.mt_holidays_confirmed', False)
-        super(HrHolidays, self).button_validate_holiday()
+        res = super(HrHolidays, self).button_validate_holiday()
         if subtype:
             for holiday in self.filtered(lambda x: x.type == 'remove'):
                 cond = [('model', '=', 'hr.holidays'),
@@ -30,3 +30,4 @@ class HrHolidays(models.Model):
                             fields.Datetime.from_string(
                                 holiday.date_to).date(),
                             holiday.number_of_days_temp, message.body))
+        return res
