@@ -14,7 +14,9 @@
         <div id="wrap">
             <div class="oe_structure"/>
             <div class="container oe_student_signup">
+                <div class="row">
                 <h1>Student Sign Up</h1>
+                </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="oe_structure">
@@ -31,7 +33,8 @@
                                 <div t-attf-class="form-group #{error and 'school_id' in error and 'has-error' or ''}">
                                     <label class="col-md-3 col-sm-4 control-label" for="school_id">School</label>
                                     <div class="col-md-9 col-sm-8">
-                                        <select name="school_id" class="form-control">
+                                        <select name="school_id"
+                                                required="True" class="form-control">
                                             <option value="">select...</option>
                                             <t t-foreach="groups or []" t-as="school">
                                                 <option t-att-value="school.id">
@@ -44,7 +47,8 @@
                                 <div t-attf-class="form-group #{error and 'event_id' in error and 'has-error' or ''}">
                                     <label class="col-md-3 col-sm-4 control-label" for="group">Event</label>
                                     <div class="col-md-9 col-sm-8">
-                                        <select name="event_id" class="form-control">
+                                        <select name="event_id"
+                                                required="True" class="form-control">
                                             <option value="">select...</option>
                                             <t t-foreach="events or []" t-as="event">
                                                 <option t-att-value="event.id"

@@ -6,6 +6,15 @@
             <field name="name">Website Signup</field>
         </record>
 
+        <record model="crm.case.stage" id="crm_stage_enrolled"
+                forcecreate="1">
+            <field name="name">Enrolled</field>
+            <field name="sequence">100</field>
+            <field name="type">both</field>
+            <field name="probability">100</field>
+            <field name="on_change" eval="True" />
+        </record>
+
         <record id="menu_student_signup" model="website.menu">
             <field name="name">Class Enrollment</field>
             <field name="url">/page/student_signup</field>

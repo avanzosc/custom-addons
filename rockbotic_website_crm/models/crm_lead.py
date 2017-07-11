@@ -95,5 +95,9 @@ class CrmLead(models.Model):
     @api.multi
     def action_generate_event_registration(self, event):
         res = super(CrmLead, self).action_generate_event_registration(event)
-        self.write({'type': 'enroll'})
+        self.write({
+            'type': 'enroll',
+            'stage_id':
+            self.env.ref('rockbotic_website_crm.crm_stage_enrolled').id,
+        })
         return res
