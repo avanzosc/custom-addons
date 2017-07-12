@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-07 09:04+0000\n"
-"PO-Revision-Date: 2017-07-07 09:04+0000\n"
+"POT-Creation-Date: 2017-07-12 15:38+0000\n"
+"PO-Revision-Date: 2017-07-12 15:38+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -23,12 +23,17 @@ msgstr "&times;"
 #. module: rockbotic_website_crm
 #: field:crm.lead,account_number:0
 msgid "Account Number"
-msgstr "Account Number"
+msgstr "Cuenta IBAN"
 
 #. module: rockbotic_website_crm
 #: field:crm.lead,account_type:0
 msgid "Account type"
-msgstr "Account type"
+msgstr "Tipo de cuenta"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Available for mass mailing"
+msgstr "Disponible para envío masivo de correo"
 
 #. module: rockbotic_website_crm
 #: field:crm.lead,birth_date:0
@@ -41,9 +46,19 @@ msgid "Blog"
 msgstr "Blog"
 
 #. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Campaign"
+msgstr "Campaña"
+
+#. module: rockbotic_website_crm
 #: view:res.partner.enroll.search:rockbotic_website_crm.res_partner_enroll_search_form_view
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancelar"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Channel"
+msgstr "Canal"
 
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_extended_view_form
@@ -53,35 +68,45 @@ msgstr "Convertir a oportunidad"
 #. module: rockbotic_website_crm
 #: field:crm.lead,course:0
 msgid "Course"
-msgstr "Course"
+msgstr "Curso / Clase"
 
 #. module: rockbotic_website_crm
 #: view:res.partner.enroll.search:rockbotic_website_crm.res_partner_enroll_search_form_view
 msgid "Create Opportunity"
-msgstr "Create Opportunity"
+msgstr "Crear inscripción"
 
 #. module: rockbotic_website_crm
 #: view:res.partner.enroll.search:rockbotic_website_crm.res_partner_enroll_search_form_view
 msgid "Create Opportunity (same parent)"
-msgstr "Create Opportunity (same parent)"
+msgstr "Crear inscripción (sin cambiar padre)"
 
 #. module: rockbotic_website_crm
 #: field:res.partner.enroll.search,create_uid:0
 #: field:res.partner.enroll.search.item,create_uid:0
 msgid "Created by"
-msgstr "Created by"
+msgstr "Creado por"
 
 #. module: rockbotic_website_crm
 #: field:res.partner.enroll.search,create_date:0
 #: field:res.partner.enroll.search.item,create_date:0
 msgid "Created on"
-msgstr "Created on"
+msgstr "Creado el"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Creation Month"
+msgstr "Mes de creación"
 
 #. module: rockbotic_website_crm
 #: code:addons/rockbotic_website_crm/controllers/main.py:135
 #, python-format
 msgid "Custom Fields: "
-msgstr "Custom Fields: "
+msgstr "Campos custom: "
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Customer"
+msgstr "Cliente"
 
 #. module: rockbotic_website_crm
 #: field:res.partner.enroll.search,display_name:0
@@ -90,6 +115,19 @@ msgid "Display Name"
 msgstr "Display Name"
 
 #. module: rockbotic_website_crm
+#: model:crm.case.stage,name:rockbotic_website_crm.crm_stage_enrolled
+msgid "Enrolled"
+msgstr "Inscrito"
+
+#. module: rockbotic_website_crm
+#: code:addons/rockbotic_website_crm/models/crm_lead.py:120
+#, python-format
+msgid "Enrollment"
+msgstr "Inscripción"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_tree_view
 #: model:ir.actions.act_window,name:rockbotic_website_crm.crm_lead_enroll_action
 #: model:ir.ui.menu,name:rockbotic_website_crm.crm_lead_enroll_menu
 msgid "Enrollments"
@@ -99,7 +137,7 @@ msgstr "Inscripciones"
 #: code:addons/rockbotic_website_crm/controllers/main.py:151
 #, python-format
 msgid "Environ Fields: "
-msgstr "Environ Fields: "
+msgstr "Campos de entorno: "
 
 #. module: rockbotic_website_crm
 #: field:crm.lead,event_id:0
@@ -110,7 +148,12 @@ msgstr "Evento"
 #: code:addons/rockbotic_website_crm/models/crm_lead.py:40
 #, python-format
 msgid "Event must have been selected."
-msgstr "Event must have been selected."
+msgstr "Selecciona un evento."
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Group By"
+msgstr "Agrupar por"
 
 #. module: rockbotic_website_crm
 #: field:res.partner.enroll.search,id:0
@@ -132,6 +175,11 @@ msgstr "Item ids"
 #: field:crm.lead,journal_permission:0
 msgid "Journal"
 msgstr "Journal"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Last Message"
+msgstr "Último mensaje"
 
 #. module: rockbotic_website_crm
 #: field:res.partner.enroll.search,__last_update:0
@@ -162,6 +210,26 @@ msgid "Lead/Opportunity"
 msgstr "Iniciativa/Oportunidad"
 
 #. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Leads that are assigned to me"
+msgstr "Iniciativas asignadas a mí"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Leads that did not ask not to be included in mass mailing campaigns"
+msgstr "No incluir en campañas de envío masivo a las Iniciativas que no contestaron"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "My Leads"
+msgstr "Mis iniciativas"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "New Mail"
+msgstr "Nuevo correo"
+
+#. module: rockbotic_website_crm
 #: selection:crm.lead,blog_permission:0
 #: selection:crm.lead,journal_permission:0
 #: selection:crm.lead,media_permission:0
@@ -169,16 +237,21 @@ msgid "No"
 msgstr "No"
 
 #. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "No salesperson"
+msgstr "Sin comercial"
+
+#. module: rockbotic_website_crm
 #: field:crm.lead,parent_id:0
 #: field:crm.lead2opportunity.partner,parent_id:0
 #: field:res.partner.enroll.search.item,parent_partner_id:0
 msgid "Parent"
-msgstr "Parent"
+msgstr "Padre"
 
 #. module: rockbotic_website_crm
 #: field:res.partner.enroll.search.item,parent_vat:0
 msgid "Parent VAT"
-msgstr "Parent VAT"
+msgstr "NIF del padre"
 
 #. module: rockbotic_website_crm
 #: field:res.partner.enroll.search,parent_id:0
@@ -186,9 +259,10 @@ msgid "Parent id"
 msgstr "Parent id"
 
 #. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
 #: field:res.partner.enroll.search.item,partner_id:0
 msgid "Partner"
-msgstr "Partner"
+msgstr "Empresa"
 
 #. module: rockbotic_website_crm
 #: field:res.partner.enroll.search,partner_id:0
@@ -208,9 +282,19 @@ msgid "Rockbotic before"
 msgstr "Previamente en Rockbotic"
 
 #. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Sales Team"
+msgstr "Equipo de ventas"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Salesperson"
+msgstr "Comercial"
+
+#. module: rockbotic_website_crm
 #: field:crm.lead,school_id:0
 msgid "School"
-msgstr "Centro Escolar"
+msgstr "Centro"
 
 #. module: rockbotic_website_crm
 #: model:ir.actions.act_window,name:rockbotic_website_crm.res_partner_enroll_search_action
@@ -235,14 +319,33 @@ msgstr "Selected"
 #. module: rockbotic_website_crm
 #: field:crm.lead,media_permission:0
 msgid "Social Media"
-msgstr "Perfiles Corporativos Oficiales \"Rockbotic\" en las redes sociales ""
-"Facebook, Twitter, Youtube, Instagram y Google Plus"
+msgstr "Redes Sociales"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Source"
+msgstr "Origen"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Stage"
+msgstr "Etapa"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Student / Parent"
+msgstr "Student / Parent"
 
 #. module: rockbotic_website_crm
 #: view:website:website.layout
 #: model:website.menu,name:rockbotic_website_crm.menu_student_signup
 msgid "Student Signup"
-msgstr "Inscripciones"
+msgstr "Student Signup"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Tag"
+msgstr "Etiqueta"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup_thanks
@@ -253,7 +356,7 @@ msgstr "¡Gracias!"
 #: code:addons/rockbotic_website_crm/wizard/res_partner_enroll_search.py:83
 #, python-format
 msgid "There can only be one selected."
-msgstr "There can only be one selected."
+msgstr "Solo se puede seleccionar uno."
 
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_extended_view_form
@@ -261,9 +364,14 @@ msgid "True"
 msgstr "True"
 
 #. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Unassigned"
+msgstr "Sin asignar"
+
+#. module: rockbotic_website_crm
 #: field:crm.lead,vat:0
 msgid "Vat Number"
-msgstr "DNI / NIE"
+msgstr "DNI/NIE"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup_thanks
@@ -275,7 +383,7 @@ msgstr "Le contestaremos en breve."
 #: selection:crm.lead,journal_permission:0
 #: selection:crm.lead,media_permission:0
 msgid "Yes"
-msgstr "Sí"
+msgstr "Si"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup_thanks

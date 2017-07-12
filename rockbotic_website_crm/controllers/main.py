@@ -91,8 +91,8 @@ class StudentSignUp(http.Controller):
                       'write_date', 'user_id', 'active']
         # Allow in description
         _REQUIRED = ['name', 'partner_name', 'contact_name', 'email_from',
-                     'birth_date', 'course', 'journal_permission',
-                     'blog_permission', 'media_permission']
+                     'birth_date', 'journal_permission', 'blog_permission',
+                     'media_permission']
         # Could be improved including required from model
 
         # List of file to add to ir_attachment once we have the ID

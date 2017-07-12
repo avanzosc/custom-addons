@@ -101,3 +101,39 @@ class CrmLead(models.Model):
             self.env.ref('rockbotic_website_crm.crm_stage_enrolled').id,
         })
         return res
+
+    @api.model
+    def redirect_opportunity_view(self, opportunity_id):
+        if self.browse(opportunity_id).type == 'enroll':
+            return self.redirect_enrollment_view(opportunity_id)
+        return super(CrmLead, self).redirect_opportunity_view(opportunity_id)
+
+    @api.model
+    def redirect_enrollment_view(self, enrollment_id):
+        models_data = self.env['ir.model.data']
+        # Get enrollment views
+        dummy, form_view = models_data.get_object_reference(
+            'crm', 'crm_case_form_view_leads')
+        dummy, tree_view = models_data.get_object_reference(
+            'crm', 'crm_case_tree_view_leads')
+        return {
+            'name': _('Enrollment'),
+            'view_type': 'form',
+            'view_mode': 'tree, form',
+            'res_model': 'crm.lead',
+            'domain': [('type', '=', 'enroll')],
+            'res_id': int(enrollment_id),
+            'view_id': False,
+            'views': [(form_view or False, 'form'),
+                      (tree_view or False, 'tree')],
+            'type': 'ir.actions.act_window',
+            'context': {'default_type': 'enroll'}
+        }
+
+    @api.model
+    def _convert_opportunity_data(self, lead, customer, section_id=False):
+        vals = super(CrmLead, self)._convert_opportunity_data(
+            lead, customer, section_id=section_id)
+        if lead.type == 'enroll':
+            del vals['type']
+        return vals
