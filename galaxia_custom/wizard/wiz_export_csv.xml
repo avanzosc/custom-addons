@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="wiz_export_csv_form_view">
+            <field name="name">wiz.export.csv.form.view</field>
+            <field name="model">wiz.export.csv</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Export CSV">
+                    <group colspan="4">
+                        <group colspan="4" col="6">
+                            <field name="csv_fname" colspan="6"/>
+                            <field name="csv_file" filename="csv_fname" colspan="4"/>
+                            <button string="Exit" special="cancel" icon="terp-dialog-close" colspan="2"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_wiz_export_csv">
+            <field name="name">Export CSV</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wiz.export.csv</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+        </record>
+    </data>
+</openerp>

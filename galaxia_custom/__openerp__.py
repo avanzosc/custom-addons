@@ -35,7 +35,8 @@
         "quality_control_stock",
         "crm",
         "product_upgrade_sale_cost_price",
-        "product_variant_cost_price"
+        "product_variant_cost_price",
+        "project_work_time_control"
     ],
     "data": [
         "data/request_link_data.xml",
@@ -46,9 +47,16 @@
         "views/sale_order_view.xml",
         "views/account_view.xml",
         "views/crm_view.xml",
+        "views/project_task_view.xml",
+        "wizard/wiz_export_presence_information_view.xml",
+        "wizard/wiz_export_csv.xml",
         "report/galaxia_layout_view.xml",
         "report/galaxia_reports.xml",
         "report/galaxia_custom_view.xml",
+        "security/project_task_work.xml",
     ],
     "installable": True,
+    "external_dependencies": {
+        'python': ["pyExcelerator"],
+    },
 }
