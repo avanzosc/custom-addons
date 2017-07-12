@@ -11,6 +11,7 @@ class TestCCGCustom(common.TransactionCase):
         super(TestCCGCustom, self).setUp()
         self.account_model = self.env['account.analytic.account']
         self.packaging_obj = self.env['product.packaging']
+        self.sale_line_obj = self.env['sale.order.line']
         self.product_1 = self.env.ref('product.product_product_6')
         self.partner_model = self.env['res.partner']
         self.product_packaging1 = self.packaging_obj.create({
@@ -88,3 +89,18 @@ class TestCCGCustom(common.TransactionCase):
     def test_default_user(self):
         partner = self.partner_model.create({'name': 'Testing'})
         self.assertEqual(partner.user_id.id, self.env.uid)
+
+    def test_onchange_product_in_sale_line(self):
+        res = self.sale_line_obj.product_id_change(
+            self.partner1.property_product_pricelist.id, self.product_1.id,
+            qty=1, uom=self.product_1.uom_id.id, partner_id=self.partner1.id)
+        self.assertTrue('CodeTest' in res['value'].get('name'))
+        self.assertTrue('NameTest' in res['value'].get('name'))
+        res = self.sale_line_obj.product_id_change(
+            self.partner2.property_product_pricelist.id, self.product_1.id,
+            qty=1, uom=self.product_1.uom_id.id, partner_id=self.partner2.id)
+        self.assertTrue('CodeTest' not in res['value'].get('name'))
+        self.assertTrue('NameTest' not in res['value'].get('name'))
+        self.assertTrue(self.product_1.default_code in
+                        res['value'].get('name'))
+        self.assertTrue(self.product_1.name in res['value'].get('name'))

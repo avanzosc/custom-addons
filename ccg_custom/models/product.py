@@ -44,3 +44,13 @@ class ProductProduct(models.Model):
             if customerinfo and customerinfo.product_name:
                 return customerinfo.product_name
         return self.name
+
+    @api.multi
+    def get_partner_code_name(self, partner_id):
+        self.ensure_one()
+        suppinfos = self.customer_ids.filtered(lambda x: x.name.id ==
+                                               partner_id)
+        return {
+            'code': suppinfos[:1].product_code or self.default_code,
+            'name': suppinfos[:1].product_name or self.name
+        }
