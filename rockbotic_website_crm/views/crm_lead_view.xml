@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+        <record id="crm_lead_to_event_registration.view_crm_lead_form"
+                model="ir.ui.view">
+            <field name="active" eval="0" />
+        </record>
+
         <record id="crm_lead_enrollment_search_view" model="ir.ui.view">
             <field name="name">crm.enrollment.search</field>
             <field name="model">crm.lead</field>
@@ -68,8 +73,9 @@
             <field name="arch" type="xml">
                 <form string="Enrollment">
                 <header>
-                    <button name="%(crm.action_crm_lead2opportunity_partner)d" string="Register Enrollment"
-                            type="action" class="oe_highlight"/>
+                    <button name="button_convert2opportunity" string="Register Enrollment"
+                            type="object" help="Convert to Opportunity"
+                            class="oe_highlight"/>
                     <field name="stage_id" widget="statusbar" clickable="True"
                            domain="['&amp;', '|', ('case_default', '=', True), ('section_ids', '=', section_id), '|', ('type', '=', type), ('type', '=', 'both')]"
                            options="{'fold_field': 'fold'}" on_change="onchange_stage_id(stage_id)"/>
@@ -82,11 +88,22 @@
                     </div>
                     <group>
                         <group>
-                            <field name="partner_name" />
+                            <field name="contact_name" string="Student" />
+                            <field name="rockbotic_before" />
+                            <field name="partner_id" readonly="1"
+                                   string="Student"
+                                   attrs="{'invisible': [('partner_id','=',False)]}"/>
+                            <field name="birth_date" />
+                            <field name="course" />
+                            <field name="event_registration_id" readonly="1"
+                                   attrs="{'invisible': [('event_registration_id','=',False)]}"/>
+                        </group>
+                        <group>
+                            <field name="partner_name" string="Responsible"/>
                             <field name="vat" />
-                            <!-- Preload all the partner's information -->
-                            <field name="partner_id" readonly="1" />
-                            <field name="parent_id" readonly="1" />
+                            <field name="parent_id" readonly="1"
+                                   string="Responsible"
+                                   attrs="{'invisible': [('parent_id','=',False)]}"/>
                             <label for="street" string="Address"/>
                             <div>
                                 <field name="street" placeholder="Street..."/>
@@ -100,15 +117,6 @@
                             </div>
                         </group>
                         <group>
-                            <field name="contact_name" />
-                            <field name="birth_date" />
-                            <field name="course" />
-                            <field name="email_from" widget="email"/>
-                            <field name="phone"/>
-                            <field name="mobile"/>
-                            <field name="fax"/>
-                        </group>
-                        <group>
                             <field name="user_id" on_change="on_change_user(user_id, context)"
                                    context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'base.group_sale_salesman_all_leads'] }"/>
                             <field name="school_id"
@@ -119,6 +127,7 @@
                             <field name="section_id" invisible="1"/>
                             <field name="probability" invisible="1"/>
                             <field name="type" invisible="1"/>
+                            <field name="medium_id" invisible="1" />
                         </group>
                         <group name="Images Rights">
                             <field name="journal_permission" />
@@ -142,6 +151,7 @@
             <field name="res_model">crm.lead</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[('type','=','enroll')]</field>
+            <field name="context">{'default_type':'enroll','stage_type':'enroll'}</field>
             <field name="view_id" ref="crm_lead_enrollment_tree_view"/>
             <field name="search_view_id"
                    ref="crm_lead_enrollment_search_view"/>
@@ -149,7 +159,7 @@
 
         <record id="crm_lead_enroll_tree_view"
                 model="ir.actions.act_window.view">
-            <field name="sequency" eval="0" />
+            <field name="sequence" eval="0" />
             <field name="act_window_id" ref="crm_lead_enroll_action" />
             <field name="view_mode">tree</field>
             <field name="view_id" ref="crm_lead_enrollment_tree_view" />
@@ -157,7 +167,7 @@
 
         <record id="crm_lead_enroll_form_view"
                 model="ir.actions.act_window.view">
-            <field name="sequency" eval="1" />
+            <field name="sequence" eval="1" />
             <field name="act_window_id" ref="crm_lead_enroll_action" />
             <field name="view_mode">form</field>
             <field name="view_id" ref="crm_lead_enrollment_form_view" />

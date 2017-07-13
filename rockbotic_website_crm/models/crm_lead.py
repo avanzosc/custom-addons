@@ -33,6 +33,17 @@ class CrmLead(models.Model):
         comodel_name='res.partner', string='Parent',
         domain="[('is_company', '=', True)]")
 
+    @api.model
+    def default_get(self, fields_list):
+        context = self.env.context
+        res = super(CrmLead, self).default_get(fields_list) or {}
+        if context.get('default_type') == 'enroll':
+            res.update({
+                'medium_id': self.env.ref(
+                    'rockbotic_website_crm.crm_medium_student_signup').id,
+            })
+        return res
+
     @api.multi
     def button_convert2opportunity(self):
         self.ensure_one()
