@@ -11,10 +11,12 @@ class CrmLead(models.Model):
     type = fields.Selection(selection_add=[('enroll', 'Enrollment')])
     school_id = fields.Many2one(
         comodel_name='res.partner', string='School',
-        domain="[('is_group','=',True)]")
+        domain="[('is_group','=',True),('prospect', '=', False),"
+               "('customer', '=', True),('payer', '=', 'student')]")
     event_id = fields.Many2one(
         comodel_name='event.event', string='Event',
-        domain="[('address_id','=',school_id)]")
+        domain="[('address_id','=',school_id),"
+               "('state','not in',('done','cancel'))]")
     account_type = fields.Many2one(comodel_name='res.partner.bank.type')
     account_number = fields.Char(string='Account Number')
     birth_date = fields.Date(string='Birthdate')
@@ -113,9 +115,9 @@ class CrmLead(models.Model):
         models_data = self.env['ir.model.data']
         # Get enrollment views
         dummy, form_view = models_data.get_object_reference(
-            'crm', 'crm_case_form_view_leads')
+            'rockbotic_website_crm', 'crm_lead_enrollment_form_view')
         dummy, tree_view = models_data.get_object_reference(
-            'crm', 'crm_case_tree_view_leads')
+            'rockbotic_website_crm', 'crm_lead_enrollment_tree_view')
         return {
             'name': _('Enrollment'),
             'view_type': 'form',

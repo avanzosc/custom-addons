@@ -7,7 +7,7 @@
             <field name="model">res.partner.enroll.search</field>
             <field name="arch" type="xml">
                 <form string="Select Partners">
-                    <group name="name">
+                    <group attrs="{'invisible': [('rockbotic_before', '=', False)]}" >
                         <field name="rockbotic_before" invisible="1" />
                         <field name="item_ids" nolabel="1" colspan="4"
                                attrs="{'invisible': [('rockbotic_before', '=', False)]}">
@@ -18,6 +18,8 @@
                                 <field name="parent_vat" />
                             </tree>
                         </field>
+                    </group>
+                    <group>
                         <div class="oe_clear" />
                         <field name="partner_id" class="oe_inline"
                                attrs="{'readonly': [('rockbotic_before', '=', True)]}"/>
