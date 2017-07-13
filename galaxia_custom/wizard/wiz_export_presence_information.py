@@ -33,7 +33,8 @@ class WizExportPresenceInformation(models.TransientModel):
         sheet1.write(0, 0, 'CLIENTE', boldS14)
         sheet1.write(0, 1, 'DIRECCION', boldS14)
         sheet1.write(0, 2, 'DIA', boldS14)
-        sheet1.write(0, 3, 'FECHA Y HORA', boldS14)
+        sheet1.write(0, 3, 'FECHA INICIO', boldS14)
+        sheet1.write(0, 4, 'FECHA FIN', boldS14)
         line = 1
         for p in presence_obj.browse(self.env.context.get('active_ids')):
             line += 1
@@ -61,6 +62,9 @@ class WizExportPresenceInformation(models.TransientModel):
             session_date = fields.Datetime.to_string(_convert_to_local_date(
                 p.session_date, self.env.user.tz))
             sheet1.write(line, 3, session_date)
+            session_end_date = fields.Datetime.to_string(
+                _convert_to_local_date(p.estimated_date_end, self.env.user.tz))
+            sheet1.write(line, 4, session_end_date)
         return sheet1
 
     @api.multi

@@ -104,7 +104,10 @@
                          <field name="delay" class="oe_inline"/> days
                      </div>
                  </xpath>
-                 
+                 <xpath expr="//form[@string='SERVICE sales order lines']/field[@name='name']" position="after">
+                       <label for="Training" string="Training" />
+                       <field name="training" nolabel="1"/>
+                 </xpath>
                  <xpath expr="//field[@name='no_service_order_line']/form[@string='NO SERVICE sales order lines']/group/group/field[@name='tax_id']" position="before">
                      <field name="product_packaging" context="{'default_product_tmpl_id': product_tmpl_id, 'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}" on_change="product_packaging_change(parent.pricelist_id, product_id, product_uom_qty, product_uom, parent.partner_id, product_packaging, True, context)" domain="[('product_tmpl_id','=',product_tmpl_id)]" groups="product.group_stock_packaging" />
                  </xpath>
@@ -229,6 +232,7 @@
                            <field name="week3" />
                            <field name="week4" />
                            <field name="week5" />
+                           <field name="week6" />
                        </group>
                        <group name="group_day" colspan="2" >
                            <field name="monday" />

@@ -36,7 +36,9 @@
         "crm",
         "product_upgrade_sale_cost_price",
         "product_variant_cost_price",
-        "project_work_time_control"
+        "project_work_time_control",
+        "sale_order_training_plan",
+        "event_track_info"
     ],
     "data": [
         "data/request_link_data.xml",
