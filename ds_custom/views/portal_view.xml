@@ -1,14 +1,16 @@
 <?xml version="1.0"?>
 <openerp>
-    <data noupdate="1">
+    <data>
         <delete model='website.menu' search="[('name', '=', 'Contact us')]"/>
-        <delete model='website.menu' search="[('name', '=', 'Shop')]"/>
+<!--         <delete model='website.menu' search="[('name', '=', 'Shop')]"/> -->
         <record id="portal.portal_messages" model="ir.ui.menu">
             <field name="groups_id" eval="[(3, ref('base.group_portal'))]"/>
         </record>
         <record id="crm_partner_assign.portal_leads" model="ir.ui.menu">
             <field name="groups_id" eval="[(3, ref('base.group_portal'))]"/>
         </record>
+    </data>
+    <data noupdate="1">
         <record id="portal.portal_messages" model="ir.ui.menu">
             <field name="groups_id" eval="[(4, ref('ds_custom.group_portal_view_user'))]"/>
         </record>

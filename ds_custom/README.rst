@@ -10,7 +10,7 @@ DS-Spain custom
 
 * Added controller to avoid payment in website sale order.
 
-* Deleted Shop and Contact us website menu entries.
+* Deleted Shop and Contact us website menu entries. (Delete Shop commented)
 
 * Created custom portal user type "Ds Portal User"
 
