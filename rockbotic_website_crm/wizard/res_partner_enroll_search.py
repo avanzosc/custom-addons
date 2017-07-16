@@ -121,7 +121,7 @@ class ResPartnerEnrollSearch(models.TransientModel):
             'parent_id': parent_id,
         })
         action = self.env.ref(
-            'crm.action_crm_lead2opportunity_partner')
+            'rockbotic_website_crm.action_crm_lead2opportunity_partner')
         action_dict = action.read()[0] if action else {}
         action_dict['context'] = safe_eval(
             action_dict.get('context', '{}'))

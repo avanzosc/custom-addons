@@ -57,7 +57,7 @@ class CrmLead(models.Model):
                 self.partner_id.parent_id == self.parent_id or not \
                 self.medium_id == signup:
             action = self.env.ref(
-                'crm.action_crm_lead2opportunity_partner')
+                'rockbotic_website_crm.action_crm_lead2opportunity_partner')
         action_dict = action.read()[0] if action else {}
         return action_dict
 

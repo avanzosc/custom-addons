@@ -74,7 +74,7 @@
                 <form string="Enrollment">
                 <header>
                     <button name="button_convert2opportunity" string="Register Enrollment"
-                            type="object" help="Convert to Opportunity"
+                            type="object" help="Register Enrollment"
                             class="oe_highlight"/>
                     <field name="stage_id" widget="statusbar" clickable="True"
                            domain="['&amp;', '|', ('case_default', '=', True), ('section_ids', '=', section_id), '|', ('type', '=', type), ('type', '=', 'both')]"

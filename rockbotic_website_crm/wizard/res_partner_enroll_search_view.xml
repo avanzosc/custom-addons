@@ -20,17 +20,15 @@
                         </field>
                     </group>
                     <group>
-                        <div class="oe_clear" />
-                        <field name="partner_id" class="oe_inline"
-                               attrs="{'readonly': [('rockbotic_before', '=', True)]}"/>
-                        <field name="parent_id" class="oe_inline" />
+                        <field name="partner_id" attrs="{'readonly': [('rockbotic_before', '=', True)]}"/>
+                        <field name="parent_id" />
                     </group>
                     <footer>
                         <button name="action_apply_same_parent"
-                                string="Create Opportunity (same parent)"
+                                string="Register Enrollment (same parent)"
                                 type="object" class="oe_highlight"
                                 attrs="{'invisible': [('rockbotic_before', '=', False)]}" />
-                        <button name="action_apply" string="Create Opportunity" type="object" class="oe_highlight"/>
+                        <button name="action_apply" string="Register Enrollment" type="object" class="oe_highlight"/>
                         or
                         <button string="Cancel" class="oe_link" special="cancel"/>
                     </footer>

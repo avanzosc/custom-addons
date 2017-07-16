@@ -3,10 +3,10 @@
 <data>
 
 <template id="assets_frontend" inherit_id="website.assets_frontend" name="Shop">
-  <xpath expr="." position="inside">
-      <script type="text/javascript"
-              src="/rockbotic_website_crm/static/src/js/rockbotic_website_crm.js"></script>
-  </xpath>
+    <xpath expr="." position="inside">
+        <script type="text/javascript"
+                src="/rockbotic_website_crm/static/src/js/rockbotic_website_crm.js"></script>
+    </xpath>
 </template>
 
 <template id="website.student_signup" name="Student Signup Form" page="True">
@@ -27,7 +27,7 @@
                                     back to you as soon as possible.</p>
                             </div>
                         </div>
-                        <form action="/crm/student_signup" method="post" class="form-horizontal mt32" enctype="multipart/form-data">
+                        <form id="enrollForm" action="/crm/student_signup" method="post" class="form-horizontal mt32" enctype="multipart/form-data">
                             <fieldset class="col-md-12">
                                 <legend>Class Data</legend>
                                 <div t-attf-class="form-group #{error and 'school_id' in error and 'has-error' or ''}">
@@ -147,7 +147,8 @@
                                 <div t-attf-class="form-group #{error and 'zipcode' in error and 'has-error' or ''}">
                                     <label class="col-md-3 col-sm-4 control-label" for="zip">Zip</label>
                                     <div class="col-md-9 col-sm-8">
-                                        <input type="text" name="zip"
+                                        <input type="text" name="zip" placeholder="XXXXX"
+                                               pattern="^\d{5}$" title="Please 5 number zip"
                                                class="form-control" t-attf-value="#{zip or ''}"/>
                                     </div>
                                 </div>
@@ -177,9 +178,8 @@
                                 <div t-attf-class="form-group #{error and 'vat' in error and 'has-error' or ''}">
                                     <label class="col-md-3 col-sm-4 control-label" for="vat">VAT</label>
                                     <div class="col-md-9 col-sm-8">
-                                        <input type="text"
-                                               class="form-control"
-                                               name="vat"
+                                        <input type="text" class="form-control" name="vat"
+                                               pattern="^\d{8}[A-Z]{1}$" title="Los 8 dígitos y la letra en mayuscula"
                                                required="True"
                                                t-attf-value="#{vat or ''}"/>
                                     </div>
@@ -189,6 +189,7 @@
                                     <div class="col-md-9 col-sm-8">
                                         <input type="text" class="form-control"
                                                name="account_number"
+                                               pattern="^ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{4}|ES\d{22}$" title="Un IBAN español tiene 24 dígitos, comenzando con el documento ES"
                                                t-attf-value="#{account_number or ''}" required="True"/>
                                     </div>
                                 </div>
