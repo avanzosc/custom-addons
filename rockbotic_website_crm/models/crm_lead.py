@@ -150,3 +150,8 @@ class CrmLead(models.Model):
         if lead.type == 'enroll':
             del vals['type']
         return vals
+
+    @api.onchange('school_id')
+    def _onchange_school_id(self):
+        self.user_id = self.school_id.user_id if self.school_id.user_id else\
+            self.user_id

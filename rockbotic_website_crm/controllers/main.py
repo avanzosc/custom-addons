@@ -56,6 +56,11 @@ class StudentSignUp(http.Controller):
     def create_lead(self, request, values, kwargs):
         """ Allow to be overrided """
         cr, context = request.cr, request.context
+        school = request.registry['res.partner'].browse(
+            cr, SUPERUSER_ID, int(values.get('school_id')), context=context)
+        values.update({
+            'user_id': school.user_id.id,
+        })
         return request.registry['crm.lead'].create(
             cr, SUPERUSER_ID, values,
             context=dict(context, mail_create_nosubscribe=True,
