@@ -7,7 +7,7 @@ $('.oe_student_signup').each(function () {
         var $select = $("select[name='state_id']");
         $select.find("option:not(:first)").hide();
         var nb = $select.find("option[data-country_id="+($(this).val() || 0)+"]").show().size();
-        $select.parent().toggle(nb>1);
+        $select.parent().toggle(nb>0);
     });
     $(oe_student_signup).find("select[name='country_id']").change();
 
@@ -15,7 +15,7 @@ $('.oe_student_signup').each(function () {
         var $select = $("select[name='event_id']");
         $select.find("option:not(:first)").hide();
         var nb = $select.find("option[data-school_id="+($(this).val() || 0)+"]").show().size();
-        $select.parent().toggle(nb>1);
+        $select.parent().toggle(nb>0);
     });
     $(oe_student_signup).find("select[name='school_id']").change();
 });

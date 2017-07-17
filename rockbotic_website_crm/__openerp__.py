@@ -17,6 +17,7 @@
         "event_registration_analytic",
         "partner_contact_birthdate",
         "partner_prospect",
+        "rockbotic_custom",
     ],
     "data": [
         "data/rockbotic_website_crm_data.xml",

@@ -21,7 +21,8 @@ class StudentSignUp(http.Controller):
             )
         return url
 
-    @http.route(['/page/website.student_signup', '/page/student_signup'],
+    @http.route(['/page/rockbotic_website_crm.student_signup',
+                 '/page/student_signup'],
                 type='http', auth='public', website=True)
     def contact(self, **kwargs):
         cr, context, registry = request.cr, request.context, request.registry
@@ -35,7 +36,8 @@ class StudentSignUp(http.Controller):
                                ('payer', '=', 'student')], context=context)
         groups = orm_partner.browse(cr, SUPERUSER_ID, partner_ids, context)
         event_ids = orm_event.search(
-            cr, SUPERUSER_ID, [('state', 'not in', ('done', 'cancel'))],
+            cr, SUPERUSER_ID, [('state', 'not in', ('done', 'cancel')),
+                               ('address_id', 'in', partner_ids)],
             context=context)
         events = orm_event.browse(cr, SUPERUSER_ID, event_ids, context)
         values = {
@@ -48,7 +50,8 @@ class StudentSignUp(http.Controller):
             if kwargs.get(field):
                 values[field] = kwargs.pop(field)
         values.update(kwargs=kwargs.items())
-        return request.website.render("website.student_signup", values)
+        return request.website.render(
+            "rockbotic_website_crm.student_signup", values)
 
     def create_lead(self, request, values, kwargs):
         """ Allow to be overrided """
@@ -128,7 +131,7 @@ class StudentSignUp(http.Controller):
         if error:
             values = dict(values, error=error, kwargs=kwargs.items())
             return request.website.render(kwargs.get(
-                "view_from", "website.student_signup"), values)
+                "view_from", "rockbotic_website_crm.student_signup"), values)
 
         # description is required, so it is always already initialized
         if post_description:

@@ -9,7 +9,7 @@
     </xpath>
 </template>
 
-<template id="website.student_signup" name="Student Signup Form" page="True">
+<template id="student_signup" name="Student Signup Form" page="True">
     <t t-call="website.layout">
         <div id="wrap">
             <div class="oe_structure"/>
@@ -148,7 +148,7 @@
                                     <label class="col-md-3 col-sm-4 control-label" for="zip">Zip</label>
                                     <div class="col-md-9 col-sm-8">
                                         <input type="text" name="zip" placeholder="XXXXX"
-                                               pattern="^\d{5}$" title="Please 5 number zip"
+                                               pattern="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}" title="Please 5 number zip"
                                                class="form-control" t-attf-value="#{zip or ''}"/>
                                     </div>
                                 </div>
@@ -179,7 +179,8 @@
                                     <label class="col-md-3 col-sm-4 control-label" for="vat">VAT</label>
                                     <div class="col-md-9 col-sm-8">
                                         <input type="text" class="form-control" name="vat"
-                                               pattern="^\d{8}[A-Z]{1}$" title="Los 8 dígitos y la letra en mayuscula"
+                                               pattern="^\d{8}[A-Z]{1}|[X]{1}\d{8}[A-Z]{1}|[K-MX-Z]{1}\d{7}[A-Z]{1}$"
+                                               title="Digits and uppercase letters, do not use space nor '-'"
                                                required="True"
                                                t-attf-value="#{vat or ''}"/>
                                     </div>
@@ -189,7 +190,8 @@
                                     <div class="col-md-9 col-sm-8">
                                         <input type="text" class="form-control"
                                                name="account_number"
-                                               pattern="^ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{4}|ES\d{22}$" title="Un IBAN español tiene 24 dígitos, comenzando con el documento ES"
+                                               pattern="^ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{4}|ES\d{22}$"
+                                               title="A spanish IBAN has 24 digits, starting with ES"
                                                t-attf-value="#{account_number or ''}" required="True"/>
                                     </div>
                                 </div>
