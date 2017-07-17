@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-17 17:43+0000\n"
-"PO-Revision-Date: 2017-07-17 17:43+0000\n"
+"POT-Creation-Date: 2017-07-17 18:14+0000\n"
+"PO-Revision-Date: 2017-07-17 18:14+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -44,7 +44,7 @@ msgstr "Dirección"
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Authorizations"
-msgstr "Authorizations"
+msgstr "Autorizaciones sobre imágenes del/la menor"
 
 #. module: rockbotic_website_crm
 #: field:crm.lead,birth_date:0
@@ -77,7 +77,7 @@ msgstr "Datos de la Actividad"
 #. module: rockbotic_website_crm
 #: model:website.menu,name:rockbotic_website_crm.menu_student_signup
 msgid "Class Enrollment"
-msgstr "Class Enrollment"
+msgstr "Inscripciones"
 
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
@@ -116,7 +116,7 @@ msgstr "Describa la inscripción..."
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Digits and uppercase letters, do not use space nor '-'"
-msgstr "Digits and uppercase letters, do not use space nor '-'"
+msgstr "Números y mayúsculas, nada de espacios ni guiones"
 
 #. module: rockbotic_website_crm
 #: field:res.partner.enroll.search,display_name:0
@@ -150,6 +150,11 @@ msgid "Enrollments"
 msgstr "Inscripciones"
 
 #. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Enrollments that are assigned to me"
+msgstr "Enrollments that are assigned to me"
+
+#. module: rockbotic_website_crm
 #: code:addons/rockbotic_website_crm/controllers/main.py:159
 #, python-format
 msgid "Environ Fields: "
@@ -181,7 +186,7 @@ msgstr "Agrupar por"
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Has ever been enrolled?"
-msgstr "¿Has participado en alguno de nuestros cursos?"
+msgstr "¿Ha realizado previamente algún curso con Rockbotic?"
 
 #. module: rockbotic_website_crm
 #: field:res.partner.enroll.search,id:0
@@ -241,6 +246,11 @@ msgid "Lead/Opportunity"
 msgstr "Iniciativa/Oportunidad"
 
 #. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "My Enrollments"
+msgstr "My Enrollments"
+
+#. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Name / Surname"
 msgstr "Apellidos, Nombre"
@@ -254,18 +264,23 @@ msgstr "No"
 
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "No salesperson"
+msgstr "Sin comercial"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
 msgid "Not Registered Yet"
-msgstr "Not Registered Yet"
+msgstr "No inscritos"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Observations"
-msgstr "Observations"
+msgstr "Observaciones"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Opt-Out"
-msgstr "Opt-Out"
+msgstr "¿Desea recibir información sobre actividades Rockbotic?"
 
 #. module: rockbotic_website_crm
 #: field:crm.lead,parent_id:0
@@ -277,7 +292,7 @@ msgstr "Persona responsable"
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Parent Data"
-msgstr "Parent Data"
+msgstr "Datos de la persona responsable"
 
 #. module: rockbotic_website_crm
 #: field:res.partner.enroll.search.item,parent_vat:0
@@ -308,7 +323,7 @@ msgstr "Nº teléfono"
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Please 5 number zip"
-msgstr "Please 5 number zip"
+msgstr "Código postal de 5 cifras por favor"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
@@ -437,6 +452,11 @@ msgstr "¡Gracias!"
 #, python-format
 msgid "There can only be one selected."
 msgstr "Solo se debe seleccionar una línea."
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Unassigned"
+msgstr "Sin asignar"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
