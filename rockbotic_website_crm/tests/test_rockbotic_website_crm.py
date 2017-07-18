@@ -4,7 +4,7 @@
 
 from openerp.addons.rockbotic_custom.tests.test_rockbotic_custom import\
     TestRockboticCustom
-from openerp import fields
+from openerp import exceptions, fields
 
 
 class TestRockboticWebsiteCrm(TestRockboticCustom):
@@ -14,6 +14,8 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
         enroll_model = self.env['crm.lead']
         self.search_action = self.browse_ref(
             'rockbotic_website_crm.res_partner_enroll_search_action')
+        self.enroll_action = self.browse_ref(
+            'rockbotic_website_crm.action_crm_lead2opportunity_partner')
         school = self.partner_model.create({
             'name': 'School',
             'is_group': True,
@@ -51,14 +53,15 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
         action_dict = self.search_action.read()[0] if self.search_action else\
             {}
         self.assertEquals(button_dict['res_model'], action_dict['res_model'])
+        self.assertEquals(button_dict['name'], action_dict['name'])
         search_wiz = self.search_wiz.with_context(
             active_id=self.enrollment.id,
             active_ids=self.enrollment.ids,
             active_model=self.enrollment._model._name).create({})
         self.assertFalse(search_wiz.rockbotic_before)
-        enroll_action = self.browse_ref(
-            'rockbotic_website_crm.action_crm_lead2opportunity_partner')
-        enroll_dict = search_wiz.action_apply()
+        enroll_dict = self.enroll_action.read()[0] if self.enroll_action else\
+            {}
+        button_dict = search_wiz.action_apply()
         self.assertTrue(self.enrollment.partner_id)
         self.assertNotEquals(self.enrollment.partner_id, self.partner)
         self.assertTrue(self.enrollment.parent_id)
@@ -77,7 +80,8 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
                           self.enrollment.partner_id.student_class)
         self.assertEquals(self.enrollment.birth_date,
                           self.enrollment.partner_id.birthdate_date)
-        self.assertEquals(enroll_dict['res_model'], enroll_action['res_model'])
+        self.assertEquals(button_dict['res_model'], enroll_dict['res_model'])
+        self.assertEquals(button_dict['name'], enroll_dict['name'])
         enroll_wiz = self.enroll_wiz.with_context(
             active_id=self.enrollment.id,
             active_ids=self.enrollment.ids,
@@ -96,6 +100,7 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
         action_dict = self.search_action.read()[0] if self.search_action else\
             {}
         self.assertEquals(button_dict['res_model'], action_dict['res_model'])
+        self.assertEquals(button_dict['name'], action_dict['name'])
         search_wiz = self.search_wiz.with_context(
             active_id=self.enrollment.id,
             active_ids=self.enrollment.ids,
@@ -115,6 +120,7 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
                           self.enrollment.partner_id)
         self.assertEquals(self.enrollment.event_registration_id.event_id,
                           self.enrollment.event_id)
+        self.assertEquals(self.enrollment.partner_id.parent_id, self.parent)
 
     def test_enrollment_rbk(self):
         self.assertFalse(self.enrollment.partner_id)
@@ -125,11 +131,30 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
         action_dict = self.search_action.read()[0] if self.search_action else\
             {}
         self.assertEquals(button_dict['res_model'], action_dict['res_model'])
+        self.assertEquals(button_dict['name'], action_dict['name'])
         search_wiz_dict = self.search_wiz.with_context(
             active_id=self.enrollment.id,
             active_ids=self.enrollment.ids,
             active_model=self.enrollment._model._name).default_get([])
         self.assertTrue(search_wiz_dict['rockbotic_before'])
+        with self.assertRaises(exceptions.ValidationError):
+            self.search_wiz.create(search_wiz_dict)
+        self.assertTrue(search_wiz_dict['item_ids'])
+        search_wiz_dict['item_ids'][0][2].update({'checked': True})
+        search_wiz = self.search_wiz.create(search_wiz_dict)
+        search_wiz.with_context(
+            active_id=self.enrollment.id,
+            active_ids=self.enrollment.ids,
+            active_model=self.enrollment._model._name
+        ).action_apply_same_parent()
+        self.assertEquals(self.enrollment.partner_id, self.partner)
+        self.assertEquals(self.enrollment.parent_id, self.parent)
+        enroll_wiz = self.enroll_wiz.with_context(
+            active_id=self.enrollment.id,
+            active_ids=self.enrollment.ids,
+            active_model=self.enrollment._model._name).create({})
+        enroll_wiz.action_apply()
+        self.assertTrue(self.enrollment.event_registration_id)
 
     def test_enrollment_rbk_change_parent(self):
         self.assertFalse(self.enrollment.partner_id)
@@ -140,6 +165,19 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
         action_dict = self.search_action.read()[0] if self.search_action else\
             {}
         self.assertEquals(button_dict['res_model'], action_dict['res_model'])
+        self.assertEquals(button_dict['name'], action_dict['name'])
+        search_wiz_dict = self.search_wiz.with_context(
+            active_id=self.enrollment.id,
+            active_ids=self.enrollment.ids,
+            active_model=self.enrollment._model._name).default_get([])
+        search_wiz_dict['item_ids'][0][2].update({'checked': True})
+        search_wiz = self.search_wiz.create(search_wiz_dict)
+        search_wiz.with_context(
+            active_id=self.enrollment.id,
+            active_ids=self.enrollment.ids,
+            active_model=self.enrollment._model._name).action_apply()
+        self.assertEquals(self.enrollment.partner_id, self.partner)
+        self.assertNotEquals(self.enrollment.parent_id, self.parent)
 
     def test_enrollment_with_partners(self):
         self.enrollment.write({
@@ -147,10 +185,10 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
             'parent_id': self.partner.parent_id.id,
         })
         button_dict = self.enrollment.button_convert2opportunity()
-        action = self.browse_ref(
-            'rockbotic_website_crm.action_crm_lead2opportunity_partner')
-        action_dict = action.read()[0] if action else {}
+        action_dict = self.enroll_action.read()[0] if self.enroll_action else\
+            {}
         self.assertEquals(button_dict['res_model'], action_dict['res_model'])
+        self.assertEquals(button_dict['name'], action_dict['name'])
 
     def test_rockbotic_custom(self):
         """ pass """

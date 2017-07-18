@@ -17,6 +17,7 @@
         "event_registration_analytic",
         "partner_contact_birthdate",
         "partner_prospect",
+        "partner_parent_change",
         "rockbotic_custom",
     ],
     "data": [

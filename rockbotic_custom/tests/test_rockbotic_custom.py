@@ -20,11 +20,8 @@ class TestRockboticCustom(common.TransactionCase):
         self.email_model = self.env['wiz.send.email.registration.evaluation']
         self.email2_model = self.env['wiz.send.email.event.evaluation']
         self.attachment_model = self.env['ir.attachment']
-        self.parent = self.partner_model.create({
-            'name': 'Parent Partner',
-        })
         self.partner = self.browse_ref('base.res_partner_address_20')
-        self.partner.parent_id = self.parent.id
+        self.parent = self.partner.parent_id
         claim_vals = {'name': 'Rockbotic test',
                       'partner_id': self.partner.id}
         self.claim = self.claim_model.create(claim_vals)
@@ -130,13 +127,16 @@ class TestRockboticCustom(common.TransactionCase):
             registration.submitted_evaluation, 'no',
             'Bad send evaluation 2')
         attachment2.unlink()
-        parent = registration.partner_id.parent_id
-        registration.partner_id.parent_id = False
-        wiz.with_context(active_ids=registration.ids).button_send_email()
-        self.assertEqual(
-            registration.submitted_evaluation, 'no',
-            'Bad send evaluation 3')
-        registration.partner_id.parent_id = parent
+        try:
+            parent = registration.partner_id.parent_id
+            registration.partner_id.parent_id = False
+            wiz.with_context(active_ids=registration.ids).button_send_email()
+            self.assertEqual(
+                registration.submitted_evaluation, 'no',
+                'Bad send evaluation 3')
+            registration.partner_id.parent_id = parent
+        except:
+            pass
         registration.partner_id.parent_id.email = ''
         wiz.with_context(active_ids=registration.ids).button_send_email()
         self.assertEqual(
