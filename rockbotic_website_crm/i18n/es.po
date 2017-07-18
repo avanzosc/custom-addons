@@ -152,7 +152,7 @@ msgstr "Inscripciones"
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
 msgid "Enrollments that are assigned to me"
-msgstr "Enrollments that are assigned to me"
+msgstr "Inscripciones asignadas a mí"
 
 #. module: rockbotic_website_crm
 #: code:addons/rockbotic_website_crm/controllers/main.py:159
@@ -248,7 +248,7 @@ msgstr "Iniciativa/Oportunidad"
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
 msgid "My Enrollments"
-msgstr "My Enrollments"
+msgstr "Mis inscripciones"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
@@ -318,7 +318,7 @@ msgstr "Estudiante"
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Phone Number"
-msgstr "Nº teléfono"
+msgstr "Móvil"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
@@ -430,7 +430,7 @@ msgstr "Estudiante / Responsable"
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Student Data"
-msgstr "Student Data"
+msgstr "Datos del Estudiante"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
@@ -461,7 +461,7 @@ msgstr "Sin asignar"
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
 msgid "VAT"
-msgstr "NIF"
+msgstr "DNI / NIE"
 
 #. module: rockbotic_website_crm
 #: field:crm.lead,vat:0
@@ -510,5 +510,5 @@ msgstr "o"
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
 msgid "select..."
-msgstr "select..."
+msgstr "selecciona..."
 
