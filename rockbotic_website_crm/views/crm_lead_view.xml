@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="crm_lead_to_event_registration.view_crm_lead_form"
+                model="ir.ui.view">
+            <field name="active" eval="0" />
+        </record>
+
+        <record id="crm_lead_enrollment_search_view" model="ir.ui.view">
+            <field name="name">crm.enrollment.search</field>
+            <field name="model">crm.lead</field>
+            <field name="arch" type="xml">
+                <search string="Enrollments">
+                    <field name="name" string="Student / Parent"
+                           filter_domain="['|','|','|',('partner_name','ilike',self),('email_from','ilike',self),('contact_name','ilike',self),('name','ilike',self)]"/>
+                    <field name="user_id"/>
+                    <field name="school_id" />
+                    <field name="event_id" />
+                    <field name="partner_id" operator="child_of"/>
+                    <field name="parent_id" />
+                    <field name="create_date"/>
+                    <separator/>
+                    <filter name="pending" string="Not Registered Yet"
+                            domain="[('event_registration_id','=',False)]" />
+                    <separator/>
+                    <filter string="My Enrollments" name="my_enrollments"
+                            domain="[('user_id','=',uid)]"
+                            help="Enrollments that are assigned to me"/>
+                    <filter string="Unassigned" name="unassigned"
+                            domain="[('user_id','=', False)]" help="No salesperson"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Stage" domain="[]"
+                                context="{'group_by':'stage_id'}"/>
+                        <filter string="School" domain="[]"
+                                context="{'group_by':'school_id'}" />
+                        <filter string="Event" domain="[]"
+                                context="{'group_by':'event_id'}" />
+                        <filter string="Responsible" domain="[]"
+                                context="{'group_by':'parent_id'}" />
+                        <filter string="Student" help="Partner" domain="[]"
+                                context="{'group_by':'partner_id'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="crm_lead_enrollment_tree_view" model="ir.ui.view">
+            <field name="name">crm.enrollment.tree</field>
+            <field name="model">crm.lead</field>
+            <field name="arch" type="xml">
+                <tree string="Enrollments" fonts="bold:message_unread==True" colors="grey:probability == 100">
+                    <field name="date_deadline" invisible="1"/>
+                    <field name="create_date"/>
+                    <field name="stage_id" />
+                    <field name="contact_name" string="Student" />
+                    <field name="partner_name" string="Responsible" />
+                    <field name="school_id" />
+                    <field name="event_id" />
+                    <field name="email_from"/>
+                    <field name="phone"/>
+                    <field name="user_id" invisible="1"/>
+                    <field name="partner_id" invisible="1"/>
+                    <field name="section_id" groups="base.group_multi_salesteams"/>
+                    <field name="probability" invisible="1"/>
+                    <field name="campaign_id" invisible="1"/>
+                    <field name="referred" invisible="1"/>
+                    <field name="medium_id" invisible="1"/>
+                    <field name="message_unread" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="crm_lead_enrollment_form_view" model="ir.ui.view">
+            <field name="name">crm.enrollment.form</field>
+            <field name="model">crm.lead</field>
+            <field name="priority" eval="20" />
+            <field name="arch" type="xml">
+                <form string="Enrollment">
+                <header>
+                    <button name="button_convert2opportunity" string="Register Enrollment"
+                            type="object" help="Register Enrollment"
+                            class="oe_highlight"/>
+                    <field name="stage_id" widget="statusbar" clickable="True"
+                           domain="['&amp;', '|', ('case_default', '=', True), ('section_ids', '=', section_id), '|', ('type', '=', type), ('type', '=', 'both')]"
+                           options="{'fold_field': 'fold'}" on_change="onchange_stage_id(stage_id)"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name"
+                                   placeholder="Describe the enrollment..."/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="contact_name" string="Student" />
+                            <field name="rockbotic_before" />
+                            <field name="partner_id" readonly="1"
+                                   string="Student"
+                                   attrs="{'invisible': [('partner_id','=',False)]}"/>
+                            <field name="birth_date" />
+                            <field name="course" />
+                            <field name="event_registration_id" readonly="1"
+                                   attrs="{'invisible': [('event_registration_id','=',False)]}"/>
+                        </group>
+                        <group>
+                            <field name="partner_name" string="Responsible"/>
+                            <field name="vat" />
+                            <field name="parent_id" readonly="1"
+                                   string="Responsible"
+                                   attrs="{'invisible': [('parent_id','=',False)]}"/>
+                            <label for="street" string="Address"/>
+                            <div>
+                                <field name="street" placeholder="Street..."/>
+                                <field name="street2"/>
+                                <div class="address_format">
+                                    <field name="city" placeholder="City" style="width: 40%"/>
+                                    <field name="state_id" on_change="onchange_state(state_id)" options="{&quot;no_open&quot;: True}" placeholder="State" style="width: 24%"/>
+                                    <field name="zip" placeholder="ZIP" style="width: 34%"/>
+                                </div>
+                                <field name="country_id" placeholder="Country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="user_id" on_change="on_change_user(user_id, context)"
+                                   context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'base.group_sale_salesman_all_leads'] }"/>
+                            <field name="school_id"
+                                   options="{'no_create_edit': True, 'no_open': True}" />
+                            <field name="event_id"
+                                   options="{'no_create_edit': True, 'no_open': True}"/>
+                            <field name="account_number"/>
+                            <field name="section_id" invisible="1"/>
+                            <field name="probability" invisible="1"/>
+                            <field name="type" invisible="1"/>
+                            <field name="medium_id" invisible="1" />
+                        </group>
+                        <group name="Images Rights">
+                            <field name="journal_permission" />
+                            <field name="blog_permission" />
+                            <field name="media_permission" />
+                            <field name="opt_out" />
+                        </group>
+                        <field name="description" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="crm_lead_enroll_action">
+            <field name="name">Enrollments</field>
+            <field name="res_model">crm.lead</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('type','=','enroll')]</field>
+            <field name="context">{'default_type':'enroll',
+                'stage_type':'enroll','search_default_my_enrollments':1,
+                'search_default_pending':1,}</field>
+            <field name="view_id" ref="crm_lead_enrollment_tree_view"/>
+            <field name="search_view_id"
+                   ref="crm_lead_enrollment_search_view"/>
+        </record>
+
+        <record id="crm_lead_enroll_tree_view"
+                model="ir.actions.act_window.view">
+            <field name="sequence" eval="0" />
+            <field name="act_window_id" ref="crm_lead_enroll_action" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="crm_lead_enrollment_tree_view" />
+        </record>
+
+        <record id="crm_lead_enroll_form_view"
+                model="ir.actions.act_window.view">
+            <field name="sequence" eval="1" />
+            <field name="act_window_id" ref="crm_lead_enroll_action" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="crm_lead_enrollment_form_view" />
+        </record>
+
+        <menuitem name="Enrollments" id="crm_lead_enroll_menu"
+                  parent="base.menu_sales"
+                  sequence="4" action="crm_lead_enroll_action"/>
+
+    </data>
+</openerp>

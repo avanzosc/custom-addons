@@ -1,0 +1,514 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* rockbotic_website_crm
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-17 18:14+0000\n"
+"PO-Revision-Date: 2017-07-17 18:14+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup_thanks
+msgid "&times;"
+msgstr "&times;"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "A spanish IBAN has 24 digits, starting with ES"
+msgstr "Un IBAN español tiene 24 dígitos, comenzando con ES"
+
+#. module: rockbotic_website_crm
+#: field:crm.lead,account_number:0
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Account Number"
+msgstr "IBAN"
+
+#. module: rockbotic_website_crm
+#: field:crm.lead,account_type:0
+msgid "Account type"
+msgstr "Tipo de cuenta"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
+msgid "Address"
+msgstr "Dirección"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Authorizations"
+msgstr "Autorizaciones sobre imágenes del/la menor"
+
+#. module: rockbotic_website_crm
+#: field:crm.lead,birth_date:0
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Birthdate"
+msgstr "Fecha de nacimiento"
+
+#. module: rockbotic_website_crm
+#: field:crm.lead,blog_permission:0
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Blog"
+msgstr "Sitio web www.rockbotic.com y en el blog contenido en dicho sitio web"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead2opportunity.partner:rockbotic_website_crm.crm_lead2opportunity_partner_form
+#: view:res.partner.enroll.search:rockbotic_website_crm.res_partner_enroll_search_form_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
+msgid "City"
+msgstr "Ciudad"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Class Data"
+msgstr "Datos de la Actividad"
+
+#. module: rockbotic_website_crm
+#: model:website.menu,name:rockbotic_website_crm.menu_student_signup
+msgid "Class Enrollment"
+msgstr "Inscripciones"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
+msgid "Country"
+msgstr "País"
+
+#. module: rockbotic_website_crm
+#: field:crm.lead,course:0
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Course"
+msgstr "Curso / Clase"
+
+#. module: rockbotic_website_crm
+#: field:res.partner.enroll.search,create_uid:0
+#: field:res.partner.enroll.search.item,create_uid:0
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: rockbotic_website_crm
+#: field:res.partner.enroll.search,create_date:0
+#: field:res.partner.enroll.search.item,create_date:0
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: rockbotic_website_crm
+#: code:addons/rockbotic_website_crm/controllers/main.py:143
+#, python-format
+msgid "Custom Fields: "
+msgstr "Campos personalizados: "
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
+msgid "Describe the enrollment..."
+msgstr "Describa la inscripción..."
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Digits and uppercase letters, do not use space nor '-'"
+msgstr "Números y mayúsculas, nada de espacios ni guiones"
+
+#. module: rockbotic_website_crm
+#: field:res.partner.enroll.search,display_name:0
+#: field:res.partner.enroll.search.item,display_name:0
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Email"
+msgstr "Correo electrónico"
+
+#. module: rockbotic_website_crm
+#: model:crm.case.stage,name:rockbotic_website_crm.crm_stage_enrolled
+msgid "Enrolled"
+msgstr "Inscrito"
+
+#. module: rockbotic_website_crm
+#: code:addons/rockbotic_website_crm/models/crm_lead.py:133
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
+#, python-format
+msgid "Enrollment"
+msgstr "Inscripción"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_tree_view
+#: model:ir.actions.act_window,name:rockbotic_website_crm.crm_lead_enroll_action
+#: model:ir.ui.menu,name:rockbotic_website_crm.crm_lead_enroll_menu
+msgid "Enrollments"
+msgstr "Inscripciones"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Enrollments that are assigned to me"
+msgstr "Inscripciones asignadas a mí"
+
+#. module: rockbotic_website_crm
+#: code:addons/rockbotic_website_crm/controllers/main.py:159
+#, python-format
+msgid "Environ Fields: "
+msgstr "Campos de entorno: "
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+#: field:crm.lead,event_id:0
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Event"
+msgstr "Evento"
+
+#. module: rockbotic_website_crm
+#: code:addons/rockbotic_website_crm/models/crm_lead.py:53
+#, python-format
+msgid "Event must have been selected."
+msgstr "Se debe seleccionar un evento."
+
+#. module: rockbotic_website_crm
+#: view:crm.lead2opportunity.partner:rockbotic_website_crm.crm_lead2opportunity_partner_form
+msgid "Event registration"
+msgstr "Registro del evento"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Has ever been enrolled?"
+msgstr "¿Ha realizado previamente algún curso con Rockbotic?"
+
+#. module: rockbotic_website_crm
+#: field:res.partner.enroll.search,id:0
+#: field:res.partner.enroll.search.item,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "If there is not your school or there is\n"
+"                                    not any class, we'll do our best to get\n"
+"                                    back to you as soon as possible."
+msgstr "Si no encuentra su centro escolar, o no aparece grupo, muy pronto nos pondremos en contacto con usted para indicarle próximos pasos."
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup_thanks
+msgid "If you have an emergency, do not hesitate to contact us by phone:"
+msgstr "Si tiene una emergencia, no dude en contactarnos por teléfono:"
+
+#. module: rockbotic_website_crm
+#: field:res.partner.enroll.search,item_ids:0
+msgid "Item ids"
+msgstr "Item ids"
+
+#. module: rockbotic_website_crm
+#: field:crm.lead,journal_permission:0
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Journal"
+msgstr "Revistas"
+
+#. module: rockbotic_website_crm
+#: field:res.partner.enroll.search,__last_update:0
+#: field:res.partner.enroll.search.item,__last_update:0
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: rockbotic_website_crm
+#: field:res.partner.enroll.search,write_uid:0
+#: field:res.partner.enroll.search.item,write_uid:0
+msgid "Last Updated by"
+msgstr "Última actualización de"
+
+#. module: rockbotic_website_crm
+#: field:res.partner.enroll.search,write_date:0
+#: field:res.partner.enroll.search.item,write_date:0
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: rockbotic_website_crm
+#: model:ir.model,name:rockbotic_website_crm.model_crm_lead2opportunity_partner
+msgid "Lead To Opportunity Partner"
+msgstr "Iniciativa a Oportunidad"
+
+#. module: rockbotic_website_crm
+#: model:ir.model,name:rockbotic_website_crm.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Iniciativa/Oportunidad"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "My Enrollments"
+msgstr "Mis inscripciones"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Name / Surname"
+msgstr "Apellidos, Nombre"
+
+#. module: rockbotic_website_crm
+#: selection:crm.lead,blog_permission:0
+#: selection:crm.lead,journal_permission:0
+#: selection:crm.lead,media_permission:0
+msgid "No"
+msgstr "No"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "No salesperson"
+msgstr "Sin comercial"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Not Registered Yet"
+msgstr "No inscritos"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Observations"
+msgstr "Observaciones"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Opt-Out"
+msgstr "¿Desea recibir información sobre actividades Rockbotic?"
+
+#. module: rockbotic_website_crm
+#: field:crm.lead,parent_id:0
+#: field:crm.lead2opportunity.partner,parent_id:0
+#: field:res.partner.enroll.search.item,parent_partner_id:0
+msgid "Parent"
+msgstr "Persona responsable"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Parent Data"
+msgstr "Datos de la persona responsable"
+
+#. module: rockbotic_website_crm
+#: field:res.partner.enroll.search.item,parent_vat:0
+msgid "Parent VAT"
+msgstr "DNI / NIE"
+
+#. module: rockbotic_website_crm
+#: field:res.partner.enroll.search,parent_id:0
+msgid "Parent id"
+msgstr "Persona responsable"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+#: field:res.partner.enroll.search.item,partner_id:0
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: rockbotic_website_crm
+#: field:res.partner.enroll.search,partner_id:0
+msgid "Partner id"
+msgstr "Estudiante"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Phone Number"
+msgstr "Móvil"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Please 5 number zip"
+msgstr "Código postal de 5 cifras por favor"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Please fill the form below in order to enroll in a class."
+msgstr "Por favor, rellene el siguiente formulario para realizar la inscripción de un/a alumno/a en nuestras clases."
+
+#. module: rockbotic_website_crm
+#: code:addons/rockbotic_website_crm/wizard/res_partner_enroll_search.py:80
+#, python-format
+msgid "Please select one line."
+msgstr "Selecciona una línea."
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
+#: view:crm.lead2opportunity.partner:rockbotic_website_crm.crm_lead2opportunity_partner_form
+#: model:ir.actions.act_window,name:rockbotic_website_crm.action_crm_lead2opportunity_partner
+#: view:res.partner.enroll.search:rockbotic_website_crm.res_partner_enroll_search_form_view
+msgid "Register Enrollment"
+msgstr "Registrar inscripción"
+
+#. module: rockbotic_website_crm
+#: view:res.partner.enroll.search:rockbotic_website_crm.res_partner_enroll_search_form_view
+msgid "Register Enrollment (same parent)"
+msgstr "Registrar inscripción (mismo responsable)"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_tree_view
+msgid "Responsible"
+msgstr "Persona responsable"
+
+#. module: rockbotic_website_crm
+#: field:crm.lead,rockbotic_before:0
+#: field:res.partner.enroll.search,rockbotic_before:0
+msgid "Rockbotic before"
+msgstr "Previamente en Rockbotic"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+#: field:crm.lead,school_id:0
+#: view:website:rockbotic_website_crm.student_signup
+msgid "School"
+msgstr "Centro Escolar"
+
+#. module: rockbotic_website_crm
+#: model:ir.actions.act_window,name:rockbotic_website_crm.res_partner_enroll_search_action
+msgid "Search existing partner for enrollment"
+msgstr "Búsqueda manual de Responsable / Estudiante"
+
+#. module: rockbotic_website_crm
+#: field:res.partner.enroll.search.item,search_id:0
+msgid "Search id"
+msgstr "Search id"
+
+#. module: rockbotic_website_crm
+#: view:res.partner.enroll.search:rockbotic_website_crm.res_partner_enroll_search_form_view
+msgid "Select Partners"
+msgstr "Select Partners"
+
+#. module: rockbotic_website_crm
+#: field:res.partner.enroll.search.item,checked:0
+msgid "Selected"
+msgstr "Seleccionado"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Send"
+msgstr "Enviar"
+
+#. module: rockbotic_website_crm
+#: field:crm.lead,media_permission:0
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Social Media"
+msgstr "Perfiles Corporativos Oficiales \"Rockbotic\" en las redes sociales Facebook, Twitter, Youtube, Instagram y Google Plus "
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Stage"
+msgstr "Etapa"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
+msgid "State"
+msgstr "Provincia"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
+msgid "Street..."
+msgstr "Calle..."
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_tree_view
+msgid "Student"
+msgstr "Estudiante"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Student / Parent"
+msgstr "Estudiante / Responsable"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Student Data"
+msgstr "Datos del Estudiante"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Student Sign Up"
+msgstr "Inscripción de alumnado ROCKBOTIC"
+
+#. module: rockbotic_website_crm
+#: view:website:website.layout
+msgid "Student Signup"
+msgstr "Inscripciones"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup_thanks
+msgid "Thanks!"
+msgstr "¡Gracias!"
+
+#. module: rockbotic_website_crm
+#: code:addons/rockbotic_website_crm/wizard/res_partner_enroll_search.py:83
+#, python-format
+msgid "There can only be one selected."
+msgstr "Solo se debe seleccionar una línea."
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Unassigned"
+msgstr "Sin asignar"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "VAT"
+msgstr "DNI / NIE"
+
+#. module: rockbotic_website_crm
+#: field:crm.lead,vat:0
+msgid "Vat Number"
+msgstr "DNI / NIE"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup_thanks
+msgid "We will get back to you shortly."
+msgstr "Le contestaremos en breve."
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "XXXXX"
+msgstr "XXXXX"
+
+#. module: rockbotic_website_crm
+#: selection:crm.lead,blog_permission:0
+#: selection:crm.lead,journal_permission:0
+#: selection:crm.lead,media_permission:0
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Yes"
+msgstr "Si"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup_thanks
+msgid "Your message has been sent successfully."
+msgstr "Su mensaje se ha enviado correctamente."
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
+msgid "ZIP"
+msgstr "C.P."
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Zip"
+msgstr "Código postal"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead2opportunity.partner:rockbotic_website_crm.crm_lead2opportunity_partner_form
+#: view:res.partner.enroll.search:rockbotic_website_crm.res_partner_enroll_search_form_view
+msgid "or"
+msgstr "o"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "select..."
+msgstr "selecciona..."
+
