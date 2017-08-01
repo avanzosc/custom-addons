@@ -60,11 +60,15 @@
        <record id="view_order_form" model="ir.ui.view">
             <field name="name">Sales order form (project_id editable)</field>
             <field name="model">sale.order</field>
+            <field name="priority" eval="100"/>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <field name="project_id" position="attributes">
                     <attribute name="attrs">{'readonly': [('state', 'in', 'done')]}</attribute>
                 </field>
+                <xpath expr="//field[@name='order_line']/tree" position="attributes">
+                    <attribute name="editable">bottom</attribute>
+                </xpath>
             </field>
         </record>
     </data>
