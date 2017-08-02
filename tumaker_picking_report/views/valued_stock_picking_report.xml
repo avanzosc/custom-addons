@@ -318,7 +318,7 @@
                                             </span>
                                         </td>
                                         <t t-if="o.picking_type_id.code != 'outgoing'"><td><span t-field="move.location_dest_id"/></td></t>
-                                        <td><span t-field="move.sale_price_subtotal" /></td>
+                                        <td class="text-right"><span t-field="move.sale_price_subtotal" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
                                     </t>
                                 </tr>
                               </tbody>
@@ -371,30 +371,30 @@
                                         <span t-if="pack_operation.result_package_id">:</span>
                                         <span t-field="pack_operation.result_package_id"/>
                                     </td></t>
-                                    <t t-if="pack_operation.linked_move_operation_ids"><td><span t-field="pack_operation.linked_move_operation_ids[0].move_id.sale_price_subtotal" /></td></t>
+                                    <t t-if="pack_operation.linked_move_operation_ids"><td class="text-right"><span t-field="pack_operation.linked_move_operation_ids[0].move_id.sale_price_subtotal" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td></t>
                                 </tr>
                               </tbody>
                             </table>
                             <br />
                             <br />
-                            <table align="right" vertical-align="top">
+                            <table width="30%" align="right" vertical-align="top">
                                 <tr>
                                     <td>Untaxed</td>
-                                    <td><span t-field="o.amount_untaxed" /></td>
+                                    <td class="text-right"><span t-field="o.amount_untaxed" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
                                 </tr>
                                 <tr><td></td></tr>
                                 <tr>
                                     <td>Taxes</td>
-                                    <td><span t-field="o.amount_tax" /></td>
+                                    <td class="text-right"><span t-field="o.amount_tax" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
                                 </tr>
                                 <tr>
-                                     <td>
-                                        <table>
+                                     <td colspan="2">
+                                        <table width="100%">
                                             <tr t-foreach="o.taxes" t-as="tax">
-                                                <td></td><td></td><td></td>
-                                                <td><span t-field="tax.name" /></td>
-                                                <td>  :  </td>
-                                                <td><span t-field="tax.amount" /></td>
+                                                <td width="5%"/>
+                                                <td width="55%"><span t-field="tax.name" />: </td>
+                                                <td width="35%" class="text-right"><span t-field="tax.amount" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
+                                                <td width="5%"/>
                                             </tr>
                                         </table>
                                     </td>
@@ -402,7 +402,7 @@
                                <tr><td></td></tr>
                                 <tr>
                                     <td>Total</td>
-                                    <td><span t-field="o.amount_total" /></td>
+                                    <td class="text-right"><span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
                                 </tr>
                             </table>
                         </div>
