@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report
+            id="report_product_label"
+            model="stock.picking" 
+            string="Label"
+            report_type="qweb-pdf"
+            name="trukebai.product_label_report" 
+            file="trukebai.product_label_report" />
+
+        <record id="report_product_label" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="trukebai.paperformat_label"/>
+        </record>
+
+        <report
+            id="report_picking_receipt"
+            model="stock.picking" 
+            string="Label"
+            report_type="qweb-pdf"
+            name="trukebai.picking_receipt_report" 
+            file="trukebai.picking_receipt_report" />
+
+        <record id="report_picking_receipt" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="trukebai.paperformat_receipt"/>
+        </record>
+
+    </data>
+</openerp>

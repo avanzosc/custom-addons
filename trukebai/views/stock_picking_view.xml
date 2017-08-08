@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="view_picking_form" model="ir.ui.view">
+            <field name="name">stock.picking.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <field name="state" position="before">
+                    <button name="do_print_receipt" states="done" string="Print Receipt" type="object"/>
+                    <button name="do_print_product_label" states="done" string="Print Products Label" type="object"/>
+                </field>
+                <field name="backorder_id" position="after">
+                    <field name="truke_picking_id"/>
+                </field>
+                <field name="partner_id" position="attributes">
+                    <attribute name="required">1</attribute>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_move_picking_form" model="ir.ui.view">
+            <field name="name">view.move.picking.form</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_form"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="price_unit" readonly="0"/>
+                    <field name="truke_amount" readonly="0"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_move_picking_tree" model="ir.ui.view">
+            <field name="name">view.move.picking.tree</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="editable">bottom</attribute>
+                </xpath>
+                <field name="location_id" position="before">
+                    <field name="price_unit" readonly="0"/>
+                    <field name="truke_amount" readonly="0"/>
+                    <field name="name" invisible="1"/>
+                </field>
+                <field name="product_id" position="attributes">
+                    <attribute name="on_change">onchange_product_id(product_id,location_id,location_dest_id, parent.partner_id)</attribute>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,221 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* trukebai
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-08 12:56+0000\n"
+"PO-Revision-Date: 2017-08-08 15:12+0100\n"
+"Last-Translator: Ainara Galdona <ainaragaldona@avanzosc.es>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: trukebai
+#: view:website:trukebai.picking_receipt_report
+msgid "AWARDED TRUKE:"
+msgstr "TRUKES OBTENIDOS:"
+
+#. module: trukebai
+#: view:website:trukebai.picking_receipt_report
+msgid "Amount"
+msgstr "Importe"
+
+#. module: trukebai
+#: view:website:trukebai.picking_receipt_report
+msgid "Customer:"
+msgstr "Cliente:"
+
+#. module: trukebai
+#: view:website:trukebai.picking_receipt_report
+msgid "Date:"
+msgstr "Fecha:"
+
+#. module: trukebai
+#: view:website:trukebai.picking_receipt_report
+msgid "Description"
+msgstr "Descripción"
+
+#. module: trukebai
+#: field:product.product,is_truke:0
+msgid "Is Truke"
+msgstr "Es Truke"
+
+#. module: trukebai
+#: model:ir.actions.report.xml,name:trukebai.report_picking_receipt
+#: model:ir.actions.report.xml,name:trukebai.report_product_label
+msgid "Label"
+msgstr "Etiqueta"
+
+#. module: trukebai
+#: view:website:trukebai.picking_receipt_report
+msgid "Nº"
+msgstr "Nº"
+
+#. module: trukebai
+#: model:ir.model,name:trukebai.model_stock_pack_operation
+msgid "Packing Operation"
+msgstr "Operación de empaquetado"
+
+#. module: trukebai
+#: model:ir.model,name:trukebai.model_res_partner
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: trukebai
+#: view:website:trukebai.picking_receipt_report
+msgid "Phone:"
+msgstr "Teléfono:"
+
+#. module: trukebai
+#: model:ir.model,name:trukebai.model_stock_picking
+msgid "Picking List"
+msgstr "Albarán"
+
+#. module: trukebai
+#: model:ir.model,name:trukebai.model_stock_transfer_details
+msgid "Picking wizard"
+msgstr "Asistente de albarán"
+
+#. module: trukebai
+#: model:ir.model,name:trukebai.model_stock_transfer_details_items
+msgid "Picking wizard items"
+msgstr "Elementos del asistente de albarán"
+
+#. module: trukebai
+#: view:website:trukebai.picking_receipt_report
+msgid "Price"
+msgstr "Precio"
+
+#. module: trukebai
+#: view:stock.picking:trukebai.view_picking_form
+msgid "Print Products Label"
+msgstr "Imprimir etiquetas de producto"
+
+#. module: trukebai
+#: view:stock.picking:trukebai.view_picking_form
+msgid "Print Receipt"
+msgstr "Imprimir recibo"
+
+#. module: trukebai
+#: model:ir.model,name:trukebai.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: trukebai
+#: model:ir.model,name:trukebai.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: trukebai
+#: view:website:trukebai.picking_receipt_report
+msgid "Qty"
+msgstr "Ctdad"
+
+#. module: trukebai
+#: view:website:trukebai.picking_receipt_report
+msgid "REF:"
+msgstr "REF:"
+
+#. module: trukebai
+#: field:stock.pack.operation,move_src_id:0
+#: field:stock.transfer_details_items,move_src_id:0
+msgid "Source"
+msgstr "Origen"
+
+#. module: trukebai
+#: model:ir.model,name:trukebai.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de stock"
+
+#. module: trukebai
+#: view:website:trukebai.picking_receipt_report
+msgid "TOTAL TRUKE:"
+msgstr "TOTAL TRUKES:"
+
+#. module: trukebai
+#: help:stock.transfer_details_items,price_unit:0
+msgid ""
+"Technical field used to record the product cost set by the user during a "
+"picking confirmation (when costing method used is 'average price' or "
+"'real'). Value given in company currency and in product uom."
+msgstr ""
+"Technical field used to record the product cost set by the user during a "
+"picking confirmation (when costing method used is 'average price' or "
+"'real'). Value given in company currency and in product uom."
+
+#. module: trukebai
+#: view:website:trukebai.picking_receipt_report
+msgid "Thank you for visiting us"
+msgstr "Gracias por visitarnos"
+
+#. module: trukebai
+#: view:website:trukebai.picking_receipt_report
+msgid "Total"
+msgstr "Total"
+
+#. module: trukebai
+#: model:product.template,name:trukebai.product_product_truke_product_template
+#: view:website:trukebai.picking_receipt_report
+msgid "Truke"
+msgstr "Truke"
+
+#. module: trukebai
+#: field:stock.move,truke_amount:0
+#: field:stock.transfer_details_items,truke_amount:0
+msgid "Truke Amount"
+msgstr "Cantidad Trukes"
+
+#. module: trukebai
+#: field:res.partner,truke_balance:0
+msgid "Truke Balance"
+msgstr "Trukes"
+
+#. module: trukebai
+#: view:res.partner:trukebai.view_partner_form
+msgid "Truke History"
+msgstr "Historial trukes"
+
+#. module: trukebai
+#: field:stock.picking,truke_picking_id:0
+msgid "Truke Picking"
+msgstr "Albarán Trukes"
+
+#. module: trukebai
+#: field:res.partner,truke_moves:0
+msgid "Truke moves"
+msgstr "Movimientos de Trukes"
+
+#. module: trukebai
+#: field:stock.transfer_details_items,price_unit:0
+msgid "Unit Price"
+msgstr "Precio Unitario"
+
+#. module: trukebai
+#: view:website:trukebai.picking_receipt_report
+msgid "VAT:"
+msgstr "NIF:"
+
+#. module: trukebai
+#: view:website:trukebai.picking_receipt_report
+msgid "You have been attended by"
+msgstr "Ha sido atendido por "
+
+#. module: trukebai
+#: view:stock.move:trukebai.view_move_picking_tree
+msgid "bottom"
+msgstr "bottom"
+
+#. module: trukebai
+#: view:stock.move:trukebai.view_move_picking_tree
+msgid ""
+"onchange_product_id(product_id,location_id,location_dest_id, parent."
+"partner_id)"
+msgstr ""
+"onchange_product_id(product_id,location_id,location_dest_id, parent."
+"partner_id)"
