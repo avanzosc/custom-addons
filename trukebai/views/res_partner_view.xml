@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_partner_tree" model="ir.ui.view">
+            <field name="name">res.partner.tree</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <field name="email" position="after">
+                    <field name="truke_balance"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_partner_form" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Truke History">
+                        <separator string="Truke History" coslpan="4"/>
+                        <field name="truke_moves"/>
+                    </page>
+                </notebook>
+                <field name="website" position="after">
+                    <field name="truke_balance"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

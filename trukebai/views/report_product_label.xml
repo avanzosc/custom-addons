@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="product_label_report">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-if="o and 'company_id' in o">
+                        <t t-set="company" t-value="o.company_id"></t>
+                    </t>
+                    <t t-if="not o or not 'company_id' in o">
+                        <t t-set="company" t-value="res_company"></t>
+                    </t>
+                    <t t-foreach="o.move_lines" t-as="line">
+                    <t t-foreach="range(0, int(line.product_qty))" t-as="cont">
+                     <t t-call="report.layout">
+                        <div class="page" style="margin-top:60px">
+                            <table class="table table_condensed">
+                                <tr>
+                                    <td colspan="2" style="padding-top:3px; padding-bottom:3px;">
+                                        <div style="height:11mm;overflow:hidden;font-size: 24; text-align:center; vertical-align:middle;"><strong><span t-field="line.product_id.name"/></strong></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-top:3px; padding-bottom:3px;">
+                                    </td>
+                                    <td style="padding-top:3px; padding-bottom:3px">
+                                        <div style="height:10mm; overflow:hidden; text-align:center; font-size: 20"><span t-field="line.product_id.default_code"/></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:40%; height:10mm; padding-top:5px; padding-bottom:3px;">
+                                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 90px;"/>
+                                    </td>
+                                    <td style="width:60%; height:10mm; padding-top:5px; padding-bottom:3px;">
+                                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', line.product_id.ean13, 1920, 640)" style="width:120px;height:80px"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </t>
+                    </t>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>

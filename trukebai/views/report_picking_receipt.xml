@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="picking_receipt_report">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page" style="font-size:14px">
+                        <div class="row">
+                            <div class="col-xs-12 text-center" style="font-size: 14px">
+                                <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.company_id.logo" style="max-height: 100px;"/>
+                                <div><strong><span t-field="o.company_id.partner_id.street"/></strong></div>
+                                <div>Phone: <span t-field="o.company_id.partner_id.phone"/></div>
+                                <div><span t-field="o.company_id.partner_id.zip"/> <span t-field="o.company_id.partner_id.city"/> (<span t-field="o.company_id.partner_id.state_id"/>)</div>
+                                <div><span t-field="o.company_id.partner_id.website"/></div>
+                                VAT: <span t-field="o.company_id.partner_id.vat"/><br/>
+                                Date: <span t-field="o.date" t-field-options='{"format": "yyyy/MM/dd"}'/><br/>
+                                <div style="font-size: 16px"><strong>Nº <span t-field="o.name"/></strong></div>
+                                <br/>
+                                <div style="border-top-width: 1px; border-style: dashed; border-color: black; "/>
+                                <div class="text-left" style="padding-top:8px;"><strong>Customer: </strong><span t-field="o.partner_id.name"/></div>
+                                <div class="text-left" style="padding-bottom:8px;"><strong>REF: </strong><span t-field="o.partner_id.ref"/></div>
+                                <div style="border-top-width: 1px; border-style: dashed; border-color: black; "/>
+                                <br/> 
+                            </div>
+                        </div>
+                        <div class="row" style="font-size: 14px">
+                        </div>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th class="text-right">Qty</th>
+                                    <th class="text-right">Price</th>
+                                    <th class="text-right">Truke</th>
+                                    <th class="text-right">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.move_lines" t-as="line">
+                                    <td>[<span t-field="line.product_id.default_code"/>] <span t-field="line.product_id.name"/></td>
+                                    <td class="text-right">
+                                        <span t-field="line.product_qty"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="line.price_unit"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="line.truke_amount"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="(line.product_qty * line.price_unit)"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row" style="font-size: 14px">
+                            <div class="col-xs-6 pull-right">
+                                <table class="table table-condensed">
+                                    <tr>
+                                        <td><strong>Total</strong></td>
+                                        <td class="text-right">
+                                            <strong t-esc="(sum([(x.product_qty * x.price_unit) for x in o.move_lines]))"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" style="font-size: 14px">
+                            <div class="col-xs-12">
+                                <br/><div style="border-top-width: 1px; border-style: dashed; border-color: black; "/>
+                                <div class="text-center" style="padding-top:8px;">AWARDED TRUKE: <span t-esc="o.get_awarded_truke()"/></div>
+                                <div class="text-center" style="padding-bottom:8px;"><strong>TOTAL TRUKE: <span t-esc="o.get_total_partner_truke()"/></strong></div>
+                                <div style="border-top-width: 1px; border-style: dashed; border-color: black; "/><br/>
+                                <div class="text-center">You have been attended by <span t-esc="user.name"/></div>
+                                <div class="text-center"><strong>Thank you for visiting us</strong></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</openerp>
