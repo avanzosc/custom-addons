@@ -2,6 +2,7 @@
 # Copyright 2017 Ainara Galdona - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
+from openerp import exceptions
 import openerp.tests.common as common
 
 
@@ -13,6 +14,9 @@ class TestTrukebai(common.TransactionCase):
         self.location_model = self.env['stock.location']
         self.picking_type_model = self.env['stock.picking.type']
         self.picking_model = self.env['stock.picking']
+        truke_product = self.env.ref('trukebai.product_product_truke')
+        self.truke_product = truke_product.copy()
+        truke_product.unlink()
         self.partner = self.env['res.partner'].create({
             'name': 'Partner test'
         })
@@ -80,6 +84,10 @@ class TestTrukebai(common.TransactionCase):
     def test_picking_transfer_by_force(self):
         self.picking_in.action_confirm()
         self.picking_in.force_assign()
+        self.truke_product.is_truke = False
+        with self.assertRaises(exceptions.Warning):
+            self.picking_in.action_done()
+        self.truke_product.is_truke = True
         self.picking_in.action_done()
         self.partner.invalidate_cache()
         self.assertEqual(self.picking_in.state, 'done')

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-08 12:56+0000\n"
-"PO-Revision-Date: 2017-08-08 15:12+0100\n"
+"POT-Creation-Date: 2017-08-09 14:58+0000\n"
+"PO-Revision-Date: 2017-08-09 17:01+0100\n"
 "Last-Translator: Ainara Galdona <ainaragaldona@avanzosc.es>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -40,6 +40,12 @@ msgstr "Fecha:"
 #: view:website:trukebai.picking_receipt_report
 msgid "Description"
 msgstr "Descripción"
+
+#. module: trukebai
+#: code:addons/trukebai/models/stock_picking.py:56
+#, python-format
+msgid "Error! There is no a Truke product defined."
+msgstr "¡Error! No hay ningún producto de Truke definido."
 
 #. module: trukebai
 #: field:product.product,is_truke:0

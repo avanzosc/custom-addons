@@ -2,7 +2,7 @@
 # Copyright 2017 Ainara Galdona - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-from openerp import models, fields, api
+from openerp import models, fields, api, exceptions, _
 from openerp.tools.float_utils import float_compare
 
 
@@ -52,6 +52,9 @@ class StockPicking(models.Model):
         except:
             truke_product = self.env['product.product'].search(
                 [('is_truke', '=', True)], limit=1)
+            if not truke_product:
+                raise exceptions.Warning(_('Error! There is no a Truke '
+                                           'product defined.'))
         move_vals = {
             'name': truke_product.name,
             'partner_id': self.partner_id.id,
