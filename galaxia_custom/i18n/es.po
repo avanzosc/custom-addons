@@ -327,3 +327,25 @@ msgstr "Exportar información de presencias"
 msgid "Export presences information"
 msgstr "Exportar información de presencias"
 
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Cleaning Plan"
+msgstr "Plan de limpieza"
+
+#. module: galaxia_custom
+#: view:sale.order:galaxia_custom.view_order_form_service_view_inh_galaxia
+#: field:sale.order.line,periodicity:0
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Periodicity"
+msgstr "Periodicidad"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Weekly hours"
+msgstr "Horas semanales"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Price month"
+msgstr "Precio mensual"
+

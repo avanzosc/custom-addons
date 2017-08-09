@@ -104,6 +104,10 @@
                          <field name="delay" class="oe_inline"/> days
                      </div>
                  </xpath>
+                 <xpath expr="//form[@string='SERVICE sales order lines']//field[@name='product_id']/../.." position="after">
+                    <label for="periodicity" string="Periodicity" />
+                    <field name="periodicity" nolabel="1"/>
+                 </xpath>
                  <xpath expr="//form[@string='SERVICE sales order lines']/field[@name='name']" position="after">
                        <label for="Training" string="Training" />
                        <field name="training" nolabel="1"/>

@@ -75,7 +75,9 @@ class TestGalaxiaCustom(common.TransactionCase):
 
     def test_galaxia_custom(self):
         self.sale_order.action_button_confirm()
+        self.sale_order._compute_services_amounts()
         self.sale_order.order_line[0]._compute_product_type()
+        self.sale_order.order_line[0]._compute_service_time()
         self.assertNotEqual(len(self.sale_order.order_line), 0,
                             'Sale order withour lines')
         cond = [('sale_order', '=', self.sale_order.id)]
