@@ -9,6 +9,13 @@ class AccountAnalyticAccount(models.Model):
     _inherit = "account.analytic.account"
 
     @api.multi
+    def convert_to_float_time_widget(self, float):
+        self.ensure_one()
+        minutes = float * 60
+        h, m = divmod(minutes, 60)
+        return "%02d:%02d" % (h, m)
+
+    @api.multi
     @api.depends('line_ids', 'line_ids.facturable_qty')
     def _compute_consumed_hours(self):
         for record in self:
