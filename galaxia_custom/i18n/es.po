@@ -63,6 +63,7 @@ msgstr "Compañías"
 
 #. module: galaxia_custom
 #: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
 msgid "Date Ordered:"
 msgstr "Fecha pedido:"
 
@@ -119,16 +120,19 @@ msgstr "Fecha de validez:"
 
 #. module: galaxia_custom
 #: view:website:account.report_invoice_document
+#: view:website:galaxia_custom.report_sale_only_services
 msgid "Invoice address"
 msgstr "Dirección facturación"
 
 #. module: galaxia_custom
 #: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
 msgid "Invoice address:"
 msgstr "Dirección de facturación:"
 
 #. module: galaxia_custom
 #: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
 msgid "Invoice and shipping address:"
 msgstr "Dirección de facturación y de envío:"
 
@@ -149,6 +153,7 @@ msgstr "Líneas de ventas de NO SERVICIOS"
 
 #. module: galaxia_custom
 #: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
 msgid "Order N°"
 msgstr "Pedido Nº"
 
@@ -164,6 +169,7 @@ msgstr "Modo de pago:"
 
 #. module: galaxia_custom
 #: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
 msgid "Payment Term:"
 msgstr "Plazo de pago:"
 
@@ -190,11 +196,13 @@ msgstr "Cantidad"
 
 #. module: galaxia_custom
 #: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
 msgid "Quotation Date:"
 msgstr "Fecha de presupuesto:"
 
 #. module: galaxia_custom
 #: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
 msgid "Quotation N°"
 msgstr "Presupuesto Nº"
 
@@ -215,11 +223,13 @@ msgstr "Línea pedido de venta"
 
 #. module: galaxia_custom
 #: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
 msgid "Salesperson:"
 msgstr "Comercial:"
 
 #. module: galaxia_custom
 #: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
 msgid "Shipping address:"
 msgstr "Dirección de envío:"
 
@@ -240,6 +250,7 @@ msgstr "Datos fiscales"
 
 #. module: galaxia_custom
 #: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
 msgid "Taxes"
 msgstr "Impuestos"
 
@@ -260,11 +271,13 @@ msgstr "Total"
 
 #. module: galaxia_custom
 #: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
 msgid "Total Without Taxes"
 msgstr "Base imponible"
 
 #. module: galaxia_custom
 #: view:website:account.report_invoice_document
+#: view:website:galaxia_custom.report_sale_only_services
 msgid "Total:"
 msgstr "Total:"
 
