@@ -7,6 +7,7 @@ Tumaker Picking Report
 ======================
 
 * Added custom reports for stock picking.
+* Valuation taking into account pack products in sales.
 
 
 Credits

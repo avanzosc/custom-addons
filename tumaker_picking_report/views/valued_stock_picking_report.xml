@@ -90,7 +90,7 @@
                             </table>
                             <br/>
                             <br/>
-                            <table class="table table-condensed" t-if="not o.pack_operation_ids">
+                            <table class="table table-condensed">
                               <thead>
                                 <tr>
                                     <th><strong>Product Code</strong></th>
@@ -103,6 +103,7 @@
                               </thead>
                               <tbody>
                                 <tr t-foreach="o.move_lines" t-as="move">
+                                    <t t-if="move.procurement_id.sale_line_id.product_id.id == move.product_id.id">
                                     <t t-if="(o.state != 'partially_available') or (move.reserved_availability > 0)">
                                         <td>
                                             <t t-if="move.product_id.customer_ids">
@@ -130,60 +131,56 @@
                                         </td>
                                         <t t-if="o.picking_type_id.code != 'outgoing'"><td><span t-field="move.location_dest_id"/></td></t>
                                     </t>
+                                    </t>
                                 </tr>
-                              </tbody>
-                            </table>
-                            <table class="table table-condensed" t-if="o.pack_operation_ids">
-                              <thead>
+                                <tr t-foreach="o.get_pack_lines()" t-as="pack_line">
                                 <tr>
-                                    <th><strong>Product Code</strong></th>
-                                    <th><strong>Product</strong></th>
-                                    <th class="text-right"><strong>Quantity</strong></th>
-                                    <t t-if="o.picking_type_id.code != 'incoming'"><th><strong>Source</strong></th></t>
-                                    <th><strong>Barcode</strong></th>
-                                    <t t-if="o.picking_type_id.code != 'outgoing'"><th><strong>Destination</strong></th></t>
+                                    <td><strong>
+                                        <t t-if="pack_line.product_id.customer_ids">
+                                                <t t-foreach="pack_line.product_id.customer_ids" t-as="customer">
+                                                    <t t-if="customer.name==o.partner_id">
+                                                        <span t-field="customer.product_code"/>
+                                                    </t>
+                                                </t>
+                                            </t>
+                                    </strong></td>
+                                    <td><strong><span t-field="pack_line.name"/></strong></td>
+                                    <td class="text-right"><strong><span t-field="pack_line.product_uom_qty"/></strong></td>
+                                    <t t-if="o.picking_type_id.code != 'incoming'"><td></td></t>
+                                    <td/>
+                                    <t t-if="o.picking_type_id.code != 'outgoing'"><td/></t>
                                 </tr>
-                              </thead>
-                              <tbody>
-                                <tr t-foreach="o.pack_operation_ids" t-as="pack_operation">
+                                <tr t-foreach="o.get_pack_line_moves(pack_line)" t-as="move">
                                     <td>
-                                        <t t-if="pack_operation.product_id.customer_ids">
-                                            <t t-foreach="pack_operation.product_id.customer_ids" t-as="customer">
+                                        <t t-if="move.product_id.customer_ids">
+                                            <t t-foreach="move.product_id.customer_ids" t-as="customer">
                                                 <t t-if="customer.name==o.partner_id">
                                                     <span t-field="customer.product_code"/>
                                                 </t>
                                             </t>
                                         </t>
                                     </td>
-                                    <td><span t-field="pack_operation.product_id"/>
-                                        <t t-if="not pack_operation.product_id and pack_operation.package_id"><span  t-field="pack_operation.package_id"/></t></td>
-                                    <td class="text-right"><span t-field="pack_operation.product_qty"/> <span t-field="pack_operation.product_uom_id" groups="product.group_uom"/></td>
-                                    <t t-if="o.picking_type_id.code != 'incoming'"><td><span t-field="pack_operation.location_id"/>
-                                        <span t-if="pack_operation.package_id">:</span>
-                                        <span t-field="pack_operation.package_id"/>
-                                        <span t-if="pack_operation.lot_id">:</span>
-                                        <span t-field="pack_operation.lot_id"/>
-                                        </td>
-                                    </t>
+                                    <td><span t-field="move.name"/></td>
+                                    <td class="text-right">
+                                        <t t-if="o.state == 'partially_available'">
+                                            <span t-field="move.reserved_availability"/> <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
+                                        </t>
+                                        <t t-if="o.state != 'partially_available'">
+                                            <span t-field="move.product_uom_qty"/> <span t-field="move.product_uom" groups="product.group_uom"/>
+                                        </t>
+                                    </td>
+                                    <t t-if="o.picking_type_id.code != 'incoming'"><td><span t-field="move.location_id"/></td></t>
                                     <td>
-                                        <span t-if="pack_operation.lot_id">
-                                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', pack_operation.lot_id.name, 600, 100)" style="width:300px;height:50px"/>
-                                        </span>
-                                        <span t-if="pack_operation.product_id and not pack_operation.lot_id and pack_operation.product_id.ean13">
-                                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', pack_operation.product_id.ean13, 600, 100)" style="width:300px;height:50px"/>
-                                        </span>
-                                        <span t-if="pack_operation.package_id and not pack_operation.product_id">
-                                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', pack_operation.package_id.name, 600, 100)" style="width:300px;height:50px"/>
+                                        <span t-if="move.product_id and move.product_id.ean13">
+                                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', move.product_id.ean13, 600, 100)" style="width:300px;height:50px"/>
                                         </span>
                                     </td>
-                                    <t t-if="o.picking_type_id.code != 'outgoing'"><td><span t-field="pack_operation.location_dest_id"/>
-                                    
-                                        <span t-if="pack_operation.result_package_id">:</span>
-                                        <span t-field="pack_operation.result_package_id"/>
-                                    </td></t>
+                                    <t t-if="o.picking_type_id.code != 'outgoing'"><td><span t-field="move.location_dest_id"/></td></t>
+                                </tr>
                                 </tr>
                               </tbody>
                             </table>
+                            
                         </div>
                     </t>
                  </t>
@@ -278,7 +275,7 @@
                             </table>
                             <br/>
                             <br/>
-                            <table class="table table-condensed" t-if="not o.pack_operation_ids">
+                            <table class="table table-condensed">
                               <thead>
                                 <tr>
                                     <th><strong>Product Code</strong></th>
@@ -292,6 +289,7 @@
                               </thead>
                               <tbody>
                                 <tr t-foreach="o.move_lines" t-as="move">
+                                    <t t-if="move.procurement_id.sale_line_id.product_id.id == move.product_id.id">
                                     <t t-if="(o.state != 'partially_available') or (move.reserved_availability > 0)">
                                         <td>
                                             <t t-if="move.product_id.customer_ids">
@@ -320,58 +318,54 @@
                                         <t t-if="o.picking_type_id.code != 'outgoing'"><td><span t-field="move.location_dest_id"/></td></t>
                                         <td class="text-right"><span t-field="move.sale_price_subtotal" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td>
                                     </t>
+                                    </t>
                                 </tr>
-                              </tbody>
-                            </table>
-                            <table class="table table-condensed" t-if="o.pack_operation_ids">
-                              <thead>
+                                <tr t-foreach="o.get_pack_lines()" t-as="pack_line">
                                 <tr>
-                                    <th><strong>Product Code</strong></th>
-                                    <th><strong>Product</strong></th>
-                                    <th class="text-right"><strong>Quantity</strong></th>
-                                    <t t-if="o.picking_type_id.code != 'incoming'"><th><strong>Source</strong></th></t>
-                                    <th><strong>Barcode</strong></th>
-                                    <t t-if="o.picking_type_id.code != 'outgoing'"><th><strong>Destination</strong></th></t>
-                                    <th><strong>Subtotal</strong></th>
+                                    <td><strong>
+                                        <t t-if="pack_line.product_id.customer_ids">
+                                                <t t-foreach="pack_line.product_id.customer_ids" t-as="customer">
+                                                    <t t-if="customer.name==o.partner_id">
+                                                        <span t-field="customer.product_code"/>
+                                                    </t>
+                                                </t>
+                                            </t>
+                                    </strong></td>
+                                    <td><strong><span t-field="pack_line.name"/></strong></td>
+                                    <td class="text-right"><strong><span t-field="pack_line.product_uom_qty"/></strong></td>
+                                    <t t-if="o.picking_type_id.code != 'incoming'"><td></td></t>
+                                    <td/>
+                                    <t t-if="o.picking_type_id.code != 'outgoing'"><td/></t>
+                                    <td class="text-right"><strong><span t-field="pack_line.price_subtotal" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></strong></td>
                                 </tr>
-                              </thead>
-                              <tbody>
-                                <tr t-foreach="o.pack_operation_ids" t-as="pack_operation">
+	                            <tr t-foreach="o.get_pack_line_moves(pack_line)" t-as="move">
                                     <td>
-                                        <t t-if="pack_operation.product_id.customer_ids">
-                                            <t t-foreach="pack_operation.product_id.customer_ids" t-as="customer">
+                                        <t t-if="move.product_id.customer_ids">
+                                            <t t-foreach="move.product_id.customer_ids" t-as="customer">
                                                 <t t-if="customer.name==o.partner_id">
                                                     <span t-field="customer.product_code"/>
                                                 </t>
                                             </t>
                                         </t>
                                     </td>
-                                    <td><span t-field="pack_operation.product_id"/>
-                                        <t t-if="not pack_operation.product_id and pack_operation.package_id"><span  t-field="pack_operation.package_id"/></t></td>
-                                    <td class="text-right"><span t-field="pack_operation.product_qty"/> <span t-field="pack_operation.product_uom_id" groups="product.group_uom"/></td>
-                                    <t t-if="o.picking_type_id.code != 'incoming'"><td><span t-field="pack_operation.location_id"/>
-                                        <span t-if="pack_operation.package_id">:</span>
-                                        <span t-field="pack_operation.package_id"/>
-                                        <span t-if="pack_operation.lot_id">:</span>
-                                        <span t-field="pack_operation.lot_id"/>
-                                        </td>
-                                    </t>
+                                    <td><span t-field="move.name"/></td>
+                                    <td class="text-right">
+                                        <t t-if="o.state == 'partially_available'">
+                                            <span t-field="move.reserved_availability"/> <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
+                                        </t>
+                                        <t t-if="o.state != 'partially_available'">
+                                            <span t-field="move.product_uom_qty"/> <span t-field="move.product_uom" groups="product.group_uom"/>
+                                        </t>
+                                    </td>
+                                    <t t-if="o.picking_type_id.code != 'incoming'"><td><span t-field="move.location_id"/></td></t>
                                     <td>
-                                        <span t-if="pack_operation.lot_id">
-                                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', pack_operation.lot_id.name, 600, 100)" style="width:300px;height:50px"/>
-                                        </span>
-                                        <span t-if="pack_operation.product_id and not pack_operation.lot_id and pack_operation.product_id.ean13">
-                                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', pack_operation.product_id.ean13, 600, 100)" style="width:300px;height:50px"/>
-                                        </span>
-                                        <span t-if="pack_operation.package_id and not pack_operation.product_id">
-                                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', pack_operation.package_id.name, 600, 100)" style="width:300px;height:50px"/>
+                                        <span t-if="move.product_id and move.product_id.ean13">
+                                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', move.product_id.ean13, 600, 100)" style="width:300px;height:50px"/>
                                         </span>
                                     </td>
-                                    <t t-if="o.picking_type_id.code != 'outgoing'"><td><span t-field="pack_operation.location_dest_id"/>
-                                        <span t-if="pack_operation.result_package_id">:</span>
-                                        <span t-field="pack_operation.result_package_id"/>
-                                    </td></t>
-                                    <t t-if="pack_operation.linked_move_operation_ids"><td class="text-right"><span t-field="pack_operation.linked_move_operation_ids[0].move_id.sale_price_subtotal" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/></td></t>
+                                    <t t-if="o.picking_type_id.code != 'outgoing'"><td><span t-field="move.location_dest_id"/></td></t>
+                                    <td class="text-right"><span>0,00 €</span></td>
+                                </tr>
                                 </tr>
                               </tbody>
                             </table>

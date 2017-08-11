@@ -4,17 +4,18 @@
 
 {
     "name": "Tumaker Picking Report",
-    "version": "8.0.1.0.0",
-    "depends": ["stock_valued_picking_report"],
-    "author": "AvanzOSC,"
-              "Serv. Tecnol. Avanzados - Pedro M. Baeza",
-    "website": "http://www.odoomrp.com",
+    "version": "8.0.1.1.0",
+    "license": "AGPL-3",
+    "depends": [
+        "stock_valued_picking_report",
+        "mrp_bom_sale_pack",
+        ],
+    "author": "AvanzOSC",
+    "website": "http://www.avanzosc.es",
     "category": "Reporting",
-    "description": """
-        Little changes on picking report for Tumaker.
-        - Description of move replaces product name.
-    """,
-    'data': ["views/valued_stock_picking_report.xml",
-             "views/report_stock_picking.xml"],
+    'data': [
+        "views/valued_stock_picking_report.xml",
+        "views/report_stock_picking.xml",
+        ],
     'installable': True,
 }
