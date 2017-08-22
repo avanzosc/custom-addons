@@ -50,7 +50,7 @@
                             <td/>
                             <td class="text-left" valign="top"><span t-field="analytic_entrie.name"/></td>
                             <td/>
-                            <td class="text-right" valign="top"><t t-esc="'%s:%s' % (str(analytic_entrie.facturable_qty).split('.')[0], int(float(str('%.2f' % analytic_entrie.facturable_qty).split('.')[1])/100*60))" />   </td>
+                            <td class="text-right" valign="top"><t t-esc="o.convert_to_float_time_widget(analytic_entrie.facturable_qty)" />   </td>
                         </tr>
                       </tbody>
                     </table>
@@ -60,17 +60,17 @@
                         <tr>
                             <td><strong>Ordered: </strong></td>
                             <td/><td/>
-                            <td class="text-right"><t t-esc="'%s:%s' % (str(o.quantity_max).split('.')[0], int(float(str('%.2f' % o.quantity_max).split('.')[1])/100*60))" /></td>
+                            <td class="text-right"><t t-esc="o.convert_to_float_time_widget(o.quantity_max)" /></td>
                         </tr>
                         <tr class="border-black">
                             <td><strong>Consumed: </strong></td>
                             <td/><td/>
-                            <td class="text-right"><t t-esc="'%s:%s' % (str(o.consumed_hours).split('.')[0], int(float(str('%.2f' % o.consumed_hours).split('.')[1])/100*60))" /></td>
+                            <td class="text-right"><t t-esc="o.convert_to_float_time_widget(o.consumed_hours)" /></td>
                         </tr>
                         <tr class="border-black">
                             <td><strong>Remaining: </strong></td>
                             <td/><td/>
-                            <td class="text-right"><t t-esc="'%s:%s' % (str(o.remaining_hours).split('.')[0], int(float(str('%.2f' % o.remaining_hours).split('.')[1])/100*60))" /></td>
+                            <td class="text-right"><t t-esc="o.convert_to_float_time_widget(o.remaining_hours)" /></td>
                         </tr>
                         <tr class="border-black"><td></td><td></td><td></td><td></td></tr>
                     </table>

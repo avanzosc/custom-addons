@@ -86,6 +86,12 @@ class TestTumakerCustom(common.TransactionCase):
         self.sale_order = self.sale_model.create(sale_vals)
         self.black_product = self.env.ref('product.product_product_4b')
 
+    def test_print_float_time_widget(self):
+        text = self.analytic_id.convert_to_float_time_widget(20.5)
+        self.assertEqual(text, '20:30')
+        text = self.analytic_id.convert_to_float_time_widget(2.25)
+        self.assertEqual(text, '02:15')
+
     def test_analytic_computed_vals(self):
         self.assertEqual(
             self.analytic_id.consumed_hours, 25,
