@@ -6,7 +6,6 @@ from openerp import models, fields, api
 
 
 class StockTransferDetails(models.TransientModel):
-
     _inherit = 'stock.transfer_details'
 
     @api.model
@@ -47,7 +46,6 @@ class StockTransferDetails(models.TransientModel):
 
 
 class StockTransferDetailsItems(models.TransientModel):
-
     _inherit = 'stock.transfer_details_items'
 
     move_src_id = fields.Many2one(comodel_name='stock.move', string='Source')

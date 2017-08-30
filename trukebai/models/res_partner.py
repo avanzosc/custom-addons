@@ -13,7 +13,8 @@ class ResPartner(models.Model):
     @api.depends('truke_moves', 'truke_moves.product_qty',
                  'truke_moves.location_id', 'truke_moves.location_dest_id',
                  'truke_moves.location_id.usage',
-                 'truke_moves.location_dest_id.usage')
+                 'truke_moves.location_dest_id.usage',
+                 'truke_moves.state')
     def _compute_truke_balance(self):
         for record in self:
             incoming = sum([
@@ -21,7 +22,7 @@ class ResPartner(models.Model):
                     lambda x: x.location_dest_id.usage == 'customer')])
             outgoing = sum([
                 x.product_qty for x in record.truke_moves.filtered(
-                    lambda x: x.location_id.usage == 'customer')])
+                    lambda x: x.location_id.usage == 'supplier')])
             record.truke_balance = int(incoming - outgoing)
 
     truke_balance = fields.Integer(
