@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-17 18:14+0000\n"
-"PO-Revision-Date: 2017-07-17 18:14+0000\n"
+"POT-Creation-Date: 2017-08-30 12:01+0000\n"
+"PO-Revision-Date: 2017-08-30 12:01+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -163,9 +163,13 @@ msgstr "Campos de entorno: "
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
 #: field:crm.lead,event_id:0
-#: view:website:rockbotic_website_crm.student_signup
 msgid "Event"
 msgstr "Evento"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Event"
+msgstr "Actividad"
 
 #. module: rockbotic_website_crm
 #: code:addons/rockbotic_website_crm/models/crm_lead.py:53
@@ -177,6 +181,11 @@ msgstr "Se debe seleccionar un evento."
 #: view:crm.lead2opportunity.partner:rockbotic_website_crm.crm_lead2opportunity_partner_form
 msgid "Event registration"
 msgstr "Registro del evento"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "FIRST SELECT THE"
+msgstr "PRIMERO SELECCIONAR EL"
 
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
@@ -196,9 +205,12 @@ msgstr "ID"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
-msgid "If there is not your school or there is\n"
-"                                    not any class, we'll do our best to get\n"
-"                                    back to you as soon as possible."
+msgid "IMPORTANT:"
+msgstr "IMPORTANTE:"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "If there is not your school or there is not any class, we'll do our best to get back to you as soon as possible."
 msgstr "Si no encuentra su centro escolar, o no aparece grupo, muy pronto nos pondremos en contacto con usted para indicarle próximos pasos."
 
 #. module: rockbotic_website_crm
@@ -271,6 +283,11 @@ msgstr "Sin comercial"
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
 msgid "Not Registered Yet"
 msgstr "No inscritos"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "ON THE DROPDOWN LIST"
+msgstr "EN EL LISTADO DESPLEGABLE"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
@@ -363,6 +380,11 @@ msgid "Rockbotic before"
 msgstr "Previamente en Rockbotic"
 
 #. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "SCHOOL CENTER"
+msgstr "CENTRO ESCOLAR"
+
+#. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
 #: field:crm.lead,school_id:0
 #: view:website:rockbotic_website_crm.student_signup
@@ -452,6 +474,11 @@ msgstr "¡Gracias!"
 #, python-format
 msgid "There can only be one selected."
 msgstr "Solo se debe seleccionar una línea."
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "This will display the activities available in the Center."
+msgstr "Esto hará que aparezcan las actividades disponibles en el Centro."
 
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view

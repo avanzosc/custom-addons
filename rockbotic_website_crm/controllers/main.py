@@ -33,12 +33,13 @@ class StudentSignUp(http.Controller):
             cr, SUPERUSER_ID, [('is_group', '=', True),
                                ('prospect', '=', False),
                                ('customer', '=', True),
-                               ('payer', '=', 'student')], context=context)
+                               ('payer', '=', 'student')],
+            order='name', context=context)
         groups = orm_partner.browse(cr, SUPERUSER_ID, partner_ids, context)
         event_ids = orm_event.search(
             cr, SUPERUSER_ID, [('state', 'not in', ('done', 'cancel')),
                                ('address_id', 'in', partner_ids)],
-            context=context)
+            order='name', context=context)
         events = orm_event.browse(cr, SUPERUSER_ID, event_ids, context)
         values = {
             'zip': '',
