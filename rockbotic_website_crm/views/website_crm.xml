@@ -15,18 +15,19 @@
             <div class="oe_structure"/>
             <div class="container oe_student_signup">
                 <div class="row">
-                <h1>Student Sign Up</h1>
+                <center><h1>Student Sign Up</h1></center>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="oe_structure">
+                        <center><div class="oe_structure">
                             <div>
                                 <p>Please fill the form below in order to enroll in a class.</p>
-                                <p>If there is not your school or there is
-                                    not any class, we'll do our best to get
-                                    back to you as soon as possible.</p>
+                                <p>If there is not your school or there is not any class, we'll do our best to get back to you as soon as possible.</p>
                             </div>
-                        </div>
+                            <div style="color:#f00;"><strong><h4>IMPORTANT:</h4></strong>
+                                <p>FIRST SELECT THE <strong>SCHOOL CENTER</strong> ON THE DROPDOWN LIST</p>
+                                <p>This will display the activities available in the Center.</p></div>
+                        </div></center>
                         <form id="enrollForm" action="/crm/student_signup" method="post" class="form-horizontal mt32" enctype="multipart/form-data">
                             <fieldset class="col-md-12">
                                 <legend>Class Data</legend>
