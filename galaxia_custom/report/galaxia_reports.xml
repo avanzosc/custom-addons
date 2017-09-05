@@ -477,7 +477,7 @@
                     <table class="table table-condensed">
                         <thead>
                             <tr>
-                                <th>Cleaning Plan</th>
+                                <th>Description</th>
                                 <th>Periodicity</th>
                                 <th>Taxes</th>
                                 <th class="text-right">Weekly hours</th>
@@ -485,7 +485,7 @@
                             </tr>
                        </thead>
                        <tbody class="sale_tbody">
-                            <tr t-foreach="o.service_order_line" t-as="l">
+                            <tr t-foreach="o._get_service_lines()" t-as="l">
                                 <td>
                                    <t t-if="l.name and l.training">
                                     <span t-field="l.training"/>

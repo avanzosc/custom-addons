@@ -13,7 +13,7 @@ class SaleOrder(models.Model):
             cur = sale.pricelist_id.currency_id
             total = 0.00
             taxes = 0.00
-            for line in sale.service_order_line:
+            for line in sale._get_service_lines():
                 total += line.monthly_amount
                 for c in line.tax_id.compute_all(
                         1.00, line.monthly_amount, line.product_id,
@@ -23,6 +23,11 @@ class SaleOrder(models.Model):
             sale.services_amount_tax = cur.round(taxes)
             sale.services_amount_total = (
                 sale.services_amount_untaxed + sale.services_amount_tax)
+
+    def _get_service_lines(self):
+        return self.service_order_line.filtered(
+            lambda x: 'semiproductivo' not in x.product_id.name_template and
+            'traslados' not in x.product_id.name_template)
 
     amount_untaxed = fields.Float(
         string='Untaxed Amount', digits=dp.get_precision('Precision in sales'))
@@ -44,8 +49,14 @@ class SaleOrder(models.Model):
 
     @api.multi
     def action_button_confirm(self):
-        return super(SaleOrder, self.with_context(
+        event_model = self.env['event.event']
+        result = super(SaleOrder, self.with_context(
             without_sale_name=True)).action_button_confirm()
+        cond = [('sale_order', '=', self.id)]
+        event = event_model.search(cond, limit=1)
+        event._merge_event_tracks()
+        self.project_id._recalculate_sessions_date_from_calendar()
+        return result
 
 
 class SaleOrderLine(models.Model):
