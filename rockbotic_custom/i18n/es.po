@@ -1510,3 +1510,14 @@ msgstr ""
 "</div>\n"
 "            "
 
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_tree_inh_rockbotic
+msgid "Inscribed"
+msgstr "Inscritos"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_tree_inh_rockbotic
+#: view:event.registration:rockbotic_custom.event_registration_info_view_search
+msgid "Confirmed"
+msgstr "Confirmado"
+
