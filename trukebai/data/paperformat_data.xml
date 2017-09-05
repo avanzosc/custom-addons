@@ -5,10 +5,10 @@
             <field name="name">Product Label</field>
             <field name="default" eval="True" />
             <field name="format">custom</field>
-            <field name="page_height">76</field>
-            <field name="page_width">38</field>
+            <field name="page_height">62</field>
+            <field name="page_width">29</field>
             <field name="orientation">Landscape</field>
-            <field name="margin_top">1</field>
+            <field name="margin_top">2</field>
             <field name="margin_bottom">1</field>
             <field name="margin_left">1</field>
             <field name="margin_right">1</field>
@@ -20,13 +20,13 @@
             <field name="name">Picking Receipt</field>
             <field name="default" eval="True"/>
             <field name="format">custom</field>
-            <field name="page_height">150</field>
-            <field name="page_width">60</field>
+            <field name="page_height">160</field>
+            <field name="page_width">45</field>
             <field name="orientation">Portrait</field>
-            <field name="margin_top">3</field>
-            <field name="margin_bottom">3</field>
-            <field name="margin_left">3</field>
-            <field name="margin_right">3</field>
+            <field name="margin_top">1</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
             <field name="header_line" eval="False" />
             <field name="header_spacing">3</field>
             <field name="dpi">130</field>
