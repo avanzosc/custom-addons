@@ -10,6 +10,7 @@ class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     is_truke = fields.Boolean(string="Is Truke")
+    max_trukes = fields.Integer(string='Max trukes')
 
 
 class ProductTemplate(models.Model):
