@@ -15,7 +15,7 @@ class StockPicking(models.Model):
             op, product, remaining_qty)
         purchase_line = op.mapped(
             'linked_move_operation_ids.move_id.purchase_line_id')
-        res['purchase_line_id'] = purchase_line.id
+        res['purchase_line_id'] = purchase_line[:1].id
         return res
 
 
