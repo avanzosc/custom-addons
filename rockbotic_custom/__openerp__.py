@@ -42,6 +42,7 @@
         "event_registration_sepa",
         "event_track_info",
         "project_issue",
+        "sale_order_back2draft"
     ],
     "data": [
         "views/website_template_view.xml",

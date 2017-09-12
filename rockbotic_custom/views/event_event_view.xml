@@ -39,6 +39,15 @@
                 <field name="name" position="before">
                     <field name="address_id" string="Centre"/> 
                 </field>
+                <field name="seats_min" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="seats_reserved" position="attributes">
+                    <attribute name="string">Confirmed</attribute>
+                </field>
+                <field name="date_end" position="after">
+                    <field name="seats_available" string="Inscribed"/>
+                </field>
             </field>
         </record>
         <record id="view_event_form_inh_rockbotic2" model="ir.ui.view">
