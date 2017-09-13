@@ -15,6 +15,19 @@
         </record>
 
         <report
+            id="report_product_product_label"
+            model="product.template"
+            string="Label"
+            report_type="qweb-pdf"
+            name="trukebai.product_product_label_report"
+            file="trukebai.product_product_label_report" />
+
+        <record id="report_product_product_label" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="trukebai.paperformat_label"/>
+        </record>
+
+
+        <report
             id="report_picking_receipt"
             model="stock.picking" 
             string="Label"

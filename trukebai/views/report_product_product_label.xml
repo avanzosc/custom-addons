@@ -1,50 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <template id="product_label_report">
-            <t t-call="report.html_container">
+        <template id="product_product_label_report">
+
+<t t-call="report.html_container">
                 <t t-foreach="docs" t-as="o">
                     <t t-if="o and 'company_id' in o">
-                        <t t-set="company" t-value="o.company_id"></t>
+                        <t t-set="company" t-value="o.company_id"/>
                     </t>
                     <t t-if="not o or not 'company_id' in o">
-                        <t t-set="company" t-value="res_company"></t>
+                        <t t-set="company" t-value="res_company"/>
                     </t>
-                    <t t-foreach="o.move_lines" t-as="line">
-                    <t t-foreach="range(0, int(line.product_qty))" t-as="cont">
+                    <t t-foreach="o" t-as="product">
+                    
                      <t t-call="report.layout">
+
                         <div class="page" style="margin-top:60px">
                             <table style="width:34%;float:left">
                               <tr>
                                 <td>
-                                  <img t-if="line.product_id.image_medium" t-att-src="'data:image/png;base64,%s' % line.product_id.image_medium" style="width:100%"/>
+                                  <img t-if="product.image_medium" t-att-src="'data:image/png;base64,%s' % product.image_medium" style="width:100%"/>
                                 </td>
                               </tr>
                            </table>
                             <table class="table table_condensed" style="width:66%;float:left">
                                 <tr>
                                     <td colspan="4" style="padding-top:3px; padding-bottom:3px;">
-                                        <div style="height:15mm;overflow:hidden;font-size: 20; text-align:left; vertical-align:top;">[<span t-field="line.product_id.default_code"/>]<strong><span t-field="line.product_id.name"/></strong></div>
+                                        <div style="height:15mm;overflow:hidden;font-size: 20; text-align:left; vertical-align:top;">[<span t-field="product.default_code"/>]<strong><span t-field="product.name"/></strong></div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="width:40%; height:33%; padding-top:5px; padding-bottom:3px;">
-                                        <div style="height:10mm; width:50%; text-align:center; font-size: 24;float:left"><p><span t-field="line.product_id.list_price"/> €</p></div><!--<div style="height:10mm;text-align:center; font-size: 24;float:left;width:50%"><p><span t-field="line.product_id.list_price"/> Tk</p></div>-->
+                                        <div style="height:10mm; width:50%; text-align:center; font-size: 24;float:left"><p><span t-field="product.list_price"/> €</p></div><div style="height:10mm;text-align:center; font-size: 24;float:left;width:50%"><p><span t-field="product.list_price"/> Tk</p></div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="width:80%; height:33%; padding-top:5px; padding-bottom:3px;">
-                                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', line.product_id.ean13, 150, 40)"  style="width:85%;height:40px;float:left"/>
-                                        <span t-field="line.product_id.product_type.name" style="float:left; font-size: 30;text-align:right;padding-left:10px;"/>
+                                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', product.ean13, 150, 40)"  style="width:85%;height:40px;float:left"/>
+                                        <span t-field="product.product_type.name" style="float:left; font-size: 30;text-align:right;padding-left:10px;"/>
                                     </td>
                                 </tr>
                             </table>
                         </div>
-                    </t>
+                    
                     </t>
                     </t>
                 </t>
             </t>
-        </template>
-    </data>
+</template>
+</data>
 </openerp>

@@ -28,6 +28,7 @@
         "views/stock_picking_view.xml",
         "views/res_partner_view.xml",
         "views/report_product_label.xml",
+        "views/report_product_product_label.xml",
         "views/report_picking_receipt.xml",
         "views/report_view.xml",
         "views/product_product_view.xml",

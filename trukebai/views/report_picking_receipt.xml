@@ -72,7 +72,10 @@
                                 <div class="text-center" style="padding-bottom:8px;"><strong>TOTAL TRUKE: <span t-esc="o.get_total_partner_truke()"/></strong></div>
                                 <div style="border-top-width: 1px; border-style: dashed; border-color: black; "/><br/>
                                 <div class="text-center">You have been attended by <span t-esc="user.name"/></div>
-                                <div class="text-center"><strong>Thank you for visiting us</strong></div>
+                                <div class="text-center"><strong>Thank you for visiting us</strong></div><br/>
+                                <div style="border-top-width: 1px; border-style: dashed; border-color: black; "/>
+                                <div style="border-top-width: 1px; border-style: dashed; border-color: black; "/>
+                                <div style="border-top-width: 1px; border-style: dashed; border-color: black; "/>
                             </div>
                         </div>
                         
