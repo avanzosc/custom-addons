@@ -9,6 +9,18 @@
                 <xpath expr="//page[@string='Sponsorships']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+                <button name="button_confirm"  position="attributes">
+                    <attribute name="groups">event.group_event_manager</attribute>
+                </button>
+                <button name="button_done"  position="attributes">
+                    <attribute name="groups">event.group_event_manager</attribute>
+                </button>
+                <button name="button_draft"  position="attributes">
+                    <attribute name="groups">event.group_event_manager</attribute>
+                </button>
+                <button name="button_cancel"  position="attributes">
+                    <attribute name="groups">event.group_event_manager</attribute>
+                </button>
             </field>
         </record>
         <record id="view_event_form2_inh_rockbotic" model="ir.ui.view">
@@ -19,6 +31,26 @@
                 <xpath expr="//page[@string='Badge']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+            </field>
+        </record>
+        <record id="view_event_form3_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.form3.inh.rockbotic</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event_track_info.view_event_form_inh_track_info" />
+            <field name="arch" type="xml">
+                <button string="Load training plan in sessions"  position="attributes">
+                    <attribute name="groups">event.group_event_manager</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="view_event_form4_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.form4.inh.rockbotic</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event_project.view_event_form" />
+            <field name="arch" type="xml">
+                <button string="Set Project Template"  position="attributes">
+                    <attribute name="groups">event.group_event_manager</attribute>
+                </button>
             </field>
         </record>
         <record id="view_event_search_inh_rockbotic" model="ir.ui.view">
@@ -71,6 +103,7 @@
                 <button name="button_mass_mailing_to_registrations" position="attributes">
                     <attribute name="attrs">{'invisible': [('sale_order_payer', '!=', 'student')]}</attribute>
                     <attribute name="string">Send email to parents</attribute>
+                    <attribute name="groups">event.group_event_manager</attribute>
                 </button>
             </field>
         </record>
