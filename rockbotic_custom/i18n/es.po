@@ -1521,3 +1521,10 @@ msgstr "Inscritos"
 msgid "Confirmed"
 msgstr "Confirmado"
 
+#. module: rockbotic_custom
+#: view:event.track:rockbotic_custom.view_event_track_inh3_rockbotic
+#: model:ir.actions.act_window,name:event_track_assistant.action_impute_in_presence_from_session
+msgid "Register assists"
+msgstr "Registrar Asistencias"
+
+
