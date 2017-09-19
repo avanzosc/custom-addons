@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="crm_case_form_view_leads">
+            <field name="name">CRM - Leads Form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_leads"/>
+            <field name="arch" type="xml">
+                <field name="priority" position="before">
+                    <label for="title_action"/>
+                    <div>
+                        <field name="date_action" nolabel="1"/> <label string="-" attrs="{'invisible': ['|', ('date_action', '=', False), ('title_action', '=', False)]}"/>
+                        <field name="title_action" class="oe_inline" nolabel="1" placeholder="e.g. Call for proposal"/>
+                    </div>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
