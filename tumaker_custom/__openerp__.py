@@ -46,6 +46,7 @@
              'views/account_move_line_view.xml',
              'views/report_purchase_order.xml',
              'views/res_partner_view.xml',
+             'views/crm_lead_view.xml',
              'wizard/stock_transfer_details_view.xml',
              'report/account_entries_report_view.xml'
              ],
