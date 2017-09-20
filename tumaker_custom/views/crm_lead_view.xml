@@ -15,5 +15,18 @@
                 </field>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="crm_case_tree_view_leads">
+            <field name="name">Leads</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+            <field name="arch" type="xml">
+                <field name="stage_id" position="after">
+                    <field name="date_action"/>
+                    <field name="title_action"/>
+                </field>
+            </field>
+        </record>
+
     </data>
 </openerp>
