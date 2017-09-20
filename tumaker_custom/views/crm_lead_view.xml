@@ -25,6 +25,9 @@
                     <field name="date_action"/>
                     <field name="title_action"/>
                 </field>
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="colors">grey:probability == 100;red:date_action and date_action &lt; current_date</attribute>
+                </xpath>
             </field>
         </record>
 
