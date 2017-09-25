@@ -105,6 +105,13 @@
                         <group>
                             <field name="partner_name" string="Responsible"/>
                             <field name="vat" />
+                            <field name="phone" />
+                            <label for="email_from" />
+                            <div>
+                                <field name="email_from" class="oe_inline" />
+                                <field name="no_confirm_mail" class="oe_inline" />
+                                <label for="no_confirm_mail" class="oe_inline" />
+                            </div>
                             <field name="parent_id" readonly="1"
                                    string="Responsible"
                                    attrs="{'invisible': [('parent_id','=',False)]}"/>

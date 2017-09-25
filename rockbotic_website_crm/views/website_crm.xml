@@ -202,6 +202,14 @@
                                         <textarea class="form-control" name="description" style="min-height: 120px"><t t-esc="description or ''"/></textarea>
                                     </div>
                                 </div>
+                                <div t-if="website.user_id != user_id"
+                                     t-attf-class="form-group #{error and 'no_confirm_mail' in error and 'has-error' or ''}">
+                                    <label
+                                            class="col-md-6 col-sm-6 control-label" for="no_confirm_mail">Do not send email notification</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input type="checkbox" name="no_confirm_mail" />
+                                    </div>
+                                </div>
                             </fieldset>
                             <t t-foreach="kwargs" t-as="kwarg">
                                 <input type="hidden" t-att-name="kwarg[0]" t-att-value="kwarg[1]"/>
