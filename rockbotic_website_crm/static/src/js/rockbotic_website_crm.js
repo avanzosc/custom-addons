@@ -1,22 +1,21 @@
-$(document).ready(function () {
+(function () {
+    'use strict';
+    var instance = openerp;
+    var website = openerp.website;
+    var _t = openerp._t;
 
-$('.oe_student_signup').each(function () {
-    var oe_student_signup = this;
+    website.ready().done(function () {
 
-    $(oe_student_signup).on('change', "select[name='country_id']", function () {
-        var $select = $("select[name='state_id']");
-        $select.find("option:not(:first)").hide();
-        var nb = $select.find("option[data-country_id="+($(this).val() || 0)+"]").show().size();
-        $select.parent().toggle(nb>0);
+        $('.oe_student_signup').each(function () {
+            var oe_student_signup = this;
+
+            $(oe_student_signup).on('change', "select[name='school_id']", function() {
+                var $event_id = $("select[name='event_id']");
+                $event_id.find("option:not(:first)").addClass('hidden');
+                $event_id.find("option[data-school_id="+($(this).val() || 0) +"]").removeClass('hidden');
+            });
+            $(oe_student_signup).find("select[name='school_id']").change();
+
+        });
     });
-    $(oe_student_signup).find("select[name='country_id']").change();
-
-    $(oe_student_signup).on('change', "select[name='school_id']", function () {
-        var $select = $("select[name='event_id']");
-        $select.find("option:not(:first)").hide();
-        var nb = $select.find("option[data-school_id="+($(this).val() || 0)+"]").show().size();
-        $select.parent().toggle(nb>0);
-    });
-    $(oe_student_signup).find("select[name='school_id']").change();
-});
-});
+} ());

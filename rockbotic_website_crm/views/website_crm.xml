@@ -53,7 +53,7 @@
                                             <option value="">select...</option>
                                             <t t-foreach="events or []" t-as="event">
                                                 <option t-att-value="event.id"
-                                                        style="display:none;"
+                                                        class="hidden"
                                                         t-att-data-school_id="event.address_id.id">
                                                     <t t-esc="event.name"/>
                                                 </option>
