@@ -32,6 +32,7 @@ class CrmLead(models.Model):
     parent_id = fields.Many2one(
         comodel_name='res.partner', string='Parent',
         domain="[('is_company', '=', True)]")
+    no_confirm_mail = fields.Boolean(string='Do Not Send Confirmation Mail')
 
     @api.model
     def default_get(self, fields_list):

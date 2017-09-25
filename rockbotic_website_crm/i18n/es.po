@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-30 12:01+0000\n"
-"PO-Revision-Date: 2017-08-30 12:01+0000\n"
+"POT-Creation-Date: 2017-09-25 08:49+0000\n"
+"PO-Revision-Date: 2017-09-25 08:49+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -103,7 +103,7 @@ msgid "Created on"
 msgstr "Creado en"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/controllers/main.py:143
+#: code:addons/rockbotic_website_crm/controllers/main.py:144
 #, python-format
 msgid "Custom Fields: "
 msgstr "Campos personalizados: "
@@ -125,6 +125,16 @@ msgid "Display Name"
 msgstr "Nombre mostrado"
 
 #. module: rockbotic_website_crm
+#: field:crm.lead,no_confirm_mail:0
+msgid "Do Not Send Confirmation Mail"
+msgstr "No enviar email de confirmación"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Do not send email notification"
+msgstr "No enviar email de confirmación"
+
+#. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Email"
 msgstr "Correo electrónico"
@@ -136,6 +146,7 @@ msgstr "Inscrito"
 
 #. module: rockbotic_website_crm
 #: code:addons/rockbotic_website_crm/models/crm_lead.py:133
+#: code:addons/rockbotic_website_crm/models/crm_lead.py:134
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
 #, python-format
 msgid "Enrollment"
@@ -155,7 +166,7 @@ msgid "Enrollments that are assigned to me"
 msgstr "Inscripciones asignadas a mí"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/controllers/main.py:159
+#: code:addons/rockbotic_website_crm/controllers/main.py:160
 #, python-format
 msgid "Environ Fields: "
 msgstr "Campos de entorno: "
@@ -173,6 +184,7 @@ msgstr "Actividad"
 
 #. module: rockbotic_website_crm
 #: code:addons/rockbotic_website_crm/models/crm_lead.py:53
+#: code:addons/rockbotic_website_crm/models/crm_lead.py:54
 #, python-format
 msgid "Event must have been selected."
 msgstr "Se debe seleccionar un evento."
