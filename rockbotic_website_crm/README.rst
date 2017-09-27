@@ -5,7 +5,12 @@
 Rockbotic - Website CRM
 =======================
 
-
+* New field "Responsible SEPA" in company.
+* Send an email, when creating an inscription from the web.
+* Send an email, when creating a record in events, when confirming a
+  inscription that comes from web.
+* Send an email with SEPA document, when creating a record in events, when
+  confirming a inscription that comes from web.
 
 Credits
 =======

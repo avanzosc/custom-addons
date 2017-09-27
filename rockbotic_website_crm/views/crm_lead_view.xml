@@ -51,11 +51,13 @@
                 <tree string="Enrollments" fonts="bold:message_unread==True" colors="grey:probability == 100">
                     <field name="date_deadline" invisible="1"/>
                     <field name="create_date"/>
-                    <field name="stage_id" />
-                    <field name="contact_name" string="Student" />
-                    <field name="partner_name" string="Responsible" />
-                    <field name="school_id" />
-                    <field name="event_id" />
+                    <field name="stage_id"/>
+                    <field name="school_id"/>
+                    <field name="event_id"/>
+                    <field name="contact_name" string="Student"/>
+                    <field name="birth_date"/>
+                    <field name="course"/>
+                    <field name="partner_name" string="Responsible"/>
                     <field name="email_from"/>
                     <field name="phone"/>
                     <field name="user_id" invisible="1"/>
@@ -189,6 +191,162 @@
         <menuitem name="Enrollments" id="crm_lead_enroll_menu"
                   parent="base.menu_sales"
                   sequence="4" action="crm_lead_enroll_action"/>
+
+        <record id="action_register_signups" model="ir.actions.server">
+            <field name="name">Register Signups</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="state">code</field>
+            <field name="code">self.create_registrations(cr, uid, context.get('active_ids', []), context)</field>
+        </record>
+
+        <record id="ir_register_signups" model="ir.values">
+            <field name="key2">client_action_multi</field>
+            <field name="model">crm.lead</field>
+            <field name="name">Register Signups</field>
+            <field eval="'ir.actions.server,%d'%action_register_signups" name="value"/>
+        </record>
+
+        <record id="email_to_new_enrollment" model="email.template">
+            <field name="name">Confirmation of reservation of place</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="email_from">${object.company_id.email or ''}</field>
+            <field name="email_to">${object.email_from or ''}</field>
+            <field name="reply_to">${object.user_id.partner_id.email or object.company_id.email}</field>
+            <field name="subject">Rockbotic: Reservation of place confirmed</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">es_ES</field>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+    <span>Estimated ${object.partner_name or 'responsible for the child'}. We confirm that we have correctly received the reservation of place with the following information:</span>
+    <p></p>
+    <span>Center: ${object.school_id.name or ''}</span>
+    <br>
+    <span>Group: ${object.event_id.name or ''}</span>
+    <p></p>
+    <span>Student: ${object.contact_name or ''}</span>
+    <br>
+    <span>Birthdate: ${object.birth_date or ''}</span>
+    <br>
+    <span>Course/class: ${object.course or ''}</span>
+    <p></p>
+    <span>Responsible: ${object.partner_name or ''}</span>
+    <br>
+    <span>VAT: ${object.vat or ''}</span>
+    <br>
+    <span>Phone: ${object.phone or ''}</span>
+    <br>
+    <span>Email: ${object.email_from or ''}</span>
+    <p></p>
+    <span>Authorizations Images:</span>
+    <br><div style="margin-left: 40px;">
+    <span>Journals: ${object.journal_permission or ''}</span>
+    <br></div><div style="margin-left: 40px;">
+    <span>Web/Blog: ${object.blog_permission or ''}</span>
+    <br></div><div style="margin-left: 40px;">
+    <span>Social media: ${object.media_permission or ''}</span></div>
+    <p></p>
+    <span>I want to receive informative emails: ${object.opt_out or ''}</span>
+    <p></p>
+    <span>Rockbotic coordinator for questions and queries:</span>
+    <br><div style="margin-left: 40px;">
+    <span>${object.user_id.name or ''}</span>
+    <br></div><div style="margin-left: 40px;">
+    <span>${object.user_id.partner_id.email or object.company_id.emai}</span>
+    <br></div><div style="margin-left: 40px;">
+    <span>${object.user_id.partner_id.phone or object.user_id.partner_id.mobile or object.company_id.phone or ''}</span></div>
+    <p></p>
+    <span>This message ONLY reserve place. In no case serves as confirmation that the group and the square.</span>
+    <p></p>
+    <span>In next email we will confirm that the group leaves and if its place is included.</span>
+    <p></p>
+    <span>Please be patient and in case of doubt or consultation, your coordinator will be happy to assist you.</span>
+    <p></p>
+    <span>Many thanks in advance and best regards!</span>
+    <br>
+    <span>Team ROCKBOTIC</span>
+</div>
+            ]]></field>
+        </record>
+
+        <record id="email_to_new_registration_from_enrollment" model="email.template">
+            <field name="name">Confirmation of place from inscription</field>
+            <field name="model_id" ref="event.model_event_registration"/>
+            <field name="email_from">${object.company_id.email or ''}</field>
+            <field name="email_to">${object.partner_id.parent_id.email or ''}</field>
+            <field name="reply_to">${object.event_id.user_id.partner_id.email or object.company_id.email}</field>
+            <field name="subject">CONFIRMATION OF PLACE ROBOTIC EDUCATIVE. ${object.event_id.address_id.name or ''}. ${object.event_id.name or ''}</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.parent_id.lang}</field>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+    <span>Dear family.</span>
+    <br>
+    <span>We are very happy to confirm the place of ${object.partner_id.name or ''} in the educational robotics activity they had reserved.</span>
+    <p></p>
+    <span>We provide below the data of the activity:</span>
+    <br>
+    <span>School center: ${object.event_id.address_id.name or ''}</span>
+    <br>
+    <span>Group: ${object.event_id.name or ''}</span>
+    <br>
+    <span>First day of class: ${object.first_day_of_class or ''}</span>
+    <p></p>
+    <span>It is not necessary for your child to provide any material. Many desire to have fun and learn if they are required.</span>
+    <p></p>
+    <span>In case of error, or any doubt, or consultation, you can contact your activity coordinator:</span>
+    <br><div style="margin-left: 40px;">
+    <span>${object.event_id.user_id.name or ''}</span>
+    <br></div><div style="margin-left: 40px;">
+    <span>${object.event_id.user_id.partner_id.email or object.company_id.emai}</span>
+    <br></div><div style="margin-left: 40px;">
+    <span>${object.event_id.user_id.partner_id.phone or object.event_id.user_id.partner_id.mobile or object.company_id.phone or ''}</span></div>
+    <p></p>
+    <span>The Rockbotic team thanks them for their confidence, and we want a great course together.</span>
+    <p></p>
+    <span>kind regards,</span>
+    <br>
+    <span>Team ROCKBOTIC</span>
+</div>
+            ]]></field>
+        </record>
+
+        <record id="email_sepa_to_new_registration_from_enrollment" model="email.template">
+            <field name="name">Request SEPA to the new registration from inscription</field>
+            <field name="model_id" ref="account_banking_mandate.model_account_banking_mandate"/>
+            <field name="email_from">${object.company_id.email or ''}</field>
+            <field name="email_to">${object.partner_id.parent_id.email or ''}</field>
+            <field name="reply_to">${object.company_id.sepa_responsible.email or object.company_id.email}</field>
+            <field name="report_template" ref="account_banking_sepa_direct_debit.report_sepa_direct_debit_mandate"/>
+            <field name="report_name">${object.name or 'mandato_sepa'}</field>
+            <field name="subject">AUTHORIZATION SEPA MANDATE - ROBOTIC CLASSES - ROCKBOTIC</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.parent_id.lang}</field>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+    <span>Good Morning,</span>
+    <br>
+    <span>We have received your registration and account number to register your child in robotics classes.</span>
+    <br>
+    <span>To complete this registration, it is necessary to sign the SEPA authorization document that is attached to this mail.</span>
+    <br>
+    <span>With this signature you authorize to our company LUNATIC DESIGN SL to the domiciliation of the monthly receipts in the account that they have provided.</span>
+    <br>
+    <span>Please, forward this signed document to this email address as soon as possible, as this authorization is a legal requirement for us. The signature can also be made with legal digital certificate.</span>
+    <br>
+    <span>In case of doubt, or consultation, you can contact your activity coordinator:</span>
+    <br><div style="margin-left: 40px;">
+    <span>${object.company_id.sepa_responsible.name or ''}</span>
+    <br></div><div style="margin-left: 40px;">
+    <span>${object.company_id.sepa_responsible.email or object.company_id.emai}</span>
+    <br></div><div style="margin-left: 40px;">
+    <span>${object.company_id.sepa_responsible.phone or object.company_id.sepa_responsible.mobile or object.company_id.phone or ''}</span></div>
+    <p></p>
+    <span>Thank you very much and greetings,</span>
+    <br>
+    <span>Team ROCKBOTIC</span>
+</div>
+            ]]></field>
+        </record>
 
     </data>
 </openerp>

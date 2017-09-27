@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+        <record model="ir.ui.view" id="view_company_form_inh_rockbotic_website_crm">
+            <field name="name">view.company.form.inh.rockbotic.website.crm</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form" />
+            <field name="arch" type="xml">
+                <field name="website" position="after">
+                    <field name="sepa_responsible" required="1" />
+                </field>
+            </field>
+        </record>
+</data>
+</openerp>
