@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # (c) 2016 Alfredo de la Fuente - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
-from openerp import models, fields, exceptions, _
+from openerp import models, fields, api, exceptions, _
 
 
 class EventEvent(models.Model):
@@ -41,6 +41,27 @@ class EventEvent(models.Model):
                     force_send=True
                 ).create({'body': body})
                 wizard.send_mail()
+
+    @api.onchange('group_description')
+    def onchange_group_description(self):
+        for event in self:
+            if event.group_description:
+                event.name = event.group_description
+
+    @api.multi
+    def write(self, values):
+        translation_obj = self.env['ir.translation']
+        res = super(EventEvent, self).write(values)
+        if values.get('name', False):
+            for event in self:
+                cond = [('lang', '=', self.env.context.get('lang')),
+                        ('name', '=', 'event.event,name'),
+                        ('res_id', '=', event.id),
+                        ('type', '=', 'model')]
+                translation = translation_obj.search(cond, limit=1)
+                if translation:
+                    translation._set_src('source', values.get('name'), None)
+        return res
 
 
 class EventTrack(models.Model):

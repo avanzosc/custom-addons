@@ -22,6 +22,7 @@ class TestRockboticCustom(common.TransactionCase):
         self.attachment_model = self.env['ir.attachment']
         self.account_model = self.env['account.analytic.account']
         self.sale_model = self.env['sale.order']
+        self.translation_obj = self.env['ir.translation']
         self.partner = self.browse_ref('base.res_partner_address_20')
         self.parent = self.partner.parent_id
         claim_vals = {'name': 'Rockbotic test',
@@ -208,3 +209,31 @@ class TestRockboticCustom(common.TransactionCase):
         self.assertIn(
             new_order.name, new_order.order_line[0].group_description,
             'Bad group description for new sale order line')
+
+    def test_rockbotic_group_description(self):
+        self.event.sale_order_line.write(
+            {'group_description': 'changed group description'})
+        vals = {'lang': 'en_US',
+                'name': 'event.event,name',
+                'res_id': self.event.id,
+                'type': 'model',
+                'src': 'test rockbotic_custom',
+                'value': 'changed group description'}
+        self.translation_obj.create(vals)
+        self.event.group_description = 'changed group description'
+        self.event.onchange_group_description()
+        self.assertEqual(
+            self.event.group_description, self.event.name,
+            'Event name not equal group description')
+        cond = [('lang', '=', 'es_ES'),
+                ('name', '=', 'event.event,name'),
+                ('res_id', '=', self.event.id),
+                ('type', '=', 'model')]
+        translation = self.translation_obj.search(cond, limit=1)
+        if translation:
+            self.assertEqual(
+                len(translation), 1,
+                'Translation not found for event name')
+            self.assertEqual(
+                translation.src, translation.value,
+                'Bad translation for event name')
