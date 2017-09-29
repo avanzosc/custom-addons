@@ -190,6 +190,36 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
         self.assertEquals(button_dict['res_model'], action_dict['res_model'])
         self.assertEquals(button_dict['name'], action_dict['name'])
 
+    def test_enrollment_list(self):
+        self.enrollment.vat = 'ES84541728F' if not self.enrollment.vat else \
+            self.enrollment.vat
+        self.assertFalse(self.enrollment.rockbotic_before)
+        self.assertTrue(self.enrollment.vat)
+        enroll_same_parent = self.enrollment.copy()
+        enroll_same_parent.write({'contact_name': 'Sibling'})
+        self.assertNotEquals(self.enrollment.contact_name,
+                             enroll_same_parent.contact_name)
+        self.assertEquals(self.enrollment.vat, enroll_same_parent.vat)
+        self.assertFalse(self.enrollment.rockbotic_before)
+        new_enroll = self.enrollment.copy()
+        new_enroll.write({'vat': 'ES28614426B'})
+        self.assertNotEquals(self.enrollment.vat, new_enroll.vat)
+        self.assertFalse(self.enrollment.rockbotic_before)
+        no_enroll = self.enrollment.copy()
+        no_enroll.write({'rockbotic_before': True})
+        enrolls = self.enrollment | enroll_same_parent | new_enroll | no_enroll
+        enrolls.create_registrations()
+        self.assertTrue(self.enrollment.event_registration_id)
+        self.assertTrue(enroll_same_parent.event_registration_id)
+        self.assertTrue(new_enroll.event_registration_id)
+        self.assertFalse(no_enroll.event_registration_id)
+        self.assertEquals(self.enrollment.parent_id,
+                          enroll_same_parent.parent_id)
+        self.assertNotEquals(self.enrollment.partner_id,
+                             enroll_same_parent.partner_id)
+        self.assertNotEquals(self.enrollment.parent_id,
+                             new_enroll.parent_id)
+
     def test_rockbotic_custom(self):
         """ pass """
 
