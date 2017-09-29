@@ -39,6 +39,8 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
             'type': 'enroll',
             'school_id': school.id,
             'event_id': self.event.id,
+            'email_from': 'test rockbotic website_crm@odoo.com',
+            'no_confirm_mail': False,
             'medium_id': self.ref(
                 'rockbotic_website_crm.crm_medium_student_signup'),
         })
