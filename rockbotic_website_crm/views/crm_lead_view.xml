@@ -190,5 +190,19 @@
                   parent="base.menu_sales"
                   sequence="4" action="crm_lead_enroll_action"/>
 
+        <record id="action_register_signups" model="ir.actions.server">
+            <field name="name">Register Signups</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="state">code</field>
+            <field name="code">self.create_registrations(cr, uid, context.get('active_ids', []), context)</field>
+        </record>
+
+        <record id="ir_register_signups" model="ir.values">
+            <field name="key2">client_action_multi</field>
+            <field name="model">crm.lead</field>
+            <field name="name">Register Signups</field>
+            <field eval="'ir.actions.server,%d'%action_register_signups" name="value"/>
+        </record>
+
     </data>
 </openerp>

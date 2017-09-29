@@ -134,3 +134,23 @@ class CrmLead(models.Model):
     def _onchange_school_id(self):
         self.user_id = self.school_id.user_id if self.school_id.user_id else\
             self.user_id
+
+    @api.multi
+    def create_registrations(self):
+        partner_obj = self.env['res.partner']
+        for signup in self.filtered(
+                lambda s: not s.rockbotic_before and s.vat and
+                s.type == 'enroll' and not s.event_registration_id):
+            vat = (
+                u'ES{}'.format(signup.vat) if len(signup.vat) == 9 else
+                signup.vat)
+            signup.parent_id = partner_obj.search([('vat', '=', vat)], limit=1)
+            if not signup.parent_id:
+                signup._lead_create_contact(
+                    signup, signup.partner_name, True, parent_id=False)
+            signup.partner_id = signup._lead_create_contact(
+                signup, signup.contact_name, False,
+                parent_id=signup.parent_id.id)
+            if signup.partner_id and signup.parent_id:
+                signup.action_generate_event_registration(signup.event_id)
+        return True
