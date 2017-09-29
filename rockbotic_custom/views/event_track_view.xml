@@ -69,6 +69,10 @@
                 <filter string="Event" position="after">
                     <filter string="Location" context="{'group_by':'address_id'}"/>
                 </filter>
+                <group string="Group By" position="before">
+                    <filter string="Confirmed Events" context="{}"
+                            domain="[('event_id.state', '=', 'confirm')]" />
+                </group>
             </field>
         </record>
         <record id="view_event_track_tree_inh_rockbotic" model="ir.ui.view">
