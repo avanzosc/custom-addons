@@ -8,6 +8,8 @@ cache: pip
 
 addons:
   apt:
+    sources:
+      - pov-wkhtmltopdf
     packages:
       - expect-dev  # provides unbuffer utility
       - python-lxml  # because pip installation is slow
@@ -15,6 +17,7 @@ addons:
       - antiword  # document module
       - cups
       - libcups2-dev
+      - wkhtmltopdf
 
 env:
   global:

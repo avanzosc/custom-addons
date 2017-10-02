@@ -114,7 +114,72 @@ class CrmLead(models.Model):
             'stage_id':
             self.env.ref('rockbotic_website_crm.crm_stage_enrolled').id,
         })
+        self._send_email_registration_from_inscription()
+        self._send_email_registration_sepa_from_inscription()
         return res
+
+    def _send_email_registration_from_inscription(self):
+        template = self.env.ref(
+            'rockbotic_website_crm.email_to_new_registration_from_enrollment',
+            False)
+        if not template:
+            raise exceptions.Warning(
+                _("Email template not found for Confirmation of place from "
+                  "inscription"))
+
+        for lead in self.filtered(lambda x: x.event_registration_id):
+            vals = {'email_from': template.email_from,
+                    'subject': template.subject,
+                    'reply_to': template.reply_to,
+                    'body': template.body_html}
+            wizard = self.env['mail.compose.message'].with_context(
+                default_composition_mode='mass_mail',
+                default_template_id=template.id,
+                default_use_template=True,
+                default_no_auto_thread=True,
+                active_id=lead.event_registration_id.id,
+                active_ids=lead.event_registration_id.ids,
+                active_model='event.registration',
+                default_model='event.registration',
+                default_res_id=lead.event_registration_id.id,
+            ).create(vals)
+            wizard.send_mail()
+
+    def _send_email_registration_sepa_from_inscription(self):
+        template = self.env.ref(
+            'rockbotic_website_crm.email_sepa_to_new_registration_from_'
+            'enrollment', False)
+        if not template:
+            raise exceptions.Warning(
+                _("Email template not found for request SEPA to the new "
+                  "registration from inscription"))
+        for lead in self.filtered(
+            lambda x: x.event_registration_id and
+            x.partner_id.parent_id.bank_ids and
+            x.partner_id.parent_id.bank_ids[0].mandate_ids and
+            x.partner_id.parent_id.bank_ids[0].mandate_ids[0].state in (
+                'draft', 'valid')):
+            vals = {'email_from': template.email_from,
+                    'subject': template.subject,
+                    'reply_to': template.reply_to,
+                    'body': template.body_html}
+            mandate = lead.partner_id.parent_id.bank_ids[0].mandate_ids[0]
+            wizard = self.env['mail.compose.message'].with_context(
+                default_composition_mode='mass_mail',
+                default_template_id=template.id,
+                default_use_template=True,
+                default_no_auto_thread=True,
+                active_id=mandate.id,
+                active_ids=mandate.ids,
+                active_model='account.banking.mandate',
+                default_model='account.banking.mandate',
+                default_res_id=mandate.id,
+            ).create(vals)
+            wizard.send_mail()
+            if mandate.state == 'draft':
+                if not mandate.signature_date:
+                    mandate.signature_date = fields.Datetime.now()
+                mandate.validate()
 
     @api.model
     def redirect_opportunity_view(self, opportunity_id):
@@ -154,3 +219,47 @@ class CrmLead(models.Model):
             if signup.partner_id and signup.parent_id:
                 signup.action_generate_event_registration(signup.event_id)
         return True
+
+    @api.model
+    def create(self, values):
+        lead = super(CrmLead, self).create(values)
+        if (lead.type == 'enroll' and not lead.no_confirm_mail and
+                lead.email_from):
+            template = self.env.ref(
+                'rockbotic_website_crm.email_to_new_enrollment', False)
+            if not template:
+                raise exceptions.Warning(
+                    _("Email template not found for confirmation of "
+                      "reservation of place"))
+            lead.with_context(
+                default_type='contact')._send_email_to_new_enrollment(
+                template)
+        return lead
+
+    def _send_email_to_new_enrollment(self, template):
+        partner_obj = self.env['res.partner']
+        vals = {'email_from': template.email_from,
+                'subject': template.subject,
+                'reply_to': template.reply_to,
+                'body': template.body_html}
+        wizard = self.env['mail.compose.message'].with_context(
+            default_composition_mode='mass_mail',
+            default_template_id=template.id,
+            default_use_template=True,
+            default_no_auto_thread=True,
+            active_id=self.id,
+            active_ids=self.ids,
+            active_model='crm.lead',
+            default_model='crm.lead',
+            default_res_id=self.id,
+        ).create(vals)
+        wizard.send_mail()
+        if (self.type == 'enroll' and not self.no_confirm_mail and
+                self.email_from):
+            cond = [('name', '=', self.email_from),
+                    ('display_name', '=', self.email_from),
+                    ('email', '=', self.email_from),
+                    ('type', '=', 'contact')]
+            partner = partner_obj.search(cond, limit=1)
+            if partner:
+                partner.unlink()
