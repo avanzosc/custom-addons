@@ -38,7 +38,8 @@
                                                 required="True" class="form-control">
                                             <option value="">select...</option>
                                             <t t-foreach="groups or []" t-as="school">
-                                                <option t-att-value="school.id">
+                                                <option t-att-value="school.id"
+                                                        t-att-selected="school.id == values.get('school_id')">
                                                     <t t-esc="school.name"/>
                                                 </option>
                                             </t>
@@ -54,7 +55,8 @@
                                             <t t-foreach="events or []" t-as="event">
                                                 <option t-att-value="event.id"
                                                         class="hidden"
-                                                        t-att-data-school_id="event.address_id.id">
+                                                        t-att-data-school_id="event.address_id.id"
+                                                        t-att-selected="event.id == values.get('event_id')">
                                                     <t t-esc="event.name"/>
                                                 </option>
                                             </t>
@@ -70,7 +72,7 @@
                                     <div class="col-md-9 col-sm-8">
                                         <input type="text" name="contact_name"
                                                class="form-control" required="True"
-                                               t-attf-value="#{contact_name or ''}"/>
+                                               t-att-value="values.get('contact_name')"/>
                                     </div>
                                 </div>
                                 <div t-attf-class="form-group #{error and 'birth_date' in error and 'has-error' or ''}">
@@ -79,7 +81,7 @@
                                     <div class="col-md-9 col-sm-8">
                                         <input type="date" name="birth_date"
                                                class="form-control" required="True"
-                                               t-attf-value="#{birth_date or ''}"/>
+                                               t-att-value="values.get('birth_date')"/>
                                     </div>
                                 </div>
                                 <div
@@ -89,14 +91,15 @@
                                     <div class="col-md-9 col-sm-8">
                                         <input type="text" name="course"
                                                class="form-control"
-                                               t-attf-value="#{course or ''}"/>
+                                               t-att-value="values.get('course')"/>
                                     </div>
                                 </div>
                                 <div t-attf-class="form-group #{error and 'rockbotic_before' in error and 'has-error' or ''}">
                                     <label
                                             class="col-md-6 col-sm-6 control-label" for="rockbotic_before">Has ever been enrolled?</label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input type="checkbox" name="rockbotic_before" />
+                                        <input type="checkbox" name="rockbotic_before"
+                                               t-att-checked="values.get('rockbotic_before')"/>
                                     </div>
                                 </div>
                             </fieldset>
@@ -108,8 +111,8 @@
                                         <select name="journal_permission"
                                                 required="True" class="form-control">
                                             <option value="">select...</option>
-                                            <option value="yes">Yes</option>
-                                            <option value="no">No</option>
+                                            <option value="yes" t-att-selected="u'yes' == values.get('journal_permission')">Yes</option>
+                                            <option value="no" t-att-selected="u'no' == values.get('journal_permission')">No</option>
                                         </select>
                                     </div>
                                 </div>
@@ -119,8 +122,8 @@
                                         <select name="blog_permission"
                                                 required="True" class="form-control">
                                             <option value="">select...</option>
-                                            <option value="yes">Yes</option>
-                                            <option value="no">No</option>
+                                            <option value="yes" t-att-selected="u'yes' == values.get('blog_permission')">Yes</option>
+                                            <option value="no" t-att-selected="u'no' == values.get('blog_permission')">No</option>
                                         </select>
                                     </div>
                                 </div>
@@ -130,8 +133,8 @@
                                         <select name="media_permission"
                                                 required="True" class="form-control">
                                             <option value="">select...</option>
-                                            <option value="yes">Yes</option>
-                                            <option value="no">No</option>
+                                            <option value="yes" t-att-selected="u'yes' == values.get('media_permission')">Yes</option>
+                                            <option value="no" t-att-selected="u'no' == values.get('media_permission')">No</option>
                                         </select>
                                     </div>
                                 </div>
@@ -142,7 +145,9 @@
                                     <label
                                             class="col-md-3 col-sm-4 control-label" for="partner_name">Name / Surname</label>
                                     <div class="col-md-9 col-sm-8">
-                                        <input type="text" class="form-control" name="partner_name" required="True" t-attf-value="#{partner_name or ''}"/>
+                                        <input type="text" class="form-control" name="partner_name"
+                                               required="True"
+                                               t-att-value="values.get('partner_name')"/>
                                     </div>
                                 </div>
                                 <div t-attf-class="form-group #{error and 'zipcode' in error and 'has-error' or ''}">
@@ -150,7 +155,8 @@
                                     <div class="col-md-9 col-sm-8">
                                         <input type="text" name="zip" placeholder="XXXXX"
                                                pattern="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}" title="Please 5 number zip"
-                                               class="form-control" t-attf-value="#{zip or ''}"/>
+                                               class="form-control"
+                                               t-att-value="values.get('zip')"/>
                                     </div>
                                 </div>
                                 <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
@@ -158,7 +164,7 @@
                                     <div class="col-md-9 col-sm-8">
                                         <input type="phone" name="phone"
                                                class="form-control" required="True"
-                                               t-attf-value="#{phone or ''}"/>
+                                               t-att-value="values.get('phone')"/>
                                     </div>
                                 </div>
                                 <div t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
@@ -166,14 +172,15 @@
                                     <div class="col-md-9 col-sm-8">
                                         <input type="email" name="email_from"
                                                class="form-control" required="True"
-                                               t-attf-value="#{email_from or ''}"/>
+                                               t-att-value="values.get('email_from')"/>
                                     </div>
                                 </div>
                                 <div t-attf-class="form-group #{error and 'opt_out' in error and 'has-error' or ''}">
                                     <label
                                             class="col-md-6 col-sm-6 control-label" for="opt_out">Opt-Out</label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input type="checkbox" name="opt_out" />
+                                        <input type="checkbox" name="opt_out"
+                                               t-att-checked="values.get('opt_out')"/>
                                     </div>
                                 </div>
                                 <div t-attf-class="form-group #{error and 'vat' in error and 'has-error' or ''}">
@@ -183,7 +190,7 @@
                                                pattern="^\d{8}[A-Z]{1}|[X]{1}\d{8}[A-Z]{1}|[K-MX-Z]{1}\d{7}[A-Z]{1}$"
                                                title="Digits and uppercase letters, do not use space nor '-'"
                                                required="True"
-                                               t-attf-value="#{vat or ''}"/>
+                                               t-att-value="values.get('vat')"/>
                                     </div>
                                 </div>
                                 <div t-attf-class="form-group #{error and 'account_number' in error and 'has-error' or ''}">
@@ -193,13 +200,15 @@
                                                name="account_number"
                                                pattern="^ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{4}|ES\d{22}$"
                                                title="A spanish IBAN has 24 digits, starting with ES"
-                                               t-attf-value="#{account_number or ''}" required="True"/>
+                                               t-att-value="values.get('account_number')" required="True"/>
                                     </div>
                                 </div>
                                 <div t-attf-class="form-group #{error and 'description' in error and 'has-error' or ''}">
                                     <label class="col-md-3 col-sm-4 control-label" for="description">Observations</label>
                                     <div class="col-md-9 col-sm-8">
-                                        <textarea class="form-control" name="description" style="min-height: 120px"><t t-esc="description or ''"/></textarea>
+                                        <textarea class="form-control"
+                                                  name="description"
+                                                  style="min-height: 120px"><t t-esc="values.get('description')"/></textarea>
                                     </div>
                                 </div>
                                 <div t-if="website.user_id != user_id"
@@ -207,7 +216,8 @@
                                     <label
                                             class="col-md-6 col-sm-6 control-label" for="no_confirm_mail">Do not send email notification</label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input type="checkbox" name="no_confirm_mail" />
+                                        <input type="checkbox" name="no_confirm_mail"
+                                        t-att-checked="values.get('no_confirm_mail')"/>
                                     </div>
                                 </div>
                             </fieldset>
