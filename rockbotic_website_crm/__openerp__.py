@@ -27,6 +27,7 @@
         # "views/contactus_form.xml",
         "views/crm_lead_view.xml",
         "views/website_crm.xml",
+        "views/res_company_view.xml",
     ],
     "installable": True,
 }

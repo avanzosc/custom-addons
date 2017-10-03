@@ -11,20 +11,21 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
 
     def setUp(self):
         super(TestRockboticWebsiteCrm, self).setUp()
-        enroll_model = self.env['crm.lead']
+        self.partner_model = self.env['res.partner']
+        self.enroll_model = self.env['crm.lead']
         self.search_action = self.browse_ref(
             'rockbotic_website_crm.res_partner_enroll_search_action')
         self.enroll_action = self.browse_ref(
             'rockbotic_website_crm.action_crm_lead2opportunity_partner')
-        school = self.partner_model.create({
+        self.school = self.partner_model.create({
             'name': 'School',
             'is_group': True,
             'payer': 'student',
         })
         self.event.write({
-            'address_id': school.id,
+            'address_id': self.school.id,
         })
-        self.enrollment = enroll_model.create({
+        self.enrollment = self.enroll_model.create({
             'name': 'TEST',
             'contact_name': self.partner.name,
             'partner_name': self.parent.name,
@@ -37,7 +38,7 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
             'birth_date': fields.Date.today(),
             'account_number': 'ES2715688807689087558775',
             'type': 'enroll',
-            'school_id': school.id,
+            'school_id': self.school.id,
             'event_id': self.event.id,
             'medium_id': self.ref(
                 'rockbotic_website_crm.crm_medium_student_signup'),
@@ -90,6 +91,94 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
         self.assertTrue(enroll_wiz.parent_id)
         enroll_wiz.action_apply()
         self.assertTrue(self.enrollment.event_registration_id)
+
+    def test_enrollment_new2(self):
+        enrollment = self.enroll_model.create({
+            'name': 'TEST',
+            'contact_name': 'children',
+            'partner_name': 'father',
+            'vat': '15252683A',
+            'zip': 20720,
+            'rockbotic_before': False,
+            'journal_permission': 'no',
+            'blog_permission': 'no',
+            'media_permission': 'no',
+            'birth_date': fields.Date.today(),
+            'account_number': 'ES2715688807689087558775',
+            'type': 'enroll',
+            'school_id': self.school.id,
+            'event_id': self.event.id,
+            'medium_id': self.ref(
+                'rockbotic_website_crm.crm_medium_student_signup'),
+            'no_confirm_mail': False,
+            'email_from': 'test@rockbotic.com'
+        })
+        enrollment.school_id.user_id = 1
+        enrollment._onchange_school_id()
+        self.assertEquals(enrollment.user_id, enrollment.school_id.user_id,
+                          'Bad school user')
+        cond = [('name', '=', enrollment.email_from),
+                ('display_name', '=', enrollment.email_from),
+                ('email', '=', enrollment.email_from),
+                ('type', '=', 'contact')]
+        partner = self.partner_model.search(cond, limit=1)
+        self.assertEquals(len(partner), 0,
+                          'Partner found after create inscription')
+        self.browse_ref(
+            'rockbotic_website_crm.email_to_new_enrollment').unlink()
+        with self.assertRaises(exceptions.Warning):
+            enrollment = self.enroll_model.create({
+                'name': 'TEST 2',
+                'contact_name': 'children 2',
+                'partner_name': 'father 2',
+                'vat': '15252683A',
+                'zip': 20720,
+                'rockbotic_before': False,
+                'journal_permission': 'no',
+                'blog_permission': 'no',
+                'media_permission': 'no',
+                'birth_date': fields.Date.today(),
+                'account_number': 'ES2715688807689087558775',
+                'type': 'enroll',
+                'school_id': self.school.id,
+                'event_id': self.event.id,
+                'medium_id': self.ref(
+                    'rockbotic_website_crm.crm_medium_student_signup'),
+                'no_confirm_mail': False,
+                'email_from': 'test2@rockbotic.com'
+            })
+        self.assertFalse(self.enrollment.event_registration_id)
+        self.assertFalse(self.enrollment.partner_id)
+        self.assertFalse(self.enrollment.parent_id)
+        self.assertFalse(self.enrollment.rockbotic_before)
+        button_dict = self.enrollment.button_convert2opportunity()
+        action_dict = self.search_action.read()[0] if self.search_action else\
+            {}
+        self.assertEquals(button_dict['res_model'], action_dict['res_model'])
+        self.assertEquals(button_dict['name'], action_dict['name'])
+        search_wiz = self.search_wiz.with_context(
+            active_id=self.enrollment.id,
+            active_ids=self.enrollment.ids,
+            active_model=self.enrollment._model._name).create({
+                'parent_id': self.parent.id
+            })
+        search_wiz.action_apply()
+        self.assertNotEquals(self.enrollment.partner_id, self.partner)
+        self.assertEquals(self.enrollment.parent_id, self.parent)
+        enroll_wiz = self.enroll_wiz.with_context(
+            active_id=self.enrollment.id,
+            active_ids=self.enrollment.ids,
+            active_model=self.enrollment._model._name).create({})
+        self.browse_ref(
+            'rockbotic_website_crm.email_sepa_to_new_registration_from_'
+            'enrollment').unlink()
+        with self.assertRaises(exceptions.Warning):
+            enroll_wiz.action_apply()
+        self.browse_ref(
+            'rockbotic_website_crm.email_to_new_registration_from_'
+            'enrollment').unlink()
+        with self.assertRaises(exceptions.Warning):
+            enroll_wiz.action_apply()
 
     def test_enrollment_parent_exist(self):
         self.assertFalse(self.enrollment.event_registration_id)
