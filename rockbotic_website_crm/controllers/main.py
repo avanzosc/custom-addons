@@ -21,7 +21,10 @@ class StudentSignUp(http.Controller):
             )
         return url
 
-    def signup_values(self, data=None):
+    @http.route(['/page/rockbotic_website_crm.student_signup',
+                 '/page/student_signup'],
+                type='http', auth='public', website=True)
+    def contact(self, **kwargs):
         cr, context, registry = request.cr, request.context, request.registry
         orm_partner = registry.get('res.partner')
         orm_event = registry.get('event.event')
@@ -38,23 +41,16 @@ class StudentSignUp(http.Controller):
                                ('address_id', 'in', partner_ids)],
             order='name', context=context)
         events = orm_event.browse(cr, SUPERUSER_ID, event_ids, context)
-
         values = {
+            'zip': '',
             'groups': groups,
             'events': events,
         }
-        return values
-
-    @http.route(['/page/rockbotic_website_crm.student_signup',
-                 '/page/student_signup'],
-                type='http', auth='public', website=True)
-    def contact(self, **kwargs):
-        values = self.signup_values()
         for field in ['partner_name', 'phone', 'contact_name', 'email_from',
                       'name']:
             if kwargs.get(field):
                 values[field] = kwargs.pop(field)
-        values.update(values={}, kwargs=kwargs.items())
+        values.update(kwargs=kwargs.items())
         return request.website.render(
             "rockbotic_website_crm.student_signup", values)
 
@@ -130,17 +126,6 @@ class StudentSignUp(http.Controller):
                 # allow to add some free fields or blacklisted field like ID
                 post_description.append("%s: %s" % (field_name, field_value))
 
-        values.update({
-            'school_id': int(values.get('school_id') or 0),
-            'event_id': int(values.get('event_id') or 0),
-            'rockbotic_before': (
-                True if values.get('rockbotic_before') == 'on' else False),
-            'opt_out': (
-                True if values.get('opt_out') == 'on' else False),
-            'no_confirm_mail': (
-                True if values.get('no_confirm_mail') == 'on' else False),
-        })
-
         if "name" not in kwargs and values.get("contact_name"):
             # if kwarg.name is empty, it's an error, we cannot copy
             # the contact_name
@@ -149,27 +134,8 @@ class StudentSignUp(http.Controller):
         # model crm_lead exists
         error = set(field for field in _REQUIRED if not values.get(field))
 
-        vat = (
-            u'ES{}'.format(values.get('vat')) if len(values.get('vat')) == 9
-            else values.get('vat'))
-        orm_partner = request.registry['res.partner']
-        vat_country, vat_number = orm_partner._split_vat(vat)
-        if not orm_partner.simple_vat_check(
-                request.cr, SUPERUSER_ID, vat_country, vat_number):
-            error.add('vat')
-            # The VAT number does not seem to be valid
-
-        iban = values.get('account_number')
-        orm_bank = request.registry['res.partner.bank']
-        if not orm_bank.is_iban_valid(request.cr, SUPERUSER_ID, iban):
-            error.add('account_number')
-            # The IBAN does not seem to be correct.
-
         if error:
-            signup_values = self.signup_values()
-            values = dict(
-                signup_values, values=values, error=error,
-                kwargs=kwargs.items())
+            values = dict(values, error=error, kwargs=kwargs.items())
             return request.website.render(kwargs.get(
                 "view_from", "rockbotic_website_crm.student_signup"), values)
 

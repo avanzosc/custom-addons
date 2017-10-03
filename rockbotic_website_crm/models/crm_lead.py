@@ -160,6 +160,7 @@ class CrmLead(models.Model):
             x.partner_id.parent_id.bank_ids[0].mandate_ids[0].state in (
                 'draft', 'valid')):
             vals = {'email_from': template.email_from,
+                    'partner_ids': [(4, self.partner_id.parent_id.id)],
                     'subject': template.subject,
                     'reply_to': template.reply_to,
                     'body': template.body_html}
@@ -239,6 +240,7 @@ class CrmLead(models.Model):
     def _send_email_to_new_enrollment(self, template):
         partner_obj = self.env['res.partner']
         vals = {'email_from': template.email_from,
+                'email_to': self.email_from,
                 'subject': template.subject,
                 'reply_to': template.reply_to,
                 'body': template.body_html}
@@ -262,4 +264,4 @@ class CrmLead(models.Model):
                     ('type', '=', 'contact')]
             partner = partner_obj.search(cond, limit=1)
             if partner:
-                partner.unlink()
+                partner.delete_after_sending_email = True

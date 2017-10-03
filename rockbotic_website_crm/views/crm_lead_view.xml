@@ -53,6 +53,8 @@
                     <field name="create_date"/>
                     <field name="stage_id" />
                     <field name="contact_name" string="Student" />
+                    <field name="birth_date"/>
+                    <field name="course"/>
                     <field name="partner_name" string="Responsible" />
                     <field name="school_id" />
                     <field name="event_id" />
