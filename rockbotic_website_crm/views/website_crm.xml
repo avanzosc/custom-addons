@@ -163,7 +163,7 @@
                                     <label class="col-md-3 col-sm-4 control-label" for="phone">Phone Number</label>
                                     <div class="col-md-9 col-sm-8">
                                         <input type="phone" name="phone"
-                                               class="form-control" required="True"
+                                               class="form-control"
                                                t-att-value="values.get('phone')"/>
                                     </div>
                                 </div>
@@ -171,7 +171,7 @@
                                     <label class="col-md-3 col-sm-4 control-label" for="email_from">Email</label>
                                     <div class="col-md-9 col-sm-8">
                                         <input type="email" name="email_from"
-                                               class="form-control" required="True"
+                                               class="form-control"
                                                t-att-value="values.get('email_from')"/>
                                     </div>
                                 </div>
@@ -189,7 +189,6 @@
                                         <input type="text" class="form-control" name="vat"
                                                pattern="^\d{8}[A-Z]{1}|[X]{1}\d{8}[A-Z]{1}|[K-MX-Z]{1}\d{7}[A-Z]{1}$"
                                                title="Digits and uppercase letters, do not use space nor '-'"
-                                               required="True"
                                                t-att-value="values.get('vat')"/>
                                     </div>
                                 </div>
@@ -217,7 +216,7 @@
                                             class="col-md-6 col-sm-6 control-label" for="no_confirm_mail">Do not send email notification</label>
                                     <div class="col-md-6 col-sm-6">
                                         <input type="checkbox" name="no_confirm_mail"
-                                        t-att-checked="values.get('no_confirm_mail')"/>
+                                               t-att-checked="values.get('no_confirm_mail')"/>
                                     </div>
                                 </div>
                             </fieldset>

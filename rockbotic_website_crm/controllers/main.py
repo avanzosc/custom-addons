@@ -103,8 +103,8 @@ class StudentSignUp(http.Controller):
         _BLACKLIST = ['id', 'create_uid', 'create_date', 'write_uid',
                       'write_date', 'user_id', 'active']
         # Allow in description
-        _REQUIRED = ['name', 'partner_name', 'contact_name', 'email_from',
-                     'birth_date', 'journal_permission', 'blog_permission',
+        _REQUIRED = ['name', 'partner_name', 'contact_name', 'birth_date',
+                     'journal_permission', 'blog_permission',
                      'media_permission']
         # Could be improved including required from model
 
@@ -149,15 +149,16 @@ class StudentSignUp(http.Controller):
         # model crm_lead exists
         error = set(field for field in _REQUIRED if not values.get(field))
 
-        vat = (
-            u'ES{}'.format(values.get('vat')) if len(values.get('vat')) == 9
-            else values.get('vat'))
-        orm_partner = request.registry['res.partner']
-        vat_country, vat_number = orm_partner._split_vat(vat)
-        if not orm_partner.simple_vat_check(
-                request.cr, SUPERUSER_ID, vat_country, vat_number):
-            error.add('vat')
-            # The VAT number does not seem to be valid
+        if values.get('vat'):
+            vat = (
+                u'ES{}'.format(values.get('vat'))
+                if len(values.get('vat')) == 9 else values.get('vat'))
+            orm_partner = request.registry['res.partner']
+            vat_country, vat_number = orm_partner._split_vat(vat)
+            if not orm_partner.simple_vat_check(
+                    request.cr, SUPERUSER_ID, vat_country, vat_number):
+                error.add('vat')
+                # The VAT number does not seem to be valid
 
         iban = values.get('account_number')
         orm_bank = request.registry['res.partner.bank']
