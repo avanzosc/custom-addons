@@ -33,9 +33,11 @@ class ResPartnerEnrollSearch(models.TransientModel):
             partners = partner_obj.search(
                 [('name', 'ilike', lead.contact_name),
                  ('parent_id', '!=', False),
-                 ('registered_partner', '=', 'True')])
+                 ('registered_partner', '=', 'True'),
+                 ('delete_after_sending_email', '=', False)])
             parents = partner_obj.search(
                 [('is_company', '=', True),
+                 ('delete_after_sending_email', '=', False),
                  '|', '|', '|', '|', ('name', 'ilike', lead.partner_name),
                  ('vat', 'ilike', lead.vat),
                  ('email', 'ilike', lead.email_from),
@@ -43,12 +45,14 @@ class ResPartnerEnrollSearch(models.TransientModel):
                  ('mobile', 'ilike', lead.phone)])
             partners |= partner_obj.search(
                 [('parent_id', 'in', parents.ids),
+                 ('delete_after_sending_email', '=', False),
                  ('registered_partner', '=', 'True')])
             if not partners:
                 contact_names = lead.contact_name.split(' ')
                 for contact_name in contact_names:
                     partners |= partner_obj.search(
                         [('name', 'ilike', contact_name),
+                         ('delete_after_sending_email', '=', False),
                          ('registered_partner', '=', 'True'),
                          ('parent_id', '!=', False)]) if contact_name else\
                         partner_obj
@@ -56,11 +60,13 @@ class ResPartnerEnrollSearch(models.TransientModel):
                 for parent_name in parent_names:
                     parents = partner_obj.search(
                         [('is_company', '=', True),
+                         ('delete_after_sending_email', '=', False),
                          ('name', 'ilike', parent_name),
                          ('parent_id', '=', False)]) if parent_name else\
                         partner_obj
                 partners |= partner_obj.search(
                     [('parent_id', 'in', parents.ids),
+                     ('delete_after_sending_email', '=', False),
                      ('registered_partner', '=', 'True')])
             if partners:
                 res.update({
