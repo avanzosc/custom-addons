@@ -12,6 +12,7 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
     def setUp(self):
         super(TestRockboticWebsiteCrm, self).setUp()
         self.partner_model = self.env['res.partner']
+        self.mail_model = self.env['mail.mail']
         self.enroll_model = self.env['crm.lead']
         self.search_action = self.browse_ref(
             'rockbotic_website_crm.res_partner_enroll_search_action')
@@ -113,17 +114,23 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
             'no_confirm_mail': False,
             'email_from': 'test@rockbotic.com'
         })
+        cond = [('name', '=', 'test@rockbotic.com'),
+                ('display_name', '=', 'test@rockbotic.com'),
+                ('email', '=', 'test@rockbotic.com'),
+                ('type', '=', 'contact')]
+        partner = self.partner_model.search(cond, limit=1)
+        self.assertEquals(len(partner), 1,
+                          'Automatic created partner not found')
+        self.assertEquals(partner.delete_after_sending_email, True,
+                          'Partner not marked to delete')
+        cond = [('recipient_ids', 'in', [partner.id])]
+        mail = self.mail_model.search(cond, limit=1)
+        self.assertEquals(len(mail), 1,
+                          'First email not found')
         enrollment.school_id.user_id = 1
         enrollment._onchange_school_id()
         self.assertEquals(enrollment.user_id, enrollment.school_id.user_id,
                           'Bad school user')
-        cond = [('name', '=', enrollment.email_from),
-                ('display_name', '=', enrollment.email_from),
-                ('email', '=', enrollment.email_from),
-                ('type', '=', 'contact')]
-        partner = self.partner_model.search(cond, limit=1)
-        self.assertEquals(len(partner), 0,
-                          'Partner found after create inscription')
         self.browse_ref(
             'rockbotic_website_crm.email_to_new_enrollment').unlink()
         with self.assertRaises(exceptions.Warning):
@@ -145,7 +152,7 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
                 'medium_id': self.ref(
                     'rockbotic_website_crm.crm_medium_student_signup'),
                 'no_confirm_mail': False,
-                'email_from': 'test2@rockbotic.com'
+                'email_from': 'test3@rockbotic.com'
             })
         self.assertFalse(self.enrollment.event_registration_id)
         self.assertFalse(self.enrollment.partner_id)

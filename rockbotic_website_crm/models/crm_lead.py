@@ -132,6 +132,10 @@ class CrmLead(models.Model):
                     'subject': template.subject,
                     'reply_to': template.reply_to,
                     'body': template.body_html}
+            if self.partner_id.email:
+                vals['partner_ids'] = [(6, 0, [self.partner_id.id])]
+            if self.partner_id.parent_id and self.partner_id.parent_id.email:
+                vals['partner_ids'] = [(6, 0, [self.partner_id.parent_id.id])]
             wizard = self.env['mail.compose.message'].with_context(
                 default_composition_mode='mass_mail',
                 default_template_id=template.id,
@@ -163,6 +167,10 @@ class CrmLead(models.Model):
                     'subject': template.subject,
                     'reply_to': template.reply_to,
                     'body': template.body_html}
+            if self.partner_id.email:
+                vals['partner_ids'] = [(6, 0, [self.partner_id.id])]
+            if self.partner_id.parent_id and self.partner_id.parent_id.email:
+                vals['partner_ids'] = [(6, 0, [self.partner_id.parent_id.id])]
             mandate = lead.partner_id.parent_id.bank_ids[0].mandate_ids[0]
             wizard = self.env['mail.compose.message'].with_context(
                 default_composition_mode='mass_mail',
@@ -239,6 +247,7 @@ class CrmLead(models.Model):
     def _send_email_to_new_enrollment(self, template):
         partner_obj = self.env['res.partner']
         vals = {'email_from': template.email_from,
+                'email_to': self.email_from,
                 'subject': template.subject,
                 'reply_to': template.reply_to,
                 'body': template.body_html}
@@ -262,4 +271,4 @@ class CrmLead(models.Model):
                     ('type', '=', 'contact')]
             partner = partner_obj.search(cond, limit=1)
             if partner:
-                partner.unlink()
+                partner.delete_after_sending_email = True
