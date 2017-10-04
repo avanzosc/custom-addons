@@ -53,6 +53,8 @@
                     <field name="create_date"/>
                     <field name="stage_id" />
                     <field name="contact_name" string="Student" />
+                    <field name="birth_date"/>
+                    <field name="course"/>
                     <field name="partner_name" string="Responsible" />
                     <field name="school_id" />
                     <field name="event_id" />
@@ -270,7 +272,7 @@
             <field name="name">Confirmation of place from inscription</field>
             <field name="model_id" ref="event.model_event_registration"/>
             <field name="email_from">${object.company_id.email or ''}</field>
-            <field name="email_to">${object.partner_id.parent_id.email or ''}</field>
+            <field name="email_to">${object.partner_id.parent_id.email or object.partner_id.email or ''}</field>
             <field name="reply_to">${object.event_id.user_id.partner_id.email or object.company_id.email}</field>
             <field name="subject">CONFIRMATION OF PLACE ROBOTIC EDUCATIVE. ${object.event_id.address_id.name or ''}. ${object.event_id.name or ''}</field>
             <field name="auto_delete" eval="True"/>
@@ -312,7 +314,7 @@
             <field name="name">Request SEPA to the new registration from inscription</field>
             <field name="model_id" ref="account_banking_mandate.model_account_banking_mandate"/>
             <field name="email_from">${object.company_id.email or ''}</field>
-            <field name="email_to">${object.partner_id.parent_id.email or ''}</field>
+            <field name="email_to">${object.partner_id.parent_id.email or object.partner_id.email or ''}</field>
             <field name="reply_to">${object.company_id.sepa_responsible.email or object.company_id.email}</field>
             <field name="report_template" ref="account_banking_sepa_direct_debit.report_sepa_direct_debit_mandate"/>
             <field name="report_name">${object.name or 'mandato_sepa'}</field>
