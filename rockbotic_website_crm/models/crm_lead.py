@@ -126,8 +126,8 @@ class CrmLead(models.Model):
             raise exceptions.Warning(
                 _("Email template not found for Confirmation of place from "
                   "inscription"))
-
-        for lead in self.filtered(lambda x: x.event_registration_id):
+        for lead in self.filtered(
+                lambda x: x.event_registration_id and x.type == 'enroll'):
             vals = {'email_from': template.email_from,
                     'subject': template.subject,
                     'reply_to': template.reply_to,
@@ -141,6 +141,7 @@ class CrmLead(models.Model):
                 default_template_id=template.id,
                 default_use_template=True,
                 default_no_auto_thread=True,
+                active_domain=[['id', '=', lead.event_registration_id.id]],
                 active_id=lead.event_registration_id.id,
                 active_ids=lead.event_registration_id.ids,
                 active_model='event.registration',
@@ -159,24 +160,22 @@ class CrmLead(models.Model):
                   "registration from inscription"))
         for lead in self.filtered(
             lambda x: x.event_registration_id and
-            x.partner_id.parent_id.bank_ids and
+            x.partner_id.parent_id.bank_ids and x.type == 'enroll' and
             x.partner_id.parent_id.bank_ids[0].mandate_ids and
             x.partner_id.parent_id.bank_ids[0].mandate_ids[0].state in (
                 'draft', 'valid')):
             vals = {'email_from': template.email_from,
                     'subject': template.subject,
                     'reply_to': template.reply_to,
-                    'body': template.body_html}
-            if self.partner_id.email:
-                vals['partner_ids'] = [(6, 0, [self.partner_id.id])]
-            if self.partner_id.parent_id and self.partner_id.parent_id.email:
-                vals['partner_ids'] = [(6, 0, [self.partner_id.parent_id.id])]
-            mandate = lead.partner_id.parent_id.bank_ids[0].mandate_ids[0]
+                    'body': template.body_html,
+                    'partner_ids': [(6, 0, [self.partner_id.parent_id.id])]}
+            mandate = lead.parent_id.bank_ids[0].mandate_ids[0]
             wizard = self.env['mail.compose.message'].with_context(
                 default_composition_mode='mass_mail',
                 default_template_id=template.id,
                 default_use_template=True,
                 default_no_auto_thread=True,
+                active_domain=[['id', '=', mandate.id]],
                 active_id=mandate.id,
                 active_ids=mandate.ids,
                 active_model='account.banking.mandate',
