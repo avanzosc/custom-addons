@@ -18,6 +18,8 @@
         "partner_contact_birthdate",
         "partner_prospect",
         "partner_parent_change",
+        "base_iban",
+        "account_banking_sepa_direct_debit",
         "rockbotic_custom",
     ],
     "data": [

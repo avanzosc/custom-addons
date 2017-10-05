@@ -4,6 +4,7 @@
 
 from openerp import _, api, exceptions, fields, models
 from openerp.tools.safe_eval import safe_eval
+from openerp.addons.base_iban.base_iban import _format_iban, _pretty_iban
 
 
 class ResPartnerEnrollSearch(models.TransientModel):
@@ -70,10 +71,17 @@ class ResPartnerEnrollSearch(models.TransientModel):
                      ('registered_partner', '=', 'True')])
             if partners:
                 res.update({
-                    'item_ids': [(0, 0, {'partner_id': x.id,
-                                         'parent_partner_id': x.parent_id.id,
-                                         'parent_vat': x.parent_id.vat}) for x
-                                 in partners],
+                    'item_ids':
+                        [(0, 0,
+                          {'partner_id': x.id,
+                           'parent_partner_id': x.parent_id.id,
+                           'parent_acc_number':
+                           x.parent_id.bank_ids.filtered(
+                               lambda b: b.mandate_ids.filtered(
+                                   lambda m: m.state == 'valid')
+                           )[:1].acc_number or _('Valid mandate not found'),
+                           'parent_vat': x.parent_id.vat}) for x
+                         in partners],
                 })
         return res
 
@@ -115,7 +123,8 @@ class ResPartnerEnrollSearch(models.TransientModel):
                 lead, lead.contact_name, False, parent_id=parent_id) if not \
                 self.partner_id else self.partner_id.id
             partner = self.env['res.partner'].browse(partner_id)
-        if partner.parent_id.id != parent_id:
+        change_parent = partner.parent_id.id != parent_id
+        if change_parent:
             change_wiz = self.env['res.partner.parent.change'].create({
                 'partner_id': partner.id,
                 'old_parent_id': partner.parent_id.id,
@@ -126,6 +135,39 @@ class ResPartnerEnrollSearch(models.TransientModel):
             'partner_id': partner.id,
             'parent_id': parent_id,
         })
+        if not change_parent and lead.rockbotic_before and lead.account_number:
+            acc_number = _pretty_iban(_format_iban(lead.account_number))
+            bank = lead.parent_id.bank_ids.filtered(
+                lambda b: b.acc_number == acc_number)
+            mandates = lead.parent_id.mapped('bank_ids.mandate_ids')
+            if not bank:
+                account_type = self.env.ref('base_iban.bank_iban')
+                mandates.filtered(
+                    lambda m: m.state in ('draft', 'valid')).cancel()
+                lead.parent_id.write({
+                    'bank_ids': [(0, 0, {
+                        'state': account_type.code,
+                        'acc_number': acc_number,
+                        'mandate_ids': [(0, 0, {
+                            'format': 'sepa',
+                            'type': 'recurrent',
+                            'recurrent_sequence_type': 'recurring',
+                        })],
+                    })],
+                })
+            else:
+                mandates.filtered(
+                    lambda m: m.state in ('draft', 'valid') and
+                    m.partner_bank_id != bank).cancel()
+                if not bank.mandate_ids.filtered(
+                        lambda m: m.state in ('draft', 'valid')):
+                    bank.write({
+                        'mandate_ids': [(0, 0, {
+                            'format': 'sepa',
+                            'type': 'recurrent',
+                            'recurrent_sequence_type': 'recurring',
+                        })],
+                    })
         action = self.env.ref(
             'rockbotic_website_crm.action_crm_lead2opportunity_partner')
         action_dict = action.read()[0] if action else {}
@@ -150,3 +192,4 @@ class ResPartnerEnrollSearchItem(models.TransientModel):
         comodel_name='res.partner', string='Parent', readonly=True)
     parent_vat = fields.Char(
         string='Parent VAT', readonly=True)
+    parent_acc_number = fields.Char(string='Account Number', readonly=True)
