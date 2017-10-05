@@ -5,6 +5,7 @@
 from openerp.addons.rockbotic_custom.tests.test_rockbotic_custom import\
     TestRockboticCustom
 from openerp import exceptions, fields
+from openerp.addons.base_iban.base_iban import _format_iban, _pretty_iban
 
 
 class TestRockboticWebsiteCrm(TestRockboticCustom):
@@ -18,6 +19,24 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
             'rockbotic_website_crm.res_partner_enroll_search_action')
         self.enroll_action = self.browse_ref(
             'rockbotic_website_crm.action_crm_lead2opportunity_partner')
+        self.parent.mapped('bank_ids.mandate_ids').filtered(
+            lambda m: m.state in ('draft', 'valid')).cancel()
+        self.iban_acc_number = 'ES2715688807689087558775'
+        account_type = self.env.ref('base_iban.bank_iban')
+        self.parent.write({
+            'bank_ids': [(0, 0, {
+                'state': account_type.code,
+                'acc_number': self.iban_acc_number,
+                'mandate_ids': [(0, 0, {
+                    'format': 'sepa',
+                    'type': 'recurrent',
+                    'recurrent_sequence_type': 'recurring',
+                    'signature_date': fields.Date.today(),
+                })],
+            })],
+        })
+        self.parent.mapped('bank_ids.mandate_ids').filtered(
+            lambda m: m.state == 'draft').validate()
         self.school = self.partner_model.create({
             'name': 'School',
             'is_group': True,
@@ -37,7 +56,7 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
             'blog_permission': 'no',
             'media_permission': 'no',
             'birth_date': fields.Date.today(),
-            'account_number': 'ES2715688807689087558775',
+            'account_number': self.iban_acc_number,
             'type': 'enroll',
             'school_id': self.school.id,
             'event_id': self.event.id,
@@ -274,6 +293,37 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
             active_model=self.enrollment._model._name).action_apply()
         self.assertEquals(self.enrollment.partner_id, self.partner)
         self.assertNotEquals(self.enrollment.parent_id, self.parent)
+
+    def test_enrollment_rbk_change_account(self):
+        new_iban = _pretty_iban(_format_iban('ES3759142809123095976574'))
+        self.enrollment.write({
+            'rockbotic_before': True,
+            'account_number': new_iban,
+        })
+        old_mandate = self.parent.mapped(
+            'bank_ids.mandate_ids').filtered(lambda m: m.state == 'valid')
+        self.assertEquals(len(old_mandate), 1)
+        self.assertTrue(self.parent.bank_ids.filtered(
+            lambda b: b.acc_number == _pretty_iban(_format_iban(
+                self.iban_acc_number))))
+        self.assertFalse(self.parent.bank_ids.filtered(
+            lambda b: b.acc_number == new_iban))
+        search_wiz_dict = self.search_wiz.with_context(
+            active_id=self.enrollment.id,
+            active_ids=self.enrollment.ids,
+            active_model=self.enrollment._model._name).default_get([])
+        search_wiz_dict['item_ids'][0][2].update({'checked': True})
+        search_wiz = self.search_wiz.create(search_wiz_dict)
+        search_wiz.with_context(
+            active_id=self.enrollment.id,
+            active_ids=self.enrollment.ids,
+            active_model=self.enrollment._model._name
+        ).action_apply_same_parent()
+        new_bank = self.parent.bank_ids.filtered(
+            lambda b: b.acc_number == new_iban)
+        self.assertTrue(new_bank)
+        self.assertEquals(len(new_bank.mandate_ids), 1)
+        self.assertEquals(old_mandate[:1].state, 'cancel')
 
     def test_enrollment_with_partners(self):
         self.enrollment.write({

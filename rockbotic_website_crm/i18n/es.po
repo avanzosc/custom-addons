@@ -6,14 +6,242 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-25 08:49+0000\n"
-"PO-Revision-Date: 2017-09-25 08:49+0000\n"
+"POT-Creation-Date: 2017-10-05 13:07+0000\n"
+"PO-Revision-Date: 2017-10-05 13:07+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: rockbotic_website_crm
+#: model:email.template,body_html:rockbotic_website_crm.email_to_new_registration_from_enrollment
+msgid "\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"    <span>Dear family.</span>\n"
+"    <br>\n"
+"    <span>We are very happy to confirm the place of ${object.partner_id.name or ''} in the educational robotics activity they had reserved.</span>\n"
+"    <p></p>\n"
+"    <span>We provide below the data of the activity:</span>\n"
+"    <br>\n"
+"    <span>School center: ${object.event_id.address_id.name or ''}</span>\n"
+"    <br>\n"
+"    <span>Group: ${object.event_id.name or ''}</span>\n"
+"    <br>\n"
+"    <span>First day of class: ${object.first_day_of_class or ''}</span>\n"
+"    <p></p>\n"
+"    <span>It is not necessary for your child to provide any material. Many desire to have fun and learn if they are required.</span>\n"
+"    <p></p>\n"
+"    <span>In case of error, or any doubt, or consultation, you can contact your activity coordinator:</span>\n"
+"    <br><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.event_id.user_id.name or ''}</span>\n"
+"    <br></div><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.event_id.user_id.partner_id.email or object.company_id.emai}</span>\n"
+"    <br></div><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.event_id.user_id.partner_id.phone or object.event_id.user_id.partner_id.mobile or object.company_id.phone or ''}</span></div>\n"
+"    <p></p>\n"
+"    <span>The Rockbotic team thanks them for their confidence, and we want a great course together.</span>\n"
+"    <p></p>\n"
+"    <span>kind regards,</span>\n"
+"    <br>\n"
+"    <span>Team ROCKBOTIC</span>\n"
+"</div>\n"
+"            "
+msgstr "\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"    <span>Estimada familia.</span>\n"
+"    <br>\n"
+"    <span>Nos alegra muchísimo poder confirmar la plaza de ${object.partner_id.name or ''} en la actividad de robótica educativa que habían reservado. </span>\n"
+"    <p></p>\n"
+"    <span>Facilitamos a continuación los datos de la actividad:</span>\n"
+"    <br>\n"
+"    <span>Centro escolar: ${object.event_id.address_id.name or ''}</span>\n"
+"    <br>\n"
+"    <span>Grupo: ${object.event_id.name or ''}</span>\n"
+"    <br>\n"
+"    <span>Primer día de clase: ${object.first_day_of_class or ''}</span>\n"
+"    <p></p>\n"
+"    <span>No es necesario que su hijo aporte ningún material. Muchas ganas de divertirse y aprender sí que son requeridas.</span>\n"
+"    <p></p>\n"
+"    <span>En caso de error, o cualquier duda o consulta pueden contactar con su coordinador de la actividad:</span>\n"
+"    <br><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.event_id.user_id.name or ''}</span>\n"
+"    <br></div><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.event_id.user_id.partner_id.email or object.company_id.emai}</span>\n"
+"    <br></div><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.event_id.user_id.partner_id.phone or object.event_id.user_id.partner_id.mobile or object.company_id.phone or ''}</span></div>\n"
+"    <p></p>\n"
+"    <span>El equipo de Rockbotic les agradece la confianza y deseamos un gran curso juntos.</span>\n"
+"    <p></p>\n"
+"    <span>Reciba un cordial saludo,</span>\n"
+"    <br>\n"
+"    <span>Team ROCKBOTIC</span>\n"
+"</div>\n"
+"            "
+
+#. module: rockbotic_website_crm
+#: model:email.template,body_html:rockbotic_website_crm.email_to_new_enrollment
+msgid "\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"    <span>Estimated ${object.partner_name or 'responsible for the child'}. We confirm that we have correctly received the reservation of place with the following information:</span>\n"
+"    <p></p>\n"
+"    <span>Center: ${object.school_id.name or ''}</span>\n"
+"    <br>\n"
+"    <span>Group: ${object.event_id.name or ''}</span>\n"
+"    <p></p>\n"
+"    <span>Student: ${object.contact_name or ''}</span>\n"
+"    <br>\n"
+"    <span>Birthdate: ${object.birth_date or ''}</span>\n"
+"    <br>\n"
+"    <span>Course/class: ${object.course or ''}</span>\n"
+"    <p></p>\n"
+"    <span>Responsible: ${object.partner_name or ''}</span>\n"
+"    <br>\n"
+"    <span>VAT: ${object.vat or ''}</span>\n"
+"    <br>\n"
+"    <span>Phone: ${object.phone or ''}</span>\n"
+"    <br>\n"
+"    <span>Email: ${object.email_from or ''}</span>\n"
+"    <p></p>\n"
+"    <span>Authorizations Images:</span>\n"
+"    <br><div style=\"margin-left: 40px;\">\n"
+"    <span>Journals: ${object.journal_permission or ''}</span>\n"
+"    <br></div><div style=\"margin-left: 40px;\">\n"
+"    <span>Web/Blog: ${object.blog_permission or ''}</span>\n"
+"    <br></div><div style=\"margin-left: 40px;\">\n"
+"    <span>Social media: ${object.media_permission or ''}</span></div>\n"
+"    <p></p>\n"
+"    <span>I want to receive informative emails: ${object.opt_out or ''}</span>\n"
+"    <p></p>\n"
+"    <span>Rockbotic coordinator for questions and queries:</span>\n"
+"    <br><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.user_id.name or ''}</span>\n"
+"    <br></div><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.user_id.partner_id.email or object.company_id.emai}</span>\n"
+"    <br></div><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.user_id.partner_id.phone or object.user_id.partner_id.mobile or object.company_id.phone or ''}</span></div>\n"
+"    <p></p>\n"
+"    <span>This message ONLY reserve place. In no case serves as confirmation that the group and the square.</span>\n"
+"    <p></p>\n"
+"    <span>In next email we will confirm that the group leaves and if its place is included.</span>\n"
+"    <p></p>\n"
+"    <span>Please be patient and in case of doubt or consultation, your coordinator will be happy to assist you.</span>\n"
+"    <p></p>\n"
+"    <span>Many thanks in advance and best regards!</span>\n"
+"    <br>\n"
+"    <span>Team ROCKBOTIC</span>\n"
+"</div>\n"
+"            "
+msgstr "\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"    <span>Estimad@ ${object.partner_name or 'responsible for the child'}. Confirmamos que hemos recibido correctamente la reserva de plaza con la siguiente información:</span>\n"
+"    <p></p>\n"
+"    <span>Centro: ${object.school_id.name or ''}</span>\n"
+"    <br>\n"
+"    <span>Grupo: ${object.event_id.name or ''}</span>\n"
+"    <p></p>\n"
+"    <span>Estudiante: ${object.contact_name or ''}</span>\n"
+"    <br>\n"
+"    <span>Fecha de nacimiento: ${object.birth_date or ''}</span>\n"
+"    <br>\n"
+"    <span>Curso/Clase: ${object.course or ''}</span>\n"
+"    <p></p>\n"
+"    <span>Responsable: ${object.partner_name or ''}</span>\n"
+"    <br>\n"
+"    <span>DNI/NIE: ${object.vat or ''}</span>\n"
+"    <br>\n"
+"    <span>Teléfono: ${object.phone or ''}</span>\n"
+"    <br>\n"
+"    <span>Email: ${object.email_from or ''}</span>\n"
+"    <p></p>\n"
+"    <span>Autorizaciones Imágenes:</span>\n"
+"    <br><div style=\"margin-left: 40px;\">\n"
+"    <span>Revistas: ${object.journal_permission or ''}</span>\n"
+"    <br></div><div style=\"margin-left: 40px;\">\n"
+"    <span>Web/Blog: ${object.blog_permission or ''}</span>\n"
+"    <br></div><div style=\"margin-left: 40px;\">\n"
+"    <span>Redes sociales: ${object.media_permission or ''}</span></div>\n"
+"    <p></p>\n"
+"    <span>Deseo recibir emails informativos: ${object.opt_out or ''}</span>\n"
+"    <p></p>\n"
+"    <span>Coordinador Rockbotic para dudas y consultas:</span>\n"
+"    <br><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.user_id.name or ''}</span>\n"
+"    <br></div><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.user_id.partner_id.email or object.company_id.emai}</span>\n"
+"    <br></div><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.user_id.partner_id.phone or object.user_id.partner_id.mobile or object.company_id.phone or ''}</span></div>\n"
+"    <p></p>\n"
+"    <span>Este mensaje SOLO reserva plaza. En ningún caso sirve como confirmación de que salga el grupo y de la plaza.</span>\n"
+"    <p></p>\n"
+"    <span>En próximo correo le confirmaremos que sale el grupo, y si su plaza está incluida.</span>\n"
+"    <p></p>\n"
+"    <span>Rogamos tengan paciencia, y en caso de duda o consulta, su coordinador estará encantado de atenderle.</span>\n"
+"    <p></p>\n"
+"    <span>Muchas gracias de antemano y un cordial saludo!</span>\n"
+"    <br>\n"
+"    <span>Equipo ROCKBOTIC</span>\n"
+"</div>\n"
+"            "
+
+#. module: rockbotic_website_crm
+#: model:email.template,body_html:rockbotic_website_crm.email_sepa_to_new_registration_from_enrollment
+msgid "\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"    <span>Good Morning,</span>\n"
+"    <br>\n"
+"    <span>We have received your registration and account number to register your child in robotics classes.</span>\n"
+"    <br>\n"
+"    <span>To complete this registration, it is necessary to sign the SEPA authorization document that is attached to this mail.</span>\n"
+"    <br>\n"
+"    <span>With this signature you authorize to our company LUNATIC DESIGN SL to the domiciliation of the monthly receipts in the account that they have provided.</span>\n"
+"    <br>\n"
+"    <span>Please, forward this signed document to this email address as soon as possible, as this authorization is a legal requirement for us. The signature can also be made with legal digital certificate.</span>\n"
+"    <br>\n"
+"    <span>In case of doubt, or consultation, you can contact your activity coordinator:</span>\n"
+"    <br><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.company_id.sepa_responsible.name or ''}</span>\n"
+"    <br></div><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.company_id.sepa_responsible.email or object.company_id.emai}</span>\n"
+"    <br></div><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.company_id.sepa_responsible.phone or object.company_id.sepa_responsible.mobile or object.company_id.phone or ''}</span></div>\n"
+"    <p></p>\n"
+"    <span>Thank you very much and greetings,</span>\n"
+"    <br>\n"
+"    <span>Team ROCKBOTIC</span>\n"
+"</div>\n"
+"            "
+msgstr "\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"    <span>Buenos días, </span>\n"
+"    <br>\n"
+"    <span>Hemos recibido su inscripción, y número de cuenta, para dar de alta a su hijo/a en las clases de robótica</span>\n"
+"    <br>\n"
+"    <span>Para completar dicha inscripción, es necesario que firmen el documento de autorización SEPA que se adjunta en este correo.</span>\n"
+"    <br>\n"
+"    <span>Con esta firma ustedes autorizan a nuestra empresa LUNA TIC DESIGN SL, a la domiciliación de los recibos mensuales en la cuenta que han proporcionado.</span>\n"
+"    <br>\n"
+"    <span>Por favor, les rogamos que reenvíen dicho documento firmado a esta dirección de correo electrónico lo antes posible, pues dicha autorización es de requerimiento legal para nosotros. La firma también puede ser realizada con certificado digital legal.</span>\n"
+"    <br>\n"
+"    <span>En caso de cualquier duda, o consulta, pueden contactar con su coordinador de la actividad:</span>\n"
+"    <br><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.company_id.sepa_responsible.name or ''}</span>\n"
+"    <br></div><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.company_id.sepa_responsible.email or object.company_id.emai}</span>\n"
+"    <br></div><div style=\"margin-left: 40px;\">\n"
+"    <span>${object.company_id.sepa_responsible.phone or object.company_id.sepa_responsible.mobile or object.company_id.phone or ''}</span></div>\n"
+"    <p></p>\n"
+"    <span>Muchas gracias, y un saludo,</span>\n"
+"    <br>\n"
+"    <span>Team ROCKBOTIC</span>\n"
+"</div>\n"
+"            "
+
+#. module: rockbotic_website_crm
+#: model:email.template,report_name:rockbotic_website_crm.email_sepa_to_new_registration_from_enrollment
+msgid "${object.name or 'mandato_sepa'}"
+msgstr "${object.name or 'mandato_sepa'}"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup_thanks
@@ -26,7 +254,13 @@ msgid "A spanish IBAN has 24 digits, starting with ES"
 msgstr "Un IBAN español tiene 24 dígitos, comenzando con ES"
 
 #. module: rockbotic_website_crm
+#: model:email.template,subject:rockbotic_website_crm.email_sepa_to_new_registration_from_enrollment
+msgid "AUTHORIZATION SEPA MANDATE - ROBOTIC CLASSES - ROCKBOTIC"
+msgstr "AUTORIZACIÓN MANDATO SEPA - CLASES DE ROBÓTICA - ROCKBOTIC"
+
+#. module: rockbotic_website_crm
 #: field:crm.lead,account_number:0
+#: field:res.partner.enroll.search.item,parent_acc_number:0
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Account Number"
 msgstr "IBAN"
@@ -59,6 +293,11 @@ msgid "Blog"
 msgstr "Sitio web www.rockbotic.com y en el blog contenido en dicho sitio web"
 
 #. module: rockbotic_website_crm
+#: model:email.template,subject:rockbotic_website_crm.email_to_new_registration_from_enrollment
+msgid "CONFIRMATION OF PLACE ROBOTIC EDUCATIVE. ${object.event_id.address_id.name or ''}. ${object.event_id.name or ''}"
+msgstr "CONFIRMACION DE LA PLAZA EN LA ACTIVIDAD DE ROBÓTICA EDUCATIVA. ${object.event_id.address_id.name or ''}. ${object.event_id.name or ''}"
+
+#. module: rockbotic_website_crm
 #: view:crm.lead2opportunity.partner:rockbotic_website_crm.crm_lead2opportunity_partner_form
 #: view:res.partner.enroll.search:rockbotic_website_crm.res_partner_enroll_search_form_view
 msgid "Cancel"
@@ -78,6 +317,11 @@ msgstr "Datos de la Actividad"
 #: model:website.menu,name:rockbotic_website_crm.menu_student_signup
 msgid "Class Enrollment"
 msgstr "Inscripciones"
+
+#. module: rockbotic_website_crm
+#: model:ir.model,name:rockbotic_website_crm.model_res_company
+msgid "Companies"
+msgstr "Compañías"
 
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
@@ -103,10 +347,15 @@ msgid "Created on"
 msgstr "Creado en"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/controllers/main.py:144
+#: code:addons/rockbotic_website_crm/controllers/main.py:179
 #, python-format
 msgid "Custom Fields: "
 msgstr "Campos personalizados: "
+
+#. module: rockbotic_website_crm
+#: field:res.partner,delete_after_sending_email:0
+msgid "Delete after sending email"
+msgstr "Borrar tras enviar email"
 
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
@@ -140,15 +389,30 @@ msgid "Email"
 msgstr "Correo electrónico"
 
 #. module: rockbotic_website_crm
+#: code:addons/rockbotic_website_crm/models/crm_lead.py:127
+#, python-format
+msgid "Email template not found for Confirmation of place from inscription"
+msgstr "Plantilla de email no encontrada para la confirmación de plaza desde una inscripción."
+
+#. module: rockbotic_website_crm
+#: code:addons/rockbotic_website_crm/models/crm_lead.py:239
+#, python-format
+msgid "Email template not found for confirmation of reservation of place"
+msgstr "Plantilla de email no encontrada para la confirmación de reserva de plaza"
+
+#. module: rockbotic_website_crm
+#: code:addons/rockbotic_website_crm/models/crm_lead.py:159
+#, python-format
+msgid "Email template not found for request SEPA to the new registration from inscription"
+msgstr "Plantilla de email no encontrada para solicitud SEPA al nuevo registro en eventos desde inscripciones."
+
+#. module: rockbotic_website_crm
 #: model:crm.case.stage,name:rockbotic_website_crm.crm_stage_enrolled
 msgid "Enrolled"
 msgstr "Inscrito"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/models/crm_lead.py:133
-#: code:addons/rockbotic_website_crm/models/crm_lead.py:134
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
-#, python-format
 msgid "Enrollment"
 msgstr "Inscripción"
 
@@ -166,7 +430,7 @@ msgid "Enrollments that are assigned to me"
 msgstr "Inscripciones asignadas a mí"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/controllers/main.py:160
+#: code:addons/rockbotic_website_crm/controllers/main.py:195
 #, python-format
 msgid "Environ Fields: "
 msgstr "Campos de entorno: "
@@ -174,16 +438,16 @@ msgstr "Campos de entorno: "
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
 #: field:crm.lead,event_id:0
-msgid "Event"
-msgstr "Evento"
-
-#. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Event"
 msgstr "Actividad"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/models/crm_lead.py:53
+#: model:ir.model,name:rockbotic_website_crm.model_event_registration
+msgid "Event Registration"
+msgstr "Registro evento"
+
+#. module: rockbotic_website_crm
 #: code:addons/rockbotic_website_crm/models/crm_lead.py:54
 #, python-format
 msgid "Event must have been selected."
@@ -198,6 +462,11 @@ msgstr "Registro del evento"
 #: view:website:rockbotic_website_crm.student_signup
 msgid "FIRST SELECT THE"
 msgstr "PRIMERO SELECCIONAR EL"
+
+#. module: rockbotic_website_crm
+#: field:event.registration,first_day_of_class:0
+msgid "First day of class"
+msgstr "Primer día de clase"
 
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
@@ -312,6 +581,11 @@ msgid "Opt-Out"
 msgstr "¿Desea recibir información sobre actividades Rockbotic?"
 
 #. module: rockbotic_website_crm
+#: model:ir.model,name:rockbotic_website_crm.model_mail_mail
+msgid "Outgoing Mails"
+msgstr "Correos salientes"
+
+#. module: rockbotic_website_crm
 #: field:crm.lead,parent_id:0
 #: field:crm.lead2opportunity.partner,parent_id:0
 #: field:res.partner.enroll.search.item,parent_partner_id:0
@@ -335,6 +609,7 @@ msgstr "Persona responsable"
 
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+#: model:ir.model,name:rockbotic_website_crm.model_res_partner
 #: field:res.partner.enroll.search.item,partner_id:0
 msgid "Partner"
 msgstr "Empresa"
@@ -360,7 +635,8 @@ msgid "Please fill the form below in order to enroll in a class."
 msgstr "Por favor, rellene el siguiente formulario para realizar la inscripción de un/a alumno/a en nuestras clases."
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/wizard/res_partner_enroll_search.py:80
+#: code:addons/rockbotic_website_crm/wizard/res_partner_enroll_search.py:86
+#: code:addons/rockbotic_website_crm/wizard/res_partner_enroll_search.py:94
 #, python-format
 msgid "Please select one line."
 msgstr "Selecciona una línea."
@@ -376,7 +652,12 @@ msgstr "Registrar inscripción"
 #. module: rockbotic_website_crm
 #: view:res.partner.enroll.search:rockbotic_website_crm.res_partner_enroll_search_form_view
 msgid "Register Enrollment (same parent)"
-msgstr "Registrar inscripción (mismo responsable)"
+msgstr "Mantener datos del sistema"
+
+#. module: rockbotic_website_crm
+#: model:ir.actions.server,name:rockbotic_website_crm.action_register_signups
+msgid "Register Signups"
+msgstr "Registrar estudiantes"
 
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
@@ -386,10 +667,20 @@ msgid "Responsible"
 msgstr "Persona responsable"
 
 #. module: rockbotic_website_crm
+#: field:res.company,sepa_responsible:0
+msgid "Responsible SEPA"
+msgstr "Responsable SEPA"
+
+#. module: rockbotic_website_crm
 #: field:crm.lead,rockbotic_before:0
 #: field:res.partner.enroll.search,rockbotic_before:0
 msgid "Rockbotic before"
 msgstr "Previamente en Rockbotic"
+
+#. module: rockbotic_website_crm
+#: model:email.template,subject:rockbotic_website_crm.email_to_new_enrollment
+msgid "Rockbotic: Reservation of place confirmed"
+msgstr "Rockbotic: Reserva de plaza confirmada"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
@@ -416,7 +707,7 @@ msgstr "Search id"
 #. module: rockbotic_website_crm
 #: view:res.partner.enroll.search:rockbotic_website_crm.res_partner_enroll_search_form_view
 msgid "Select Partners"
-msgstr "Select Partners"
+msgstr "Seleccionar estudiante / responsable"
 
 #. module: rockbotic_website_crm
 #: field:res.partner.enroll.search.item,checked:0
@@ -482,7 +773,8 @@ msgid "Thanks!"
 msgstr "¡Gracias!"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/wizard/res_partner_enroll_search.py:83
+#: code:addons/rockbotic_website_crm/wizard/res_partner_enroll_search.py:89
+#: code:addons/rockbotic_website_crm/wizard/res_partner_enroll_search.py:97
 #, python-format
 msgid "There can only be one selected."
 msgstr "Solo se debe seleccionar una línea."
@@ -501,6 +793,12 @@ msgstr "Sin asignar"
 #: view:website:rockbotic_website_crm.student_signup
 msgid "VAT"
 msgstr "DNI / NIE"
+
+#. module: rockbotic_website_crm
+#: code:addons/rockbotic_website_crm/wizard/res_partner_enroll_search.py:82
+#, python-format
+msgid "Valid mandate not found"
+msgstr "Mandato válido no encontrado"
 
 #. module: rockbotic_website_crm
 #: field:crm.lead,vat:0
@@ -550,321 +848,4 @@ msgstr "o"
 #: view:website:rockbotic_website_crm.student_signup
 msgid "select..."
 msgstr "selecciona..."
-
-#. module: rockbotic_website_crm
-#: model:email.template,subject:rockbotic_website_crm.email_to_new_enrollment
-msgid "Rockbotic: Reservation of place confirmed"
-msgstr "Rockbotic: Reserva de plaza confirmada"
-
-#. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/models/crm_lead.py:129
-#, python-format
-msgid "Email template not found for Confirmation of place from inscription"
-msgstr ""
-"Plantilla de email no encontrada para la confirmación de plaza desde una "
-"inscripción."
-
-#. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/models/crm_lead.py:236
-#, python-format
-msgid "Email template not found for confirmation of reservation of place"
-msgstr ""
-"Plantilla de email no encontrada para la confirmación de reserva de plaza"
-
-#. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/models/crm_lead.py:156
-#, python-format
-msgid ""
-"Email template not found for request SEPA to the new registration from "
-"inscription"
-msgstr ""
-"Plantilla de email no encontrada para solicitud SEPA al nuevo registro en "
-"eventos desde inscripciones."
-
-#. module: rockbotic_website_crm
-#: field:res.company,sepa_responsible:0
-msgid "Responsible SEPA"
-msgstr "Responsable SEPA"
-
-#. module: rockbotic_website_crm
-#: model:email.template,body_html:rockbotic_website_crm.email_to_new_registration_from_enrollment
-msgid ""
-"\n"
-"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
-"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
-"    <span>Dear family.</span>\n"
-"    <br>\n"
-"    <span>We are very happy to confirm the place of ${object.partner_id.name "
-"or ''} in the educational robotics activity they had reserved.</span>\n"
-"    <p></p>\n"
-"    <span>We provide below the data of the activity:</span>\n"
-"    <br>\n"
-"    <span>School center: ${object.event_id.address_id.name or ''}</span>\n"
-"    <br>\n"
-"    <span>Group: ${object.event_id.name or ''}</span>\n"
-"    <br>\n"
-"    <span>First day of class: ${object.first_day_of_class or ''}</span>\n"
-"    <p></p>\n"
-"    <span>It is not necessary for your child to provide any material. Many "
-"desire to have fun and learn if they are required.</span>\n"
-"    <p></p>\n"
-"    <span>In case of error, or any doubt, or consultation, you can contact "
-"your activity coordinator:</span>\n"
-"    <br><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.event_id.user_id.name or ''}</span>\n"
-"    <br></div><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.event_id.user_id.partner_id.email or object.company_id."
-"emai}</span>\n"
-"    <br></div><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.event_id.user_id.partner_id.phone or object.event_id."
-"user_id.partner_id.mobile or object.company_id.phone or ''}</span></div>\n"
-"    <p></p>\n"
-"    <span>The Rockbotic team thanks them for their confidence, and we want a "
-"great course together.</span>\n"
-"    <p></p>\n"
-"    <span>kind regards,</span>\n"
-"    <br>\n"
-"    <span>Team ROCKBOTIC</span>\n"
-"</div>\n"
-"            "
-msgstr ""
-"\n"
-"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
-"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
-"    <span>Estimada familia.</span>\n"
-"    <br>\n"
-"    <span>Nos alegra muchísimo poder confirmar la plaza de ${object."
-"partner_id.name or ''} en la actividad de robótica educativa que habían "
-"reservado. </span>\n"
-"    <p></p>\n"
-"    <span>Facilitamos a continuación los datos de la actividad:</span>\n"
-"    <br>\n"
-"    <span>Centro escolar: ${object.event_id.address_id.name or ''}</span>\n"
-"    <br>\n"
-"    <span>Grupo: ${object.event_id.name or ''}</span>\n"
-"    <br>\n"
-"    <span>Primer día de clase: ${object.first_day_of_class or ''}</span>\n"
-"    <p></p>\n"
-"    <span>No es necesario que su hijo aporte ningún material. Muchas ganas "
-"de divertirse y aprender sí que son requeridas.</span>\n"
-"    <p></p>\n"
-"    <span>En caso de error, o cualquier duda o consulta pueden contactar con "
-"su coordinador de la actividad:</span>\n"
-"    <br><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.event_id.user_id.name or ''}</span>\n"
-"    <br></div><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.event_id.user_id.partner_id.email or object.company_id."
-"emai}</span>\n"
-"    <br></div><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.event_id.user_id.partner_id.phone or object.event_id."
-"user_id.partner_id.mobile or object.company_id.phone or ''}</span></div>\n"
-"    <p></p>\n"
-"    <span>El equipo de Rockbotic les agradece la confianza y deseamos un "
-"gran curso juntos.</span>\n"
-"    <p></p>\n"
-"    <span>Reciba un cordial saludo,</span>\n"
-"    <br>\n"
-"    <span>Team ROCKBOTIC</span>\n"
-"</div>\n"
-"            "
-
-#. module: rockbotic_website_crm
-#: model:email.template,body_html:rockbotic_website_crm.email_to_new_enrollment
-msgid ""
-"\n"
-"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
-"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
-"    <span>Estimated ${object.partner_name or 'responsible for the child'}. "
-"We confirm that we have correctly received the reservation of place with the "
-"following information:</span>\n"
-"    <p></p>\n"
-"    <span>Center: ${object.school_id.name or ''}</span>\n"
-"    <br>\n"
-"    <span>Group: ${object.event_id.name or ''}</span>\n"
-"    <p></p>\n"
-"    <span>Student: ${object.contact_name or ''}</span>\n"
-"    <br>\n"
-"    <span>Birthdate: ${object.birth_date or ''}</span>\n"
-"    <br>\n"
-"    <span>Course/class: ${object.course or ''}</span>\n"
-"    <p></p>\n"
-"    <span>Responsible: ${object.partner_name or ''}</span>\n"
-"    <br>\n"
-"    <span>VAT: ${object.vat or ''}</span>\n"
-"    <br>\n"
-"    <span>Phone: ${object.phone or ''}</span>\n"
-"    <br>\n"
-"    <span>Email: ${object.email_from or ''}</span>\n"
-"    <p></p>\n"
-"    <span>Authorizations Images:</span>\n"
-"    <br><div style=\"margin-left: 40px;\">\n"
-"    <span>Journals: ${object.journal_permission or ''}</span>\n"
-"    <br></div><div style=\"margin-left: 40px;\">\n"
-"    <span>Web/Blog: ${object.blog_permission or ''}</span>\n"
-"    <br></div><div style=\"margin-left: 40px;\">\n"
-"    <span>Social media: ${object.media_permission or ''}</span></div>\n"
-"    <p></p>\n"
-"    <span>I want to receive informative emails: ${object.opt_out or ''}</"
-"span>\n"
-"    <p></p>\n"
-"    <span>Rockbotic coordinator for questions and queries:</span>\n"
-"    <br><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.user_id.name or ''}</span>\n"
-"    <br></div><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.user_id.partner_id.email or object.company_id.emai}</"
-"span>\n"
-"    <br></div><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.user_id.partner_id.phone or object.user_id.partner_id."
-"mobile or object.company_id.phone or ''}</span></div>\n"
-"    <p></p>\n"
-"    <span>This message ONLY reserve place. In no case serves as confirmation "
-"that the group and the square.</span>\n"
-"    <p></p>\n"
-"    <span>In next email we will confirm that the group leaves and if its "
-"place is included.</span>\n"
-"    <p></p>\n"
-"    <span>Please be patient and in case of doubt or consultation, your "
-"coordinator will be happy to assist you.</span>\n"
-"    <p></p>\n"
-"    <span>Many thanks in advance and best regards!</span>\n"
-"    <br>\n"
-"    <span>Team ROCKBOTIC</span>\n"
-"</div>\n"
-"            "
-msgstr ""
-"\n"
-"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
-"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
-"    <span>Estimad@ ${object.partner_name or 'responsible for the child'}. "
-"Confirmamos que hemos recibido correctamente la reserva de plaza con la "
-"siguiente información:</span>\n"
-"    <p></p>\n"
-"    <span>Centro: ${object.school_id.name or ''}</span>\n"
-"    <br>\n"
-"    <span>Grupo: ${object.event_id.name or ''}</span>\n"
-"    <p></p>\n"
-"    <span>Estudiante: ${object.contact_name or ''}</span>\n"
-"    <br>\n"
-"    <span>Fecha de nacimiento: ${object.birth_date or ''}</span>\n"
-"    <br>\n"
-"    <span>Curso/Clase: ${object.course or ''}</span>\n"
-"    <p></p>\n"
-"    <span>Responsable: ${object.partner_name or ''}</span>\n"
-"    <br>\n"
-"    <span>DNI/NIE: ${object.vat or ''}</span>\n"
-"    <br>\n"
-"    <span>Teléfono: ${object.phone or ''}</span>\n"
-"    <br>\n"
-"    <span>Email: ${object.email_from or ''}</span>\n"
-"    <p></p>\n"
-"    <span>Autorizaciones Imágenes:</span>\n"
-"    <br><div style=\"margin-left: 40px;\">\n"
-"    <span>Revistas: ${object.journal_permission or ''}</span>\n"
-"    <br></div><div style=\"margin-left: 40px;\">\n"
-"    <span>Web/Blog: ${object.blog_permission or ''}</span>\n"
-"    <br></div><div style=\"margin-left: 40px;\">\n"
-"    <span>Redes sociales: ${object.media_permission or ''}</span></div>\n"
-"    <p></p>\n"
-"    <span>Deseo recibir emails informativos: ${object.opt_out or ''}</span>\n"
-"    <p></p>\n"
-"    <span>Coordinador Rockbotic para dudas y consultas:</span>\n"
-"    <br><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.user_id.name or ''}</span>\n"
-"    <br></div><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.user_id.partner_id.email or object.company_id.emai}</"
-"span>\n"
-"    <br></div><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.user_id.partner_id.phone or object.user_id.partner_id."
-"mobile or object.company_id.phone or ''}</span></div>\n"
-"    <p></p>\n"
-"    <span>Este mensaje SOLO reserva plaza. En ningún caso sirve como "
-"confirmación de que salga el grupo y de la plaza.</span>\n"
-"    <p></p>\n"
-"    <span>En próximo correo le confirmaremos que sale el grupo, y si su "
-"plaza está incluida.</span>\n"
-"    <p></p>\n"
-"    <span>Rogamos tengan paciencia, y en caso de duda o consulta, su "
-"coordinador estará encantado de atenderle.</span>\n"
-"    <p></p>\n"
-"    <span>Muchas gracias de antemano y un cordial saludo!</span>\n"
-"    <br>\n"
-"    <span>Equipo ROCKBOTIC</span>\n"
-"</div>\n"
-"            "
-
-#. module: rockbotic_website_crm
-#: model:email.template,body_html:rockbotic_website_crm.email_sepa_to_new_registration_from_enrollment
-msgid ""
-"\n"
-"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
-"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
-"    <span>Good Morning,</span>\n"
-"    <br>\n"
-"    <span>We have received your registration and account number to register "
-"your child in robotics classes.</span>\n"
-"    <br>\n"
-"    <span>To complete this registration, it is necessary to sign the SEPA "
-"authorization document that is attached to this mail.</span>\n"
-"    <br>\n"
-"    <span>With this signature you authorize to our company LUNATIC DESIGN SL "
-"to the domiciliation of the monthly receipts in the account that they have "
-"provided.</span>\n"
-"    <br>\n"
-"    <span>Please, forward this signed document to this email address as soon "
-"as possible, as this authorization is a legal requirement for us. The "
-"signature can also be made with legal digital certificate.</span>\n"
-"    <br>\n"
-"    <span>In case of doubt, or consultation, you can contact your activity "
-"coordinator:</span>\n"
-"    <br><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.company_id.sepa_responsible.name or ''}</span>\n"
-"    <br></div><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.company_id.sepa_responsible.email or object.company_id."
-"emai}</span>\n"
-"    <br></div><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.company_id.sepa_responsible.phone or object.company_id."
-"sepa_responsible.mobile or object.company_id.phone or ''}</span></div>\n"
-"    <p></p>\n"
-"    <span>Thank you very much and greetings,</span>\n"
-"    <br>\n"
-"    <span>Team ROCKBOTIC</span>\n"
-"</div>\n"
-"            "
-msgstr ""
-"\n"
-"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
-"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
-"    <span>Buenos días, </span>\n"
-"    <br>\n"
-"    <span>Hemos recibido su inscripción, y número de cuenta, para dar de "
-"alta a su hijo/a en las clases de robótica</span>\n"
-"    <br>\n"
-"    <span>Para completar dicha inscripción, es necesario que firmen el "
-"documento de autorización SEPA que se adjunta en este correo.</span>\n"
-"    <br>\n"
-"    <span>Con esta firma ustedes autorizan a nuestra empresa LUNA TIC DESIGN "
-"SL, a la domiciliación de los recibos mensuales en la cuenta que han "
-"proporcionado.</span>\n"
-"    <br>\n"
-"    <span>Por favor, les rogamos que reenvíen dicho documento firmado a esta "
-"dirección de correo electrónico lo antes posible, pues dicha autorización es "
-"de requerimiento legal para nosotros. La firma también puede ser realizada "
-"con certificado digital legal.</span>\n"
-"    <br>\n"
-"    <span>En caso de cualquier duda, o consulta, pueden contactar con su "
-"coordinador de la actividad:</span>\n"
-"    <br><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.company_id.sepa_responsible.name or ''}</span>\n"
-"    <br></div><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.company_id.sepa_responsible.email or object.company_id."
-"emai}</span>\n"
-"    <br></div><div style=\"margin-left: 40px;\">\n"
-"    <span>${object.company_id.sepa_responsible.phone or object.company_id."
-"sepa_responsible.mobile or object.company_id.phone or ''}</span></div>\n"
-"    <p></p>\n"
-"    <span>Muchas gracias, y un saludo,</span>\n"
-"    <br>\n"
-"    <span>Team ROCKBOTIC</span>\n"
-"</div>\n"
-"            "
 
