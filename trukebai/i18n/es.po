@@ -296,3 +296,8 @@ msgid "Picking type for returns not found, for picking type: %s"
 msgstr ""
 "Tipo de albarán para devoluciones no encontrado, para tipo de albarán: %s"
 
+#. module: trukebai
+#: field:stock.move,total_cost:0
+msgid "Total cost"
+msgstr "Total coste"
+
