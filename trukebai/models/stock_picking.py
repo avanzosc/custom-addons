@@ -4,6 +4,7 @@
 
 from openerp import models, fields, api, exceptions, _
 from openerp.tools.float_utils import float_compare
+import openerp.addons.decimal_precision as dp
 
 
 class StockPackOperation(models.Model):
@@ -29,9 +30,18 @@ class StockMove(models.Model):
                     move.location_id.usage == 'supplier'):
                 move.truke_qty = move.product_qty * -1
 
+    @api.multi
+    @api.depends('product_uom_qty', 'price_unit')
+    def _compute_total_cost(self):
+        for move in self:
+            move.total_cost = move.product_uom_qty * move.price_unit
+
     truke_amount = fields.Integer(string='Truke Amount')
     truke_qty = fields.Integer(
         string='Truke qty', compute='_compute_truke_qty', store=True)
+    total_cost = fields.Float(
+        string='Total cost', compute='_compute_total_cost',
+        digits_compute=dp.get_precision('Product Price'), store=True)
 
     @api.model
     def create(self, values):
