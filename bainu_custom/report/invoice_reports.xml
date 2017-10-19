@@ -87,18 +87,18 @@
                             <table class="table table-condensed">
                                 <thead>
                                     <tr>
-                                        <th>Tax</th>
-                                        <th class="text-right">Base</th>
+                                        <th>Base</th>
+                                        <th class="text-right">IVA</th>
                                         <th class="text-right">Amount</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr t-foreach="o.tax_line" t-as="t">
-                                        <td><t t-if="'%' in t.name"><span t-esc="t.name.split('%')[0].split()[-1]"/>%</t><t t-if="'%' not in t.name"><span t-esc="t.name"/></t></td>
-                                        <td class="text-right">
+                                        <td>
                                             <span t-field="t.base"
                                                 t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
                                         </td>
+                                        <td class="text-right"><t t-if="'%' in t.name"><span t-esc="t.name.split('%')[0].split()[-1]"/>%</t><t t-if="'%' not in t.name"><span t-esc="t.name"/></t></td>
                                         <td class="text-right">
                                             <span t-field="t.amount"
                                                 t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
