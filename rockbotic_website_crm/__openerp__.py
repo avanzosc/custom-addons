@@ -4,7 +4,7 @@
 
 {
     "name": "Rockbotic - Website CRM",
-    "version": "8.0.1.0.0",
+    "version": "8.0.1.1.0",
     "category": "Website",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -26,10 +26,12 @@
         "data/rockbotic_website_crm_data.xml",
         "wizard/res_partner_enroll_search_view.xml",
         "wizard/crm_lead_to_opportunity_view.xml",
+        "views/res_partner_view.xml",
         # "views/contactus_form.xml",
         "views/crm_lead_view.xml",
         "views/website_crm.xml",
         "views/res_company_view.xml",
+        "views/event_event_view.xml",
     ],
     "installable": True,
 }

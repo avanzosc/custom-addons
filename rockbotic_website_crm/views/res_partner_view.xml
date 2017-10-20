@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+<data>
+    <record id="res_partner_url_form_view" model="ir.ui.view">
+        <field name="name">res.partner.url.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <field name="category_id" position="after">
+                <field name="signup_slug" widget="url" class="oe_readonly"
+                       nolabel="1" />
+            </field>
+        </field>
+    </record>
+</data>
+</openerp>
