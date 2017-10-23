@@ -10,6 +10,7 @@ import werkzeug.urls
 from openerp import http, SUPERUSER_ID
 from openerp.http import request
 from openerp.tools.translate import _
+from openerp.addons.website.models.website import unslug
 
 
 class StudentSignUp(http.Controller):
@@ -21,7 +22,7 @@ class StudentSignUp(http.Controller):
             )
         return url
 
-    def signup_values(self, data=None):
+    def signup_values(self, group_id=None, event_id=None, data=None):
         cr, context, registry = request.cr, request.context, request.registry
         orm_partner = registry.get('res.partner')
         orm_event = registry.get('event.event')
@@ -32,11 +33,13 @@ class StudentSignUp(http.Controller):
                                ('customer', '=', True),
                                ('payer', '=', 'student')],
             order='name', context=context)
+        partner_ids = [group_id] if group_id in partner_ids else partner_ids
         groups = orm_partner.browse(cr, SUPERUSER_ID, partner_ids, context)
         event_ids = orm_event.search(
             cr, SUPERUSER_ID, [('state', 'not in', ('done', 'cancel')),
                                ('address_id', 'in', partner_ids)],
             order='name', context=context)
+        event_ids = [event_id] if event_id in event_ids else event_ids
         events = orm_event.browse(cr, SUPERUSER_ID, event_ids, context)
 
         values = {
@@ -45,11 +48,15 @@ class StudentSignUp(http.Controller):
         }
         return values
 
-    @http.route(['/page/rockbotic_website_crm.student_signup',
-                 '/page/student_signup'],
+    @http.route(['/page/student_signup', '/page/student_signup/<group_id>',
+                 '/page/student_signup/<group_id>/'
+                 '<model("event.event"):event>'],
                 type='http', auth='public', website=True)
-    def contact(self, **kwargs):
-        values = self.signup_values()
+    def contact(self, group_id=None, event=None, **kwargs):
+        if group_id:
+            _, group_id = unslug(group_id)
+        values = self.signup_values(
+            group_id=group_id, event_id=event and event.id)
         for field in ['partner_name', 'phone', 'contact_name', 'email_from',
                       'name']:
             if kwargs.get(field):
@@ -167,7 +174,9 @@ class StudentSignUp(http.Controller):
             # The IBAN does not seem to be correct.
 
         if error:
-            signup_values = self.signup_values()
+            signup_values = self.signup_values(
+                group_id=values.get('school_id'),
+                event_id=values.get('event_id'))
             values = dict(
                 signup_values, values=values, error=error,
                 kwargs=kwargs.items())

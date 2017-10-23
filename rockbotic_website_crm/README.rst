@@ -11,6 +11,8 @@ Rockbotic - Website CRM
   inscription that comes from web.
 * Send an email with SEPA document, when creating a record in events, when
   confirming a inscription that comes from web.
+* Customized URLs for school and event
+
 
 Credits
 =======

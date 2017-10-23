@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+    <record id="event_event_url_form_view" model="ir.ui.view">
+        <field name="name">event.url.form</field>
+        <field name="model">event.event</field>
+        <field name="inherit_id" ref="event.view_event_form"/>
+        <field name="arch" type="xml">
+            <div class="oe_title" position="after">
+                <field name="signup_slug" widget="url" class="oe_readonly"
+                       nolabel="1"
+                       attrs="{'invisible': [('state', 'in', ('done', 'cancel'))]}" />
+            </div>
+        </field>
+    </record>
+</data>
+</openerp>

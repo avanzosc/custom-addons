@@ -6,6 +6,7 @@ from openerp.addons.rockbotic_custom.tests.test_rockbotic_custom import\
     TestRockboticCustom
 from openerp import exceptions, fields
 from openerp.addons.base_iban.base_iban import _format_iban, _pretty_iban
+from openerp.addons.website.models.website import slug
 
 
 class TestRockboticWebsiteCrm(TestRockboticCustom):
@@ -365,6 +366,24 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
                              enroll_same_parent.partner_id)
         self.assertNotEquals(self.enrollment.parent_id,
                              new_enroll.parent_id)
+
+    def test_slug_links(self):
+        self.assertFalse(self.school.signup_slug)
+        self.assertTrue(self.school.is_group)
+        self.assertTrue(self.school.customer)
+        self.assertEquals(self.school.payer, 'student')
+        self.assertTrue(self.school.prospect)
+        self.school.prospect = False  # this is just to force slug creation
+        base_url = self.env['ir.config_parameter'].get_param(
+            'web.base.url', default='http://madrid.rockbotic.com')
+        self.assertFalse(self.school.prospect)
+        self.assertEquals(
+            self.school.signup_slug,
+            '{}/page/student_signup/{}'.format(base_url, slug(self.school)))
+        self.assertEquals(
+            self.event.signup_slug,
+            '{}/{}'.format(self.event.address_id.signup_slug,
+                           slug(self.event)))
 
     def test_rockbotic_custom(self):
         """ pass """
