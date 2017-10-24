@@ -91,6 +91,8 @@ class EventRegistration(models.Model):
          ('no', 'No')], string='Submitted evaluation', default='no')
     submitted_evaluation_error = fields.Char(
         string='Submitted evaluation error')
+    parent_is_pa_partner = fields.Boolean(
+        related='parent_id.is_pa_partner', store=True)
 
     def _send_email_to_registrations_with_evaluation(self, body):
         attachment_obj = self.env['ir.attachment']
