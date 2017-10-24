@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="event.view_event_form"/>
         <field name="arch" type="xml">
             <div class="oe_title" position="after">
-                <field name="signup_slug" widget="url" class="oe_readonly"
+                <field name="signup_slug" widget="url" class="oe_read_only"
                        nolabel="1"
                        attrs="{'invisible': [('state', 'in', ('done', 'cancel'))]}" />
             </div>

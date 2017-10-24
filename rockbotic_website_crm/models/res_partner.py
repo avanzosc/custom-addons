@@ -20,5 +20,9 @@ class ResPartner(models.Model):
         for partner in self.filtered(
                 lambda p: p.is_group and not p.prospect and p.customer and
                 p.payer == 'student'):
+            try:
+                partner_slug = slug(partner)
+            except:
+                partner_slug = partner.id or ''
             partner.signup_slug = (
-                '{}/page/student_signup/{}'.format(base_url, slug(partner)))
+                '{}/page/student_signup/{}'.format(base_url, partner_slug))

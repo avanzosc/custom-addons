@@ -14,5 +14,9 @@ class EventEvent(models.Model):
     @api.depends('name', 'address_id', 'address_id.signup_slug')
     def _compute_slug_event(self):
         for event in self.filtered(lambda e: e.address_id.signup_slug):
+            try:
+                event_slug = slug(event)
+            except:
+                event_slug = event.id or ''
             event.signup_slug = (
-                '{}/{}'.format(event.address_id.signup_slug, slug(event)))
+                '{}/{}'.format(event.address_id.signup_slug, event_slug))
