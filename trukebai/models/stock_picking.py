@@ -210,7 +210,7 @@ class StockPicking(models.Model):
     def _find_truke_product_for_trukes(self):
         try:
             truke_product = self.env.ref('trukebai.product_product_truke')
-        except:
+        except Exception:
             truke_product = self.env['product.product'].search(
                 [('is_truke', '=', True)], limit=1)
             if not truke_product:

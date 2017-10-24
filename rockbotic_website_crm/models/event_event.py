@@ -16,7 +16,7 @@ class EventEvent(models.Model):
         for event in self.filtered(lambda e: e.address_id.signup_slug):
             try:
                 event_slug = slug(event)
-            except:
+            except Exception:
                 event_slug = event.id or ''
             event.signup_slug = (
                 '{}/{}'.format(event.address_id.signup_slug, event_slug))

@@ -22,7 +22,7 @@ class ResPartner(models.Model):
                 p.payer == 'student'):
             try:
                 partner_slug = slug(partner)
-            except:
+            except Exception:
                 partner_slug = partner.id or ''
             partner.signup_slug = (
                 '{}/page/student_signup/{}'.format(base_url, partner_slug))

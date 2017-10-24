@@ -138,7 +138,7 @@ class TestRockboticCustom(common.TransactionCase):
                 registration.submitted_evaluation, 'no',
                 'Bad send evaluation 3')
             registration.partner_id.parent_id = parent
-        except:
+        except Exception:
             pass
         registration.partner_id.parent_id.email = ''
         wiz.with_context(active_ids=registration.ids).button_send_email()
