@@ -7,8 +7,12 @@
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
             <field name="category_id" position="after">
-                <field name="signup_slug" widget="url" class="oe_readonly"
+                <field name="signup_slug" widget="url" class="oe_read_only"
                        nolabel="1" />
+                <button name="button_recompute_slug"
+                        string="(recompute url)" type="object"
+                        class="oe_link oe_read_only oe_inline"
+                        attrs="{'invisible': ['|','|','|',('is_group','=',False),('prospect','=',True),('customer','=',False),('payer','!=','student')]}"/>
             </field>
         </field>
     </record>

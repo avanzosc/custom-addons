@@ -11,7 +11,7 @@ class ResPartner(models.Model):
 
     delete_after_sending_email = fields.Boolean(
         string='Delete after sending email', default=False)
-    signup_slug = fields.Char(compute='_compute_slug_partner')
+    signup_slug = fields.Char(compute='_compute_slug_partner', store=True)
 
     @api.depends('name', 'is_group', 'prospect', 'customer', 'payer')
     def _compute_slug_partner(self):
@@ -26,3 +26,10 @@ class ResPartner(models.Model):
                 partner_slug = partner.id or ''
             partner.signup_slug = (
                 '{}/page/student_signup/{}'.format(base_url, partner_slug))
+
+    @api.multi
+    def button_recompute_slug(self):
+        fields_list = ['signup_slug']
+        for field in fields_list:
+            self.env.add_todo(self._fields[field], self)
+        self.recompute()
