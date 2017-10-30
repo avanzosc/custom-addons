@@ -9,7 +9,7 @@ from openerp.addons.website.models.website import slug
 class EventEvent(models.Model):
     _inherit = 'event.event'
 
-    signup_slug = fields.Char(compute='_compute_slug_event')
+    signup_slug = fields.Char(compute='_compute_slug_event', store=True)
 
     @api.depends('name', 'address_id', 'address_id.signup_slug')
     def _compute_slug_event(self):
@@ -20,3 +20,10 @@ class EventEvent(models.Model):
                 event_slug = event.id or ''
             event.signup_slug = (
                 '{}/{}'.format(event.address_id.signup_slug, event_slug))
+
+    @api.multi
+    def button_recompute_slug(self):
+        fields_list = ['signup_slug']
+        for field in fields_list:
+            self.env.add_todo(self._fields[field], self)
+        self.recompute()

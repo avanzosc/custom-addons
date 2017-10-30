@@ -377,13 +377,14 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
         base_url = self.env['ir.config_parameter'].get_param(
             'web.base.url', default='http://madrid.rockbotic.com')
         self.assertFalse(self.school.prospect)
-        self.assertEquals(
-            self.school.signup_slug,
-            '{}/page/student_signup/{}'.format(base_url, slug(self.school)))
-        self.assertEquals(
-            self.event.signup_slug,
-            '{}/{}'.format(self.event.address_id.signup_slug,
-                           slug(self.event)))
+        school_slug = '{}/page/student_signup/{}'.format(
+            base_url, slug(self.school))
+        self.school.button_recompute_slug()
+        self.assertEquals(self.school.signup_slug, school_slug)
+        event_slug = '{}/{}'.format(
+            self.event.address_id.signup_slug, slug(self.event))
+        self.event.button_recompute_slug()
+        self.assertEquals(self.event.signup_slug, event_slug)
 
     def test_rockbotic_custom(self):
         """ pass """

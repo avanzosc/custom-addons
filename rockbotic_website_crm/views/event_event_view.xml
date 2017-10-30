@@ -9,7 +9,11 @@
             <div class="oe_title" position="after">
                 <field name="signup_slug" widget="url" class="oe_read_only"
                        nolabel="1"
-                       attrs="{'invisible': [('state', 'in', ('done', 'cancel'))]}" />
+                       attrs="{'invisible': [('state','in',('done', 'cancel'))]}" />
+                <button name="button_recompute_slug"
+                        string="(recompute url)" type="object"
+                        class="oe_link oe_read_only oe_inline"
+                        attrs="{'invisible': [('state','in',('done', 'cancel'))]}" />
             </div>
         </field>
     </record>
