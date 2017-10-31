@@ -17,6 +17,8 @@
         "account_voucher",
     ],
     "data": [
+        "security/account_security.xml",
+        "security/ir.model.access.csv",
         "views/account_invoice_view.xml",
         "report/invoice_reports.xml",
     ],

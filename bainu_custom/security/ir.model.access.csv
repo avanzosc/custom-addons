@@ -1,0 +1,22 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_tax_code,account.tax.code,account.model_account_tax_code,group_account_viewer,1,0,0,0
+access_account_tax,account.tax,account.model_account_tax,group_account_viewer,1,0,0,0
+access_account_invoice_uinvoice,account.invoice,account.model_account_invoice,group_account_viewer,1,0,0,0
+access_account_invoice_line_uinvoice,account.invoice.line,account.model_account_invoice_line,group_account_viewer,1,0,0,0
+access_account_invoice_tax_uinvoice,account.invoice.tax,account.model_account_invoice_tax,group_account_viewer,1,0,0,0
+access_account_move_uinvoice,account.move,account.model_account_move,group_account_viewer,1,0,0,0
+access_account_move_line_uinvoice,account.move.line invoice,account.model_account_move_line,group_account_viewer,1,0,0,0
+access_account_move_reconcile_uinvoice,account.move.reconcile,account.model_account_move_reconcile,group_account_viewer,1,0,0,0
+access_account_journal_period_uinvoice,account.journal.period,account.model_account_journal_period,group_account_viewer,1,0,0,0
+access_account_journal_invoice,account.journal invoice,account.model_account_journal,group_account_viewer,1,0,0,0
+access_account_period_invoice,account.period invoice,account.model_account_period,group_account_viewer,1,0,0,0
+access_account_invoice_group_invoice,account.invoice group invoice,account.model_account_invoice,group_account_viewer,1,0,0,0
+access_account_fiscalyear_invoice,account.fiscalyear.invoice,account.model_account_fiscalyear,group_account_viewer,1,0,0,0
+access_account_invoice_report,account.invoice.report,account.model_account_invoice_report,group_account_viewer,1,0,0,0
+access_account_entries_report_invoice,account.entries.report,account.model_account_entries_report,group_account_viewer,1,0,0,0
+access_account_analytic_line_invoice,account.analytic.line invoice,account.model_account_analytic_line,group_account_viewer,1,0,0,0
+access_account_account_invoice,account.account invoice,account.model_account_account,group_account_viewer,1,0,0,0
+access_account_account_type_invoice,account.account.type invoice,account.model_account_account_type,group_account_viewer,1,0,0,0
+access_report_account_receivable_invoice,report.account.receivable.invoice,account.model_report_account_receivable,group_account_viewer,1,0,0,0
+access_account_sequence_fiscal_year_invoice,account.sequence.fiscalyear invoice,account.model_account_sequence_fiscalyear,group_account_viewer,1,0,0,0
+access_account_financial_report_invoice,account.financial.report invoice,account.model_account_financial_report,group_account_viewer,1,0,0,0
