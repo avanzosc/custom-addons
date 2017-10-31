@@ -45,5 +45,8 @@
                 </filter>
             </field>
         </record>
+        <menuitem name="Invoicing"
+            id="account.menu_finance"
+            groups="account.group_account_user,account.group_account_manager,account.group_account_invoice,group_account_viewer" sequence="50"/>
     </data>
 </openerp>

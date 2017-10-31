@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+        <record id="group_account_viewer" model="res.groups">
+            <field name="name">Account View</field>
+            <field name="category_id" ref="base.module_category_accounting_and_finance"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="account.group_account_invoice" model="res.groups">
+            <field name="name">Invoicing &amp; Payments</field>
+            <field name="category_id" ref="base.module_category_accounting_and_finance"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            <field name="implied_ids" eval="[(4, ref('group_account_viewer'))]"/>
+        </record>
+    </data>
+</openerp>
