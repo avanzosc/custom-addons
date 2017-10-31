@@ -16,6 +16,7 @@
                     <field name="user_id"/>
                     <field name="school_id" />
                     <field name="event_id" />
+                    <field name="user_id" />
                     <field name="partner_id" operator="child_of"/>
                     <field name="parent_id" />
                     <field name="create_date"/>
@@ -30,14 +31,22 @@
                             domain="[('user_id','=', False)]" help="No salesperson"/>
                     <group expand="0" string="Group By">
                         <filter string="Stage" domain="[]"
+                                name="groupby_stage_id"
                                 context="{'group_by':'stage_id'}"/>
                         <filter string="School" domain="[]"
+                                name="groupby_school_id"
                                 context="{'group_by':'school_id'}" />
                         <filter string="Event" domain="[]"
+                                name="groupby_event_id"
                                 context="{'group_by':'event_id'}" />
+                        <filter string="Comercial" domain="[]"
+                                name="groupby_user_id"
+                                context="{'group_by':'user_id'}" />
                         <filter string="Responsible" domain="[]"
+                                name="groupby_parent_id"
                                 context="{'group_by':'parent_id'}" />
                         <filter string="Student" help="Partner" domain="[]"
+                                name="groupby_partner_id"
                                 context="{'group_by':'partner_id'}" />
                     </group>
                 </search>
