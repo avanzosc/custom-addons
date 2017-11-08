@@ -77,23 +77,42 @@ class CrmLead(models.Model):
                 'social_networks': lead.media_permission == 'yes',
             })
         else:
-            account_type = self.env.ref('base_iban.bank_iban')
             vat = u'ES{}'.format(lead.vat) if lead.vat and\
                 len(lead.vat) == 9 else lead.vat
+            country = (
+                lead.country_id or self.env.user.company_id.country_id)
+            bank_data = self._get_bank_data(lead.account_number, country)
             partner.write({
                 'vat': vat,
-                'bank_ids': [(0, 0, {
-                    'state': account_type.code,
-                    'acc_number': lead.account_number,
-                    'mandate_ids': [(0, 0, {
-                        'format': 'sepa',
-                        'type': 'recurrent',
-                        'recurrent_sequence_type': 'recurring',
-                    })]
-                })] if lead.account_number else [],
+                'bank_ids': [(0, 0, bank_data)] if bank_data else [],
             })
             lead.parent_id = partner
         return partner_id
+
+    @api.model
+    def _get_bank_data(self, account_number, country):
+        if not account_number:
+            return {}
+        bank_obj = self.env['res.partner.bank']
+        account_type = self.env.ref('base_iban.bank_iban')
+        bank_data = {
+            'state': account_type.code,
+            'acc_number': account_number,
+            'acc_country_id': country.id,
+            'mandate_ids': [(0, 0, {
+                'format': 'sepa',
+                'type': 'recurrent',
+                'recurrent_sequence_type': 'recurring',
+            })],
+        }
+        if country:
+            data = bank_obj.onchange_banco(
+                account_number, country.id, account_type.code)
+            bank_data.update(data.get('value', {}))
+        if bank_data.get('bank'):
+            data = bank_obj.onchange_bank_id(bank_data.get('bank'))
+            bank_data.update(data.get('value', {}))
+        return bank_data
 
     @api.model
     def _get_duplicated_leads_by_emails(

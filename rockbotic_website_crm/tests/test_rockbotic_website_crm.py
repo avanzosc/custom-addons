@@ -63,6 +63,7 @@ class TestRockboticWebsiteCrm(TestRockboticCustom):
             'event_id': self.event.id,
             'medium_id': self.ref(
                 'rockbotic_website_crm.crm_medium_student_signup'),
+            'country_id': self.ref('base.es'),
         })
         self.search_wiz = self.env['res.partner.enroll.search']
         self.enroll_wiz = self.env['crm.lead2opportunity.partner']
