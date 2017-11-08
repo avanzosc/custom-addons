@@ -27,7 +27,7 @@ class SaleOrder(models.Model):
     def copy(self, default=None):
         new_order = super(SaleOrder, self).copy(default)
         lines = new_order.mapped('order_line').filtered(
-            lambda x: self.name in x.group_description)
+            lambda x: x.group_description and self.name in x.group_description)
         for line in lines:
             line.group_description = (
                 line.group_description.replace(self.name, line.order_id.name))
