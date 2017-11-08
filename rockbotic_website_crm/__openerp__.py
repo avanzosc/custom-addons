@@ -19,11 +19,13 @@
         "partner_prospect",
         "partner_parent_change",
         "base_iban",
+        "l10n_es_partner",
         "account_banking_sepa_direct_debit",
         "rockbotic_custom",
     ],
     "data": [
         "data/rockbotic_website_crm_data.xml",
+        "security/rockbotic_website_crm.xml",
         "wizard/res_partner_enroll_search_view.xml",
         "wizard/crm_lead_to_opportunity_view.xml",
         "views/res_partner_view.xml",

@@ -141,19 +141,13 @@ class ResPartnerEnrollSearch(models.TransientModel):
                 lambda b: b.acc_number == acc_number)
             mandates = lead.parent_id.mapped('bank_ids.mandate_ids')
             if not bank:
-                account_type = self.env.ref('base_iban.bank_iban')
+                country = (
+                    lead.country_id or self.env.user.company_id.country_id)
                 mandates.filtered(
                     lambda m: m.state in ('draft', 'valid')).cancel()
+                bank_data = lead._get_bank_data(acc_number, country)
                 lead.parent_id.write({
-                    'bank_ids': [(0, 0, {
-                        'state': account_type.code,
-                        'acc_number': acc_number,
-                        'mandate_ids': [(0, 0, {
-                            'format': 'sepa',
-                            'type': 'recurrent',
-                            'recurrent_sequence_type': 'recurring',
-                        })],
-                    })],
+                    'bank_ids': [(0, 0, bank_data)],
                 })
             else:
                 mandates.filtered(
