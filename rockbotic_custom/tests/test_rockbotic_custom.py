@@ -237,3 +237,22 @@ class TestRockboticCustom(common.TransactionCase):
             self.assertEqual(
                 translation.src, translation.value,
                 'Bad translation for event name')
+
+    def test_rockbotic_account_name(self):
+        account_vals = {'name': 'Parent Analytic account for Rockbotic test',
+                        'date_start': '2025-01-15',
+                        'date': '2025-02-28',
+                        'use_tasks': True}
+        parent_account = self.account_model.create(account_vals)
+        account_vals = {'name': 'Child Analytic account for Rockbotic test',
+                        'date_start': '2025-01-15',
+                        'date': '2025-02-28',
+                        'use_tasks': True,
+                        'parent_id': parent_account.id}
+        child_account = self.account_model.create(account_vals)
+        res = child_account.name_get()[0][1]
+        self.assertIn(parent_account.name, res,
+                      'Parent name not found in children name')
+        res = child_account.with_context(only_name=True).name_get()[0][1]
+        self.assertNotIn(parent_account.name, res,
+                         'Parent name found in children name')

@@ -25,3 +25,12 @@ class AccountAnalyticAccont(models.Model):
         if 'comment' in res and not res['comment']:
             del res['comment']
         return res
+
+    @api.multi
+    def name_get(self):
+        if not self.env.context.get('only_name', False):
+            return super(AccountAnalyticAccont, self).name_get()
+        res = []
+        for account in self:
+            res.append((account.id, account.name))
+        return res
