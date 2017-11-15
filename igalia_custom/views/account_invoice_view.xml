@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <record id="invoice_form_inherit_view" model="ir.ui.view">
+        <field name="name">account.invoice.inherit.form.view</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account_invoice_pricelist.view_account_invoice_customer_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_line']/tree//field[@name='quantity']" position="attributes">
+                <attribute name="on_change"/>
+            </xpath>
+        </field>
+    </record>
+</data>
+</openerp>

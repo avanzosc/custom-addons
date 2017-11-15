@@ -19,14 +19,15 @@
         "report",
         "sale",
         "account_invoice_pricelist",
-        "hr_timesheet_invoice"
+        "hr_timesheet_invoice",
     ],
     "data": [
         "views/igalia_layout_view.xml",
         "views/product_view.xml",
         "views/igalia_report_view.xml",
         "views/igalia_custom_view.xml",
-        "views/account_analytic_view.xml"
+        "views/account_analytic_view.xml",
+        "views/account_invoice_view.xml",
     ],
     "installable": True,
 }
