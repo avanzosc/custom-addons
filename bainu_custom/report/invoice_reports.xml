@@ -83,7 +83,7 @@
                         </tbody>
                     </table>
                     <div class="row" t-if="o.tax_line">
-                        <div class="col-xs-6">
+                        <div class="col-xs-4 pull-right">
                             <table class="table table-condensed">
                                 <thead>
                                     <tr>
@@ -109,7 +109,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 pull-right">
                             <table class="table table-condensed">
                                 <tr class="border-black">
                                     <td><strong>Total</strong></td>
@@ -125,7 +125,7 @@
                             <table class="table table-condensed">
                                 <thead>
                                     <tr>
-                                        <th>Expiration</th>
+                                        <th>Advance payment / Payment on account</th>
                                         <th class="text-right">Amount</th>
                                     </tr>
                                 </thead>
@@ -133,8 +133,14 @@
                                     <tr t-foreach="o.payment_ids" t-as="t">
                                         <td><span t-field="t.date"/></td>
                                         <td class="text-right">
-                                            <span t-field="t.debit"
-                                                t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                            <t t-if="t.debit">
+                                                <span t-field="t.debit"
+                                                    t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                            </t>
+                                            <t t-if="t.credit">
+                                                <span t-field="t.credit"
+                                                    t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                            </t>
                                         </td>
                                     </tr>
                                 </tbody>

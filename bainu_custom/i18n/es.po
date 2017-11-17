@@ -46,3 +46,8 @@ msgstr "Vencimiento"
 msgid "Amount pending"
 msgstr "Importe pendiente"
 
+#. module: bainu_custom
+#: view:website:account.report_invoice_document
+msgid "Advance payment / Payment on account"
+msgstr "Anticipo / Pago a cuenta"
+
