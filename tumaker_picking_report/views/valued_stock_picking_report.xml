@@ -103,7 +103,7 @@
                               </thead>
                               <tbody>
                                 <tr t-foreach="o.move_lines" t-as="move">
-                                    <t t-if="move.procurement_id.sale_line_id.product_id.id == move.product_id.id">
+                                    <t t-if="move.procurement_id.sale_line_id.product_id.id == move.product_id.id or not move.procurement_id">
                                     <t t-if="(o.state != 'partially_available') or (move.reserved_availability > 0)">
                                         <td>
                                             <t t-if="move.product_id.customer_ids">
@@ -114,7 +114,7 @@
                                                 </t>
                                             </t>
                                         </td>
-                                        <td><span t-field="move.name"/></td>
+                                        <td><t t-if="not move.product_id"><span t-field="move.name"/></t><t t-if="move.product_id"><span t-field="move.product_id.name"/></t></td>
                                         <td class="text-right">
                                             <t t-if="o.state == 'partially_available'">
                                                 <span t-field="move.reserved_availability"/> <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
@@ -289,7 +289,7 @@
                               </thead>
                               <tbody>
                                 <tr t-foreach="o.move_lines" t-as="move">
-                                    <t t-if="move.procurement_id.sale_line_id.product_id.id == move.product_id.id">
+                                    <t t-if="move.procurement_id.sale_line_id.product_id.id == move.product_id.id or not move.procurement_id">
                                     <t t-if="(o.state != 'partially_available') or (move.reserved_availability > 0)">
                                         <td>
                                             <t t-if="move.product_id.customer_ids">
@@ -300,7 +300,7 @@
                                                 </t>
                                             </t>
                                         </td>
-                                        <td><span t-field="move.name"/></td>
+                                        <td><t t-if="not move.product_id"><span t-field="move.name"/></t><t t-if="move.product_id"><span t-field="move.product_id.name"/></t></td>
                                         <td class="text-right">
                                             <t t-if="o.state == 'partially_available'">
                                                 <span t-field="move.reserved_availability"/> <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
