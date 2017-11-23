@@ -114,7 +114,7 @@
                                                 </t>
                                             </t>
                                         </td>
-                                        <td><t t-if="not move.product_id"><span t-field="move.name"/></t><t t-if="move.product_id"><span t-field="move.product_id.name"/></t></td>
+                                        <td><t t-if="not move.product_id"><span t-field="move.name"/></t><t t-if="move.product_id"><span t-field="move.product_id.name"/> <t t-if="move.product_id.attribute_value_ids">(<span t-esc="', '.join(move.product_id.mapped('attribute_value_ids.name'))"/>)</t></t></td>
                                         <td class="text-right">
                                             <t t-if="o.state == 'partially_available'">
                                                 <span t-field="move.reserved_availability"/> <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
@@ -300,7 +300,7 @@
                                                 </t>
                                             </t>
                                         </td>
-                                        <td><t t-if="not move.product_id"><span t-field="move.name"/></t><t t-if="move.product_id"><span t-field="move.product_id.name"/></t></td>
+                                        <td><t t-if="not move.product_id"><span t-field="move.name"/></t><t t-if="move.product_id"><span t-field="move.product_id.name"/> <t t-if="move.product_id.attribute_value_ids">(<span t-esc="', '.join(move.product_id.mapped('attribute_value_ids.name'))"/>)</t></t></td>
                                         <td class="text-right">
                                             <t t-if="o.state == 'partially_available'">
                                                 <span t-field="move.reserved_availability"/> <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
