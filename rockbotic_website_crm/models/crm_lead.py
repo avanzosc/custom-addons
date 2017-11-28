@@ -7,6 +7,7 @@ from openerp import _, api, exceptions, fields, models
 
 class CrmLead(models.Model):
     _inherit = 'crm.lead'
+    _order = "create_date desc, priority desc, date_action, id desc"
 
     type = fields.Selection(selection_add=[('enroll', 'Enrollment')])
     school_id = fields.Many2one(
