@@ -20,6 +20,10 @@
                 "warning",
                 "product_pricelist_rules",
                 "account_due_list",
+                "crm",
+                "mrp",
+                "contacts",
+                "marketing",
                 ],
     "author": "Avanzosc, S.L.",
     "contributors": [
@@ -29,7 +33,8 @@
     "category": "Custom Module",
     "website": "http://www.avanzosc.es",
     "complexity": "easy",
-    "data": ['security/ir.model.access.csv',
+    "data": ['security/res_groups.xml',
+             'security/ir.model.access.csv',
              'data/cron_data.xml',
              'views/sale_order_view.xml',
              'views/account_analytic_account_view.xml',
@@ -47,6 +52,7 @@
              'views/report_purchase_order.xml',
              'views/res_partner_view.xml',
              'views/crm_lead_view.xml',
+             'views/specific_stock_production_menuitem.xml',
              'wizard/stock_transfer_details_view.xml',
              'report/account_entries_report_view.xml'
              ],
