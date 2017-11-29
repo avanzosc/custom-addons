@@ -39,7 +39,8 @@ class EventEvent(models.Model):
                     default_model='event.registration',
                     default_res_id=registration.id,
                     force_send=True
-                ).create({'body': body})
+                ).create({'subject': template.subject,
+                          'body': body})
                 wizard.send_mail()
 
     @api.onchange('group_description')
