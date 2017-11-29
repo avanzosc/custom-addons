@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-18 08:03+0000\n"
-"PO-Revision-Date: 2017-05-18 10:07+0100\n"
+"POT-Creation-Date: 2017-11-28 17:28+0000\n"
+"PO-Revision-Date: 2017-11-28 18:31+0100\n"
 "Last-Translator: Ainara Galdona <ainaragaldona@avanzosc.es>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -25,6 +25,11 @@ msgstr "Producto Activo"
 #: model:ir.actions.report.xml,name:tumaker_custom.report_picking_basque
 msgid "Albarana Euskeraz"
 msgstr "Albarana Euskeraz"
+
+#. module: tumaker_custom
+#: model:ir.ui.menu,name:tumaker_custom.menu_action_picking_type_form
+msgid "All Operations"
+msgstr "Todas las operaciones"
 
 #. module: tumaker_custom
 #: field:stock.transfer_details,allow_zero_cost:0
@@ -113,7 +118,7 @@ msgid "Companies"
 msgstr "Compañías"
 
 #. module: tumaker_custom
-#: code:addons/tumaker_custom/models/account_analytic_line.py:110
+#: code:addons/tumaker_custom/models/account_analytic_line.py:117
 #, python-format
 msgid "Configuration Error!"
 msgstr "Error de configuración"
@@ -204,6 +209,11 @@ msgstr "Deskontua (%)"
 #: view:website:tumaker_custom.tu_maker_report_invoice
 msgid "Deskripzioa:"
 msgstr "Deskripzioa:"
+
+#. module: tumaker_custom
+#: field:stock.move,purchase_discount:0
+msgid "Discount"
+msgstr "Discount"
 
 #. module: tumaker_custom
 #: field:res.partner.application,display_name:0
@@ -386,7 +396,7 @@ msgstr "Kantitatea"
 #. module: tumaker_custom
 #: selection:res.company,vat_payment_lines:0
 msgid "Keep on Real Move"
-msgstr "Keep on Real Move"
+msgstr "Mantener en movimiento real"
 
 #. module: tumaker_custom
 #: view:website:tumaker_custom.tumaker_report_picking
@@ -417,6 +427,16 @@ msgid "Last Updated on"
 msgstr "Last Updated on"
 
 #. module: tumaker_custom
+#: model:ir.model,name:tumaker_custom.model_mrp_production
+msgid "Manufacturing Order"
+msgstr "Orden fabricación"
+
+#. module: tumaker_custom
+#: model:ir.ui.menu,name:tumaker_custom.menu_mrp_production_action
+msgid "Manufacturing Orders"
+msgstr "Órdenes de producción"
+
+#. module: tumaker_custom
 #: field:res.company,vat_config_error:0
 msgid "Missconfiguration on VAT on Payment"
 msgstr "Missconfiguration on VAT on Payment"
@@ -427,10 +447,20 @@ msgid "Move to Shadow Move"
 msgstr "Move to Shadow Move"
 
 #. module: tumaker_custom
+#: model:ir.ui.menu,name:tumaker_custom.main_specific_production_stock_menuitem
+msgid "My production"
+msgstr "Mi producción"
+
+#. module: tumaker_custom
 #: field:res.partner.application,name:0
 #: field:res.partner.industry.sector,name:0
 msgid "Name"
-msgstr "Name"
+msgstr "Nombre"
+
+#. module: tumaker_custom
+#: model:res.groups,name:tumaker_custom.group_nospecific
+msgid "No specific group"
+msgstr "Grupo de no especificaciones"
 
 #. module: tumaker_custom
 #: view:res.company:tumaker_custom.sale_note_report_company_view_form
@@ -510,6 +540,7 @@ msgid "Partner code"
 msgstr "Código"
 
 #. module: tumaker_custom
+#: view:website:purchase.report_purchaseorder_document
 #: view:website:sale.report_saleorder_document
 msgid "Payment Mode:"
 msgstr "Modo de pago:"
@@ -535,7 +566,7 @@ msgid "Pisua"
 msgstr "Pisua"
 
 #. module: tumaker_custom
-#: code:addons/tumaker_custom/models/account_analytic_line.py:111
+#: code:addons/tumaker_custom/models/account_analytic_line.py:118
 #, python-format
 msgid "Please define income account for product '%s'."
 msgstr "Por favor defina una cuenta de entrada para este producto '%s'."
@@ -551,6 +582,11 @@ msgid "Prezioa"
 msgstr "Prezioa"
 
 #. module: tumaker_custom
+#: field:stock.move,purchase_price_unit:0
+msgid "Price Unit"
+msgstr "Price Unit"
+
+#. module: tumaker_custom
 #: model:ir.model,name:tumaker_custom.model_product_product
 msgid "Product"
 msgstr "Producto"
@@ -564,6 +600,11 @@ msgstr "Categoría de producto"
 #: view:website:stock.report_picking
 msgid "Product code"
 msgstr "Código de producto"
+
+#. module: tumaker_custom
+#: model:ir.ui.menu,name:tumaker_custom.main_specific_production_menuitem
+msgid "Production"
+msgstr "Producción"
 
 #. module: tumaker_custom
 #: view:stock.transfer_details:tumaker_custom.view_stock_enter_transfer_details
@@ -713,6 +754,11 @@ msgid "Show sale note"
 msgstr "Mostrar notas pedido"
 
 #. module: tumaker_custom
+#: model:res.groups,name:tumaker_custom.group_stock_production_specific
+msgid "Specific Production / Stock"
+msgstr "Grupo especifico de stock/producción"
+
+#. module: tumaker_custom
 #: view:website:tumaker_custom.report_tumaker_contract_summary
 msgid "Start Date:"
 msgstr "Fecha de inicio:"
@@ -795,6 +841,11 @@ msgid "View Task"
 msgstr "Ver tarea"
 
 #. module: tumaker_custom
+#: model:ir.ui.menu,name:tumaker_custom.main_specific_stock_menuitem
+msgid "Warehouse management"
+msgstr "Gestión de almacenes"
+
+#. module: tumaker_custom
 #: view:account.invoice:tumaker_custom.invoice_form
 #: view:account.invoice:tumaker_custom.invoice_supplier_form
 #: field:account.invoice,warning:0
@@ -838,9 +889,31 @@ msgid "Zergak"
 msgstr "Zergak"
 
 #. module: tumaker_custom
+#: view:purchase.order:tumaker_custom.purchase_order_form
+#: view:sale.order:tumaker_custom.view_order_form
+msgid "bottom"
+msgstr "bottom"
+
+#. module: tumaker_custom
+#: view:crm.lead:tumaker_custom.crm_case_form_view_leads
+msgid "e.g. Call for proposal"
+msgstr "Por ejemplo, llamada para propuesta"
+
+#. module: tumaker_custom
+#: view:crm.lead:tumaker_custom.crm_case_tree_view_leads
+msgid "grey:probability == 100;red:date_action and date_action <= current_date"
+msgstr ""
+"grey:probability == 100;red:date_action and date_action <= current_date"
+
+#. module: tumaker_custom
 #: view:website:purchase.report_purchaseorder_document
 msgid "o.state"
 msgstr "o.state"
+
+#. module: tumaker_custom
+#: view:stock.picking:tumaker_custom.date_done_stock_picking_view_form
+msgid "stock.group_stock_user,tumaker_custom.group_stock_production_specific"
+msgstr "stock.group_stock_user,tumaker_custom.group_stock_production_specific"
 
 #. module: tumaker_custom
 #: view:sale.order:tumaker_custom.view_order_form

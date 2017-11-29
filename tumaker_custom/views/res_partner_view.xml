@@ -9,8 +9,8 @@
             <field name="arch" type="xml">
                 <field name="category_id" position="after">
                     <group>
-	                    <field name="industry_sector_id"/>
-	                    <field name="application_ids" widget="many2many_tags"/>
+                        <field name="industry_sector_id"/>
+                        <field name="application_ids" widget="many2many_tags"/>
                     </group>
                 </field>
             </field>
@@ -48,8 +48,8 @@
             <field name="arch" type="xml">
                 <form string="Industry Sector">
                     <group>
-	                    <field name="code"/>
-	                    <field name="name"  required="1"/>
+                        <field name="code"/>
+                        <field name="name"  required="1"/>
                     </group>
                 </form>
             </field>
@@ -82,8 +82,8 @@
             <field name="arch" type="xml">
                 <form string="Partner Application">
                     <group>
-	                    <field name="code"/>
-	                    <field name="name" required="1"/>
+                        <field name="code"/>
+                        <field name="name" required="1"/>
                     </group>
                 </form>
             </field>

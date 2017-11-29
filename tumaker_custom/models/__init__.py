@@ -12,3 +12,4 @@ from . import account_invoice
 from . import product
 from . import res_partner
 from . import account_invoice_report
+from . import mrp_production

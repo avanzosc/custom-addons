@@ -18,10 +18,15 @@ class TestTumakerCustom(common.TransactionCase):
         self.location_obj = self.env['stock.location']
         self.sale_model = self.env['sale.order']
         self.product_model = self.env['product.product']
+        self.production_model = self.env['mrp.production']
+        self.bom = self.env.ref('mrp.mrp_bom_1')
         self.partner_id = self.ref('base.res_partner_5')
         self.pricelist_id = self.ref('purchase.list0')
         self.picking = self.env.ref('stock.incomming_shipment')
         self.wiz_obj = self.env['stock.transfer_details']
+        self.location = self.env['stock.location'].create(
+            {'name': 'Test Location',
+             'usage': 'internal'})
         analytic_vals = {
             'name': 'Analytic test',
             'type': 'normal',
@@ -306,3 +311,16 @@ class TestTumakerCustom(common.TransactionCase):
                 move.purchase_line_id.price_unit * move.product_uom_qty *
                 (1 - (move.purchase_line_id.discount / 100)))
             self.assertEqual(move.price_subtotal, subtotal)
+
+    def test_production_change(self):
+        production = self.production_model.create(
+            {'product_id': self.bom.product_tmpl_id.id,
+             'product_qty': 100,
+             'product_uom': self.bom.product_tmpl_id.uom_id.id,
+             'bom_id': self.bom.id,
+             })
+        self.assertNotEqual(production.location_src_id, self.location)
+        self.bom.routing_id.location_id = self.location
+        production.routing_id = self.bom.routing_id
+        production.onchange_routing_id()
+        self.assertEqual(production.location_src_id, self.location)
