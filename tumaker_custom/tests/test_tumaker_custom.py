@@ -10,6 +10,7 @@ class TestTumakerCustom(common.TransactionCase):
 
     def setUp(self):
         super(TestTumakerCustom, self).setUp()
+        self.crm_sale_wiz_obj = self.env['crm.make.sale']
         self.analytic_model = self.env['account.analytic.account']
         self.analytic_line_model = self.env['account.analytic.line']
         self.purchase_model = self.env['purchase.order']
@@ -90,6 +91,10 @@ class TestTumakerCustom(common.TransactionCase):
                                    (0, 0, sale_line_vals2)]
         self.sale_order = self.sale_model.create(sale_vals)
         self.black_product = self.env.ref('product.product_product_4b')
+        self.crm_lead = self.env.ref('crm.crm_case_1')
+        self.warehouse = self.env['stock.warehouse'].create({'name': 'New WRH',
+                                                             'code': 'NEW',
+                                                             })
 
     def test_print_float_time_widget(self):
         text = self.analytic_id.convert_to_float_time_widget(20.5)
@@ -324,3 +329,14 @@ class TestTumakerCustom(common.TransactionCase):
         production.routing_id = self.bom.routing_id
         production.onchange_routing_id()
         self.assertEqual(production.location_src_id, self.location)
+
+    def test_crm_lead_make_sale(self):
+        self.crm_lead.partner_id = self.partner_id
+        crm_sale_wiz = self.crm_sale_wiz_obj.with_context(
+            active_id=self.crm_lead.id, active_ids=[self.crm_lead.id],
+            active_model='crm.lead').create({
+                'warehouse_id': self.warehouse.id})
+        action = crm_sale_wiz.makeOrder()
+        sale_id = action.get('res_id')
+        sale = self.sale_model.browse(sale_id)
+        self.assertEqual(sale.warehouse_id, self.warehouse)
