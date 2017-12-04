@@ -28,6 +28,7 @@
         "purchase",
         "account",
         "mrp_repair_estimated_qty",
+        "mrp_repair_pricelist_rules",
         "account_invoice_line_stock_move_info",
         "stock_account",
         "stock_valued_picking_report",

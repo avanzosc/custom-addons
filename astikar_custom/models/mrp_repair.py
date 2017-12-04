@@ -14,9 +14,13 @@ class MrpRepair(models.Model):
     @api.depends('partner_id', 'operations', 'fees_lines', 'operations.tax_id',
                  'operations.to_invoice', 'operations.price_unit',
                  'operations.expected_qty', 'operations.product_uom_qty',
-                 'operations.product_id', 'fees_lines.to_invoice',
+                 'operations.product_id', 'operations.discount',
+                 'operations.discount2', 'operations.discount3',
+                 'operations.price_subtotal', 'fees_lines.to_invoice',
                  'fees_lines.tax_id', 'fees_lines.price_unit',
-                 'fees_lines.product_uom_qty', 'fees_lines.product_id')
+                 'fees_lines.product_uom_qty', 'fees_lines.product_id',
+                 'fees_lines.discount', 'fees_lines.discount2',
+                 'fees_lines.discount3', 'fees_lines.price_subtotal')
     @api.multi
     def _compute_repair_amount(self):
         for repair in self:
@@ -25,13 +29,21 @@ class MrpRepair(models.Model):
             for line in repair.operations.filtered(lambda x: x.to_invoice):
                 untaxed += line.price_subtotal
                 qty = line.expected_qty or line.product_uom_qty
+                price = (line.price_unit *
+                         (1 - (line.discount or 0.0) / 100) *
+                         (1 - (line.discount2 or 0.0) / 100) *
+                         (1 - (line.discount3 or 0.0) / 100))
                 tax_calculate = line.tax_id.compute_all(
-                    line.price_unit, qty, line.product_id, repair.partner_id)
+                    price, qty, line.product_id, repair.partner_id)
                 taxed += sum(x['amount'] for x in tax_calculate['taxes'])
             for line in repair.fees_lines.filtered(lambda x: x.to_invoice):
                 untaxed += line.price_subtotal
+                price = (line.price_unit *
+                         (1 - (line.discount or 0.0) / 100) *
+                         (1 - (line.discount2 or 0.0) / 100) *
+                         (1 - (line.discount3 or 0.0) / 100))
                 tax_calculate = line.tax_id.compute_all(
-                    line.price_unit, line.product_uom_qty, line.product_id,
+                    price, line.product_uom_qty, line.product_id,
                     repair.partner_id)
                 taxed += sum(x['amount'] for x in tax_calculate['taxes'])
             repair.amnt_untaxed = untaxed
