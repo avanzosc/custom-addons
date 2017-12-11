@@ -20,7 +20,7 @@
                 "warning",
                 "product_pricelist_rules",
                 "account_due_list",
-                "crm",
+                "sale_crm",
                 "mrp",
                 "contacts",
                 "marketing",
