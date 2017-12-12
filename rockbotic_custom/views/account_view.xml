@@ -11,5 +11,16 @@
                 </field>
             </field>
         </record>
+        <record id="view_account_analytic_account_tree_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.account.analytic.account.tree.inh.rockbotic</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="account.view_account_analytic_account_tree" />
+            <field name="arch" type="xml">
+                <field name="complete_name" position="after">
+                    <field name="name"/>
+                </field>
+                <field name="complete_name" position="replace" />
+            </field>
+        </record>
     </data>
 </openerp>
