@@ -362,3 +362,9 @@ msgstr "Horas semanales"
 msgid "Price month"
 msgstr "Precio mensual"
 
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:56
+#, python-format
+msgid "Yout must define one Working Schedule, in sale contract: %s"
+msgstr "Debe de definir un horario planificado, en el contrato de venta: %s"
+
