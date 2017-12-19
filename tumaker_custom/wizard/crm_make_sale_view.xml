@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+       <record id="view_crm_make_sale" model="ir.ui.view">
+          <field name="name">crm.make.sale.form</field>
+          <field name="model">crm.make.sale</field>
+          <field name="inherit_id" ref="sale_crm.view_crm_make_sale"/>
+          <field name="arch" type="xml">
+              <field name="close" position="after">
+                  <field name="warehouse_id"/>
+              </field>
+          </field>
+       </record>
+    </data>
+</openerp>

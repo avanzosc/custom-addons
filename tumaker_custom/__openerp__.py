@@ -54,6 +54,7 @@
              'views/crm_lead_view.xml',
              'views/specific_stock_production_menuitem.xml',
              'wizard/stock_transfer_details_view.xml',
+             'wizard/crm_make_sale_view.xml',
              'report/account_entries_report_view.xml'
              ],
     "installable": True,
