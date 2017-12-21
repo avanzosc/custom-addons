@@ -2,6 +2,7 @@
 # (c) 2016 Alfredo de la Fuente - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 import openerp.tests.common as common
+from openerp import exceptions
 
 
 class TestGalaxiaCustom(common.TransactionCase):
@@ -115,3 +116,7 @@ class TestGalaxiaCustom(common.TransactionCase):
                           'Bad project manager in task imputation')
         self.assertEquals(work.project_members_ids, work.project.members,
                           'Bad project members in task imputation')
+        self.sale_order.order_line[0].product_id.recurring_service = True
+        self.sale_order.project_id.working_hours = [(5)]
+        with self.assertRaises(exceptions.Warning):
+            self.sale_order.action_button_confirm()

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # © 2015 Esther Martín - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
-from openerp import models, fields, api
+from openerp import models, fields, api, _
 import openerp.addons.decimal_precision as dp
 
 
@@ -50,13 +50,80 @@ class SaleOrder(models.Model):
     @api.multi
     def action_button_confirm(self):
         event_model = self.env['event.event']
+        if (any(self.mapped('order_line.product_id.recurring_service')) and
+                self.project_id):
+            self._put_days_in_working_hours()
         result = super(SaleOrder, self.with_context(
             without_sale_name=True)).action_button_confirm()
         cond = [('sale_order', '=', self.id)]
         event = event_model.search(cond, limit=1)
         event._merge_event_tracks()
-        self.project_id._recalculate_sessions_date_from_calendar()
         return result
+
+    @api.multi
+    def _put_days_in_working_hours(self):
+        calendar_obj = self.env['resource.calendar']
+        for sale in self:
+            if not sale.project_id.working_hours:
+                sale.project_id.working_hours = calendar_obj.create(
+                    {'name': sale.project_id.name})
+            lines = sale.order_line.filtered(
+                lambda x: x.product_id.recurring_service and
+                (not x.start_date or not x.end_date) and
+                (x.monday or x.tuesday or x.wednesday or x.thursday or
+                 x.friday or x.saturday or x.sunday))
+            sale._confirm_days_in_working_hours(lines)
+
+    def _confirm_days_in_working_hours(self, lines):
+        hour_from = self.project_id.start_time
+        hour_to = self.project_id.end_time
+        for line in lines:
+            days = self.project_id.working_hours.attendance_ids
+            vals = []
+            if (line.monday and not any(days.filtered(lambda x:
+                                                      x.dayofweek == '0'))):
+                vals.append((0, 0, {'name': _('Monday'), 'dayofweek': '0',
+                                    'hour_from': hour_from,
+                                    'hour_to': hour_to}),)
+            if (line.tuesday and not any(days.filtered(lambda x:
+                                                       x.dayofweek == '1'))):
+                vals.append((0, 0, {'name': _('Tuesday'), 'dayofweek': '1',
+                                    'hour_from': hour_from,
+                                    'hour_to': hour_to}),)
+            if (line.wednesday and not any(days.filtered(lambda x:
+                                                         x.dayofweek == '2'))):
+                vals.append((0, 0, {'name': _('Wednesday'), 'dayofweek': '2',
+                                    'hour_from': hour_from,
+                                    'hour_to': hour_to}),)
+            if (line.thursday and not any(days.filtered(lambda x:
+                                                        x.dayofweek == '3'))):
+                vals.append((0, 0, {'name': _('Thursday'), 'dayofweek': '3',
+                                    'hour_from': hour_from,
+                                    'hour_to': hour_to}),)
+            if (line.friday and not any(days.filtered(lambda x:
+                                                      x.dayofweek == '4'))):
+                vals.append((0, 0, {'name': _('Friday'), 'dayofweek': '4',
+                                    'hour_from': hour_from,
+                                    'hour_to': hour_to}),)
+            if (line.saturday and not any(days.filtered(lambda x:
+                                                        x.dayofweek == '5'))):
+                vals.append((0, 0, {'name': _('Saturday'), 'dayofweek': '5',
+                                    'hour_from': hour_from,
+                                    'hour_to': hour_to}),)
+            if (line.sunday and not any(days.filtered(lambda x:
+                                                      x.dayofweek == '6'))):
+                vals.append((0, 0, {'name': _('Sunday'), 'dayofweek': '6',
+                                    'hour_from': hour_from,
+                                    'hour_to': hour_to}),)
+            if vals:
+                self.project_id.working_hours.write({'attendance_ids': vals})
+
+    def _prepare_session_data_from_sale_line(
+            self, event, num_session, line, date):
+        vals = super(SaleOrder, self)._prepare_session_data_from_sale_line(
+            event, num_session, line, date)
+        vals['name'] = (_('Session %s for %s') % (str(num_session), line.name))
+        return vals
 
 
 class SaleOrderLine(models.Model):
