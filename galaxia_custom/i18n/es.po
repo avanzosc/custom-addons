@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-25 10:30+0000\n"
-"PO-Revision-Date: 2016-02-25 11:31+0100\n"
+"POT-Creation-Date: 2017-01-11 09:27+0000\n"
+"PO-Revision-Date: 2017-01-11 10:39+0100\n"
 "Last-Translator: Esther Martín <esthermartin@avanzosc.es>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,11 +17,360 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 
 #. module: galaxia_custom
+#: view:sale.order:galaxia_custom.view_order_form_service_view_inh_galaxia
+msgid "(update)"
+msgstr "(actualizar)"
+
+#. module: galaxia_custom
+#: field:account.analytic.account,agreement_address:0
+msgid "Agreement address"
+msgstr "Dirección acordada"
+
+#. module: galaxia_custom
+#: view:website:account.report_invoice_document
+msgid "Amount"
+msgstr "Importe"
+
+#. module: galaxia_custom
+#: model:ir.model,name:galaxia_custom.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Cuenta analítica"
+
+#. module: galaxia_custom
+#: view:website:account.report_invoice_document
+msgid "Bank Account:"
+msgstr "Cuenta bancaria:"
+
+#. module: galaxia_custom
+#: field:product.product,base_standard_price:0
+msgid "Base Cost Price"
+msgstr "Precio coste base"
+
+#. module: galaxia_custom
+#: field:product.product,base_lst_price:0
+msgid "Base Sale Price"
+msgstr "Precio venta base"
+
+#. module: galaxia_custom
+#: view:website:account.report_invoice_document
+msgid "Comment:"
+msgstr "Comentario:"
+
+#. module: galaxia_custom
+#: model:ir.model,name:galaxia_custom.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Date Ordered:"
+msgstr "Fecha pedido:"
+
+#. module: galaxia_custom
+#: view:website:account.report_invoice_document
+msgid "Date due:"
+msgstr "Fecha vencimiento:"
+
+#. module: galaxia_custom
+#: view:sale.order:galaxia_custom.view_order_form_service_view_inh_galaxia
+msgid "Decimal Performance"
+msgstr "Rendim. decimal"
+
+#. module: galaxia_custom
+#: view:website:account.report_invoice_document
+#: view:website:galaxia_custom.report_sale_information_footer
+msgid "Description"
+msgstr "Descripción"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_information_footer
+msgid "Disc.(%)"
+msgstr "Desc.(%)"
+
+#. module: galaxia_custom
+#: view:website:account.report_invoice_document
+msgid "Discount (%)"
+msgstr "Descuento (%)"
+
+#. module: galaxia_custom
+#: view:sale.order:galaxia_custom.view_order_form_service_view_inh_galaxia
+msgid "Duplicate"
+msgstr "Duplicar"
+
+#. module: galaxia_custom
+#: view:sale.order:galaxia_custom.view_order_form_service_view_inh_galaxia
+msgid "Duplicate line"
+msgstr "Duplicar línea"
+
+#. module: galaxia_custom
+#: help:product.product,decimal_pfmc:0
+msgid "Estimated time for completion the task"
+msgstr "Tiempo estimado para finalizar la tarea"
+
+#. module: galaxia_custom
 #: model:ir.model,name:galaxia_custom.model_event_event
 msgid "Event"
 msgstr "Evento"
 
 #. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_information_footer
+msgid "Expiry Date:"
+msgstr "Fecha de validez:"
+
+#. module: galaxia_custom
+#: view:website:account.report_invoice_document
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Invoice address"
+msgstr "Dirección facturación"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Invoice address:"
+msgstr "Dirección de facturación:"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Invoice and shipping address:"
+msgstr "Dirección de facturación y de envío:"
+
+#. module: galaxia_custom
 #: field:event.event,key_code:0
 msgid "Key code"
 msgstr "Código"
+
+#. module: galaxia_custom
+#: model:res.request.link,name:galaxia_custom.req_link_hr_holidays
+msgid "Leaves"
+msgstr "Ausencias"
+
+#. module: galaxia_custom
+#: view:sale.order:galaxia_custom.view_order_form_service_view_inh_galaxia
+msgid "NO SERVICE sales order lines"
+msgstr "Líneas de ventas de NO SERVICIOS"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Order N°"
+msgstr "Pedido Nº"
+
+#. module: galaxia_custom
+#: view:website:report.external_layout_footer
+msgid "Page:"
+msgstr "Página:"
+
+#. module: galaxia_custom
+#: view:website:account.report_invoice_document
+msgid "Payment Mode:"
+msgstr "Modo de pago:"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Payment Term:"
+msgstr "Plazo de pago:"
+
+#. module: galaxia_custom
+#: field:product.product,decimal_pfmc:0
+msgid "Performance"
+msgstr "Performance"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_information_footer
+msgid "Price"
+msgstr "Precio"
+
+#. module: galaxia_custom
+#: model:ir.model,name:galaxia_custom.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: galaxia_custom
+#: view:website:account.report_invoice_document
+#: view:website:galaxia_custom.report_sale_information_footer
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Quotation Date:"
+msgstr "Fecha de presupuesto:"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Quotation N°"
+msgstr "Presupuesto Nº"
+
+#. module: galaxia_custom
+#: view:sale.order:galaxia_custom.view_order_form_service_view_inh_galaxia
+msgid "SERVICE sales order lines"
+msgstr "Líneas de ventas de SERVICIOS"
+
+#. module: galaxia_custom
+#: model:ir.model,name:galaxia_custom.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: galaxia_custom
+#: model:ir.model,name:galaxia_custom.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea pedido de venta"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Salesperson:"
+msgstr "Comercial:"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Shipping address:"
+msgstr "Dirección de envío:"
+
+#. module: galaxia_custom
+#: view:website:account.report_invoice_document
+msgid "TIN:"
+msgstr "NIF:"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_analytic_cuota
+msgid "TRIMESTRAL"
+msgstr "TRIMESTRAL"
+
+#. module: galaxia_custom
+#: view:website:account.report_invoice_document
+msgid "Tax Data"
+msgstr "Datos fiscales"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Taxes"
+msgstr "Impuestos"
+
+#. module: galaxia_custom
+#: view:website:report.external_layout_header
+msgid "Tel.:"
+msgstr "Tel.:"
+
+#. module: galaxia_custom
+#: field:product.product,ticket_event_product_ids:0
+msgid "Ticket products"
+msgstr "Tickets de producto"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_information_footer
+msgid "Total"
+msgstr "Total"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Total Without Taxes"
+msgstr "Base imponible"
+
+#. module: galaxia_custom
+#: view:website:account.report_invoice_document
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Total:"
+msgstr "Total:"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_information_footer
+msgid "Unit Price"
+msgstr "Precio unidad"
+
+#. module: galaxia_custom
+#: view:website:account.report_invoice_document
+#: view:website:galaxia_custom.report_sale_information_footer
+msgid "VAT:"
+msgstr "NIF:"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_analytic_cuota
+msgid "VIGENCIA PRECIO POR Nº DE CUOTAS:"
+msgstr "VIGENCIA PRECIO POR Nº DE CUOTAS:"
+
+#. module: galaxia_custom
+#: help:product.product,ticket_event_product_ids:0
+msgid ""
+"When the event is created by selling this product, this products will be "
+"used for ticket creation."
+msgstr ""
+"Al vender el producto se crea el evento, este producto se usará para la "
+"creación de tickets."
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_information_footer
+msgid "Your Reference:"
+msgstr "Su referencia:"
+
+#. module: galaxia_custom
+#: view:sale.order:galaxia_custom.view_order_form_service_view_inh_galaxia
+msgid "days"
+msgstr "días"
+
+#. module: galaxia_custom
+#: view:project.task.work:galaxia_custom.project_task_work_search_inh_galaxiacustom
+#: field:project.task.work,day:0
+msgid "Day of the week"
+msgstr "Día de la semana"
+
+#. module: galaxia_custom
+#: view:project.task.work:galaxia_custom.project_task_work_search_inh_galaxiacustom
+#: field:project.task.work,project_manager_id:0
+msgid "Project manager"
+msgstr "Responsable proyecto"
+
+#. module: galaxia_custom
+#: model:ir.actions.act_window,name:galaxia_custom.action_export_presences_information
+#: view:wiz.export.presence.information:galaxia_custom.wiz_export_presences_information_form_view
+msgid "Export presences information"
+msgstr "Exportar información de presencias"
+
+#. module: galaxia_custom
+#: model:ir.actions.act_window,name:galaxia_custom.action_export_presences_information
+#: view:wiz.export.presence.information:galaxia_custom.wiz_export_presences_information_form_view
+msgid "Export presences information"
+msgstr "Exportar información de presencias"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Cleaning Plan"
+msgstr "Plan de limpieza"
+
+#. module: galaxia_custom
+#: view:sale.order:galaxia_custom.view_order_form_service_view_inh_galaxia
+#: field:sale.order.line,periodicity:0
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Periodicity"
+msgstr "Periodicidad"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Weekly hours"
+msgstr "Horas semanales"
+
+#. module: galaxia_custom
+#: view:website:galaxia_custom.report_sale_only_services
+msgid "Price month"
+msgstr "Precio mensual"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:56
+#, python-format
+msgid "Yout must define one Working Schedule, in sale contract: %s"
+msgstr "Debe de definir un horario planificado, en el contrato de venta: %s"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:125
+#, python-format
+msgid "Session %s for %s"
+msgstr "Sesión %s para %s"
+

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="website_favicon_layout" inherit_id="website.layout">
+            <xpath expr="//head//title" position="after">
+                <link rel="shortcut icon"
+                      href="/rockbotic_custom/static/src/img/favicon.ico"
+                      type="image/x-icon"/>
+            </xpath>
+        </template>
+
+        <template id="website.footer_custom" inherit_id="website.layout">
+            <xpath expr="//div[@id='footer_container']" position="replace">
+                <div class="oe_structure" id="footer">
+                    <section data-snippet-id="three-columns"
+                             style="height: 320px; overflow: hidden;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4 mb128">
+                                    <h4 class="mt16">
+                                        <img src="/rockbotic_custom/static/src/img/logo-rockbotic-footer.png" alt="Rockbotic, formación en robótica y diseño de videojuegos" title="Robótica y diseño de videojuegos para niños y jóvenes" />
+                                    </h4>
+                                    <p/>
+                                </div>
+                                <div class="col-md-2">
+                                    <h5 class="mt16">NUESTRAS SEDES</h5>
+                                    <div/>
+                                    <div>
+                                        <a href="http://rockbotic.com/madrid/"
+                                           target="_blank">MADRID
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="http://rockbotic.com/castilla-leon/"
+                                           target="_blank">CASTILLA Y LEÓN
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="http://rockbotic.com/sevilla/"
+                                           target="_blank">SEVILLA
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="http://rockbotic.com/galicia/"
+                                           target="_blank">GALICIA
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="http://rockbotic.com/malaga"
+                                           target="_blank">MÁLAGA
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="http://rockbotic.com/guipuzcoa/"
+                                           target="_blank">GIPUZKOA
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="http://rockbotic.com/aragon/"
+                                           target="_blank">ARAGÓN
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="http://rockbotic.com/barcelona/"
+                                           target="_blank">BARCELONA
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="http://rockbotic.com/castilla-la-mancha/"
+                                           target="_blank">
+                                            TOLEDO-GUADALAJARA-CIUDAD REAL
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="http://rockbotic.com/albacete/"
+                                           target="_blank">ALBACETE
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="http://rockbotic.com/oporto/"
+                                           target="_blank">OPORTO
+                                        </a>
+                                    </div>
+                                    <p/>
+                                </div>
+                                <div class="col-md-2">
+                                    <h5 class="mt16">ÚLTIMAS NOTICIAS</h5>
+                                    <p/>
+                                </div>
+                                <div class="col-md-2 col-md-offset-2">
+                                    <h5 class="mt16">NOSOTROS</h5>
+                                    <div>
+                                        <a href="http://rockbotic.com/acerca-de-rockbotic/"
+                                           target="_blank">Acerca de Rockbotic
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="http://rockbotic.com/el-metodo-rockbotic/"
+                                           target="_blank">El Método Rockbotic <span style="color: rgb(0, 0, 0); font-family: monospace; font-size: medium; white-space: pre-wrap;">®</span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="http://rockbotic.com/contacto/"
+                                           target="_blank">Contacto
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="et-footer-nav"
+                                         style="margin: 0px; padding: 0px; border: 0px; outline: 0px; background: rgba(255, 255, 255, 0.05); vertical-align: baseline; color: rgb(102, 102, 102); font-family: &quot;Open Sans&quot;, Arial, sans-serif;">
+                                        <div class="container"
+                                             style="margin-top: auto; margin-bottom: auto; padding: 0px; border: 0px; outline: 0px; background: transparent; vertical-align: baseline; position: relative; width: 1010.39px; max-width: 1080px;">
+                                            <ul class="bottom-nav"
+                                                id="menu-menu-footer"
+                                                style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0px; border: 0px; outline: 0px; background: transparent; vertical-align: baseline; list-style: none; text-align: center;">
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8294"
+                                                    id="menu-item-8294"
+                                                    style="margin: 0px 6px 0px 0px; padding: 0px 8px 0px 0px; border-width: 0px 1px 0px 0px; border-top-style: initial; border-right-style: solid; border-bottom-style: initial; border-left-style: initial; border-top-color: initial; border-right-color: rgb(118, 118, 118); border-bottom-color: initial; border-left-color: initial; border-image: initial; outline: 0px; background: transparent; font-size: 12px; vertical-align: baseline; display: inline-block;">
+                                                    <a href="http://rockbotic.com/aviso-legal/"
+                                                       rel="nofollow"
+                                                       style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; color: rgb(86, 86, 86); display: block; line-height: 14px; text-transform: uppercase; transition: all 0.4s ease-in-out;">
+                                                        AVISO LEGAL
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8293"
+                                                    id="menu-item-8293"
+                                                    style="margin: 0px 6px 0px 0px; padding: 0px 8px 0px 0px; border-width: 0px 1px 0px 0px; border-top-style: initial; border-right-style: solid; border-bottom-style: initial; border-left-style: initial; border-top-color: initial; border-right-color: rgb(118, 118, 118); border-bottom-color: initial; border-left-color: initial; border-image: initial; outline: 0px; background: transparent; font-size: 12px; vertical-align: baseline; display: inline-block;">
+                                                    <a href="http://rockbotic.com/politica-proteccion-datos/"
+                                                       rel="nofollow"
+                                                       style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; color: rgb(86, 86, 86); display: block; line-height: 14px; text-transform: uppercase; transition: all 0.4s ease-in-out;">
+                                                        POLÍTICA DE PROTECCIÓN
+                                                        DE DATOS
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8295"
+                                                    id="menu-item-8295"
+                                                    style="margin: 0px 6px 0px 0px; padding: 0px 8px 0px 0px; border-width: 0px 1px 0px 0px; border-top-style: initial; border-right-style: solid; border-bottom-style: initial; border-left-style: initial; border-top-color: initial; border-right-color: rgb(118, 118, 118); border-bottom-color: initial; border-left-color: initial; border-image: initial; outline: 0px; background: transparent; font-size: 12px; vertical-align: baseline; display: inline-block;">
+                                                    <a href="http://rockbotic.com/politica-de-cookies/"
+                                                       rel="nofollow"
+                                                       style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; color: rgb(86, 86, 86); display: block; line-height: 14px; text-transform: uppercase; transition: all 0.4s ease-in-out;">
+                                                        POLÍTICA DE COOKIES
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8296"
+                                                    id="menu-item-8296"
+                                                    style="margin: 0px 6px 0px 0px; padding: 0px 8px 0px 0px; border-width: 0px 1px 0px 0px; border-top-style: initial; border-right-style: solid; border-bottom-style: initial; border-left-style: initial; border-top-color: initial; border-right-color: rgb(118, 118, 118); border-bottom-color: initial; border-left-color: initial; border-image: initial; outline: 0px; background: transparent; font-size: 12px; vertical-align: baseline; display: inline-block;">
+                                                    <a href="http://rockbotic.com/trabaja-con-rockbotic/"
+                                                       style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; color: rgb(86, 86, 86); display: block; line-height: 14px; text-transform: uppercase; transition: all 0.4s ease-in-out;">
+                                                        TRABAJA CON NOSOTROS
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div id="footer-bottom"
+                                         style="margin: 0px; padding: 5px 0px; border: 0px; outline: 0px; background: transparent; vertical-align: baseline; color: rgb(102, 102, 102); font-family: &quot;Open Sans&quot;, Arial, sans-serif;">
+                                        <div class="container clearfix"
+                                             style="margin-top: auto; margin-bottom: auto; padding: 0px; border: 0px; outline: 0px; background: transparent; vertical-align: baseline; position: relative; width: 1010.39px; max-width: 1080px;">
+                                            <p id="footer-info"
+                                               style="margin-bottom: 0px; padding: 0px 0px 10px; border: 0px; outline: 0px; background: transparent; font-size: 11px; vertical-align: baseline; color: rgb(119, 119, 120); text-align: center; text-transform: uppercase;">
+                                                © COPYRIGHT 2016, LUNA TIC DESIGN S.L., CIF B86715067 TODOS LOS DERECHOS
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</openerp>

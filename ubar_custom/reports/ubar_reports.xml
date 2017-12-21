@@ -10,13 +10,22 @@
                         <br />
                         <span t-field="o.partner_id.street"/>
                         <br />
-                        <span t-field="o.partner_id.zip" /> - <span t-field="o.partner_id.city" /> <span t-if="o.partner_id.state_id">(<span t-field="o.partner_id.state_id" />)</span>
+                        <span t-field="o.partner_id.zip" />
+                        -
+                        <span t-field="o.partner_id.city" />
+                        <span t-if="o.partner_id.state_id">
+                            (
+                            <span t-field="o.partner_id.state_id" />
+                            )
+                        </span>
                         <br />
                         <span t-field="o.partner_id.country_id"/>
                         <br />
                         <p t-if="o.partner_id.vat">
-                            <p>CIF:
-                            <span t-field="o.partner_id.vat"/></p>
+                            <p>
+                                CIF:
+                                <span t-field="o.partner_id.vat"/>
+                            </p>
                         </p>
                     </div>
                 </div>
@@ -84,25 +93,649 @@
                     </tr>
                 </table>
             </xpath>
+            <xpath expr="//p[@t-if='o.comment']" position="before">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Valor Inicial</th>
+                            <th>Cuotas</th>
+                            <th class="text-right">Duración</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="o.invoice_line.mapped('account_analytic_id')" t-as="account" >
+                            <tr>
+                                <td colspan="4">
+                                    <strong>
+                                        Contrato:
+                                        <i>
+                                            (
+                                            <span t-field="account.name"/>
+                                            )
+                                        </i>
+                                    </strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span t-field="account.amount_max"/>
+                                </td>
+                                <td>
+                                    <t t-foreach="account.recurring_invoice_line_ids" t-as="line" >
+                                        <span t-field="line.name"/>
+                                        -
+                                        <span t-field="line.price_unit"/>
+                                        €
+                                        <br/>
+                                    </t>
+                                </td>
+                                <td class="text-right">
+                                    <t t-if="account.date and account.date_start">
+                                        <t t-esc="abs(datetime.datetime.strptime(account.date,'%Y-%m-%d') - datetime.datetime.strptime(account.date_start,'%Y-%m-%d')).days/30"/> meses
+                                    </t>
+                                </td>
+                            </tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </xpath>
             <xpath expr="//div[@t-if='o.tax_line']" position="replace"/>
             <xpath expr="//p[@t-if='o.partner_bank_id']" position="replace"/>
             <xpath expr="//p[@t-if='o.comment']" position="after">
                 <table>
-                    <tr t-if="o.comment"><td style="width:10%;"><strong>Comment:</strong></td><td style="width:60%;" t-esc="o.comment"/></tr>
-                    <tr t-if="o.payment_mode_id"><td><strong>Payment mode:</strong></td><td t-esc="o.payment_mode_id.name"/></tr>
-                    <tr t-if="o.payment_term.note"><td><strong>Payment Term:</strong></td><td t-esc="o.payment_term.note"/></tr>
-                    <tr t-if="o.date_due"><td><strong>Date due:</strong></td><td t-esc="o.date_due"/></tr>
-                    <tr t-if="o.payment_mode_id and o.payment_mode_id.name=='contado' or o.payment_mode_id.name=='CONTADO' or o.payment_mode_id.name=='Transferencia bancaria' or o.payment_mode_id.name=='TRANSFERENCIA BANCARIA'"><td><strong>Bank Account:</strong></td><td t-esc="o.partner_bank_id.acc_number"/></tr>
+                    <tr t-if="o.comment">
+                        <td style="width:10%;">
+                            <strong>Comment:</strong>
+                        </td>
+                        <td style="width:60%;" t-esc="o.comment"/>
+                    </tr>
+                    <tr t-if="o.payment_mode_id">
+                        <td>
+                            <strong>Payment mode:</strong>
+                        </td>
+                        <td t-esc="o.payment_mode_id.name"/>
+                    </tr>
+                    <tr t-if="o.payment_term.note">
+                        <td>
+                            <strong>Payment Term:</strong>
+                        </td>
+                        <td t-esc="o.payment_term.note"/>
+                    </tr>
+                    <tr t-if="o.date_due">
+                        <td>
+                            <strong>Date due:</strong>
+                        </td>
+                        <td t-esc="o.date_due"/>
+                    </tr>
+                    <tr t-if="o.payment_mode_id and o.payment_mode_id.name=='contado' or o.payment_mode_id.name=='CONTADO' or o.payment_mode_id.name=='Transferencia bancaria' or o.payment_mode_id.name=='TRANSFERENCIA BANCARIA'">
+                        <td>
+                            <strong>Bank Account:</strong>
+                        </td>
+                        <td t-esc="o.partner_bank_id.acc_number"/>
+                    </tr>
                     <tr t-if="o.payment_mode_id and 'GIRO' in o.payment_mode_id.name">
-                        <td><strong>Bank Account:</strong></td>
-                            <td t-if="o.partner_id.bank_ids">
-                                **** **** **** ***<span t-esc="o.partner_id.bank_ids[0].acc_number[-6:]"/>
-                            </td>
-                        </tr>
+                        <td>
+                            <strong>Bank Account:</strong>
+                        </td>
+                        <td t-if="o.partner_id.bank_ids">
+                            **** **** **** ***
+                            <span t-esc="o.partner_id.bank_ids[0].acc_number[-6:]"/>
+                        </td>
+                    </tr>
                 </table>
             </xpath>
             <xpath expr="//p[@t-if='o.comment']" position="replace"/>
             <xpath expr="//p[@t-if='o.payment_term.note']" position="replace"/>
+        </template>
+        
+        <!-- PEDIDO/PRESUPUESTO VENTA -->
+        <template id="ubar_sale_order_report" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[@class='col-xs-6']" position="replace">
+                <div class="col-xs-6">
+                    <strong t-if="o.partner_shipping_id == o.partner_invoice_id">Invoice and shipping address:</strong>
+                    <strong t-if="o.partner_shipping_id != o.partner_invoice_id">Invoice address:</strong>
+                    <div t-if="o.partner_invoice_id">
+                        <span t-field="o.partner_invoice_id.name"/>
+                        <br />
+                        <span t-field="o.partner_invoice_id.street"/>
+                        <br />
+                        <span t-field="o.partner_invoice_id.zip" />
+                        -
+                        <span t-field="o.partner_invoice_id.city" />
+                        <span t-if="o.partner_invoice_id.state_id">
+                            (
+                            <span t-field="o.partner_invoice_id.state_id" />
+                            )
+                        </span>
+                        <br />
+                        <span t-field="o.partner_invoice_id.country_id"/>
+                        <br />
+                        <p t-if="o.partner_invoice_id.vat">
+                            CIF:
+                            <span t-field="o.partner_invoice_id.vat"/>
+                        </p>
+                    </div>
+                    <div t-if="o.partner_shipping_id != o.partner_invoice_id" class="mt8">
+                        <strong>Shipping address:</strong>
+                        <div t-if="o.partner_shipping_id">
+                            <span t-field="o.partner_shipping_id.name"/>
+                            <br />
+                            <span t-field="o.partner_shipping_id.street"/>
+                            <br />
+                            <span t-field="o.partner_shipping_id.zip" />
+                            -
+                            <span t-field="o.partner_shipping_id.city" />
+                            <span t-if="o.partner_shipping_id.state_id">
+                                (
+                                <span t-field="o.partner_shipping_id.state_id" />
+                                )
+                            </span>
+                            <br />
+                            <span t-field="o.partner_shipping_id.country_id"/>
+                            <br />
+                            <p t-if="o.partner_invoice_id.vat">
+                                CIF:
+                                <span t-field="o.partner_invoice_id.vat"/>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[@class='col-xs-5 col-xs-offset-1']" position="replace">
+                <div t-if="o.partner_id">
+                    <span t-field="o.partner_shipping_id.name"/>
+                    <br />
+                    <span t-field="o.partner_shipping_id.street"/>
+                    <br />
+                    <span t-field="o.partner_shipping_id.zip" />
+                    -
+                    <span t-field="o.partner_shipping_id.city" />
+                    <span t-if="o.partner_shipping_id.state_id">
+                        (
+                        <span t-field="o.partner_shipping_id.state_id" />
+                        )
+                    </span>
+                    <br />
+                    <span t-field="o.partner_shipping_id.country_id"/>
+                    <br />
+                    <p t-if="o.partner_shipping_id.fax">
+                        Fax:
+                        <span t-field="o.partner_shipping_id.fax"/>
+                    </p>
+                </div>
+            </xpath>
+            <xpath expr="//div[@t-if='o.client_order_ref']" position="replace">
+                <div t-if="o.client_order_ref" class="col-xs-3">
+                    <strong>Reference:</strong>
+                    <p t-field="o.client_order_ref"/>
+                </div>
+            </xpath>
+            <xpath expr="//div[@t-if='o.user_id.name']" position="replace">
+                <div t-if="o.user_id.name" class="col-xs-3">
+                    <strong>Responsible:</strong>
+                    <p t-field="o.user_id.name"/>
+                </div>
+            </xpath>
+            <xpath expr="//p[@t-field='o.date_order']" position="replace">
+                <p t-field="o.date_order" t-field-options='{"format": "dd/MM/yyyy"}'/>
+            </xpath>
+            <xpath expr="//div[@t-if='o.payment_term']" position="replace"/>
+            <xpath expr="//table[@class='table table-condensed']" position="replace">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th class="text-right">Quantity</th>
+                            <th class="text-right">Unit Price</th>
+                            <th groups="sale.group_discount_per_so_line">Disc.(%)</th>
+                            <th class="text-right">Net Price</th>
+                        </tr>
+                    </thead>
+                    <tbody class="sale_tbody">
+                        <tr t-foreach="o.order_line" t-as="l">
+                            <td>
+                                <span t-field="l.name"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-esc="int(l.product_uom_qty)"/>
+                                <span groups="product.group_uom" t-field="l.product_uom"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="l.price_unit"/>
+                            </td>
+                            <td groups="sale.group_discount_per_so_line">
+                                <span t-field="l.discount"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="l.price_subtotal" t-field-options='{"widget": "monetary", "display_currency":
+                                    "o.pricelist_id.currency_id"}'/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </xpath>
+            <xpath expr="//div[@class='row']//div[@class='col-xs-4 pull-right']//table[@class='table table-condensed']" position="replace">
+                <table class="table table-condensed">
+                    <tr class="border-black">
+                        <td>
+                            <strong>Total Without Taxes</strong>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="o.amount_untaxed" t-field-options='{"widget": "monetary", "display_currency":
+                                "o.pricelist_id.currency_id"}'/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Taxes 21%</td>
+                        <td class="text-right">
+                            <span t-field="o.amount_tax" t-field-options='{"widget": "monetary", "display_currency":
+                                "o.pricelist_id.currency_id"}'/>
+                        </td>
+                    </tr>
+                    <tr class="border-black">
+                        <td>
+                            <strong>Total</strong>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency":
+                                "o.pricelist_id.currency_id"}'/>
+                        </td>
+                    </tr>
+                </table>
+            </xpath>
+            <xpath expr="//p[@t-field='o.note']" position="after">
+                <table style="width:100%">
+                    <tr t-if="o.validity_date and o.state in ['draft','sent']">
+                        <td width="15%">
+                            <strong>Validity date:</strong>
+                        </td>
+                        <td t-esc="o.validity_date"/>
+                    </tr>
+                    <tr t-if="o.payment_term.note and o.state not in ['draft','sent']">
+                        <td>
+                            <strong>Payment Term:</strong>
+                        </td>
+                        <td t-esc="o.payment_term.note"/>
+                    </tr>
+                    <tr t-if="o.payment_mode_id">
+                        <td width="15%">
+                            <strong>Payment mode:</strong>
+                        </td>
+                        <td t-esc="o.payment_mode_id.name"/>
+                    </tr>
+                    <tr t-if="o.carrier_id and o.state not in ['draft','sent']">
+                        <td>
+                            <strong>Shipping:</strong>
+                        </td>
+                        <td t-esc="o.carrier_id.name"/>
+                    </tr>
+                    <tr t-if="o.state not in ['draft','sent'] and o.guarantee_limit">
+                        <td>
+                            <strong>Warranty:</strong>
+                        </td>
+                        <td t-esc="o.guarantee_limit"/>
+                    </tr>
+                    <tr t-if="o.state in ['draft','sent'] and o.due_date">
+                        <td>
+                            <strong>Due date:</strong>
+                        </td>
+                        <td t-esc="o.due_date"/>
+                    </tr>
+                    <tr t-if="o.note">
+                        <td>
+                            <strong>Comments:</strong>
+                        </td>
+                        <td t-esc="o.note"/>
+                    </tr>
+                </table>
+                <t t-if="o.state in ['draft','sent']">
+                    <div class="box" style="float:right;">
+                        <div style="margin-left:10px; margin-top:10px;font-size:12px;page-break-inside: avoid;">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <strong>CONFORME CLIENTE</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="100">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </xpath>
+            <xpath expr="//p[@t-field='o.note']" position="replace"/>
+            <xpath expr="//p[@t-if='o.payment_term.note']" position="replace"/>
+        </template>
+        <template id="ubar_report_saleorder_validity_date" inherit_id="website_quote.report_saleorder_validity_date">
+            <xpath expr="//div[@t-if='o.validity_date']" position="replace"/>
+        </template>
+        
+        <!--ALBARANES-->
+        <template id="delivery_ubar_report" inherit_id="delivery.report_shipping2">
+            <xpath expr="//div[@name='invoice_partner']" position="replace"/>
+            <xpath expr="//div[@class='col-xs-5 col-xs-offset-1']" position="inside">
+                <div name="invoice_partner" t-if="o.picking_type_id.code == 'outgoing' and o.sale_id and o.sale_id.partner_invoice_id">
+                        <strong>Invoice address:</strong>
+                        <div t-field="o.sale_id.partner_invoice_id" 
+                         t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
+                </div>
+            </xpath>
+            <xpath expr="//table[@class='table table-condensed']" position="replace">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>
+                                <strong>Order (Origin)</strong>
+                            </th>
+                            <th>
+                                <strong>State</strong>
+                            </th>
+                            <th>
+                                <strong>Date</strong>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span t-field="o.origin"/>
+                            </td>
+                            <td>
+                                <span t-field="o.state"/>
+                            </td>
+                            <td>
+                                <span t-field="o.date" t-field-options='{"format": "dd/MM/yyyy"}'/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </xpath>
+        </template>
+        <template id="valued_picking_ubar" inherit_id="stock_valued_picking_report.valued_report_picking">
+            <xpath expr="//table[@t-if='not o.pack_operation_ids']" position="replace">
+                <table class="table table-condensed" t-if="not o.pack_operation_ids">
+                    <thead>
+                        <tr>
+                            <th><strong>Product</strong></th>
+                            <t t-if="o.picking_type_id.code != 'incoming'"><th><strong>Source</strong></th></t>
+                            <th class="text-right"><strong>Quantity</strong></th>
+                            <t t-if="o.picking_type_id.code == 'outgoing'"><th class="text-right"><strong>Discount</strong></th></t>
+                            <t t-if="o.picking_type_id.code != 'outgoing'"><th><strong>Destination</strong></th></t>
+                            <t t-if="o.picking_type_id.code == 'outgoing'"><th class="text-right"><strong>Net Price</strong></th></t>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="o.move_lines" t-as="move">
+                            <t t-if="(o.state != 'partially_available') or (move.reserved_availability > 0)">
+                                <td><span t-field="move.product_id"/></td>
+                                <t t-if="o.picking_type_id.code != 'incoming'"><td><span t-field="move.location_id"/></td></t>
+                                <td class="text-right">
+                                    <t t-if="o.state == 'partially_available'">
+                                        <span t-field="move.reserved_availability"/> <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
+                                    </t>
+                                    <t t-if="o.state != 'partially_available'">
+                                        <span t-esc="int(move.product_uom_qty)"/> <span t-field="move.product_uom" groups="product.group_uom"/>
+                                    </t>
+                                </td>
+                                <t t-if="o.picking_type_id.code == 'outgoing'"><td class="text-right"><span t-field="move.procurement_id.sale_line_id.discount"/></td></t>
+                                <t t-if="o.picking_type_id.code != 'outgoing'"><td><span t-field="move.location_dest_id"/></td></t>
+                                <t t-if="o.picking_type_id.code == 'outgoing'"><td class="text-right"><span t-field="move.sale_price_subtotal" /></td></t>
+                            </t>
+                        </tr>
+                    </tbody>
+                </table>
+            </xpath>
+            <xpath expr="//table[@t-if='o.pack_operation_ids']" position="replace">
+                <table class="table table-condensed" t-if="o.pack_operation_ids">
+                    <thead>
+                        <tr>
+                            <th><strong>Product</strong></th>
+                            <t t-if="o.picking_type_id.code != 'incoming'"><th><strong>Source</strong></th></t>
+                            <th class="text-right"><strong>Quantity</strong></th>
+                            <t t-if="o.picking_type_id.code == 'outgoing'"><th class="text-right"><strong>Discount</strong></th></t>
+                            <t t-if="o.picking_type_id.code != 'outgoing'"><th><strong>Destination</strong></th></t>
+                            <t t-if="o.picking_type_id.code == 'outgoing'"><th class="text-right"><strong>Net Price</strong></th></t>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="o.pack_operation_ids" t-as="pack_operation">
+                            <td>
+                                <span t-field="pack_operation.product_id"/>
+                                <t t-if="not pack_operation.product_id and pack_operation.package_id">
+                                    <span  t-field="pack_operation.package_id"/>
+                                </t>
+                            </td>
+                            <t t-if="o.picking_type_id.code != 'incoming'">
+                                <td>
+                                    <span t-field="pack_operation.location_id"/>
+                                    <span t-if="pack_operation.package_id">:</span>
+                                    <span t-field="pack_operation.package_id"/>
+                                    <span t-if="pack_operation.lot_id">:</span>
+                                    <span t-field="pack_operation.lot_id"/>
+                                </td>
+                            </t>
+                            <td class="text-right">
+                                <span t-esc="int(pack_operation.product_qty)"/>
+                                <span t-field="pack_operation.product_uom_id" groups="product.group_uom"/>
+                            </td>
+                            <t t-foreach="pack_operation.linked_move_operation_ids" t-as="move_operation">
+                                <td class="text-right">
+                                    <span t-field="move_operation.move_id.procurement_id.sale_line_id.discount" />
+                                </td>
+                                <t t-if="o.picking_type_id.code != 'outgoing'">
+                                    <td>
+                                        <span t-field="pack_operation.location_dest_id"/>
+                                        <span t-if="pack_operation.result_package_id">:</span>
+                                        <span t-field="pack_operation.result_package_id"/>
+                                    </td>
+                                </t>
+                                <td class="text-right">
+                                    <span t-field="move_operation.move_id.sale_price_subtotal" />
+                                </td>
+                            </t>
+                        </tr>
+                    </tbody>
+                </table>
+            </xpath>
+            <xpath expr="//div[@class='row']/div[@class='col-xs-4 pull-right']/.." position="replace">
+                <t t-if="o.picking_type_id.code == 'outgoing'">
+                <div class="row">
+                    <div class="col-xs-4 pull-right">
+                        <table class="table table-condensed">
+                            <tr class="border-black">
+                                <td><strong>Total Without Taxes</strong></td>
+                                <td class="text-right">
+                                    <span t-field="o.amount_untaxed"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Taxes 21%</td>
+                                <td class="text-right">
+                                    <span t-field="o.amount_tax" />
+                                </td>
+                            </tr>
+                            <tr class="border-black">
+                                <td><strong>Total</strong></td>
+                                <td class="text-right">
+                                    <span t-field="o.amount_total" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                </t>
+                <div class="box" style="float:right;">
+                    <div style="margin-left:10px; margin-top:10px;font-size:12px;page-break-inside: avoid;">
+                        <table>
+                            <tr>
+                                <td>
+                                    <strong>FIRMA CONFORMIDAD</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="100">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+        <!--Pedido de compra -->
+        <template id="ubar_purchase_report" inherit_id="purchase_discount.report_purchaseorder_document">
+            <xpath expr="//div[@class='row']/div[@class='col-xs-6']" position="replace">
+                <div class="col-xs-6">
+                    <strong>Shipping address:</strong>
+                    <div t-if="o.dest_address_id">
+                        <t t-if="o.dest_address_id.name"><span t-field="o.dest_address_id.name"/></t>
+                        <br />
+                        <t t-if="o.dest_address_id.street"><span t-field="o.dest_address_id.street"/></t>
+                        <br />
+                        <t t-if="o.dest_address_id.zip"><span t-field="o.dest_address_id.zip" /></t>
+                        -
+                        <t t-if="o.dest_address_id.city"><span t-field="o.dest_address_id.city" /></t>
+                        <t t-if="o.dest_address_id.state_id">(<span t-field="o.dest_address_id.state_id" />)</t>
+                        <br />
+                        <t t-if="o.dest_address_id.country_id"><span t-field="o.dest_address_id.country_id"/></t>
+                        <br />
+                        <t t-if="o.dest_address_id.phone">
+                            <span t-field="o.dest_address_id.phone"/>
+                        </t>
+                    </div>
+                    
+                    <div t-if="not o.dest_address_id and o.picking_type_id and o.picking_type_id.warehouse_id">
+                        <span t-field="o.picking_type_id.warehouse_id.name"/>
+                        <div t-if="o.picking_type_id.warehouse_id.partner_id">
+                            <t t-if="o.picking_type_id.warehouse_id.partner_id.street"><span t-field="o.picking_type_id.warehouse_id.partner_id.street"/></t>
+                            <br />
+                            <t t-if="o.picking_type_id.warehouse_id.partner_id.zip"><span t-field="o.picking_type_id.warehouse_id.partner_id.zip" /></t>
+                            -
+                            <t t-if="o.picking_type_id.warehouse_id.partner_id.city"><span t-field="o.picking_type_id.warehouse_id.partner_id.city" /></t>
+                            <t t-if="o.picking_type_id.warehouse_id.partner_id.state_id">(<span t-field="o.picking_type_id.warehouse_id.partner_id.state_id" />)</t>
+                            <br />
+                            <t t-if="o.picking_type_id.warehouse_id.partner_id.country_id"><span t-field="o.picking_type_id.warehouse_id.partner_id.country_id"/></t>
+                            <br />
+                            <p t-if="o.picking_type_id.warehouse_id.partner_id.phone">
+                                <span t-field="o.picking_type_id.warehouse_id.partner_id.phone"/>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[@class='col-xs-5 col-xs-offset-1']" position="replace">
+                <div class="col-xs-5 col-xs-offset-1">
+                    <t t-if="o.partner_id.name"><span t-field="o.partner_id.name"/></t>
+                    <br />
+                    <t t-if="o.partner_id.street"><span t-field="o.partner_id.street"/></t>
+                    <br />
+                    <t t-if="o.partner_id.zip"><span t-field="o.partner_id.zip" /></t>
+                    -
+                    <t t-if="o.partner_id.city"><span t-field="o.partner_id.city" /></t>
+                    <t t-if="o.partner_id.state_id">(<span t-field="o.partner_id.state_id" />)</t>
+                    <br />
+                    <t t-if="o.partner_id.country_id"><span t-field="o.partner_id.country_id"/></t>
+                    <br />
+                    <t t-if="o.partner_id.fax"><span t-field="o.partner_id.fax"/></t>
+                    <p t-if="o.partner_id.vat">CIF:<span t-field="o.partner_id.vat"/>
+                    </p>
+                </div>
+            </xpath>
+            <xpath expr="//h2[2]" position="replace"/>
+            <xpath expr="//h2[1]" position="replace">
+                <h2 t-if="o.state != 'draft'">Purchase Order N°<span t-field="o.name"/></h2>
+                <h2 t-if="o.state == 'draft'">Request for Quotation N°<span t-field="o.name"/></h2>
+            </xpath>
+            <xpath expr="//p[@t-field='o.date_order']" position="replace">
+                <p t-field="o.date_order" t-field-options='{"format": "dd/MM/yyyy"}'/>
+            </xpath>
+            <xpath expr="//div[@t-if='o.validator']" position="replace">
+                <div t-if="o.validator" class="col-xs-3">
+                    <strong>Responsible:</strong>
+                    <p t-field="o.validator"/>
+                </div>
+            </xpath>
+            <xpath expr="//table[@class='table table-condensed']" position="replace">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>
+                                <strong>Description</strong>
+                            </th>
+                            <th class="text-center">
+                                <strong>Date Delivery.</strong>
+                            </th>
+                            <th class="text-right">
+                                <strong>Qty</strong>
+                            </th>
+                            <th class="text-right">
+                                <strong>Unit Price</strong>
+                            </th>
+                            <th class="text-right">
+                                <strong>Disc. (%)</strong>
+                            </th>
+                            <th class="text-right">
+                                <strong>Net Price</strong>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="o.order_line" t-as="line">
+                            <td>
+                                <span t-field="line.name"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-field="line.date_planned"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-esc="int(line.product_qty)"/>
+                                <span t-field="line.product_uom.name" groups="product.group_uom"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="line.price_unit"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="line.discount"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="line.price_subtotal" t-field-options='{"widget": "monetary", "display_currency":
+                                    "o.currency_id"}'/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </xpath>
+            <xpath expr="//p[@t-field='o.notes']" position="before">
+                <table>
+                    <tr t-if="o.carrier_id">
+                        <td>
+                            <strong>Delivery method:</strong>
+                        </td>
+                        <td t-esc="o.carrier_id.name"/>
+                    </tr>
+                    <tr t-if="o.carrier_id.normal_price">
+                        <td>
+                            <strong>Freight:</strong>
+                        </td>
+                        <td t-esc="o.carrier_id.normal_price"/>
+                    </tr>
+                    <tr t-if="o.payment_mode_id">
+                        <td>
+                            <strong>Payment mode:</strong>
+                        </td>
+                        <td t-esc="o.payment_mode_id.name"/>
+                    </tr>
+                    <tr t-if="o.notes">
+                        <td style="width:30%;">
+                            <strong>Comment:</strong>
+                        </td>
+                        <td style="width:60%;" t-esc="o.notes"/>
+                    </tr>
+                </table>
+            </xpath>
+            <xpath expr="//p[@t-field='o.notes']" position="replace"/>
         </template>
     </data>
 </openerp>

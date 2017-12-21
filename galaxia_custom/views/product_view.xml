@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="product_product_tree_view_inh_galaxia" model="ir.ui.view">
+            <field name="name">product.product.tree.view.inh.galaxia</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view" />
+            <field name="arch" type="xml">
+                <field name="lst_price" position="after">
+                    <field name="standard_price" />
+                </field>
+            </field>
+        </record>
+        <record id="product_normal_form_view_inherit" model="ir.ui.view">
+            <field name="name">product.normal.form.view.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view" />
+            <field name="arch" type="xml">
+                <field name="cost_method" position="after">
+                    <field name="base_standard_price"/>
+                </field>
+                <field name="lst_price" position="after">
+                    <field name="base_lst_price"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

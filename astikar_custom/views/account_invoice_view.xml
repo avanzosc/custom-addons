@@ -12,6 +12,14 @@
                 <field name="invoice_line" position="attributes">
                     <attribute name="context">{'default_account_analytic_id': repair_analytic_id, 'partner_id': partner_id, 'price_type': context.get('price_type') or False, 'type': type}</attribute>
                 </field>
+                <xpath expr="//notebook/page[@string='Invoice']" position="before">
+                    <page string="Warning" attrs="{'invisible': [('not_warning', '=', True)]}">
+                        <group>
+                            <field name="not_warning"/>
+                        </group>
+                        <field name="warning"/>
+                    </page>
+                </xpath>
             </field>
         </record>
 
@@ -23,6 +31,14 @@
                 <field name="fiscal_position" position="after">
                     <field name="repair_ids" invisible="1"/>
                 </field>
+                <xpath expr="//notebook/page[@string='Invoice Lines']" position="before">
+                    <page string="Warning" attrs="{'invisible': [('not_warning', '=', True)]}">
+                        <group>
+                            <field name="not_warning"/>
+                        </group>
+                        <field name="warning"/>
+                    </page>
+                </xpath>
             </field>
         </record>
 
@@ -48,6 +64,18 @@
                 <field name="user_id" position="after">
                     <field name="payment_mode_id"/>
                 </field>
+            </field>
+        </record>
+
+        <!--Account move line-->
+        <record id="show_account_move_view_search" model="ir.ui.view">
+            <field name="name">show.account.move.search</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account_due_list.view_payments_filter"/>
+            <field name="arch" type="xml">
+                 <filter string="Salesperson" position="after">
+                    <filter name="group_account" string="Account" icon="terp-sale" domain="[]" context="{'group_by':'account_id'}"/>
+                </filter>
             </field>
         </record>
     </data>

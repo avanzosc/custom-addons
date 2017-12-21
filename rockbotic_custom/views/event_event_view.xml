@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_event_form_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.form.inh.rockbotic</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="website_event_track.view_event_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Sponsorships']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <button name="button_confirm"  position="attributes">
+                    <attribute name="groups">event.group_event_manager</attribute>
+                </button>
+                <button name="button_done"  position="attributes">
+                    <attribute name="groups">event.group_event_manager</attribute>
+                </button>
+                <button name="button_draft"  position="attributes">
+                    <attribute name="groups">event.group_event_manager</attribute>
+                </button>
+                <button name="button_cancel"  position="attributes">
+                    <attribute name="groups">event.group_event_manager</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="view_event_form2_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.form2.inh.rockbotic</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event_sale.view_event_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Badge']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_event_form3_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.form3.inh.rockbotic</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event_track_info.view_event_form_inh_track_info" />
+            <field name="arch" type="xml">
+                <button string="Load training plan in sessions"  position="attributes">
+                    <attribute name="groups">event.group_event_manager</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="view_event_form4_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.form4.inh.rockbotic</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event_project.view_event_form" />
+            <field name="arch" type="xml">
+                <button string="Set Project Template"  position="attributes">
+                    <attribute name="groups">event.group_event_manager</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="view_event_search_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.search.inh.rockbotic</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_search" />
+            <field name="arch" type="xml">
+                <filter string="Responsible" position="before">
+                    <filter string="Centre" context="{'group_by':'address_id'}"/>
+                </filter>
+            </field>
+        </record>
+        <record id="view_event_tree_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.tree.inh.rockbotic</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_tree" />
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="address_id" string="Centre"/> 
+                </field>
+                <field name="seats_min" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="seats_reserved" position="attributes">
+                    <attribute name="string">Confirmed</attribute>
+                </field>
+                <field name="date_end" position="after">
+                    <field name="seats_available" string="Inscribed"/>
+                </field>
+            </field>
+        </record>
+        <record id="view_event_form_inh_rockbotic2" model="ir.ui.view">
+            <field name="name">view.event.form.inh.rockbotic2</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_form"/>
+            <field name="arch" type="xml">
+                <field name="organizer_id" position="after">
+                    <field name="sale_order_payer" invisible="1"/>
+                </field>
+            </field>
+        </record>
+        <record id="view_event_form_inh_rockbotic3" model="ir.ui.view">
+            <field name="name">view.event.form.inh.rockbotic3</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event_track_assistant.view_event_form_inh_assistant"/>
+            <field name="arch" type="xml">
+                <button name="button_mass_mailing_to_organizer" position="attributes">
+                    <attribute name="attrs">{'invisible': [('sale_order_payer', '!=', 'school')]}</attribute>
+                </button>
+                <button name="button_mass_mailing_to_registrations" position="attributes">
+                    <attribute name="attrs">{'invisible': [('sale_order_payer', '!=', 'student')]}</attribute>
+                    <attribute name="string">Send email to parents</attribute>
+                    <attribute name="groups">event.group_event_manager</attribute>
+                </button>
+            </field>
+        </record>
+        <record id="view_event_form_inh_rockbotic4" model="ir.ui.view">
+            <field name="name">view.event.form.inh.rockbotic4</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event_registration_analytic.view_event_form_inh_assistant"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='no_employee_registration_ids']" position="attributes">
+                    <attribute name="context">{'default_event_id':active_id, 'only_name': True}</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <act_window name="Send email to registrations with evaluations"
+            res_model="wiz.send.email.event.evaluation"
+            src_model="event.event"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            id="action_event_evaluation_mass_mail"
+            />
+    </data>
+</openerp>

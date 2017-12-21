@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="product_normal_form_view_inh_trukebai" model="ir.ui.view">
+            <field name="name">product.normal.form.view.inh.trukebai</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <field name="lst_price" position="after">
+                    <field name="max_trukes" />
+                </field>
+            </field>
+        </record>
+        <record id="product_product_tree_view_inh_trukebai" model="ir.ui.view">
+            <field name="name">product.product.tree.view.inh.trukebai</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="create_date" />
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

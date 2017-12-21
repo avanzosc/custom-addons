@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="event_track_presence_view_inh_rockbotic" model="ir.ui.view">
+            <field name="name">event.track.presence.tree.inh.rockbotic</field>
+            <field name="model">event.track.presence</field>
+            <field name="inherit_id" ref="event_track_assistant.event_track_presence_tree_view" />
+            <field name="arch" type="xml">
+                <field name="estimated_daylight_hours" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="estimated_nightlight_hours" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="real_daylight_hours" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="real_nightlight_hours" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

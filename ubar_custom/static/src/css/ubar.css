@@ -1,0 +1,10 @@
+.box{
+    border-width: 1px;
+    border-style: solid;
+    font-size: 10px;
+    margin-left: 15px;
+    width: 35%;
+    page-break-inside: avoid;
+    margin-top: 20px;
+}
+

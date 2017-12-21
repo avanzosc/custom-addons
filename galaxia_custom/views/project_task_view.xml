@@ -1,0 +1,56 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="project_task_work_tree_inh_galaxiacustom">
+            <field name="name">project.task.work.tree.inh.galaxiacustom</field>
+            <field name="model">project.task.work</field>
+            <field name="inherit_id" ref="project_work_time_control.project_task_work_tree" />
+            <field name="arch" type="xml">
+                <field name="date" position="after">
+                    <field name="day" />
+                    <field name="project_manager_id" invisible="1"/>
+                    <field name="project_members_ids" invisible="1"/>
+                </field>
+                <field name="user_id" position="attributes">
+                    <attribute name="domain">['|', ('id' ,'=', project_manager_id), ('id', 'in', project_members_ids[0][2])]</attribute>
+                </field>
+            </field>
+        </record>
+         <record id="view_task_form2_inh_galaxiacustom" model="ir.ui.view">
+            <field name="name">view.task.form2.inh.galaxiacustom</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='work_ids']/tree//field[@name='user_id']" position="before">
+                    <field name="project" invisible="1" />
+                    <field name="project_manager_id" invisible="1"/>
+                    <field name="project_members_ids" invisible="1"/>
+                </xpath>
+                <xpath expr="//tree[@string='Task Work']//field[@name='user_id']" position="attributes">
+                    <attribute name="domain">['|', ('id' ,'=', project_manager_id), ('id', 'in', project_members_ids[0][2])]</attribute>
+                </xpath>
+                <field name="work_ids" position="attributes">
+                    <attribute name="context">{'default_project': project_id}</attribute>
+                </field>
+            </field>
+        </record>
+         <record id="project_task_work_search_inh_galaxiacustom" model="ir.ui.view">
+            <field name="name">project.task.work.search.inh.galaxiacustom</field>
+            <field name="model">project.task.work</field>
+            <field name="inherit_id" ref="project_work_time_control.project_task_work_search"/>
+            <field name="arch" type="xml">
+                <field name="task_id" position="after">
+                    <field name="project_manager_id" />
+                </field>
+                <field name="user_id" position="after">
+                    <field name="day" />
+                </field>
+                <filter string="User" position="after">
+                    <filter string="Project manager" domain="[]" context="{'group_by': 'project_manager_id'}"/>
+                </filter>
+                <filter string="Date" position="after">
+                    <filter string="Day of the week" domain="[]" context="{'group_by': 'day'}"/>
+                </filter>
+            </field>
+        </record>
+    </data>
+</openerp>

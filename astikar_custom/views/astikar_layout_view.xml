@@ -101,9 +101,11 @@
                             <span t-field="o.partner_id.zip" />
                             -
                             <span t-field="o.partner_id.city" />
-                            (
-                            <span t-field="o.partner_id.state_id" />
-                            )
+                            <span t-if="o.partner_id.state_id">
+                                (
+                                <span t-field="o.partner_id.state_id"/>
+                                )
+                            </span>
                             <br />
                             <div t-if="(o.partner_id.country_id.id != %(base.es)d)">
                                 <span t-field="o.partner_id.country_id"/>
@@ -179,15 +181,17 @@
                             <span t-field="o.partner_id.zip" />
                             -
                             <span t-field="o.partner_id.city" />
-                            (
-                            <span t-field="o.partner_id.state_id" />
-                            )
+                            <span t-if="o.partner_id.state_id">
+                                (
+                                <span t-field="o.partner_id.state_id"/>
+                                )
+                            </span>
                             <br />
                             Tel.:
-                            <span t-field="company.partner_id.phone"/>
+                            <span t-field="o.partner_id.phone"/>
                             <br />
                             Fax:
-                            <span t-field="company.partner_id.fax" /><br />
+                            <span t-field="o.partner_id.fax" /><br />
                             <span t-if="(o.partner_id.country_id.id != %(base.es)d)">
                                 <span t-field="o.partner_id.country_id"/><br />
                             </span>

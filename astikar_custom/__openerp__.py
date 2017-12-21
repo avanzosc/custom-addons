@@ -28,7 +28,13 @@
         "purchase",
         "account",
         "mrp_repair_estimated_qty",
+        "mrp_repair_pricelist_rules",
         "account_invoice_line_stock_move_info",
+        "stock_account",
+        "stock_valued_picking_report",
+        "delivery",
+        "warning",
+        "account_due_list",
     ],
     "data": [
         "views/astikar_custom_view.xml",
@@ -41,6 +47,8 @@
         "views/account_invoice_view.xml",
         "views/mrp_repair_line_view.xml",
         "views/product_view.xml",
+        "views/stock_history_view.xml",
+        "views/stock_quant_view.xml",
     ],
     "installable": True,
 }

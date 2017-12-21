@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="client_reference_picking" inherit_id="stock.report_picking">
+            <xpath expr="//th[@name='td_sched_date_h']" position="after">
+                <t t-if="o.sale_id.client_order_ref">
+                    <th><strong>Client Reference</strong></th>
+                </t>
+            </xpath>
+            <xpath expr="//td[@name='td_sched_date']" position="after">
+                <t t-if="o.sale_id.client_order_ref">
+                    <td>
+                        <span t-field="o.sale_id.client_order_ref"/>
+                    </td>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</openerp>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_account_invoice_filter_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.account.invoice.filter.inh.rockbotic</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter" />
+            <field name="arch" type="xml">
+                <filter name="group_by_partner_id" position="before">
+                    <filter string="Journal" context="{'group_by':'journal_id'}"/>
+                </filter>
+                <filter name="group_by_partner_id" position="after">
+                    <filter string="Event" context="{'group_by':'event_id'}"/>
+                </filter>
+            </field>
+        </record>
+
+        <record id="account_invoice_supplier_number_view_tree" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.number.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree" />
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="supplier_invoice_number" invisible="context.get('type', False)=='out_invoice'"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

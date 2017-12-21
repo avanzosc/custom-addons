@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_stock_enter_transfer_details" model="ir.ui.view">
+            <field name="name">Enter transfer details</field>
+            <field name="model">stock.transfer_details</field>
+            <field name="inherit_id" ref="stock.view_stock_enter_transfer_details"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='item_ids']/tree/field[@name='product_uom_id']" position="after">
+                    <field name="move_src_id" invisible="1"/>
+                    <field name="price_unit" readonly="0"/>
+                    <field name="truke_amount" readonly="0"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

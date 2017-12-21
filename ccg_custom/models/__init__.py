@@ -5,3 +5,6 @@
 from . import product_packaging
 from . import mrp_production
 from . import procurement
+from . import product
+from . import res_partner
+from . import sale

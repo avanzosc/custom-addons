@@ -6,29 +6,56 @@ from openerp import models, fields, api, exceptions, _
 
 
 class AccountAnalyticAccount(models.Model):
-    _name = "account.analytic.account"
     _inherit = "account.analytic.account"
 
-    @api.one
+    @api.multi
+    def convert_to_float_time_widget(self, float):
+        self.ensure_one()
+        minutes = float * 60
+        h, m = divmod(minutes, 60)
+        return "%02d:%02d" % (h, m)
+
+    @api.multi
     @api.depends('line_ids', 'line_ids.facturable_qty')
-    def _calc_consumed_hours(self):
-        lines = self.line_ids.filtered(lambda x: x.journal_id.type ==
-                                       'general')
-        self.consumed_hours = sum([a.facturable_qty for a in lines])
+    def _compute_consumed_hours(self):
+        for record in self:
+            lines = record.line_ids.filtered(lambda x: x.journal_id.type ==
+                                             'general')
+            record.consumed_hours = sum([a.facturable_qty for a in lines])
 
-    @api.one
+    @api.multi
     @api.depends('quantity_max', 'consumed_hours')
-    def _remaining_hours_calc(self):
-        self.remaining_hours = (self.quantity_max and
-                                (self.quantity_max - self.consumed_hours) or
-                                0.0)
+    def _compute_remaining_hours_calc(self):
+        for record in self:
+            record.remaining_hours = (
+                record.quantity_max and (record.quantity_max -
+                                         record.consumed_hours) or 0.0)
 
-    consumed_hours = fields.Float(compute='_calc_consumed_hours',
+    @api.multi
+    @api.depends('consumed_hours', 'quantity_max')
+    def _compute_overdue_quantity(self):
+        for record in self:
+            value = False
+            if record.quantity_max > 0:
+                value = bool(record.consumed_hours > record.quantity_max)
+            record.is_overdue_quantity = value
+
+    consumed_hours = fields.Float(compute='_compute_consumed_hours',
                                   string="Consumed Hours", store=True)
-    remaining_hours = fields.Float(compute='_remaining_hours_calc',
+    remaining_hours = fields.Float(compute='_compute_remaining_hours_calc',
                                    string='Remaining Time',
                                    help='Computed using the formula: Maximum '
                                    'Time - Total Worked Time', store=True)
+    is_overdue_quantity = fields.Boolean(compute="_compute_overdue_quantity",
+                                         string='Overdue Quantity',
+                                         store=True, method=False)
+
+    def __init__(self, pool, cr):
+        super(AccountAnalyticAccount, self).__init__(pool, cr)
+        for model, store in pool._store_function.iteritems():
+            pool._store_function[model] = [
+                x for x in store if x[0] != 'account.analytic.account' and
+                x[1] != 'is_overdue_quantity']
 
 
 class AccountAnalyticLine(models.Model):

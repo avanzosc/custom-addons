@@ -15,14 +15,21 @@
     "depends": [
         "procurement",
         "mrp",
-        "sale",
         "sale_order_dates",
+        "crm_claim",
+        "product_supplierinfo_for_customer",
+        "sale_stock",
     ],
     "category": "Custom Module",
     "data": [
+        "security/security.xml",
+        "security/ir.model.access.csv",
         "views/mrp_production_view.xml",
         "views/product_packaging_view.xml",
         "views/sale_order_view.xml",
+        "views/account_invoice_view.xml",
+        "views/product_view.xml",
+        "views/stock_picking_view.xml"
     ],
     "installable": True
 }

@@ -6,3 +6,4 @@ from . import crm_claim
 from . import real_line
 from . import schedule
 from . import journey
+from . import crm_phonecall

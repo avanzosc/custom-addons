@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="external_layout_header" inherit_id="report.external_layout_header">
+            <xpath expr="//div[@class='header']" position="replace">
+                <div class="header">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height:107px;max-width:247px"/>
+                            <img t-if="not company.logo" src="/galaxia_custom/static/src/img/galaxia.png"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <address class="mb0 galaxia_header" itemscope="itemscope" itemtype="http://schema.org/Organization">
+                                <div class="col-xs-12" style="padding-left:0px;">
+                                    <div class="col-xs-6 verde" style="padding-left:0px;">
+                                        <span t-field="company.street" />
+                                        <br />
+                                        <span t-field="company.zip" />
+                                        -
+                                        <span t-field="company.city" />
+                                        (
+                                        <span t-field="company.state_id" />
+                                        )
+                                        <br />
+                                        <div style="color:red">
+                                            <t t-if="company.email">
+                                                <span t-field="company.email" />
+                                                <br />
+                                            </t>
+                                            <t t-if="company.website">
+                                                <span t-field="company.website" />
+                                            </t>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 verde" style="padding-left:0px;">
+                                        Tel.:
+                                        <span t-field="company.phone"/>
+                                        <br />
+                                        Fax:
+                                        <span t-field="company.fax" />
+                                    </div>
+                                </div>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+        
+        <template id="external_layout_footer" inherit_id="report.external_layout_footer">
+            <xpath expr="//div[@class='footer']" position="replace">
+                <div class="footer verde">
+                    <div class="text-center" style="border-top: 1px solid black;">
+                        <ul t-if="not company.custom_footer" class="list-inline">
+                            <li t-if="company.company_registry">
+                                <span t-field="company.company_registry"/>
+                            </li>
+                        </ul>
+                        <t t-if="company.custom_footer">
+                            <span t-raw="company.rml_footer"/>
+                        </t>
+                        <ul class="list-inline">
+                            <li>Page:</li>
+                            <li>
+                                <span class="page"/>
+                            </li>
+                            <li>/</li>
+                            <li>
+                                <span class="topage"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+        
+        <template id="galaxia_footer_information">
+            <!-- Multicompany -->
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id">
+                </t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company">
+                </t>
+            </t>
+            
+            <t t-call="report.external_layout_header" />
+            <t t-raw="0" />
+            <t t-call="galaxia_custom.galaxia_footer" />
+        </template>
+        
+        <template id="galaxia_footer">
+            <div class="footer">
+                <table class="table table-condensed" style="width: 100%">
+                    <tbody>
+                        <tr style="border-top-style: hidden;">
+                            <td>
+                                <strong>Fecha realización:</strong>
+                            </td>
+                            <td/>
+                            <td class="text-right">
+                                <strong>Firma y sello conformidad realización del servicio:</strong>
+                            </td>
+                        </tr>
+                        <tr style="border-top-style: hidden;">
+                            <td>
+                                <strong>Horas dedicadas:</strong>
+                            </td>
+                            <td/>
+                            <td/>
+                        </tr>
+                        <tr style="border-top-style: hidden;">
+                            <td>
+                                <strong>Equipo que lo realiza.:</strong>
+                            </td>
+                            <td/>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+    </data>
+</openerp>

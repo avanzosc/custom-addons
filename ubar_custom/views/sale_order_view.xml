@@ -29,9 +29,8 @@
             <field name="inherit_id" ref="sale.view_order_form" />
             <field name="arch" type="xml">
                 <data>
-                  <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']"
-                        position="after">
-                    <field name="standard_price"/>
+                    <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="after">
+                        <field name="standard_price"/>
                     </xpath>
                 </data>
             </field>
@@ -47,6 +46,42 @@
                         <field name="standard_price"/>
                     </field>
                 </data>
+            </field>
+        </record>
+        <record id="guarantee_sale_order_view_form" model="ir.ui.view">
+            <field name="name">guarantee.sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_dates.view_sale_orderfor"/>
+            <field name="arch" type="xml">
+                <field name="effective_date" position="after">
+                    <field name="guarantee_limit"/>
+                </field>
+            </field>
+        </record>
+        <!--Sale order lines -->
+        <record id="sale_order_line_category_view_search" model="ir.ui.view">
+            <field name="name">sale.order.line.category.search</field>
+            <field name="model">sale.order.line</field>
+            <field name="inherit_id" ref="sale.view_sales_order_line_filter"/>
+            <field name="arch" type="xml">
+                <field name="salesman_id" position="after">
+                    <field name="product_category"/>
+                </field>
+                 <filter string="Status" position="after">
+                     <filter string="Product Category" name="product_category" domain="[]" context="{'group_by':'product_category'}"/>
+                     <filter string="Type" name="order_type" domain="[]" context="{'group_by':'type_id'}"/>
+                </filter>
+            </field>
+        </record>
+        <record id="sale_order_line_category_view_tree" model="ir.ui.view">
+            <field name="name">sale.order.line.category.tree</field>
+            <field name="model">sale.order.line</field>
+            <field name="inherit_id" ref="sale.view_order_line_tree"/>
+            <field name="arch" type="xml">
+                 <field name="invoiced" position="after">
+                     <field name="product_category"/>
+                     <field name="type_id"/>
+                 </field>
             </field>
         </record>
     </data>

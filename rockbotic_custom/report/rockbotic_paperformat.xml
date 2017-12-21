@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="report.paperformat_euro" model="report.paperformat">
+            <field name="margin_top">35</field>
+            <field name="header_spacing">30</field>
+            <field name="margin_bottom">20</field>
+        </record>
+
+        <record id="rockbotic_event_paperformat" model="report.paperformat">
+            <field name="margin_top">40</field>
+            <field name="header_spacing">35</field>
+            <field name="margin_bottom">50</field>
+            <field name="name">European A4 Event</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+            <field name="report_ids"
+                   eval="[(4, ref('rockbotic_custom.report_rockbotic_event'))]"/>
+        </record>
+
+        <record id="rockbotic_sale_invoice_paperformat" model="report.paperformat">
+            <field name="margin_top">70</field>
+            <field name="header_spacing">65</field>
+            <field name="margin_bottom">35</field>
+            <field name="name">European A4 Sale/Invoice</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+            <field name="report_ids"
+                   eval="[(4, ref('account.account_invoices')),
+                          (4, ref('sale.report_sale_order'))]" />
+        </record>
+
+        <record id="rockbotic_event_registration_nodata" model="report.paperformat">
+            <field name="name">A4 Registrations</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">30</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">25</field>
+            <field name="dpi">90</field>
+            <field name="report_ids"
+                   eval="[(4, ref('rockbotic_custom.report_rockbotic_registrations')),
+                          (4, ref('rockbotic_custom.report_rockbotic_event_partner_nodata'))]" />
+        </record>
+        
+        <record id="rockbotic_event_paperformat" model="report.paperformat">
+            <field name="margin_top">40</field>
+            <field name="header_spacing">35</field>
+            <field name="margin_bottom">0</field>
+            <field name="name">European A4 Event No footer</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="dpi">90</field>
+            <field name="report_ids"
+                   eval="[(4, ref('rockbotic_custom.report_rockbotic_nodata_registration'))]"/>
+        </record>
+    </data>
+</openerp>

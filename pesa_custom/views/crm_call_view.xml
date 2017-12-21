@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <menuitem name="Make the call" id="menu_make_the_call" parent="crm.menu_crm_case_phone"
+             action="make_the_call_action"/>
+    </data>
+</openerp>

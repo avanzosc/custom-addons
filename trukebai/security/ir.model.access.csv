@@ -1,0 +1,10 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_sale_order_saleswoman","sale_order","sale.model_sale_order","trukebai.group_trukebai_saleswoman",1,1,1,1
+"access_sale_order_line_saleswoman","sale_order_line","sale.model_sale_order_line","trukebai.group_trukebai_saleswoman",1,1,1,1
+"access_stock_picking_saleswoman","stock_picking","stock.model_stock_picking","trukebai.group_trukebai_saleswoman",1,1,1,1
+"access_stock_move_saleswoman","stock_move","stock.model_stock_move","trukebai.group_trukebai_saleswoman",1,1,1,1
+"access_procurement_order_saleswoman","procurement_order","procurement.model_procurement_order","trukebai.group_trukebai_saleswoman",1,1,1,1
+"access_pos_order_saleswoman","pos_order","point_of_sale.model_pos_order","trukebai.group_trukebai_saleswoman",1,1,1,1
+"access_pos_order_line_saleswoman","pos_order_line","point_of_sale.model_pos_order_line","trukebai.group_trukebai_saleswoman",1,1,1,1
+"access_pos_session_saleswoman","pos_session","point_of_sale.model_pos_session","trukebai.group_trukebai_saleswoman",1,0,0,0
+"access_pos_config_saleswoman","pos_config","point_of_sale.model_pos_config","trukebai.group_trukebai_saleswoman",1,0,0,0

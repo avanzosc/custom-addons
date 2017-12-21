@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <delete model='website.menu' search="[('name', '=', 'Contact us')]"/>
+<!--         <delete model='website.menu' search="[('name', '=', 'Shop')]"/> -->
+        <record id="portal.portal_messages" model="ir.ui.menu">
+            <field name="groups_id" eval="[(3, ref('base.group_portal'))]"/>
+        </record>
+        <record id="crm_partner_assign.portal_leads" model="ir.ui.menu">
+            <field name="groups_id" eval="[(3, ref('base.group_portal'))]"/>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record id="portal.portal_messages" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('ds_custom.group_portal_view_user'))]"/>
+        </record>
+        <record id="crm_partner_assign.portal_leads" model="ir.ui.menu">
+            <field name="groups_id" eval="[(4, ref('ds_custom.group_portal_view_user'))]"/>
+        </record>
+
+        <menuitem name="Tienda" id="portal_shop_menu"
+            parent="portal.portal_menu" sequence="40" groups="base.group_portal"/>
+        <record id="action_sale_shop" model="ir.actions.act_url">
+                <field name="name">Shale shop</field>
+                <field name="type">ir.actions.act_url</field>
+                <field name="target">self</field>
+                <field name="url">http://ds-spain.com/shop</field>
+        </record>
+        <menuitem name="Sale shop" id="website_portal_menu"
+            parent="portal_shop_menu" action="action_sale_shop"
+            sequence="10" />
+    </data>
+</openerp>

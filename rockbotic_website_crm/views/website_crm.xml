@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<template id="assets_frontend" inherit_id="website.assets_frontend" name="Shop">
+    <xpath expr="." position="inside">
+        <script type="text/javascript"
+                src="/rockbotic_website_crm/static/src/js/rockbotic_website_crm.js"></script>
+    </xpath>
+</template>
+
+<template id="student_signup" name="Student Signup Form" page="True">
+    <t t-call="website.layout">
+        <div id="wrap">
+            <div class="oe_structure"/>
+            <div class="container oe_student_signup">
+                <div class="row">
+                <center><h1>Student Sign Up</h1></center>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <center><div class="oe_structure">
+                            <div>
+                                <p>Please fill the form below in order to enroll in a class.</p>
+                                <p>If there is not your school or there is not any class, we'll do our best to get back to you as soon as possible.</p>
+                            </div>
+                            <div style="color:#f00;"><strong><h4>IMPORTANT:</h4></strong>
+                                <p>FIRST SELECT THE <strong>SCHOOL CENTER</strong> ON THE DROPDOWN LIST</p>
+                                <p>This will display the activities available in the Center.</p></div>
+                        </div></center>
+                        <form id="enrollForm" action="/crm/student_signup" method="post" class="form-horizontal mt32" enctype="multipart/form-data">
+                            <fieldset class="col-md-12">
+                                <legend>Class Data</legend>
+                                <div t-attf-class="form-group #{error and 'school_id' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label" for="school_id">School</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <select name="school_id"
+                                                required="True" class="form-control">
+                                            <option value="">select...</option>
+                                            <t t-foreach="groups or []" t-as="school">
+                                                <option t-att-value="school.id"
+                                                        t-att-selected="school.id == values.get('school_id')">
+                                                    <t t-esc="school.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'event_id' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label" for="group">Event</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <select name="event_id"
+                                                required="True" class="form-control">
+                                            <option value="">select...</option>
+                                            <t t-foreach="events or []" t-as="event">
+                                                <option t-att-value="event.id"
+                                                        class="hidden"
+                                                        t-att-data-school_id="event.address_id.id"
+                                                        t-att-selected="event.id == values.get('event_id')">
+                                                    <t t-esc="event.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="col-md-12">
+                                <legend>Student Data</legend>
+                                <div t-attf-class="form-group #{error and 'contact_name' in error and 'has-error' or ''}">
+                                    <label
+                                            class="col-md-3 col-sm-4 control-label" for="contact_name">Name / Surname</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <input type="text" name="contact_name"
+                                               class="form-control" required="True"
+                                               t-att-value="values.get('contact_name')"/>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'birth_date' in error and 'has-error' or ''}">
+                                    <label
+                                            class="col-md-3 col-sm-4 control-label" for="birth_date">Birthdate</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <input type="date" name="birth_date"
+                                               class="form-control" required="True"
+                                               t-att-value="values.get('birth_date')"/>
+                                    </div>
+                                </div>
+                                <div
+                                        t-attf-class="form-group #{error and 'course' in error and 'has-error' or ''}">
+                                    <label
+                                            class="col-md-3 col-sm-4 control-label" for="course">Course</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <input type="text" name="course"
+                                               class="form-control"
+                                               t-att-value="values.get('course')"/>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'rockbotic_before' in error and 'has-error' or ''}">
+                                    <label
+                                            class="col-md-6 col-sm-6 control-label" for="rockbotic_before">Has ever been enrolled?</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input type="checkbox" name="rockbotic_before"
+                                               t-att-checked="values.get('rockbotic_before')"/>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="col-md-12">
+                                <legend>Authorizations</legend>
+                                <div t-attf-class="form-group #{error and 'journal_permission' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label" for="journal_permission">Journal</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <select name="journal_permission"
+                                                required="True" class="form-control">
+                                            <option value="">select...</option>
+                                            <option value="yes" t-att-selected="u'yes' == values.get('journal_permission')">Yes</option>
+                                            <option value="no" t-att-selected="u'no' == values.get('journal_permission')">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'blog_permission' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label" for="blog_permission">Blog</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <select name="blog_permission"
+                                                required="True" class="form-control">
+                                            <option value="">select...</option>
+                                            <option value="yes" t-att-selected="u'yes' == values.get('blog_permission')">Yes</option>
+                                            <option value="no" t-att-selected="u'no' == values.get('blog_permission')">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'media_permission' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label" for="media_permission">Social Media</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <select name="media_permission"
+                                                required="True" class="form-control">
+                                            <option value="">select...</option>
+                                            <option value="yes" t-att-selected="u'yes' == values.get('media_permission')">Yes</option>
+                                            <option value="no" t-att-selected="u'no' == values.get('media_permission')">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="col-md-12">
+                                <legend>Parent Data</legend>
+                                <div t-attf-class="form-group #{error and 'partner_name' in error and 'has-error' or ''}">
+                                    <label
+                                            class="col-md-3 col-sm-4 control-label" for="partner_name">Name / Surname</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <input type="text" class="form-control" name="partner_name"
+                                               required="True"
+                                               t-att-value="values.get('partner_name')"/>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'zipcode' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label" for="zip">Zip</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <input type="text" name="zip" placeholder="XXXXX"
+                                               pattern="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}" title="Please 5 number zip"
+                                               class="form-control"
+                                               t-att-value="values.get('zip')"/>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label" for="phone">Phone Number</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <input type="phone" name="phone"
+                                               class="form-control"
+                                               t-att-value="values.get('phone')"/>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label" for="email_from">Email</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <input type="email" name="email_from"
+                                               class="form-control"
+                                               t-att-value="values.get('email_from')"/>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'opt_out' in error and 'has-error' or ''}">
+                                    <label
+                                            class="col-md-6 col-sm-6 control-label" for="opt_out">Opt-Out</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input type="checkbox" name="opt_out"
+                                               t-att-checked="values.get('opt_out')"/>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'vat' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label" for="vat">VAT</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <input type="text" class="form-control" name="vat"
+                                               pattern="^\d{8}[A-Z]{1}|[X]{1}\d{8}[A-Z]{1}|[K-MX-Z]{1}\d{7}[A-Z]{1}$"
+                                               title="Digits and uppercase letters, do not use space nor '-'"
+                                               t-att-value="values.get('vat')"/>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'account_number' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label" for="account_number">Account Number</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <input type="text" class="form-control"
+                                               name="account_number"
+                                               pattern="^ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{4}|ES\d{22}$"
+                                               title="A spanish IBAN has 24 digits, starting with ES"
+                                               t-att-value="values.get('account_number')" required="True"/>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'description' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label" for="description">Observations</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <textarea class="form-control"
+                                                  name="description"
+                                                  style="min-height: 120px"><t t-esc="values.get('description')"/></textarea>
+                                    </div>
+                                </div>
+                                <div t-if="website.user_id != user_id"
+                                     t-attf-class="form-group #{error and 'no_confirm_mail' in error and 'has-error' or ''}">
+                                    <label
+                                            class="col-md-6 col-sm-6 control-label" for="no_confirm_mail">Do not send email notification</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input type="checkbox" name="no_confirm_mail"
+                                               t-att-checked="values.get('no_confirm_mail')"/>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <t t-foreach="kwargs" t-as="kwarg">
+                                <input type="hidden" t-att-name="kwarg[0]" t-att-value="kwarg[1]"/>
+                            </t>
+                            <div class="form-group">
+                                <div
+                                        class="col-md-offset-4 col-sm-offset-4 col-sm-8 col-md-4">
+                                    <button class="btn btn-primary btn-lg">Send</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="oe_structure"/>
+        </div>
+    </t>
+</template>
+
+<template id="student_signup_thanks" name="Contact us">
+    <t t-call="website.layout">
+      <div id="wrap">
+        <div class="oe_structure"/>
+        <div class="container">
+            <h1>Thanks!</h1>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="alert alert-success">
+                        Your message has been sent successfully.
+                        <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
+                    </div>
+                    <p>
+                        We will get back to you shortly.
+                    </p><p class="mt64">
+                        If you have an emergency, do not hesitate to contact us by phone:
+                    </p>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-phone"></i> : <span t-field="res_company.phone"/></li>
+                        <li><i class="fa fa-envelope"></i> : <span t-field="res_company.email"/></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <t t-call="website.company_description"/>
+                </div>
+            </div>
+        </div>
+        <div class="oe_structure"/>
+      </div>
+    </t>
+</template>
+
+<!-- Layout add nav and footer -->
+<template id="student_signup_footer_custom" inherit_id="website.footer_default" name="Student Signup Link">
+    <xpath expr="//div[@id='info']/ul" position="inside">
+        <li><a t-attf-href="/page/student_signup">Student Signup</a></li>
+    </xpath>
+</template>
+
+</data>
+</openerp>

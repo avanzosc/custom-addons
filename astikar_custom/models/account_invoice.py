@@ -14,6 +14,17 @@ class AccountInvoice(models.Model):
     repair_ids = fields.One2many(
         comodel_name='mrp.repair', inverse_name='invoice_id',
         string='Repair order')
+    warning = fields.Text(string='Warning')
+    not_warning = fields.Boolean(string='Hide Warning Message', default=True)
+
+    @api.model
+    def create(self, vals):
+        if vals.get('partner_id', False):
+            part = self.env['res.partner'].browse(vals.get('partner_id'))
+            if part.invoice_warn:
+                vals.update({'not_warning': False,
+                             'warning': part.invoice_warn_msg})
+        return super(AccountInvoice, self).create(vals)
 
 
 class AccountInvoiceLine(models.Model):

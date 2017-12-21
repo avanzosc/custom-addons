@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_event_track_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.track.inh.rockbotic</field>
+            <field name="model">event.track</field>
+            <field name="inherit_id" ref="event_track_assistant.view_event_track_for_inh_assistant" />
+            <field name="arch" type="xml">
+                <xpath expr="//tree[@string='Presences']//field[@name='real_daylight_hours']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//tree[@string='Presences']//field[@name='real_nightlight_hours']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <field name="color" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+        <record id="view_event_track_inh2_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.track.inh2.rockbotic</field>
+            <field name="model">event.track</field>
+            <field name="inherit_id" ref="event_registration_analytic.view_event_track_inh_analytic" />
+            <field name="arch" type="xml">
+                <xpath expr="//tree[@string='Student presences']//field[@name='real_daylight_hours']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//tree[@string='Student presences']//field[@name='real_nightlight_hours']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//tree[@string='Teacher presences']//field[@name='real_daylight_hours']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//tree[@string='Teacher presences']//field[@name='real_nightlight_hours']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_event_track_inh3_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.track.inh3.rockbotic</field>
+            <field name="model">event.track</field>
+            <field name="inherit_id" ref="website_event_track.view_event_track_form" />
+            <field name="arch" type="xml">
+                <field name="stage_id" position="before">
+                    <button name="%(event_track_assistant.action_impute_in_presence_from_session)d" string="Register assists" type="action" />
+                </field>
+                <field name="location_id" position="after">
+                    <field name="address_id" />
+                </field>
+                <field name="location_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="speaker_ids" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="tag_ids" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+        <record id="view_event_track_search_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.track.search.inh.rockbotic</field>
+            <field name="model">event.track</field>
+            <field name="inherit_id" ref="website_event_track.view_event_track_search" />
+            <field name="arch" type="xml">
+                <field name="event_id" position="after">
+                    <field name="address_id" />
+                </field>
+                <filter string="Event" position="after">
+                    <filter string="Location" context="{'group_by':'address_id'}"/>
+                </filter>
+                <group string="Group By" position="before">
+                    <filter string="Confirmed Events" context="{}"
+                            domain="[('event_id.state', '=', 'confirm')]" />
+                </group>
+            </field>
+        </record>
+        <record id="view_event_track_tree_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.track.tree.inh.rockbotic</field>
+            <field name="model">event.track</field>
+            <field name="inherit_id" ref="website_event_track.view_event_track_tree" />
+            <field name="arch" type="xml">
+                <field name="event_id" position="after">
+                    <field name="address_id" />
+                </field>
+            </field>
+        </record>
+        <record id="view_event_track_graph_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.event.track.graph.inh.rockbotic</field>
+            <field name="model">event.track</field>
+            <field name="inherit_id" ref="website_event_track.view_event_track_graph" />
+            <field name="arch" type="xml">
+                <field name="location_id" position="after">
+                    <field name="address_id" />
+                </field>
+                <field name="location_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+        <act_window name="Register assists"
+                    key2="client_action_multi"
+                    res_model="wiz.impute.in.presence.from.session"
+                    src_model="event.track"
+                    view_mode="form"
+                    target="new"
+                    id="event_track_assistant.action_impute_in_presence_from_session"/>
+    </data>
+</openerp>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="view_pos_order_form_inh_trukebai" model="ir.ui.view">
+            <field name="name">view.pos.order.form.inh.trukebai</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="contributed_trukes" />
+                </field>
+                <button string="Payment"  position="after">
+                    <button name="action_truke" string="Trukes management" type="object" states="draft" groups="base.group_user"/>
+                </button>
+                <xpath expr="//tree[@string='Order lines']/field[@name='product_id']" position="after">
+                    <field name="max_trukes" string="Max trukes" />
+                </xpath>
+                <xpath expr="//form[@string='Order lines']//field[@name='notice']" position="after">
+                    <field name="max_trukes" string="Max trukes" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

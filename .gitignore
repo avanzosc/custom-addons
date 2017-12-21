@@ -35,6 +35,7 @@ nosetests.xml
 coverage.xml
 
 # Translations
+*.pot
 *.mo
 
 # Pycharm

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="external_layout_header" inherit_id="report.external_layout_header">
+            <xpath expr="//div[@class='header']" position="replace">
+                <div class="header">
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <img src="/rockbotic_custom/static/src/img/rockbotic.png" style="max-height:107;max-width:247"/>
+                        </div>
+                        <div class="col-xs-7">
+                            <span t-field="company.partner_id"/><br/>
+                            <span t-field="company.partner_id.street"/> <span t-field="company.partner_id.zip"/> <span t-field="company.partner_id.city"/> (<span t-field="company.partner_id.country_id"/>)<br/>
+                            VAT: <span t-field="company.partner_id.vat"/><br/>
+                            Tel: <span t-field="company.partner_id.phone"/><br/>
+                            E-mail: <span t-field="company.partner_id.email" />
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</openerp>

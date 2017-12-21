@@ -10,5 +10,15 @@
                 </field>
             </field>
         </record>
+        <record model="ir.ui.view" id="view_account_analytic_account_form">
+            <field name="name">analytic.analytic.account.form</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
+            <field name="arch" type="xml">
+                <field name="manager_id" position="after">
+                    <field name="agreement_address" domain="[('parent_id', '=',partner_id)]"/>
+                </field>
+            </field>
+        </record>
     </data>
 </openerp>

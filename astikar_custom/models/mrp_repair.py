@@ -14,9 +14,13 @@ class MrpRepair(models.Model):
     @api.depends('partner_id', 'operations', 'fees_lines', 'operations.tax_id',
                  'operations.to_invoice', 'operations.price_unit',
                  'operations.expected_qty', 'operations.product_uom_qty',
-                 'operations.product_id', 'fees_lines.to_invoice',
+                 'operations.product_id', 'operations.discount',
+                 'operations.discount2', 'operations.discount3',
+                 'operations.price_subtotal', 'fees_lines.to_invoice',
                  'fees_lines.tax_id', 'fees_lines.price_unit',
-                 'fees_lines.product_uom_qty', 'fees_lines.product_id')
+                 'fees_lines.product_uom_qty', 'fees_lines.product_id',
+                 'fees_lines.discount', 'fees_lines.discount2',
+                 'fees_lines.discount3', 'fees_lines.price_subtotal')
     @api.multi
     def _compute_repair_amount(self):
         for repair in self:
@@ -25,18 +29,38 @@ class MrpRepair(models.Model):
             for line in repair.operations.filtered(lambda x: x.to_invoice):
                 untaxed += line.price_subtotal
                 qty = line.expected_qty or line.product_uom_qty
+                price = (line.price_unit *
+                         (1 - (line.discount or 0.0) / 100) *
+                         (1 - (line.discount2 or 0.0) / 100) *
+                         (1 - (line.discount3 or 0.0) / 100))
                 tax_calculate = line.tax_id.compute_all(
-                    line.price_unit, qty, line.product_id, repair.partner_id)
+                    price, qty, line.product_id, repair.partner_id)
                 taxed += sum(x['amount'] for x in tax_calculate['taxes'])
             for line in repair.fees_lines.filtered(lambda x: x.to_invoice):
                 untaxed += line.price_subtotal
+                price = (line.price_unit *
+                         (1 - (line.discount or 0.0) / 100) *
+                         (1 - (line.discount2 or 0.0) / 100) *
+                         (1 - (line.discount3 or 0.0) / 100))
                 tax_calculate = line.tax_id.compute_all(
-                    line.price_unit, line.product_uom_qty, line.product_id,
+                    price, line.product_uom_qty, line.product_id,
                     repair.partner_id)
                 taxed += sum(x['amount'] for x in tax_calculate['taxes'])
             repair.amnt_untaxed = untaxed
             repair.amnt_tax = taxed
             repair.amnt_total = untaxed + taxed
+
+    @api.multi
+    @api.depends('partner_id', 'partner_id.property_payment_term')
+    def _compute_date_due(self):
+        for repair in self:
+            if repair.partner_id and repair.partner_id.property_payment_term:
+                pterm_list = repair.partner_id.property_payment_term.compute(
+                    value=1, date_ref=False)[0]
+                if pterm_list:
+                    repair.date_due = max(line[0] for line in pterm_list)
+            else:
+                repair.date_due = fields.Date.from_string(fields.Date.today())
 
     name = fields.Char(default='/')
     quotation_notes = fields.Text(default=_defaul_quotation_notes)
@@ -46,6 +70,7 @@ class MrpRepair(models.Model):
                             store=True)
     amnt_total = fields.Float(string='Total', compute='_compute_repair_amount',
                               store=True)
+    date_due = fields.Date(compute='_compute_date_due')
 
     @api.model
     def create(self, vals):
@@ -127,7 +152,7 @@ class MrpRepair(models.Model):
                 'account.view_account_invoice_filter').id,
             'domain': "[('account_analytic_id', '=', " +
             str(self.analytic_account.id) + "),"
-            "('purchase_id.type_id', '=', 'in_invoice')]",
+            "('invoice_id.type', '=', 'in_invoice')]",
             'context': self.env.context
             }
 
@@ -151,6 +176,8 @@ class MrpRepairLine(models.Model):
 class MrpRepairFee(models.Model):
 
     _inherit = 'mrp.repair.fee'
+
+    is_from_menu = fields.Boolean(string='Created from menu', default=False)
 
     @api.model
     def create(self, vals):

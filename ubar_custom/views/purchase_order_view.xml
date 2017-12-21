@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="purchase_order_delivery_view_form" model="ir.ui.view">
+            <field name="name">purchase.order.delivery.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form" />
+            <field name="arch" type="xml">
+                <field name="notes" position="before">
+                    <group style="width: 65%%">
+                        <label for="carrier_id"/>
+                        <div>
+                            <field name="carrier_id" class="oe_inline"/>
+                        </div>
+                    </group>
+                </field>
+            </field>
+        </record>
+        
+        <!-- purchase order lines -->
+        <record id="purchase_order_product_category_view_search" model="ir.ui.view">
+            <field name="name">purchase.order.product.category.search</field>
+            <field name="model">purchase.order.line</field>
+            <field name="inherit_id" ref="purchase.purchase_order_line_search" />
+            <field name="arch" type="xml">
+                <field name="product_id" position="after">
+                    <field name="product_category"/>
+                </field>
+                <filter string="Status" position="after">
+                    <filter string="Product Category" name="product_category" domain="[]" context="{'group_by':'product_category'}"/>
+                </filter>
+            </field>
+        </record>
+    </data>
+</openerp>

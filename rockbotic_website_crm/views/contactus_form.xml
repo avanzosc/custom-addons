@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="contactus_form_company_name" inherit_id="website_crm.contactus_form_company_name">
+            <xpath expr="//label[@for='partner_name']/.." position="replace" />
+        </template>
+        <template id="crm_contactus_form" inherit_id="website_crm.contactus_form">
+            <xpath expr="//label[@for='phone']/.." position="replace" />
+            <xpath expr="//label[@for='email_from']/.." position="replace" />
+            <xpath expr="//label[@for='name']/.." position="replace" />
+            <label for="contact_name" position="attributes">
+                <attribute name="string">Kid name/surname</attribute>
+            </label>
+            <xpath expr="//label[@for='contact_name']/.." position="after">
+                <!-- fecha de nacimiento -->
+                <div t-attf-class="form-group #{error and 'birth_date' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="birth_date">Birth date</label>
+                    <div class="col-md-7 col-sm-8">
+                        <input type="date" name="birth_date" class="form-control" t-attf-value="#{birth_date or ''}"/>
+                    </div>
+                </div>
+                <!-- seleccionar colegio -->
+                <div t-attf-class="form-group #{error and 'school_id' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="school_id">School</label>
+                    <div class="col-md-7 col-sm-8">
+                        <select name="school_id" class="form-control" required="required">
+                            <option value="">
+                            </option>
+                            <t t-foreach="request.env['res.partner'].search([('is_group','=',True)])" t-as="school">
+                                <option t-att-value="school.id">
+                                    <t t-esc="school.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                </div>
+                <!-- grupo -->
+                <div t-attf-class="form-group #{error and 'event_id' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="group">Event</label>
+                    <div class="col-md-7 col-sm-8">
+                        <select name="event_id" class="form-control">
+                            <option value="">
+                            </option>
+                            <t t-foreach="request.env['event.event'].search([])" t-as="event">
+                                <option t-att-value="event.id">
+                                    <t t-esc="event.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                </div>
+                <!-- curso -->
+                <div t-attf-class="form-group #{error and 'course' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="course">Course</label>
+                    <div class="col-md-7 col-sm-8">
+                        <input type="text" class="form-control" name="course" t-attf-value="#{course or ''}"/>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+        <template id="contactus_form" inherit_id="website_crm_address.contactus_form">
+            <xpath expr="//label[@for='country_id']/.." position="replace"/>
+            <xpath expr="//label[@for='city']/.." position="replace"/>
+            <xpath expr="//label[@for='street']/.." position="replace"/>
+            <xpath expr="//label[@for='zipcode']/.." position="replace">
+                <div t-attf-class="form-group #{error and 'partner_name' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="partner_name">Name / Surname</label>
+                    <div class="col-md-7 col-sm-8">
+                        <input type="text" class="form-control" name="partner_name" required="True" t-attf-value="#{partner_name or ''}"/>
+                    </div>
+                </div>
+                <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="phone">Phone Number</label>
+                    <div class="col-md-7 col-sm-8">
+                        <input type="text" class="form-control" name="phone" t-attf-value="#{phone or ''}"/>
+                    </div>
+                </div>
+                <div name="email_from_container" t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="email_from">Email</label>
+                    <div class="col-md-7 col-sm-8">
+                        <input type="email" class="form-control" name="email_from" required="True" t-attf-value="#{email_from or ''}"/>
+                    </div>
+                </div>
+                <!--Provincia -->
+                <div t-attf-class="form-group #{error and 'state_id' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="state_id">Province</label>
+                    <div class="col-md-7 col-sm-8">
+                        <select name="state_id" class="form-control">
+                            <option value="">Select...</option>
+                            <t t-foreach="request.env['res.country.state'].search([])" t-as="state">
+                                <option t-att-value="state.id">
+                                    <t t-esc="state.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                </div>
+                <!-- ciudad -->
+                <div t-attf-class="form-group #{error and 'city' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="city">City</label>
+                    <div class="col-md-7 col-sm-8">
+                        <input type="text" class="form-control" name="city" t-attf-value="#{city or ''}"/>
+                    </div>
+                </div>
+                <!-- Calle -->
+                <div t-attf-class="form-group #{error and 'street' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="street">Street</label>
+                    <div class="col-md-7 col-sm-8">
+                        <input type="text" class="form-control" name="street" t-attf-value="#{street or ''}"/>
+                    </div>
+                </div>
+                <!-- zip -->
+                <div t-attf-class="form-group #{error and 'zipcode' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="zipcode">Zip</label>
+                    <div class="col-md-7 col-sm-8">
+                        <input type="text" class="form-control" name="zipcode" t-attf-value="#{zipcode or ''}"/>
+                    </div>
+                </div>
+                <!-- dni -->
+                <div t-attf-class="form-group #{error and 'vat' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="vat">VAT</label>
+                    <div class="col-md-7 col-sm-8">
+                        <input type="text" class="form-control" name="vat" t-attf-value="#{vat or ''}"/>
+                    </div>
+                </div>
+                <!-- tipo de cuenta -->
+                <div t-attf-class="form-group #{error and 'account_type' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="account_type">Account type</label>
+                    <div class="col-md-7 col-sm-8">
+                        <select name="account_type" class="form-control">
+                            <t t-foreach="request.env['res.partner.bank.type'].search([])" t-as="type">
+                                <option t-att-value="type.name">
+                                    <t t-esc="type.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                </div>
+                <!-- número cuenta -->
+                <div t-attf-class="form-group #{error and 'account_number' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="account_number">Account Number</label>
+                    <div class="col-md-7 col-sm-8">
+                        <input type="text" class="form-control" name="account_number" t-attf-value="#{account_number or ''}"/>
+                    </div>
+                </div>
+                <!-- Ha trabajado con rockbotic? -->
+                <div t-attf-class="form-group #{error and 'rockbotic_before' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="rockbotic_before"/>
+                    <div class="col-md-7 col-sm-8">
+                        <div class="checkbox">
+                            <label class="control-label" for="group">
+                                <input type="checkbox" name="rockbotic_before"/>
+                                <strong>Did you work with Rockbotic before?</strong>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</openerp>

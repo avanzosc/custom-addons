@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+crm_claim.access_crm_claim_user,crm.claim.user,crm_claim.model_crm_claim,base.group_sale_salesman,1,0,0,0
+sale.access_account_analytic_account_salesman,account_analytic_account salesman,analytic.model_account_analytic_account,base.group_sale_salesman,1,0,0,0

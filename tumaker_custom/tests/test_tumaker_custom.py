@@ -10,6 +10,7 @@ class TestTumakerCustom(common.TransactionCase):
 
     def setUp(self):
         super(TestTumakerCustom, self).setUp()
+        self.crm_sale_wiz_obj = self.env['crm.make.sale']
         self.analytic_model = self.env['account.analytic.account']
         self.analytic_line_model = self.env['account.analytic.line']
         self.purchase_model = self.env['purchase.order']
@@ -17,8 +18,16 @@ class TestTumakerCustom(common.TransactionCase):
         self.invoice_model = self.env['account.invoice']
         self.location_obj = self.env['stock.location']
         self.sale_model = self.env['sale.order']
+        self.product_model = self.env['product.product']
+        self.production_model = self.env['mrp.production']
+        self.bom = self.env.ref('mrp.mrp_bom_1')
         self.partner_id = self.ref('base.res_partner_5')
         self.pricelist_id = self.ref('purchase.list0')
+        self.picking = self.env.ref('stock.incomming_shipment')
+        self.wiz_obj = self.env['stock.transfer_details']
+        self.location = self.env['stock.location'].create(
+            {'name': 'Test Location',
+             'usage': 'internal'})
         analytic_vals = {
             'name': 'Analytic test',
             'type': 'normal',
@@ -28,12 +37,12 @@ class TestTumakerCustom(common.TransactionCase):
             }
         self.analytic_id = self.analytic_model.create(analytic_vals)
         self.product_id = self.env.ref('product.product_product_6')
-        acc = (self.product_id.property_account_expense.id or
-               self.product_id.categ_id.property_account_expense_categ.id)
+        self.acc = (self.product_id.property_account_expense.id or
+                    self.product_id.categ_id.property_account_expense_categ.id)
         analytic_line_vals = {
             'account_id': self.analytic_id.id,
             'name': 'Test line',
-            'general_account_id': acc,
+            'general_account_id': self.acc,
             'journal_id': self.ref('hr_timesheet.analytic_journal'),
             'product_id': self.product_id.id,
             'amount': 25,
@@ -81,6 +90,17 @@ class TestTumakerCustom(common.TransactionCase):
         sale_vals['order_line'] = [(0, 0, sale_line_vals),
                                    (0, 0, sale_line_vals2)]
         self.sale_order = self.sale_model.create(sale_vals)
+        self.black_product = self.env.ref('product.product_product_4b')
+        self.crm_lead = self.env.ref('crm.crm_case_1')
+        self.warehouse = self.env['stock.warehouse'].create({'name': 'New WRH',
+                                                             'code': 'NEW',
+                                                             })
+
+    def test_print_float_time_widget(self):
+        text = self.analytic_id.convert_to_float_time_widget(20.5)
+        self.assertEqual(text, '20:30')
+        text = self.analytic_id.convert_to_float_time_widget(2.25)
+        self.assertEqual(text, '02:15')
 
     def test_analytic_computed_vals(self):
         self.assertEqual(
@@ -89,6 +109,21 @@ class TestTumakerCustom(common.TransactionCase):
         self.assertEqual(
             self.analytic_id.remaining_hours, 75,
             'Analytic invalid remaining hours')
+        self.assertFalse(self.analytic_id.is_overdue_quantity)
+        analytic_line_vals = {
+            'account_id': self.analytic_id.id,
+            'name': 'Test line',
+            'general_account_id': self.acc,
+            'journal_id': self.ref('hr_timesheet.analytic_journal'),
+            'product_id': self.product_id.id,
+            'amount': 25,
+            'unit_amount': 10,
+            'facturable_qty': 100,
+            'to_invoice': self.ref(
+                'hr_timesheet_invoice.timesheet_invoice_factor1')
+            }
+        self.analytic_line_model.create(analytic_line_vals)
+        self.assertTrue(self.analytic_id.is_overdue_quantity)
 
     def test_analytic_line_prepare_invoice_line(self):
         invoices = self.analytic_id.line_ids.invoice_cost_create()
@@ -155,3 +190,153 @@ class TestTumakerCustom(common.TransactionCase):
             [('analytic_account_id', 'in', analytic_acc.child_ids.ids)])
         self.assertEqual(self.project.project_child_ids.ids, childs.ids,
                          "Project Child field is not correct")
+
+    def test_do_detailed_transfer(self):
+        self.picking.action_confirm()
+        self.assertEqual(self.picking.state, 'assigned')
+        for line in self.picking.move_lines:
+            line.price_unit = 0
+        self.picking.do_enter_transfer_details()
+        wiz = self.wiz_obj.with_context({
+            'active_id': self.picking.id,
+            'active_ids': [self.picking.id],
+            'active_model': 'stock.picking'
+        }).create({'picking_id': self.picking.id})
+        with self.assertRaises(exceptions.Warning):
+            wiz.do_detailed_transfer()
+        wiz.allow_zero_cost = True
+        wiz.do_detailed_transfer()
+        self.assertEqual(self.picking.state, 'done')
+
+    def test_product_search_name(self):
+        res = self.product_model.name_search('Black')
+        searched_products = [x[0] for x in res]
+        self.assertTrue((self.black_product.id in searched_products),
+                        "No black product searched")
+
+    def test_product_search_name_negative(self):
+        res = self.product_model.name_search('Black', operator="not like")
+        searched_products = [x[0] for x in res]
+        self.assertTrue((self.black_product.id not in searched_products),
+                        "Black product searched")
+
+    def test_product_search_non_exists_product(self):
+        res = self.product_model.name_search('NotExists')
+        self.assertTrue((not res), 'Product searched')
+
+    def test_product_search_pattern(self):
+        self.black_product.default_code = 'COD25'
+        res = self.product_model.name_search('COD25')
+        searched_products = [x[0] for x in res]
+        self.assertTrue((self.black_product.id in searched_products),
+                        "Black product searched")
+
+    def test_product_ean_search(self):
+        self.black_product.ean13 = '8431311550618'
+        res = self.product_model.name_search('131155')
+        searched_products = [x[0] for x in res]
+        self.assertTrue((self.black_product.id in searched_products),
+                        "Black product searched")
+
+    def test_product_search_suppinfo(self):
+        suppinfo_model = self.env['product.supplierinfo']
+        suppinfo_model.create({
+            'product_tmpl_id': self.black_product.product_tmpl_id.id,
+            'name': self.partner_id,
+            'product_code': 'TestName',
+            'type': 'customer'})
+        suppinfo_model.create({
+            'product_tmpl_id': self.black_product.product_tmpl_id.id,
+            'name': self.partner_id,
+            'product_code': 'CODXXTEST',
+            'type': 'supplier'})
+        res = self.product_model.name_search('TestName')
+        searched_products = [x[0] for x in res]
+        self.assertTrue((self.black_product.id in searched_products),
+                        "Black product searched")
+        res = self.product_model.name_search('CODXXTEST')
+        searched_products = [x[0] for x in res]
+        self.assertTrue((self.black_product.id in searched_products),
+                        "Black product searched")
+
+    def test_default_sale_note(self):
+        note = 'Test Sale Note'
+        self.env.user.company_id.sale_note_report = note
+        sale = self.sale_model.new(
+            self.sale_model.default_get(['sale_note']))
+        self.assertTrue(sale.sale_note)
+        self.assertEqual(sale.sale_note,
+                         self.env.user.company_id.sale_note_report)
+        self.assertEqual(sale.sale_note, note)
+
+    def test_do_detailed_transfer_more_qty(self):
+        purchase_line_vals = {
+            'product_id': self.product_id.id,
+            'order_id': self.purchase_id.id,
+            'product_qty': 15,
+            'price_unit': 20,
+            'name': 'test purchase line',
+            'date_planned': fields.Date.today()
+        }
+        self.purchase_line_model.create(purchase_line_vals)
+        self.purchase_id.signal_workflow('purchase_confirm')
+        picking = self.purchase_id.mapped('order_line.move_ids.picking_id')[:1]
+        self.assertEqual(picking.state, 'assigned')
+        picking.do_enter_transfer_details()
+        pre_line_count = len(picking.move_lines)
+        for line in picking.move_lines:
+            self.assertTrue(line.purchase_line_id)
+        wiz = self.wiz_obj.with_context({
+            'active_id': picking.id,
+            'active_ids': [picking.id],
+            'active_model': 'stock.picking'
+        }).create({'picking_id': picking.id})
+        wiz.item_ids[:1].quantity += 3
+        wiz.do_detailed_transfer()
+        post_line_count = len(picking.move_lines)
+        self.assertNotEqual(pre_line_count, post_line_count)
+        for line in picking.move_lines:
+            self.assertTrue(line.purchase_line_id)
+
+    def test_get_move_analysis_report(self):
+        invoice = self.env.ref('account.invoice_1')
+        invoice.journal_id.update_posted = True
+        invoice.signal_workflow('invoice_cancel')
+        invoice.action_cancel_draft()
+        invoice.invoice_line.write({'product_id': self.product_id.id})
+        invoice.signal_workflow('invoice_open')
+        rep_model = self.env['account.entries.report']
+        self.assertTrue(rep_model.search([('product_id', '!=', False)]))
+        self.assertFalse(rep_model.search(
+            [('product_id', '!=', False), ('product_categ_id', '=', False)]))
+
+    def test_move_compute_subtotal(self):
+        for move in self.picking.move_lines:
+            subtotal = (
+                move.purchase_line_id.price_unit * move.product_uom_qty *
+                (1 - (move.purchase_line_id.discount / 100)))
+            self.assertEqual(move.price_subtotal, subtotal)
+
+    def test_production_change(self):
+        production = self.production_model.create(
+            {'product_id': self.bom.product_tmpl_id.id,
+             'product_qty': 100,
+             'product_uom': self.bom.product_tmpl_id.uom_id.id,
+             'bom_id': self.bom.id,
+             })
+        self.assertNotEqual(production.location_src_id, self.location)
+        self.bom.routing_id.location_id = self.location
+        production.routing_id = self.bom.routing_id
+        production.onchange_routing_id()
+        self.assertEqual(production.location_src_id, self.location)
+
+    def test_crm_lead_make_sale(self):
+        self.crm_lead.partner_id = self.partner_id
+        crm_sale_wiz = self.crm_sale_wiz_obj.with_context(
+            active_id=self.crm_lead.id, active_ids=[self.crm_lead.id],
+            active_model='crm.lead').create({
+                'warehouse_id': self.warehouse.id})
+        action = crm_sale_wiz.makeOrder()
+        sale_id = action.get('res_id')
+        sale = self.sale_model.browse(sale_id)
+        self.assertEqual(sale.warehouse_id, self.warehouse)

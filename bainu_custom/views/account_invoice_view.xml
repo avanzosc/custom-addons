@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="invoice_tree_view_inh_bainu" model="ir.ui.view">
+            <field name="name">invoice.tree.view.inh.bainu</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree" />
+            <field name="arch" type="xml">
+                <field name="partner_id" position="before">
+                    <field name="almu" />
+                </field>
+            </field>
+        </record>
+        <record id="invoice_supplier_form_view_inh_bainu" model="ir.ui.view">
+            <field name="name">invoice.supplier.form.view.inh.bainu</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form" />
+            <field name="arch" type="xml">
+                <field name="currency_id" position="before">
+                    <field name="almu" />
+                </field>
+            </field>
+        </record>
+        <record id="invoice_form_view_inh_bainu" model="ir.ui.view">
+            <field name="name">invoice.form.view.inh.bainu</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form" />
+            <field name="arch" type="xml">
+                <field name="account_id" position="after">
+                    <field name="almu" />
+                </field>
+            </field>
+        </record>
+        <record id="view_account_invoice_filter_inh_bainu" model="ir.ui.view">
+            <field name="name">view.account.invoice.filter.inh.bainu</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter" />
+            <field name="arch" type="xml">
+                <field name="partner_id" position="before">
+                    <field name="almu" />
+                </field>
+                <filter string="Due Month" position="after">
+                    <separator/>
+                    <filter string="Almu" context="{'group_by':'almu'}"/>
+                </filter>
+            </field>
+        </record>
+    </data>
+</openerp>

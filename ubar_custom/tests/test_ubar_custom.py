@@ -9,9 +9,15 @@ class TestUbarCustom(common.TransactionCase):
 
     def setUp(self):
         super(TestUbarCustom, self).setUp()
-        self.product = self.browse_ref('product.product_product_6')
-        self.product.old_reference = 'LA001'
         self.product_model = self.env['product.product']
+        self.product = self.product_model.create({
+            'name': 'Product Test',
+            'uom_id': self.ref('product.product_uom_unit'),
+            'default_code': 'A1PT',
+            'old_reference': 'LA001',
+            })
+        self.analytic = self.env.ref('account.analytic_consultancy')
+        self.quant_model = self.env['stock.quant']
 
     def test_name_search(self):
         product_ids = self.product_model.name_search(name='LA001', args=None)
@@ -24,11 +30,13 @@ class TestUbarCustom(common.TransactionCase):
 
     def test_old_reference_change(self):
         message_count = len(self.product.message_ids)
-        self.product.write({'old_reference': 'LA001'})
         self.assertEquals(len(self.product.message_ids), message_count,
                           "There must not have been created a new message.")
-        self.product.write({'old_reference': 'LA002'})
-        self.assertEquals(len(self.product.message_ids), message_count + 1,
+        self.product.old_reference = 'LA002'
+        message_ids = self.env['mail.message'].search([
+            ('res_id', '=', self.product.id),
+            ('model', '=', 'product.product')])
+        self.assertEquals(len(message_ids), message_count + 1,
                           "There must have been created a new message.")
 
     def test_product_id_change(self):
@@ -55,3 +63,22 @@ class TestUbarCustom(common.TransactionCase):
         self.assertEqual(
             self.product.standard_price, res['value'].get('standard_price', 0),
             'Different standard price')
+
+    def test_select_procurements(self):
+        self.product.select_procurements()
+        routes = self.env['stock.location.route'].search(
+            ['&', ('product_selectable', '=', True),
+             ('id', '!=', self.env.ref('mrp.route_warehouse0_manufacture').id)
+             ])
+        self.assertEqual(len(routes), len(self.product.route_ids))
+
+    def test_compute_to_invoice(self):
+        self.analytic.lot_id = self.ref('stock.lot_icecream_0')
+        quant = self.quant_model.create({
+            'lot_id': self.ref('stock.lot_icecream_0'),
+            'qty': 1.0,
+            'location_id': self.ref('stock.stock_location_stock'),
+            'product_id': self.ref('stock.product_icecream'),
+            })
+        self.analytic.quant_id = quant
+        self.assertEqual(self.analytic.remaining_ca, quant.to_invoice)

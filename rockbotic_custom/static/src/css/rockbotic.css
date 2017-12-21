@@ -1,0 +1,77 @@
+th{
+  border-radius: 10px;
+}
+
+.red {
+  width:75%;
+  float:left;
+  border-radius: 50px;
+}
+
+.red th{
+  background-color: #FF0000;
+  color: white;
+}
+
+.red td{
+  border: 1px solid #FF0000;
+  border-radius: 50px;
+}
+
+.blue {
+  page-break-inside: avoid;
+  width: 100%;
+}
+
+.blue th{
+  background-color: #00B0F0;
+  color: white;
+}
+
+.blue td{
+  width:50%;
+  border: 1px solid #00B0F0;
+}
+
+.grey {
+  page-break-inside: avoid; width: 100%;
+}
+
+.grey th{
+  background-color: #7F7F7F;
+  color: white;
+}
+
+.grey td {
+  border: 1px solid #7F7F7F
+}
+
+.grey1 {
+  width:15%;
+  float:left;
+  margin-right:7px;
+  margin-left:15px;
+  page-break-inside:avoid;
+}
+
+.grey1 th{
+  background-color: #7F7F7F;
+  color: white;
+}
+
+.grey1 td{
+  border: 1px solid #7F7F7F;
+}
+
+.head-table {
+  background-color: #00B0F0;
+  color: #FFFFFF;
+  border-radius: 50px;
+  height:50px;
+}
+
+.head-table div{
+  background-color:#FFFFFF;
+  border-radius: 10px;
+  color: #000000;
+}

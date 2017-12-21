@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_sales_order_filter_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.sales.order.filter.inh.rockbotic</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter" />
+            <field name="arch" type="xml">
+                <filter string="Salesperson" position="before">
+                    <filter string="town" domain="[]" context="{'group_by':'city'}"/>
+                    <filter string="District" domain="[]" context="{'group_by':'street2'}"/>
+                </filter>
+                <filter string="Salesperson" position="after">
+                    <filter string="Delivery Address" domain="[]" context="{'group_by':'partner_shipping_id'}"/>
+                </filter>
+                <field name="name" position="after">
+                    <field name="partner_shipping_id" />
+                </field>
+            </field>
+        </record>
+        <record id="view_order_form_sale_create_event_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.order.form.sale.create.event.inh.rockbotic</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_create_event.view_order_form_inh_sale_create_event" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']//form//field[@name='apply_performance_by_quantity']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//tree//field[@name='apply_performance_by_quantity']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_order_form2_inh_planned_line_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.order.form2.inh.planned.line.inh.rockbotic</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="event_planned_by_sale_line.view_order_form2_inh_planned_line" />
+            <field name="arch" type="xml">
+                <field name="product_category" position="attributes">
+                    <attribute name="domain">[('show_in_sales_order','=',True)]</attribute>
+                </field>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='start_date']" position="replace" />
+                <xpath expr="//field[@name='order_line']/tree/field[@name='end_date']" position="replace" />
+                <xpath expr="//field[@name='order_line']/tree/field[@name='end_hour']" position="after" >
+                    <field name="start_date" string="Start date"
+                            attrs="{'invisible':[('project_by_task','=','no')]}" />
+                    <field name="end_date" string="End date"
+                            attrs="{'invisible':[('project_by_task','=','no')]}" />
+                </xpath>
+            </field>
+        </record>
+        <record id="view_order_form3_inh_planned_line_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.order.form23.inh.planned.line.inh.rockbotic</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_product_variants.sale_order_extended_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="registration_sale_order_view_form" model="ir.ui.view">
+            <field name="name">registration.sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <page string="Other Information" position="after">
+                    <page string="Registration Information">
+                        <group>
+                            <field name="no_pa_price"/>
+                        </group>
+                        <separator string="Registration notes"/>
+                        <field name="registration_note" nolabel="1"/>
+                    </page>
+                </page>
+                <xpath expr="//field[@name='order_line']/form//field[@name='name']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/form//field[@name='name']" position="after">
+                    <field name="real_name"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_order_form_line_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.order.form.line.inh.rockbotic</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_line_performance.view_order_form_inh_line_performance" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']//tree//field[@name='apply_performance']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//tree//field[@name='performance']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//tree//field[@name='decimal_pfmc']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_quotation_tree_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.quotation.tree.inh.rockbotic</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree" />
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="partner_shipping_id" />
+                </field>
+            </field>
+        </record>
+        <record id="view_order_tree_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.order.tree.inh.rockbotic</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree" />
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="partner_shipping_id" />
+                </field>
+            </field>
+        </record>
+        <record id="sale_order_print_sum_view_form" model="ir.ui.view">
+            <field name="name">sale.order.print.sum.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="website_quote.sale_order_form_quote" />
+            <field name="arch" type="xml">
+                <field name="validity_date" position="after">
+                    <field name="print_sum" />
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

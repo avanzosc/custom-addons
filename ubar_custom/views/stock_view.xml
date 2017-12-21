@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="ubar_quant_view_search" model="ir.ui.view">
+            <field name="name">ubar.quant.search</field>
+            <field name="model">stock.quant</field>
+            <field name="inherit_id" ref="stock.quant_search_view" />
+            <field name="arch" type="xml">
+                <filter name="productgroup" string="Product" context="{'group_by' : 'product_id'}" position="after">
+                    <filter name="productcat" string="Product Category" context="{'group_by' : 'category_id'}"/>
+                    <filter name="manufacturer" string="Manufacturer" context="{'group_by' : 'manufacturer_id'}"/>
+                </filter>
+            </field>
+        </record>
+        <record id="ubar_quant_view_tree" model="ir.ui.view">
+            <field name="name">ubar.quant.tree</field>
+            <field name="model">stock.quant</field>
+            <field name="inherit_id" ref="stock.view_stock_quant_tree" />
+            <field name="arch" type="xml">
+                <field name="company_id" position="after">
+                    <field name="category_id"/>
+                    <field name="manufacturer_id"/>
+                    <field name="to_invoice"/>
+                </field>
+            </field>
+        </record>
+        <record id="stock_quant_to_invoice_view_form" model="ir.ui.view">
+            <field name="name">stock.quant.to.invoice.form</field>
+            <field name="model">stock.quant</field>
+            <field name="inherit_id" ref="stock.view_stock_quant_form" />
+            <field name="arch" type="xml">
+                <field name="inventory_value" position="after">
+                    <field name="to_invoice"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

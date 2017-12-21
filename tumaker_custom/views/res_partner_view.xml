@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="view_partner_form" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="category_id" position="after">
+                    <group>
+                        <field name="industry_sector_id"/>
+                        <field name="application_ids" widget="many2many_tags"/>
+                    </group>
+                </field>
+            </field>
+        </record>
+
+       <record id="view_res_partner_filter" model="ir.ui.view">
+            <field name="name">res.partner.select</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <field name="parent_id" position="after">
+                    <field name="industry_sector_id"/>
+                    <field name="application_ids"/>
+                </field>
+                <filter string="Country" position="after">
+                    <filter string="Industry Sector" context="{'group_by': 'industry_sector_id'}"/>
+                </filter>
+            </field>
+        </record>
+
+        <record id="view_partner_industry_sector_tree" model="ir.ui.view">
+            <field name="name">res.partner.industry.sector.tree</field>
+            <field name="model">res.partner.industry.sector</field>
+            <field name="arch" type="xml">
+                <tree string="Industry Sector">
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_partner_industry_sector_form" model="ir.ui.view">
+            <field name="name">res.partner.industry.sector.form</field>
+            <field name="model">res.partner.industry.sector</field>
+            <field name="arch" type="xml">
+                <form string="Industry Sector">
+                    <group>
+                        <field name="code"/>
+                        <field name="name"  required="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_partner_industry_sector" model="ir.actions.act_window">
+            <field name="name">Industry Sectors</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner.industry.sector</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem action="action_partner_industry_sector" id="menu_partner_industry_sector" name="Industry Sector" parent="base.menu_config_address_book" sequence="3" groups="base.group_no_one"/>
+
+        <record id="view_partner_application_tree" model="ir.ui.view">
+            <field name="name">res.partner.application.tree</field>
+            <field name="model">res.partner.application</field>
+            <field name="arch" type="xml">
+                <tree string="Partner Applications">
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_partner_application_form" model="ir.ui.view">
+            <field name="name">res.partner.application.form</field>
+            <field name="model">res.partner.application</field>
+            <field name="arch" type="xml">
+                <form string="Partner Application">
+                    <group>
+                        <field name="code"/>
+                        <field name="name" required="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_partner_application" model="ir.actions.act_window">
+            <field name="name">Partner Applications</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner.application</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem action="action_partner_application" id="menu_partner_application" name="Partner Applications" parent="base.menu_config_address_book" sequence="3" groups="base.group_no_one"/>
+
+    </data>
+</openerp>

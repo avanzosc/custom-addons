@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <menuitem id="trukebai_saleswoman_menu" name="Trukebai menu"
+            groups="trukebai.group_trukebai_saleswoman"/>
+        <menuitem id="trukebai_saleswoman_sale_group" name="Sales"
+            parent="trukebai_saleswoman_menu" sequence="10"/>
+        <menuitem id="trukebai_saleswoman_input_product_group" name="Input products"
+            parent="trukebai_saleswoman_menu" sequence="20"/>
+        <menuitem id="trukebai_saleswoman_output_products_group" name="Output products"
+            parent="trukebai_saleswoman_menu" sequence="30"/>
+        <menuitem id="menu_trukebai_saleswoman_sale_quotations" name="Quotations"
+            action="sale.action_quotations" sequence="10"
+            parent="trukebai.trukebai_saleswoman_sale_group"
+            groups="trukebai.group_trukebai_saleswoman" />
+        <menuitem id="menu_trukebai_saleswoman_sale_orders" name="Sale orders"
+            action="sale.action_orders" sequence="20"
+            parent="trukebai.trukebai_saleswoman_sale_group"
+            groups="trukebai.group_trukebai_saleswoman" />
+        <menuitem id="menu_trukebai_saleswoman_point_of_sale" name="Point of sale"
+            action="point_of_sale.action_pos_pos_form" sequence="30"
+            parent="trukebai.trukebai_saleswoman_sale_group"
+            groups="trukebai.group_trukebai_saleswoman" />
+        <record id="action_input_picking_trukebai" model="ir.actions.act_window">
+            <field name="name">Input products</field>
+            <field name="res_model">stock.picking</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="domain"></field>
+            <field name="context">{
+                    'search_default_picking_type_id': [1],
+                    'default_picking_type_id': 1}
+            </field>
+            <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+        </record>
+        <menuitem id="menu_trukebai_saleswoman_input_pickings" name="Input products"
+            action="trukebai.action_input_picking_trukebai" sequence="10"
+            parent="trukebai.trukebai_saleswoman_input_product_group"
+            groups="trukebai.group_trukebai_saleswoman" />
+        <record id="action_output_picking_trukebai" model="ir.actions.act_window">
+            <field name="name">Output products</field>
+            <field name="res_model">stock.picking</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="domain"></field>
+            <field name="context">{
+                    'search_default_picking_type_id': [2],
+                    'default_picking_type_id': 2}
+            </field>
+            <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+        </record>
+        <menuitem id="menu_trukebai_saleswoman_output_pickings" name="Output products"
+            action="trukebai.action_output_picking_trukebai" sequence="10"
+            parent="trukebai.trukebai_saleswoman_output_products_group"
+            groups="trukebai.group_trukebai_saleswoman" />
+    </data>
+</openerp>

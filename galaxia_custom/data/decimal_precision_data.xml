@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="precision_in_sales" model="decimal.precision">
+            <field name="name">Precision in sales</field>
+            <field name="digits">5</field>
+        </record>
+    </data>
+</openerp>

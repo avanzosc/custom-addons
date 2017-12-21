@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="product_template_form_view" model="ir.ui.view">
+            <field name="name">product.template.common.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//h1/../.." position="attributes">
+                    <attribute name="style">width: 900px;</attribute>
+                </xpath>
+                <xpath expr="//h1/.." position="attributes">
+                    <attribute name="style">width: 900px;</attribute>
+                </xpath>
+                <field name="name" position="attributes">
+                    <attribute name="class"/>
+                </field>
+            </field>
+        </record>
+        <record id="product_template_tree_view" model="ir.ui.view">
+            <field name="name">product.template.tree</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="default_code"/>
+                </field>
+                <field name="state" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="categ_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="type" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="state" position="after">
+                    <field name="list_price"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_product_template_tree_brand" model="ir.ui.view">
+            <field name="name">product.template.brand.tree</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product_brand.view_product_template_tree_brand"/>
+            <field name="arch" type="xml">
+                <field name="product_brand_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+
+        <record id="product.product_template_action" model="ir.actions.act_window">
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_id"/>
+        </record>
+        <record id="purchase.product_normal_action_puchased" model="ir.actions.act_window">
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_id"/>
+        </record>
+        <record id="mrp.product_template_action" model="ir.actions.act_window">
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_id"/>
+        </record>
+    </data>
+</openerp>

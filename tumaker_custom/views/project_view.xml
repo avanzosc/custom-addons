@@ -2,12 +2,12 @@
 <openerp>
     <data>
         <record model="ir.ui.view" id="view_project_tree_structure">
-		      <field name="name">project.tree.structure</field>
-		      <field name="model">project.project</field>
-		      <field name="field_parent">project_child_ids</field>
-		      <field name="arch" type="xml">
-		        <tree string="Projects">
-		            <field name="sequence" widget="handle"/>
+              <field name="name">project.tree.structure</field>
+              <field name="model">project.project</field>
+              <field name="field_parent">project_child_ids</field>
+              <field name="arch" type="xml">
+                <tree string="Projects">
+                    <field name="sequence" widget="handle"/>
                     <field name="message_unread" invisible="1"/>
                     <field name="date" invisible="1"/>
                     <field name="name" string="Project Name"/>
@@ -19,19 +19,19 @@
                     <field name="effective_hours" widget="float_time"/>
                     <field name="progress_rate" widget="progressbar"/>
                     <field name="state"/>
-		        </tree>
-		      </field>
-		    </record>
-		
-		    <record model="ir.actions.act_window" id="action_project_hierarchy_tree">
-		      <field name="name">Project Hierarchy</field>
-		      <field name="res_model">project.project</field>
-		      <field name="view_type">tree</field>
-		      <field name="view_mode">tree</field>
-		      <field name="domain">[('parent_id','=',False)]</field>
-		      <field name="view_id" ref="view_project_tree_structure"/>
-		    </record>
-		
-		    <menuitem id="menu_project_hierarchy" name="Project Hierarchy" parent="project.menu_project_management" action="action_project_hierarchy_tree"/>
+                </tree>
+              </field>
+            </record>
+
+            <record model="ir.actions.act_window" id="action_project_hierarchy_tree">
+              <field name="name">Project Hierarchy</field>
+              <field name="res_model">project.project</field>
+              <field name="view_type">tree</field>
+              <field name="view_mode">tree</field>
+              <field name="domain">[('parent_id','=',False)]</field>
+              <field name="view_id" ref="view_project_tree_structure"/>
+            </record>
+
+            <menuitem id="menu_project_hierarchy" name="Project Hierarchy" parent="project.menu_project_management" action="action_project_hierarchy_tree"/>
     </data>
 </openerp>

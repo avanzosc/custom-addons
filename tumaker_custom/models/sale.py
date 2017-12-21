@@ -6,23 +6,23 @@ from openerp import models, fields, api
 
 
 class SaleOrder(models.Model):
-
     _inherit = 'sale.order'
 
-    @api.one
+    @api.multi
     @api.depends('order_line', 'order_line.tasks', 'state')
-    def _task_exists(self):
-        task_lst = self.order_line.mapped('tasks.id')
-        if not task_lst:
-            self.task_exists = False
-        else:
-            self.task_exists = True
+    def _compute_task_exists(self):
+        for record in self:
+            task_lst = record.order_line.mapped('tasks.id')
+            if not task_lst:
+                record.task_exists = False
+            else:
+                record.task_exists = True
 
     @api.depends('procurement_group_id',
                  'procurement_group_id.procurement_ids',
                  'procurement_group_id.procurement_ids.state')
     @api.multi
-    def _get_shipped(self):
+    def _compute_get_shipped(self):
         for sale in self:
             group = sale.procurement_group_id
             val = False
@@ -31,16 +31,22 @@ class SaleOrder(models.Model):
                            group.procurement_ids])
             sale.shipped = val
 
+    @api.multi
+    def _default_sale_note(self):
+        return self.env.user.company_id.sale_note_report
+
     requested_date = fields.Datetime(readonly=False)
     commitment2_date = fields.Datetime(
         string="Commitment Date",
         help="Date by which the products are sure to be delivered. This is "
              "a date that you can promise to the customer, based on the "
              "Product Lead Times.", default=fields.Date.today())
-    task_exists = fields.Boolean('Task Exists', compute="_task_exists",
+    task_exists = fields.Boolean('Task Exists', compute="_compute_task_exists",
                                  store=True)
-    shipped = fields.Boolean(compute='_get_shipped', string='Delivered',
-                             store=True)
+    shipped = fields.Boolean(compute='_compute_get_shipped',
+                             string='Delivered', store=True)
+    show_sale_note = fields.Boolean()
+    sale_note = fields.Text(default=_default_sale_note)
 
     @api.multi
     def action_view_task(self):
@@ -60,7 +66,6 @@ class SaleOrder(models.Model):
 
 
 class SaleOrderLine(models.Model):
-
     _inherit = 'sale.order.line'
 
     tasks = fields.One2many('project.task', 'sale_line_id', 'Tasks')
