@@ -10,6 +10,11 @@ class EventEvent(models.Model):
 
     key_code = fields.Char()
 
+    def _take_sessions_to_date(self, date):
+        sessions = super(EventEvent, self)._take_sessions_to_date(date)
+        sessions = sessions.filtered(lambda x: x.tasks and x.tasks[0].attached)
+        return sessions
+
 
 class EventTrackPresence(models.Model):
     _inherit = 'event.track.presence'
