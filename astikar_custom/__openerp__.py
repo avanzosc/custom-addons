@@ -4,8 +4,7 @@
 
 {
     "name": "Astikar - Custom",
-    "summary": "",
-    "version": "8.0.1.0.0",
+    "version": "8.0.1.1.0",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -27,6 +26,7 @@
         "base_user_signature_logo",
         "purchase",
         "account",
+        "mrp",
         "mrp_repair_estimated_qty",
         "mrp_repair_pricelist_rules",
         "account_invoice_line_stock_move_info",

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
+    <data noupdate="1">
+        <delete id="mrp.menu_mrp_production_action" model="ir.ui.menu" />
+    </data>
     <data>
         <template id="custom_backend_favicon" name="astikar_custom backend_favicon" inherit_id="web.layout">
             <xpath expr="//link[@rel='shortcut icon']" position="attributes">

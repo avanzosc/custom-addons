@@ -1,20 +1,19 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* astikar_custom
+#	* astikar_custom
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-25 10:25+0000\n"
-"PO-Revision-Date: 2016-08-25 12:25+0100\n"
-"Last-Translator: Esther Martín <esthermartin@avanzosc.es>\n"
+"POT-Creation-Date: 2018-01-11 10:07+0000\n"
+"PO-Revision-Date: 2018-01-11 10:07+0000\n"
+"Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 1.5.4\n"
 
 #. module: astikar_custom
 #: view:mrp.repair:astikar_custom.mrp_repair_fee_invoice_view_form
@@ -22,12 +21,120 @@ msgid "(update)"
 msgstr "(actualizar)"
 
 #. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+msgid "-\n"
+"                                                    **** **** **** ***"
+msgstr "-\n"
+"                                                    **** **** **** ***"
+
+#. module: astikar_custom
+#: view:website:web.layout
+msgid "/astikar_custom/static/src/img/favicon.ico"
+msgstr "/astikar_custom/static/src/img/favicon.ico"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+msgid "ALBARAN ZK.:"
+msgstr "ALBARAN ZK.:"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_picking
+msgid "ALBARAN ZK:"
+msgstr "ALBARAN ZK:"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_picking
+#: view:website:mrp_repair.report_mrprepairorder
+#: view:website:stock.report_picking
+msgid "ASTIKAR, S.A."
+msgstr "ASTIKAR, S.A."
+
+#. module: astikar_custom
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "AURREKONTU ZK / PRESUPUESTO Nº:"
+msgstr "AURREKONTU ZK / PRESUPUESTO Nº:"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+#: view:website:astikar_custom.mrp_repair_picking
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "AZALPENA"
+msgstr "AZALPENA"
+
+#. module: astikar_custom
+#: view:account.move.line:astikar_custom.show_account_move_view_search
+msgid "Account"
+msgstr "Cuenta"
+
+#. module: astikar_custom
 #: view:website:purchase.report_purchaseorder_document
 msgid "Account Analytic"
 msgstr "Cuenta analítica"
 
 #. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+msgid "Albaran zenbakia:"
+msgstr "Albaran zenbakia:"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_picking
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "B.E.Z"
+msgstr "B.E.Z"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+#: view:website:astikar_custom.mrp_repair_picking
+#: view:website:mrp_repair.report_mrprepairorder
+#: view:website:stock.report_picking
+msgid "B.E.Z."
+msgstr "B.E.Z."
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "BARNE ERREFERENTZIA"
+msgstr "BARNE ERREFERENTZIA"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "BEZERO KODEA"
+msgstr "BEZERO KODEA"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "BEZEROA"
+msgstr "BEZEROA"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_picking
+#: view:website:mrp_repair.report_mrprepairorder
+#: view:website:stock.report_picking
+msgid "CONFORME CLIENTE"
+msgstr "CONFORME CLIENTE"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "CONFORME: CLIENTE"
+msgstr "CONFORME: CLIENTE"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "CONFORME: TALLER"
+msgstr "CONFORME: TALLER"
+
+#. module: astikar_custom
+#: view:stock.quant:astikar_custom.view_stock_quant_categ_search
+msgid "Category"
+msgstr "Categoría"
+
+#. module: astikar_custom
 #: view:mrp.repair:astikar_custom.mrp_repair_invoice_view_search
+#: view:stock.quant:astikar_custom.view_stock_quant_categ_search
 msgid "Company"
 msgstr "Compañía"
 
@@ -42,9 +149,26 @@ msgid "Cost Price"
 msgstr "Precio de coste"
 
 #. module: astikar_custom
+#: view:mrp.repair.fee:astikar_custom.mrp_repair_fee_menu_view_search
+msgid "Created from R.O"
+msgstr "Creado desde O.R."
+
+#. module: astikar_custom
+#: view:mrp.repair.fee:astikar_custom.mrp_repair_fee_menu_view_search
+#: field:mrp.repair.fee,is_from_menu:0
+msgid "Created from menu"
+msgstr "Creado desde menú"
+
+#. module: astikar_custom
 #: view:website:stock.report_picking
 msgid "Customer Address:"
 msgstr "Dirección de cliente:"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_picking
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "DATA:"
+msgstr "DATA:"
 
 #. module: astikar_custom
 #: view:website:stock.report_picking
@@ -62,6 +186,97 @@ msgid "Delivery Address:"
 msgstr "Dirección de envío:"
 
 #. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "EGIN BEHARREKO LANAK"
+msgstr "EGIN BEHARREKO LANAK"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+#: view:website:astikar_custom.mrp_repair_picking
+msgid "EGINDAKO LANAK"
+msgstr "EGINDAKO LANAK"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "EPE MUGA:"
+msgstr "EPE MUGA:"
+
+#. module: astikar_custom
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "ESKAERA ZK / PEDIDO Nº:"
+msgstr "ESKAERA ZK / PEDIDO Nº:"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+msgid "FAKTURA"
+msgstr "FAKTURA"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+msgid "FAKTURA DATA:"
+msgstr "FAKTURA DATA:"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "FAX"
+msgstr "FAX"
+
+#. module: astikar_custom
+#: model:ir.actions.report.xml,name:astikar_custom.report_invoice_printing
+msgid "Factura Imprenta"
+msgstr "Factura Imprenta"
+
+#. module: astikar_custom
+#: view:mrp.repair:astikar_custom.mrp_repair_end_date_view_form
+msgid "False"
+msgstr "False"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.astikar_external_layout_header
+#: view:website:astikar_custom.astikar_external_layout_header_no_phone
+#: view:website:report.external_layout_header
+msgid "Fax:"
+msgstr "Fax:"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "Fecha Entrega:"
+msgstr "Fecha Entrega:"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "Fecha Inicio Trabajo:"
+msgstr "Fecha Inicio Trabajo:"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "Fecha Real Term.:"
+msgstr "Fecha Real Term.:"
+
+#. module: astikar_custom
+#: view:mrp.repair:astikar_custom.mrp_repair_view_form
+msgid "Fee Lines"
+msgstr "Horas"
+
+#. module: astikar_custom
+#: view:mrp.repair.fee:astikar_custom.mrp_repair_fee_menu_view_search
+msgid "Fees to not invoice"
+msgstr "Mano de obra no facturable"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+#: view:website:astikar_custom.mrp_repair_picking
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "GUZTIRA"
+msgstr "GUZTIRA"
+
+#. module: astikar_custom
 #: view:mrp.repair.line:astikar_custom.mrp_repair_line_view_search
 msgid "Group By"
 msgstr "Agrupar por"
@@ -72,9 +287,41 @@ msgid "Guarantee Limit:"
 msgstr "Límite de garantía:"
 
 #. module: astikar_custom
+#: view:website:stock.report_picking
+msgid "Guztira"
+msgstr "Guztira"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "HELBIDEA"
+msgstr "HELBIDEA"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+msgid "HORNITZAILE FAKTURA"
+msgstr "HORNITZAILE FAKTURA"
+
+#. module: astikar_custom
 #: field:account.invoice,not_warning:0
 msgid "Hide Warning Message"
 msgstr "Ocultar mensaje Warning"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "I.F.K. / N.A.N."
+msgstr "I.F.K. / N.A.N."
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "Inscrita en el Registro Mercantil de Guipúzcoa, Libro Sociedades, Tomo 1253, Folio 43, Hoja nº SS-5095, Inscrición 1º - N.I.F. A-20432670"
+msgstr "Inscrita en el Registro Mercantil de Guipúzcoa, Libro Sociedades, Tomo 1253, Folio 43, Hoja nº SS-5095, Inscrición 1º - N.I.F. A-20432670"
+
+#. module: astikar_custom
+#: field:stock.quant,categ_id:0
+msgid "Internal Category"
+msgstr "Categoría interna"
 
 #. module: astikar_custom
 #: model:ir.model,name:astikar_custom.model_account_invoice
@@ -107,6 +354,79 @@ msgid "Invoices"
 msgstr "Facturas"
 
 #. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "K.P. - HERRIA"
+msgstr "K.P. - HERRIA"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+msgid "KANTZELATUTAKO FAKTURA"
+msgstr "KANTZELATUTAKO FAKTURA"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "KONTUA:"
+msgstr "KONTUA:"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+#: view:website:astikar_custom.mrp_repair_picking
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "KOPURUA"
+msgstr "KOPURUA"
+
+#. module: astikar_custom
+#: view:website:stock.report_picking
+msgid "Kopurua"
+msgstr "Kopurua"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "LAN-AGINDU ZK."
+msgstr "LAN-AGINDU ZK."
+
+#. module: astikar_custom
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "LÍNEAS DE MATERIAL"
+msgstr "LÍNEAS DE MATERIAL"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_picking
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "MANO DE OBRA"
+msgstr "MANO DE OBRA"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_picking
+msgid "MATERIAL"
+msgstr "MATERIAL"
+
+#. module: astikar_custom
+#: view:mrp.repair:astikar_custom.mrp_repair_view_form
+msgid "Material Lines"
+msgstr "Material"
+
+#. module: astikar_custom
+#: model:ir.actions.act_window,name:astikar_custom.action_mrp_repair_line
+#: model:ir.ui.menu,name:astikar_custom.mrp_repair_line_menu
+msgid "Material Repair Lines"
+msgstr "Líneas materiales reparación"
+
+#. module: astikar_custom
+#: field:product.product,purchase_line_warn_msg:0
+msgid "Message for Purchase Order Line"
+msgstr "Mensaje para la línea del pedido de compra"
+
+#. module: astikar_custom
+#: field:product.product,sale_line_warn_msg:0
+msgid "Message for Sales Order Line"
+msgstr "Mensaje para la línea de pedido de venta"
+
+#. module: astikar_custom
 #: view:stock.history:astikar_custom.stock_history_product_type_view_search
 msgid "Move"
 msgstr "Movimiento"
@@ -118,14 +438,83 @@ msgid "Mrp Repair Lines"
 msgstr "Líneas reparación MRP"
 
 #. module: astikar_custom
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "NOTA:"
+msgstr "NOTA:"
+
+#. module: astikar_custom
 #: view:mrp.repair:astikar_custom.mrp_repair_invoice_view_search
 msgid "Not to invoice"
 msgstr "No facturar"
 
 #. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+#: view:website:astikar_custom.mrp_repair_picking
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "OINARRI ZERGAGARRIA"
+msgstr "OINARRI ZERGAGARRIA"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "ORD. ERABILTZEKE:"
+msgstr "ORD. ERABILTZEKE:"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "ORDAINTZEKO ERA"
+msgstr "ORDAINTZEKO ERA"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "ORDAINTZEKO ERA:"
+msgstr "ORDAINTZEKO ERA:"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "ORDU KOPURUA:"
+msgstr "ORDU KOPURUA:"
+
+#. module: astikar_custom
+#: view:website:stock.report_picking
+msgid "Oinarri zergagarria"
+msgstr "Oinarri zergagarria"
+
+#. module: astikar_custom
 #: view:website:stock.report_picking
 msgid "Order (Origin)"
 msgstr "Pedido (Origen)"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "PLAZO"
+msgstr "PLAZO"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+#: view:website:astikar_custom.mrp_repair_picking
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "PREZIOA"
+msgstr "PREZIOA"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+msgid "PROFORMA"
+msgstr "PROFORMA"
+
+#. module: astikar_custom
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "PROFORMA ZKº:"
+msgstr "PROFORMA ZKº:"
+
+#. module: astikar_custom
+#: model:ir.model,name:astikar_custom.model_res_partner
+msgid "Partner"
+msgstr "Empresa"
 
 #. module: astikar_custom
 #: view:account.invoice:astikar_custom.invoice_repair_view_search
@@ -136,6 +525,11 @@ msgstr "Modo de pago"
 #: model:ir.actions.report.xml,name:astikar_custom.report_mrp_repair_picking
 msgid "Picking"
 msgstr "Albarán"
+
+#. module: astikar_custom
+#: view:website:stock.report_picking
+msgid "Prezioa"
+msgstr "Prezioa"
 
 #. module: astikar_custom
 #: model:ir.model,name:astikar_custom.model_product_product
@@ -149,6 +543,11 @@ msgid "Product Type"
 msgstr "Tipo de producto"
 
 #. module: astikar_custom
+#: view:website:stock.report_picking
+msgid "Produktua"
+msgstr "Produktua"
+
+#. module: astikar_custom
 #: view:mrp.repair:astikar_custom.mrp_repair_view_form
 msgid "Purchase Lines"
 msgstr "Líneas de compra"
@@ -159,6 +558,11 @@ msgid "Purchase Order"
 msgstr "Pedido de compra"
 
 #. module: astikar_custom
+#: field:product.product,purchase_line_warn:0
+msgid "Purchase Order Line"
+msgstr "Línea pedido de compra"
+
+#. module: astikar_custom
 #: view:mrp.repair:astikar_custom.mrp_repair_view_form
 msgid "Purchases"
 msgstr "Compras"
@@ -167,6 +571,11 @@ msgstr "Compras"
 #: view:mrp.repair.line:astikar_custom.mrp_repair_line_tree
 msgid "Qty"
 msgstr "Cant."
+
+#. module: astikar_custom
+#: model:ir.model,name:astikar_custom.model_stock_quant
+msgid "Quants"
+msgstr "Quants"
 
 #. module: astikar_custom
 #: view:website:account.report_invoice_document
@@ -227,14 +636,60 @@ msgid "Repairs order"
 msgstr "Órdenes de reparación"
 
 #. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_picking
+msgid "SERIE ZK./MATRIKULA"
+msgstr "SERIE ZK./MATRIKULA"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "SERIE ZK/MATRIKULA"
+msgstr "SERIE ZK/MATRIKULA"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "SERIE ZK/MATRIKULA:"
+msgstr "SERIE ZK/MATRIKULA:"
+
+#. module: astikar_custom
 #: model:ir.model,name:astikar_custom.model_sale_order_line
+#: field:product.product,sale_line_warn:0
 msgid "Sales Order Line"
 msgstr "Línea pedido de venta"
+
+#. module: astikar_custom
+#: view:account.move.line:astikar_custom.show_account_move_view_search
+msgid "Salesperson"
+msgstr "Comercial"
+
+#. module: astikar_custom
+#: help:stock.quant,categ_id:0
+msgid "Select category for the current product"
+msgstr "Seleccione la categoría para el producto actual."
+
+#. module: astikar_custom
+#: help:product.product,purchase_line_warn:0
+#: help:product.product,sale_line_warn:0
+msgid "Selecting the \"Warning\" option will notify user with the message, Selecting \"Blocking Message\" will throw an exception with the message and block the flow. The Message has to be written in the next field."
+msgstr "Selecting the \"Warning\" option will notify user with the message, Selecting \"Blocking Message\" will throw an exception with the message and block the flow. The Message has to be written in the next field."
 
 #. module: astikar_custom
 #: selection:stock.history,product_type:0
 msgid "Service"
 msgstr "Servicio"
+
+#. module: astikar_custom
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "Si este presupuesto es de su conformidad, agradeceríamos remitiesen el mismo con su\n"
+"                                        firma de conformidad o correspondiente pedido."
+msgstr "Si este presupuesto es de su conformidad, agradeceríamos remitiesen el mismo con su\n"
+"                                        firma de conformidad o correspondiente pedido."
+
+#. module: astikar_custom
+#: field:stock.quant,standard_value:0
+msgid "Standard Value"
+msgstr "Standard Value"
 
 #. module: astikar_custom
 #: view:mrp.repair.line:astikar_custom.mrp_repair_line_view_search
@@ -263,14 +718,60 @@ msgid "Supplier Refund"
 msgstr "Factura rectificativa de proveedor"
 
 #. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_order
+msgid "TELEFONOA"
+msgstr "TELEFONOA"
+
+#. module: astikar_custom
 #: field:mrp.repair,amnt_tax:0
 msgid "Taxes"
 msgstr "Impuestos"
 
 #. module: astikar_custom
+#: view:website:astikar_custom.astikar_external_layout_header
+#: view:website:astikar_custom.astikar_external_layout_header_no_phone
+#: view:website:report.external_layout_header
+msgid "Tel.:"
+msgstr "Tel.:"
+
+#. module: astikar_custom
+#: field:mrp.repair,amnt_total:0
+#: view:mrp.repair.line:astikar_custom.mrp_repair_line_tree
+msgid "Total"
+msgstr "Total"
+
+#. module: astikar_custom
 #: view:mrp.repair:astikar_custom.mrp_repair_fee_invoice_view_form
 msgid "Total amount"
 msgstr "Importe total"
+
+#. module: astikar_custom
+#: view:stock.quant:astikar_custom.stock_history_product_cost_view_tree
+msgid "Total inventory value"
+msgstr "Total inventory value"
+
+#. module: astikar_custom
+#: view:stock.quant:astikar_custom.stock_history_product_cost_view_tree
+msgid "Total qty"
+msgstr "Total qty"
+
+#. module: astikar_custom
+#: view:stock.quant:astikar_custom.stock_history_product_cost_view_tree
+msgid "Total standard value"
+msgstr "Total standard value"
+
+#. module: astikar_custom
+#: view:website:astikar_custom.mrp_repair_picking
+msgid "UNITATEA"
+msgstr "UNITATEA"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+#: view:website:astikar_custom.mrp_repair_order
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "UNITATEA:"
+msgstr "UNITATEA:"
 
 #. module: astikar_custom
 #: view:mrp.repair.line:astikar_custom.mrp_repair_line_tree
@@ -310,3 +811,45 @@ msgstr "Warning"
 #: model:ir.actions.report.xml,name:astikar_custom.report_mrp_repair_order
 msgid "Work Order"
 msgstr "Orden Trabajo"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+#: view:website:astikar_custom.mrp_repair_picking
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "ZENBATEKOA"
+msgstr "ZENBATEKOA"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+#: view:website:mrp_repair.report_mrprepairorder
+msgid "ZENBATEKOA:"
+msgstr "ZENBATEKOA:"
+
+#. module: astikar_custom
+#: view:website:account.report_invoice_document
+#: view:website:astikar_custom.invoice_printing
+msgid "ZIRIBORRO FAKTURA"
+msgstr "ZIRIBORRO FAKTURA"
+
+#. module: astikar_custom
+#: view:website:stock.report_picking
+msgid "Zenbatekoa"
+msgstr "Zenbatekoa"
+
+#. module: astikar_custom
+#: view:mrp.repair:astikar_custom.mrp_repair_location_view_tree
+msgid "gray:state in ('done','cancel');gray:invoice_method=='none' and state=='done';black:state not in ('done','cancel');blue:state=='draft'"
+msgstr "gray:state in ('done','cancel');gray:invoice_method=='none' and state=='done';black:state not in ('done','cancel');blue:state=='draft'"
+
+#. module: astikar_custom
+#: view:account.invoice:astikar_custom.invoice_supplier_form
+msgid "{'default_account_analytic_id': repair_analytic_id, 'partner_id': partner_id, 'price_type': context.get('price_type') or False, 'type': type}"
+msgstr "{'default_account_analytic_id': repair_analytic_id, 'partner_id': partner_id, 'price_type': context.get('price_type') or False, 'type': type}"
+
+#. module: astikar_custom
+#: view:purchase.order:astikar_custom.purchase_order_form
+msgid "{'default_account_analytic_id': repair_analytic_id}"
+msgstr "{'default_account_analytic_id': repair_analytic_id}"
+
