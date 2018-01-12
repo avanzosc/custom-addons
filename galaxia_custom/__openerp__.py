@@ -39,7 +39,8 @@
         "project_work_time_control",
         "sale_order_training_plan",
         "event_track_info",
-        "event_track_merge"
+        "event_track_merge",
+        "sale_order_back2draft"
     ],
     "data": [
         "data/request_link_data.xml",
