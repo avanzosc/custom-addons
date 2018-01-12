@@ -55,9 +55,14 @@ class SaleOrder(models.Model):
             self._put_days_in_working_hours()
         result = super(SaleOrder, self.with_context(
             without_sale_name=True)).action_button_confirm()
-        cond = [('sale_order', '=', self.id)]
-        event = event_model.search(cond, limit=1)
-        event._merge_event_tracks()
+        for sale in self.filtered(lambda x: x.project_id):
+            cond = [('sale_order', '=', sale.id)]
+            event = event_model.search(cond, limit=1)
+            if event:
+                event.write({'name': u"{}: {}".format(
+                    sale.name, sale.partner_id.name)})
+                event._merge_event_tracks()
+                sale.project_id._recalculate_sessions_date_from_calendar()
         return result
 
     @api.multi
