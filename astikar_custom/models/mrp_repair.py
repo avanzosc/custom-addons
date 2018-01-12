@@ -156,6 +156,23 @@ class MrpRepair(models.Model):
             'context': self.env.context
             }
 
+    @api.multi
+    def action_open_related_fees(self):
+        result = self.env.ref(
+            'mrp_repair_fee.action_mrp_repair_fee').read()[0]
+        result['domain'] = "[('repair_id', 'in'," +\
+            str(self.ids) + ")]"
+        result['context'] = "{}"
+        return result
+
+    @api.multi
+    def action_open_related_lines(self):
+        result = self.env.ref(
+            'astikar_custom.action_mrp_repair_line').read()[0]
+        result['domain'] = "[('repair_id', 'in'," +\
+            str(self.ids) + ")]"
+        return result
+
 
 class MrpRepairLine(models.Model):
 

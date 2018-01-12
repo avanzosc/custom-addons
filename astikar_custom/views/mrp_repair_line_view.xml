@@ -33,5 +33,17 @@
                 </search>
             </field>
         </record>
+
+        <record id="action_mrp_repair_line" model="ir.actions.act_window">
+            <field name="name">Material Repair Lines</field>
+            <field name="res_model">mrp.repair.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="mrp_repair_line_tree"/>
+        </record>
+
+        <menuitem id="mrp_repair_line_menu" name="Material Repair Lines"
+                  parent="mrp.menu_mrp_manufacturing" action="action_mrp_repair_line"
+                  sequence="60" />
     </data>
 </openerp>

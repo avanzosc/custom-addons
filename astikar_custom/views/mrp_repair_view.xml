@@ -96,6 +96,16 @@
                             icon="fa-pencil-square-o">
                         <div>Purchase Lines</div>
                     </button>
+                    <button class="oe_stat_button" type="object"
+                            name="action_open_related_fees"
+                            icon="fa-bars">
+                        <div>Fee Lines</div>
+                    </button>
+                    <button class="oe_stat_button" type="object"
+                            name="action_open_related_lines"
+                            icon="fa-bars">
+                        <div>Material Lines</div>
+                    </button>
                 </div>
             </field>
         </record>
