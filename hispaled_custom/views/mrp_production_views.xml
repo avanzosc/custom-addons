@@ -11,6 +11,10 @@
                 <field name="safeguard_ip" />
                 <field name="safeguard_ik" />
             </field>
+            <xpath expr="//field[@name='move_created_ids2']/tree//field[@name='product_uom_qty']"
+                   position="attributes">
+                <attribute name="sum">Production Total</attribute>
+            </xpath>
         </field>
     </record>
 </data>
