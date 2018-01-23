@@ -136,3 +136,13 @@ class EventRegistration(models.Model):
                 vals = {'submitted_evaluation': 'yes',
                         'submitted_evaluation_error': ''}
             registration.write(vals)
+
+    def _prepare_wizard_registration_open_vals(self):
+        vals = super(
+            EventRegistration, self)._prepare_wizard_registration_open_vals()
+        today = fields.Date.from_string(fields.Date.context_today(self))
+        if (today > vals.get('from_date') and today.month !=
+                vals.get('from_date').month):
+            new_date = '{}-{}-01'.format(today.year, today.month)
+            vals['from_date'] = new_date
+        return vals
