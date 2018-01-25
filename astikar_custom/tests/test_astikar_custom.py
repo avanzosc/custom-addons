@@ -73,6 +73,12 @@ class TestAstikarCustom(common.TransactionCase):
         self.assertEqual(res.get('type', False), 'ir.actions.act_window')
         res = self.mrp_repair.action_show_account_invoice_lines()
         self.assertEqual(res.get('type', False), 'ir.actions.act_window')
+        res = self.mrp_repair.action_open_related_fees()
+        self.assertEqual(res.get('type', False), 'ir.actions.act_window')
+        self.assertEqual(res.get('res_model', False), 'mrp.repair.fee')
+        res = self.mrp_repair.action_open_related_lines()
+        self.assertEqual(res.get('type', False), 'ir.actions.act_window')
+        self.assertEqual(res.get('res_model', False), 'mrp.repair.line')
 
     def test_invoice_line_product_change(self):
         invoice_line = self.env.ref(

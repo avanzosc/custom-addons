@@ -6,12 +6,13 @@
 HISPALED - Custom module
 ========================
 
-This module customized Odoo for HISPALED:
+This module customizes Odoo for HISPALED:
 
 * Adds two fields to manufacturing orders:
    * IP Safeguard
    * IK Safeguard
 
+* Adds 'sum' in the tree view of the produced products to watch total quantity
 
 Bug Tracker
 ===========
