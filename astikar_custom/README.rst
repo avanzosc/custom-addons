@@ -27,8 +27,7 @@ Astikar Custom
 
 * Product cost price in sale order line.
 
-* New recompute button, as it uses 'purchase_last_price_info' modified by
-  @Daniel-CA at purchase-workflow#205
+* Updated code to work with 'purchase_last_price_info' last version.
 
 Credits
 =======
