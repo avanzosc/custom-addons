@@ -38,5 +38,20 @@
                 </button>
             </field>
         </record>
+
+        <record id="product_last_purchase_recompute_form_view" model="ir.ui.view">
+            <field name="name">product.product.purchase.recompute.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="purchase_last_price_info.product_last_purchase_info_form_view" />
+            <field name="arch" type="xml">
+                <group name="last_purchase_info" position="inside">
+                    <button name="button_recompute_last_purchase_info"
+                            string="(recompute last purchase)" type="object"
+                            colspan="4" class="oe_link oe_read_only oe_inline"
+                            attrs="{'invisible': [('purchase_count','=',0)]}"/>
+
+                </group>
+            </field>
+        </record>
     </data>
 </openerp>

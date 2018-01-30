@@ -17,3 +17,7 @@ class ProductProduct(models.Model):
         comodel_name='mrp.repair.line', inverse_name='product_id',
         string='Repair line', domain=[('type', '=', 'add')])
     repair_line_count = fields.Integer(compute='_compute_sales_count')
+
+    @api.multi
+    def button_recompute_last_purchase_info(self):
+        self._get_last_purchase()
