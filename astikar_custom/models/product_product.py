@@ -22,11 +22,14 @@ class ProductProduct(models.Model):
         comodel_name='purchase.order.line', inverse_name='product_id',
         string='Purchase Lines')
     last_purchase_price = fields.Float(
-        compute='_get_last_purchase', store=True, inverse='_set_last_purchase')
+        compute='_get_last_purchase', inverse='_inverse_last_purchase',
+        store=True, digits=dp.get_precision('Product Price'))
     last_purchase_date = fields.Date(
-        compute='_get_last_purchase', store=True, inverse='_set_last_purchase')
+        compute='_get_last_purchase', inverse='_inverse_last_purchase',
+        store=True)
     last_supplier_id = fields.Many2one(
-        compute='_get_last_purchase', store=True, inverse='_set_last_purchase')
+        compute='_get_last_purchase', inverse='_inverse_last_purchase',
+        store=True)
     manual_purchase_price = fields.Float(
         string='Manual Last Purchase Price',
         digits=dp.get_precision('Product Price'))
@@ -34,8 +37,8 @@ class ProductProduct(models.Model):
     manual_supplier_id = fields.Many2one(
         comodel_name='res.partner', string='Manual Last Supplier')
 
-    @api.depends('purchase_line_ids.product_id', 'purchase_line_ids.price_unit',
-                 'purchase_line_ids.state',
+    @api.depends('purchase_line_ids.product_id', 'purchase_line_ids.state',
+                 'purchase_line_ids.price_unit',
                  'purchase_line_ids.order_id.date_order',
                  'purchase_line_ids.order_id.partner_id')
     def _get_last_purchase(self):
@@ -49,28 +52,9 @@ class ProductProduct(models.Model):
                 record.last_supplier_id = record.manual_supplier_id
 
     @api.multi
-    def _set_last_purchase(self):
+    def _inverse_last_purchase(self):
         """ set last purchase price, last purchase date and last supplier """
         for product in self:
             product.manual_purchase_price = product.last_purchase_price
             product.manual_purchase_date = product.last_purchase_date
             product.manual_supplier_id = product.last_supplier_id
-            # line = self.env['purchase.order.line'].search(
-            #     [('product_id', '=', product.id),
-            #      ('state', 'in', ['confirmed', 'done'])]).sorted(
-            #     key=lambda l: l.order_id.date_order, reverse=True)[:1]
-            # if line.order_id.partner_id and (
-            #         line.order_id.partner_id != product.last_supplier_id):
-            #     product.last_supplier_id = line.order_id.partner_id
-            # if line.price_unit and (
-            #         line.price_unit != product.last_purchase_price):
-            #     product.last_purchase_price = line.price_unit
-            # last_date = fields.Date.from_string(line.order_id.date_order)
-            # if line.order_id.date_order and (
-            #         fields.Date.to_string(last_date) !=
-            #             product.last_purchase_date):
-            #     product.last_purchase_date = line.order_id.date_order
-
-    @api.multi
-    def button_recompute_last_purchase_info(self):
-        self._get_last_purchase()
