@@ -4,7 +4,7 @@
 
 {
     "name": "Galaxia - Custom",
-    "version": "8.0.1.0.0",
+    "version": "8.0.2.0.0",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -52,6 +52,7 @@
         "views/account_view.xml",
         "views/crm_view.xml",
         "views/project_task_view.xml",
+        "views/event_track_view.xml",
         "wizard/wiz_export_presence_information_view.xml",
         "wizard/wiz_export_csv.xml",
         "report/galaxia_layout_view.xml",
