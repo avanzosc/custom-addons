@@ -223,3 +223,26 @@ class TestAstikarCustom(common.TransactionCase):
         res = wiz.show_mrp_repair_fee()
         self.assertTrue(res['context']['default_is_from_menu'])
         self.assertTrue(res['context']['search_default_is_from_menu'])
+
+    def test_manual_last_purchase(self):
+        self.assertFalse(self.product.purchase_line_ids)
+        self.assertFalse(self.product.last_purchase_date)
+        self.assertFalse(self.product.last_purchase_price)
+        self.assertFalse(self.product.last_supplier_id)
+        self.assertFalse(self.product.manual_purchase_date)
+        self.assertFalse(self.product.manual_purchase_price)
+        self.assertFalse(self.product.manual_supplier_id)
+        self.product.write({
+            'last_purchase_date': fields.Date.today(),
+            'last_purchase_price': 25.0,
+            'last_supplier_id': self.env.user.partner_id.id,
+        })
+        self.assertTrue(self.product.manual_purchase_date)
+        self.assertTrue(self.product.manual_purchase_price)
+        self.assertTrue(self.product.manual_supplier_id)
+        self.assertEquals(self.product.manual_purchase_date,
+                          self.product.last_purchase_date)
+        self.assertEquals(self.product.manual_purchase_price,
+                          self.product.last_purchase_price)
+        self.assertEquals(self.product.manual_supplier_id,
+                          self.product.last_supplier_id)
