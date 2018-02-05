@@ -42,7 +42,7 @@ class ProductProduct(models.Model):
                  'purchase_line_ids.order_id.date_order',
                  'purchase_line_ids.order_id.partner_id')
     def _get_last_purchase(self):
-        for record in self.filtered('purchase_line_ids'):
+        for record in self:
             if any(record.mapped('purchase_line_ids').filtered(
                     lambda l: l.state in ('done', 'confirmed'))):
                 super(ProductProduct, record)._get_last_purchase()
