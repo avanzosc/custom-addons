@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+    <record id="mrp_product_produce_hispaled_view" model="ir.ui.view">
+        <field name="name">mrp.product.produce.hispaled</field>
+        <field name="model">mrp.product.produce</field>
+        <field name="inherit_id" ref="mrp_unitary_production.mrp_product_produce_wizard_form_view" />
+        <field name="arch" type="xml">
+            <field name="lot_id" position="attributes">
+                <attribute name="attrs">{'invisible':[('unitary_production','=',True)]}</attribute>
+            </field>
+        </field>
+    </record>
+</data>
+</openerp>
