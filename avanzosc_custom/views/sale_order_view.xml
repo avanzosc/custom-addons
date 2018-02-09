@@ -10,6 +10,9 @@
                 <field name="project_id" position="attributes">
                     <attribute name="attrs">{'readonly': [('state', 'in', 'done')]}</attribute>
                 </field>
+                <field name="note" position="attributes">
+                    <attribute name="class"/>
+                </field>
             </field>
         </record>
 
