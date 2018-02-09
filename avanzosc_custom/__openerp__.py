@@ -4,7 +4,7 @@
 
 {
     'name': 'Avanzosc custom modifications',
-    'version': '8.0.1.0.0',
+    'version': '8.0.1.0.1',
     'category': 'Custom modifications',
     'author': 'Serv. Tecnol. Avanzados - Pedro M. Baeza',
     'website': 'http://www.serviciosbaeza.com',
