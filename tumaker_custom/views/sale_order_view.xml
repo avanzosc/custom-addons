@@ -20,6 +20,9 @@
                 <field name="commitment_date" position="after">
                     <field name="commitment2_date"/>
                 </field>
+                <field name="invoiced" position="before">
+                    <field name="active"/>
+                </field>
                 <field name="project_id" position="after">
                     <field name="show_sale_note"/>
                 </field>
