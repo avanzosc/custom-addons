@@ -14,7 +14,7 @@
     ],
     "depends": [
         "procurement",
-        "mrp",
+        "mrp_project",
         "sale_order_dates",
         "crm_claim",
         "product_supplierinfo_for_customer",
