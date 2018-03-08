@@ -24,6 +24,7 @@
                 "mrp",
                 "contacts",
                 "marketing",
+                "web_context_tunnel",
                 ],
     "author": "Avanzosc, S.L.",
     "contributors": [

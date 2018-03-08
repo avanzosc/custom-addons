@@ -340,3 +340,10 @@ class TestTumakerCustom(common.TransactionCase):
         sale_id = action.get('res_id')
         sale = self.sale_model.browse(sale_id)
         self.assertEqual(sale.warehouse_id, self.warehouse)
+
+    def test_product_computed_field(self):
+        moves = self.product_id.move_ids.filtered(lambda x: x.state == 'done')
+        quants = self.product_id.quant_ids.filtered(
+            lambda x: x.location_id.usage == 'internal')
+        self.assertEqual(self.product_id.count_move_ids, len(moves))
+        self.assertEqual(self.product_id.real_stock, sum(quants.mapped('qty')))
