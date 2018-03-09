@@ -347,3 +347,10 @@ class TestTumakerCustom(common.TransactionCase):
             lambda x: x.location_id.usage == 'internal')
         self.assertEqual(self.product_id.count_move_ids, len(moves))
         self.assertEqual(self.product_id.real_stock, sum(quants.mapped('qty')))
+        product2 = self.product_id.copy()
+        lst = [self.product_id.id, product2.id]
+        lst2 = [product2.id, self.product_id.id]
+        search1 = self.product_model.with_context(order_by='count_move_ids desc').search([('id', 'in', lst)])
+        self.assertEqual(lst, search1.ids)
+        search2 = self.product_model.with_context(order_by='count_move_ids asc').search([('id', 'in', lst)])
+        self.assertEqual(lst2, search2.ids)
