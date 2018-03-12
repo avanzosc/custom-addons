@@ -42,10 +42,43 @@ class ProductProduct(models.Model):
                 val.append(product.ean13)
             product.supercode = " ".join(val)
 
+    @api.multi
+    @api.depends('quant_ids', 'quant_ids.location_id',
+                 'quant_ids.location_id.usage', 'quant_ids.qty')
+    def _compute_real_stock(self):
+        for record in self:
+            record.real_stock = sum(
+                record.quant_ids.filtered(lambda x: x.location_id.usage ==
+                                          'internal').mapped('qty'))
+
+    @api.multi
+    @api.depends('move_ids', 'move_ids.state')
+    def _compute_count_move_ids(self):
+        for record in self:
+            record.count_move_ids = len(record.move_ids.filtered(
+                lambda x: x.state == 'done'))
+
+    real_stock = fields.Float(string="Real Stock",
+                              compute="_compute_real_stock", store=True)
     supercode = fields.Char(string='Supercode', store=True,
                             compute="_compute_supercode")
+    quant_ids = fields.One2many(comodel_name="stock.quant",
+                                inverse_name="product_id", string="Quants")
+    move_ids = fields.One2many(comodel_name="stock.move",
+                               inverse_name="product_id", string="Moves")
+    count_move_ids = fields.Integer(
+        string="Move Count", compute="_compute_count_move_ids", store=True)
 
     @api.model
     def name_search(self, name='', args=None, operator='ilike', limit=100):
         return models.Model.name_search(self, name=name, args=args,
                                         operator=operator, limit=limit)
+
+    def _search(self, cr, user, args, offset=0, limit=None, order=None,
+                context=None, count=False, access_rights_uid=None):
+        order_by = context.get('order_by', False)
+        if order_by:
+            order = order_by
+        return super(ProductProduct, self)._search(
+            cr, user, args, offset=offset, limit=limit, order=order,
+            context=context, count=count, access_rights_uid=access_rights_uid)
