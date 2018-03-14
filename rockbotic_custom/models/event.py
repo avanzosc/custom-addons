@@ -10,6 +10,10 @@ class EventEvent(models.Model):
     sale_order_payer = fields.Selection(
         related='sale_order.payer', string='Event payer',
         store=True)
+    start_hour = fields.Float(
+        string='Start hour', related='sale_order_line.start_hour', store=True)
+    end_hour = fields.Float(
+        string='End hour', related='sale_order_line.end_hour', store=True)
 
     def _validate_registrations_email(self):
         for event in self:
