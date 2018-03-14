@@ -32,8 +32,18 @@
                                             <td>
                                                 <table>
                                                     <tr>
-                                                        <td><img
-                                                                src="/hispaled_custom/static/images/clase_I.png" style="max-width:49px;" /></td>
+                                                        <td><t
+                                                                t-set="luminclase"
+                                                               t-value="o.product_id._get_luminclase_image()"/>
+                                                            <t
+                                                                    t-if="luminclase == 1"><img
+                                                                src="/hispaled_custom/static/images/Clase_1.png" style="max-width:49px;" /></t>
+                                                            <t
+                                                                    t-if="luminclase == 2"><img
+                                                                src="/hispaled_custom/static/images/Clase_2.png" style="max-width:49px;" /></t>
+                                                            <t
+                                                                    t-if="luminclase == 3"><img
+                                                                src="/hispaled_custom/static/images/Clase_3.png" style="max-width:49px;" /></t></td>
                                                         <td>S/N: <span
                                                                 t-field="o.lot_id.name" />
                                                             230V IP66<br/>
