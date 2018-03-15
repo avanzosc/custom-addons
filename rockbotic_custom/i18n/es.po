@@ -1527,4 +1527,137 @@ msgstr "Confirmado"
 msgid "Register assists"
 msgstr "Registrar Asistencias"
 
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,january:0
+msgid "January"
+msgstr "Enero"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,february:0
+msgid "February"
+msgstr "Febrero"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,march:0
+msgid "March"
+msgstr "Marzo"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,april:0
+msgid "April"
+msgstr "Abril"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,may:0
+msgid "May"
+msgstr "Mayo"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,june:0
+msgid "June"
+msgstr "Junio"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,july:0
+msgid "July"
+msgstr "Julio"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,august:0
+msgid "August"
+msgstr "Agosto"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,september:0
+msgid "September"
+msgstr "Septiembre"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,october:0
+msgid "October"
+msgstr "Octubre"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,november:0
+msgid "November"
+msgstr "Noviembre"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,december:0
+msgid "December"
+msgstr "Diciembre"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,monday:0
+msgid "Monday"
+msgstr "Lunes"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,tuesday:0
+msgid "Tuesday"
+msgstr "Martes"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,wednesday:0
+msgid "Wednesday"
+msgstr "Miércoles"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,thursday:0
+msgid "Thursday"
+msgstr "Jueves"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,friday:0
+msgid "Friday"
+msgstr "Viernes"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,saturday:0
+msgid "Saturday"
+msgstr "Sábado"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: field:event.event,sunday:0
+msgid "Sunday"
+msgstr "Domingo"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: view:event.event:rockbotic_custom.view_event_search_inh_rockbotic
+#: field:event.event,start_hour:0
+msgid "Start hour"
+msgstr "Hora inicio"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: view:event.event:rockbotic_custom.view_event_search_inh_rockbotic
+#: field:event.event,end_hour:0
+msgid "End hour"
+msgstr "Hora fin"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: view:event.event:rockbotic_custom.view_event_search_inh_rockbotic
+msgid "Sale order"
+msgstr "Pedido venta"
 

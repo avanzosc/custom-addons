@@ -27,6 +27,8 @@ Astikar Custom
 
 * Product cost price in sale order line.
 
+* Updated code to work with 'purchase_last_price_info' last version.
+
 Credits
 =======
 

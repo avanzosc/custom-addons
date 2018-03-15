@@ -16,9 +16,17 @@
     ],
     "depends": [
         "mrp",
+        "mrp_label_print",
+        "mrp_unitary_production",
+        "product_attribute_code_field",
+        "product_variant_default_code",
+        "stock_picking_label_print",
     ],
     "data": [
         "views/mrp_production_views.xml",
+        "views/stock_label_report.xml",
+        "views/stock_label_report_data_views.xml",
+        "wizard/mrp_product_produce_views.xml",
     ],
     "installable": True,
 }

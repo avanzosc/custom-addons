@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-11 10:07+0000\n"
-"PO-Revision-Date: 2018-01-11 10:07+0000\n"
+"POT-Creation-Date: 2018-02-05 11:39+0000\n"
+"PO-Revision-Date: 2018-02-05 11:39+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -406,6 +406,21 @@ msgid "MATERIAL"
 msgstr "MATERIAL"
 
 #. module: astikar_custom
+#: field:product.product,manual_purchase_date:0
+msgid "Manual Last Purchase Date"
+msgstr "Fecha de última compra (manual)"
+
+#. module: astikar_custom
+#: field:product.product,manual_purchase_price:0
+msgid "Manual Last Purchase Price"
+msgstr "Precio de última compra (manual)"
+
+#. module: astikar_custom
+#: field:product.product,manual_supplier_id:0
+msgid "Manual Last Supplier"
+msgstr "Último proveedor (manual)"
+
+#. module: astikar_custom
 #: view:mrp.repair:astikar_custom.mrp_repair_view_form
 msgid "Material Lines"
 msgstr "Material"
@@ -415,16 +430,6 @@ msgstr "Material"
 #: model:ir.ui.menu,name:astikar_custom.mrp_repair_line_menu
 msgid "Material Repair Lines"
 msgstr "Líneas materiales reparación"
-
-#. module: astikar_custom
-#: field:product.product,purchase_line_warn_msg:0
-msgid "Message for Purchase Order Line"
-msgstr "Mensaje para la línea del pedido de compra"
-
-#. module: astikar_custom
-#: field:product.product,sale_line_warn_msg:0
-msgid "Message for Sales Order Line"
-msgstr "Mensaje para la línea de pedido de venta"
 
 #. module: astikar_custom
 #: view:stock.history:astikar_custom.stock_history_product_type_view_search
@@ -549,6 +554,7 @@ msgstr "Produktua"
 
 #. module: astikar_custom
 #: view:mrp.repair:astikar_custom.mrp_repair_view_form
+#: field:product.product,purchase_line_ids:0
 msgid "Purchase Lines"
 msgstr "Líneas de compra"
 
@@ -556,11 +562,6 @@ msgstr "Líneas de compra"
 #: model:ir.model,name:astikar_custom.model_purchase_order
 msgid "Purchase Order"
 msgstr "Pedido de compra"
-
-#. module: astikar_custom
-#: field:product.product,purchase_line_warn:0
-msgid "Purchase Order Line"
-msgstr "Línea pedido de compra"
 
 #. module: astikar_custom
 #: view:mrp.repair:astikar_custom.mrp_repair_view_form
@@ -607,7 +608,7 @@ msgstr "Línea reparación"
 #. module: astikar_custom
 #: model:ir.model,name:astikar_custom.model_mrp_repair
 msgid "Repair Order"
-msgstr "Orden reparación"
+msgstr "Orden de reparación"
 
 #. module: astikar_custom
 #: field:product.product,repair_line_ids:0
@@ -654,7 +655,6 @@ msgstr "SERIE ZK/MATRIKULA:"
 
 #. module: astikar_custom
 #: model:ir.model,name:astikar_custom.model_sale_order_line
-#: field:product.product,sale_line_warn:0
 msgid "Sales Order Line"
 msgstr "Línea pedido de venta"
 
@@ -667,12 +667,6 @@ msgstr "Comercial"
 #: help:stock.quant,categ_id:0
 msgid "Select category for the current product"
 msgstr "Seleccione la categoría para el producto actual."
-
-#. module: astikar_custom
-#: help:product.product,purchase_line_warn:0
-#: help:product.product,sale_line_warn:0
-msgid "Selecting the \"Warning\" option will notify user with the message, Selecting \"Blocking Message\" will throw an exception with the message and block the flow. The Message has to be written in the next field."
-msgstr "Selecting the \"Warning\" option will notify user with the message, Selecting \"Blocking Message\" will throw an exception with the message and block the flow. The Message has to be written in the next field."
 
 #. module: astikar_custom
 #: selection:stock.history,product_type:0
@@ -837,6 +831,11 @@ msgstr "ZIRIBORRO FAKTURA"
 #: view:website:stock.report_picking
 msgid "Zenbatekoa"
 msgstr "Zenbatekoa"
+
+#. module: astikar_custom
+#: view:mrp.repair:astikar_custom.mrp_repair_end_date_view_form
+msgid "[('customer', '=', True)]"
+msgstr "[('customer', '=', True)]"
 
 #. module: astikar_custom
 #: view:mrp.repair:astikar_custom.mrp_repair_location_view_tree

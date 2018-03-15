@@ -67,6 +67,9 @@
                 <field name="end_date" position="after">
                     <field name="date_due" attrs="{'invisible': [('proforma', '=', False)]}"/>
                 </field>
+                <field name="partner_id" position="attributes">
+                    <attribute name="domain">[('customer', '=', True)]</attribute>
+                </field>
             </field>
         </record>
 
