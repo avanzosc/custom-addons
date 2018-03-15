@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+    <template id="stock_label_report_hispaled"
+              inherit_id="stock_picking_label_print.stock_label_report">
+        <t t-foreach="docs" position="replace">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="report.layout">
+                    <div class="page">
+                        <table class="table table-condensed">
+                            <tr>
+                                <td style="text-align:center">
+                                    <strong>HISPALED <span
+                                            t-field="o.product_id.product_tmpl_id.name" />
+                                                           Series</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td
+                                        style="text-align:center"><span
+                                        t-field="o.product_id.default_code" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' %
+            ('QR', o.product_id.default_code, 100, 100)"/>
+                                            </td>
+                                            <td>
+                                                <table>
+                                                    <tr>
+                                                        <td><t
+                                                                t-set="luminclase"
+                                                               t-value="o.product_id._get_luminclase_image()"/>
+                                                            <t
+                                                                    t-if="luminclase == 1"><img
+                                                                src="/hispaled_custom/static/images/Clase_1.png" style="max-width:49px;" /></t>
+                                                            <t
+                                                                    t-if="luminclase == 2"><img
+                                                                src="/hispaled_custom/static/images/Clase_2.png" style="max-width:49px;" /></t>
+                                                            <t
+                                                                    t-if="luminclase == 3"><img
+                                                                src="/hispaled_custom/static/images/Clase_3.png" style="max-width:49px;" /></t></td>
+                                                        <td>S/N: <span
+                                                                t-field="o.lot_id.name" />
+                                                            230V IP66<br/>
+                                                            <center><b>MADE IN SPAIN</b></center>
+                                                        </td>
+                                                        <td><img
+                                                                src="/hispaled_custom/static/images/RoHS.png" style="max-width:49px;" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><img
+                                                                src="/hispaled_custom/static/images/CE.jpg" style="max-width:49px;"/></td>
+                                                        <td>Sustituir
+                                                            cualquier
+                                                            pantalla
+                                                            <br/>
+                                                            de protección
+                                                            con fisuras
+                                                        </td>
+                                                        <td><img
+                                                                src="/hispaled_custom/static/images/Residuo.png" style="max-width:49px;"/></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</data>
+</openerp>

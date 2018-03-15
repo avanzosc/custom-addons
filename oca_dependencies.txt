@@ -10,6 +10,7 @@ account-payment
 
 # Add a repository url and branch if you need a forked version
 avanzosc-addons https://github.com/avanzosc/odoo-addons
+mrp-addons https://github.com/avanzosc/mrp-addons
 mrp-repair-addons https://github.com/avanzosc/mrp-repair-addons
 crm-addons https://github.com/avanzosc/crm-addons
 hr-addons https://github.com/avanzosc/hr-addons
