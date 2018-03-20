@@ -61,6 +61,11 @@
                 <filter string="Responsible" position="before">
                     <filter string="Centre" context="{'group_by':'address_id'}"/>
                 </filter>
+                <field name="name" position="after">
+                    <field name="sale_order" string="Sale order"/>
+                    <field name="start_hour" string="Start hour"/>
+                    <field name="end_hour" string="End hour"/>
+                </field>
             </field>
         </record>
         <record id="view_event_tree_inh_rockbotic" model="ir.ui.view">
@@ -115,6 +120,37 @@
                 <xpath expr="//field[@name='no_employee_registration_ids']" position="attributes">
                     <attribute name="context">{'default_event_id':active_id, 'only_name': True}</attribute>
                 </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_event_search2_inh_rockbotic">
+            <field name="name">view.event.search2.inh.rockbotic</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event_track_assistant.view_event_search_inh_assistant" />
+            <field name="arch" type="xml">
+               <filter string="End Week" position="after">
+                    <filter string="Sale order" domain="[]" context="{'group_by': 'sale_order'}"/>
+               </filter>
+               <filter string="End next month" position="after">
+                    <filter string="January"  domain="[('sale_order_line.january','=',True)]" />
+                    <filter string="February"  domain="[('sale_order_line.february','=',True)]" />
+                    <filter string="March"  domain="[('sale_order_line.march','=',True)]" />
+                    <filter string="April"  domain="[('sale_order_line.april','=',True)]" />
+                    <filter string="May"  domain="[('sale_order_line.may','=',True)]" />
+                    <filter string="June"  domain="[('sale_order_line.june','=',True)]" />
+                    <filter string="July"  domain="[('sale_order_line.july','=',True)]" />
+                    <filter string="August"  domain="[('sale_order_line.august','=',True)]" />
+                    <filter string="September"  domain="[('sale_order_line.september','=',True)]" />
+                    <filter string="October"  domain="[('sale_order_line.october','=',True)]" />
+                    <filter string="November"  domain="[('sale_order_line.november','=',True)]" />
+                    <filter string="December"  domain="[('sale_order_line.december','=',True)]" />
+                    <filter string="Monday"  domain="[('sale_order_line.monday','=',True)]" />
+                    <filter string="Tuesday"  domain="[('sale_order_line.tuesday','=',True)]" />
+                    <filter string="Wednesday"  domain="[('sale_order_line.wednesday','=',True)]" />
+                    <filter string="Thursday"  domain="[('sale_order_line.thursday','=',True)]" />
+                    <filter string="Friday"  domain="[('sale_order_line.friday','=',True)]" />
+                    <filter string="Saturday"  domain="[('sale_order_line.saturday','=',True)]" />
+                    <filter string="Sunday"  domain="[('sale_order_line.sunday','=',True)]" />
+               </filter>
             </field>
         </record>
     </data>
