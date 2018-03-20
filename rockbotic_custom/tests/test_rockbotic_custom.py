@@ -71,16 +71,13 @@ class TestRockboticCustom(common.TransactionCase):
             self.event._send_email_to_registrations('email body')
 
     def test_button_validate_holiday(self):
-        contract = self.contract_model.create({
+        self.contract_model.create({
             'name': u'Contract {}'.format(self.partner.name),
             'employee_id': self.ref('hr.employee_fp'),
             'partner': self.partner.id,
             'type_id': self.ref('hr_contract.hr_contract_type_emp'),
             'wage': 500,
             'date_start': '2025-01-01'})
-        workable_wiz = self.wiz_workable_model.with_context(
-            active_id=contract.id).create({})
-        workable_wiz.button_calculate_workables_and_festives()
         holiday_vals = {
             'name': 'Rockbotic holiday',
             'holiday_status_id': self.ref('hr_holidays.holiday_status_sl'),
@@ -89,8 +86,7 @@ class TestRockboticCustom(common.TransactionCase):
             'date_to': '2025-06-15 18:00:00'}
         holiday = self.holiday_model.create(holiday_vals)
         holiday.button_validate_holiday()
-        subtype_id = self.ref(
-            'hr_holidays.mt_holidays_confirmed')
+        subtype_id = self.ref('hr_holidays.mt_holidays_confirmed')
         cond = [('model', '=', 'hr.holidays'),
                 ('res_id', '=', holiday.id),
                 ('subtype_id', '=', subtype_id)]
