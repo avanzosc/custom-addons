@@ -32,8 +32,8 @@ env:
   - TESTS="1" ODOO_REPO="OCA/OCB" INCLUDE="astikar_custom"
   - TESTS="1" ODOO_REPO="odoo/odoo" INCLUDE="galaxia_custom"
   - TESTS="1" ODOO_REPO="OCA/OCB" INCLUDE="galaxia_custom"
-  - TESTS="1" ODOO_REPO="odoo/odoo" INCLUDE="rockbotic_custom,rockbotic_website_crm"
-  - TESTS="1" ODOO_REPO="OCA/OCB" INCLUDE="rockbotic_custom,rockbotic_website_crm"
+  - TESTS="1" ODOO_REPO="odoo/odoo" INCLUDE="rockbotic_custom"
+  - TESTS="1" ODOO_REPO="OCA/OCB" INCLUDE="rockbotic_custom" 
 
 virtualenv:
   system_site_packages: true
