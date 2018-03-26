@@ -29,6 +29,8 @@ Astikar Custom
 
 * Updated code to work with 'purchase_last_price_info' last version.
 
+* New field to compute product qty in workshop and filter for repair lines.
+
 Credits
 =======
 

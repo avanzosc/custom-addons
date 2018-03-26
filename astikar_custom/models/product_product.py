@@ -10,14 +10,22 @@ class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     @api.multi
-    def _compute_sales_count(self):
+    def _compute_repair_count(self):
         for product in self:
             product.repair_line_count = len(product.repair_line_ids)
+            product.repair_product_count = sum(
+                product.repair_line_ids.filtered(
+                    lambda l: not l.move_id and
+                    l.repair_id.state not in ('cancel')
+                ).mapped('product_uom_qty'))
 
     repair_line_ids = fields.One2many(
         comodel_name='mrp.repair.line', inverse_name='product_id',
         string='Repair line', domain=[('type', '=', 'add')])
-    repair_line_count = fields.Integer(compute='_compute_sales_count')
+    repair_line_count = fields.Integer(compute='_compute_repair_count')
+    repair_product_count = fields.Float(
+        string='Quantity in Workshop', compute='_compute_repair_count',
+        digits=dp.get_precision('Product Unit of Measure'))
     purchase_line_ids = fields.One2many(
         comodel_name='purchase.order.line', inverse_name='product_id',
         string='Purchase Lines')
