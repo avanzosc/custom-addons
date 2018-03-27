@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_order_tree_date_inh_bainu" model="ir.ui.view">
+            <field name="name">view.order.tree.date.inh.bainu</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_dates.view_order_tree_date" />
+            <field name="arch" type="xml">
+                <field name="requested_date" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+        <record id="view_quotation_tree_date_inh_bainu" model="ir.ui.view">
+            <field name="name">view.quotation.tree.date.inh.bainu</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_dates.view_quotation_tree_date" />
+            <field name="arch" type="xml">
+                <field name="requested_date" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+        <record id="view_order_tree_inh_bainu" model="ir.ui.view">
+            <field name="name">view.order.tree.inh.bainu</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree" />
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="client_order_ref" />
+                </field>
+            </field>
+        </record>
+        <record id="view_quotation_tree_inh_bainu" model="ir.ui.view">
+            <field name="name">view.quotation.tree.inh.bainu</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree" />
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="client_order_ref" />
+                </field>
+            </field>
+        </record>
+        <record id="view_sales_order_filter_inh_bainu" model="ir.ui.view">
+            <field name="name">view.sales.order.filter.inh.bainu</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter" />
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="client_order_ref" />
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

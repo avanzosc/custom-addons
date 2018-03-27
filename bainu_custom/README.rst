@@ -9,6 +9,8 @@ Bainu Custom
 * New field "Almu" in invoices.
 * Customized invoices report. The new field "Tax.text" has been defined in the
   tax of the invoices, to take the first word of the tax.
+* In tree view of sales orders, hide the "Requested Date" field, and display
+  the "Reference/Description" field.
 
 
 Credits
