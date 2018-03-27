@@ -30,6 +30,18 @@
                         <field name="amnt_total" nolabel="1" sum="Total amount" class="oe_subtotal_footer_separator"/>
                     </group>
                 </xpath>
+                <xpath expr="//field[@name='operations']/tree" position="attributes">
+                    <attribute name="colors">red:available_qty&lt;product_uom_qty</attribute>
+                </xpath>
+                <xpath expr="//field[@name='operations']/tree//field[@name='product_uom']" position="after">
+                    <field name="available_qty" readonly="1" />
+                </xpath>
+                <xpath expr="//field[@name='operations']/tree//field[@name='location_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='operations']/tree//field[@name='location_dest_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
             </field>
         </record>
 
