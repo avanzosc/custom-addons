@@ -190,12 +190,13 @@ class MrpRepairLine(models.Model):
         return super(MrpRepairLine, self).create(vals)
 
     @api.multi
+    @api.depends('product_id', 'product_id.qty_available',
+                 'product_id.repair_product_count')
     def _compute_available_qty(self):
         for line in self.filtered(lambda l: l.type == 'add' and not l.move_id):
             line.available_qty = (
                 line.product_id.qty_available -
-                line.product_id.repair_product_count +
-                line.product_uom_qty)
+                line.product_id.repair_product_count)
 
     available_qty = fields.Float(
         string='Available Qty', compute='_compute_available_qty',

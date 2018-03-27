@@ -18,6 +18,8 @@ class ProductProduct(models.Model):
                     lambda l: not l.move_id and
                     l.repair_id.state not in ('cancel')
                 ).mapped('product_uom_qty'))
+            product.repair_available_qty = (
+                product.qty_available - product.repair_product_count)
 
     repair_line_ids = fields.One2many(
         comodel_name='mrp.repair.line', inverse_name='product_id',
@@ -26,6 +28,9 @@ class ProductProduct(models.Model):
     repair_product_count = fields.Float(
         string='Quantity in Workshop', compute='_compute_repair_count',
         digits=dp.get_precision('Product Unit of Measure'))
+    repair_available_qty = fields.Float(
+        string='Quantity in Warehouse', compute='_compute_repair_count',
+        digist=dp.get_precision('Product Unit of Measure'))
     purchase_line_ids = fields.One2many(
         comodel_name='purchase.order.line', inverse_name='product_id',
         string='Purchase Lines')
