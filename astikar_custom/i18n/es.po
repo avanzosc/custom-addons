@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-05 11:39+0000\n"
-"PO-Revision-Date: 2018-02-05 11:39+0000\n"
+"POT-Creation-Date: 2018-03-27 13:02+0000\n"
+"PO-Revision-Date: 2018-03-27 13:02+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -79,6 +79,11 @@ msgstr "Cuenta analítica"
 #: view:website:astikar_custom.invoice_printing
 msgid "Albaran zenbakia:"
 msgstr "Albaran zenbakia:"
+
+#. module: astikar_custom
+#: field:mrp.repair.line,available_qty:0
+msgid "Available Qty"
+msgstr "Disponible"
 
 #. module: astikar_custom
 #: view:website:astikar_custom.mrp_repair_picking
@@ -311,6 +316,11 @@ msgstr "Ocultar mensaje Warning"
 #: view:website:astikar_custom.mrp_repair_order
 msgid "I.F.K. / N.A.N."
 msgstr "I.F.K. / N.A.N."
+
+#. module: astikar_custom
+#: view:mrp.repair.line:astikar_custom.mrp_repair_line_view_search
+msgid "In Workshop"
+msgstr "En curso"
 
 #. module: astikar_custom
 #: view:website:account.report_invoice_document
@@ -574,6 +584,21 @@ msgid "Qty"
 msgstr "Cant."
 
 #. module: astikar_custom
+#: view:mrp.repair.line:astikar_custom.mrp_repair_line_tree
+msgid "Qty Total"
+msgstr "Qty Total"
+
+#. module: astikar_custom
+#: field:product.product,repair_available_qty:0
+msgid "Quantity in Warehouse"
+msgstr "Cantidad en almacén"
+
+#. module: astikar_custom
+#: field:product.product,repair_product_count:0
+msgid "Quantity in Workshop"
+msgstr "Cantidad en curso"
+
+#. module: astikar_custom
 #: model:ir.model,name:astikar_custom.model_stock_quant
 msgid "Quants"
 msgstr "Quants"
@@ -755,6 +780,11 @@ msgid "Total standard value"
 msgstr "Total standard value"
 
 #. module: astikar_custom
+#: view:mrp.repair:astikar_custom.mrp_repair_fee_invoice_view_form
+msgid "True"
+msgstr "Verdadero"
+
+#. module: astikar_custom
 #: view:website:astikar_custom.mrp_repair_picking
 msgid "UNITATEA"
 msgstr "UNITATEA"
@@ -841,6 +871,11 @@ msgstr "[('customer', '=', True)]"
 #: view:mrp.repair:astikar_custom.mrp_repair_location_view_tree
 msgid "gray:state in ('done','cancel');gray:invoice_method=='none' and state=='done';black:state not in ('done','cancel');blue:state=='draft'"
 msgstr "gray:state in ('done','cancel');gray:invoice_method=='none' and state=='done';black:state not in ('done','cancel');blue:state=='draft'"
+
+#. module: astikar_custom
+#: view:mrp.repair:astikar_custom.mrp_repair_fee_invoice_view_form
+msgid "red:available_qty<0"
+msgstr "red:available_qty<0"
 
 #. module: astikar_custom
 #: view:account.invoice:astikar_custom.invoice_supplier_form

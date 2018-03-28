@@ -8,9 +8,9 @@
                 <tree string="Mrp Repair Lines" create="false">
                     <field name="product_id"/>
                     <field name="name" />
-                    <field name="product_uom" string="Unit of Measure" groups="product.group_uom"/>
                     <field name="price_unit"/>
-                    <field name="product_uom_qty" string="Qty"/>
+                    <field name="product_uom_qty" string="Qty" sum="Qty Total" />
+                    <field name="product_uom" string="Unit of Measure" groups="product.group_uom"/>
                     <field name="lot_id" />
                     <field name="invoiced"/>
                     <field name="repair_id" />
@@ -26,6 +26,7 @@
             <field name="model">mrp.repair.line</field>
             <field name="arch" type="xml">
                 <search string="Mrp Repair Lines">
+                    <filter string="In Workshop" domain="[('state','not in',['cancel']),('move_id','=',False)]" />
                     <group expand="0" string="Group By">
                         <filter string="Repair order" domain="[]" context="{'group_by':'repair_id'}"/>
                         <filter string="State" domain="[]" context="{'group_by':'state'}"/>

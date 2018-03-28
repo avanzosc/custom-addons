@@ -36,6 +36,10 @@
                 <button name="action_view_sales" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </button>
+                <field name="virtual_available" position="after">
+                    <field name="repair_available_qty" />
+                    <field name="repair_product_count" />
+                </field>
             </field>
         </record>
 

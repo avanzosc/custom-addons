@@ -3,6 +3,7 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 from openerp import api, fields, models
+from openerp.addons import decimal_precision as dp
 
 
 class MrpRepair(models.Model):
@@ -175,7 +176,6 @@ class MrpRepair(models.Model):
 
 
 class MrpRepairLine(models.Model):
-
     _inherit = 'mrp.repair.line'
 
     @api.multi
@@ -189,9 +189,21 @@ class MrpRepairLine(models.Model):
         vals['load_cost'] = bool(vals.get('product_uom_qty', 0.0))
         return super(MrpRepairLine, self).create(vals)
 
+    @api.multi
+    @api.depends('product_id', 'product_id.qty_available',
+                 'product_id.repair_product_count')
+    def _compute_available_qty(self):
+        for line in self.filtered(lambda l: l.type == 'add' and not l.move_id):
+            line.available_qty = (
+                line.product_id.qty_available -
+                line.product_id.repair_product_count)
+
+    available_qty = fields.Float(
+        string='Available Qty', compute='_compute_available_qty',
+        digits=dp.get_precision('Product Unit of Measure'))
+
 
 class MrpRepairFee(models.Model):
-
     _inherit = 'mrp.repair.fee'
 
     is_from_menu = fields.Boolean(string='Created from menu', default=False)
