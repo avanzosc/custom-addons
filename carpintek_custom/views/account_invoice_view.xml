@@ -1,0 +1,28 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="invoice_form_carpintek">
+            <field name="name">account.invoice.form.carpintek</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="partner_id" position="attributes">
+                        <attribute name="domain">[('is_company', '!=', False),('customer', '=', True)]</attribute>
+                    </field>
+                </data>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="invoice_supplier_form_carpintek">
+            <field name="name">account.invoice.supplier.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="partner_id" position="attributes">
+                        <attribute name="domain">[('is_company', '!=', False),('supplier', '=', True)]</attribute>
+                    </field>
+                </data>
+            </field>
+        </record>
+    </data>
+</openerp>
