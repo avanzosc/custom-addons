@@ -11,6 +11,7 @@ Bainu Custom
   tax of the invoices, to take the first word of the tax.
 * In tree view of sales orders, hide the "Requested Date" field, and display
   the "Reference/Description" field.
+* New sale order report without amounts.
 
 
 Credits
