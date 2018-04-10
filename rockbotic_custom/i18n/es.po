@@ -1661,3 +1661,23 @@ msgstr "Hora fin"
 msgid "Sale order"
 msgstr "Pedido venta"
 
+#. module: rockbotic_custom
+#: field:account.invoice,literal_header_invoice:0
+msgid "literal header invoice"
+msgstr "literal cabecera factura"
+
+#. module: rockbotic_custom
+#: field:sale.order,literal_header_sale_order:0
+msgid "literal header sale order"
+msgstr "literal cabecera pedido venta"
+
+#. module: rockbotic_custom
+#: view:account.invoice:rockbotic_custom.invoice_form_inh_rockbotic_custom
+msgid "Literal to print in the header of the invoice"
+msgstr "Literal para imprimir en la cabecera de la factura ....."
+
+#. module: rockbotic_custom
+#: view:sale.order:rockbotic_custom.registration_sale_order_view_form
+msgid "Literal to print in the header of the sales order ....."
+msgstr "Literal para imprimir en la cabecera del pedido de venta ....."
+

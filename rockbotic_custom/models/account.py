@@ -34,3 +34,9 @@ class AccountAnalyticAccont(models.Model):
         for account in self:
             res.append((account.id, account.name))
         return res
+
+
+class AccountInvoice(models.Model):
+    _inherit = 'account.invoice'
+
+    literal_header_invoice = fields.Text(string='literal header invoice')

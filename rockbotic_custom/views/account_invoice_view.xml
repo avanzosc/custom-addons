@@ -14,7 +14,6 @@
                 </filter>
             </field>
         </record>
-
         <record id="account_invoice_supplier_number_view_tree" model="ir.ui.view">
             <field name="name">account.invoice.supplier.number.tree</field>
             <field name="model">account.invoice</field>
@@ -22,6 +21,19 @@
             <field name="arch" type="xml">
                 <field name="partner_id" position="after">
                     <field name="supplier_invoice_number" invisible="context.get('type', False)=='out_invoice'"/>
+                </field>
+            </field>
+        </record>
+        <record id="invoice_form_inh_rockbotic_custom" model="ir.ui.view">
+            <field name="name">invoice.form.inh.rockbotic.custom</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form" />
+            <field name="arch" type="xml">
+                <field name="comment" position="after">
+                    <div class="oe_clear">
+                        <label for="literal_header_invoice"/>
+                    </div>
+                    <field name="literal_header_invoice" class="oe_inline" placeholder="Literal to print in the header of the invoice" />
                 </field>
             </field>
         </record>
