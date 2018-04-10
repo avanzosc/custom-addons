@@ -51,3 +51,74 @@ msgstr "Importe pendiente"
 msgid "Advance payment / Payment on account"
 msgstr "Anticipo / Pago a cuenta"
 
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Date Ordered:"
+msgstr "Fecha pedido:"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Description"
+msgstr "Descripción"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Invoice address:"
+msgstr "Dirección de facturación:"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Invoice and shipping address:"
+msgstr "Dirección de facturación y de envío:"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Order N°"
+msgstr "Pedido Nº"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Payment Term:"
+msgstr "Plazo de pago:"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Quotation Date:"
+msgstr "Fecha de presupuesto:"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Quotation N°"
+msgstr "Presupuesto Nº"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Salesperson:"
+msgstr "Comercial:"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Shipping address:"
+msgstr "Dirección de envío:"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "VAT:"
+msgstr "NIF:"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Your Reference:"
+msgstr "Su referencia:"
+
+#. module: bainu_custom
+#: model:ir.actions.report.xml,name:bainu_custom.report_sale_order_without_amounts
+msgid "Quotation / Order without amounts"
+msgstr "Presupuesto / Pedido sin importes"
+
+
