@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="project_project_custom_gaia2_form">
+                    <field name="name">project.project.gaia2.form</field>
+                    <field name="model">project.project</field>
+                    <field name="inherit_id" ref="project.edit_project" />
+                    <field name="arch" type="xml">
+                        <page  name="settings" position="after">
+                            <page name="characterization"
+                                  string="Characterization">
+                                  <group>
+                                  <field name="project_area"/>
+                                  <field name="project_id"/>
+                                  <field name="project_espaces"/>
+                                  <field name="project_teams"/>
+                                  <field name="project_nature"/>
+                                  <field name="project_sector_objetive"/>
+                                  <field name="project_financiation"/>
+                                  <field name="project_pe"/>
+                                  </group>
+                            </page>
+                         </page>
+                        </field>
+                </record>
+                <record model="ir.ui.view" id="project_task_custom_gaia2_form">
+                    <field name="name">project.task.gaia.form</field>
+                    <field name="model">project.task.type</field>
+                    <field name="inherit_id" ref="project.task_type_edit" />
+                    <field name="arch" type="xml">
+                            <field name='mail_template_id' position='after'>
+                                  <group>
+                                  <field name="task_phase"/>
+                                      <field name="partner_ids"/>
+                                     <field name="user_id"/>
+                                  </group>
+                            </field>
+                        </field>
+                </record>
+    </data>
+</openerp>
