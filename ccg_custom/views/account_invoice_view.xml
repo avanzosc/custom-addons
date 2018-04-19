@@ -9,6 +9,19 @@
                 <field name="partner_id" position="after">
                     <field name="reference" invisible="context.get('type', False)=='out_invoice'"/>
                 </field>
+                <field name="state" position="before">
+                    <field name="discounted"/>
+                </field>
+            </field>
+        </record>
+        <record id="invoice_form" model="ir.ui.view">
+            <field name="name">account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <field name="fiscal_position" position="after">
+                    <field name="discounted"/>
+                </field>
             </field>
         </record>
         <record id="account_invoice_reference_search" model="ir.ui.view">

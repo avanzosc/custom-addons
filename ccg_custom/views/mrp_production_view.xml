@@ -20,5 +20,16 @@
                 </field>
             </field>
         </record>
+        <record id="mrp_production_tree_view" model="ir.ui.view">
+            <field name="name">mrp.production.tree</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_tree_view" />
+            <field name="arch" type="xml">
+                <field name="state" position="before">
+                    <field name="partner_id"/>
+                    <field name="sale_order_id"/>
+                </field>
+            </field>
+        </record>
     </data>
 </openerp>
