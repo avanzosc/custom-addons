@@ -17,6 +17,8 @@ class SaleOrder(models.Model):
         'belong to the Parents Association')
     print_sum = fields.Boolean(default=False)
 
+    literal_header_sale_order = fields.Text(string='literal header sale order')
+
     @api.multi
     def _prepare_recurring_invoice_lines(self, line):
         vals = super(SaleOrder, self)._prepare_recurring_invoice_lines(line)
