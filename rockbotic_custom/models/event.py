@@ -113,11 +113,10 @@ class EventRegistration(models.Model):
             cond = [('res_model', '=', 'event.registration'),
                     ('res_id', '=', registration.id)]
             attachments = attachment_obj.search(cond)
+            if attachments:
+                attachments = max(attachments, key=lambda x: x.id)
             if len(attachments) == 0:
                 vals['submitted_evaluation_error'] = _('Attachment not found')
-            elif len(attachments) > 1:
-                vals['submitted_evaluation_error'] = _('Found more than one '
-                                                       'attachment')
             elif not registration.partner_id.parent_id:
                 vals['submitted_evaluation_error'] = _('Student without '
                                                        'parent')

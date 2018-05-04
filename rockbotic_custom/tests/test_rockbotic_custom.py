@@ -124,7 +124,7 @@ class TestRockboticCustom(common.TransactionCase):
             'res_id': registration.id})
         wiz.with_context(active_ids=registration.ids).button_send_email()
         self.assertEqual(
-            registration.submitted_evaluation, 'no',
+            registration.submitted_evaluation, 'yes',
             'Bad send evaluation 2')
         attachment2.unlink()
         try:
