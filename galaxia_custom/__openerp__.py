@@ -4,7 +4,7 @@
 
 {
     "name": "Galaxia - Custom",
-    "version": "8.0.2.0.0",
+    "version": "8.0.2.1.0",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -58,6 +58,7 @@
         "report/galaxia_layout_view.xml",
         "report/galaxia_reports.xml",
         "report/galaxia_custom_view.xml",
+        "report/event_track_presence_report_view.xml",
         "security/project_task_work.xml",
     ],
     "installable": True,
