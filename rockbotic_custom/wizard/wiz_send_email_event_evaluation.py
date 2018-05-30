@@ -28,5 +28,6 @@ class WizSendEmailEventEvaluation(models.TransientModel):
     def button_send_email(self):
         event_obj = self.env['event.event']
         for event in event_obj.browse(self.env.context.get('active_ids')):
-            reg = event.no_employee_registration_ids
+            reg = event.no_employee_registration_ids.filtered(
+                lambda m: m.state in ('open', 'done'))
             reg._send_email_to_registrations_with_evaluation(self.body)
