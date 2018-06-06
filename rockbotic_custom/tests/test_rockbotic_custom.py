@@ -122,6 +122,7 @@ class TestRockboticCustom(common.TransactionCase):
             'name': 'attachment 2',
             'res_model': 'event.registration',
             'res_id': registration.id})
+        registration.state = 'open'
         wiz.with_context(active_ids=registration.ids).button_send_email()
         self.assertEqual(
             registration.submitted_evaluation, 'yes',
