@@ -489,10 +489,7 @@
                        <tbody class="sale_tbody">
                             <tr t-foreach="o._get_service_lines()" t-as="l">
                                 <td>
-                                   <t t-if="l.name and l.training">
-                                    <span t-field="l.training"/>
-                                   </t>
-                                   <t t-if="l.name and not l.training">
+                                   <t t-if="l.name">
                                     <span t-field="l.name"/>
                                    </t>
                                 </td>

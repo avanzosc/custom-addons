@@ -12,6 +12,18 @@ class ProjectProject(models.Model):
     _order = 'name'
 
 
+class ProjectTask(models.Model):
+    _inherit = 'project.task'
+
+    def _moves_for_create_task_service_project(self, procurement):
+        vals = super(ProjectTask, self)._moves_for_create_task_service_project(
+            procurement)
+        vals['name'] = '%s:%s' % (
+            procurement.origin or '',
+            procurement.sale_line_id.session_description)
+        return vals
+
+
 class ProjectTaskWork(models.Model):
     _inherit = 'project.task.work'
 

@@ -48,6 +48,12 @@
                 <xpath expr="//field[@name='service_order_line']/tree//field[@name='product_id']" position="before">
                     <field name="product_tmpl_id" />
                 </xpath>
+                <xpath expr="//field[@name='service_order_line']/tree//field[@name='name']" position="after">
+                    <field name="session_description" />
+                </xpath>
+                <xpath expr="//field[@name='service_order_line']/tree//field[@name='name']"  position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
                 <xpath expr="//field[@name='no_service_order_line']/form//field[@name='product_id']" position="replace">
                     <field name="product_id" domain="[('type','!=','service')]"
                            context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':False, 'company_id': parent.company_id}"
@@ -105,10 +111,28 @@
                      </div>
                  </xpath>
                  <xpath expr="//form[@string='SERVICE sales order lines']//field[@name='product_id']/../.." position="after">
+                    <group >
+                        <group>
+                            <field name="start_date" string="Start date"
+                                   attrs="{'required':[('recurring_service','=',True)], 'invisible':[('recurring_service','!=',True)]}" />
+                            <field name="start_hour" widget="float_time" string="Start hour"
+                                   attrs="{'invisible':[('recurring_service','!=',True)]}" />
+                        </group>
+                        <group>
+                            <field name="end_date" string="End date"
+                                   attrs="{'required':[('recurring_service','=',True)], 'invisible':[('recurring_service','!=',True)]}" />
+                            <field name="end_hour" widget="float_time" string="End hour"
+                                   attrs="{'invisible':[('recurring_service','!=',True)]}" />
+                        </group>
+                    </group>
                     <label for="periodicity" string="Periodicity" />
                     <field name="periodicity" nolabel="1"/>
                  </xpath>
                  <xpath expr="//form[@string='SERVICE sales order lines']/field[@name='name']" position="after">
+                       <label for="session_description" string="Session description" 
+                            attrs="{'required':[('recurring_service','=',True)], 'invisible':[('recurring_service','!=',True)]}" />
+                       <field name="session_description" nolabel="1"
+                            attrs="{'required':[('recurring_service','=',True)], 'invisible':[('recurring_service','!=',True)]}"/>
                        <label for="Training" string="Training" />
                        <field name="training" nolabel="1"/>
                  </xpath>
@@ -278,6 +302,30 @@
                 <xpath expr="//field[@name='order_line']//tree//field[@name='apply_performance']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_modify_sale_order_lines">
+            <field name="name">Modify sale order lines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'default_order_id':active_id,'search_default_order_id':active_id}</field>
+            <field name="domain">[('order_id','=',active_id), ('recurring_service','=',True)]</field>
+        </record>
+        <record id="view_order_form_inh_galaxia" model="ir.ui.view">
+            <field name="name">view.order.form.inh.galaxia</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <h1 position="after">
+                    <div class="oe_right oe_button_box">
+                        <button name="%(action_modify_sale_order_lines)d" type="action"
+                                class="oe_inline oe_stat_button" icon="fa-bookmark-o" >
+                            <field string="Modify lines" name="count_lines" widget="statinfo"/>
+                        </button>
+                    </div>
+                </h1>
             </field>
         </record>
     </data>

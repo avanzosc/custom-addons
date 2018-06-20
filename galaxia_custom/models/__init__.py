@@ -7,3 +7,5 @@ from . import account_analytic_account
 from . import res_company
 from . import product
 from . import project
+from . import account_analytic_invoice_line
+from . import crm_lead

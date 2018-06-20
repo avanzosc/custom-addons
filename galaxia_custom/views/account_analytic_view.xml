@@ -20,5 +20,89 @@
                 </field>
             </field>
         </record>
+        <record model="ir.ui.view" id="view_account_analytic_account_form2">
+            <field name="name">analytic.analytic.account.form2</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="sale_order_create_event.view_account_analytic_account_form_inh_sale_event" />
+            <field name="arch" type="xml">
+                <field name="working_hours" position="after">
+                    <field name="recoverable" />
+                </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_account_analytic_account_search">
+            <field name="name">analytic.analytic.account.search</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="sale_order_create_event.view_account_analytic_account_search_inh_sale_event" />
+            <field name="arch" type="xml">
+                <field name="sale" position="after">
+                    <field name="recoverable" />
+                </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_account_analytic_account_search2">
+            <field name="name">analytic.analytic.account.search2</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="account.view_account_analytic_account_search" />
+            <field name="arch" type="xml">
+                <filter string="Open" position="before">
+                    <filter string="It recovers" domain="[('recoverable','=','it_recovers')]" />
+                    <filter string="He does not recover" domain="[('recoverable','=','not_recover')]" />
+                    <filter string="Is discounted" domain="[('recoverable','=','is_discounted')]" />
+                </filter>
+                <filter string="Status" position="after">
+                    <filter string="Recoverable" domain="[]" context="{'group_by':'recoverable'}"/>
+                </filter>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_account_analytic_account_search3">
+            <field name="name">analytic.analytic.account.search3</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="account_analytic_analysis.view_account_analytic_account_overdue_search" />
+            <field name="arch" type="xml">
+                <field name="parent_id" position="after">
+                    <field name="recoverable" />
+                </field>
+                <filter string="Contracts not assigned" position="after">
+                    <separator/>
+                    <filter string="It recovers" domain="[('recoverable','=','it_recovers')]" />
+                    <filter string="He does not recover" domain="[('recoverable','=','not_recover')]" />
+                    <filter string="Is discounted" domain="[('recoverable','=','is_discounted')]" />
+                </filter>
+                <filter string="End Month" position="after">
+                    <filter string="Recoverable" domain="[]" context="{'group_by':'recoverable'}"/>
+                </filter>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_account_analytic_account_list2">
+            <field name="name">view.account.analytic.account.list2</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="sale_order_create_event.view_account_analytic_account_list_inh_sale_event" />
+            <field name="arch" type="xml">
+                <field name="sale" position="after">
+                    <field name="recoverable"/>
+                </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="account_analytic_account_form_form_inh_galaxia">
+            <field name="name">account.analytic.account.form.form.inh.galaxia</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="account_analytic_analysis.account_analytic_account_form_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='recurring_invoice_line_ids']/.." position="after">
+                    <div attrs="{'invisible': [('recurring_invoices','=',False)]}">
+                        <separator string="Historical" />
+                        <field name="analytic_account_historical_ids" readonly="1" nolabel="1">
+                            <tree string="Historical" >
+                                <field name="account_id" invisible="1"/>
+                                <field name="date"/>
+                                <field name="user_id"/>
+                                <field name="name"/>
+                            </tree>
+                        </field>
+                    </div>
+                </xpath>
+            </field>
+        </record>
     </data>
 </openerp>
