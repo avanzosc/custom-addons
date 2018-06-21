@@ -203,6 +203,7 @@ class TestAstikarCustom(common.TransactionCase):
         self.mrp_repair1.signal_workflow('repair_confirm')
         self.mrp_repair1.action_invoice_create()
         self.assertFalse(self.mrp_repair1.invoice_id.not_warning)
+        self.assertTrue(self.mrp_repair1.invoice_id.has_repairs)
 
     def test_quant_valuation(self):
         self.product.sudo().write({'cost_method': 'real',
