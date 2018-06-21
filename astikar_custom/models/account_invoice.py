@@ -8,12 +8,20 @@ from openerp import models, fields, api
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
+    @api.multi
+    @api.depends('repair_ids')
+    def _compute_has_repairs(self):
+        for invoice in self:
+            invoice.has_repairs = bool(invoice.repair_ids)
+
     repair_analytic_id = fields.Many2one(
         comodel_name='account.analytic.account',
         string="Repair Analytic Account")
     repair_ids = fields.One2many(
         comodel_name='mrp.repair', inverse_name='invoice_id',
         string='Repair order')
+    has_repairs = fields.Boolean(compute='_compute_has_repairs',
+                                 string='Has repairs')
     warning = fields.Text(string='Warning')
     not_warning = fields.Boolean(string='Hide Warning Message', default=True)
 

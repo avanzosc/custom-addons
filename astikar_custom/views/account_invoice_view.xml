@@ -28,8 +28,16 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
-                <field name="fiscal_position" position="after">
-                    <field name="repair_ids" invisible="1"/>
+                <field name="account_id" position="after">
+                    <field name="has_repairs" invisible="1"/>
+                    <field name="repair_ids" mode="tree" readonly="1" attrs="{'invisible': [('has_repairs', '=', False)]}">
+                        <tree string="Repairs">
+                            <field name="name"/>
+                            <field name="product_id"/>
+                            <field name="lot_id"/>
+                            <field name="state" invisible="1"/>
+                        </tree>
+                    </field>
                 </field>
                 <xpath expr="//notebook/page[@string='Invoice Lines']" position="before">
                     <page string="Warning" attrs="{'invisible': [('not_warning', '=', True)]}">
@@ -76,6 +84,17 @@
                  <filter string="Salesperson" position="after">
                     <filter name="group_account" string="Account" icon="terp-sale" domain="[]" context="{'group_by':'account_id'}"/>
                 </filter>
+            </field>
+        </record>
+
+        <record id="sot_invoice_form" model="ir.ui.view">
+            <field name="name">account.invoice.form.sot</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="sale_order_type.sot_invoice_form"/>
+            <field name="arch" type="xml">
+                <field name="sale_type_id" position="attributes">
+                    <attribute name="attrs">{'invisible':[('has_repairs','!=', False)]}</attribute>
+                </field>
             </field>
         </record>
     </data>
