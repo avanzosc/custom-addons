@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-# (c) 2016 Alfredo de la Fuente - AvanzOSC
+# Copyright 2016 Alfredo de la Fuente - AvanzOSC
+# Copyright 2018 Gotzon Imaz - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 {
     "name": "Rockbotic - Custom",
@@ -12,6 +13,7 @@
         "Ana Juaristi <anajuaristi@avanzosc.es>",
         "Alfredo de la Fuente <alfredodelafuente@avanzosc.es>",
         "Esther Martín <esthermartin@avanzosc.es>",
+        "Gotzon Imaz <gotzonimaz@avanzosc.es>",
     ],
     "depends": [
         "product",
