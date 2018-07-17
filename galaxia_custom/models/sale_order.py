@@ -3,6 +3,8 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 from openerp import models, fields, api, _
 import openerp.addons.decimal_precision as dp
+from openerp.addons.event_track_assistant._common import _convert_to_utc_date
+from openerp.addons.event_track_assistant._common import _convert_to_local_date
 
 
 class SaleOrder(models.Model):
@@ -29,6 +31,11 @@ class SaleOrder(models.Model):
             lambda x: 'semiproductivo' not in x.product_id.name_template and
             'traslados' not in x.product_id.name_template)
 
+    @api.multi
+    def _compute_count_lines(self):
+        for sale in self:
+            sale.count_lines = len(sale.service_order_line)
+
     amount_untaxed = fields.Float(
         string='Untaxed Amount', digits=dp.get_precision('Precision in sales'))
     amount_tax = fields.Float(
@@ -46,13 +53,12 @@ class SaleOrder(models.Model):
         string='Services amount total',
         digits=dp.get_precision('Precision in sales'),
         compute='_compute_services_amounts')
+    count_lines = fields.Integer(
+        string='Sale lines', compute='_compute_count_lines')
 
     @api.multi
     def action_button_confirm(self):
         event_model = self.env['event.event']
-        if (any(self.mapped('order_line.product_id.recurring_service')) and
-                self.project_id):
-            self._put_days_in_working_hours()
         result = super(SaleOrder, self.with_context(
             without_sale_name=True)).action_button_confirm()
         for sale in self.filtered(lambda x: x.project_id):
@@ -62,72 +68,37 @@ class SaleOrder(models.Model):
                 event.write({'name': u"{}: {}".format(
                     sale.name, sale.partner_id.name)})
                 event._merge_event_tracks()
-                sale.project_id._recalculate_sessions_date_from_calendar()
         return result
-
-    @api.multi
-    def _put_days_in_working_hours(self):
-        calendar_obj = self.env['resource.calendar']
-        for sale in self:
-            if not sale.project_id.working_hours:
-                sale.project_id.working_hours = calendar_obj.create(
-                    {'name': sale.project_id.name})
-            lines = sale.order_line.filtered(
-                lambda x: x.product_id.recurring_service and
-                (not x.start_date or not x.end_date) and
-                (x.monday or x.tuesday or x.wednesday or x.thursday or
-                 x.friday or x.saturday or x.sunday))
-            sale._confirm_days_in_working_hours(lines)
-
-    def _confirm_days_in_working_hours(self, lines):
-        hour_from = self.project_id.start_time
-        hour_to = self.project_id.end_time
-        for line in lines:
-            days = self.project_id.working_hours.attendance_ids
-            vals = []
-            if (line.monday and not any(days.filtered(lambda x:
-                                                      x.dayofweek == '0'))):
-                vals.append((0, 0, {'name': _('Monday'), 'dayofweek': '0',
-                                    'hour_from': hour_from,
-                                    'hour_to': hour_to}),)
-            if (line.tuesday and not any(days.filtered(lambda x:
-                                                       x.dayofweek == '1'))):
-                vals.append((0, 0, {'name': _('Tuesday'), 'dayofweek': '1',
-                                    'hour_from': hour_from,
-                                    'hour_to': hour_to}),)
-            if (line.wednesday and not any(days.filtered(lambda x:
-                                                         x.dayofweek == '2'))):
-                vals.append((0, 0, {'name': _('Wednesday'), 'dayofweek': '2',
-                                    'hour_from': hour_from,
-                                    'hour_to': hour_to}),)
-            if (line.thursday and not any(days.filtered(lambda x:
-                                                        x.dayofweek == '3'))):
-                vals.append((0, 0, {'name': _('Thursday'), 'dayofweek': '3',
-                                    'hour_from': hour_from,
-                                    'hour_to': hour_to}),)
-            if (line.friday and not any(days.filtered(lambda x:
-                                                      x.dayofweek == '4'))):
-                vals.append((0, 0, {'name': _('Friday'), 'dayofweek': '4',
-                                    'hour_from': hour_from,
-                                    'hour_to': hour_to}),)
-            if (line.saturday and not any(days.filtered(lambda x:
-                                                        x.dayofweek == '5'))):
-                vals.append((0, 0, {'name': _('Saturday'), 'dayofweek': '5',
-                                    'hour_from': hour_from,
-                                    'hour_to': hour_to}),)
-            if (line.sunday and not any(days.filtered(lambda x:
-                                                      x.dayofweek == '6'))):
-                vals.append((0, 0, {'name': _('Sunday'), 'dayofweek': '6',
-                                    'hour_from': hour_from,
-                                    'hour_to': hour_to}),)
-            if vals:
-                self.project_id.working_hours.write({'attendance_ids': vals})
 
     def _prepare_session_data_from_sale_line(
             self, event, num_session, line, date):
         vals = super(SaleOrder, self)._prepare_session_data_from_sale_line(
             event, num_session, line, date)
-        vals['name'] = (_('Session %s for %s') % (str(num_session), line.name))
+        vals['name'] = (_('Session %s for %s') % (str(num_session),
+                                                  line.session_description))
+        new_date = False
+        if line.order_id.project_id:
+            new_date = _convert_to_utc_date(
+                date, time=line.order_id.project_id.start_time,
+                tz=self.env.user.tz)
+            duration = (line.order_id.project_id.end_time -
+                        line.order_id.project_id.start_time)
+            if line.order_id.project_id.working_hours:
+                from_date = _convert_to_local_date(date, self.env.user.tz)
+                day = str(from_date.date().weekday())
+                lines = line.order_id.project_id.working_hours.attendance_ids
+                for line2 in lines:
+                    if line2.dayofweek == day:
+                        new_date = _convert_to_utc_date(
+                            date, time=line2.hour_from, tz=self.env.user.tz)
+                        duration = line2.hour_to - line2.hour_from
+        if line.start_hour or line.end_hour:
+            new_date = _convert_to_utc_date(date, time=line.start_hour,
+                                            tz=self.env.user.tz)
+            duration = line.end_hour - line.start_hour
+        if new_date:
+            vals.update({'date': new_date,
+                         'duration': duration})
         return vals
 
 
@@ -157,3 +128,51 @@ class SaleOrderLine(models.Model):
     periodicity = fields.Char(string='Periodicity')
     service_time = fields.Char(
         string='Service time', compute='_compute_service_time')
+    session_description = fields.Char(string='Session description')
+    price_unit = fields.Float(readonly=False)
+    product_uom_qty = fields.Float(readonly=False)
+    sale_line_historical_ids = fields.One2many(
+        comodel_name='sale.order.line.historical',
+        inverse_name='sale_line_id', string='Sale lines historical')
+
+    @api.multi
+    def write(self, values):
+        historical_obj = self.env['sale.order.line.historical']
+        check_values = [
+            ('price_unit', _('Price unit')),
+            ('product_uom_qty', _('Quantity')),
+            ('session_description', _('Session description')),
+            ('january', _('January')), ('february', _('February')),
+            ('march', _('March')), ('april', _('April')),
+            ('may', _('May')), ('june', _('June')), ('july', _('July')),
+            ('august', _('August')), ('september', _('September')),
+            ('october', _('October')), ('november', _('November')),
+            ('december', _('December')), ('week1', _('Week 1')),
+            ('week2', _('Week 2')), ('week3', _('Week 3')),
+            ('week4', _('Week 4')), ('week5', _('Week 5')),
+            ('week6', _('Week 6')), ('monday', _('Monday')),
+            ('tuesday', _('Tuesday')), ('wednesday', _('Wednesday')),
+            ('thursday', _('Thursday')), ('friday', _('Friday')),
+            ('saturday', _('Saturday')), ('sunday', _('Sunday'))]
+        for value, value_name in check_values:
+            if value in values:
+                for l in self:
+                    vals = {'sale_line_id': l.id,
+                            'date': fields.Datetime.now(),
+                            'user_id': self.env.uid,
+                            'name':  u"{}: {}".format(
+                                value_name, l.read([value])[0].get(value))}
+                    historical_obj.create(vals)
+        return super(SaleOrderLine, self).write(values)
+
+
+class SaleOrderLineHistorical(models.Model):
+    _name = 'sale.order.line.historical'
+    _description = "Sale order line historical"
+    _order = "date"
+
+    sale_line_id = fields.Many2one(
+        comodel_name='sale.order.line', string="Sale order line")
+    date = fields.Datetime(strin="Date")
+    user_id = fields.Many2one(comodel_name='res.users', string="User")
+    name = fields.Char(string="Description")

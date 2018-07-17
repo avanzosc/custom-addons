@@ -1,0 +1,39 @@
+<openerp>
+    <data>
+        <record id="event_track_presence_type_hour_tree_view_inh_galaxia" model="ir.ui.view" >
+            <field name="name">event.track.presence.type.hour.tree.view.inh.galaxia</field>
+            <field name="model">event.track.presence</field>
+            <field name="inherit_id" ref="sale_order_create_event_hour.event_track_presence_type_hour_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="type_hour" position="after">
+                    <field name="recoverable" />
+                </field>
+            </field>
+        </record>
+        <record id="event_track_presence_type_hour_search_view_inh_galaxia" model="ir.ui.view" >
+            <field name="name">event.track.presence.type.hour.search.view.inh.galaxia</field>
+            <field name="model">event.track.presence</field>
+            <field name="inherit_id" ref="sale_order_create_event_hour.event_track_presence_type_hour_search_view"/>
+            <field name="arch" type="xml">
+                <field name="type_hour" position="after">
+                    <field name="recoverable" />
+                </field>
+                <filter string="Type hour" position="after">
+                    <filter string="Recoverable" domain="[]" context="{'group_by':'recoverable'}"/>
+                </filter>
+            </field>
+        </record>
+        <record id="event_track_presence_type_hour_search2_view_inh_galaxia" model="ir.ui.view" >
+            <field name="name">event.track.presence.type.hour.search2.view.inh.galaxia</field>
+            <field name="model">event.track.presence</field>
+            <field name="inherit_id" ref="event_track_assistant.event_track_presence_search_view"/>
+            <field name="arch" type="xml">
+                <filter name="canceled" position="after">
+                    <filter string="It recovers" domain="[('recoverable','=','it_recovers')]" />
+                    <filter string="He does not recover" domain="[('recoverable','=','not_recover')]" />
+                    <filter string="Is discounted" domain="[('recoverable','=','is_discounted')]" />
+                </filter>
+            </field>
+        </record>
+    </data>
+</openerp>
