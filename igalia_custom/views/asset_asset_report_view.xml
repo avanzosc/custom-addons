@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <record id="view_asset_asset_report_search_inh_igaliacustom" model="ir.ui.view">
+        <field name="name">view.asset.asset.report.search.inh.igaliacustom</field>
+        <field name="model">asset.asset.report</field>
+        <field name="inherit_id" ref="account_asset.view_asset_asset_report_search"/>
+        <field name="arch" type="xml">
+            <field name="asset_category_id" position="after">
+              <field name="state" />
+              <field name="active" />
+            </field>
+            <filter string="Depreciation Month" position="after">
+                  <filter string="State" domain="[]" context="{'group_by':'state'}"/>
+            </filter>
+        </field>
+    </record>
+</data>
+</openerp>
