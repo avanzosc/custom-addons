@@ -1779,7 +1779,7 @@
                             <thead>
                                 <tr>
                                     <th>FECHA DEL 1º DÍA DE VACACIONES</th>
-                                    <th>FECHA FIN DE VACACIONES</th>
+                                    <th>FECHA DE INCORPORACIÓN</th>
                                     <th>TOTAL DÍAS SOLICITADOS</th>
                                     <t t-if="o.name">
                                         <th>MOTIVO</th>
