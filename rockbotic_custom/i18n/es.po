@@ -1,61 +1,126 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* rockbotic_custom
+# 	* rockbotic_custom
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-10 13:48+0000\n"
-"PO-Revision-Date: 2017-01-10 13:48+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2018-07-19 10:21+0000\n"
+"PO-Revision-Date: 2018-07-19 12:22+0100\n"
+"Last-Translator: Ainara Galdona <ainaragaldona@avanzosc.es>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: rockbotic_custom
+#: model:email.template,body_html:rockbotic_custom.email_template_event_registration_evaluation
+msgid ""
+"\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
+"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"    <p>Dear Parents.</p>\n"
+"    <p>In order to better understand the evolution and situation of your "
+"children in the out-of-school activity of robotics, we enclose the "
+"corresponding evaluation report.</p>\n"
+"    <p>One of our main goals is to keep you informed and we believe this can "
+"be a good tool for this.</p>\n"
+"    <p>We remain at your disposal for any clarification you may need or "
+"suggestion that you want to contribute.</p>\n"
+"    <p>Attentively,</p>\n"
+"</div>\n"
+"            "
+msgstr ""
+"\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
+"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"    <p>Estimados padres y madres.</p>\n"
+"    <p>Con el fin de que conozcáis mejor la evolución y situación de "
+"vuestros hijos en la actividad extraescolar de robótica, os adjuntamos el "
+"informe de evaluación correspondiente.</p>\n"
+"    <p>Uno de nuestros principales objetivos es manteneros correctamente "
+"informados y creemos que ésta puede ser una buena herramienta para ello.</"
+"p>\n"
+"    <p>Quedamos a vuestra disposición para cualquier aclaración que podáis "
+"necesitar o sugerencia que nos queráis aportar.</p>\n"
+"    <p>Atentamente,</p>\n"
+"</div>\n"
+"            "
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_footer
-msgid ",\n"
+msgid ""
+",\n"
 "                                o a la dirección de correo-e"
-msgstr ",\n"
+msgstr ""
+",\n"
 "                                o a la dirección de correo-e"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_footer
-msgid ", con la finalidad de llevar a cabo la matriculación,\n"
-"                                organización, gestión y facturación de la actividad formativa contratada. Puede\n"
-"                                ejercer sus derechos, y los de su hijo/a, de acceso, rectificación, cancelación,\n"
-"                                y oposición mediante un escrito a nuestra dirección:"
-msgstr ", con la finalidad de llevar a cabo la matriculación,\n"
-"                                organización, gestión y facturación de la actividad formativa contratada. Puede\n"
-"                                ejercer sus derechos, y los de su hijo/a, de acceso, rectificación, cancelación,\n"
-"                                y oposición mediante un escrito a nuestra dirección:"
+msgid ""
+", con la finalidad de llevar a cabo la matriculación,\n"
+"                                organización, gestión y facturación de la "
+"actividad formativa contratada. Puede\n"
+"                                ejercer sus derechos, y los de su hijo/a, de "
+"acceso, rectificación, cancelación,\n"
+"                                y oposición mediante un escrito a nuestra "
+"dirección:"
+msgstr ""
+", con la finalidad de llevar a cabo la matriculación,\n"
+"                                organización, gestión y facturación de la "
+"actividad formativa contratada. Puede\n"
+"                                ejercer sus derechos, y los de su hijo/a, de "
+"acceso, rectificación, cancelación,\n"
+"                                y oposición mediante un escrito a nuestra "
+"dirección:"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_footer
-msgid ", identificando claramente\n"
-"                                el derecho que ejercita e identificándose a través del DNI o libro de familia. Mientras no\n"
-"                                nos comunique lo contrario, entenderemos que sus datos y los de su hijo/a no han sido\n"
-"                                modificados y que se compromete a notificarnos cualquier variación y que tenemos el\n"
-"                                consentimiento para utilizarlos con la finalidad de impartir la formación en la que\n"
-"                                usted ha matriculado a su hijo/a y cumplir con las obligaciones propias de un centro\n"
-"                                de formación, entre las cuales se encuentran la gestión de la formación de su hijo/a\n"
-"                                y su evaluación, así como la remisión de aquellas circulares informativas a los padres.\n"
-"                                Al rellenar el presente formulario usted autoriza expresamente el tratamiento de sus datos\n"
-"                                de carácter personal y los de su hijo/a, para la finalidad espeicada, por parte\n"
+msgid ""
+", identificando claramente\n"
+"                                el derecho que ejercita e identificándose a "
+"través del DNI o libro de familia. Mientras no\n"
+"                                nos comunique lo contrario, entenderemos que "
+"sus datos y los de su hijo/a no han sido\n"
+"                                modificados y que se compromete a "
+"notificarnos cualquier variación y que tenemos el\n"
+"                                consentimiento para utilizarlos con la "
+"finalidad de impartir la formación en la que\n"
+"                                usted ha matriculado a su hijo/a y cumplir "
+"con las obligaciones propias de un centro\n"
+"                                de formación, entre las cuales se encuentran "
+"la gestión de la formación de su hijo/a\n"
+"                                y su evaluación, así como la remisión de "
+"aquellas circulares informativas a los padres.\n"
+"                                Al rellenar el presente formulario usted "
+"autoriza expresamente el tratamiento de sus datos\n"
+"                                de carácter personal y los de su hijo/a, "
+"para la finalidad espeicada, por parte\n"
 "                                de"
-msgstr ", identificando claramente\n"
-"                                el derecho que ejercita e identificándose a través del DNI o libro de familia. Mientras no\n"
-"                                nos comunique lo contrario, entenderemos que sus datos y los de su hijo/a no han sido\n"
-"                                modificados y que se compromete a notificarnos cualquier variación y que tenemos el\n"
-"                                consentimiento para utilizarlos con la finalidad de impartir la formación en la que\n"
-"                                usted ha matriculado a su hijo/a y cumplir con las obligaciones propias de un centro\n"
-"                                de formación, entre las cuales se encuentran la gestión de la formación de su hijo/a\n"
-"                                y su evaluación, así como la remisión de aquellas circulares informativas a los padres.\n"
-"                                Al rellenar el presente formulario usted autoriza expresamente el tratamiento de sus datos\n"
-"                                de carácter personal y los de su hijo/a, para la finalidad espeicada, por parte\n"
+msgstr ""
+", identificando claramente\n"
+"                                el derecho que ejercita e identificándose a "
+"través del DNI o libro de familia. Mientras no\n"
+"                                nos comunique lo contrario, entenderemos que "
+"sus datos y los de su hijo/a no han sido\n"
+"                                modificados y que se compromete a "
+"notificarnos cualquier variación y que tenemos el\n"
+"                                consentimiento para utilizarlos con la "
+"finalidad de impartir la formación en la que\n"
+"                                usted ha matriculado a su hijo/a y cumplir "
+"con las obligaciones propias de un centro\n"
+"                                de formación, entre las cuales se encuentran "
+"la gestión de la formación de su hijo/a\n"
+"                                y su evaluación, así como la remisión de "
+"aquellas circulares informativas a los padres.\n"
+"                                Al rellenar el presente formulario usted "
+"autoriza expresamente el tratamiento de sus datos\n"
+"                                de carácter personal y los de su hijo/a, "
+"para la finalidad espeicada, por parte\n"
 "                                de"
 
 #. module: rockbotic_custom
@@ -69,6 +134,18 @@ msgid "/rockbotic_custom/static/src/img/favicon.ico"
 msgstr "/rockbotic_custom/static/src/img/favicon.ico"
 
 #. module: rockbotic_custom
+#: code:addons/rockbotic_custom/models/hr_holidays.py:31
+#, python-format
+msgid ""
+"<span><span style=\"font-weight: bold;\">Date start:</span> {} <span style="
+"\"font-weight: bold;\">Date end:</span> {} <span style=\"font-weight: bold;"
+"\">days:</span> {}<br></span>{}"
+msgstr ""
+"<span><span style=\"font-weight: bold;\">Fecha inicio:</span> {} <span style="
+"\"font-weight: bold;\">Fecha fin:</span> {} <span style=\"font-weight: bold;"
+"\">días:</span> {}<br></span>{}"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_sale_printing_doc
 msgid "ALTAS"
 msgstr "ALTAS"
@@ -77,6 +154,11 @@ msgstr "ALTAS"
 #: view:website:rockbotic_custom.report_presences_doc
 msgid "ALUMNO"
 msgstr "ALUMNO"
+
+#. module: rockbotic_custom
+#: view:event.registration:rockbotic_custom.event_registration_info_view_search
+msgid "AMPA"
+msgstr "AMPA"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_sale_printing_doc
@@ -99,12 +181,9 @@ msgid "AUTORIZACIONES SOBRE IMÁGENES"
 msgstr "AUTORIZACIONES SOBRE IMÁGENES"
 
 #. module: rockbotic_custom
-#: view:res.partner:rockbotic_custom.res_partner_contact_form_view
-msgid "Address"
-msgstr "Dirección"
-
-#. module: rockbotic_custom
 #: view:event.registration:rockbotic_custom.event_registration_info_view_search
+#: field:event.registration,address_id:0
+#: view:res.partner:rockbotic_custom.res_partner_contact_form_view
 msgid "Address"
 msgstr "Ubicación"
 
@@ -117,6 +196,22 @@ msgstr "Importe"
 #: model:ir.model,name:rockbotic_custom.model_account_analytic_account
 msgid "Analytic Account"
 msgstr "Cuenta analítica"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "April"
+msgstr "Abril"
+
+#. module: rockbotic_custom
+#: code:addons/rockbotic_custom/models/event.py:119
+#, python-format
+msgid "Attachment not found"
+msgstr "Adjunto no encontrado"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "August"
+msgstr "Agosto"
 
 #. module: rockbotic_custom
 #: view:res.partner:rockbotic_custom.birthdate_date_inh_rockbotic
@@ -158,6 +253,7 @@ msgstr "CLIENTE"
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
 #: view:website:rockbotic_custom.report_nodata_registration_doc
 #: view:website:rockbotic_custom.report_presences_doc
@@ -174,6 +270,7 @@ msgstr "CUENTA"
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
 #: view:website:rockbotic_custom.report_nodata_registration_doc
 #: view:website:rockbotic_custom.report_presences_doc
@@ -182,6 +279,12 @@ msgstr "CUENTA"
 #: view:website:rockbotic_custom.report_track_doc
 msgid "CURSO"
 msgstr "CURSO"
+
+#. module: rockbotic_custom
+#: view:wiz.send.email.event.evaluation:rockbotic_custom.wiz_send_email_event_evaluation_form
+#: view:wiz.send.email.registration.evaluation:rockbotic_custom.wiz_send_email_registration_evaluation_form
+msgid "Cancel"
+msgstr "Cancel"
 
 #. module: rockbotic_custom
 #: view:website:account.report_invoice_document
@@ -218,15 +321,23 @@ msgstr "Ciudad"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_footer
-msgid "Como parte de sus derechos, tiene derecho a ser reembolsado por su banco en virtud\n"
+msgid ""
+"Como parte de sus derechos, tiene derecho a ser reembolsado por su banco en "
+"virtud\n"
 "                                de los términos y condiciones del acuerdo\n"
-"                                suscrito con su banco. Dicho reeembolso deberá\n"
-"                                reclamarse en un plazo de 8 semanas a partir\n"
+"                                suscrito con su banco. Dicho reeembolso "
+"deberá\n"
+"                                reclamarse en un plazo de 8 semanas a "
+"partir\n"
 "                                de la fecha de cargo en su cuenta"
-msgstr "Como parte de sus derechos, tiene derecho a ser reembolsado por su banco en virtud\n"
+msgstr ""
+"Como parte de sus derechos, tiene derecho a ser reembolsado por su banco en "
+"virtud\n"
 "                                de los términos y condiciones del acuerdo\n"
-"                                suscrito con su banco. Dicho reeembolso deberá\n"
-"                                reclamarse en un plazo de 8 semanas a partir\n"
+"                                suscrito con su banco. Dicho reeembolso "
+"deberá\n"
+"                                reclamarse en un plazo de 8 semanas a "
+"partir\n"
 "                                de la fecha de cargo en su cuenta"
 
 #. module: rockbotic_custom
@@ -236,25 +347,50 @@ msgstr "Compañías"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_sale_printing_doc
-msgid "Completar este mismo formulario, imprimirlo,\n"
-"                                            firmarlo y entregarlo en la oficina de\n"
-"                                            la AMPA. Confirmaremos la incorporación\n"
-"                                            poniéndonos en contacto con los padres\n"
-"                                            o tutores a través del mail facilitado.\n"
-"                                            También se puede rellenar la inscripción,\n"
-"                                            firmar, escanear y enviar por mail a:"
-msgstr "Completar este mismo formulario, imprimirlo,\n"
-"                                            firmarlo y entregarlo en la oficina de\n"
-"                                            la AMPA. Confirmaremos la incorporación\n"
-"                                            poniéndonos en contacto con los padres\n"
-"                                            o tutores a través del mail facilitado.\n"
-"                                            También se puede rellenar la inscripción,\n"
-"                                            firmar, escanear y enviar por mail a:"
+msgid ""
+"Completar este mismo formulario, imprimirlo,\n"
+"                                            firmarlo y entregarlo en la "
+"oficina de\n"
+"                                            la AMPA. Confirmaremos la "
+"incorporación\n"
+"                                            poniéndonos en contacto con los "
+"padres\n"
+"                                            o tutores a través del mail "
+"facilitado.\n"
+"                                            También se puede rellenar la "
+"inscripción,\n"
+"                                            firmar, escanear y enviar por "
+"mail a:"
+msgstr ""
+"Completar este mismo formulario, imprimirlo,\n"
+"                                            firmarlo y entregarlo en la "
+"oficina de\n"
+"                                            la AMPA. Confirmaremos la "
+"incorporación\n"
+"                                            poniéndonos en contacto con los "
+"padres\n"
+"                                            o tutores a través del mail "
+"facilitado.\n"
+"                                            También se puede rellenar la "
+"inscripción,\n"
+"                                            firmar, escanear y enviar por "
+"mail a:"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_sale_printing_doc
 msgid "Comunicar a través de mail a"
 msgstr "Comunicar a través de mail a"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_tree_inh_rockbotic
+#: view:event.registration:rockbotic_custom.event_registration_info_view_search
+msgid "Confirmed"
+msgstr "Confirmado"
+
+#. module: rockbotic_custom
+#: view:event.track:rockbotic_custom.view_event_track_search_inh_rockbotic
+msgid "Confirmed Events"
+msgstr "Confirmed Events"
 
 #. module: rockbotic_custom
 #: view:res.partner:rockbotic_custom.res_partner_contact_form_view
@@ -272,6 +408,18 @@ msgstr "Contactos"
 #: view:res.partner:rockbotic_custom.view_res_partner_filter_inh_rockbotic
 msgid "Country"
 msgstr "País"
+
+#. module: rockbotic_custom
+#: field:wiz.send.email.event.evaluation,create_uid:0
+#: field:wiz.send.email.registration.evaluation,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: rockbotic_custom
+#: field:wiz.send.email.event.evaluation,create_date:0
+#: field:wiz.send.email.registration.evaluation,create_date:0
+msgid "Created on"
+msgstr "Created on"
 
 #. module: rockbotic_custom
 #: view:website:account.report_invoice_document
@@ -292,8 +440,10 @@ msgstr "DATOS DEL ALUMNO"
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_nodata_registration_doc
 #: view:website:rockbotic_custom.report_sale_printing_doc
-msgid "DATOS DEL PADRE, MADRE O TUTOR - Referencia de la orden de domiciliación:"
-msgstr "DATOS DEL PADRE, MADRE O TUTOR - Referencia de la orden de domiciliación:"
+msgid ""
+"DATOS DEL PADRE, MADRE O TUTOR - Referencia de la orden de domiciliación:"
+msgstr ""
+"DATOS DEL PADRE, MADRE O TUTOR - Referencia de la orden de domiciliación:"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
@@ -310,15 +460,40 @@ msgid "DNI"
 msgstr "DNI"
 
 #. module: rockbotic_custom
+#: view:website:account.report_invoice_document
+msgid "Date due:"
+msgstr "Date due:"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_footer
-msgid "De acuerdo con lo que establece la Ley Orgánica 15/1999, de 13 de diciembre,\n"
-"                                de Protección de Datos de Carácter Personal, le informamos que tanto sus datos\n"
-"                                como los de su hijo/a recogidos a partir del presente formulario serán incorporados\n"
-"                                a un fichero denominado “Alumnos”, bajo la responsabilidad de"
-msgstr "De acuerdo con lo que establece la Ley Orgánica 15/1999, de 13 de diciembre,\n"
-"                                de Protección de Datos de Carácter Personal, le informamos que tanto sus datos\n"
-"                                como los de su hijo/a recogidos a partir del presente formulario serán incorporados\n"
-"                                a un fichero denominado “Alumnos”, bajo la responsabilidad de"
+msgid ""
+"De acuerdo con lo que establece la Ley Orgánica 15/1999, de 13 de "
+"diciembre,\n"
+"                                de Protección de Datos de Carácter Personal, "
+"le informamos que tanto sus datos\n"
+"                                como los de su hijo/a recogidos a partir del "
+"presente formulario serán incorporados\n"
+"                                a un fichero denominado “Alumnos”, bajo la "
+"responsabilidad de"
+msgstr ""
+"De acuerdo con lo que establece la Ley Orgánica 15/1999, de 13 de "
+"diciembre,\n"
+"                                de Protección de Datos de Carácter Personal, "
+"le informamos que tanto sus datos\n"
+"                                como los de su hijo/a recogidos a partir del "
+"presente formulario serán incorporados\n"
+"                                a un fichero denominado “Alumnos”, bajo la "
+"responsabilidad de"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "December"
+msgstr "Diciembre"
+
+#. module: rockbotic_custom
+#: model:email.template,subject:rockbotic_custom.email_template_event_registration_evaluation
+msgid "Declarations AEAT model 347"
+msgstr "Ficha evaluación"
 
 #. module: rockbotic_custom
 #: view:sale.order:rockbotic_custom.view_sales_order_filter_inh_rockbotic
@@ -349,6 +524,12 @@ msgid "Discount (%)"
 msgstr "Descuento (%)"
 
 #. module: rockbotic_custom
+#: field:wiz.send.email.event.evaluation,display_name:0
+#: field:wiz.send.email.registration.evaluation,display_name:0
+msgid "Display Name"
+msgstr "Display Name"
+
+#. module: rockbotic_custom
 #: view:crm.lead:rockbotic_custom.view_crm_case_leads_filter_inh_rockbotic
 #: view:crm.lead:rockbotic_custom.view_crm_case_opportunities_filter_inh_rockbotic
 #: view:res.partner:rockbotic_custom.view_res_partner_filter_inh_rockbotic
@@ -360,6 +541,7 @@ msgstr "Distrito"
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
 #: view:website:rockbotic_custom.report_nodata_registration_doc
 #: view:website:rockbotic_custom.report_presences_doc
@@ -381,6 +563,7 @@ msgstr "DÍA"
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
 #: view:website:rockbotic_custom.report_nodata_registration_doc
 #: view:website:rockbotic_custom.report_presences_doc
@@ -397,6 +580,8 @@ msgstr "E-mail:"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
+#: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_track_doc
 msgid "EDAD"
 msgstr "EDAD"
@@ -423,9 +608,44 @@ msgid "ETIQUETAS HIJO"
 msgstr "ETIQUETAS HIJO"
 
 #. module: rockbotic_custom
+#: view:account.invoice:rockbotic_custom.view_account_invoice_filter_inh_rockbotic
+#: field:account.invoice,effective_date:0
+msgid "Effective Date"
+msgstr "Fecha de Pago"
+
+#. module: rockbotic_custom
 #: field:event.registration,parent_email:0
 msgid "Email"
 msgstr "Email"
+
+#. module: rockbotic_custom
+#: view:wiz.send.email.event.evaluation:rockbotic_custom.wiz_send_email_event_evaluation_form
+#: field:wiz.send.email.event.evaluation,body:0
+#: view:wiz.send.email.registration.evaluation:rockbotic_custom.wiz_send_email_registration_evaluation_form
+#: field:wiz.send.email.registration.evaluation,body:0
+msgid "Email body"
+msgstr "Cuerpo email"
+
+#. module: rockbotic_custom
+#: code:addons/rockbotic_custom/models/event.py:33
+#, python-format
+msgid "Email template not found for event registration"
+msgstr "Plantilla de email no encontrada para registro de evento"
+
+#. module: rockbotic_custom
+#: code:addons/rockbotic_custom/wizard/wiz_send_email_event_evaluation.py:22
+#: code:addons/rockbotic_custom/wizard/wiz_send_email_registration_evaluation.py:22
+#, python-format
+msgid "Email template not found for event registration evaluation"
+msgstr "Plantilla email no encontrada para evaluación de registro de eventos"
+
+#. module: rockbotic_custom
+#: code:addons/rockbotic_custom/models/event.py:109
+#, python-format
+msgid "Email template not found to send evaluations to event registration"
+msgstr ""
+"Plantilla email no encontrada para envío de evaluaciones de registro de "
+"eventos"
 
 #. module: rockbotic_custom
 #: model:ir.model,name:rockbotic_custom.model_hr_employee
@@ -433,9 +653,25 @@ msgid "Employee"
 msgstr "Empleado"
 
 #. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "End Week"
+msgstr "Finaliza semana"
+
+#. module: rockbotic_custom
 #: view:sale.order:rockbotic_custom.view_order_form2_inh_planned_line_inh_rockbotic
 msgid "End date"
 msgstr "Fecha fin"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search_inh_rockbotic
+#: field:event.event,end_hour:0
+msgid "End hour"
+msgstr "Hora fin"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "End next month"
+msgstr "Finaliza siguiente mes"
 
 #. module: rockbotic_custom
 #: view:website:account.report_invoice_document
@@ -448,8 +684,15 @@ msgid "Estimated time for completion the task"
 msgstr "Tiempo estimado para completar la tarea"
 
 #. module: rockbotic_custom
-#: view:event.track:rockbotic_custom.view_event_track_search_inh_rockbotic
+#: view:event.registration:rockbotic_custom.event_registration_info_view_search
+msgid "Evaluation send"
+msgstr "Evaluación enviada"
+
+#. module: rockbotic_custom
 #: view:account.invoice:rockbotic_custom.view_account_invoice_filter_inh_rockbotic
+#: view:event.registration:rockbotic_custom.event_registration_info_view_search
+#: view:event.track:rockbotic_custom.view_event_track_search_inh_rockbotic
+#: model:ir.model,name:rockbotic_custom.model_event_event
 msgid "Event"
 msgstr "Evento"
 
@@ -469,10 +712,25 @@ msgid "Event Tracks"
 msgstr "Sesiones del evento"
 
 #. module: rockbotic_custom
+#: field:event.event,sale_order_payer:0
+msgid "Event payer"
+msgstr "Pagador evento"
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.report_hr_holidays_doc
+msgid "FECHA DE INCORPORACIÓN"
+msgstr "FECHA DE INCORPORACIÓN"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_nodata_registration_doc
 #: view:website:rockbotic_custom.report_sale_printing_doc
 msgid "FECHA DE NACIMIENTO"
 msgstr "FECHA DE NACIMIENTO"
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.report_hr_holidays_doc
+msgid "FECHA DEL 1º DÍA DE VACACIONES"
+msgstr "FECHA DEL 1º DÍA DE VACACIONES"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
@@ -493,6 +751,11 @@ msgid "FIRMA"
 msgstr "FIRMA"
 
 #. module: rockbotic_custom
+#: view:website:rockbotic_custom.report_hr_holidays_doc
+msgid "FIRMA DEL TRABAJADOR"
+msgstr "FIRMA DEL TRABAJADOR"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_footer
 msgid "Facebook, Twitter, Youtube, Instagram y Google Plus"
 msgstr "Facebook, Twitter, Youtube, Instagram y Google Plus"
@@ -503,8 +766,14 @@ msgid "Fax:"
 msgstr "Fax:"
 
 #. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "February"
+msgstr "Febrero"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_presences_doc
 #: view:website:rockbotic_custom.report_track_doc
 msgid "Fecha - Hora:"
@@ -523,8 +792,14 @@ msgid "Ficha de inscripción"
 msgstr "Ficha de inscripción"
 
 #. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "Friday"
+msgstr "Viernes"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
 #: view:website:rockbotic_custom.report_nodata_registration_doc
 #: view:website:rockbotic_custom.report_presences_doc
@@ -533,13 +808,20 @@ msgid "GRUPO"
 msgstr "GRUPO"
 
 #. module: rockbotic_custom
+#: view:event.track:rockbotic_custom.view_event_track_search_inh_rockbotic
 #: view:hr.employee:rockbotic_custom.hr_employee_rbk_search_view
 msgid "Group By"
 msgstr "Agrupar por"
 
 #. module: rockbotic_custom
+#: view:website:rockbotic_custom.report_hr_holidays_doc
+msgid "HOJA DE SOLICITUD DE VACACIONES"
+msgstr "HOJA DE SOLICITUD DE VACACIONES"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
 #: view:website:rockbotic_custom.report_nodata_registration_doc
 #: view:website:rockbotic_custom.report_presences_doc
@@ -554,19 +836,40 @@ msgid "IBAN:"
 msgstr "IBAN:"
 
 #. module: rockbotic_custom
+#: field:wiz.send.email.event.evaluation,id:0
+#: field:wiz.send.email.registration.evaluation,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_sale_printing_doc
 msgid "INSTRUCCIONES DE INSCRIPCIÓN"
 msgstr "INSTRUCCIONES DE INSCRIPCIÓN"
 
 #. module: rockbotic_custom
 #: help:hr.employee,no_sexual_offenses:0
-msgid "If check is selected it means that the employee has a negative certificate of sexual offenses."
-msgstr "Si se marca el siguiente check significa que el empleado tiene un certificado negativo de delitos sexuales."
+msgid ""
+"If check is selected it means that the employee has a negative certificate "
+"of sexual offenses."
+msgstr ""
+"Si se marca el siguiente check significa que el empleado tiene un "
+"certificado negativo de delitos sexuales."
 
 #. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_tree_inh_rockbotic
+msgid "Inscribed"
+msgstr "Inscritos"
+
+#. module: rockbotic_custom
+#: model:ir.model,name:rockbotic_custom.model_account_invoice
 #: view:website:account.report_invoice_document
 msgid "Invoice"
 msgstr "Factura"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "January"
+msgstr "Enero"
 
 #. module: rockbotic_custom
 #: view:account.invoice:rockbotic_custom.view_account_invoice_filter_inh_rockbotic
@@ -576,6 +879,7 @@ msgstr "Diario"
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
 #: view:website:rockbotic_custom.report_nodata_registration_doc
 #: view:website:rockbotic_custom.report_presences_doc
@@ -583,6 +887,16 @@ msgstr "Diario"
 #: view:website:rockbotic_custom.report_track_doc
 msgid "Jueves"
 msgstr "Jueves"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "July"
+msgstr "Julio"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "June"
+msgstr "Junio"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_footer
@@ -596,6 +910,7 @@ msgstr "LISTADO ASISTENTES A SESIÓN"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 msgid "LISTADO DE INSCRITOS"
 msgstr "LISTADO DE INSCRITOS"
 
@@ -610,9 +925,37 @@ msgid "LISTADO PROVISIONAL DE INSCRITOS"
 msgstr "LISTADO PROVISIONAL DE INSCRITOS"
 
 #. module: rockbotic_custom
+#: field:wiz.send.email.event.evaluation,__last_update:0
+#: field:wiz.send.email.registration.evaluation,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: rockbotic_custom
+#: field:wiz.send.email.event.evaluation,write_uid:0
+#: field:wiz.send.email.registration.evaluation,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: rockbotic_custom
+#: field:wiz.send.email.event.evaluation,write_date:0
+#: field:wiz.send.email.registration.evaluation,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: rockbotic_custom
+#: model:ir.model,name:rockbotic_custom.model_hr_holidays
+msgid "Leave"
+msgstr "Ausencia"
+
+#. module: rockbotic_custom
 #: model:ir.actions.report.xml,name:rockbotic_custom.report_rockbotic_event_partner_info
 msgid "Listado Inscripciones"
 msgstr "Listado Inscripciones"
+
+#. module: rockbotic_custom
+#: model:ir.actions.report.xml,name:rockbotic_custom.report_rockbotic_event_partner_info_lpd
+msgid "Listado Inscripciones LPD"
+msgstr "Listado Inscripciones LPD"
 
 #. module: rockbotic_custom
 #: model:ir.actions.report.xml,name:rockbotic_custom.report_rockbotic_event_partner_nodata
@@ -635,6 +978,21 @@ msgid "Listado registros"
 msgstr "Listado registros"
 
 #. module: rockbotic_custom
+#: view:account.invoice:rockbotic_custom.invoice_form_inh_rockbotic_custom
+msgid "Literal to print in the header of the invoice"
+msgstr "Literal para imprimir en la cabecera de la factura ....."
+
+#. module: rockbotic_custom
+#: view:sale.order:rockbotic_custom.registration_sale_order_view_form
+msgid "Literal to print in the header of the sales order ....."
+msgstr "Literal para imprimir en la cabecera del pedido de venta ....."
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_form3_inh_rockbotic
+msgid "Load training plan in sessions"
+msgstr "Cargar plan de formación en sesiones"
+
+#. module: rockbotic_custom
 #: view:event.track:rockbotic_custom.view_event_track_search_inh_rockbotic
 #: field:event.track,address_id:0
 msgid "Location"
@@ -643,6 +1001,7 @@ msgstr "Ubicación"
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
 #: view:website:rockbotic_custom.report_nodata_registration_doc
 #: view:website:rockbotic_custom.report_presences_doc
@@ -658,6 +1017,11 @@ msgid "MANDATOS"
 msgstr "MANDATOS"
 
 #. module: rockbotic_custom
+#: view:website:rockbotic_custom.report_hr_holidays_doc
+msgid "MOTIVO"
+msgstr "MOTIVO"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
 #: view:website:rockbotic_custom.report_registrations_doc
 msgid "MVL."
@@ -669,8 +1033,14 @@ msgid "Magazine"
 msgstr "Revista"
 
 #. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "March"
+msgstr "Marzo"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
 #: view:website:rockbotic_custom.report_nodata_registration_doc
 #: view:website:rockbotic_custom.report_presences_doc
@@ -680,13 +1050,23 @@ msgid "Martes"
 msgstr "Martes"
 
 #. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "May"
+msgstr "Mayo"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_footer
-msgid "Mediante la firma de este Formulario de Orden de domiciliación, usted autoriza a :"
-msgstr "Mediante la firma de este Formulario de Orden de domiciliación, usted autoriza a :"
+msgid ""
+"Mediante la firma de este Formulario de Orden de domiciliación, usted "
+"autoriza a :"
+msgstr ""
+"Mediante la firma de este Formulario de Orden de domiciliación, usted "
+"autoriza a :"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
 #: view:website:rockbotic_custom.report_nodata_registration_doc
 #: view:website:rockbotic_custom.report_presences_doc
@@ -706,10 +1086,20 @@ msgid "Mobile:"
 msgstr "Móvil:"
 
 #. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "Monday"
+msgstr "Lunes"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_track_doc
 msgid "NIVEL ROBÓTICA"
 msgstr "NIVEL ROBÓTICA"
+
+#. module: rockbotic_custom
+#: view:event.registration:rockbotic_custom.event_registration_info_view_search
+msgid "NO AMPA"
+msgstr "NO AMPA"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_sale_printing_doc
@@ -724,11 +1114,17 @@ msgstr "NOMBRE"
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
 #: view:website:rockbotic_custom.report_registrations_doc
 #: view:website:rockbotic_custom.report_track_doc
 msgid "NOMBRE COMPLETO"
 msgstr "NOMBRE COMPLETO"
+
+#. module: rockbotic_custom
+#: view:website:rockbotic_custom.report_hr_holidays_doc
+msgid "NOMBRE COMPLETO DEL TRABAJADOR"
+msgstr "NOMBRE COMPLETO DEL TRABAJADOR"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_nodata_registration_doc
@@ -746,6 +1142,11 @@ msgid "Negative certificate sexual offenses"
 msgstr "Certificado negativo delitos sexuales"
 
 #. module: rockbotic_custom
+#: selection:event.registration,submitted_evaluation:0
+msgid "No"
+msgstr "No"
+
+#. module: rockbotic_custom
 #: field:sale.order,no_pa_price:0
 msgid "No PA price"
 msgstr "Precio no AMPA"
@@ -757,18 +1158,32 @@ msgstr "Nombre del Acreedor:"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_footer
-msgid "Nota: Sus derechos en relación con la anterior orden de domiciliación se explican\n"
-"                                en el extracto que puede solicitar a su banco.\n"
-"                                ©ROCKBOTIC es una marca registrada propiedad\n"
+msgid ""
+"Nota: Sus derechos en relación con la anterior orden de domiciliación se "
+"explican\n"
+"                                en el extracto que puede solicitar a su "
+"banco.\n"
+"                                ©ROCKBOTIC es una marca registrada "
+"propiedad\n"
 "                                de LUNA TIC DESIGN S.L."
-msgstr "Nota: Sus derechos en relación con la anterior orden de domiciliación se explican\n"
-"                                en el extracto que puede solicitar a su banco.\n"
-"                                ©ROCKBOTIC es una marca registrada propiedad\n"
+msgstr ""
+"Nota: Sus derechos en relación con la anterior orden de domiciliación se "
+"explican\n"
+"                                en el extracto que puede solicitar a su "
+"banco.\n"
+"                                ©ROCKBOTIC es una marca registrada "
+"propiedad\n"
 "                                de LUNA TIC DESIGN S.L."
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "November"
+msgstr "Noviembre"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_sale_printing_doc
 #: view:website:rockbotic_custom.report_track_doc
 msgid "Nº"
@@ -800,6 +1215,11 @@ msgstr "NÚMERO DE CURSOS DE EXTRAESCOLAR HECHOS CON ROCKBOTIC"
 #: view:website:account.report_invoice_document
 msgid "Número de cuenta:"
 msgstr "Número de cuenta:"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "October"
+msgstr "Octubre"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_footer
@@ -851,6 +1271,7 @@ msgstr "PROCEDIMIENTO PARA ALTAS Y BAJAS DURANE EL CURSO ESCOLAR"
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
 #: view:website:rockbotic_custom.report_nodata_registration_doc
 #: view:website:rockbotic_custom.report_presences_doc
@@ -866,10 +1287,16 @@ msgstr "PROVINCIA"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_sale_printing_doc
-msgid "Para cualquier modificación en las ALTAS/BAJAS de los alumnos a lo largo del curso,\n"
-"                                            el procedimiento será el siguiente:"
-msgstr "Para cualquier modificación en las ALTAS/BAJAS de los alumnos a lo largo del curso,\n"
-"                                            el procedimiento será el siguiente:"
+msgid ""
+"Para cualquier modificación en las ALTAS/BAJAS de los alumnos a lo largo del "
+"curso,\n"
+"                                            el procedimiento será el "
+"siguiente:"
+msgstr ""
+"Para cualquier modificación en las ALTAS/BAJAS de los alumnos a lo largo del "
+"curso,\n"
+"                                            el procedimiento será el "
+"siguiente:"
 
 #. module: rockbotic_custom
 #: field:event.registration,parent_id:0
@@ -877,24 +1304,36 @@ msgid "Parent"
 msgstr "Padre"
 
 #. module: rockbotic_custom
+#: code:addons/rockbotic_custom/models/event.py:124
+#, python-format
+msgid "Parent without email"
+msgstr "Padre sin email"
+
+#. module: rockbotic_custom
+#: field:event.registration,parent_is_pa_partner:0
+msgid "Parents association partner"
+msgstr "Parents association partner"
+
+#. module: rockbotic_custom
 #: model:ir.model,name:rockbotic_custom.model_res_partner
 msgid "Partner"
 msgstr "Empresa"
 
 #. module: rockbotic_custom
+#: code:addons/rockbotic_custom/models/event.py:24
+#, python-format
+msgid "Partner %s without email."
+msgstr "Partner %s without email."
+
+#. module: rockbotic_custom
 #: view:event.registration:rockbotic_custom.event_registration_info_view_form
 msgid "Partner Information"
-msgstr "Información sobre el partner"
+msgstr "Responsable del Estudiante"
 
 #. module: rockbotic_custom
 #: view:website:account.report_invoice_document
 msgid "Payment Mode:"
 msgstr "Modo de pago:"
-
-#. module: rockbotic_custom
-#: view:website:account.report_invoice_document
-msgid "Payment Term:"
-msgstr "Plazo de pago:"
 
 #. module: rockbotic_custom
 #: view:website:sale.report_saleorder_document
@@ -939,6 +1378,7 @@ msgstr "Categoría de producto"
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_presences_doc
 #: view:website:rockbotic_custom.report_track_doc
 msgid "Página"
@@ -970,6 +1410,7 @@ msgstr "REVISTAS"
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_nodata_registration_doc
 #: view:website:rockbotic_custom.report_presences_doc
 #: view:website:rockbotic_custom.report_track_doc
@@ -985,6 +1426,11 @@ msgstr "Ref proveedor:"
 #: view:website:account.report_invoice_document
 msgid "Refund"
 msgstr "Factura rectificativa"
+
+#. module: rockbotic_custom
+#: view:event.track:rockbotic_custom.view_event_track_inh3_rockbotic
+msgid "Register assists"
+msgstr "Registrar Asistencias"
 
 #. module: rockbotic_custom
 #: view:res.partner:rockbotic_custom.birthdate_date_inh_rockbotic
@@ -1017,6 +1463,12 @@ msgid "Registro de asistencias"
 msgstr "Registro de asistencias"
 
 #. module: rockbotic_custom
+#: view:wiz.send.email.event.evaluation:rockbotic_custom.wiz_send_email_event_evaluation_form
+#: view:wiz.send.email.registration.evaluation:rockbotic_custom.wiz_send_email_registration_evaluation_form
+msgid "Registry attachments will be automatically send"
+msgstr "Los ficheros adjuntos de los registros se enviarán automáticamente"
+
+#. module: rockbotic_custom
 #: view:event.event:rockbotic_custom.view_event_search_inh_rockbotic
 msgid "Responsible"
 msgstr "Responsable"
@@ -1038,6 +1490,12 @@ msgid "SOCIOS"
 msgstr "SOCIOS"
 
 #. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+#: view:event.event:rockbotic_custom.view_event_search_inh_rockbotic
+msgid "Sale order"
+msgstr "Pedido venta"
+
+#. module: rockbotic_custom
 #: model:ir.model,name:rockbotic_custom.model_sale_order
 msgid "Sales Order"
 msgstr "Pedido de venta"
@@ -1053,6 +1511,48 @@ msgstr "Línea pedido de venta"
 #: view:sale.order:rockbotic_custom.view_sales_order_filter_inh_rockbotic
 msgid "Salesperson"
 msgstr "Comercial"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "Saturday"
+msgstr "Sábado"
+
+#. module: rockbotic_custom
+#: view:wiz.send.email.event.evaluation:rockbotic_custom.wiz_send_email_event_evaluation_form
+#: view:wiz.send.email.registration.evaluation:rockbotic_custom.wiz_send_email_registration_evaluation_form
+msgid "Send email"
+msgstr "Enviar email"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_form_inh_rockbotic3
+msgid "Send email to parents"
+msgstr "Mandar email a los padres"
+
+#. module: rockbotic_custom
+#: model:ir.actions.act_window,name:rockbotic_custom.action_event_evaluation_mass_mail
+msgid "Send email to registrations with evaluations"
+msgstr "Enviar email a los registros con las evaluaciones"
+
+#. module: rockbotic_custom
+#: model:ir.actions.act_window,name:rockbotic_custom.action_event_registration_evaluation_mass_mail
+msgid "Send email with evaluations"
+msgstr "Envío email con evaluaciones"
+
+#. module: rockbotic_custom
+#: view:wiz.send.email.event.evaluation:rockbotic_custom.wiz_send_email_event_evaluation_form
+#: view:wiz.send.email.registration.evaluation:rockbotic_custom.wiz_send_email_registration_evaluation_form
+msgid "Send email with evaluations to event registrations"
+msgstr "Enviar email con evaluaciones a registros de evento"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "September"
+msgstr "Septiembre"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_form4_inh_rockbotic
+msgid "Set Project Template"
+msgstr "Asignar plantilla de proyecto"
 
 #. module: rockbotic_custom
 #: view:hr.employee:rockbotic_custom.hr_employee_rbk_search_view
@@ -1075,9 +1575,20 @@ msgid "Social networks"
 msgstr "Redes sociales"
 
 #. module: rockbotic_custom
+#: model:ir.actions.report.xml,name:rockbotic_custom.report_rockbotic_holidays_report
+msgid "Solicitud de vacaciones"
+msgstr "Solicitud de vacaciones"
+
+#. module: rockbotic_custom
 #: view:sale.order:rockbotic_custom.view_order_form2_inh_planned_line_inh_rockbotic
 msgid "Start date"
 msgstr "Fecha inicio"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search_inh_rockbotic
+#: field:event.event,start_hour:0
+msgid "Start hour"
+msgstr "Hora inicio"
 
 #. module: rockbotic_custom
 #: view:res.partner:rockbotic_custom.res_partner_contact_form_view
@@ -1090,6 +1601,12 @@ msgid "Street..."
 msgstr "Calle..."
 
 #. module: rockbotic_custom
+#: code:addons/rockbotic_custom/models/event.py:121
+#, python-format
+msgid "Student without parent"
+msgstr "Estudiante sin padres"
+
+#. module: rockbotic_custom
 #: view:res.partner:rockbotic_custom.birthdate_date_inh_rockbotic
 #: field:res.partner,student_child_ids:0
 msgid "Students"
@@ -1097,10 +1614,29 @@ msgstr "Estudiantes"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_footer
-msgid "Su banco para adeudar los importes correspondientes en su cuenta de acuerdo con las\n"
+msgid ""
+"Su banco para adeudar los importes correspondientes en su cuenta de acuerdo "
+"con las\n"
 "                                        órdenes de"
-msgstr "Su banco para adeudar los importes correspondientes en su cuenta de acuerdo con las\n"
+msgstr ""
+"Su banco para adeudar los importes correspondientes en su cuenta de acuerdo "
+"con las\n"
 "                                        órdenes de"
+
+#. module: rockbotic_custom
+#: field:event.registration,submitted_evaluation:0
+msgid "Submitted evaluation"
+msgstr "Evaluación enviada"
+
+#. module: rockbotic_custom
+#: field:event.registration,submitted_evaluation_error:0
+msgid "Submitted evaluation error"
+msgstr "Error envío evaluación"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "Sunday"
+msgstr "Domingo"
 
 #. module: rockbotic_custom
 #: view:website:account.report_invoice_document
@@ -1115,6 +1651,7 @@ msgstr "Factura rectificativa de proveedor"
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
 #: view:website:rockbotic_custom.report_nodata_registration_doc
 #: view:website:rockbotic_custom.report_presences_doc
@@ -1148,8 +1685,14 @@ msgid "TOTAL ASISTENTES"
 msgstr "TOTAL ASISTENTES"
 
 #. module: rockbotic_custom
+#: view:website:rockbotic_custom.report_hr_holidays_doc
+msgid "TOTAL DÍAS SOLICITADOS"
+msgstr "TOTAL DÍAS SOLICITADOS"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
 msgid "TOTAL INSCRITOS"
 msgstr "TOTAL INSCRITOS"
@@ -1191,8 +1734,16 @@ msgstr "Tel:"
 
 #. module: rockbotic_custom
 #: help:sale.order.line,real_name:0
-msgid "This field will contain the description of the product that will be used in the report"
-msgstr "Este campo contiene la descripción del producto a mostrar en el informe"
+msgid ""
+"This field will contain the description of the product that will be used in "
+"the report"
+msgstr ""
+"Este campo contiene la descripción del producto a mostrar en el informe"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "Thursday"
+msgstr "Jueves"
 
 #. module: rockbotic_custom
 #: view:website:account.report_invoice_document
@@ -1203,7 +1754,7 @@ msgstr "Total"
 #. module: rockbotic_custom
 #: field:sale.order,total_performance:0
 msgid "Total Performance"
-msgstr "Rendimiento total"
+msgstr "Total Performance"
 
 #. module: rockbotic_custom
 #: view:website:account.report_invoice_document
@@ -1215,6 +1766,11 @@ msgstr "Base imponible"
 #: field:sale.order,city:0
 msgid "Town"
 msgstr "Población"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "Tuesday"
+msgstr "Martes"
 
 #. module: rockbotic_custom
 #: view:website:account.report_invoice_document
@@ -1235,6 +1791,11 @@ msgid "VAT:"
 msgstr "NIF:"
 
 #. module: rockbotic_custom
+#: view:website:rockbotic_custom.report_hr_holidays_doc
+msgid "VISTO BUENO DEL RESPONSABLE"
+msgstr "VISTO BUENO DEL RESPONSABLE"
+
+#. module: rockbotic_custom
 #: field:res.company,vat_exempt_note:0
 msgid "Vat exempt note"
 msgstr "Notas sobre IVA exento"
@@ -1242,6 +1803,7 @@ msgstr "Notas sobre IVA exento"
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_event_doc
 #: view:website:rockbotic_custom.report_event_partner_info_doc
+#: view:website:rockbotic_custom.report_event_partner_info_lpd_doc
 #: view:website:rockbotic_custom.report_event_partner_nodata_doc
 #: view:website:rockbotic_custom.report_nodata_registration_doc
 #: view:website:rockbotic_custom.report_presences_doc
@@ -1256,14 +1818,46 @@ msgid "Web/Blog"
 msgstr "Web/Blog"
 
 #. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
+msgid "Wednesday"
+msgstr "Miércoles"
+
+#. module: rockbotic_custom
+#: view:event.registration:rockbotic_custom.event_registration_info_view_search
+msgid "With evaluation sent"
+msgstr "Con evaluación enviada"
+
+#. module: rockbotic_custom
 #: help:hr.employee,no_sexual_offenses_certificate:0
 msgid "With this code you can validate the certificate."
 msgstr "Con este código puedes validar el certificado."
 
 #. module: rockbotic_custom
+#: view:event.registration:rockbotic_custom.event_registration_info_view_search
+msgid "Without evaluation sent"
+msgstr "Sin evaluación enviada"
+
+#. module: rockbotic_custom
+#: model:ir.model,name:rockbotic_custom.model_wiz_send_email_registration_evaluation
+msgid "Wizard for send email to registration evaluation"
+msgstr "Asistente para enviar email con la evaluación desde registro de evento"
+
+#. module: rockbotic_custom
+#: model:ir.model,name:rockbotic_custom.model_wiz_send_email_event_evaluation
+msgid "Wizard for send evaluation email from event"
+msgstr "Asistente para enviar email con la evaluación desde evento"
+
+#. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_footer
 msgid "Y EN EL BLOG CONTENIDO EN DICHO SITIO WEB"
 msgstr "Y EN EL BLOG CONTENIDO EN DICHO SITIO WEB"
+
+#. module: rockbotic_custom
+#: code:addons/rockbotic_custom/models/event.py:95
+#: selection:event.registration,submitted_evaluation:0
+#, python-format
+msgid "Yes"
+msgstr "Yes"
 
 #. module: rockbotic_custom
 #: view:res.partner:rockbotic_custom.res_partner_contact_form_view
@@ -1278,13 +1872,15 @@ msgstr "[('show_in_sales_order','=',True)]"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.rockbotic_footer
-msgid "a\n"
+msgid ""
+"a\n"
 "                            publicar imágenes y vídeos del alumno en el\n"
 "                            desarrollo de esta actividad extraescolar\n"
 "                            con carácter informativo o divulgativo de\n"
 "                            las dinámicas realizadas en sus medios de\n"
 "                            promoción, tales como:"
-msgstr "a\n"
+msgstr ""
+"a\n"
 "                            publicar imágenes y vídeos del alumno en el\n"
 "                            desarrollo de esta actividad extraescolar\n"
 "                            con carácter informativo o divulgativo de\n"
@@ -1297,369 +1893,55 @@ msgid "a enviar órdenes a su entidad financiera para adeudar su cuenta."
 msgstr "a enviar órdenes a su entidad financiera para adeudar su cuenta."
 
 #. module: rockbotic_custom
+#: view:website:rockbotic_custom.report_hr_holidays_doc
+msgid "día/s"
+msgstr "día/s"
+
+#. module: rockbotic_custom
 #: view:res.partner:rockbotic_custom.res_partner_contact_form_view
 msgid "e.g. Sales Director"
 msgstr "Por ejemplo, Director de ventas"
 
 #. module: rockbotic_custom
 #: view:website:rockbotic_custom.report_sale_printing_doc
-msgid "entre el día 5 y 25 de cada\n"
-"                                            mes la baja que producirá efecto en el\n"
-"                                            mes siguiente. En el mail ha de constar:\n"
-"                                            Nombre y dos apellidos del alumno, curso\n"
-"                                            y nombre del colegio en el que está recibiendo\n"
-"                                            robótica. Desde el mismo mail contestaremos\n"
-"                                            dando acuse de recibo y confirmando la\n"
+msgid ""
+"entre el día 5 y 25 de cada\n"
+"                                            mes la baja que producirá efecto "
+"en el\n"
+"                                            mes siguiente. En el mail ha de "
+"constar:\n"
+"                                            Nombre y dos apellidos del "
+"alumno, curso\n"
+"                                            y nombre del colegio en el que "
+"está recibiendo\n"
+"                                            robótica. Desde el mismo mail "
+"contestaremos\n"
+"                                            dando acuse de recibo y "
+"confirmando la\n"
 "                                            recepción."
-msgstr "entre el día 5 y 25 de cada\n"
-"                                            mes la baja que producirá efecto en el\n"
-"                                            mes siguiente. En el mail ha de constar:\n"
-"                                            Nombre y dos apellidos del alumno, curso\n"
-"                                            y nombre del colegio en el que está recibiendo\n"
-"                                            robótica. Desde el mismo mail contestaremos\n"
-"                                            dando acuse de recibo y confirmando la\n"
+msgstr ""
+"entre el día 5 y 25 de cada\n"
+"                                            mes la baja que producirá efecto "
+"en el\n"
+"                                            mes siguiente. En el mail ha de "
+"constar:\n"
+"                                            Nombre y dos apellidos del "
+"alumno, curso\n"
+"                                            y nombre del colegio en el que "
+"está recibiendo\n"
+"                                            robótica. Desde el mismo mail "
+"contestaremos\n"
+"                                            dando acuse de recibo y "
+"confirmando la\n"
 "                                            recepción."
 
 #. module: rockbotic_custom
-#: field:product.category,show_in_sales_order:0
-msgid "show in sale order"
-msgstr "Mostrar en pedidos de venta"
-
-#. module: rockbotic_custom
-#: view:crm.lead:rockbotic_custom.view_crm_case_leads_filter_inh_rockbotic
-#: view:crm.lead:rockbotic_custom.view_crm_case_opportunities_filter_inh_rockbotic
-#: view:sale.order:rockbotic_custom.view_sales_order_filter_inh_rockbotic
-msgid "town"
-msgstr "Población"
-
-#. module: rockbotic_custom
-#: code:addons/rockbotic_custom/models/event.py:34
-#, python-format
-msgid "Email template not found for event registration"
-msgstr "Plantilla de email no encontrada para registro de evento"
-
-#. module: rockbotic_custom
-#: field:event.event,sale_order_payer:0
-msgid "Event payer"
-msgstr "Pagador evento"
-
-#. module: rockbotic_custom
-#: code:addons/rockbotic_custom/models/event.py:20
-#, python-format
-msgid "The father of the student %s, without email."
-msgstr "El padre del estudiante %s, sin email."
-
-#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_form3_inh_rockbotic
+#: view:event.event:rockbotic_custom.view_event_form4_inh_rockbotic
+#: view:event.event:rockbotic_custom.view_event_form_inh_rockbotic
 #: view:event.event:rockbotic_custom.view_event_form_inh_rockbotic3
-msgid "Send email to parents"
-msgstr "Mandar email a los padres"
-
-#. module: rockbotic_custom
-#: code:addons/rockbotic_custom/models/hr_holidays.py:24
-#, python-format
-msgid ""
-"<span><span style=\"font-weight: bold;\">Date start:</span> {} <span style="
-"\"font-weight: bold;\">Date end:</span> {} <span style=\"font-weight: bold;"
-"\">days:</span> {}<br></span>{}"
-msgstr ""
-"<span><span style=\"font-weight: bold;\">Fecha inicio:</span> {} <span style="
-"\"font-weight: bold;\">Fecha fin:</span> {} <span style=\"font-weight: bold;"
-"\">días:</span> {}<br></span>{}"
-
-#. module: rockbotic_custom
-#: field:event.registration,submitted_evaluation:0
-msgid "Submitted evaluation"
-msgstr "Evaluación enviada"
-
-#. module: rockbotic_custom
-#: field:event.registration,submitted_evaluation_error:0
-msgid "Submitted evaluation error"
-msgstr "Error envío evaluación"
-
-#. module: rockbotic_custom
-#: code:addons/rockbotic_custom/models/event.py:89
-#, python-format
-msgid "Attachment not found"
-msgstr "Adjunto no encontrado"
-
-#. module: rockbotic_custom
-#: code:addons/rockbotic_custom/models/event.py:91
-#, python-format
-msgid "Found more than one attachment"
-msgstr "Encontrado mas de un adjunto"
-
-#. module: rockbotic_custom
-#: code:addons/rockbotic_custom/models/event.py:94
-#, python-format
-msgid "Student without parent"
-msgstr "Estudiante sin padres"
-
-#. module: rockbotic_custom
-#: code:addons/rockbotic_custom/models/event.py:97
-#, python-format
-msgid "Parent without email"
-msgstr "Padre sin email"
-
-#. module: rockbotic_custom
-#: view:wiz.send.email.event.evaluation:rockbotic_custom.wiz_send_email_event_evaluation_form
-#: view:wiz.send.email.registration.evaluation:rockbotic_custom.wiz_send_email_registration_evaluation_form
-msgid "Send email with evaluations to event registrations"
-msgstr "Enviar email con evaluaciones a registros de evento"
-
-#. module: rockbotic_custom
-#: view:wiz.send.email.event.evaluation:rockbotic_custom.wiz_send_email_event_evaluation_form
-#: field:wiz.send.email.event.evaluation,body:0
-#: view:wiz.send.email.registration.evaluation:rockbotic_custom.wiz_send_email_registration_evaluation_form
-#: field:wiz.send.email.registration.evaluation,body:0
-msgid "Email body"
-msgstr "Cuerpo email"
-
-#. module: rockbotic_custom
-#: view:wiz.send.email.event.evaluation:rockbotic_custom.wiz_send_email_event_evaluation_form
-#: view:wiz.send.email.registration.evaluation:rockbotic_custom.wiz_send_email_registration_evaluation_form
-msgid "Send email"
-msgstr "Enviar email"
-
-#. module: rockbotic_custom
-#: model:ir.actions.act_window,name:rockbotic_custom.action_event_registration_evaluation_mass_mail
-msgid "Send email with evaluations"
-msgstr "Envío email con evaluaciones"
-
-#. module: rockbotic_custom
-#: code:addons/rockbotic_custom/wizard/wiz_send_email_event_evaluation.py:22
-#: code:addons/rockbotic_custom/wizard/wiz_send_email_registration_evaluation.py:22
-#, python-format
-msgid "Email template not found for event registration evaluation"
-msgstr "Plantilla email no encontrada para evaluación de registro de eventos"
-
-#. module: rockbotic_custom
-#: code:addons/rockbotic_custom/models/event.py:81
-#, python-format
-msgid "Email template not found to send evaluations to event registration"
-msgstr ""
-"Plantilla email no encontrada para envío de evaluaciones de registro de "
-"eventos"
-
-#. module: rockbotic_custom
-#: view:event.registration:rockbotic_custom.event_registration_info_view_search
-msgid "Evaluation send"
-msgstr "Evaluación enviada"
-
-#. module: rockbotic_custom
-#: view:wiz.send.email.event.evaluation:rockbotic_custom.wiz_send_email_event_evaluation_form
-#: view:wiz.send.email.registration.evaluation:rockbotic_custom.wiz_send_email_registration_evaluation_form
-msgid "Registry attachments will be automatically send"
-msgstr "Los ficheros adjuntos de los registros se enviarán automáticamente"
-
-#. module: rockbotic_custom
-#: view:event.registration:rockbotic_custom.event_registration_info_view_search
-msgid "With evaluation sent"
-msgstr "Con evaluación enviada"
-
-#. module: rockbotic_custom
-#: view:event.registration:rockbotic_custom.event_registration_info_view_search
-msgid "Without evaluation sent"
-msgstr "Sin evaluación enviada"
-
-#. module: rockbotic_custom
-#: model:ir.actions.act_window,name:rockbotic_custom.action_event_evaluation_mass_mail
-msgid "Send email to registrations with evaluations"
-msgstr "Enviar email a los registros con las evaluaciones"
-
-#. module: rockbotic_custom
-#: model:ir.model,name:rockbotic_custom.model_wiz_send_email_registration_evaluation
-msgid "Wizard for send email to registration evaluation"
-msgstr "Asistente para enviar email con la evaluación desde registro de evento"
-
-#. module: rockbotic_custom
-#: model:ir.model,name:rockbotic_custom.model_wiz_send_email_event_evaluation
-msgid "Wizard for send evaluation email from event"
-msgstr "Asistente para enviar email con la evaluación desde evento"
-
-#. module: rockbotic_custom
-#: model:email.template,body_html:rockbotic_custom.email_template_event_registration_evaluation
-msgid ""
-"\n"
-"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
-"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
-"    <p>Dear Parents.</p>\n"
-"    <p>In order to better understand the evolution and situation of your "
-"children in the out-of-school activity of robotics, we enclose the "
-"corresponding evaluation report.</p>\n"
-"    <p>One of our main goals is to keep you informed and we believe this can "
-"be a good tool for this.</p>\n"
-"    <p>We remain at your disposal for any clarification you may need or "
-"suggestion that you want to contribute.</p>\n"
-"    <p>Attentively,</p>\n"
-"</div>\n"
-"            "
-msgstr ""
-"\n"
-"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
-"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
-"    <p>Estimados padres y madres.</p>\n"
-"    <p>Con el fin de que conozcáis mejor la evolución y situación de "
-"vuestros hijos en la actividad extraescolar de robótica, os adjuntamos el "
-"informe de evaluación correspondiente.</p>\n"
-"    <p>Uno de nuestros principales objetivos es manteneros correctamente "
-"informados y creemos que ésta puede ser una buena herramienta para ello.</"
-"p>\n"
-"    <p>Quedamos a vuestra disposición para cualquier aclaración que podáis "
-"necesitar o sugerencia que nos queráis aportar.</p>\n"
-"    <p>Atentamente,</p>\n"
-"</div>\n"
-"            "
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_tree_inh_rockbotic
-msgid "Inscribed"
-msgstr "Inscritos"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_tree_inh_rockbotic
-#: view:event.registration:rockbotic_custom.event_registration_info_view_search
-msgid "Confirmed"
-msgstr "Confirmado"
-
-#. module: rockbotic_custom
-#: view:event.track:rockbotic_custom.view_event_track_inh3_rockbotic
-#: model:ir.actions.act_window,name:event_track_assistant.action_impute_in_presence_from_session
-msgid "Register assists"
-msgstr "Registrar Asistencias"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,january:0
-msgid "January"
-msgstr "Enero"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,february:0
-msgid "February"
-msgstr "Febrero"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,march:0
-msgid "March"
-msgstr "Marzo"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,april:0
-msgid "April"
-msgstr "Abril"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,may:0
-msgid "May"
-msgstr "Mayo"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,june:0
-msgid "June"
-msgstr "Junio"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,july:0
-msgid "July"
-msgstr "Julio"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,august:0
-msgid "August"
-msgstr "Agosto"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,september:0
-msgid "September"
-msgstr "Septiembre"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,october:0
-msgid "October"
-msgstr "Octubre"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,november:0
-msgid "November"
-msgstr "Noviembre"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,december:0
-msgid "December"
-msgstr "Diciembre"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,monday:0
-msgid "Monday"
-msgstr "Lunes"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,tuesday:0
-msgid "Tuesday"
-msgstr "Martes"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,wednesday:0
-msgid "Wednesday"
-msgstr "Miércoles"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,thursday:0
-msgid "Thursday"
-msgstr "Jueves"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,friday:0
-msgid "Friday"
-msgstr "Viernes"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,saturday:0
-msgid "Saturday"
-msgstr "Sábado"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: field:event.event,sunday:0
-msgid "Sunday"
-msgstr "Domingo"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: view:event.event:rockbotic_custom.view_event_search_inh_rockbotic
-#: field:event.event,start_hour:0
-msgid "Start hour"
-msgstr "Hora inicio"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: view:event.event:rockbotic_custom.view_event_search_inh_rockbotic
-#: field:event.event,end_hour:0
-msgid "End hour"
-msgstr "Hora fin"
-
-#. module: rockbotic_custom
-#: view:event.event:rockbotic_custom.view_event_search2_inh_rockbotic
-#: view:event.event:rockbotic_custom.view_event_search_inh_rockbotic
-msgid "Sale order"
-msgstr "Pedido venta"
+msgid "event.group_event_manager"
+msgstr "event.group_event_manager"
 
 #. module: rockbotic_custom
 #: field:account.invoice,literal_header_invoice:0
@@ -1672,12 +1954,44 @@ msgid "literal header sale order"
 msgstr "literal cabecera pedido venta"
 
 #. module: rockbotic_custom
-#: view:account.invoice:rockbotic_custom.invoice_form_inh_rockbotic_custom
-msgid "Literal to print in the header of the invoice"
-msgstr "Literal para imprimir en la cabecera de la factura ....."
+#: view:res.partner:rockbotic_custom.view_res_partner_form_inh_rockbotic
+msgid "object"
+msgstr "object"
 
 #. module: rockbotic_custom
-#: view:sale.order:rockbotic_custom.registration_sale_order_view_form
-msgid "Literal to print in the header of the sales order ....."
-msgstr "Literal para imprimir en la cabecera del pedido de venta ....."
+#: view:wiz.send.email.event.evaluation:rockbotic_custom.wiz_send_email_event_evaluation_form
+#: view:wiz.send.email.registration.evaluation:rockbotic_custom.wiz_send_email_registration_evaluation_form
+msgid "or"
+msgstr "or"
 
+#. module: rockbotic_custom
+#: field:product.category,show_in_sales_order:0
+msgid "show in sale order"
+msgstr "Mostrar en pedidos de venta"
+
+#. module: rockbotic_custom
+#: view:res.partner:rockbotic_custom.view_res_partner_form_inh_rockbotic
+msgid "show_crm_claims_from_partner"
+msgstr "show_crm_claims_from_partner"
+
+#. module: rockbotic_custom
+#: view:crm.lead:rockbotic_custom.view_crm_case_leads_filter_inh_rockbotic
+#: view:crm.lead:rockbotic_custom.view_crm_case_opportunities_filter_inh_rockbotic
+#: view:sale.order:rockbotic_custom.view_sales_order_filter_inh_rockbotic
+msgid "town"
+msgstr "Población"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_form_inh_rockbotic4
+msgid "{'default_event_id':active_id, 'only_name': True}"
+msgstr "{'default_event_id':active_id, 'only_name': True}"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_form_inh_rockbotic3
+msgid "{'invisible': [('sale_order_payer', '!=', 'school')]}"
+msgstr "{'invisible': [('sale_order_payer', '!=', 'school')]}"
+
+#. module: rockbotic_custom
+#: view:event.event:rockbotic_custom.view_event_form_inh_rockbotic3
+msgid "{'invisible': [('sale_order_payer', '!=', 'student')]}"
+msgstr "{'invisible': [('sale_order_payer', '!=', 'student')]}"
