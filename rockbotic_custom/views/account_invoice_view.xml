@@ -11,7 +11,11 @@
                 </filter>
                 <filter name="group_by_partner_id" position="after">
                     <filter string="Event" context="{'group_by':'event_id'}"/>
+                    <filter string="Effective Date" context="{'group_by':'effective_date'}"/>
                 </filter>
+                <field name="period_id" position="after">
+                        <field name="effective_date"/>
+                </field>
             </field>
         </record>
         <record id="account_invoice_supplier_number_view_tree" model="ir.ui.view">
@@ -21,6 +25,12 @@
             <field name="arch" type="xml">
                 <field name="partner_id" position="after">
                     <field name="supplier_invoice_number" invisible="context.get('type', False)=='out_invoice'"/>
+                </field>
+                <field name="date_invoice" position="before">
+                    <field name="effective_date"/>
+                </field>
+                 <field name="date_invoice" position="attributes">
+                    <attribute name="invisible">1</attribute>
                 </field>
             </field>
         </record>
