@@ -21,7 +21,7 @@
         "sale",
         "account_invoice_pricelist",
         "hr_timesheet_invoice",
-        "account_asset",
+        "l10n_es_account_asset_variation"
     ],
     "data": [
         "views/igalia_layout_view.xml",
