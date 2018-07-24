@@ -16,6 +16,7 @@ class TestIgaliaCustom(common.TransactionCase):
         self.pricelist_version_obj = self.env['product.pricelist.version']
         self.analytic_line_obj = self.env['account.analytic.line']
         self.product = self.env.ref('product.product_product_6')
+        self.asset_model = self.env['account.asset.asset']
         self.product.dollar_price = 75.0
         self.price_type = self.price_type_obj.create({
             'name': 'Dollar price',
@@ -46,6 +47,20 @@ class TestIgaliaCustom(common.TransactionCase):
             'date': fields.Date.today()
             }
         self.analytic_line = self.analytic_line_obj.create(analytic_line_vals)
+        asset_vals = {
+            'name': 'Asset igalia custom',
+            'category_id': self.ref('account_asset.account_asset_category_'
+                                    'fixedassets0'),
+            'code': 'REF01',
+            'purchase_date': fields.Date.from_string('2015-01-01'),
+            'method': 'linear',
+            'purchase_value': 500,
+            'method_time': 'number',
+            'move_end_period': True,
+            'method_number': 5,
+            'method_period': 12
+            }
+        self.asset = self.asset_model.create(asset_vals)
 
     def test_pricelist(self):
         account_invoice = self.env.ref('account.invoice_1')
@@ -90,3 +105,12 @@ class TestIgaliaCustom(common.TransactionCase):
         self.assertEquals(self.partner.property_product_pricelist.price_get(
             self.product.id, 1.0, self.partner.id)[self.pricelist.id],
             res['value']['price_unit'])
+
+    def test_asset(self):
+        self.asset.compute_depreciation_board()
+        lines = self.asset.depreciation_line_ids.filtered(
+            lambda x: x.amount != 100)
+        self.assertFalse(lines, "The amount of lines is not correct.")
+        lines = self.asset.depreciation_line_ids.filtered(
+            lambda x: x.method_percentage != 20)
+        self.assertFalse(lines, "The percentage of lines is not correct.")
