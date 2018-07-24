@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 <data>
-    <record id="view_account_asset_search_inh_igaliacustom" model="ir.ui.view">
-        <field name="name">view.account.asset.search.inh.igaliacustom</field>
+    <record id="account_asset_asset_igalia_search_view" model="ir.ui.view">
+        <field name="name">account.asset.asset.igalia.search</field>
         <field name="model">account.asset.asset</field>
         <field name="inherit_id" ref="account_asset.view_account_asset_search"/>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-              <field name="state" />
-              <field name="active" />
-              <group expand="0" string="Group By">
-                  <filter string="State" domain="[]" context="{'group_by':'state'}"/>
-                  <filter string="Active" domain="[]" context="{'group_by':'active'}"/>
-              </group>
+                <field name="state" />
+                <filter string="Active" name="active_asset"
+                        domain="[('active','=', True)]"/>
+                <filter string="Inactive" name="inactive_asset"
+                        domain="[('active','=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="State" name="group_state" domain="[]"
+                            context="{'group_by':'state'}"/>
+                <filter string="Active" name="active_group" domain="[]"
+                        context="{'group_by':'active'}" />
+                </group>
             </field>
         </field>
     </record>
-    <record id="view_account_asset_asset_tree_inh_igaliacustom" model="ir.ui.view">
-        <field name="name">view.account.asset.asset.tree.inh.igaliacustom</field>
+    <record id="account_asset_asset_igalia_tree_view" model="ir.ui.view">
+        <field name="name">account.asset.asset.igalia.tree</field>
         <field name="model">account.asset.asset</field>
         <field name="inherit_id" ref="account_asset.view_account_asset_asset_tree"/>
         <field name="arch" type="xml">
@@ -25,6 +30,10 @@
                <field name="active"/>
             </field>
         </field>
+    </record>
+    <record id="account_asset.action_account_asset_asset_form"
+            model="ir.actions.act_window">
+        <field name="context">{'active_test':False, 'search_default_active_asset': True}</field>
     </record>
 </data>
 </openerp>

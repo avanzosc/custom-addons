@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 <data>
-    <record id="view_asset_asset_report_search_inh_igaliacustom" model="ir.ui.view">
-        <field name="name">view.asset.asset.report.search.inh.igaliacustom</field>
+    <record id="asset_asset_report_igalia_search_view" model="ir.ui.view">
+        <field name="name">asset.asset.report.igalia.search</field>
         <field name="model">asset.asset.report</field>
         <field name="inherit_id" ref="account_asset.view_asset_asset_report_search"/>
         <field name="arch" type="xml">
             <field name="asset_category_id" position="after">
-              <field name="state" />
-              <field name="active" />
+                <field name="state" />
             </field>
             <filter string="Depreciation Month" position="after">
-                  <filter string="State" domain="[]" context="{'group_by':'state'}"/>
+                <filter string="State" name="state_group" domain="[]"
+                        context="{'group_by':'state'}"/>
+            </filter>
+            <filter name="posted" position="after">
+                <filter string="Active" name="active_asset"
+                        domain="[('active','=', True)]"/>
+                <filter string="Inactive" name="inactive_asset"
+                        domain="[('active','=', False)]"/>
             </filter>
         </field>
     </record>
+    <record id="account_asset.action_asset_asset_report"
+            model="ir.actions.act_window">
+        <field name="context">{'active_test':False, 'search_default_active_asset': True}</field>
+    </record>
+
 </data>
 </openerp>

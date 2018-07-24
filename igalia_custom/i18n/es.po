@@ -1,21 +1,19 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* igalia_custom
-# <> <>, 2018.
+#	* igalia_custom
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-18 10:28+0000\n"
-"PO-Revision-Date: 2018-07-18 12:29+0200\n"
+"POT-Creation-Date: 2018-07-24 11:56+0000\n"
+"PO-Revision-Date: 2018-07-24 11:56+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"X-Generator: Gtranslator 2.91.7\n"
 
 #. module: igalia_custom
 #: view:website:web.layout
@@ -23,8 +21,8 @@ msgid "/igalia_custom/static/src/img/favicon.ico"
 msgstr "/igalia_custom/static/src/img/favicon.ico"
 
 #. module: igalia_custom
-#: view:account.asset.asset:igalia_custom.view_account_asset_search_inh_igaliacustom
-#: view:asset.asset.report:igalia_custom.view_asset_asset_report_search_inh_igaliacustom
+#: view:account.asset.asset:igalia_custom.account_asset_asset_igalia_search_view
+#: view:asset.asset.report:igalia_custom.asset_asset_report_igalia_search_view
 #: field:asset.asset.report,active:0
 msgid "Active"
 msgstr "Activo"
@@ -55,7 +53,7 @@ msgid "Cancelled Invoice"
 msgstr "Factura cancelada"
 
 #. module: igalia_custom
-#: view:asset.asset.report:igalia_custom.view_asset_asset_report_search_inh_igaliacustom
+#: view:asset.asset.report:igalia_custom.asset_asset_report_igalia_search_view
 msgid "Depreciation Month"
 msgstr "Mes de amortización"
 
@@ -75,22 +73,22 @@ msgid "Factura Igalia"
 msgstr "Factura Igalia"
 
 #. module: igalia_custom
-#: view:account.asset.asset:igalia_custom.view_account_asset_search_inh_igaliacustom
+#: view:account.asset.asset:igalia_custom.account_asset_asset_igalia_search_view
 msgid "Group By"
-msgstr "Group By"
+msgstr "Agrupar por"
 
 #. module: igalia_custom
 #: view:website:igalia_custom.igalia_layout_footer
-msgid ""
-"In case of delay in payment of the amount, shall accrue daily from the date "
-"of the\n"
-"                            delay until actual payment of the debt, adding "
-"interest\n"
+msgid "In case of delay in payment of the amount, shall accrue daily from the date of the\n"
+"                            delay until actual payment of the debt, adding interest\n"
 "                            for Igalia SL 1% per month."
-msgstr ""
-"En caso de retraso en el pago del importe, se devengará día a día, desde la "
-"fecha del retraso hasta pago efectivo de la deuda, un interés de demora a "
-"favor de Igalia S.L. del 1% mensual"
+msgstr "En caso de retraso en el pago del importe, se devengará día a día, desde la fecha del retraso hasta pago efectivo de la deuda, un interés de demora a favor de Igalia S.L. del 1% mensual"
+
+#. module: igalia_custom
+#: view:account.asset.asset:igalia_custom.account_asset_asset_igalia_search_view
+#: view:asset.asset.report:igalia_custom.asset_asset_report_igalia_search_view
+msgid "Inactive"
+msgstr "Inactivo"
 
 #. module: igalia_custom
 #: model:ir.model,name:igalia_custom.model_account_invoice
@@ -110,22 +108,13 @@ msgstr "Línea de factura"
 
 #. module: igalia_custom
 #: view:website:igalia_custom.igalia_layout_footer
-msgid ""
-"Not liable in accordance with Article 69 VAT Law 37/1992 modified by VAT Law "
-"28/2014."
-msgstr ""
-"Operación no sujeta a IVA de acuerdo con el Artículo 69 de la Ley 37/1992 "
-"del IVA modificada por la Ley 28/2014 del IVA. Servicios intracomunitarios - "
-"Inversión de sujeto pasivo."
+msgid "Not liable in accordance with Article 69 VAT Law 37/1992 modified by VAT Law 28/2014."
+msgstr "Operación no sujeta a IVA de acuerdo con el Artículo 69 de la Ley 37/1992 del IVA modificada por la Ley 28/2014 del IVA. Servicios intracomunitarios - Inversión de sujeto pasivo."
 
 #. module: igalia_custom
 #: view:website:igalia_custom.igalia_layout_footer
-msgid ""
-"Not liable in accordance with Article 70 VAT Law 37/1992 modified by VAT Law "
-"28/2014."
-msgstr ""
-"Operación no sujeta a IVA de acuerdo con los Artículos 69 y 70 de la Ley "
-"37/1992 del IVA modificada por la Ley 28/2014 del IVA."
+msgid "Not liable in accordance with Article 70 VAT Law 37/1992 modified by VAT Law 28/2014."
+msgstr "Operación no sujeta a IVA de acuerdo con los Artículos 69 y 70 de la Ley 37/1992 del IVA modificada por la Ley 28/2014 del IVA."
 
 #. module: igalia_custom
 #: view:website:igalia_custom.invoice_printing
@@ -139,9 +128,7 @@ msgstr "PRO-FORMA"
 
 #. module: igalia_custom
 #: view:website:igalia_custom.igalia_layout_footer
-msgid ""
-"Payment conditions according to budget/agreement or, in default, 15 days "
-"after invoice\n"
+msgid "Payment conditions according to budget/agreement or, in default, 15 days after invoice\n"
 "                            date."
 msgstr "Condiciones de pago según presupuesto o en su defecto 15 dias f.f."
 
@@ -161,8 +148,8 @@ msgid "Refund"
 msgstr "Factura rectificativa"
 
 #. module: igalia_custom
-#: view:account.asset.asset:igalia_custom.view_account_asset_search_inh_igaliacustom
-#: view:asset.asset.report:igalia_custom.view_asset_asset_report_search_inh_igaliacustom
+#: view:account.asset.asset:igalia_custom.account_asset_asset_igalia_search_view
+#: view:asset.asset.report:igalia_custom.asset_asset_report_igalia_search_view
 msgid "State"
 msgstr "Estado"
 
@@ -188,11 +175,8 @@ msgstr "Impuestos"
 
 #. module: igalia_custom
 #: view:website:igalia_custom.igalia_layout_footer
-msgid ""
-"This invoice does not justify the payment. Only bank receipt will do it."
-msgstr ""
-"La posesión de esta factura no justifica su abono ni el de los anteriores, "
-"para ello será necesario el justificante de pago bancario"
+msgid "This invoice does not justify the payment. Only bank receipt will do it."
+msgstr "La posesión de esta factura no justifica su abono ni el de los anteriores, para ello será necesario el justificante de pago bancario"
 
 #. module: igalia_custom
 #: view:website:igalia_custom.invoice_printing
@@ -203,3 +187,4 @@ msgstr "Total"
 #: view:website:igalia_custom.invoice_printing
 msgid "Total Without Taxes"
 msgstr "Base imponible"
+

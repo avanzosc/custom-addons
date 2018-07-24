@@ -12,6 +12,7 @@
     "website": "http://www.avanzosc.es",
     "contributors": [
         "Esther Martín <esthermartin@avanzosc.es>",
+        "Mikel Urbistondo <mikelurbistondo@avanzosc.es>",
     ],
     "depends": [
         "product",
@@ -20,7 +21,7 @@
         "sale",
         "account_invoice_pricelist",
         "hr_timesheet_invoice",
-        "account_asset"
+        "account_asset",
     ],
     "data": [
         "views/igalia_layout_view.xml",
