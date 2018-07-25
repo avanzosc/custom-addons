@@ -10,7 +10,6 @@ Rockbotic custom
 * Access rules for Marketing responsible on mail.followers
 * New field on company for vat exempt invoices.
 * New field in taxes in order to define if it is non-taxable.
-* New field Effective Date in customer invoice tree.
 * Custom reports:
 
   * List of registrations from an event
@@ -26,3 +25,4 @@ Contributors
 * Esther Martín <esthermartin@avanzosc.es>
 * Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>
 + Gotzon Imaz <gotzonimaz@avanzosc.es>
+

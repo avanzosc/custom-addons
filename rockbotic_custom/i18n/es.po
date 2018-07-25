@@ -608,12 +608,6 @@ msgid "ETIQUETAS HIJO"
 msgstr "ETIQUETAS HIJO"
 
 #. module: rockbotic_custom
-#: view:account.invoice:rockbotic_custom.view_account_invoice_filter_inh_rockbotic
-#: field:account.invoice,effective_date:0
-msgid "Effective Date"
-msgstr "Fecha de Pago"
-
-#. module: rockbotic_custom
 #: field:event.registration,parent_email:0
 msgid "Email"
 msgstr "Email"

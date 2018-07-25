@@ -268,15 +268,3 @@ class TestRockboticCustom(common.TransactionCase):
         self.assertEqual(
             vals.get('from_date', False), new_date,
             'Bad from_date in registration')
-
-    def test_invoice_pay_date(self):
-
-        self.contract.recurring_create_invoice()
-        invoice = self.invoice_model.search([
-            ('origin', '=', self.contract.code)])
-        invoice.payment_ids = [
-            (0, 0, {'name': 'aaaaaaaaaa',
-                    'date': '2018-05-05'})]
-        invoice.effective_date = '2018-05-05'
-        self.assertEqual(invoice.payment_ids[0].date, invoice.effective_date,
-                         'Bad date')
