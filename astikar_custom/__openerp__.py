@@ -4,7 +4,7 @@
 
 {
     "name": "Astikar - Custom",
-    "version": "8.0.3.2.0",
+    "version": "8.0.3.3.0",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -53,6 +53,7 @@
         "views/product_view.xml",
         "views/stock_history_view.xml",
         "views/stock_quant_view.xml",
+        "report/report_purchase_order.xml",
     ],
     "installable": True,
 }
