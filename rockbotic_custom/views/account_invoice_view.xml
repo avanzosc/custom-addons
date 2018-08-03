@@ -12,6 +12,9 @@
                 <filter name="group_by_partner_id" position="after">
                     <filter string="Event" context="{'group_by':'event_id'}"/>
                 </filter>
+                <field name="period_id" position="after">
+                    <field name="number" />
+                </field>
             </field>
         </record>
         <record id="account_invoice_supplier_number_view_tree" model="ir.ui.view">
@@ -22,6 +25,12 @@
                 <field name="partner_id" position="after">
                     <field name="supplier_invoice_number" invisible="context.get('type', False)=='out_invoice'"/>
                 </field>
+                <field name="number" position="attributes">
+-                    <attribute name="invisible">1</attribute>
+                </field>
+                    <field name="date_due" position="after">
+                            <field name="payment_date"/>
+                    </field>
             </field>
         </record>
         <record id="invoice_form_inh_rockbotic_custom" model="ir.ui.view">
@@ -34,6 +43,32 @@
                         <label for="literal_header_invoice"/>
                     </div>
                     <field name="literal_header_invoice" class="oe_inline" placeholder="Literal to print in the header of the invoice" />
+                </field>
+            </field>
+        </record>
+         <record id="view_invoice_tree_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.invoice.tree.inh.registration.rockbotic</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree" />
+            <field name="arch" type="xml">
+                <field name="user_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="origin" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+               </field>
+         </record>
+          <record id="view_invoice_tree2_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.invoice.tree2.inh.rockbotic</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="event_registration_analytic.view_invoice_tree_inh_registration"/>
+            <field name="arch" type="xml">
+                <field name="sale_order_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="event_address_id" position="after">
+                    <field name="number"/>
                 </field>
             </field>
         </record>
