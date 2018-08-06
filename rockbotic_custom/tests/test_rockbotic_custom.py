@@ -268,3 +268,18 @@ class TestRockboticCustom(common.TransactionCase):
         self.assertEqual(
             vals.get('from_date', False), new_date,
             'Bad from_date in registration')
+
+    def test_reason_for_the_low(self):
+        self.registration.write({'state': 'open',
+                                 'date_start': self.event.date_begin,
+                                 'date_end': self.event.date_end})
+        wiz_del_model = self.env['wiz.event.delete.assistant']
+        del_wiz = wiz_del_model.with_context(
+            active_ids=self.event.ids).create(
+            {'partner': self.partner.id,
+             'reason_delete': 'm1',
+             'notes': 'aaaaaaaaaaa'})
+        del_wiz.with_context(
+            active_ids=self.event.ids).action_delete()
+        self.assertEqual(self.registration.reason_delete, 'm1',
+                         'Bad low motive en registration')
