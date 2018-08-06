@@ -40,11 +40,3 @@ class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
     literal_header_invoice = fields.Text(string='literal header invoice')
-    effective_date = fields.Date('Effective Date',
-                                 compute='_compute_effective_date', store=True)
-
-    @api.multi
-    @api.depends('payment_ids', 'payment_ids.date')
-    def _compute_effective_date(self):
-        for invoice in self.filtered(lambda c: c.payment_ids):
-            invoice.effective_date = invoice.payment_ids[0].date
