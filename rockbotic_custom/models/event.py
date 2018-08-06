@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # (c) 2016 Alfredo de la Fuente - AvanzOSC
+# Copyright © 2018 Mikel Urbistondo - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 from openerp import models, fields, api, exceptions, _
 
@@ -98,6 +99,14 @@ class EventRegistration(models.Model):
         string='Submitted evaluation error')
     parent_is_pa_partner = fields.Boolean(
         related='parent_id.is_pa_partner', store=True)
+    reason_delete = fields.Selection(
+        selection=[('m1', 'Does not have fun in class'),
+                   ('m2', 'He does not like robotics'),
+                   ('m3', 'Incompatibility of schedule'),
+                   ('m4', 'High cost of activity'),
+                   ('m5', 'Other motives'),
+                   ('m6', 'Data/recording error')],
+        string='Reason for the low')
 
     def _send_email_to_registrations_with_evaluation(self, body):
         attachment_obj = self.env['ir.attachment']
