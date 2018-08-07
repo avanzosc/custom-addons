@@ -1989,3 +1989,10 @@ msgstr "{'invisible': [('sale_order_payer', '!=', 'school')]}"
 #: view:event.event:rockbotic_custom.view_event_form_inh_rockbotic3
 msgid "{'invisible': [('sale_order_payer', '!=', 'student')]}"
 msgstr "{'invisible': [('sale_order_payer', '!=', 'student')]}"
+
+#. module: rockbotic_custom
+#: view:res.partner:rockbotic_custom.res_partner_contact_kanban_view
+#: field:res.partner,send_email_unpaid_invoice:0
+msgid "Send email unpaid invoice"
+msgstr "Mandar email facturas impagadas"
+

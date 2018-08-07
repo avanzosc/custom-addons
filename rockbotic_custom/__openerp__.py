@@ -45,7 +45,8 @@
         "project_issue",
         "sale_order_back2draft",
         "event_registration_pa_code",
-        "account_utilities"
+        "account_utilities",
+        "account_invoice_automatic_pay_email"
     ],
     "data": [
         "views/website_template_view.xml",

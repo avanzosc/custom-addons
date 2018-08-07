@@ -268,3 +268,9 @@ class TestRockboticCustom(common.TransactionCase):
         self.assertEqual(
             vals.get('from_date', False), new_date,
             'Bad from_date in registration')
+
+    def test_partners_for_send_automatic_pay_email(self):
+        invoice = self.browse_ref('account.invoice_5')
+        invoice.partner_id.other_child_ids[0].send_email_unpaid_invoice = True
+        res = invoice.partners_for_send_automatic_pay_email()
+        self.assertEqual(len(res), 1)

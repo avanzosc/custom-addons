@@ -40,3 +40,8 @@ class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
     literal_header_invoice = fields.Text(string='literal header invoice')
+
+    def partners_for_send_automatic_pay_email(self):
+        return self.partner_id.mapped(
+            'other_child_ids').filtered(
+            lambda l: l.send_email_unpaid_invoice).ids
