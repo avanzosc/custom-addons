@@ -4,7 +4,7 @@
 
 {
     "name": "CCG Custom",
-    "version": "8.0.3.0.0",
+    "version": "8.0.4.0.0",
     "license": "AGPL-3",
     "author": "AvanzOSC",
     "website": "http://www.avanzosc.es",
@@ -20,6 +20,7 @@
         "mrp_project",
         "procurement",
         "product_supplierinfo_for_customer",
+        "product_variant_supplierinfo",
         "sale_order_dates",
         "sale_stock",
         "account_invoice_kanban",
