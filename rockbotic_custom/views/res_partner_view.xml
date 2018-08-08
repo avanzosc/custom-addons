@@ -132,6 +132,7 @@
                     <field name="fax" />
                     <field name="state_id" />
                     <field name="has_image" />
+                    <field name="send_email_unpaid_invoice" />
                     <templates>
                         <t t-name="kanban-box">
                             <t t-set="color" t-value="kanban_color(record.color.raw_value)"/>
@@ -168,6 +169,7 @@
                                                         <div t-if="record.phone.raw_value">Phone: <field name="phone"/></div>
                                                         <div t-if="record.mobile.raw_value">Mobile: <field name="mobile"/></div>
                                                         <div t-if="record.fax.raw_value">Fax: <field name="fax"/></div>
+                                                        <div t-if="record.send_email_unpaid_invoice.raw_value">Send email unpaid invoice</div>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -206,6 +208,7 @@
                             <field name="magazine" />
                             <field name="web_blog" />
                             <field name="social_networks" />
+                            <field name="send_email_unpaid_invoice" />
                         </group>
                         <div>
                             <field name="use_parent_address" />
