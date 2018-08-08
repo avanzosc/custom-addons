@@ -274,3 +274,18 @@ class TestRockboticCustom(common.TransactionCase):
         invoice.partner_id.other_child_ids[0].send_email_unpaid_invoice = True
         res = invoice.partners_for_send_automatic_pay_email()
         self.assertEqual(len(res), 1)
+
+    def test_reason_for_the_leaving(self):
+        self.registration.write({'state': 'open',
+                                 'date_start': self.event.date_begin,
+                                 'date_end': self.event.date_end})
+        wiz_del_model = self.env['wiz.event.delete.assistant']
+        del_wiz = wiz_del_model.with_context(
+            active_ids=self.event.ids).create(
+            {'partner': self.partner.id,
+             'reason_delete': 'm1',
+             'notes': 'aaaaaaaaaaa'})
+        del_wiz.with_context(
+            active_ids=self.event.ids).action_delete()
+        self.assertEqual(self.registration.reason_delete, 'm1',
+                         'Bad leaving motive in registration')

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="wiz_event_delete_assistant_form_inh_regis_contract">
+            <field name="name">wiz.event.delete.assistant.form.inh.regis.contract</field>
+            <field name="model">wiz.event.delete.assistant</field>
+            <field name="inherit_id" ref="event_track_assistant.wiz_event_delete_assistant_form" />
+            <field name="arch" type="xml">
+               <field name="partner" position="after">
+                  <field name="employee" invisible="1"/>
+                  <field name="reason_delete" attrs="{'invisible': [('employee', '!=', False)], 'required': [('employee', '=', False)]}"/>
+               </field>
+            </field>
+        </record>
+    </data>
+</openerp>
