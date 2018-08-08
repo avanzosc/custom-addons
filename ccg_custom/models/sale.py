@@ -30,9 +30,13 @@ class SaleOrderLine(models.Model):
             partner_name = partner.parent_id or partner
             if partner.lang:
                 self = self.with_context(lang=partner.lang)
+            product_vals = product.get_partner_code_name(
+                partner=partner_name)
             value['name'] = u'[{}] {}'.format(
-                product.get_real_code(partner_id=partner_name),
-                product.get_real_name(partner_id=partner_name))
+                product_vals.get('code') or product.get_real_code(
+                    partner_id=partner_name),
+                product_vals.get('name') or product.get_real_name(
+                    partner_id=partner_name))
             if product.description_sale:
                 value['name'] += '\n' + product.description_sale
         return res

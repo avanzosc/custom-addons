@@ -46,11 +46,10 @@ class ProductProduct(models.Model):
         return self.name
 
     @api.multi
-    def get_partner_code_name(self, partner_id):
+    def get_partner_code_name(self, partner):
         self.ensure_one()
-        suppinfos = self.customer_ids.filtered(lambda x: x.name.id ==
-                                               partner_id)
+        suppinfos = self.customer_ids.filtered(lambda x: x.name == partner)
         return {
             'code': suppinfos[:1].product_code or self.default_code,
-            'name': suppinfos[:1].product_name or self.name
+            'name': suppinfos[:1].product_name or self.name,
         }
