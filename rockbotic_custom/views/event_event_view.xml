@@ -153,6 +153,16 @@
                </filter>
             </field>
         </record>
+        <record model="ir.ui.view" id="view_event_regisration_inh_rockbotic">
+            <field name="name">view.event.regisration.inh.rockbotic</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event_registration_analytic.view_event_form_inh_assistant" />
+            <field name="arch" type="xml">
+               <xpath expr="//tree[@string='Registered students']//field[@name='removal_date']" position="after">
+                  <field name="reason_delete" string= "reason for unsubscribe" readonly="1"/>
+               </xpath>
+            </field>
+        </record>
     </data>
     <data noupdate="1">
         <act_window name="Send email to registrations with evaluations"

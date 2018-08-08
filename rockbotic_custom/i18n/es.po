@@ -1996,3 +1996,44 @@ msgstr "{'invisible': [('sale_order_payer', '!=', 'student')]}"
 msgid "Send email unpaid invoice"
 msgstr "Mandar email facturas impagadas"
 
+#: selection:event.registration,reason_delete:0
+#: selection:wiz.event.delete.assistant,reason_delete:0
+msgid "Does not have fun in class"
+msgstr "No se divierte en clase"
+
+#. module: rockbotic_custom
+#: selection:event.registration,reason_delete:0
+#: selection:wiz.event.delete.assistant,reason_delete:0
+msgid "He does not like robotics"
+msgstr "No le gusta la robótica"
+
+#. module: rockbotic_custom
+#: selection:event.registration,reason_delete:0
+#: selection:wiz.event.delete.assistant,reason_delete:0
+msgid "Incompatibility of schedule"
+msgstr "Incompatibilidad de horario"
+
+#. module: rockbotic_custom
+#: selection:event.registration,reason_delete:0
+#: selection:wiz.event.delete.assistant,reason_delete:0
+msgid "High cost of activity"
+msgstr "Coste elevado de la actividad"
+
+#. module: rockbotic_custom
+#: selection:event.registration,reason_delete:0
+#: selection:wiz.event.delete.assistant,reason_delete:0
+msgid "Other motives"
+msgstr "Otros motivos"
+
+#. module: rockbotic_custom
+#: selection:event.registration,reason_delete:0
+#: selection:wiz.event.delete.assistant,reason_delete:0
+msgid "Data/recording error"
+msgstr "Error en los datos/grabación"
+
+#. module: rockbotic_custom
+#: field:event.registration,reason_delete:0
+#: field:wiz.event.delete.assistant,reason_delete:0
+msgid "Reason for leaving"
+msgstr "Motivo de la baja"
+
