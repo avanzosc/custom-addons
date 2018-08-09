@@ -289,3 +289,21 @@ class TestRockboticCustom(common.TransactionCase):
             active_ids=self.event.ids).action_delete()
         self.assertEqual(self.registration.reason_delete, 'm1',
                          'Bad leaving motive in registration')
+
+    def test_send_by_email_customer_invoice(self):
+        invoice = self.browse_ref('account.invoice_5')
+        invoice.write(({'state': 'open',
+                        'sent': False}))
+        invoice.partner_id.other_child_ids[0].send_email_unpaid_invoice = True
+        wiz = self.env['wiz.send.by.email.customer.invoice'].create({})
+        wiz.with_context(active_ids=invoice.ids).button_send_email()
+        self.assertEqual(invoice.sent, True)
+
+    def test_pending_payment_receipts(self):
+        self.registration.partner_id.pending_receipts = True
+        with self.assertRaises(exceptions.Warning):
+            self.registration.confirm_registration()
+        self.registration.partner_id.write({'pending_receipts': False,
+                                            'with_incident': True})
+        with self.assertRaises(exceptions.Warning):
+            self.registration.confirm_registration()

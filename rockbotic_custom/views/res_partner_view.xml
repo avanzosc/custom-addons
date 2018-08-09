@@ -249,5 +249,21 @@
                 </form>
             </field>
         </record>
+        <record id="view_partner_birthdate_date_form_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.partner.birthdate.date.form.inh.rockbotic</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="partner_contact_birthdate.birthdate_date" />
+            <field name="arch" type="xml">
+                <field name="birthdate_date" position="after">
+                    <newline/>
+                    <separator string="Pending payments" colspan="4"/>
+                    <field name="pending_receipts"/>
+                    <newline/>
+                    <separator string="Incidents" colspan="4"/>
+                    <field name="with_incident"/>
+                    <field name="incident_notes" />
+                </field>
+            </field>
+        </record>
     </data>
 </openerp>

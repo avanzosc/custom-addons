@@ -35,6 +35,11 @@ class ResPartner(models.Model):
     claim_count = fields.Integer(compute='_compute_claim_count')
     send_email_unpaid_invoice = fields.Boolean(
         string='Send email unpaid invoice', default=False)
+    pending_receipts = fields.Boolean(
+        string='Pending payment receipts', default=False)
+    with_incident = fields.Boolean(
+        string='With incidents', default=False)
+    incident_notes = fields.Text(string='Incident notes')
 
     @api.multi
     def show_crm_claims_from_partner(self):
