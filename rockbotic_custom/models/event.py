@@ -158,3 +158,14 @@ class EventRegistration(models.Model):
             new_date = '{}-{}-01'.format(today.year, today.month)
             vals['from_date'] = new_date
         return vals
+
+    @api.one
+    def confirm_registration(self):
+        if self.partner_id.pending_receipts:
+            raise exceptions.Warning(
+                _("Student %s with pending payment receipts.") %
+                self.partner_id.name)
+        if self.partner_id.with_incident:
+            raise exceptions.Warning(
+                _("Student %s with incidents.") %
+                self.partner_id.name)

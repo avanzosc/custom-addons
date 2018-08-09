@@ -1512,6 +1512,7 @@ msgid "Saturday"
 msgstr "Sábado"
 
 #. module: rockbotic_custom
+#: view:wiz.send.by.email.customer.invoice:rockbotic_custom.wiz_send_by_email_customer_invoice_form
 #: view:wiz.send.email.event.evaluation:rockbotic_custom.wiz_send_email_event_evaluation_form
 #: view:wiz.send.email.registration.evaluation:rockbotic_custom.wiz_send_email_registration_evaluation_form
 msgid "Send email"
@@ -2036,4 +2037,51 @@ msgstr "Error en los datos/grabación"
 #: field:wiz.event.delete.assistant,reason_delete:0
 msgid "Reason for leaving"
 msgstr "Motivo de la baja"
+
+#. module: rockbotic_custom
+#: model:ir.actions.act_window,name:rockbotic_custom.action_wiz_send_by_email_customer_invoice
+msgid "Send by email"
+msgstr "Enviar por email"
+
+#. module: rockbotic_custom
+#: view:wiz.send.by.email.customer.invoice:rockbotic_custom.wiz_send_by_email_customer_invoice_form
+msgid "Send by email customer invoice"
+msgstr "Enviar por email factura cliente"
+
+#. module: rockbotic_custom
+#: field:res.partner,pending_receipts:0
+msgid "Pending payment receipts"
+msgstr "Recibos pendientes de pago"
+
+#. module: rockbotic_custom
+#: view:res.partner:rockbotic_custom.view_partner_birthdate_date_form_inh_rockbotic
+msgid "Pending payments"
+msgstr "Pagos pendientes"
+
+#. module: rockbotic_custom
+#: code:addons/rockbotic_custom/models/event.py:166
+#, python-format
+msgid "Student %s with pending payment receipts."
+msgstr "Estudiante %s con recibos pendientes de pago."
+
+#. module: rockbotic_custom
+#: field:res.partner,with_incident:0
+msgid "With incidents"
+msgstr "Con incidencias"
+
+#. module: rockbotic_custom
+#: field:res.partner,incident_notes:0
+msgid "Incident notes"
+msgstr "Notas incidencia"
+
+#. module: rockbotic_custom
+#: view:res.partner:rockbotic_custom.view_partner_birthdate_date_form_inh_rockbotic
+msgid "Incidents"
+msgstr "Incidencias"
+
+#. module: rockbotic_custom
+#: code:addons/rockbotic_custom/models/event.py:170
+#, python-format
+msgid "Student %s with incidents."
+msgstr "Estudiante %s con incidencias."
 
