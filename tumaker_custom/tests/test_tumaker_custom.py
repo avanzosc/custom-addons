@@ -242,11 +242,13 @@ class TestTumakerCustom(common.TransactionCase):
         suppinfo_model = self.env['product.supplierinfo']
         suppinfo_model.create({
             'product_tmpl_id': self.black_product.product_tmpl_id.id,
+            'product_id': self.black_product.id,
             'name': self.partner_id,
             'product_code': 'TestName',
             'type': 'customer'})
         suppinfo_model.create({
             'product_tmpl_id': self.black_product.product_tmpl_id.id,
+            'product_id': self.black_product.id,
             'name': self.partner_id,
             'product_code': 'CODXXTEST',
             'type': 'supplier'})

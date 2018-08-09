@@ -29,6 +29,7 @@ class TestCCGCustom(common.TransactionCase):
         self.partner2.parent_id = self.ref('base.res_partner_2')
         self.env['product.supplierinfo'].create(
             {'name': self.partner1.id,
+             'product_id': self.product_1.id,
              'product_tmpl_id': self.product_1.product_tmpl_id.id,
              'type': 'customer',
              'product_name': 'NameTest',
