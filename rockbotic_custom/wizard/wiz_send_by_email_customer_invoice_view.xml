@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="wiz_send_by_email_customer_invoice_form">
+            <field name="name">wiz.send.by.email.customer.invoice.form</field>
+            <field name="model">wiz.send.by.email.customer.invoice</field>
+            <field name="arch" type="xml">
+                <form string="Send by email customer invoice" version="7.0">
+                    <p>You are going to send customer invoices by email</p>
+                    <footer>
+                        <button name="button_send_email" type="object"
+                            string="Send email" class="oe_highlight" />
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-# © 2015 Esther Martín - AvanzOSC
+# Copyright 2015 Esther Martín - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 {
     "name": "Igalia - Custom",
     "summary": "",
-    "version": "8.0.1.2.0",
+    "version": "8.0.1.3.0",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -21,7 +21,7 @@
         "sale",
         "account_invoice_pricelist",
         "hr_timesheet_invoice",
-        "l10n_es_account_asset_variation"
+        "l10n_es_account_asset_variation",
     ],
     "data": [
         "views/igalia_layout_view.xml",

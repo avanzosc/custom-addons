@@ -72,5 +72,12 @@
                 </field>
             </field>
         </record>
+        <act_window name="Send by email"
+                    key2="client_action_multi"
+                    res_model="wiz.send.by.email.customer.invoice"
+                    src_model="account.invoice"
+                    view_mode="form"
+                    target="new"
+                    id="action_wiz_send_by_email_customer_invoice"/>
     </data>
 </openerp>
