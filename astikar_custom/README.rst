@@ -32,6 +32,7 @@ Astikar Custom
 * New field to compute product qty in workshop and filter for repair lines.
 * Add repair fields on repair invoices
 * Custom Purchase reports added.
+* Automatic assign of repair lines when an incoming picking is processed from a purchase with analytic account.
 
 Credits
 =======

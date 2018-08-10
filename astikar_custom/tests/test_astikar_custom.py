@@ -14,8 +14,10 @@ class TestAstikarCustom(common.TransactionCase):
         self.ir_sequence_model = self.env['ir.sequence']
         self.mrp_repair_model = self.env['mrp.repair']
         self.quant_model = self.env['stock.quant']
+        self.purchase_model = self.env['purchase.order']
         self.mrp_repair_sequence = self.browse_ref('mrp_repair.seq_mrp_repair')
         self.product = self.browse_ref('product.product_product_3')
+        self.product2 = self.env.ref('product.product_product_4')
         self.location = self.ref('stock.location_inventory')
         self.mrp_repair1 = self.env.ref('mrp_repair.mrp_repair_rmrp1')
         self.mrp_repair = self.mrp_repair_model.create({
@@ -24,6 +26,20 @@ class TestAstikarCustom(common.TransactionCase):
             'location_id': self.location,
             'location_dest_id': self.location,
             })
+        self.partner = self.env.ref('base.res_partner_1')
+        self.customer = self.env['res.partner'].create({
+            'name': 'Test Customer',
+            'is_company': True,
+            'customer': True,
+            'company_id': self.env.user.company_id.id,
+        })
+        vals = {'name': 'test',
+                'product_id': self.product.id,
+                'location_id': self.location,
+                'location_dest_id': self.location,
+                'product_uom': self.product.uom_id.id,
+                'partner_id': self.customer.id}
+        self.mrp_repair_customer = self.env['mrp.repair'].create(vals)
 
     def test_default_quotation_note(self):
         note = 'Test Sale Note'
@@ -247,3 +263,41 @@ class TestAstikarCustom(common.TransactionCase):
                           self.product.last_purchase_price)
         self.assertEquals(self.product.manual_supplier_id,
                           self.product.last_supplier_id)
+
+    def test_purchase_repair_lines(self):
+        vals = self.purchase_model.onchange_partner_id(self.partner.id)
+        value = vals.get('value')
+        purchase_line_vals = {
+            'product_id': self.product2.id,
+            'name': self.product2.name,
+            'product_qty': 100,
+            'price_unit': 5,
+            'account_analytic_id':
+                self.mrp_repair_customer.analytic_account.id,
+            'date_planned': fields.Date.today(),
+        }
+        purchase_vals = {
+            'partner_id': self.partner.id,
+            'pricelist_id': value.get('pricelist_id'),
+            'payment_term_id': value.get('payment_term_id'),
+            'fiscal_position': value.get('fiscal_position'),
+            'location_id': self.ref('stock.stock_location_stock'),
+            'state': 'draft',
+            'invoice_method': 'order',
+            'repair_analytic_id': self.mrp_repair_customer.analytic_account.id,
+            'order_line': [(0, 0, purchase_line_vals)],
+        }
+        self.purchase = self.purchase_model.create(purchase_vals)
+        self.purchase.signal_workflow('purchase_confirm')
+        picking = self.purchase.picking_ids[0]
+        picking.action_confirm()
+        for move in picking.move_lines:
+            self.assertEqual(move.state, 'assigned',
+                             'Wrong state of move line.')
+        picking.do_transfer()
+        self.assertEqual(picking.state, 'done',
+                         'Incoming shipment state should be done.')
+        for move in picking.move_lines:
+            self.assertEqual(move.state, 'done', 'Wrong state of move line.')
+        self.assertEqual(len(self.product2.repair_line_ids), 1,
+                         'Purchase line not created in repair order')
