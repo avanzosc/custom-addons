@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-05 13:07+0000\n"
-"PO-Revision-Date: 2017-10-05 13:07+0000\n"
+"POT-Creation-Date: 2018-08-20 11:11+0000\n"
+"PO-Revision-Date: 2018-08-20 11:11+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -249,6 +249,12 @@ msgid "&times;"
 msgstr "&times;"
 
 #. module: rockbotic_website_crm
+#: view:event.event:rockbotic_website_crm.event_event_url_form_view
+#: view:res.partner:rockbotic_website_crm.res_partner_url_form_view
+msgid "(recompute url)"
+msgstr "(recalcular url)"
+
+#. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
 msgid "A spanish IBAN has 24 digits, starting with ES"
 msgstr "Un IBAN español tiene 24 dígitos, comenzando con ES"
@@ -319,6 +325,11 @@ msgid "Class Enrollment"
 msgstr "Inscripciones"
 
 #. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Comercial"
+msgstr "Comercial"
+
+#. module: rockbotic_website_crm
 #: model:ir.model,name:rockbotic_website_crm.model_res_company
 msgid "Companies"
 msgstr "Compañías"
@@ -347,7 +358,8 @@ msgid "Created on"
 msgstr "Creado en"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/controllers/main.py:179
+#: code:addons/rockbotic_website_crm/controllers/main.py:188
+#: code:addons/rockbotic_website_crm/controllers/main.py:212
 #, python-format
 msgid "Custom Fields: "
 msgstr "Campos personalizados: "
@@ -389,19 +401,22 @@ msgid "Email"
 msgstr "Correo electrónico"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/models/crm_lead.py:127
+#: code:addons/rockbotic_website_crm/models/crm_lead.py:147
+#: code:addons/rockbotic_website_crm/models/crm_lead.py:153
 #, python-format
 msgid "Email template not found for Confirmation of place from inscription"
 msgstr "Plantilla de email no encontrada para la confirmación de plaza desde una inscripción."
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/models/crm_lead.py:239
+#: code:addons/rockbotic_website_crm/models/crm_lead.py:259
+#: code:addons/rockbotic_website_crm/models/crm_lead.py:265
 #, python-format
 msgid "Email template not found for confirmation of reservation of place"
 msgstr "Plantilla de email no encontrada para la confirmación de reserva de plaza"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/models/crm_lead.py:159
+#: code:addons/rockbotic_website_crm/models/crm_lead.py:179
+#: code:addons/rockbotic_website_crm/models/crm_lead.py:185
 #, python-format
 msgid "Email template not found for request SEPA to the new registration from inscription"
 msgstr "Plantilla de email no encontrada para solicitud SEPA al nuevo registro en eventos desde inscripciones."
@@ -430,7 +445,8 @@ msgid "Enrollments that are assigned to me"
 msgstr "Inscripciones asignadas a mí"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/controllers/main.py:195
+#: code:addons/rockbotic_website_crm/controllers/main.py:204
+#: code:addons/rockbotic_website_crm/controllers/main.py:228
 #, python-format
 msgid "Environ Fields: "
 msgstr "Campos de entorno: "
@@ -438,6 +454,7 @@ msgstr "Campos de entorno: "
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
 #: field:crm.lead,event_id:0
+#: model:ir.model,name:rockbotic_website_crm.model_event_event
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Event"
 msgstr "Actividad"
@@ -448,7 +465,8 @@ msgid "Event Registration"
 msgstr "Registro evento"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/models/crm_lead.py:54
+#: code:addons/rockbotic_website_crm/models/crm_lead.py:55
+#: code:addons/rockbotic_website_crm/models/crm_lead.py:61
 #, python-format
 msgid "Event must have been selected."
 msgstr "Se debe seleccionar un evento."
@@ -462,6 +480,11 @@ msgstr "Registro del evento"
 #: view:website:rockbotic_website_crm.student_signup
 msgid "FIRST SELECT THE"
 msgstr "PRIMERO SELECCIONAR EL"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "First Surname"
+msgstr "Primer apellido"
 
 #. module: rockbotic_website_crm
 #: field:event.registration,first_day_of_class:0
@@ -545,8 +568,8 @@ msgstr "Mis inscripciones"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
-msgid "Name / Surname"
-msgstr "Apellidos, Nombre"
+msgid "Name"
+msgstr "Nombre"
 
 #. module: rockbotic_website_crm
 #: selection:crm.lead,blog_permission:0
@@ -598,6 +621,21 @@ msgid "Parent Data"
 msgstr "Datos de la persona responsable"
 
 #. module: rockbotic_website_crm
+#: field:crm.lead,parent_surname1:0
+msgid "Parent First Surname"
+msgstr "Primer apellido del responsable"
+
+#. module: rockbotic_website_crm
+#: field:crm.lead,parent_name:0
+msgid "Parent Name"
+msgstr "Nombre del responsable"
+
+#. module: rockbotic_website_crm
+#: field:crm.lead,parent_surname2:0
+msgid "Parent Second Surname"
+msgstr "Segundo apellido del responsable"
+
+#. module: rockbotic_website_crm
 #: field:res.partner.enroll.search.item,parent_vat:0
 msgid "Parent VAT"
 msgstr "DNI / NIE"
@@ -606,6 +644,11 @@ msgstr "DNI / NIE"
 #: field:res.partner.enroll.search,parent_id:0
 msgid "Parent id"
 msgstr "Persona responsable"
+
+#. module: rockbotic_website_crm
+#: field:event.event,count_parents:0
+msgid "Parents"
+msgstr "Responsables"
 
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
@@ -635,7 +678,6 @@ msgid "Please fill the form below in order to enroll in a class."
 msgstr "Por favor, rellene el siguiente formulario para realizar la inscripción de un/a alumno/a en nuestras clases."
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/wizard/res_partner_enroll_search.py:86
 #: code:addons/rockbotic_website_crm/wizard/res_partner_enroll_search.py:94
 #, python-format
 msgid "Please select one line."
@@ -705,6 +747,11 @@ msgid "Search id"
 msgstr "Search id"
 
 #. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Second Surname"
+msgstr "Segundo apellido"
+
+#. module: rockbotic_website_crm
 #: view:res.partner.enroll.search:rockbotic_website_crm.res_partner_enroll_search_form_view
 msgid "Select Partners"
 msgstr "Seleccionar estudiante / responsable"
@@ -718,6 +765,12 @@ msgstr "Seleccionado"
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Send"
 msgstr "Enviar"
+
+#. module: rockbotic_website_crm
+#: field:event.event,signup_slug:0
+#: field:res.partner,signup_slug:0
+msgid "Signup slug"
+msgstr "Slug de inscripción"
 
 #. module: rockbotic_website_crm
 #: field:crm.lead,media_permission:0
@@ -758,6 +811,21 @@ msgid "Student Data"
 msgstr "Datos del Estudiante"
 
 #. module: rockbotic_website_crm
+#: field:crm.lead,student_surname1:0
+msgid "Student First Surname"
+msgstr "Primer apellido del estudiante"
+
+#. module: rockbotic_website_crm
+#: field:crm.lead,student_name:0
+msgid "Student Name"
+msgstr "Nombre del estudiante"
+
+#. module: rockbotic_website_crm
+#: field:crm.lead,student_surname2:0
+msgid "Student Second Surname"
+msgstr "Segundo apellido del estudiante"
+
+#. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Student Sign Up"
 msgstr "Inscripción de alumnado ROCKBOTIC"
@@ -773,7 +841,6 @@ msgid "Thanks!"
 msgstr "¡Gracias!"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/wizard/res_partner_enroll_search.py:89
 #: code:addons/rockbotic_website_crm/wizard/res_partner_enroll_search.py:97
 #, python-format
 msgid "There can only be one selected."

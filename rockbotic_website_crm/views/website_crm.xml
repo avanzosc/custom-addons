@@ -66,13 +66,31 @@
                             </fieldset>
                             <fieldset class="col-md-12">
                                 <legend>Student Data</legend>
-                                <div t-attf-class="form-group #{error and 'contact_name' in error and 'has-error' or ''}">
+                                <div t-attf-class="form-group #{error and 'student_surname1' in error and 'has-error' or ''}">
                                     <label
-                                            class="col-md-3 col-sm-4 control-label" for="contact_name">Name / Surname</label>
+                                            class="col-md-3 col-sm-4 control-label" for="student_surname1">First Surname</label>
                                     <div class="col-md-9 col-sm-8">
-                                        <input type="text" name="contact_name"
+                                        <input type="text" name="student_surname1"
                                                class="form-control" required="True"
-                                               t-att-value="values.get('contact_name')"/>
+                                               t-att-value="values.get('student_surname1')"/>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'student_surname2' in error and 'has-error' or ''}">
+                                    <label
+                                            class="col-md-3 col-sm-4 control-label" for="student_surname2">Second Surname</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <input type="text" name="student_surname2"
+                                               class="form-control"
+                                               t-att-value="values.get('student_surname2')"/>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'student_name' in error and 'has-error' or ''}">
+                                    <label
+                                            class="col-md-3 col-sm-4 control-label" for="student_name">Name</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <input type="text" name="student_name"
+                                               class="form-control" required="True"
+                                               t-att-value="values.get('student_name')"/>
                                     </div>
                                 </div>
                                 <div t-attf-class="form-group #{error and 'birth_date' in error and 'has-error' or ''}">
@@ -141,13 +159,30 @@
                             </fieldset>
                             <fieldset class="col-md-12">
                                 <legend>Parent Data</legend>
-                                <div t-attf-class="form-group #{error and 'partner_name' in error and 'has-error' or ''}">
+                                <div t-attf-class="form-group #{error and 'parent_surname1' in error and 'has-error' or ''}">
                                     <label
-                                            class="col-md-3 col-sm-4 control-label" for="partner_name">Name / Surname</label>
+                                            class="col-md-3 col-sm-4 control-label" for="parent_surname1">First Surname</label>
                                     <div class="col-md-9 col-sm-8">
-                                        <input type="text" class="form-control" name="partner_name"
-                                               required="True"
-                                               t-att-value="values.get('partner_name')"/>
+                                        <input type="text" name="parent_surname1"
+                                               class="form-control" required="True"
+                                               t-att-value="values.get('parent_surname1')"/>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'parent_surname2' in error and 'has-error' or ''}">
+                                    <label
+                                            class="col-md-3 col-sm-4 control-label" for="parent_surname2">Second Surname</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <input type="text" name="parent_surname2"
+                                               class="form-control" t-att-value="values.get('parent_surname2')"/>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'parent_name' in error and 'has-error' or ''}">
+                                    <label
+                                            class="col-md-3 col-sm-4 control-label" for="parent_name">Name</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <input type="text" name="parent_name"
+                                               class="form-control" required="True"
+                                               t-att-value="values.get('parent_name')"/>
                                     </div>
                                 </div>
                                 <div t-attf-class="form-group #{error and 'zipcode' in error and 'has-error' or ''}">

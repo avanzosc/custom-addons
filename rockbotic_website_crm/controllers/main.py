@@ -110,7 +110,8 @@ class StudentSignUp(http.Controller):
         _BLACKLIST = ['id', 'create_uid', 'create_date', 'write_uid',
                       'write_date', 'user_id', 'active']
         # Allow in description
-        _REQUIRED = ['name', 'partner_name', 'contact_name', 'birth_date',
+        _REQUIRED = ['name', 'student_name', 'student_surname1',
+                     'parent_name', 'parent_surname1', 'birth_date',
                      'journal_permission', 'blog_permission',
                      'media_permission']
         # Could be improved including required from model
@@ -137,7 +138,29 @@ class StudentSignUp(http.Controller):
                 # allow to add some free fields or blacklisted field like ID
                 post_description.append("%s: %s" % (field_name, field_value))
 
+        if values.get('student_surname2', '') != '':
+            student_name = '{} {}, {}'.format(
+                values.get('student_surname1').capitalize(),
+                values.get('student_surname2').capitalize(),
+                values.get('student_name').capitalize())
+        else:
+            student_name = '{}, {}'.format(
+                values.get('student_surname1').capitalize(),
+                values.get('student_name').capitalize())
+
+        if values.get('parent_surname2', '') != '':
+            parent_name = '{} {}, {}'.format(
+                values.get('parent_surname1').capitalize(),
+                values.get('parent_surname2').capitalize(),
+                values.get('parent_name').capitalize())
+        else:
+            parent_name = '{}, {}'.format(
+                values.get('parent_surname1').capitalize(),
+                values.get('parent_name').capitalize())
+
         values.update({
+            'contact_name': student_name,
+            'partner_name': parent_name,
             'school_id': int(values.get('school_id') or 0),
             'event_id': int(values.get('event_id') or 0),
             'rockbotic_before': (
@@ -152,6 +175,7 @@ class StudentSignUp(http.Controller):
             # if kwarg.name is empty, it's an error, we cannot copy
             # the contact_name
             values["name"] = values.get("contact_name")
+
         # fields validation : Check that required field from
         # model crm_lead exists
         error = set(field for field in _REQUIRED if not values.get(field))
