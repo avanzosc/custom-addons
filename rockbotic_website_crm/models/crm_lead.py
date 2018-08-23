@@ -34,6 +34,12 @@ class CrmLead(models.Model):
         comodel_name='res.partner', string='Parent',
         domain="[('is_company', '=', True)]")
     no_confirm_mail = fields.Boolean(string='Do Not Send Confirmation Mail')
+    student_name = fields.Char(string='Student Name')
+    student_surname1 = fields.Char(string='Student First Surname')
+    student_surname2 = fields.Char(string='Student Second Surname')
+    parent_name = fields.Char(string='Parent Name')
+    parent_surname1 = fields.Char(string='Parent First Surname')
+    parent_surname2 = fields.Char(string='Parent Second Surname')
 
     @api.model
     def default_get(self, fields_list):

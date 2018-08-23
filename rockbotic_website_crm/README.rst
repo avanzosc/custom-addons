@@ -13,6 +13,9 @@ Rockbotic - Website CRM
   confirming a inscription that comes from web.
 * Customized URLs for school and event
 
+* In signup form there will be 3 fields for name and surname of student and
+  responsible person, and it will internally format as "Surname1 Surname2,
+  Name" capitalizing the first letter of each field.
 
 Credits
 =======
