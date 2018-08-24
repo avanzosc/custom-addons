@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+        <report 
+            string="Picking" 
+            id="stock.action_report_picking" 
+            model="stock.picking" 
+            report_type="qweb-pdf"
+            name="hispaled_custom.report_picking_new" 
+            file="hispaled_custom.report_picking_new" 
+        />
+</data>
+</openerp>
