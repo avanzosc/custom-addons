@@ -5,7 +5,7 @@
 {
     "name": "Hispaled",
     "summary": "Customization Module",
-    "version": "8.0.1.0.0",
+    "version": "8.0.1.1.0",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -21,12 +21,19 @@
         "product_attribute_code_field",
         "product_variant_default_code",
         "stock_picking_label_print",
+        "account_payment_purchase",
+        "sale_proforma_report"
     ],
     "data": [
         "views/mrp_production_views.xml",
         "views/stock_label_report.xml",
         "views/stock_label_report_data_views.xml",
+        "views/stock_picking_views.xml",
         "wizard/mrp_product_produce_views.xml",
+        "data/report_paperformat.xml",
+        "report/purchase_order_report.xml",
+        "report/stock_picking_report.xml",
+        "report/sale_order_report.xml",
     ],
     "installable": True,
 }
