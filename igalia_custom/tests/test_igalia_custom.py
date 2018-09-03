@@ -114,3 +114,6 @@ class TestIgaliaCustom(common.TransactionCase):
         lines = self.asset.depreciation_line_ids.filtered(
             lambda x: x.method_percentage != 20)
         self.assertFalse(lines, "The percentage of lines is not correct.")
+        self.asset.depreciation_line_ids[0].move_check = True
+        self.asset.depreciation_line_ids[1].move_check = True
+        self.assertEqual(self.asset.amortized_amount, 200.00)
