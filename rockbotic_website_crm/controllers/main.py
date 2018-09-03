@@ -139,22 +139,22 @@ class StudentSignUp(http.Controller):
                 post_description.append("%s: %s" % (field_name, field_value))
 
         if values.get('student_surname2', '') != '':
-            student_name = '{} {}, {}'.format(
+            student_name = u'{} {}, {}'.format(
                 values.get('student_surname1').capitalize(),
                 values.get('student_surname2').capitalize(),
                 values.get('student_name').capitalize())
         else:
-            student_name = '{}, {}'.format(
+            student_name = u'{}, {}'.format(
                 values.get('student_surname1').capitalize(),
                 values.get('student_name').capitalize())
 
         if values.get('parent_surname2', '') != '':
-            parent_name = '{} {}, {}'.format(
+            parent_name = u'{} {}, {}'.format(
                 values.get('parent_surname1').capitalize(),
                 values.get('parent_surname2').capitalize(),
                 values.get('parent_name').capitalize())
         else:
-            parent_name = '{}, {}'.format(
+            parent_name = u'{}, {}'.format(
                 values.get('parent_surname1').capitalize(),
                 values.get('parent_name').capitalize())
 
