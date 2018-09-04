@@ -5,7 +5,7 @@
 {
     "name": "Igalia - Custom",
     "summary": "",
-    "version": "8.0.1.1.0",
+    "version": "8.0.1.2.0",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -32,6 +32,7 @@
         "views/account_invoice_view.xml",
         "views/account_asset_asset_view.xml",
         "views/asset_asset_report_view.xml",
+        "views/account_asset_report.xml",
     ],
     "installable": True,
 }
