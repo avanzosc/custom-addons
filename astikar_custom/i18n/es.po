@@ -892,3 +892,20 @@ msgstr "{'default_account_analytic_id': repair_analytic_id, 'partner_id': partne
 msgid "{'default_account_analytic_id': repair_analytic_id}"
 msgstr "{'default_account_analytic_id': repair_analytic_id}"
 
+#. module: astikar_custom
+#: field:res.partner,campaign_id:0
+#: view:res.partner:astikar_custom.view_res_partner_filter
+msgid "Campaign"
+msgstr "Campaña"
+
+#. module: astikar_custom
+#: field:res.partner,medium_id:0
+#: view:res.partner:astikar_custom.view_res_partner_filter
+msgid "Channel"
+msgstr "Canal"
+
+#. module: astikar_custom
+#: field:res.partner,source_id:0
+#: view:res.partner:astikar_custom.view_res_partner_filter
+msgid "Source"
+msgstr "Origen"
