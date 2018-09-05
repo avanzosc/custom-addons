@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    <record model="ir.ui.view" id="view_account_analytic_line_tree">
+        <field name="name">account.analytic.line.tree</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="account.view_account_analytic_line_tree" />
+        <field name="arch" type="xml">
+            <field name="date" position="after">
+                 <field name="create_date" readonly="1"/>
+            </field>
+        </field>
+    </record>
+    </data>
+</openerp>

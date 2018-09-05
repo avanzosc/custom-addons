@@ -38,6 +38,10 @@ class AccountInvoice(models.Model):
 class AccountInvoiceLine(models.Model):
     _inherit = 'account.invoice.line'
 
+    date_invoice = fields.Date(string="Invoice date",
+                               related="invoice_id.date_invoice",
+                               store=True, readonly=True)
+
     @api.multi
     def product_id_change(
             self, product, uom_id, qty=0, name='', type='out_invoice',
