@@ -66,6 +66,7 @@ msgstr "AZALPENA"
 
 #. module: astikar_custom
 #: view:account.move.line:astikar_custom.show_account_move_view_search
+#: view:account.invoice.line:astikar_custom.view_account_invoice_line_filter
 msgid "Account"
 msgstr "Cuenta"
 
@@ -283,6 +284,7 @@ msgstr "GUZTIRA"
 
 #. module: astikar_custom
 #: view:mrp.repair.line:astikar_custom.mrp_repair_line_view_search
+#: view:account.invoice.line:astikar_custom.view_account_invoice_line_filter
 msgid "Group By"
 msgstr "Agrupar por"
 
@@ -335,6 +337,7 @@ msgstr "Categoría interna"
 
 #. module: astikar_custom
 #: model:ir.model,name:astikar_custom.model_account_invoice
+#: view:account.invoice.line:astikar_custom.view_account_invoice_line_filter
 msgid "Invoice"
 msgstr "Factura"
 
@@ -528,6 +531,7 @@ msgstr "PROFORMA ZKº:"
 
 #. module: astikar_custom
 #: model:ir.model,name:astikar_custom.model_res_partner
+#: view:account.invoice.line:astikar_custom.view_account_invoice_line_filter
 msgid "Partner"
 msgstr "Empresa"
 
@@ -548,6 +552,7 @@ msgstr "Prezioa"
 
 #. module: astikar_custom
 #: model:ir.model,name:astikar_custom.model_product_product
+#: view:account.invoice.line:astikar_custom.view_account_invoice_line_filter
 msgid "Product"
 msgstr "Producto"
 
