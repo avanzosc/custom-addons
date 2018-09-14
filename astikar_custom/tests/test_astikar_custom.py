@@ -23,8 +23,11 @@ class TestAstikarCustom(common.TransactionCase):
         self.mrp_repair = self.mrp_repair_model.create({
             'product_id': self.product.id,
             'product_uom': self.product.uom_id.id,
+            'partner_id': self.env.ref('base.res_partner_8').id,
             'location_id': self.location,
             'location_dest_id': self.location,
+            'invoice_method': 'after_repair',
+            'partner_invoice_id': self.env.ref('base.res_partner_8').id
             })
         self.partner = self.env.ref('base.res_partner_1')
         self.customer = self.env['res.partner'].create({
@@ -160,7 +163,8 @@ class TestAstikarCustom(common.TransactionCase):
             'location_dest_id': self.product.property_stock_production.id,
             'price_unit': 2,
             'to_invoice': True}
-        self.env['mrp.repair.line'].create(repair_line_vals)
+        repair_line = self.env['mrp.repair.line'].create(repair_line_vals)
+        self.assertEqual(repair_line.available_qty, 0)
         self.assertEqual(len(self.product.repair_line_ids), 1)
         repair_line_vals2 = {
             'repair_id': self.mrp_repair.id,

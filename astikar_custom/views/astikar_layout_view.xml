@@ -63,7 +63,7 @@
                         <img src="/astikar_custom/static/src/img/astikar.png"/>
                     </div>
                 </div>
-                <div class="row">
+                <div class="col-xs-12 row">
                     <div class="col-xs-6" style="margin-left:15px;">
                         <address class="mb0 astikar_header" itemscope="itemscope" itemtype="http://schema.org/Organization">
                             <span t-field="company.partner_id.street" />
@@ -90,9 +90,7 @@
                             </div>
                         </address>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6 pull-right">
+                    <div class="col-xs-4 pull-right" style="font-size: 14px;">
                         <div t-if="o.partner_id">
                             <span t-field="o.partner_id.name"/>
                             <br />
