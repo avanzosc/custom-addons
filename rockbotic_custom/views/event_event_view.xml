@@ -61,10 +61,28 @@
                 <filter string="Responsible" position="before">
                     <filter string="Centre" context="{'group_by':'address_id'}"/>
                 </filter>
+                <group string="Group By" position="inside">
+                    <filter string="Level" context="{'group_by':'level'}"
+                            name="level_grouping" />
+                </group>
                 <field name="name" position="after">
                     <field name="sale_order" string="Sale order"/>
                     <field name="start_hour" string="Start hour"/>
                     <field name="end_hour" string="End hour"/>
+                </field>
+                <field name="user_id" position="after">
+                    <field name="level" />
+                    <field name="course_ids" />
+                    <separator />
+                    <filter string="Undefined Level" name="level_undefined"
+                            domain="[('level','=', False)]"/>
+                    <filter string="Initial Level" name="level_initial"
+                            domain="[('level','=', 'initial')]"/>
+                    <filter string="Mixed Level" name="level_mixed"
+                            domain="[('level','=', 'mixed')]"/>
+                    <filter string="Expert Level" name="level_expert"
+                            domain="[('level','=', 'expert')]"/>
+
                 </field>
             </field>
         </record>
@@ -95,6 +113,15 @@
                 <field name="organizer_id" position="after">
                     <field name="sale_order_payer" invisible="1"/>
                 </field>
+                <notebook position="inside">
+                    <page name="rating" string="Rating">
+                        <group>
+                            <field name="level" />
+                            <field name="course_ids"
+                                   widget="many2many_checkboxes" />
+                        </group>
+                    </page>
+                </notebook>
             </field>
         </record>
         <record id="view_event_form_inh_rockbotic3" model="ir.ui.view">
