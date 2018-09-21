@@ -10,10 +10,18 @@ Rockbotic custom
 * Access rules for Marketing responsible on mail.followers
 * New field on company for vat exempt invoices.
 * New field in taxes in order to define if it is non-taxable.
+* Two new fields in event to rate them.
 * Custom reports:
 
   * List of registrations from an event
 
+Bug Tracker
+===========
+
+Bugs are tracked on `GitHub Issues
+<https://github.com/avanzosc/custom-addons/issues>`_. In case of trouble,
+please check there if your issue has already been reported. If you spotted
+it first, help us smash it by providing detailed and welcomed feedback.
 
 Credits
 =======
@@ -24,5 +32,9 @@ Contributors
 * Alfredo de la Fuente <alfredodelafuente@avanzosc.es>
 * Esther Martín <esthermartin@avanzosc.es>
 * Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>
-+ Gotzon Imaz <gotzonimaz@avanzosc.es>
-* Miguel Urbistondo<mikelurbistondo@avanzosc.es>
+* Gotzon Imaz <gotzonimaz@avanzosc.es>
+* Miguel Urbistondo <mikelurbistondo@avanzosc.es>
+
+Do not contact contributors directly about support or help with technical
+issues.
+

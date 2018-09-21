@@ -15,6 +15,13 @@ class EventEvent(models.Model):
         string='Start hour', related='sale_order_line.start_hour', store=True)
     end_hour = fields.Float(
         string='End hour', related='sale_order_line.end_hour', store=True)
+    level = fields.Selection(
+        selection=[('initial', 'Initial'),
+                   ('mixed', 'Mixed'),
+                   ('expert', 'Expert')],
+        string='Level')
+    course_ids = fields.Many2many(
+        comodel_name='partner.student.course', string='Courses')
 
     def _validate_registrations_email(self):
         for event in self:
