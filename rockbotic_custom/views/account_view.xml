@@ -22,5 +22,17 @@
                 <field name="complete_name" position="replace" />
             </field>
         </record>
+
+        <record id="view_mandate_tree" model="ir.ui.view">
+            <field name="name">account.banking.mandate.tree</field>
+            <field name="model">account.banking.mandate</field>
+            <field name="inherit_id" ref="account_banking_mandate.view_mandate_tree" />
+            <field name="arch" type="xml">
+                <field name="state" position="after">
+                    <field name="partner_bank_id"/>
+                </field>
+            </field>
+        </record>
+
     </data>
 </openerp>
