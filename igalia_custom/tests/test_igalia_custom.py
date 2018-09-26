@@ -108,12 +108,15 @@ class TestIgaliaCustom(common.TransactionCase):
 
     def test_asset(self):
         self.asset.compute_depreciation_board()
-        lines = self.asset.depreciation_line_ids.filtered(
-            lambda x: x.amount != 100)
-        self.assertFalse(lines, "The amount of lines is not correct.")
-        lines = self.asset.depreciation_line_ids.filtered(
-            lambda x: x.method_percentage != 20)
-        self.assertFalse(lines, "The percentage of lines is not correct.")
-        self.asset.depreciation_line_ids[0].move_check = True
-        self.asset.depreciation_line_ids[1].move_check = True
-        self.assertEqual(self.asset.amortized_amount, 200.00)
+        self.assertEquals(
+            len(self.asset.depreciation_line_ids), self.asset.method_number,
+            "The amount of lines is not correct.")
+        for line in self.asset.depreciation_line_ids:
+            try:
+                line.create_move()
+            except Exception:
+                continue
+        self.assertEqual(
+            self.asset.amortized_amount,
+            sum(self.asset.depreciation_line_ids.filtered(
+                'move_check').mapped('amount')))
