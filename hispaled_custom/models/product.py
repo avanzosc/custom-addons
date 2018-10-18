@@ -2,7 +2,7 @@
 # Copyright 2018 Oihane Crucelaegui - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-from openerp import models
+from openerp import models, fields
 
 
 class ProductProduct(models.Model):
@@ -21,3 +21,17 @@ class ProductProduct(models.Model):
         elif clase_value[:1].name == u'III':
             return 3
         return False
+
+
+class ProductConfiguratorAttribute(models.Model):
+    _inherit = 'product.configurator.attribute'
+    _order = 'attribute_code'
+
+    attribute_code = fields.Char(
+        string='Attribute Code', related='attribute_id.attribute_code',
+        store=True)
+
+
+class ProductAttribute(models.Model):
+    _inherit = 'product.attribute'
+    _order = 'attribute_code'

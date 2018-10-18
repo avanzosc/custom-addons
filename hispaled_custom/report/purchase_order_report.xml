@@ -52,23 +52,11 @@
                                 Supplier Number: <span t-field="o.partner_id.ref" />
                                 <br/>
                             </p>
-                            <p t-if="o.partner_ref">
-                                <br/>
-                                Supplier Reference: <span t-field="o.partner_ref" />
-                            </p>
-                            <p t-if="o.payment_mode_id">
-                                <br/>
-                                Payment Mode: <span t-field="o.payment_mode_id" />
-                            </p>
                         </div>
                     </div>
                     <div class="row mt32 mb32">
-                        <div t-if="o.name" class="col-xs-3">
-                            <strong>Our Order Reference:</strong>
-                            <p t-field="o.name"/>
-                        </div>
                         <div t-if="o.partner_ref" class="col-xs-3">
-                            <strong>Your Order Reference</strong>
+                            <strong>Your Order Reference:</strong>
                             <p t-field="o.partner_ref"/>
                         </div>
                         <div t-if="o.date_order" class="col-xs-3">
@@ -78,6 +66,11 @@
                         <div t-if="o.validator" class="col-xs-3">
                             <strong>Validated By:</strong>
                             <p t-field="o.validator"/>
+                        </div>
+                        <div t-if="o.payment_mode_id or o.payment_term_id" class="col-xs-3">
+                            <strong>Payment Method:</strong>
+                            <span t-field="o.payment_mode_id" />
+                            <span t-field="o.payment_term_id" />
                         </div>
                     </div>
                     <table class="table table-condensed">
@@ -143,14 +136,21 @@
                             </table>
                         </div>
                     </div>
-                    <p t-if="o.notes"><strong>Observations: </strong><span t-field="o.notes"/></p>
+                    <p t-if="o.notes"><strong>Observations:</strong><span t-field="o.notes"/></p>
+                    <div class="row">
+                        <div class="col-xs-12" style="font-size:7pt">
+                            <p t-if="o.company_id.purchase_order_footer" class="text-center">
+                                <strong><span t-field="o.company_id.purchase_order_footer"/></strong>
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 <div class="footer">
                 <div class="text-center" style="border-top: 1px solid black;">
                         <ul t-if="not o.company_id.custom_footer" class="list-inline">
-                            <li t-if="o.company_id.phone">Phone: <span t-field="o.company_id.phone"/></li>
+                            <li t-if="o.company_id.phone">Phone:<span t-field="o.company_id.phone"/></li>
                             <li t-if="o.company_id.fax and o.company_id.phone">&amp;bull;</li>
-                            <li t-if="o.company_id.fax">Fax: <span t-field="o.company_id.fax"/></li>
+                            <li t-if="o.company_id.fax">Fax:<span t-field="o.company_id.fax"/></li>
                             <li t-if="o.company_id.email">&amp;bull;</li>
                             <li t-if="o.company_id.email">Email: <span t-field="o.company_id.email"/></li>
                             <li t-if="o.company_id.website">&amp;bull;</li>
@@ -210,27 +210,37 @@
                             <br/>
                             <span t-field="o.company_id.website" />
                         </div>
-                <div class="col-xs-5">
-                    <div t-field="o.partner_id"
-                        t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
-                         VAT: <span t-field="o.partner_id.vat" />
-                         <br/>
-                         <p t-if="o.partner_id.ref">
-                             Supplier Number: <span t-field="o.partner_id.ref" />
-                             <br/>
-                             <br/>
-                         </p>
-                         <p t-if="o.payment_mode_id">
-                             Payment Mode: <span t-field="o.payment_mode_id" />
-                             <br/>
-                         </p>
-                         <p t-if="o.payment_term_id">
-                             Payment Term: <span t-field="o.payment_term_id" />
-                             <br/>
-                         </p>
-                         <br/>
-                </div>
-            </div>
+                        <div class="col-xs-5">
+                            <div t-field="o.partner_id"
+                                t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
+                                 VAT: <span t-field="o.partner_id.vat" />
+                                 <br/>
+                                 <p t-if="o.partner_id.ref">
+                                     Supplier Number: <span t-field="o.partner_id.ref" />
+                                     <br/>
+                                 </p>
+                        </div>
+                    </div>
+                    <div class="row mt32 mb32">
+                        <div t-if="o.partner_ref" class="col-xs-3">
+                            <strong>Your Order Reference</strong>
+                            <p t-field="o.partner_ref"/>
+                        </div>
+                        <div t-if="o.date_order" class="col-xs-3">
+                            <strong>Order Date:</strong>
+                            <p t-field="o.date_order"/>
+                        </div>
+                        <div t-if="o.validator" class="col-xs-3">
+                            <strong>Validated By:</strong>
+                            <p t-field="o.validator"/>
+                        </div>
+                        <div t-if="o.payment_mode_id or o.payment_term_id" class="col-xs-3">
+                            <strong>Payment Method: </strong>
+                            <span t-field="o.payment_mode_id" />
+                            <span t-field="o.payment_term_id" />
+                        </div>
+                    </div>
+            
             <table class="table table-condensed">
                 <thead>
                     <tr>
@@ -295,12 +305,19 @@
                     </table>
                 </div>
             </div>
-            <p t-if="o.notes"><strong>Observations: </strong><span t-field="o.notes"/></p>
+            <p t-if="o.notes"><strong>Observations:</strong><span t-field="o.notes"/></p>
+            <div class="row">
+                <div class="col-xs-12" style="font-size:7pt">
+                    <p t-if="o.company_id.purchase_order_footer" class="text-center">
+                        <strong><span t-field="o.company_id.purchase_order_footer"/></strong>
+                    </p>
+                </div>
+            </div>
             </div>
             <div class="footer">
                 <div class="text-center" style="border-top: 1px solid black;">
                     <ul t-if="not o.company_id.custom_footer" class="list-inline">
-                        <li t-if="o.company_id.phone">Phone: <span t-field="o.company_id.phone"/></li>
+                        <li t-if="o.company_id.phone">Phone:<span t-field="o.company_id.phone"/></li>
                         <li t-if="o.company_id.fax and o.company_id.phone">&amp;bull;</li>
                         <li t-if="o.company_id.fax">Fax: <span t-field="o.company_id.fax"/></li>
                         <li t-if="o.company_id.email">&amp;bull;</li>

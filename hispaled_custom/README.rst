@@ -19,6 +19,9 @@ This module customizes Odoo for HISPALED:
    * ClassII name: 'II'
    * ClassIII name: 'III'
 * Customized purchase order, sale order, invoice and stock picking reports.
+* Propagate sale order to out picking, and out invoices.
+* Catch the description of the variants of the products for sales, purchases,
+  pickings, and invoices lines.
 
 Bug Tracker
 ===========

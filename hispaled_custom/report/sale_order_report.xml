@@ -61,19 +61,14 @@
                             VAT: <span t-field="o.partner_id.vat" />
                             <br/>
                             Customer Number: <span t-field="o.partner_id.ref" />
-                            <br/>
-                            <br/>
-                            <p t-if="o.payment_mode_id">
-                                Payment Mode: <span t-field="o.payment_mode_id" />
-                                <br/>
-                                <br/>
-                            </p>
                         </div>
                     </div>
                     <h2>
                     </h2>
                     <div class="row mt32 mb32" id="informations">
-                        <div t-if="o.client_order_ref" class="col-xs-3">
+                        <div class="col-xs-3">
+                            <strong>Project:</strong>
+                            <p t-field="o.project_id"/>
                             <strong>Your Reference:</strong>
                             <p t-field="o.client_order_ref"/>
                         </div>
@@ -86,9 +81,10 @@
                             <strong>Salesperson:</strong>
                             <p t-field="o.user_id.name"/>
                         </div>
-                        <div t-if="o.payment_term" class="col-xs-3">
-                            <strong>Payment Term:</strong>
-                            <p t-field="o.payment_term"/>
+                        <div t-if="o.payment_mode_id or o.payment_term" class="col-xs-3">
+                            <strong>Payment Method:</strong>
+                            <span t-field="o.payment_mode_id" />
+                            <span t-field="o.payment_term" />
                         </div>
                     </div>
                     <table class="table table-condensed">
@@ -159,6 +155,13 @@
                         <strong>Payment Term:</strong>
                         <span t-field="o.payment_term.note"/>
                     </p>
+                    <div class="row">
+                        <div class="col-xs-12" style="font-size:7pt">
+                            <p t-if="o.company_id.sale_order_footer" class="text-center">
+                                <strong><span t-field="o.company_id.sale_order_footer"/></strong>
+                            </p>
+                        </div>
+                    </div>
                     <div class="oe_structure"/>
                 </div>
                 <div class="footer">

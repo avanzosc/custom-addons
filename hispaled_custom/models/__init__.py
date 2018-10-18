@@ -4,3 +4,8 @@
 
 from . import mrp_production
 from . import product
+from . import res_company
+from . import stock
+from . import account_invoice
+from . import sale_order
+from . import purchase_order_line
