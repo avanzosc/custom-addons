@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-09 11:02+0000\n"
-"PO-Revision-Date: 2018-07-09 11:02+0000\n"
+"POT-Creation-Date: 2018-10-17 14:27+0000\n"
+"PO-Revision-Date: 2018-10-17 14:27+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,9 +16,45 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: hispaled_custom
-#: view:website:stock_picking_label_print.stock_label_report
-msgid "230V IP66"
-msgstr "230V IP66"
+#: view:stock.picking:hispaled_custom.view_picking_form_inh_hispaled
+msgid "Additional Info"
+msgstr "Información adicional"
+
+#. module: hispaled_custom
+#: field:product.configurator.attribute,attribute_code:0
+msgid "Attribute Code"
+msgstr "Código atributo"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+#: view:website:account.report_invoice_document
+msgid "Sale order customer ref.:"
+msgstr "Ref. pedido venta cliente:"
+
+#. module: hispaled_custom
+#: model:ir.model,name:hispaled_custom.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "Customer Address:"
+msgstr "Dirección de cliente:"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "Destination"
+msgstr "Destino"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "Email:"
+msgstr "Correo electrónico:"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "Fax:"
+msgstr "Fax:"
 
 #. module: hispaled_custom
 #: view:website:stock_picking_label_print.stock_label_report
@@ -36,6 +72,31 @@ msgid "IP Safeguard"
 msgstr "Protección IP"
 
 #. module: hispaled_custom
+#: view:res.company:hispaled_custom.view_company_form_inh_hispaled
+msgid "In invoice"
+msgstr "Factura proveedor"
+
+#. module: hispaled_custom
+#: field:res.company,in_invoice_footer:0
+msgid "In invoice footer"
+msgstr "Pie factura proveedor"
+
+#. module: hispaled_custom
+#: view:res.company:hispaled_custom.view_company_form_inh_hispaled
+msgid "In picking"
+msgstr "Albarán de entrada"
+
+#. module: hispaled_custom
+#: field:res.company,in_picking_footer:0
+msgid "In picking footer"
+msgstr "Pie albarán de entrada"
+
+#. module: hispaled_custom
+#: model:ir.model,name:hispaled_custom.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: hispaled_custom
 #: view:website:stock_picking_label_print.stock_label_report
 msgid "MADE IN SPAIN"
 msgstr "MADE IN SPAIN"
@@ -46,9 +107,71 @@ msgid "Manufacturing Order"
 msgstr "Órden de producción"
 
 #. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "Nota"
+msgstr "Nota"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "Order (Origin):"
+msgstr "Pedido (Origen):"
+
+#. module: hispaled_custom
+#: view:res.company:hispaled_custom.view_company_form_inh_hispaled
+msgid "Out invoice"
+msgstr "Factura cliente"
+
+#. module: hispaled_custom
+#: field:res.company,out_invoice_footer:0
+msgid "Out invoice footer"
+msgstr "Pie factura cliente"
+
+#. module: hispaled_custom
+#: view:res.company:hispaled_custom.view_company_form_inh_hispaled
+msgid "Out picking"
+msgstr "Albarán salida"
+
+#. module: hispaled_custom
+#: field:res.company,out_picking_footer:0
+msgid "Out picking footer"
+msgstr "Pie albarán salida"
+
+#. module: hispaled_custom
+#: view:stock.picking:hispaled_custom.view_picking_form_inh_hispaled
+#: field:stock.picking,packaging_comment:0
+msgid "Packaging comment"
+msgstr "Comentario embalaje"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "Packaging:"
+msgstr "Embalaje:"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "Page:"
+msgstr "Página:"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "Phone:"
+msgstr "Teléfono:"
+
+#. module: hispaled_custom
+#: model:ir.model,name:hispaled_custom.model_stock_picking
+msgid "Picking List"
+msgstr "Albarán"
+
+#. module: hispaled_custom
 #: model:ir.model,name:hispaled_custom.model_product_product
+#: view:website:hispaled_custom.report_picking_new_document
 msgid "Product"
 msgstr "Producto"
+
+#. module: hispaled_custom
+#: model:ir.model,name:hispaled_custom.model_product_attribute
+msgid "Product Attribute"
+msgstr "Atributo de producto"
 
 #. module: hispaled_custom
 #: view:mrp.production:hispaled_custom.mrp_production_safeguard_form_view
@@ -56,14 +179,105 @@ msgid "Production Total"
 msgstr "Production Total"
 
 #. module: hispaled_custom
+#: field:account.invoice,project_id:0
+#: field:stock.picking,project_id:0
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+#: view:website:account.report_invoice_document
+msgid "Project:"
+msgstr "Proyecto:"
+
+#. module: hispaled_custom
+#: view:res.company:hispaled_custom.view_company_form_inh_hispaled
+msgid "Purchase order"
+msgstr "Pedido compra"
+
+#. module: hispaled_custom
+#: field:res.company,purchase_order_footer:0
+msgid "Purchase order footer"
+msgstr "Pie pedido compra"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "Ref Producto"
+msgstr "Ref Producto"
+
+#. module: hispaled_custom
+#: view:res.company:hispaled_custom.view_company_form_inh_hispaled
+msgid "Report Configuration"
+msgstr "Configuración de informes"
+
+#. module: hispaled_custom
+#: view:res.company:hispaled_custom.view_company_form_inh_hispaled
+msgid "Reporting feet"
+msgstr "Pie de informes"
+
+#. module: hispaled_custom
 #: view:website:stock_picking_label_print.stock_label_report
 msgid "S/N:"
 msgstr "S/N:"
 
 #. module: hispaled_custom
+#: field:account.invoice,sale_order_id:0
+#: field:stock.picking,sale_order_id:0
+#: view:res.company:hispaled_custom.view_company_form_inh_hispaled
+msgid "Sale order"
+msgstr "Pedido venta"
+
+#. module: hispaled_custom
+#: field:account.invoice,client_order_ref:0
+#: field:stock.picking,client_order_ref:0
+msgid "Sale order customer ref."
+msgstr "Ref. pedido venta cliente"
+
+#. module: hispaled_custom
+#: field:res.company,sale_order_footer:0
+msgid "Sale order footer"
+msgstr "Pie pedido de venta"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+#: view:website:account.report_invoice_document
+msgid "Sale order:"
+msgstr "Pedido venta:"
+
+#. module: hispaled_custom
+#: model:ir.model,name:hispaled_custom.model_sale_advance_payment_inv
+msgid "Sales Advance Payment Invoice"
+msgstr "Ventas. Anticipo pago factura"
+
+#. module: hispaled_custom
+#: model:ir.model,name:hispaled_custom.model_sale_order
+msgid "Sales Order"
+msgstr "Pedidos de Venta"
+
+#. module: hispaled_custom
 #: view:website:stock_picking_label_print.stock_label_report
 msgid "Series"
 msgstr "Series"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "Source"
+msgstr "Origen"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "State:"
+msgstr "Estado:"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "Supplier Address:"
+msgstr "Dirección del proveedor:"
 
 #. module: hispaled_custom
 #: view:website:stock_picking_label_print.stock_label_report
@@ -75,6 +289,37 @@ msgstr "Sustituir\n"
 "                                                            pantalla"
 
 #. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "Tel:"
+msgstr "Tel:"
+
+#. module: hispaled_custom
+#: help:account.invoice,project_id:0
+#: help:stock.picking,project_id:0
+msgid "The analytic account related to a sales order."
+msgstr "La cuenta analítica relacionada a pedido de venta."
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "VAT-No."
+msgstr "VAT-No."
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "VAT:"
+msgstr "NIF:"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "Warehouse Address:"
+msgstr "Dirección del almacén"
+
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "Website:"
+msgstr "Sitio web:"
+
+#. module: hispaled_custom
 #: view:website:stock_picking_label_print.stock_label_report
 msgid "de protección\n"
 "                                                            con fisuras"
@@ -82,72 +327,91 @@ msgstr "de protección\n"
 "                                                            con fisuras"
 
 #. module: hispaled_custom
-#: view:mrp.product.produce:hispaled_custom.mrp_product_produce_hispaled_view
-msgid "{'invisible':[('unitary_production','=',True)]}"
-msgstr "{'invisible':[('unitary_production','=',True)]}"
-
-#. module: purchase
+#: view:website:sale.report_saleorder_document
 #: view:website:purchase.report_purchaseorder_document
 #: view:website:purchase.report_purchasequotation_document
+msgid "Payment Method:"
+msgstr "Forma de pago:"
+
+#. module: hispaled_custom
 #: view:website:sale.report_saleorder_document
+msgid "Project:"
+msgstr "Proyecto:"
+
+#. module: hispaled_custom
+#: view:website:sale.report_saleorder_document
+msgid "Salesperson:"
+msgstr "Vendedor:"
+
+#. module: hispaled_custom
+#: view:website:purchase.report_purchaseorder_document
+#: view:website:purchase.report_purchasequotation_document
+msgid "Your Order Reference:"
+msgstr "Su Ref.Pedido:"
+
+#. module: hispaled_custom
+#: view:website:purchase.report_purchaseorder_document
+#: view:website:purchase.report_purchasequotation_document
+msgid "Order Date:"
+msgstr "Fecha pedido:"
+
+#. module: hispaled_custom
+#: view:website:purchase.report_purchaseorder_document
+#: view:website:purchase.report_purchasequotation_document
+msgid "Validated By:"
+msgstr "Validado por:"
+
+#. module: hispaled_custom
+#: view:website:purchase.report_purchaseorder_document
+#: view:website:purchase.report_purchasequotation_document
+#: view:website:account.report_invoice_document
 msgid "Observations:"
 msgstr "Observaciones:"
 
-#. module: purchase
-#: view:website:purchase.report_purchaseorder_document
-msgid "Supplier Reference:"
-msgstr "Referencia proveedor:"
-
-#. modules: purchase
+#. module: hispaled_custom
 #: view:website:purchase.report_purchaseorder_document
 #: view:website:purchase.report_purchasequotation_document
-#: view:website:sale.report_saleorder_document
+#: view:website:account.report_invoice_document
+msgid "Phone:"
+msgstr "Telf.:"
+
+#. module: hispaled_custom
+#: view:website:account.report_invoice_document
 msgid "Payment Mode:"
-msgstr "Modo de pago:"
+msgstr "Forma de pago:"
 
-#. modules: purchase
-#: view:website:purchase.report_purchasequotation_document
+#. module: hispaled_custom
+#: view:website:account.report_invoice_document
+msgid "Description:"
+msgstr "Descripción:"
+
+#. module: hispaled_custom
+#: view:website:account.report_invoice_document
+msgid "Invoice Date:"
+msgstr "Fecha factura:"
+
+#. module: hispaled_custom
+#: view:website:account.report_invoice_document
+msgid "Source:"
+msgstr "Origen:"
+
+#. module: hispaled_custom
+#: view:website:account.report_invoice_document
+msgid "Customer Code:"
+msgstr "Código cliente:"
+
+#. module: hispaled_custom
+#: view:website:account.report_invoice_document
+msgid "Reference:"
+msgstr "Referencia:"
+
+#. module: hispaled_custom
+#: view:website:account.report_invoice_document
 msgid "Payment Term:"
 msgstr "Plazo de pago:"
 
-#. module: purchase
-#: view:website:purchase.report_purchaseorder_document
-#: view:website:purchase.report_purchasequotation_document
-msgid "Supplier Number:"
-msgstr "Número proveedor:"
-
-#. modules: purchase
-#: view:website:purchase.report_purchaseorder_document
-#: view:website:purchase.report_purchasequotation_document
-msgid "Taxes"
-msgstr "Impuestos"
-
-#. modules: purchase
-#: view:website:purchase.report_purchaseorder_document
-#: view:website:purchase.report_purchasequotation_document
-msgid "Unit Price"
-msgstr "Precio unidad"
-
-#. module: purchase
-#: view:website:purchase.report_purchaseorder_document
-#: view:website:purchase.report_purchasequotation_document
-msgid "Net Price"
-msgstr "Precio neto"
-
-#. modules: purchase
-#: view:website:purchase.report_purchaseorder_document
-#: view:website:purchase.report_purchasequotation_document
-msgid "Total Without Taxes"
-msgstr "Base imponible"
-
-#. modules: purchase
-#: view:website:purchase.report_purchaseorder_document
-#: view:website:purchase.report_purchasequotation_document
-msgid "Taxes"
-msgstr "Impuestos"
-
-#. module: sale
-#: view:website:sale.report_saleorder_document
-msgid "Customer Number:"
-msgstr "Número cliente:"
+#. module: hispaled_custom
+#: view:website:account.report_invoice_document
+msgid "Fiscal Position Remark:"
+msgstr "Posición fiscal:"
 
