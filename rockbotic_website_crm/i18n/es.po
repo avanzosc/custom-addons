@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-20 11:11+0000\n"
-"PO-Revision-Date: 2018-08-20 11:11+0000\n"
+"POT-Creation-Date: 2018-10-26 11:35+0000\n"
+"PO-Revision-Date: 2018-10-26 11:35+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -358,8 +358,8 @@ msgid "Created on"
 msgstr "Creado en"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/controllers/main.py:188
 #: code:addons/rockbotic_website_crm/controllers/main.py:212
+#: code:addons/rockbotic_website_crm/controllers/main.py:214
 #, python-format
 msgid "Custom Fields: "
 msgstr "Campos personalizados: "
@@ -401,21 +401,18 @@ msgid "Email"
 msgstr "Correo electrónico"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/models/crm_lead.py:147
 #: code:addons/rockbotic_website_crm/models/crm_lead.py:153
 #, python-format
 msgid "Email template not found for Confirmation of place from inscription"
 msgstr "Plantilla de email no encontrada para la confirmación de plaza desde una inscripción."
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/models/crm_lead.py:259
 #: code:addons/rockbotic_website_crm/models/crm_lead.py:265
 #, python-format
 msgid "Email template not found for confirmation of reservation of place"
 msgstr "Plantilla de email no encontrada para la confirmación de reserva de plaza"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/models/crm_lead.py:179
 #: code:addons/rockbotic_website_crm/models/crm_lead.py:185
 #, python-format
 msgid "Email template not found for request SEPA to the new registration from inscription"
@@ -445,8 +442,8 @@ msgid "Enrollments that are assigned to me"
 msgstr "Inscripciones asignadas a mí"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/controllers/main.py:204
 #: code:addons/rockbotic_website_crm/controllers/main.py:228
+#: code:addons/rockbotic_website_crm/controllers/main.py:230
 #, python-format
 msgid "Environ Fields: "
 msgstr "Campos de entorno: "
@@ -465,7 +462,6 @@ msgid "Event Registration"
 msgstr "Registro evento"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/models/crm_lead.py:55
 #: code:addons/rockbotic_website_crm/models/crm_lead.py:61
 #, python-format
 msgid "Event must have been selected."
@@ -862,6 +858,11 @@ msgid "VAT"
 msgstr "DNI / NIE"
 
 #. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "VOLUNTARY ACTIVITY, NON-LUCRATIVE AND NON-DISCRIMINATORY"
+msgstr "ACTIVIDAD VOLUNTARIA, NO LUCRATIVA Y NO DISCRIMINATORIA"
+
+#. module: rockbotic_website_crm
 #: code:addons/rockbotic_website_crm/wizard/res_partner_enroll_search.py:82
 #, python-format
 msgid "Valid mandate not found"
@@ -871,6 +872,11 @@ msgstr "Mandato válido no encontrado"
 #: field:crm.lead,vat:0
 msgid "Vat Number"
 msgstr "DNI / NIE"
+
+#. module: rockbotic_website_crm
+#: field:res.partner,event_web_warning:0
+msgid "Warn about event in website"
+msgstr "Aviso en web de inscripción"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup_thanks

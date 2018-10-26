@@ -12,6 +12,7 @@ class ResPartner(models.Model):
     delete_after_sending_email = fields.Boolean(
         string='Delete after sending email', default=False)
     signup_slug = fields.Char(compute='_compute_slug_partner', store=True)
+    event_web_warning = fields.Boolean(string='Warn about event in website')
 
     @api.depends('name', 'is_group', 'prospect', 'customer', 'payer')
     def _compute_slug_partner(self):

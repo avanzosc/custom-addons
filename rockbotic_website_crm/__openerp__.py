@@ -15,6 +15,7 @@
         "crm_lead_to_event_registration",
         "event_track_assistant",
         "event_registration_analytic",
+        "event_planned_by_sale_line",
         "partner_contact_birthdate",
         "partner_prospect",
         "partner_parent_change",
