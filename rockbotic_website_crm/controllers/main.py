@@ -41,10 +41,12 @@ class StudentSignUp(http.Controller):
             order='name', context=context)
         event_ids = [event_id] if event_id in event_ids else event_ids
         events = orm_event.browse(cr, SUPERUSER_ID, event_ids, context)
-
+        show_school_message = (
+            groups.event_web_warning if len(groups) == 1 else False)
         values = {
             'groups': groups,
             'events': events,
+            'show_school_message': show_school_message,
         }
         return values
 

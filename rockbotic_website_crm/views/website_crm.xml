@@ -24,6 +24,9 @@
                                 <p>Please fill the form below in order to enroll in a class.</p>
                                 <p>If there is not your school or there is not any class, we'll do our best to get back to you as soon as possible.</p>
                             </div>
+                            <div t-if="show_school_message">
+                                <b>VOLUNTARY ACTIVITY, NON-LUCRATIVE AND NON-DISCRIMINATORY</b>
+                            </div>
                             <div style="color:#f00;"><strong><h4>IMPORTANT:</h4></strong>
                                 <p>FIRST SELECT THE <strong>SCHOOL CENTER</strong> ON THE DROPDOWN LIST</p>
                                 <p>This will display the activities available in the Center.</p></div>
