@@ -4,7 +4,7 @@
 
 {
     "name": "Bainu - Custom",
-    "version": "8.0.1.2.0",
+    "version": "8.0.1.3.0",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -15,7 +15,8 @@
     ],
     "depends": [
         "account_voucher",
-        "sale_order_dates"
+        "sale_order_dates",
+        "sale_crm",
     ],
     "data": [
         "views/account_invoice_view.xml",
