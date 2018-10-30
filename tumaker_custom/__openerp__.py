@@ -4,7 +4,7 @@
 
 {
     "name": "Tumaker custom",
-    "version": "8.0.2.0.0",
+    "version": "8.0.2.1.0",
     "license": "AGPL-3",
     "depends": ["sale_order_dates",
                 "project_timesheet",
@@ -25,6 +25,7 @@
                 "contacts",
                 "marketing",
                 "web_context_tunnel",
+                "tumaker_picking_report",
                 ],
     "author": "Avanzosc, S.L.",
     "contributors": [
@@ -56,7 +57,7 @@
              'views/specific_stock_production_menuitem.xml',
              'wizard/stock_transfer_details_view.xml',
              'wizard/crm_make_sale_view.xml',
-             'report/account_entries_report_view.xml'
+             'report/account_entries_report_view.xml',
              ],
     "installable": True,
     "auto_install": False,

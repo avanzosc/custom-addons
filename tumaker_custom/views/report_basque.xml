@@ -244,27 +244,48 @@
                             </table>
                             <br/>
                             <br/>
-                            <table>
-                                <tr>
-                                    <td>Zenbatekoa garbia</td>
-                                    <td><span t-field="o.amount_untaxed"/></td>
-                                </tr>
-                                <tr>
-                                    <td>Zergak</td>
-                                    <td><span t-field="o.amount_tax"/>
-                                        <table>
-                                            <tr t-foreach="o.taxes" t-as="tax">
-                                                <td><span t-field="tax.name"/></td>
-                                                <td><span t-field="tax.amount"/></td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Guztira</td>
-                                    <td><span t-field="o.amount_total"/></td>
-                                </tr>
-                            </table>
+                            <div class="row">
+                                <div class="col-xs-4 pull-right">
+                                     <table class="table table-condensed">
+                                        <tr class="border-black">
+                                            <td>Zenbatekoa garbia</td>
+                                            <td></td>
+                                            <td><span t-field="o.amount_untaxed"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Zergak</td>
+                                            <td>
+                                                <table>
+                                                    <tr t-foreach="o.taxes" t-as="tax">
+                                                        <td><span t-field="tax.name"/></td>
+                                                        <td><span t-field="tax.amount"/></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td><span t-field="o.amount_tax"/></td>
+                                        </tr>
+                                        <tr class="border-black">
+                                            <td>Guztira</td>
+                                            <td></td>
+                                            <td><span t-field="o.amount_total"/></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <p t-if="o.company_id.in_picking_gdpr_eus and o.picking_type_id.code=='incoming'">
+                                <div class="row">
+                                    <div class="col-xs-12" style="font-size:7pt;text-align:justify;">
+                                        <strong><span t-field="o.company_id.in_picking_gdpr_eus"/></strong>
+                                    </div>
+                                </div>
+                            </p>
+                            <p t-if="o.company_id.out_picking_gdpr_eus and o.picking_type_id.code=='outgoing'">
+                                <div class="row">
+                                    <div class="col-xs-12" style="font-size:7pt;text-align:justify;">
+                                        <strong><span t-field="o.company_id.out_picking_gdpr_eus"/></strong>
+                                    </div>
+                                </div>
+                            </p>
                         </div>
                     </t>
                 </t>
@@ -404,7 +425,6 @@
                                     </table>
                                 </div>
                             </div>
-                            
                             <div class="row" t-if="o.tax_line">
                                 <div class="col-xs-6">
                                     <table class="table table-condensed">
@@ -457,6 +477,20 @@
                             <p t-if="o.fiscal_position.note">
                                 <strong>Posizio fiskala:</strong>
                                 <span t-field="o.fiscal_position.note"/>
+                            </p>
+                            <p t-if="o.company_id.in_invoice_gdpr_eus and o.type == 'in_refund'">
+                                <div class="row">
+                                    <div class="col-xs-12" style="font-size:7pt;text-align:justify;">
+                                        <strong><span t-field="o.company_id.in_invoice_gdpr_eus"/></strong>
+                                    </div>
+                                </div>
+                            </p>
+                            <p t-if="o.company_id.out_invoice_gdpr_eus and o.type == 'out_invoice'">
+                                <div class="row">
+                                    <div class="col-xs-12" style="font-size:7pt;text-align:justify;">
+                                        <strong><span t-field="o.company_id.out_invoice_gdpr_eus"/></strong>
+                                    </div>
+                                </div>
                             </p>
                         </div>
                     </t>
