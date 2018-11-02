@@ -19,6 +19,8 @@ class PurchaseOrderLine(models.Model):
             state=state)
         if product_id and result.get('value', False):
             p = self.env['product.product'].browse(product_id)
+            name = p.name_template
             if p.variant_description:
-                result['value']['name'] = p.variant_description
+                name += '\n' + p.variant_description
+            result['value']['name'] = name
         return result

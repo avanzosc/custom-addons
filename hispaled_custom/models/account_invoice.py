@@ -25,13 +25,24 @@ class AccountInvoiceLine(models.Model):
             self, product, uom_id, qty=0, name='', type='out_invoice',
             partner_id=False, fposition_id=False, price_unit=False,
             currency_id=False, company_id=None):
-        result = super(AccountInvoiceLine, self).product_id_change(
+        product_obj = self.env['product.product']
+        res = super(AccountInvoiceLine, self).product_id_change(
             product, uom_id, qty=qty, name=name, type=type,
             partner_id=partner_id, fposition_id=fposition_id,
             price_unit=price_unit, currency_id=currency_id,
             company_id=company_id)
-        if product and result.get('value', False):
-            p = self.env['product.product'].browse(product)
-            if p.variant_description:
-                result['value']['name'] = p.variant_description
-        return result
+        if product:
+            prod = product_obj.browse(product)
+            if self.env.context.get('type', False) == 'out_invoice':
+                new_value = product_obj.onchange_product_id_hispaled(
+                    product_id=product)
+                value = res.setdefault('value', {})
+                value.update(new_value)
+                if prod.description_sale:
+                    value['name'] += '\n' + prod.description_sale
+            if self.env.context.get('type', False) == 'in_invoice':
+                name = prod.name_template
+                if prod.variant_description:
+                    name += '\n' + prod.variant_description
+                    res['value']['name'] = name
+        return res

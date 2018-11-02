@@ -5,7 +5,7 @@
 {
     "name": "Hispaled",
     "summary": "Customization Module",
-    "version": "8.0.1.2.0",
+    "version": "8.0.1.3.0",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -27,7 +27,8 @@
         "sale_stock",
         "product_variants_no_automatic_creation",
         "account_invoice_line_stock_move_info",
-        "product_variant_description"
+        "product_variant_description",
+        "sale_product_variants"
     ],
     "data": [
         "views/mrp_production_views.xml",
