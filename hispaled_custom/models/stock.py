@@ -42,16 +42,35 @@ class StockPicking(models.Model):
 class StockMove(models.Model):
     _inherit = 'stock.move'
 
-    name = fields.Text(string='Description', required=True)
+    name = fields.Text(string='Description', Required=True)
 
     @api.multi
     def onchange_product_id(self, prod_id=False, loc_id=False,
                             loc_dest_id=False, partner_id=False):
-        result = super(StockMove, self).onchange_product_id(
+        product_obj = self.env['product.product']
+        res = super(StockMove, self).onchange_product_id(
             prod_id=prod_id, loc_id=loc_id, loc_dest_id=loc_dest_id,
             partner_id=partner_id)
-        if prod_id and result.get('value', False):
-            p = self.env['product.product'].browse(prod_id)
-            if p.variant_description:
-                result['value']['name'] = p.variant_description
-        return result
+        type = False
+        if self.env.context.get('default_picking_id', False):
+            picking = self.env['stock.picking'].browse(
+                self.env.context.get('default_picking_id'))
+            type = picking.picking_type_id
+        if not type and self.env.context.get('default_picking_type_id', False):
+            type = self.env['stock.picking.type'].browse(
+                self.env.context.get('default_picking_type_id'))
+        if prod_id:
+            prod = product_obj.browse(prod_id)
+            if type.code == 'outgoing':
+                new_value = product_obj.onchange_product_id_hispaled(
+                    product_id=prod_id)
+                value = res.setdefault('value', {})
+                value.update(new_value)
+                if prod.description_sale:
+                    value['name'] += '\n' + prod.description_sale
+            else:
+                name = prod.name_template
+                if prod.variant_description:
+                    name += '\n' + prod.variant_description
+                    res['value']['name'] = name
+        return res
