@@ -919,3 +919,27 @@ msgstr "stock.group_stock_user,tumaker_custom.group_stock_production_specific"
 #: view:sale.order:tumaker_custom.view_order_form
 msgid "{'readonly': [('state', 'in', 'done')]}"
 msgstr "{'readonly': [('state', 'in', 'done')]}"
+
+#. module: tumaker_custom
+#: view:res.company:tumaker_custom.view_company_form_gdpr_inh_tumaker
+#: field:res.company,out_picking_gdpr_eus:0
+msgid "Out pickings in basque"
+msgstr "Albaranes salida en euskera"
+
+#. module: tumaker_custom
+#: field:res.company,in_picking_gdpr_eus:0
+msgid "In pickings in basque"
+msgstr "Albaranes entrada en euskera"
+
+#. module: tumaker_custom
+#: view:res.company:tumaker_custom.view_company_form_gdpr_inh_tumaker
+#: field:res.company,out_invoice_gdpr_eus:0
+msgid "Out invoices in basque"
+msgstr "Facturas clientes en euskera"
+
+#. module: tumaker_custom
+#: view:res.company:tumaker_custom.view_company_form_gdpr_inh_tumaker
+#: field:res.company,in_invoice_gdpr_eus:0
+msgid "In invoices in basque"
+msgstr "Facturas proveedores en euskera"
+
