@@ -23,6 +23,10 @@
                     <field name="submitted_evaluation" />
                     <field name="submitted_evaluation_error" />
                 </field>
+                <field name="removal_date"  position="after">
+                    <field name="reason_delete" />
+                    <field name="notes" />
+                </field>
             </field>
         </record>
         <record id="event_registration_info_view_form" model="ir.ui.view">

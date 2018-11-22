@@ -257,7 +257,7 @@ class TestRockboticCustom(common.TransactionCase):
 
     def test_prepare_wizard_registration_open_vals(self):
         today = fields.Date.from_string(fields.Date.today())
-        new_date = '{}-{}-01'.format(today.year, str(today.month).zfill(2))
+        new_date = '{}-{}-01'.format(today.year, today.month)
         self.event_date_begin = '{}-{}-01 15:00:00'.format(today.year,
                                                            today.month)
         registration_vals = {'event_id': self.event.id,

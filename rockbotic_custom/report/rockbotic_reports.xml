@@ -301,28 +301,50 @@
                                 <span t-field="company.partner_id.country_id"/>
                                 )
                                 <br/>
-                                VAT:
-                                <span t-field="company.partner_id.vat"/>
-                                <br/>
                                 Tel:
                                 <span t-field="company.partner_id.phone"/>
                                 <br/>
                                 E-mail:
                                 <span t-field="company.partner_id.email" />
+                                <br/>
+                                VAT:
+                                <span t-field="company.partner_id.vat"/>
                             </div>
                             <div class="col-xs-3" >
-                                <img src="/rockbotic_custom/static/src/img/square.png"/>
-                                CLIENTE
                             </div>
                             <div class="col-xs-4" style="font-size:9pt">
-                                <address t-field="o.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;,
-                                        &quot;fields&quot;: [&quot;address&quot;,
-                                        &quot;name&quot;], &quot;no_marker&quot;:
-                                        true}"/>
-                                <span t-if="o.partner_id.vat">
-                                    TIN:
-                                    <span t-field="o.partner_id.vat"/>
-                                </span>
+                                    <span t-field="o.partner_id"/>
+                                    <br/>
+                                    <span t-if="o.partner_id.street">
+                                        <span t-field="o.partner_id.street"/>
+                                        <br/>
+                                    </span>
+                                    <span t-if="o.partner_id.zip">
+                                        <span t-field="o.partner_id.zip"/>
+                                    </span>
+                                    <span t-if="o.partner_id.city">
+                                        <span t-field="o.partner_id.city"/>
+                                    </span>
+                                    <span t-if="o.partner_id.country_id">
+                                        (
+                                        <span t-field="o.partner_id.country_id"/>
+                                        )
+                                    </span>
+                                    <span t-if="o.partner_id.phone">
+                                        <br/>
+                                        Tel:
+                                        <span t-field="o.partner_id.phone"/>
+                                    </span>
+                                    <span t-if="o.partner_id.email">
+                                        <br/>
+                                        E-mail:
+                                        <span t-field="o.partner_id.email" />
+                                    </span>
+                                    <span t-if="o.partner_id.vat">
+                                        <br/>
+                                        VAT:
+                                        <span t-field="o.partner_id.vat"/>
+                                    </span>
                             </div>
                         </div>
                         <div class="row">
@@ -336,23 +358,22 @@
                             </div>
                         </div>
                         <div class="row">
-                            <p class="col-xs-6" style="font-size:9pt">
-                                Nº:
-                                <span t-field="o.name"/>
+                            <p class="col-xs-6" style="font-size:11pt">
+                                <strong>Nº: <span t-field="o.name"/></strong>
                             </p>
-                            <p class="col-xs-6" t-if="o.date_order" style="font-size:9pt">
-                                Fecha:
-                                <span t-field="o.date_order" t-field-options='{"widget": "date"}'/>
+                            <p class="col-xs-6" t-if="o.date_order" style="font-size:11pt">
+                                <strong>Fecha: <span t-field="o.date_order" t-field-options='{"widget": "date"}'/></strong>
                             </p>
                         </div>
                         <div class="row">
-                            <p class="col-xs-12" t-if="o.literal_header_sale_order" style="font-size:9pt">
+                            <p class="col-xs-12" t-if="o.literal_header_sale_order" style="font-size:11pt">
                                 <span t-field="o.literal_header_sale_order"/>
                                 <br/>
                             </p>
                         </div>
                     </div>
                     <div class="page">
+                        <table class="table table-condensed" style="font-size:9pt" />
                         <table class="table table-condensed" style="font-size:9pt">
                             <thead>
                                 <tr>
@@ -455,31 +476,64 @@
                                 <div class="col-xs-5" style="font-size:9pt">
                                     <span t-field="company.partner_id"/>
                                     <br/>
-                                    <span t-field="company.partner_id.street"/>
-                                    <br/>
-                                    <span t-field="company.partner_id.zip"/>
-                                    <span t-field="company.partner_id.city"/>
-                                    (
-                                    <span t-field="company.partner_id.country_id"/>
-                                    )
-                                    <br/>
-                                    VAT:
-                                    <span t-field="company.partner_id.vat"/>
+                                    <span t-if="company.partner_id.street">
+                                        <span t-field="company.partner_id.street"/>
+                                        <br/>
+                                    </span>
+                                    <span t-if="company.partner_id.zip">
+                                        <span t-field="company.partner_id.zip"/>
+                                    </span>
+                                    <span t-if="company.partner_id.city">
+                                        <span t-field="company.partner_id.city"/>
+                                    </span>
+                                    <span t-if="company.partner_id.country_id">
+                                        (
+                                        <span t-field="company.partner_id.country_id"/>
+                                        )
+                                    </span>
                                     <br/>
                                     Tel:
                                     <span t-field="company.partner_id.phone"/>
                                     <br/>
                                     E-mail:
                                     <span t-field="company.partner_id.email" />
+                                    <br/>
+                                    VAT:
+                                    <span t-field="company.partner_id.vat"/>
                                 </div>
                                 <div class="col-xs-3">
-                                    <img src="/rockbotic_custom/static/src/img/square.png"/>
-                                    CLIENTE
                                 </div>
                                 <div class="col-xs-4" style="font-size:9pt">
-                                    <address t-field="o.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
+                                    <span t-field="o.partner_id"/>
+                                    <br/>
+                                    <span t-if="o.partner_id.street">
+                                        <span t-field="o.partner_id.street"/>
+                                        <br/>
+                                    </span>
+                                    <span t-if="o.partner_id.zip">
+                                        <span t-field="o.partner_id.zip"/>
+                                    </span>
+                                    <span t-if="o.partner_id.city">
+                                        <span t-field="o.partner_id.city"/>
+                                    </span>
+                                    <span t-if="o.partner_id.country_id">
+                                        (
+                                        <span t-field="o.partner_id.country_id"/>
+                                        )
+                                    </span>
+                                    <span t-if="o.partner_id.phone">
+                                        <br/>
+                                        Tel:
+                                        <span t-field="o.partner_id.phone"/>
+                                    </span>
+                                    <span t-if="o.partner_id.email">
+                                        <br/>
+                                        E-mail:
+                                        <span t-field="o.partner_id.email" />
+                                    </span>
                                     <span t-if="o.partner_id.vat">
-                                        TIN:
+                                        <br/>
+                                        VAT:
                                         <span t-field="o.partner_id.vat"/>
                                     </span>
                                 </div>
@@ -498,23 +552,19 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <p class="col-xs-4" t-if="o.number" style="font-size:9pt">
-                                    <strong>Nº:</strong>
-                                    <span t-field="o.number"/>
+                                <p class="col-xs-4" t-if="o.number" style="font-size:11pt">
+                                    <strong>Nº: <span t-field="o.number"/></strong>
                                 </p>
-                                <p class="col-xs-3" t-if="o.date_invoice" style="font-size:9pt">
-                                    <strong>Fecha:</strong>
-                                    <span t-field="o.date_invoice"/>
+                                <p class="col-xs-3" t-if="o.date_invoice" style="font-size:11pt">
+                                    <strong>Fecha: <span t-field="o.date_invoice"/></strong>
                                 </p>
-                                <p class="col-xs-4" t-if="o.name" style="font-size:9pt">
-                                    <strong>Ref proveedor:</strong>
-                                    <span t-field="o.name"/>
+                                <p class="col-xs-4" t-if="o.name" style="font-size:11pt">
+                                    <strong>Ref proveedor: <span t-field="o.name"/></strong>
                                 </p>
                             </div>
                             <div class="row">
                                 <p class="col-xs-12" t-if="o.literal_header_invoice" style="font-size:9pt">
                                     <span t-field="o.literal_header_invoice"/>
-                                    <br/>
                                 </p>
                             </div>
                         </div>
@@ -522,6 +572,7 @@
                             <div style="-webkit-transform: rotate(-90deg);font-size: 10px;position: relative;left: -430px;bottom:-350px">
                                 <span t-field="company.company_registry"/>
                             </div>
+                            <table class="table table-condensed"></table>
                             <table class="table table-condensed" style="font-size:9pt">
                                 <thead>
                                     <tr>
@@ -621,6 +672,28 @@
                                     </table>
                                 </div>
                             </div>
+                            <table class="table table-condensed" t-if="o.tax_line" style="font-size:9pt">
+                                <thead>
+                                    <tr>
+                                        <th>Tax description</th>
+                                        <th>Base</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="invoice_tbody">
+                                    <tr t-foreach="o.tax_line" t-as="t">
+                                        <td>
+                                            <span t-field="t.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="t.base"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="t.amount"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             <t t-if="o.payment_mode_id">
                                 <strong style="font-size: 9pt">Payment Mode:</strong>
                                 <t t-if="o.payment_mode_id.note">
@@ -920,6 +993,7 @@
                                     <th>NOMBRE COMPLETO</th>
                                     <th>EDAD</th>
                                     <th>RESPONSABLE</th>
+                                    <th>SOCIO ASOCIACIóN DE PADRES</th>
                                     <th>EMAIL</th>
                                     <th>TLF.</th>
                                 </tr>
@@ -939,6 +1013,9 @@
                                     </td>
                                     <td style="border-bottom: 1px solid #00B0F0;">
                                         <span t-field="l.parent_id.name"/>
+                                    </td>
+                                    <td style="border-bottom: 1px solid #00B0F0;">
+                                        <span t-field="l.parent_id.is_pa_partner"/>
                                     </td>
                                     <td style="border-bottom: 1px solid #00B0F0;">
                                         <span t-field="l.parent_id.email"/>

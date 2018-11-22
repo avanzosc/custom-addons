@@ -35,6 +35,12 @@ class ResPartner(models.Model):
     claim_count = fields.Integer(compute='_compute_claim_count')
     send_email_unpaid_invoice = fields.Boolean(
         string='Send email unpaid invoice', default=False)
+    accept_whatsapp = fields.Boolean(
+        string='I accept and consent that my telephone number be used to send '
+        'me communications whatsapp', default=False)
+    accept_center_information = fields.Boolean(
+        string='I accept and consent to send information from the center, for '
+        'the purpose of commercial prospecting', default=False)
 
     @api.multi
     def show_crm_claims_from_partner(self):

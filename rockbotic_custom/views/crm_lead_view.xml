@@ -10,6 +10,10 @@
                     <filter string="town" domain="[]" context="{'group_by':'city'}"/>
                     <filter string="District" domain="[]" context="{'group_by':'street2'}"/>
                 </filter>
+                <filter name="group_message_last_post" position="after">
+                    <filter string="Accept whatsapp" context="{'group_by': 'accept_whatsapp'}"/>
+                    <filter string="Accept center information" context="{'group_by': 'accept_center_information'}"/>
+                </filter>
             </field>
         </record>
         <record id="view_crm_case_opportunities_filter_inh_rockbotic" model="ir.ui.view">
@@ -21,6 +25,42 @@
                     <filter string="town" domain="[]" context="{'group_by':'city'}"/>
                     <filter string="District" domain="[]" context="{'group_by':'street2'}"/>
                 </filter>
+                <filter string="Expected Closing" position="after">
+                    <filter string="Accept whatsapp" context="{'group_by': 'accept_whatsapp'}"/>
+                    <filter string="Accept center information" context="{'group_by': 'accept_center_information'}"/>
+                </filter>
+            </field>
+        </record>
+        <record id="crm_case_form_view_oppor_inh_rockbotic_custom" model="ir.ui.view">
+            <field name="name">crm.case.form.view.oppor.inh.rockbotic.custom</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor" />
+            <field name="arch" type="xml">
+                <notebook position="before">
+                    <group>
+                        <group>
+                            <field name="accept_whatsapp" />
+                            <field name="accept_center_information" />
+                        </group>
+                        <group />
+                    </group>
+                </notebook>
+            </field>
+        </record>
+        <record id="crm_case_form_view_leads_inh_rockbotic_custom" model="ir.ui.view">
+            <field name="name">crm.case.form.view.leads.inh.rockbotic.custom</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_leads" />
+            <field name="arch" type="xml">
+                <notebook position="before">
+                    <group>
+                        <group>
+                            <field name="accept_whatsapp" />
+                            <field name="accept_center_information" />
+                        </group>
+                        <group />
+                    </group>
+                </notebook>
             </field>
         </record>
     </data>

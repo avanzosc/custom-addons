@@ -28,10 +28,28 @@
                 <xpath expr="//tree[@string='Student presences']//field[@name='real_nightlight_hours']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+                <xpath expr="//tree[@string='Student presences']//button[@name='button_completed']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//tree[@string='Student presences']//button[@name='button_canceled']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//tree[@string='Student presences']//button[@name='button_pending']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
                 <xpath expr="//tree[@string='Teacher presences']//field[@name='real_daylight_hours']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
                 <xpath expr="//tree[@string='Teacher presences']//field[@name='real_nightlight_hours']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//tree[@string='Teacher presences']//button[@name='button_completed']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//tree[@string='Teacher presences']//button[@name='button_canceled']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//tree[@string='Teacher presences']//button[@name='button_pending']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
             </field>

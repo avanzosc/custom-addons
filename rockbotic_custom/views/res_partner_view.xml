@@ -16,6 +16,10 @@
                     <field name="is_company" />
                     <field name="is_group" />
                 </field>
+                <filter string="Country" position="after">
+                    <filter string="Accept whatsapp" context="{'group_by': 'accept_whatsapp'}"/>
+                    <filter string="Accept center information" context="{'group_by': 'accept_center_information'}"/>
+                </filter>
             </field>
         </record>
         <record id="view_res_partner_form_inh_rockbotic" model="ir.ui.view">
@@ -66,8 +70,28 @@
             <field name="inherit_id" ref="base.view_partner_tree" />
             <field name="arch" type="xml">
                 <field name="display_name" position="after">
+                    <field name="is_pa_partner" />
                     <field name="city" string="City"/>
                 </field>
+            </field>
+        </record>
+        <record id="view_partner_form2_inh_rockbotic" model="ir.ui.view">
+            <field name="name">view.partner.form2.inh.rockbotic</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <label string="Address" position="before">
+                    <field name="employee_id" string="Empleado" />
+                </label>
+                <notebook position="before">
+                    <group>
+                        <group>
+                            <field name="accept_whatsapp" />
+                            <field name="accept_center_information" />
+                        </group>
+                        <group />
+                    </group>
+                </notebook>
             </field>
         </record>
         <record id="birthdate_date_inh_rockbotic" model="ir.ui.view">

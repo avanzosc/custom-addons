@@ -4,3 +4,5 @@
 from . import wiz_send_email_registration_evaluation
 from . import wiz_send_email_event_evaluation
 from . import wiz_event_delete_assistant
+from . import wiz_send_by_email_customer_invoice
+from . import wiz_event_substitution

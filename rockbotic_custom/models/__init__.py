@@ -9,3 +9,4 @@ from . import res_company
 from . import event
 from . import account
 from . import hr_holidays
+from . import crm_lead
