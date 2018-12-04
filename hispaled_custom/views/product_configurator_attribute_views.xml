@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+    <record id="view_product_configurator_tree_inh_hispaled" model="ir.ui.view">
+        <field name="name">view.product.configurator.tree.inh.hispaled</field>
+        <field name="model">product.configurator.attribute</field>
+        <field name="inherit_id" ref="product_variants_no_automatic_creation.view_product_configurator_tree" />
+        <field name="arch" type="xml">
+            <field name="attribute_id" position="after">
+                <field name="attribute_sequence" invisible="1"/>
+            </field>
+        </field>
+    </record>
+</data>
+</openerp>

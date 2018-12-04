@@ -72,15 +72,22 @@ class ProductProduct(models.Model):
         return ("%s\n%s" if extended else "%s (%s)") % (name, description)
 
 
-class ProductConfiguratorAttribute(models.Model):
-    _inherit = 'product.configurator.attribute'
-    _order = 'attribute_code'
-
-    attribute_code = fields.Char(
-        string='Attribute Code', related='attribute_id.attribute_code',
-        store=True)
-
-
 class ProductAttribute(models.Model):
     _inherit = 'product.attribute'
-    _order = 'attribute_code'
+    _order = 'sequence, name asc'
+
+
+class ProductAttributeLine(models.Model):
+    _inherit = 'product.attribute.line'
+    _order = 'sequence asc'
+
+    sequence = fields.Integer(
+        string='Sequence', related='attribute_id.sequence', store=True)
+
+
+class ProductConfiguratorAttribute(models.Model):
+    _inherit = 'product.configurator.attribute'
+    _order = 'attribute_sequence'
+
+    attribute_sequence = fields.Integer(
+        string='Sequence', related='attribute_id.sequence', store=True)
