@@ -20,7 +20,8 @@ class ProjectTask(models.Model):
             procurement)
         vals['name'] = '%s:%s' % (
             procurement.origin or '',
-            procurement.sale_line_id.session_description)
+            procurement.sale_line_id.session_description or
+            procurement.sale_line_id.name)
         return vals
 
 

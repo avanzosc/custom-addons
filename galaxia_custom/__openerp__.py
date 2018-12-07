@@ -4,7 +4,7 @@
 
 {
     "name": "Galaxia - Custom",
-    "version": "8.0.3.0.0",
+    "version": "8.0.3.1.0",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",
