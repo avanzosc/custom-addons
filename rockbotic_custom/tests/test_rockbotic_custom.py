@@ -258,15 +258,18 @@ class TestRockboticCustom(common.TransactionCase):
     def test_prepare_wizard_registration_open_vals(self):
         today = fields.Date.from_string(fields.Date.today())
         new_date = '{}-{}-01'.format(today.year, today.month)
-        self.event_date_begin = '2016-12-12 15:00:00'
+        self.event_date_begin = '{}-{}-01 15:00:00'.format(today.year,
+                                                           today.month)
         registration_vals = {'event_id': self.event.id,
                              'partner_id': self.partner.id,
-                             'date_start': '2016-12-12 15:00:00'}
+                             'date_start':
+                             '{}-{}-01 15:00:00'.format(today.year,
+                                                        today.month)}
         registration = self.env['event.registration'].create(
             registration_vals)
         vals = registration._prepare_wizard_registration_open_vals()
         self.assertEqual(
-            vals.get('from_date', False), new_date,
+            str(vals.get('from_date', False)), new_date,
             'Bad from_date in registration')
 
     def test_partners_for_send_automatic_pay_email(self):
