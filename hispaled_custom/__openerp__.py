@@ -5,7 +5,7 @@
 {
     "name": "Hispaled",
     "summary": "Customization Module",
-    "version": "8.0.1.4.0",
+    "version": "8.0.1.5.0",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",

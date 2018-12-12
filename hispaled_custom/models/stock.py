@@ -42,7 +42,17 @@ class StockPicking(models.Model):
 class StockMove(models.Model):
     _inherit = 'stock.move'
 
+    @api.multi
+    def _compute_lots_description(self):
+        for move in self.filtered(lambda c: c.lot_ids):
+            d = ""
+            for lot in move.lot_ids:
+                d += u", {}".format(lot.name) if d else lot.name
+            move.lots_description = d
+
     name = fields.Text(string='Description', Required=True)
+    lots_description = fields.Text(
+        string='Lots descriptions', compute='_compute_lots_description')
 
     @api.multi
     def onchange_product_id(self, prod_id=False, loc_id=False,
