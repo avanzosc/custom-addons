@@ -40,6 +40,7 @@ class TestHispaledCustom(common.TransactionCase):
         self.invoice_line_model = self.env['account.invoice.line']
         self.move_model = self.env['stock.move']
         self.wiz_payment_model = self.env['sale.advance.payment.inv']
+        self.picking_model = self.env['stock.picking']
         self.pricelist = self.ref('product.list0')
         self.partner = self.ref('base.res_partner_1')
         self.fp = self.ref('account.fiscal_position_normal_taxes_template1')
@@ -103,3 +104,15 @@ class TestHispaledCustom(common.TransactionCase):
         cond = [('sale_order_id', '=', self.sale2.id)]
         invoice2 = self.invoice_model.search(cond, limit=1)
         self.assertNotEqual(invoice2, False)
+
+    def test_stock_move_compute_lots_description(self):
+        cond = [('origin', 'ilike', '%outgoing%'),
+                ('state', '=', 'done')]
+        picking = self.picking_model.search(cond, limit=1)
+        move = picking.move_lines[0]
+        quant = move.quant_ids[0]
+        lot_vals = {'name': 'lot for test compute_lots_description',
+                    'product_id': move.product_id.id}
+        lot = self.env['stock.production.lot'].create(lot_vals)
+        quant.lot_id = lot.id
+        self.assertEqual(move.lots_description, lot.name)

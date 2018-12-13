@@ -415,3 +415,8 @@ msgstr "Plazo de pago:"
 msgid "Fiscal Position Remark:"
 msgstr "Posición fiscal:"
 
+#. module: hispaled_custom
+#: view:website:hispaled_custom.report_picking_new_document
+msgid "LOTS:"
+msgstr "LOTES:"
+
