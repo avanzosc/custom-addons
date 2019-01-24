@@ -137,6 +137,20 @@
                         </div>
                     </div>
                     <p t-if="o.notes"><strong>Observations:</strong><span t-field="o.notes"/></p>
+                    <p t-if="o.delivery_partner_id">
+                        <strong>DELIVER IN</strong>
+                        <br/>
+                        <span t-field="o.delivery_partner_id.street"/>
+                        <br/>
+                        <span t-field="o.delivery_partner_id.street2"/>
+                        <br/>
+                        <span t-field="o.delivery_partner_id.zip"/>
+                        <span t-field="o.delivery_partner_id.city"/>
+                        <br/>
+                        <span t-field="o.delivery_partner_id.state_id"/>
+                        <br/>
+                        Phone:<span t-field="o.delivery_partner_id.phone"/>
+                    </p>
                     <div class="row">
                         <div class="col-xs-12" style="font-size:7pt">
                             <p t-if="o.company_id.purchase_order_footer" class="text-center">
@@ -239,6 +253,11 @@
                             <span t-field="o.payment_mode_id" />
                             <span t-field="o.payment_term_id" />
                         </div>
+                        <div t-if="o.picking_type_id" class="col-xs-3">
+                            <strong>Payment Method: </strong>
+                            <span t-field="o.payment_mode_id" />
+                            <span t-field="o.payment_term_id" />
+                        </div>
                     </div>
             
             <table class="table table-condensed">
@@ -306,6 +325,20 @@
                 </div>
             </div>
             <p t-if="o.notes"><strong>Observations:</strong><span t-field="o.notes"/></p>
+            <p t-if="o.delivery_partner_id">
+                <strong>DELIVER IN</strong>
+                <br/>
+                <span t-field="o.delivery_partner_id.street"/>
+                <br/>
+                <span t-field="o.delivery_partner_id.street2"/>
+                <br/>
+                <span t-field="o.delivery_partner_id.zip"/>
+                <span t-field="o.delivery_partner_id.city"/>
+                <br/>
+                <span t-field="o.delivery_partner_id.state_id"/>
+                <br/>
+                Phone:<span t-field="o.delivery_partner_id.phone"/>
+            </p>
             <div class="row">
                 <div class="col-xs-12" style="font-size:7pt">
                     <p t-if="o.company_id.purchase_order_footer" class="text-center">

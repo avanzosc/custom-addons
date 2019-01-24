@@ -15,3 +15,32 @@ class SaleOrder(models.Model):
         invoice = self.env['account.invoice'].browse(invoice_id)
         invoice.sale_order_id = self.id
         return invoice_id
+
+
+class SaleOrderLine(models.Model):
+    _inherit = 'sale.order.line'
+
+    @api.multi
+    def button_template_sale_description(self):
+        if (not self.product_id and self.product_tmpl_id and
+                self.product_tmpl_id.description_sale):
+            self.name = u"{}\n{}".format(
+                self.name, self.product_tmpl_id.description_sale)
+
+    @api.multi
+    def button_confirm(self):
+        result = super(SaleOrderLine, self.with_context(
+            with_sale_description=True)).button_confirm()
+        return result
+
+    @api.multi
+    def write(self, values):
+        if (self.env.context.get('with_sale_description', False) and
+                values.get('product_id', False)):
+            product = self.env['product.product'].browse(
+                values.get('product_id'))
+            if (product.description_sale and product.description_sale not in
+                    self.name):
+                values['name'] = u"{}\n{}".format(
+                    self.name, product.description_sale)
+        return super(SaleOrderLine, self).write(values)

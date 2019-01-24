@@ -116,3 +116,19 @@ class TestHispaledCustom(common.TransactionCase):
         lot = self.env['stock.production.lot'].create(lot_vals)
         quant.lot_id = lot.id
         self.assertEqual(move.lots_description, lot.name)
+
+    def test_sale_order_line_sale_description(self):
+        cond = [('state', '=', 'draft')]
+        sale = self.env['sale.order'].search(cond, limit=1)
+        line = sale.order_line[0]
+        product = self.env['product.product'].search([], limit=1)
+        product.product_tmpl_id.write(
+            {'description_sale': 'x1x1x1x1x1x1x1'})
+        line.write({'product_tmpl_id': product.product_tmpl_id.id,
+                    'product_id': False})
+        line.button_template_sale_description()
+        self.assertIn('x1x1x1x1x1x1x1', line.name)
+        line.write({'name': 'aaaaa'})
+        line.with_context(
+            with_sale_description=True).write({'product_id': product.id})
+        self.assertIn('x1x1x1x1x1x1x1', line.name)
