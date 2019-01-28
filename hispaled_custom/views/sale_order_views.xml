@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+    <record id="view_order_form_inh_hispaled" model="ir.ui.view">
+        <field name="name">view.order.form.inh.hispaled</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/form//field[@name='address_allotment_id']/../.."
+                   position="after">
+                <group>
+                    <group name="put_template_sale_description">
+                        <button name="button_template_sale_description" string="Put product template sale description"
+                                attrs="{'invisible':['|',('product_tmpl_id', '=', False),('product_id', '!=', False)]}" type="object" />
+                    </group>
+                    <group/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</data>
+</openerp>

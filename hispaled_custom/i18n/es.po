@@ -420,3 +420,25 @@ msgstr "Posición fiscal:"
 msgid "LOTS:"
 msgstr "LOTES:"
 
+#. module: hispaled_custom
+#: view:sale.order:hispaled_custom.view_order_form_inh_hispaled
+msgid "Put product template sale description"
+msgstr "Poner descripción de venta de plantilla de producto"
+
+#. module: hispaled_custom
+#: field:purchase.order,delivery_partner_id:0
+msgid "Delivery address"
+msgstr "Dirección de entrega"
+
+#. module: hispaled_custom
+#: view:website:purchase.report_purchaseorder_document
+#: view:website:purchase.report_purchasequotation_document
+msgid "DELIVER IN"
+msgstr "ENTREGAR EN"
+
+#. module: hispaled_custom
+#: view:website:purchase.report_purchaseorder_document
+#: view:website:purchase.report_purchasequotation_document
+msgid "Phone:"
+msgstr "Teléfono:"
+
