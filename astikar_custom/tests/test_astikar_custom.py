@@ -99,7 +99,9 @@ class TestAstikarCustom(common.TransactionCase):
     def test_invoice_line_product_change(self):
         invoice_line = self.env.ref(
             'account.demo_invoice_0_line_rpanrearpanelshe0')
+        invoice_line._compute_quantity_2_decimals()
         inv = invoice_line.invoice_id
+        inv._compute_bez()
         res = invoice_line.product_id_change(
             invoice_line.product_id.id, invoice_line.uos_id.id,
             qty=invoice_line.quantity, name=invoice_line.name,

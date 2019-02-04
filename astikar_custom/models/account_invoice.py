@@ -3,6 +3,7 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 from openerp import models, fields, api
+from openerp.addons import decimal_precision as dp
 
 
 class AccountInvoice(models.Model):
@@ -14,6 +15,16 @@ class AccountInvoice(models.Model):
         for invoice in self:
             invoice.has_repairs = bool(invoice.repair_ids)
 
+    @api.multi
+    def _compute_bez(self):
+        for invoice in self:
+            lines = invoice.invoice_line.filtered(
+                lambda x: x.invoice_line_tax_id)
+            if lines and lines[0].invoice_line_tax_id.type == 'percent':
+                invoice.bez = lines[0].invoice_line_tax_id.amount * 100
+            if lines and lines[0].invoice_line_tax_id.type != 'percent':
+                invoice.bez = lines[0].invoice_line_tax_id.amount
+
     repair_analytic_id = fields.Many2one(
         comodel_name='account.analytic.account',
         string="Repair Analytic Account")
@@ -24,6 +35,9 @@ class AccountInvoice(models.Model):
                                  string='Has repairs')
     warning = fields.Text(string='Warning')
     not_warning = fields.Boolean(string='Hide Warning Message', default=True)
+    bez = fields.Float(
+        string='B.E.Z.', compute='_compute_bez',
+        digits=dp.get_precision('Product Price'))
 
     @api.model
     def create(self, vals):
@@ -38,9 +52,17 @@ class AccountInvoice(models.Model):
 class AccountInvoiceLine(models.Model):
     _inherit = 'account.invoice.line'
 
+    @api.multi
+    def _compute_quantity_2_decimals(self):
+        for line in self:
+            line.quantity_2_decimals = line.quantity
+
     date_invoice = fields.Date(string="Invoice date",
                                related="invoice_id.date_invoice",
                                store=True, readonly=True)
+    quantity_2_decimals = fields.Float(
+        string='Quantity', compute='_compute_quantity_2_decimals',
+        digits=dp.get_precision('Product Price'))
 
     @api.multi
     def product_id_change(
