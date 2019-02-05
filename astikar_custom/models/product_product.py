@@ -35,13 +35,13 @@ class ProductProduct(models.Model):
         comodel_name='purchase.order.line', inverse_name='product_id',
         string='Purchase Lines')
     last_purchase_price = fields.Float(
-        compute='_get_last_purchase', inverse='_inverse_last_purchase',
+        compute='_compute_get_last_purchase', inverse='_inverse_last_purchase',
         store=True, digits=dp.get_precision('Product Price'))
     last_purchase_date = fields.Date(
-        compute='_get_last_purchase', inverse='_inverse_last_purchase',
+        compute='_compute_get_last_purchase', inverse='_inverse_last_purchase',
         store=True)
     last_supplier_id = fields.Many2one(
-        compute='_get_last_purchase', inverse='_inverse_last_purchase',
+        compute='_compute_get_last_purchase', inverse='_inverse_last_purchase',
         store=True)
     manual_purchase_price = fields.Float(
         string='Manual Last Purchase Price',
@@ -54,7 +54,7 @@ class ProductProduct(models.Model):
                  'purchase_line_ids.price_unit',
                  'purchase_line_ids.order_id.date_order',
                  'purchase_line_ids.order_id.partner_id')
-    def _get_last_purchase(self):
+    def _compute_get_last_purchase(self):
         for record in self:
             if any(record.mapped('purchase_line_ids').filtered(
                     lambda l: l.state in ('done', 'confirmed'))):
