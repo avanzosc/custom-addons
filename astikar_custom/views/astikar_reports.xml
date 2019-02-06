@@ -3,7 +3,6 @@
     <data noupdate="1">
         <report id="report_mrp_repair_order" string="Work Order" model="mrp.repair" report_type="qweb-pdf"
             file="astikar_custom.report_mrp_repair_order" name="astikar_custom.mrp_repair_order"/>
-
         <report id="report_mrp_repair_picking" string="Picking" model="mrp.repair" report_type="qweb-pdf"
             name="astikar_custom.mrp_repair_picking" file="astikar_custom.report_mrp_repair_picking"/>
 
@@ -47,7 +46,7 @@
                             </div>
                             <div class="col-xs-4 pull-right">
                                 <strong>DATA:</strong>
-                                <span t-esc="time.strftime('%Y-%m-%d')"/>
+                                <span t-esc="o.create_date2"/>
                             </div>
                         </div>
                         <div>
@@ -226,7 +225,7 @@
                 </t>
             </xpath>
         </template>
-        
+
         <template id="mrp_repair_order">
             <t t-call="report.html_container">
                 <t t-foreach="docs" t-as="o">
@@ -395,7 +394,7 @@
                 </t>
             </t>
         </template>
-        
+
         <template id="mrp_repair_picking">
             <t t-call="report.html_container">
                 <t t-foreach="docs" t-as="o">
@@ -605,7 +604,7 @@
                         <thead>
                             <tr >
                                 <th>AZALPENA</th>
-                                <th>KOPURUA</th>
+                                <th class="text-right">KOPURUA</th>
                                 <th class="text-right">PREZIOA</th>
                                 <th class="text-right">DESKONTUA</th>
                                 <th class="text-right">ZENBATEKOA</th>
@@ -631,7 +630,7 @@
                                         <td>
                                             <span t-field="l.name"/>
                                         </td>
-                                        <td>
+                                        <td class="text-right">
                                             <span t-field="l.quantity_2_decimals"/>
                                             <span t-field="l.uos_id"  groups="product.group_uom"/>
                                         </td>
@@ -653,7 +652,7 @@
                                 <td>
                                     <span t-field="l.name"/>
                                 </td>
-                                <td>
+                                <td class="text-right">
                                     <span t-field="l.quantity_2_decimals"/>
                                     <span t-field="l.uos_id"  groups="product.group_uom"/>
                                 </td>
@@ -773,6 +772,9 @@
             <t t-call="astikar_custom.astikar_no_phone_external_layout" >
                 <div class="page">
                     <h2>
+                        <br/>
+                        <br/>
+                        <br/>
                         <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">FACTURA</span>
                         <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PROFORMA</span>
                         <span t-if="o.type == 'out_invoice' and o.state == 'draft'">FACTURA BORRADOR</span>
@@ -817,7 +819,7 @@
                         <thead>
                             <tr >
                                 <th>DESCRIPCIÓN</th>
-                                <th>CANTIDAD</th>
+                                <th class="text-right">CANTIDAD</th>
                                 <th class="text-right">PRECIO</th>
                                 <th class="text-right">DESCUENTO</th>
                                 <th class="text-right">IMPORTE</th>
@@ -843,7 +845,7 @@
                                         <td>
                                             <span t-field="l.name"/>
                                         </td>
-                                        <td>
+                                        <td class="text-right">
                                             <span t-field="l.quantity_2_decimals"/>
                                             <span t-field="l.uos_id"  groups="product.group_uom"/>
                                         </td>
@@ -865,7 +867,7 @@
                                 <td>
                                     <span t-field="l.name"/>
                                 </td>
-                                <td>
+                                <td class="text-right">
                                     <span t-field="l.quantity_2_decimals"/>
                                     <span t-field="l.uos_id"  groups="product.group_uom"/>
                                 </td>
@@ -1409,7 +1411,7 @@
                 </h2>
             </xpath>
         </template>
-        
+
         <template id="picking_delivery_report" inherit_id="delivery.report_shipping2">
             <xpath expr="//div[@name='invoice_partner']" position="replace"/>
             <xpath expr="//table[@class='table table-condensed']" position="replace">
@@ -1454,9 +1456,9 @@
         </template>
         <template id="account.report_invoice">
             <t t-call="report.html_container">
-	            <t t-foreach="doc_ids" t-as="doc_id">
-	                <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'astikar_custom.report_invoice_astikar_eus_document')"/>
-	            </t>
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'astikar_custom.report_invoice_astikar_eus_document')"/>
+                </t>
             </t>
         </template>
         <template id="report_account_invoice_cas">

@@ -63,6 +63,12 @@ class MrpRepair(models.Model):
             else:
                 repair.date_due = fields.Date.from_string(fields.Date.today())
 
+    @api.multi
+    def _compute_create_date2(self):
+        for repair in self:
+            repair.create_date2 = fields.Datetime.from_string(
+                repair.create_date).strftime('%Y-%m-%d')
+
     name = fields.Char(default='/')
     quotation_notes = fields.Text(default=_defaul_quotation_notes)
     amnt_untaxed = fields.Float(string='Untaxed Amount',
@@ -72,6 +78,7 @@ class MrpRepair(models.Model):
     amnt_total = fields.Float(string='Total', compute='_compute_repair_amount',
                               store=True)
     date_due = fields.Date(compute='_compute_date_due')
+    create_date2 = fields.Char(compute='_compute_create_date2')
 
     @api.model
     def create(self, vals):
