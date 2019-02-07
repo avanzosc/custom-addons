@@ -1069,7 +1069,7 @@ msgstr "EPE MUGA:"
 #. module: astikar_custom
 #: view:website:astikar_custom.report_invoice_astikar_eus_document
 msgid "FAKTURA"
-msgstr "FAKCTURA"
+msgstr "FAKTURA"
 
 #. module: astikar_custom
 #: view:website:astikar_custom.report_invoice_astikar_eus_document

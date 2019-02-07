@@ -77,4 +77,12 @@ class AccountInvoiceLine(models.Model):
         if ('account_analytic_id' in res['value'] and not
                 res['value'].get('account_analytic_id', False)):
             res['value'].pop('account_analytic_id')
+        if (res and res.get('value', False) and
+                res.get('value').get('name', False)):
+            name = res.get('value').get('name')
+            p = self.env['product.product'].browse(product)
+            if p.default_code:
+                code = "[{}] ".format(p.default_code)
+                name = name.replace(code, "")
+                res['value']['name'] = name
         return res

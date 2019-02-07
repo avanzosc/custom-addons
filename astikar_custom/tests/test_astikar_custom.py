@@ -60,6 +60,7 @@ class TestAstikarCustom(common.TransactionCase):
             'location_id': self.location,
             'location_dest_id': self.location,
         })
+        mrp_repair._compute_create_date2()
         self.assertNotEqual(mrp_repair.name, '/')
         self.assertEqual(mrp_repair.name, name)
 
