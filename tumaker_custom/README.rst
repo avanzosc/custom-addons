@@ -24,4 +24,5 @@ Contributors
 
 * Ainara Galdona <ainaragaldona@avanzosc.es>
 * Esther Martín <esthermartin@avanzosc.es>
+* Daniel Campos <danielcampos@avanzosc.es>
 
