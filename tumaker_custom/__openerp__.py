@@ -4,7 +4,7 @@
 
 {
     "name": "Tumaker custom",
-    "version": "8.0.2.1.0",
+    "version": "8.0.2.2.0",
     "license": "AGPL-3",
     "depends": ["sale_order_dates",
                 "project_timesheet",

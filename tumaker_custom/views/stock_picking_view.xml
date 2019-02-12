@@ -9,7 +9,7 @@
             <field name="arch" type="xml">
                 <field name="date_done" position="replace"/>
                 <field name="partner_id" position="after">
-                    <field name="date_done" groups="base.group_no_one"/>
+                    <field name="date_done" groups="stock.group_stock_manager"/>
                 </field>
                 <button name="do_enter_transfer_details" position="attributes">
                     <attribute name="groups">stock.group_stock_user,tumaker_custom.group_stock_production_specific</attribute>
