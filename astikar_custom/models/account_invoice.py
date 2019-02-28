@@ -35,9 +35,9 @@ class AccountInvoice(models.Model):
                                  string='Has repairs')
     warning = fields.Text(string='Warning')
     not_warning = fields.Boolean(string='Hide Warning Message', default=True)
-    bez = fields.Float(
-        string='B.E.Z.', compute='_compute_bez',
-        digits=dp.get_precision('Product Price'))
+    bez = fields.Float(string='B.E.Z.', compute='_compute_bez',
+                       digits=dp.get_precision('Product Price'))
+    vat = fields.Char(string="VAT", related='partner_id.vat', readonly=True)
 
     @api.model
     def create(self, vals):

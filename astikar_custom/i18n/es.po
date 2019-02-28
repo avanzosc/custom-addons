@@ -1147,3 +1147,12 @@ msgstr "ZENBATEKOA:"
 msgid "ZIRIBORRO FAKTURA"
 msgstr "ZIRIBORRO FAKTURA"
 
+#. module: astikar_custom
+#: field:purchase.order,vat:0
+#: field:account.invoice,vat:0
+#: view:purchase.order:astikar_custom.purchase_order_form
+#: view:account.invoice:astikar_custom.invoice_supplier_form
+#: view:account.invoice:astikar_custom.invoice_repair_view_form
+msgid "VAT"
+msgstr "NIF"
+
