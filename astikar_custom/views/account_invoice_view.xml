@@ -6,6 +6,9 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_supplier_form"/>
             <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="vat"/>
+                </field>
                 <field name="supplier_invoice_number" position="after">
                     <field name="repair_analytic_id" groups="analytic.group_analytic_accounting" domain="[('type','!=','view'), ('company_id', '=', company_id), ('state','not in',('close','cancelled'))]"/>
                 </field>
@@ -28,6 +31,9 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="vat"/>
+                </field>
                 <field name="account_id" position="after">
                     <field name="has_repairs" invisible="1"/>
                     <field name="repair_ids" mode="tree" readonly="1" attrs="{'invisible': [('has_repairs', '=', False)]}">
