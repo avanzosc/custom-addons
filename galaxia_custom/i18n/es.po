@@ -78,8 +78,12 @@ msgid "Decimal Performance"
 msgstr "Rendim. decimal"
 
 #. module: galaxia_custom
+#: field:account.analytic.account.historical,name:0
+#: field:sale.order.line.historical,name:0
+#: field:sale.print.line,name:0
 #: view:website:account.report_invoice_document
 #: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
 msgid "Description"
 msgstr "Descripción"
 
@@ -89,6 +93,7 @@ msgid "Disc.(%)"
 msgstr "Desc.(%)"
 
 #. module: galaxia_custom
+#: field:sale.print.line,discount:0
 #: view:website:account.report_invoice_document
 msgid "Discount (%)"
 msgstr "Descuento (%)"
@@ -189,7 +194,9 @@ msgid "Product"
 msgstr "Producto"
 
 #. module: galaxia_custom
-#: code:addons/galaxia_custom/models/sale_order.py:152
+#: code:addons/galaxia_custom/models/sale_order.py:143
+#: code:addons/galaxia_custom/models/sale_order.py:191
+#: field:sale.print.line,product_uom_qty:0
 #: view:website:account.report_invoice_document
 #: view:website:galaxia_custom.report_sale_information_footer
 #, python-format
@@ -251,6 +258,7 @@ msgid "Tax Data"
 msgstr "Datos fiscales"
 
 #. module: galaxia_custom
+#: field:sale.print.line,tax_id:0
 #: view:website:galaxia_custom.report_sale_information_footer
 #: view:website:galaxia_custom.report_sale_only_services
 msgid "Taxes"
@@ -284,6 +292,7 @@ msgid "Total:"
 msgstr "Total:"
 
 #. module: galaxia_custom
+#: field:sale.print.line,price_unit:0
 #: view:website:galaxia_custom.report_sale_information_footer
 msgid "Unit Price"
 msgstr "Precio unidad"
@@ -612,4 +621,25 @@ msgstr "Sábado"
 #, python-format
 msgid "Sunday"
 msgstr "Domingo"
+
+#. module: galaxia_custom
+#: view:sale.order:galaxia_custom.view_order_form_service_view_inh_galaxia
+msgid "Products to print on budget"
+msgstr "Productos a imprimir en presupuesto"
+
+#. module: galaxia_custom
+#: model:ir.model,name:galaxia_custom.model_product_product
+#: field:sale.print.line,product_id:0
+msgid "Product"
+msgstr "Producto"
+
+#. module: galaxia_custom
+#: view:sale.order:galaxia_custom.view_order_form_inh_galaxia
+msgid "Create contract"
+msgstr "Crear contrato"
+
+#. module: galaxia_custom
+#: field:sale.order,working_hours:0
+msgid "Working Schedule"
+msgstr "Horario trabajo"
 

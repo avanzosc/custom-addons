@@ -30,8 +30,9 @@ class TestGalaxiaCustom(common.TransactionCase):
                                'hour_to': 18}
         calendar_vals = {'name': 'Resource calendar',
                          'attendance_ids': [(0, 0, calendar_lines_vals)]}
-        resource_calendar = self.env['resource.calendar'].create(calendar_vals)
-        self.account.write({'working_hours': resource_calendar.id})
+        self.resource_calendar = self.env['resource.calendar'].create(
+            calendar_vals)
+        self.account.write({'working_hours': self.resource_calendar.id})
         project_vals = {'name': 'project 1',
                         'analytic_account_id': self.account.id}
         self.project = self.project_model.create(project_vals)
@@ -198,3 +199,10 @@ class TestGalaxiaCustom(common.TransactionCase):
         self.analytic_invoice_line.price_unit = 5
         historical = self.account.analytic_account_historical_ids
         self.assertEqual(len(historical), 1, 'Bad historical for account')
+
+    def test_galaxia_custom_create_project(self):
+        self.sale_order.write({'project_id': False,
+                               'working_hours': self.resource_calendar.id})
+        self.sale_order.button_create_sale_contract()
+        self.assertEqual(self.sale_order.project_id.date_start, '2016-01-15')
+        self.assertEqual(self.sale_order.project_id.date, '2016-02-28')
