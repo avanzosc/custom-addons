@@ -13,11 +13,11 @@ This module customizes Odoo for HISPALED:
    * IK Safeguard
 
 * Adds 'sum' in the tree view of the produced products to watch total quantity
-* Appliance classes defined symbol, attribute code must be LUM-CLA and names
-  are:
+* Appliance classes defined symbol, attribute code must be LUM-CLA and names are:
    * ClassI name: 'I'
    * ClassII name: 'II'
    * ClassIII name: 'III'
+
 * Customized purchase order, sale order, invoice and stock picking reports.
 * Propagate sale order to out picking, and out invoices.
 * Catch the description of the variants of the products for sales, purchases,
