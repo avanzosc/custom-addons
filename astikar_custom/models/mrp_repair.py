@@ -208,6 +208,10 @@ class MrpRepairLine(models.Model):
     available_qty = fields.Float(
         string='Available Qty', compute='_compute_available_qty',
         digits=dp.get_precision('Product Unit of Measure'))
+    product_uom_qty = fields.Float(
+        digits=dp.get_precision('Product Price'))
+    expected_qty = fields.Float(
+        digits=dp.get_precision('Product Price'))
 
 
 class MrpRepairFee(models.Model):
