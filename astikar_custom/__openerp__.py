@@ -4,7 +4,7 @@
 
 {
     "name": "Astikar - Custom",
-    "version": "8.0.3.10.0",
+    "version": "8.0.3.11.0",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -40,6 +40,7 @@
         "stock_valued_picking_report",
         "warning",
         "web",
+        "mrp_repair_estimated_cost"
     ],
     "data": [
         "views/account_analytic_view.xml",

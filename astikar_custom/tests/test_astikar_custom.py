@@ -276,7 +276,7 @@ class TestAstikarCustom(common.TransactionCase):
             'product_qty': 100,
             'price_unit': 5,
             'account_analytic_id':
-                self.mrp_repair_customer.analytic_account.id,
+            self.mrp_repair_customer.analytic_account.id,
             'date_planned': fields.Date.today(),
         }
         purchase_vals = {
@@ -304,3 +304,12 @@ class TestAstikarCustom(common.TransactionCase):
             self.assertEqual(move.state, 'done', 'Wrong state of move line.')
         self.assertEqual(len(self.product2.repair_line_ids), 1,
                          'Purchase line not created in repair order')
+
+    def test_compute_bez(self):
+        repair = self.browse_ref('mrp_repair.mrp_repair_rmrp2')
+        tax_vals = {'name': 'Tax for test',
+                    'type': 'percent',
+                    'amount': 0.25}
+        tax = self.env['account.tax'].create(tax_vals)
+        repair.operations[0].tax_id = [(6, 0, [tax.id])]
+        self.assertEqual(repair.bez, 25.0)

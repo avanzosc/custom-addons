@@ -1156,3 +1156,38 @@ msgstr "ZIRIBORRO FAKTURA"
 msgid "VAT"
 msgstr "NIF"
 
+#. module: astikar_custom
+#: view:mrp.repair:astikar_custom.mrp_repair_order_view_form_inh_astikar_custom
+#: field:mrp.repair,photo1:0
+msgid "Photo 1"
+msgstr "Foto 1"
+
+#. module: astikar_custom
+#: view:mrp.repair:astikar_custom.mrp_repair_order_view_form_inh_astikar_custom
+#: field:mrp.repair,photo2:0
+msgid "Photo 2"
+msgstr "Foto 2"
+
+#. module: astikar_custom
+#: view:mrp.repair:astikar_custom.mrp_repair_order_view_form_inh_astikar_custom
+#: field:mrp.repair,photo3:0
+msgid "Photo 3"
+msgstr "Foto 3"
+
+#. module: astikar_custom
+#: view:mrp.repair:astikar_custom.mrp_repair_order_view_form_inh_astikar_custom
+#: field:mrp.repair,photo4:0
+msgid "Photo 4"
+msgstr "Foto 4"
+
+#. module: astikar_custom
+#: view:mrp.repair:astikar_custom.mrp_repair_order_view_form_inh_astikar_custom
+msgid "Photos"
+msgstr "Fotos"
+
+#. module: astikar_custom
+#: view:mrp.repair:astikar_custom.mrp_repair_buttons_view_form
+#: field:mrp.repair,general_conditions:0
+msgid "General conditions"
+msgstr "Condiciones generales"
+

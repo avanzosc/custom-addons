@@ -65,6 +65,7 @@
                                     <th>DESCRIPCIÓN</th>
                                     <th class="text-right">CANTIDAD</th>
                                     <th class="text-right">PRECIO €</th>
+                                    <th class="text-right">%DTO.</th>
                                     <th class="text-right">IMPORTE</th>
                                 </tr>
                             </thead>
@@ -91,6 +92,9 @@
                                                 <span t-field="line.price_unit"/>
                                             </td>
                                             <td class="text-right">
+                                                <span t-field="line.discount"/>
+                                            </td>
+                                            <td class="text-right">
                                                 <span t-field="line.price_subtotal" t-field-options='{"widget": "monetary", "display_currency":
                                                     "o.pricelist_id.currency_id"}'/>
                                             </td>
@@ -110,15 +114,15 @@
                                             <td>
                                                 <span t-field="fees.name"/>
                                             </td>
-                                            <td class="text-center">
-                                                <span t-esc="','.join(map( lambda x: x.name, fees.tax_id))"/>
-                                            </td>
                                             <td class="text-right">
                                                 <span t-field="fees.product_uom_qty"/>
                                                 <span groups="product.group_uom" t-field="fees.product_uom.name"/>
                                             </td>
                                             <td class="text-right">
                                                 <span t-field="fees.price_unit"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="fees.discount"/>
                                             </td>
                                             <td class="text-right">
                                                 <span t-field="fees.price_subtotal" t-field-options='{"widget": "monetary", "display_currency":
@@ -143,7 +147,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>I.V.A.</td>
+                                        <td>I.V.A. <span t-field="o.bez" />%</td>
                                         <td class="text-right">
                                             <span t-field="o.amnt_tax" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
                                                 &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}"
@@ -205,6 +209,12 @@
                         </div>
                         <t t-if="not o.proforma">
                             <div style="page-break-inside: avoid">
+                                <div class="row" t-if="o.general_conditions">
+                                    <p>
+                                        <b>CONDICIONES GENERALES:</b>
+                                        <span t-field="o.general_conditions"/>
+                                    </p>
+                                </div>
                                 <div class="row">
                                     <p>
                                         <b>NOTA:</b>
@@ -223,6 +233,24 @@
                                 </div>
                             </div>
                         </t>
+                        <div class="row">
+                            <div class="col-xs-12" t-if="o.photo1">
+                                <img t-if="o.photo1" t-att-src="'data:image/png;base64,%s' % o.photo1" />
+                                <br/>
+                            </div>
+                            <div class="col-xs-12" t-if="o.photo2">
+                                <img t-if="o.photo2" t-att-src="'data:image/png;base64,%s' % o.photo2" />
+                                <br/>
+                            </div>
+                            <div class="col-xs-12" t-if="o.photo3">
+                                <img t-if="o.photo3" t-att-src="'data:image/png;base64,%s' % o.photo3" />
+                                <br/>
+                            </div>
+                            <div class="col-xs-12" t-if="o.photo4">
+                                <img t-if="o.photo4" t-att-src="'data:image/png;base64,%s' % o.photo4" />
+                                <br/>
+                            </div>
+                        </div>
                     </div>
                 </t>
         </template>
@@ -266,6 +294,7 @@
                                     <th>AZALPENA</th>
                                     <th class="text-right">KOPURUA</th>
                                     <th class="text-right">PREZIOA €</th>
+                                    <th class="text-right">%DTU.</th>
                                     <th class="text-right">ZENBATEKOA</th>
                                 </tr>
                             </thead>
@@ -292,6 +321,9 @@
                                                 <span t-field="line.price_unit"/>
                                             </td>
                                             <td class="text-right">
+                                                <span t-field="line.discount"/>
+                                            </td>
+                                            <td class="text-right">
                                                 <span t-field="line.price_subtotal" t-field-options='{"widget": "monetary", "display_currency":
                                                     "o.pricelist_id.currency_id"}'/>
                                             </td>
@@ -311,15 +343,15 @@
                                             <td>
                                                 <span t-field="fees.name"/>
                                             </td>
-                                            <td class="text-center">
-                                                <span t-esc="','.join(map( lambda x: x.name, fees.tax_id))"/>
-                                            </td>
                                             <td class="text-right">
                                                 <span t-field="fees.product_uom_qty"/>
                                                 <span groups="product.group_uom" t-field="fees.product_uom.name"/>
                                             </td>
                                             <td class="text-right">
                                                 <span t-field="fees.price_unit"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="fees.discount"/>
                                             </td>
                                             <td class="text-right">
                                                 <span t-field="fees.price_subtotal" t-field-options='{"widget": "monetary", "display_currency":
@@ -344,7 +376,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>B.E.Z.</td>
+                                        <td>B.E.Z. <span t-field="o.bez" />%</td>
                                         <td class="text-right">
                                             <span t-field="o.amnt_tax" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
                                                 &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}"
@@ -406,6 +438,12 @@
                         </div>
                         <t t-if="not o.proforma">
                             <div style="page-break-inside: avoid">
+                                <div class="row" t-if="o.general_conditions">
+                                    <p>
+                                        <b>BALDINTZA OROKORRAK:</b>
+                                        <span t-field="o.general_conditions"/>
+                                    </p>
+                                </div>
                                 <div class="row">
                                     <p>
                                         <b>NOTA:</b>
@@ -424,6 +462,24 @@
                                 </div>
                             </div>
                         </t>
+                        <div class="row">
+                            <div class="col-xs-12" t-if="o.photo1">
+                                <img t-if="o.photo1" t-att-src="'data:image/png;base64,%s' % o.photo1" />
+                                <br/>
+                            </div>
+                            <div class="col-xs-12" t-if="o.photo2">
+                                <img t-if="o.photo2" t-att-src="'data:image/png;base64,%s' % o.photo2" />
+                                <br/>
+                            </div>
+                            <div class="col-xs-12" t-if="o.photo3">
+                                <img t-if="o.photo3" t-att-src="'data:image/png;base64,%s' % o.photo3" />
+                                <br/>
+                            </div>
+                            <div class="col-xs-12" t-if="o.photo4">
+                                <img t-if="o.photo4" t-att-src="'data:image/png;base64,%s' % o.photo4" />
+                                <br/>
+                            </div>
+                        </div>
                     </div>
                 </t>
             </xpath>
