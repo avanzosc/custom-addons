@@ -69,6 +69,14 @@ class MrpRepair(models.Model):
             repair.create_date2 = fields.Datetime.from_string(
                 repair.create_date).strftime('%Y-%m-%d')
 
+    @api.multi
+    def _compute_bez(self):
+        for repair in self:
+            for line in repair.operations.filtered(lambda x: x.to_invoice):
+                if line.tax_id:
+                    for tax in line.tax_id:
+                        repair.bez = tax.amount * 100
+
     name = fields.Char(default='/')
     quotation_notes = fields.Text(default=_defaul_quotation_notes)
     amnt_untaxed = fields.Float(string='Untaxed Amount',
@@ -79,6 +87,13 @@ class MrpRepair(models.Model):
                               store=True)
     date_due = fields.Date(compute='_compute_date_due')
     create_date2 = fields.Char(compute='_compute_create_date2')
+    bez = fields.Float(
+        string="BEZ", compute='_compute_bez', digits=(3, 2))
+    general_conditions = fields.Text(string='General conditions')
+    photo1 = fields.Binary(string='Photo 1')
+    photo2 = fields.Binary(string='Photo 2')
+    photo3 = fields.Binary(string='Photo 3')
+    photo4 = fields.Binary(string='Photo 4')
 
     @api.model
     def create(self, vals):
