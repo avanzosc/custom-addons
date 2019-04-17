@@ -11,21 +11,32 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     @api.multi
-    def product_id_change(
+    def product_id_change_with_wh(
             self, pricelist, product_id, qty=0, uom=False, qty_uos=0,
-            uos=False, name='', partner_id=False, lang=False, update_tax=True,
+            uos=False,
+            name='', partner_id=False, lang=False, update_tax=True,
             date_order=False, packaging=False, fiscal_position=False,
-            flag=False):
-        res = super(SaleOrderLine, self).product_id_change(
-            pricelist, product_id, qty=qty, uom=uom, qty_uos=qty_uos,
-            uos=uos, name=name, partner_id=partner_id, lang=lang,
-            update_tax=update_tax, date_order=date_order, packaging=packaging,
-            fiscal_position=fiscal_position, flag=flag)
+            flag=False, warehouse_id=False):
+        res = super(SaleOrderLine, self).product_id_change_with_wh(
+            pricelist, product_id, qty=qty, uom=uom, qty_uos=qty_uos, uos=uos,
+            name=name, partner_id=partner_id, lang=lang, update_tax=update_tax,
+            date_order=date_order, packaging=packaging,
+            fiscal_position=fiscal_position, flag=flag,
+            warehouse_id=warehouse_id)
+        value = res.setdefault('value', {})
         if product_id:
             product = self.env['product.product'].browse(product_id)
-            vals = product.get_partner_code_name(partner_id=partner_id)
-            res['value']['name'] = u'[{}] {}'.format(vals.get('code', ''),
-                                                     vals.get('name', ''))
+            partner = self.env['res.partner'].browse(partner_id)
+            partner_name = partner.parent_id or partner
+            if partner.lang:
+                self = self.with_context(lang=partner.lang)
+            product_vals = product.get_partner_code_name(
+                partner=partner_name)
+            value['name'] = u'[{}] {}'.format(
+                product_vals.get('code') or product.get_real_code(
+                    partner_id=partner_name),
+                product_vals.get('name') or product.get_real_name(
+                    partner_id=partner_name))
             if product.description_sale:
-                res['value']['name'] += '\n{}'.format(product.description_sale)
+                value['name'] += '\n' + product.description_sale
         return res

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+    <record id="stock_label_report_data_tree_view" model="ir.ui.view">
+        <field name="name">stock.label.report.data.tree</field>
+        <field name="model">stock.label.report.data</field>
+        <field name="inherit_id"
+               ref="stock_picking_label_print.view_stock_label_report_data_tree" />
+        <field name="arch" type="xml">
+            <field name="ul_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="ul_qty" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+</data>
+</openerp>

@@ -29,6 +29,7 @@ class TestCCGCustom(common.TransactionCase):
         self.partner2.parent_id = self.ref('base.res_partner_2')
         self.env['product.supplierinfo'].create(
             {'name': self.partner1.id,
+             'product_id': self.product_1.id,
              'product_tmpl_id': self.product_1.product_tmpl_id.id,
              'type': 'customer',
              'product_name': 'NameTest',
@@ -91,12 +92,12 @@ class TestCCGCustom(common.TransactionCase):
         self.assertEqual(partner.user_id.id, self.env.uid)
 
     def test_onchange_product_in_sale_line(self):
-        res = self.sale_line_obj.product_id_change(
+        res = self.sale_line_obj.product_id_change_with_wh(
             self.partner1.property_product_pricelist.id, self.product_1.id,
             qty=1, uom=self.product_1.uom_id.id, partner_id=self.partner1.id)
         self.assertTrue('CodeTest' in res['value'].get('name'))
         self.assertTrue('NameTest' in res['value'].get('name'))
-        res = self.sale_line_obj.product_id_change(
+        res = self.sale_line_obj.product_id_change_with_wh(
             self.partner2.property_product_pricelist.id, self.product_1.id,
             qty=1, uom=self.product_1.uom_id.id, partner_id=self.partner2.id)
         self.assertTrue('CodeTest' not in res['value'].get('name'))

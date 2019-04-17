@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+    <report 
+        string="Picking" 
+        id="stock.action_report_picking" 
+        model="stock.picking" 
+        report_type="qweb-pdf"
+        name="hispaled_custom.report_picking_new" 
+        file="hispaled_custom.report_picking_new"
+    />
+    <record id="view_picking_form_inh_hispaled" model="ir.ui.view">
+        <field name="name">view.picking.form.inh.hispaled</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <field name="backorder_id" position="after">
+                <field name="code" />
+                <field name="sale_order_id" readonly="1" 
+                    attrs="{'invisible': [('code', '!=', 'outgoing')]}"/>
+                <field name="project_id" readonly="1" 
+                    attrs="{'invisible': [('code', '!=', 'outgoing')]}"/>
+                <field name="client_order_ref" readonly="1" 
+                    attrs="{'invisible': [('code', '!=', 'outgoing')]}"/>
+            </field>
+            <page string="Additional Info" position="after">
+                <page string="Packaging comment" attrs="{'invisible': [('code', '!=', 'outgoing')]}">
+                    <group colspan="4">
+                        <field name="packaging_comment" colspan="4" nolabel="1" />
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+    <record id="view_picking_tree_inh_hispaled" model="ir.ui.view">
+        <field name="name">view.picking.tree.inh.hispaled</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree" />
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="code" invisible="1"/>
+                <field name="sale_order_id" readonly="1" 
+                    attrs="{'invisible': [('code', '!=', 'outgoing')]}"/>
+                <field name="project_id" readonly="1" 
+                    attrs="{'invisible': [('code', '!=', 'outgoing')]}"/>
+                <field name="client_order_ref" readonly="1" 
+                    attrs="{'invisible': [('code', '!=', 'outgoing')]}"/>
+            </field>
+        </field>
+    </record>
+    <record id="view_picking_internal_search_inh_hispaled" model="ir.ui.view">
+        <field name="name">view.picking.internal.search.inh.hispaled</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search" />
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="sale_order_id" />
+                <field name="project_id" />
+                <field name="client_order_ref" />
+            </field>
+        </field>
+    </record>
+</data>
+</openerp>

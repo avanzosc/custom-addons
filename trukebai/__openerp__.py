@@ -35,6 +35,7 @@
         "views/sale_order_view.xml",
         "views/pos_order_view.xml",
         "views/trukebai_saleswoman_view.xml",
+        "views/product_template_view.xml",
     ],
     "installable": True,
 }

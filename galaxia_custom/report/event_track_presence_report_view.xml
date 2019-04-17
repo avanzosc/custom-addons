@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <record id="event_track_presence_report_tree_view_inh_galaxia" model="ir.ui.view">
+        <field name="name">event.track.presence.report.tree.view.inh.galaxia</field>
+        <field name="model">event.track.presence.report</field>
+        <field name="inherit_id" ref="sale_order_create_event.event_track_presence_report_tree_view" />
+        <field name="arch" type="xml">
+            <field name="session_duration" position="attributes">
+                    <attribute name="widget"></attribute>
+            </field>
+         </field>
+    </record>
+</data>
+</openerp>

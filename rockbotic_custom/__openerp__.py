@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-# (c) 2016 Alfredo de la Fuente - AvanzOSC
+# Copyright 2016 Alfredo de la Fuente - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 {
     "name": "Rockbotic - Custom",
-    "version": "8.0.2.0.0",
+    "version": "8.0.2.7.0",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -12,6 +12,8 @@
         "Ana Juaristi <anajuaristi@avanzosc.es>",
         "Alfredo de la Fuente <alfredodelafuente@avanzosc.es>",
         "Esther Martín <esthermartin@avanzosc.es>",
+        "Gotzon Imaz <gotzonimaz@avanzosc.es>",
+        "Mikel Urbistondo <mikelurbistondo@avanzosc.es>",
     ],
     "depends": [
         "product",
@@ -42,13 +44,18 @@
         "event_registration_sepa",
         "event_track_info",
         "project_issue",
-        "sale_order_back2draft"
+        "sale_order_back2draft",
+        "event_registration_pa_code",
+        "account_utilities",
+        "account_invoice_automatic_pay_email",
+        "event_registration_hr_contract"
     ],
     "data": [
         "views/website_template_view.xml",
         "wizard/crm_make_sale_view.xml",
         "wizard/wiz_send_email_event_evaluation_view.xml",
         "wizard/wiz_send_email_registration_evaluation_view.xml",
+        "wizard/wiz_event_delete_assistant_view.xml",
         "views/sale_order_view.xml",
         "views/crm_lead_view.xml",
         "views/res_partner_view.xml",

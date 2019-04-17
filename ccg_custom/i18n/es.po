@@ -17,6 +17,11 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 
 #. module: ccg_custom
+#: field:account.invoice,discounted:0
+msgid "Discounted"
+msgstr "Descontada"
+
+#. module: ccg_custom
 #: field:product.packaging,is_default:0
 msgid "Default"
 msgstr "Por defecto"

@@ -4,6 +4,7 @@
 
 from openerp import _, api, exceptions, fields, models
 from openerp.tools.safe_eval import safe_eval
+from openerp.addons.base_iban.base_iban import _format_iban, _pretty_iban
 
 
 class ResPartnerEnrollSearch(models.TransientModel):
@@ -33,9 +34,11 @@ class ResPartnerEnrollSearch(models.TransientModel):
             partners = partner_obj.search(
                 [('name', 'ilike', lead.contact_name),
                  ('parent_id', '!=', False),
-                 ('registered_partner', '=', 'True')])
+                 ('registered_partner', '=', 'True'),
+                 ('delete_after_sending_email', '=', False)])
             parents = partner_obj.search(
                 [('is_company', '=', True),
+                 ('delete_after_sending_email', '=', False),
                  '|', '|', '|', '|', ('name', 'ilike', lead.partner_name),
                  ('vat', 'ilike', lead.vat),
                  ('email', 'ilike', lead.email_from),
@@ -43,12 +46,14 @@ class ResPartnerEnrollSearch(models.TransientModel):
                  ('mobile', 'ilike', lead.phone)])
             partners |= partner_obj.search(
                 [('parent_id', 'in', parents.ids),
+                 ('delete_after_sending_email', '=', False),
                  ('registered_partner', '=', 'True')])
             if not partners:
                 contact_names = lead.contact_name.split(' ')
                 for contact_name in contact_names:
                     partners |= partner_obj.search(
                         [('name', 'ilike', contact_name),
+                         ('delete_after_sending_email', '=', False),
                          ('registered_partner', '=', 'True'),
                          ('parent_id', '!=', False)]) if contact_name else\
                         partner_obj
@@ -56,18 +61,27 @@ class ResPartnerEnrollSearch(models.TransientModel):
                 for parent_name in parent_names:
                     parents = partner_obj.search(
                         [('is_company', '=', True),
+                         ('delete_after_sending_email', '=', False),
                          ('name', 'ilike', parent_name),
                          ('parent_id', '=', False)]) if parent_name else\
                         partner_obj
                 partners |= partner_obj.search(
                     [('parent_id', 'in', parents.ids),
+                     ('delete_after_sending_email', '=', False),
                      ('registered_partner', '=', 'True')])
             if partners:
                 res.update({
-                    'item_ids': [(0, 0, {'partner_id': x.id,
-                                         'parent_partner_id': x.parent_id.id,
-                                         'parent_vat': x.parent_id.vat}) for x
-                                 in partners],
+                    'item_ids':
+                        [(0, 0,
+                          {'partner_id': x.id,
+                           'parent_partner_id': x.parent_id.id,
+                           'parent_acc_number':
+                           x.parent_id.bank_ids.filtered(
+                               lambda b: b.mandate_ids.filtered(
+                                   lambda m: m.state == 'valid')
+                           )[:1].acc_number or _('Valid mandate not found'),
+                           'parent_vat': x.parent_id.vat}) for x
+                         in partners],
                 })
         return res
 
@@ -109,7 +123,8 @@ class ResPartnerEnrollSearch(models.TransientModel):
                 lead, lead.contact_name, False, parent_id=parent_id) if not \
                 self.partner_id else self.partner_id.id
             partner = self.env['res.partner'].browse(partner_id)
-        if partner.parent_id.id != parent_id:
+        change_parent = partner.parent_id.id != parent_id
+        if change_parent:
             change_wiz = self.env['res.partner.parent.change'].create({
                 'partner_id': partner.id,
                 'old_parent_id': partner.parent_id.id,
@@ -120,6 +135,33 @@ class ResPartnerEnrollSearch(models.TransientModel):
             'partner_id': partner.id,
             'parent_id': parent_id,
         })
+        if not change_parent and lead.rockbotic_before and lead.account_number:
+            acc_number = _pretty_iban(_format_iban(lead.account_number))
+            bank = lead.parent_id.bank_ids.filtered(
+                lambda b: b.acc_number == acc_number)
+            mandates = lead.parent_id.mapped('bank_ids.mandate_ids')
+            if not bank:
+                country = (
+                    lead.country_id or self.env.user.company_id.country_id)
+                mandates.filtered(
+                    lambda m: m.state in ('draft', 'valid')).cancel()
+                bank_data = lead._get_bank_data(acc_number, country)
+                lead.parent_id.write({
+                    'bank_ids': [(0, 0, bank_data)],
+                })
+            else:
+                mandates.filtered(
+                    lambda m: m.state in ('draft', 'valid') and
+                    m.partner_bank_id != bank).cancel()
+                if not bank.mandate_ids.filtered(
+                        lambda m: m.state in ('draft', 'valid')):
+                    bank.write({
+                        'mandate_ids': [(0, 0, {
+                            'format': 'sepa',
+                            'type': 'recurrent',
+                            'recurrent_sequence_type': 'recurring',
+                        })],
+                    })
         action = self.env.ref(
             'rockbotic_website_crm.action_crm_lead2opportunity_partner')
         action_dict = action.read()[0] if action else {}
@@ -144,3 +186,4 @@ class ResPartnerEnrollSearchItem(models.TransientModel):
         comodel_name='res.partner', string='Parent', readonly=True)
     parent_vat = fields.Char(
         string='Parent VAT', readonly=True)
+    parent_acc_number = fields.Char(string='Account Number', readonly=True)

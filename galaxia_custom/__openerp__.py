@@ -4,7 +4,7 @@
 
 {
     "name": "Galaxia - Custom",
-    "version": "8.0.1.0.0",
+    "version": "8.0.3.2.0",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -26,7 +26,7 @@
         "sale_service_recurrence_configurator",
         "sale_order_line_service_view",
         "website_quote_not_unlink",
-        "sale_order_create_event",
+        "sale_order_create_event_hour",
         "product",
         "project",
         "stock",
@@ -39,7 +39,9 @@
         "project_work_time_control",
         "sale_order_training_plan",
         "event_track_info",
-        "event_track_merge"
+        "event_track_merge",
+        "sale_order_back2draft",
+        "base_location"
     ],
     "data": [
         "data/request_link_data.xml",
@@ -48,15 +50,21 @@
         "views/event_view.xml",
         "views/account_analytic_view.xml",
         "views/sale_order_view.xml",
+        "views/sale_order_line_view.xml",
         "views/account_view.xml",
         "views/crm_view.xml",
         "views/project_task_view.xml",
+        "views/event_track_view.xml",
+        "views/event_track_presence_view.xml",
+        "views/crm_lead_view.xml",
         "wizard/wiz_export_presence_information_view.xml",
         "wizard/wiz_export_csv.xml",
         "report/galaxia_layout_view.xml",
         "report/galaxia_reports.xml",
         "report/galaxia_custom_view.xml",
+        "report/event_track_presence_report_view.xml",
         "security/project_task_work.xml",
+        "security/ir.model.access.csv",
     ],
     "installable": True,
     "external_dependencies": {

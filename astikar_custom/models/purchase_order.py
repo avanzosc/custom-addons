@@ -12,3 +12,4 @@ class PurchaseOrder(models.Model):
     repair_analytic_id = fields.Many2one(
         comodel_name='account.analytic.account',
         string="Repair Analytic Account")
+    vat = fields.Char(string="VAT", related='partner_id.vat', readonly=True)

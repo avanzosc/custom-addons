@@ -3,6 +3,7 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 from openerp import api, fields, models
+from openerp.addons import decimal_precision as dp
 
 
 class MrpRepair(models.Model):
@@ -14,9 +15,13 @@ class MrpRepair(models.Model):
     @api.depends('partner_id', 'operations', 'fees_lines', 'operations.tax_id',
                  'operations.to_invoice', 'operations.price_unit',
                  'operations.expected_qty', 'operations.product_uom_qty',
-                 'operations.product_id', 'fees_lines.to_invoice',
+                 'operations.product_id', 'operations.discount',
+                 'operations.discount2', 'operations.discount3',
+                 'operations.price_subtotal', 'fees_lines.to_invoice',
                  'fees_lines.tax_id', 'fees_lines.price_unit',
-                 'fees_lines.product_uom_qty', 'fees_lines.product_id')
+                 'fees_lines.product_uom_qty', 'fees_lines.product_id',
+                 'fees_lines.discount', 'fees_lines.discount2',
+                 'fees_lines.discount3', 'fees_lines.price_subtotal')
     @api.multi
     def _compute_repair_amount(self):
         for repair in self:
@@ -25,13 +30,21 @@ class MrpRepair(models.Model):
             for line in repair.operations.filtered(lambda x: x.to_invoice):
                 untaxed += line.price_subtotal
                 qty = line.expected_qty or line.product_uom_qty
+                price = (line.price_unit *
+                         (1 - (line.discount or 0.0) / 100) *
+                         (1 - (line.discount2 or 0.0) / 100) *
+                         (1 - (line.discount3 or 0.0) / 100))
                 tax_calculate = line.tax_id.compute_all(
-                    line.price_unit, qty, line.product_id, repair.partner_id)
+                    price, qty, line.product_id, repair.partner_id)
                 taxed += sum(x['amount'] for x in tax_calculate['taxes'])
             for line in repair.fees_lines.filtered(lambda x: x.to_invoice):
                 untaxed += line.price_subtotal
+                price = (line.price_unit *
+                         (1 - (line.discount or 0.0) / 100) *
+                         (1 - (line.discount2 or 0.0) / 100) *
+                         (1 - (line.discount3 or 0.0) / 100))
                 tax_calculate = line.tax_id.compute_all(
-                    line.price_unit, line.product_uom_qty, line.product_id,
+                    price, line.product_uom_qty, line.product_id,
                     repair.partner_id)
                 taxed += sum(x['amount'] for x in tax_calculate['taxes'])
             repair.amnt_untaxed = untaxed
@@ -50,6 +63,20 @@ class MrpRepair(models.Model):
             else:
                 repair.date_due = fields.Date.from_string(fields.Date.today())
 
+    @api.multi
+    def _compute_create_date2(self):
+        for repair in self:
+            repair.create_date2 = fields.Datetime.from_string(
+                repair.create_date).strftime('%Y-%m-%d')
+
+    @api.multi
+    def _compute_bez(self):
+        for repair in self:
+            for line in repair.operations.filtered(lambda x: x.to_invoice):
+                if line.tax_id:
+                    for tax in line.tax_id:
+                        repair.bez = tax.amount * 100
+
     name = fields.Char(default='/')
     quotation_notes = fields.Text(default=_defaul_quotation_notes)
     amnt_untaxed = fields.Float(string='Untaxed Amount',
@@ -59,6 +86,14 @@ class MrpRepair(models.Model):
     amnt_total = fields.Float(string='Total', compute='_compute_repair_amount',
                               store=True)
     date_due = fields.Date(compute='_compute_date_due')
+    create_date2 = fields.Char(compute='_compute_create_date2')
+    bez = fields.Float(
+        string="BEZ", compute='_compute_bez', digits=(3, 2))
+    general_conditions = fields.Text(string='General conditions')
+    photo1 = fields.Binary(string='Photo 1')
+    photo2 = fields.Binary(string='Photo 2')
+    photo3 = fields.Binary(string='Photo 3')
+    photo4 = fields.Binary(string='Photo 4')
 
     @api.model
     def create(self, vals):
@@ -144,9 +179,25 @@ class MrpRepair(models.Model):
             'context': self.env.context
             }
 
+    @api.multi
+    def action_open_related_fees(self):
+        result = self.env.ref(
+            'mrp_repair_fee.action_mrp_repair_fee').read()[0]
+        result['domain'] = "[('repair_id', 'in'," +\
+            str(self.ids) + ")]"
+        result['context'] = "{}"
+        return result
+
+    @api.multi
+    def action_open_related_lines(self):
+        result = self.env.ref(
+            'astikar_custom.action_mrp_repair_line').read()[0]
+        result['domain'] = "[('repair_id', 'in'," +\
+            str(self.ids) + ")]"
+        return result
+
 
 class MrpRepairLine(models.Model):
-
     _inherit = 'mrp.repair.line'
 
     @api.multi
@@ -160,9 +211,25 @@ class MrpRepairLine(models.Model):
         vals['load_cost'] = bool(vals.get('product_uom_qty', 0.0))
         return super(MrpRepairLine, self).create(vals)
 
+    @api.multi
+    @api.depends('product_id', 'product_id.qty_available',
+                 'product_id.repair_product_count')
+    def _compute_available_qty(self):
+        for line in self.filtered(lambda l: l.type == 'add' and not l.move_id):
+            line.available_qty = (
+                line.product_id.qty_available -
+                line.product_id.repair_product_count)
+
+    available_qty = fields.Float(
+        string='Available Qty', compute='_compute_available_qty',
+        digits=dp.get_precision('Product Unit of Measure'))
+    product_uom_qty = fields.Float(
+        digits=dp.get_precision('Product Price'))
+    expected_qty = fields.Float(
+        digits=dp.get_precision('Product Price'))
+
 
 class MrpRepairFee(models.Model):
-
     _inherit = 'mrp.repair.fee'
 
     is_from_menu = fields.Boolean(string='Created from menu', default=False)

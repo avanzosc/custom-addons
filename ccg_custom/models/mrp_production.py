@@ -25,6 +25,6 @@ class MrpProduction(models.Model):
     partner_id = fields.Many2one(comodel_name='res.partner', string='Partner')
     sale_order_id = fields.Many2one(comodel_name='sale.order',
                                     string='Sale order')
-    product_tmpl_id = fields.Many2one(
+    tmpl_id = fields.Many2one(
         comodel_name='product.template', string='Product template',
         related='product_id.product_tmpl_id')

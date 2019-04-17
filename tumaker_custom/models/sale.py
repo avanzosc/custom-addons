@@ -47,6 +47,7 @@ class SaleOrder(models.Model):
                              string='Delivered', store=True)
     show_sale_note = fields.Boolean()
     sale_note = fields.Text(default=_default_sale_note)
+    active = fields.Boolean(string='Active', default=True)
 
     @api.multi
     def action_view_task(self):

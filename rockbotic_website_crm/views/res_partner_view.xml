@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+<data>
+    <record id="res_partner_url_form_view" model="ir.ui.view">
+        <field name="name">res.partner.url.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <field name="category_id" position="after">
+                <field name="signup_slug" widget="url" class="oe_read_only"
+                       nolabel="1" />
+                <button name="button_recompute_slug"
+                        string="(recompute url)" type="object"
+                        class="oe_link oe_read_only oe_inline"
+                        attrs="{'invisible': ['|','|','|',('is_group','=',False),('prospect','=',True),('customer','=',False),('payer','!=','student')]}"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="res_partner_form_view" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="event_planned_by_sale_line.view_partner_form" />
+        <field name="arch" type="xml">
+            <field name="payer" position="after">
+                <field name="event_web_warning"
+                       attrs="{'invisible': ['|','|','|',('is_group','=',False),('prospect','=',True),('customer','=',False),('payer','!=','student')]}" />
+            </field>
+        </field>
+    </record>
+</data>
+</openerp>

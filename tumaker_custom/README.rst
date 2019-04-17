@@ -14,6 +14,7 @@ Specific features for Tumaker.
 - Load purchase line id in extra moves when transfering more than expected.
 - New product category field in account move analysis report.
 - Show in views the product_id field in account move lines.
+- New active field in sale_order object.
 
 Credits
 =======
@@ -23,4 +24,5 @@ Contributors
 
 * Ainara Galdona <ainaragaldona@avanzosc.es>
 * Esther Martín <esthermartin@avanzosc.es>
+* Daniel Campos <danielcampos@avanzosc.es>
 

@@ -1,0 +1,6 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_sale_order_line_historical","sale.order.line.historical","model_sale_order_line_historical","base.group_sale_salesman",1,1,1,1
+"access_account_analytic_account_historical_user","account_analytic_account_historical","model_account_analytic_account_historical","account.group_account_user",1,1,1,1
+"access_account_analytic_account_historical_salesman","account_analytic_account_historical","model_account_analytic_account_historical","base.group_sale_salesman",1,1,1,1
+"access_sale_print_line_salesman","sale_print_line","model_sale_print_line","base.group_sale_salesman",1,1,1,1
+"access_sale_print_line_manager","sale_print_line","model_sale_print_line","base.group_sale_manager",1,1,1,1

@@ -33,6 +33,8 @@ class ResPartner(models.Model):
         string='Contacts',
         domain=[('active', '=', True), ('registered_partner', '=', False)])
     claim_count = fields.Integer(compute='_compute_claim_count')
+    send_email_unpaid_invoice = fields.Boolean(
+        string='Send email unpaid invoice', default=False)
 
     @api.multi
     def show_crm_claims_from_partner(self):

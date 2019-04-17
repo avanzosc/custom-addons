@@ -21,5 +21,17 @@
                 </field>
             </field>
         </record>
+
+        <record id="account.action_invoice_tree1" model="ir.actions.act_window">
+            <field name="view_mode">tree,kanban,form,calendar,graph</field>
+        </record>
+
+        <record id="account.action_invoice_tree2" model="ir.actions.act_window">
+            <field name="view_mode">tree,kanban,form,calendar,graph</field>
+        </record>
+
+        <record id="account.action_invoice_tree1_view1" model="ir.actions.act_window.view">
+            <field name="view_mode">tree</field>
+        </record>
     </data>
 </openerp>

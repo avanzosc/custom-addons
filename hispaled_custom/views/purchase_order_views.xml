@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+    <record id="purchase_order_form_inh_hispaled" model="ir.ui.view">
+        <field name="name">purchase.order.form.inh.hispaled</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <field name="picking_type_id" position="after">
+                <field name="delivery_partner_id" />
+            </field>
+        </field>
+    </record>
+</data>
+</openerp>

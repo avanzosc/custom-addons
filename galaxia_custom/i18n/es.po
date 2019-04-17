@@ -78,8 +78,12 @@ msgid "Decimal Performance"
 msgstr "Rendim. decimal"
 
 #. module: galaxia_custom
+#: field:account.analytic.account.historical,name:0
+#: field:sale.order.line.historical,name:0
+#: field:sale.print.line,name:0
 #: view:website:account.report_invoice_document
 #: view:website:galaxia_custom.report_sale_information_footer
+#: view:website:galaxia_custom.report_sale_only_services
 msgid "Description"
 msgstr "Descripción"
 
@@ -89,6 +93,7 @@ msgid "Disc.(%)"
 msgstr "Desc.(%)"
 
 #. module: galaxia_custom
+#: field:sale.print.line,discount:0
 #: view:website:account.report_invoice_document
 msgid "Discount (%)"
 msgstr "Descuento (%)"
@@ -189,8 +194,12 @@ msgid "Product"
 msgstr "Producto"
 
 #. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:143
+#: code:addons/galaxia_custom/models/sale_order.py:191
+#: field:sale.print.line,product_uom_qty:0
 #: view:website:account.report_invoice_document
 #: view:website:galaxia_custom.report_sale_information_footer
+#, python-format
 msgid "Quantity"
 msgstr "Cantidad"
 
@@ -249,6 +258,7 @@ msgid "Tax Data"
 msgstr "Datos fiscales"
 
 #. module: galaxia_custom
+#: field:sale.print.line,tax_id:0
 #: view:website:galaxia_custom.report_sale_information_footer
 #: view:website:galaxia_custom.report_sale_only_services
 msgid "Taxes"
@@ -282,6 +292,7 @@ msgid "Total:"
 msgstr "Total:"
 
 #. module: galaxia_custom
+#: field:sale.print.line,price_unit:0
 #: view:website:galaxia_custom.report_sale_information_footer
 msgid "Unit Price"
 msgstr "Precio unidad"
@@ -361,4 +372,274 @@ msgstr "Horas semanales"
 #: view:website:galaxia_custom.report_sale_only_services
 msgid "Price month"
 msgstr "Precio mensual"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:56
+#, python-format
+msgid "Yout must define one Working Schedule, in sale contract: %s"
+msgstr "Debe de definir un horario planificado, en el contrato de venta: %s"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:125
+#, python-format
+msgid "Session %s for %s"
+msgstr "Sesión %s para %s"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:156
+#: view:sale.order:galaxia_custom.view_order_form_service_view_inh_galaxia
+#: field:sale.order.line,session_description:0
+#, python-format
+msgid "Session description"
+msgstr "Descripción de la sesión"
+
+#. module: galaxia_custom
+#: view:account.analytic.account:galaxia_custom.view_account_analytic_account_search2
+#: view:account.analytic.account:galaxia_custom.view_account_analytic_account_search3
+#: field:account.analytic.account,recoverable:0
+#: view:event.track.presence:galaxia_custom.event_track_presence_type_hour_search_view_inh_galaxia
+#: field:event.track.presence,recoverable:0
+msgid "Recoverable"
+msgstr "Recuperable"
+
+#. module: galaxia_custom
+#: view:account.analytic.account:galaxia_custom.view_account_analytic_account_search2
+#: view:account.analytic.account:galaxia_custom.view_account_analytic_account_search3
+#: selection:account.analytic.account,recoverable:0
+#: view:event.track.presence:galaxia_custom.event_track_presence_type_hour_search2_view_inh_galaxia
+msgid "It recovers"
+msgstr "Se recupera"
+
+#. module: galaxia_custom
+#: view:account.analytic.account:galaxia_custom.view_account_analytic_account_search2
+#: view:account.analytic.account:galaxia_custom.view_account_analytic_account_search3
+#: selection:account.analytic.account,recoverable:0
+#: view:event.track.presence:galaxia_custom.event_track_presence_type_hour_search2_view_inh_galaxia
+msgid "He does not recover"
+msgstr "No se recupera"
+
+#. module: galaxia_custom
+#: view:account.analytic.account:galaxia_custom.view_account_analytic_account_search2
+#: view:account.analytic.account:galaxia_custom.view_account_analytic_account_search3
+#: selection:account.analytic.account,recoverable:0
+#: view:event.track.presence:galaxia_custom.event_track_presence_type_hour_search2_view_inh_galaxia
+msgid "Is discounted"
+msgstr "Se descuenta"
+
+#. module: galaxia_custom
+#: view:sale.order:galaxia_custom.view_order_form_inh_galaxia
+msgid "Modify lines"
+msgstr "Modicar líneas"
+
+#. module: galaxia_custom
+#: field:account.analytic.account.historical,date:0
+#: view:project.task.work:galaxia_custom.project_task_work_search_inh_galaxiacustom
+#: field:sale.order.line.historical,date:0
+msgid "Date"
+msgstr "Fecha"
+
+#. module: galaxia_custom
+#: field:account.analytic.account.historical,user_id:0
+#: view:project.task.work:galaxia_custom.project_task_work_search_inh_galaxiacustom
+#: field:sale.order.line.historical,user_id:0
+msgid "User"
+msgstr "Usuario"
+
+#. module: galaxia_custom
+#: field:account.analytic.account.historical,name:0
+#: field:sale.order.line.historical,name:0
+msgid "Description"
+msgstr "Descripción"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/account_analytic_invoice_line.py:17
+#: code:addons/galaxia_custom/models/sale_order.py:148
+#, python-format
+msgid "Price unit"
+msgstr "Precio unitario"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:186
+#, python-format
+msgid "January"
+msgstr "Enero"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:190
+#, python-format
+msgid "February"
+msgstr "Febrero"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:194
+#, python-format
+msgid "March"
+msgstr "Marzo"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:198
+#, python-format
+msgid "April"
+msgstr "Abril"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:202
+#, python-format
+msgid "May"
+msgstr "Mayo"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:206
+#, python-format
+msgid "June"
+msgstr "Junio"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:210
+#, python-format
+msgid "July"
+msgstr "Julio"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:214
+#, python-format
+msgid "August"
+msgstr "Agosto"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:218
+#, python-format
+msgid "September"
+msgstr "Septiembre"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:222
+#, python-format
+msgid "October"
+msgstr "Octubre"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:226
+#, python-format
+msgid "November"
+msgstr "Noviembre"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:230
+#, python-format
+msgid "December"
+msgstr "Diciembre"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:234
+#, python-format
+msgid "Week 1"
+msgstr "Semana 1"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:238
+#, python-format
+msgid "Week 2"
+msgstr "Semana 2"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:242
+#, python-format
+msgid "Week 3"
+msgstr "Semana 3"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:246
+#, python-format
+msgid "Week 4"
+msgstr "Semana 4"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:250
+#, python-format
+msgid "Week 5"
+msgstr "Semana 5"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:254
+#, python-format
+msgid "Week 6"
+msgstr "Semana 6"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:90
+#: code:addons/galaxia_custom/models/sale_order.py:258
+#: selection:project.task.work,day:0
+#, python-format
+msgid "Monday"
+msgstr "Lunes"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:95
+#: code:addons/galaxia_custom/models/sale_order.py:262
+#: selection:project.task.work,day:0
+#, python-format
+msgid "Tuesday"
+msgstr "Martes"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:100
+#: code:addons/galaxia_custom/models/sale_order.py:266
+#: selection:project.task.work,day:0
+#, python-format
+msgid "Wednesday"
+msgstr "Miércoles"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:105
+#: code:addons/galaxia_custom/models/sale_order.py:270
+#: selection:project.task.work,day:0
+#, python-format
+msgid "Thursday"
+msgstr "Jueves"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:110
+#: code:addons/galaxia_custom/models/sale_order.py:274
+#: selection:project.task.work,day:0
+#, python-format
+msgid "Friday"
+msgstr "Viernes"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:115
+#: code:addons/galaxia_custom/models/sale_order.py:278
+#: selection:project.task.work,day:0
+#, python-format
+msgid "Saturday"
+msgstr "Sábado"
+
+#. module: galaxia_custom
+#: code:addons/galaxia_custom/models/sale_order.py:120
+#: code:addons/galaxia_custom/models/sale_order.py:282
+#: selection:project.task.work,day:0
+#, python-format
+msgid "Sunday"
+msgstr "Domingo"
+
+#. module: galaxia_custom
+#: view:sale.order:galaxia_custom.view_order_form_service_view_inh_galaxia
+msgid "Products to print on budget"
+msgstr "Productos a imprimir en presupuesto"
+
+#. module: galaxia_custom
+#: model:ir.model,name:galaxia_custom.model_product_product
+#: field:sale.print.line,product_id:0
+msgid "Product"
+msgstr "Producto"
+
+#. module: galaxia_custom
+#: view:sale.order:galaxia_custom.view_order_form_inh_galaxia
+msgid "Create contract"
+msgstr "Crear contrato"
+
+#. module: galaxia_custom
+#: field:sale.order,working_hours:0
+msgid "Working Schedule"
+msgstr "Horario trabajo"
 

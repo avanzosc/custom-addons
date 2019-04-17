@@ -12,6 +12,9 @@
                 <xpath expr="//tree[@string='Presences']//field[@name='real_nightlight_hours']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+                <field name="color" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
             </field>
         </record>
         <record id="view_event_track_inh2_rockbotic" model="ir.ui.view">
@@ -38,10 +41,19 @@
             <field name="model">event.track</field>
             <field name="inherit_id" ref="website_event_track.view_event_track_form" />
             <field name="arch" type="xml">
+                <field name="stage_id" position="before">
+                    <button name="%(event_track_assistant.action_impute_in_presence_from_session)d" string="Register assists" type="action" />
+                </field>
                 <field name="location_id" position="after">
                     <field name="address_id" />
                 </field>
                 <field name="location_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="speaker_ids" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="tag_ids" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </field>
             </field>
@@ -57,6 +69,10 @@
                 <filter string="Event" position="after">
                     <filter string="Location" context="{'group_by':'address_id'}"/>
                 </filter>
+                <group string="Group By" position="before">
+                    <filter string="Confirmed Events" context="{}"
+                            domain="[('event_id.state', '=', 'confirm')]" />
+                </group>
             </field>
         </record>
         <record id="view_event_track_tree_inh_rockbotic" model="ir.ui.view">
@@ -82,5 +98,12 @@
                 </field>
             </field>
         </record>
+        <act_window name="Register assists"
+                    key2="client_action_multi"
+                    res_model="wiz.impute.in.presence.from.session"
+                    src_model="event.track"
+                    view_mode="form"
+                    target="new"
+                    id="event_track_assistant.action_impute_in_presence_from_session"/>
     </data>
 </openerp>

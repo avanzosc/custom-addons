@@ -29,7 +29,7 @@ class SaleOrder(models.Model):
             return True
         try:
             truke_product = self.env.ref('trukebai.product_product_truke')
-        except:
+        except Exception:
             truke_product = self.env['product.product'].search(
                 [('is_truke', '=', True)], limit=1)
             if not truke_product:

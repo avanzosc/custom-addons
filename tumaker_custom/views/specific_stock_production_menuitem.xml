@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+   
+        <menuitem id="main_specific_production_stock_menuitem"
+                  name="My production"
+                  groups="tumaker_custom.group_stock_production_specific"/>
+        <menuitem id="main_specific_stock_menuitem"
+                  parent="main_specific_production_stock_menuitem"
+                  name="Warehouse management"
+                  groups="tumaker_custom.group_stock_production_specific"/>
+        <menuitem id="main_specific_production_menuitem"
+                  parent="main_specific_production_stock_menuitem"
+                  name="Production"
+                  groups="tumaker_custom.group_stock_production_specific"/>
+        <menuitem action="mrp.mrp_production_action"
+                  id="menu_mrp_production_action"
+                  parent="main_specific_production_menuitem"
+                  groups="tumaker_custom.group_stock_production_specific"/>
+        <menuitem action="stock.action_picking_type_form"
+                  id="menu_action_picking_type_form"
+                  parent="main_specific_stock_menuitem"
+                  groups="tumaker_custom.group_stock_production_specific"/>
+
+        <record id="hr.menu_hr_root" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tumaker_custom.group_nospecific'), ref('base.group_hr_user'), ref('base.group_hr_manager')])]"/>
+        </record>
+        <record id="hr_attendance.menu_hr_time_tracking" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tumaker_custom.group_nospecific'), ref('base.group_hr_user'), ref('base.group_hr_manager')])]"/>
+        </record>
+        <record id="mail.mail_feeds_main" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tumaker_custom.group_nospecific')])]"/>
+        </record>
+        <record id="mail.mail_feeds" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tumaker_custom.group_nospecific')])]"/>
+        </record>
+        <record id="contacts.menu_contacts" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tumaker_custom.group_nospecific'), ref('base.group_partner_manager')])]"/>
+        </record>
+        <record id="base.marketing_menu" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tumaker_custom.group_nospecific')])]"/>
+        </record>
+        <record id="base.menu_reporting" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('tumaker_custom.group_nospecific')])]"/>
+        </record>
+    </data>
+</openerp>

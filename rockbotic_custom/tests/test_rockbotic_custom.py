@@ -3,6 +3,7 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 import openerp.tests.common as common
 from openerp import exceptions
+from openerp import fields
 
 
 class TestRockboticCustom(common.TransactionCase):
@@ -22,6 +23,7 @@ class TestRockboticCustom(common.TransactionCase):
         self.attachment_model = self.env['ir.attachment']
         self.account_model = self.env['account.analytic.account']
         self.sale_model = self.env['sale.order']
+        self.translation_obj = self.env['ir.translation']
         self.partner = self.browse_ref('base.res_partner_address_20')
         self.parent = self.partner.parent_id
         claim_vals = {'name': 'Rockbotic test',
@@ -69,16 +71,13 @@ class TestRockboticCustom(common.TransactionCase):
             self.event._send_email_to_registrations('email body')
 
     def test_button_validate_holiday(self):
-        contract = self.contract_model.create({
+        self.contract_model.create({
             'name': u'Contract {}'.format(self.partner.name),
             'employee_id': self.ref('hr.employee_fp'),
             'partner': self.partner.id,
             'type_id': self.ref('hr_contract.hr_contract_type_emp'),
             'wage': 500,
             'date_start': '2025-01-01'})
-        workable_wiz = self.wiz_workable_model.with_context(
-            active_id=contract.id).create({})
-        workable_wiz.button_calculate_workables_and_festives()
         holiday_vals = {
             'name': 'Rockbotic holiday',
             'holiday_status_id': self.ref('hr_holidays.holiday_status_sl'),
@@ -87,8 +86,7 @@ class TestRockboticCustom(common.TransactionCase):
             'date_to': '2025-06-15 18:00:00'}
         holiday = self.holiday_model.create(holiday_vals)
         holiday.button_validate_holiday()
-        subtype_id = self.ref(
-            'hr_holidays.mt_holidays_confirmed')
+        subtype_id = self.ref('hr_holidays.mt_holidays_confirmed')
         cond = [('model', '=', 'hr.holidays'),
                 ('res_id', '=', holiday.id),
                 ('subtype_id', '=', subtype_id)]
@@ -124,9 +122,10 @@ class TestRockboticCustom(common.TransactionCase):
             'name': 'attachment 2',
             'res_model': 'event.registration',
             'res_id': registration.id})
+        registration.state = 'open'
         wiz.with_context(active_ids=registration.ids).button_send_email()
         self.assertEqual(
-            registration.submitted_evaluation, 'no',
+            registration.submitted_evaluation, 'yes',
             'Bad send evaluation 2')
         attachment2.unlink()
         try:
@@ -137,7 +136,7 @@ class TestRockboticCustom(common.TransactionCase):
                 registration.submitted_evaluation, 'no',
                 'Bad send evaluation 3')
             registration.partner_id.parent_id = parent
-        except:
+        except Exception:
             pass
         registration.partner_id.parent_id.email = ''
         wiz.with_context(active_ids=registration.ids).button_send_email()
@@ -208,3 +207,88 @@ class TestRockboticCustom(common.TransactionCase):
         self.assertIn(
             new_order.name, new_order.order_line[0].group_description,
             'Bad group description for new sale order line')
+
+    def test_rockbotic_group_description(self):
+        self.event.sale_order_line.write(
+            {'group_description': 'changed group description'})
+        vals = {'lang': 'en_US',
+                'name': 'event.event,name',
+                'res_id': self.event.id,
+                'type': 'model',
+                'src': 'test rockbotic_custom',
+                'value': 'changed group description'}
+        self.translation_obj.create(vals)
+        self.event.group_description = 'changed group description'
+        self.event.onchange_group_description()
+        self.assertEqual(
+            self.event.group_description, self.event.name,
+            'Event name not equal group description')
+        cond = [('lang', '=', 'es_ES'),
+                ('name', '=', 'event.event,name'),
+                ('res_id', '=', self.event.id),
+                ('type', '=', 'model')]
+        translation = self.translation_obj.search(cond, limit=1)
+        if translation:
+            self.assertEqual(
+                len(translation), 1,
+                'Translation not found for event name')
+            self.assertEqual(
+                translation.src, translation.value,
+                'Bad translation for event name')
+
+    def test_rockbotic_account_name(self):
+        account_vals = {'name': 'Parent Analytic account for Rockbotic test',
+                        'date_start': '2025-01-15',
+                        'date': '2025-02-28',
+                        'use_tasks': True}
+        parent_account = self.account_model.create(account_vals)
+        account_vals = {'name': 'Child Analytic account for Rockbotic test',
+                        'date_start': '2025-01-15',
+                        'date': '2025-02-28',
+                        'use_tasks': True,
+                        'parent_id': parent_account.id}
+        child_account = self.account_model.create(account_vals)
+        res = child_account.name_get()[0][1]
+        self.assertIn(parent_account.name, res,
+                      'Parent name not found in children name')
+        res = child_account.with_context(only_name=True).name_get()[0][1]
+        self.assertNotIn(parent_account.name, res,
+                         'Parent name found in children name')
+
+    def test_prepare_wizard_registration_open_vals(self):
+        today = fields.Date.from_string(fields.Date.today())
+        new_date = '{}-{}-01'.format(today.year, str(today.month).zfill(2))
+        self.event_date_begin = '{}-{}-01 15:00:00'.format(today.year,
+                                                           today.month)
+        registration_vals = {'event_id': self.event.id,
+                             'partner_id': self.partner.id,
+                             'date_start':
+                             '{}-{}-01 15:00:00'.format(today.year,
+                                                        today.month)}
+        registration = self.env['event.registration'].create(
+            registration_vals)
+        vals = registration._prepare_wizard_registration_open_vals()
+        self.assertEqual(
+            str(vals.get('from_date', False)), new_date,
+            'Bad from_date in registration')
+
+    def test_partners_for_send_automatic_pay_email(self):
+        invoice = self.browse_ref('account.invoice_5')
+        invoice.partner_id.other_child_ids[0].send_email_unpaid_invoice = True
+        res = invoice.partners_for_send_automatic_pay_email()
+        self.assertEqual(len(res), 1)
+
+    def test_reason_for_the_leaving(self):
+        self.registration.write({'state': 'open',
+                                 'date_start': self.event.date_begin,
+                                 'date_end': self.event.date_end})
+        wiz_del_model = self.env['wiz.event.delete.assistant']
+        del_wiz = wiz_del_model.with_context(
+            active_ids=self.event.ids).create(
+            {'partner': self.partner.id,
+             'reason_delete': 'm1',
+             'notes': 'aaaaaaaaaaa'})
+        del_wiz.with_context(
+            active_ids=self.event.ids).action_delete()
+        self.assertEqual(self.registration.reason_delete, 'm1',
+                         'Bad leaving motive in registration')

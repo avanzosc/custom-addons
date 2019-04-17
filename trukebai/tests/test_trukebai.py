@@ -77,6 +77,11 @@ class TestTrukebai(common.TransactionCase):
         self.move_in = self.env['stock.move'].create(move_vals)
 
     def test_picking_transfer_by_wizard(self):
+        for move in self.picking_in.move_lines:
+            move._compute_total_cost()
+            self.assertEqual(
+                move.product_uom_qty * move.price_unit, move.total_cost,
+                'Bad cost in move line')
         self.picking_in.action_confirm()
         self.picking_in.action_assign()
         self.assertEqual(self.picking_in.state, 'assigned')

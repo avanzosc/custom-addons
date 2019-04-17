@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_order_line_form2_inh_galaxia" model="ir.ui.view">
+            <field name="name">view_order_line_form2.inh.galaxia</field>
+            <field name="model">sale.order.line</field>
+            <field name="inherit_id" ref="sale.view_order_line_form2" />
+            <field name="arch" type="xml">
+                <field name="product_uom_qty" position="attributes">
+                    <attribute name="readonly">0</attribute>
+                </field>
+                <field name="order_partner_id" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </field>
+                <xpath expr="//field[@name='company_id']/.." position="after">
+                    <field name="recurring_service" invisible="1" colspan="4" />
+                    <label for="session_description" colspan="4"/>
+                    <field name="session_description" nolabel="1" colspan="4"
+                        attrs="{'required':[('recurring_service','=',True)], 'invisible':[('recurring_service','!=',True)]}"/>
+                    <group name="group_month_week_day" colspan="4" col="6"
+                           attrs="{'invisible': [('recurring_service','=',False)]}">
+                       <group name="group_month" colspan="2">
+                           <field name="january" />
+                           <field name="february" />
+                           <field name="march" />
+                           <field name="april" />
+                           <field name="may" />
+                           <field name="june" />
+                           <field name="july" />
+                           <field name="august" />
+                           <field name="september" />
+                           <field name="october" />
+                           <field name="november" />
+                           <field name="december" />
+                       </group>
+                       <group name="group_week" colspan="2">
+                           <field name="week1" />
+                           <field name="week2" />
+                           <field name="week3" />
+                           <field name="week4" />
+                           <field name="week5" />
+                           <field name="week6" />
+                       </group>
+                       <group name="group_day" colspan="2" >
+                           <field name="monday" />
+                           <field name="tuesday" />
+                           <field name="wednesday" />
+                           <field name="thursday" />
+                           <field name="friday" />
+                           <field name="saturday" />
+                           <field name="sunday" />
+                       </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <record id="sale_order_line_extended_form_view_inh_galaxia" model="ir.ui.view">
+            <field name="name">sale.order.line.extended.form.view.inh.galaxia</field>
+            <field name="model">sale.order.line</field>
+            <field name="inherit_id" ref="sale_product_variants.sale_order_line_extended_form_view" />
+            <field name="arch" type="xml">
+                <field name="product_tmpl_id" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </field>
+            </field>
+        </record>
+        <record id="view_order_line_form2_inh_training_plan_inh_galaxia" model="ir.ui.view">
+            <field name="name">view.order.line.form2.inh.training.plan.inh.galaxia</field>
+            <field name="model">sale.order.line</field>
+            <field name="inherit_id" ref="sale_order_training_plan.view_order_line_form2_inh_training_plan" />
+            <field name="arch" type="xml">
+                <field name="training" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </field>
+                <field name="training" position="after">
+                    <separator string="Historical" colspan="4" />
+                    <field name="sale_line_historical_ids" colspan="4" readonly="1" nolabel="1">
+                        <tree string="Historical">
+                            <field name="sale_line_id" invisible="1" />
+                            <field name="date" />
+                            <field name="user_id" />
+                            <field name="name" />
+                        </tree>
+                    </field>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

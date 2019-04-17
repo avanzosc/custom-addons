@@ -10,9 +10,21 @@ class EventEvent(models.Model):
 
     key_code = fields.Char()
 
+    def _take_sessions_to_date(self, date):
+        sessions = super(EventEvent, self)._take_sessions_to_date(date)
+        sessions = sessions.filtered(lambda x: x.tasks and x.tasks[0].attached)
+        return sessions
+
 
 class EventTrackPresence(models.Model):
     _inherit = 'event.track.presence'
+
+    recoverable = fields.Selection(
+        selection=[('it_recovers', 'It recovers'),
+                   ('not_recover', 'He does not recover'),
+                   ('is_discounted', 'Is discounted')],
+        related='event.sale_order.project_id.recoverable', store=True,
+        string='Recoverable')
 
     @api.depends('session', 'session.allowed_partner_ids')
     def _compute_allowed_partner_ids(self):

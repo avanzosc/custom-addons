@@ -69,6 +69,8 @@
                 <filter string="Confirmed" position="after">
                     <filter string="With evaluation sent" domain="[('submitted_evaluation', '=', 'yes')]" />
                     <filter string="Without evaluation sent" domain="[('submitted_evaluation', '=', 'no')]" />
+                    <filter string="AMPA" domain="[('parent_id', '!=', False), ('parent_is_pa_partner', '=', True)]" />
+                    <filter string="NO AMPA" domain="[('parent_id', '!=', False), ('parent_is_pa_partner', '=', False)]" />
                 </filter>
                 <filter string="Event" position="after">
                     <filter string="Evaluation send" name="group_evaluation_send" domain="[]" context="{'group_by':'submitted_evaluation'}"/>

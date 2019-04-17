@@ -14,13 +14,12 @@ Galaxia Custom
 
 * Increase the size of company_registry field.
 
-
 Credits
 =======
 
-
 Contributors
 ------------
+
 * Esther Martín <esthermartin@avanzosc.es>
 * Daniel Campos <danielcampos@avanzosc.es>
 * Ana Juaristi <anajuaristi@avanzosc.es>

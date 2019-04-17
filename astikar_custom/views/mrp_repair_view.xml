@@ -30,6 +30,18 @@
                         <field name="amnt_total" nolabel="1" sum="Total amount" class="oe_subtotal_footer_separator"/>
                     </group>
                 </xpath>
+                <xpath expr="//field[@name='operations']/tree" position="attributes">
+                    <attribute name="colors">red:available_qty&lt;0</attribute>
+                </xpath>
+                <xpath expr="//field[@name='operations']/tree//field[@name='product_uom']" position="after">
+                    <field name="available_qty" readonly="1" />
+                </xpath>
+                <xpath expr="//field[@name='operations']/tree//field[@name='location_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='operations']/tree//field[@name='location_dest_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
             </field>
         </record>
 
@@ -44,15 +56,49 @@
             </field>
         </record>
 
-        <record id="mrp_repair.mrp_repair_buttons_view_form" model="ir.ui.view">
+        <record id="mrp_repair_buttons_view_form" model="ir.ui.view">
             <field name="name">mrp.repair.buttons.form</field>
             <field name="model">mrp.repair</field>
             <field name="inherit_id" ref="mrp_repair.view_repair_order_form" />
             <field name="arch" type="xml">
                 <h1>
                     <div class="oe_right oe_button_box" name="buttons">
+                        <button class="oe_stat_button" type="object"
+                                name="action_show_account_invoice"
+                                icon="fa-pencil-square-o">
+                            <div>Invoices</div>
+                        </button>
+                        <button class="oe_stat_button" type="object"
+                                name="action_show_purchase_order"
+                                icon="fa-pencil-square-o">
+                            <div>Purchases</div>
+                        </button>
+                        <button class="oe_stat_button" type="object"
+                                name="action_show_account_invoice_lines"
+                                icon="fa-pencil-square-o">
+                            <div>Invoice Lines</div>
+                        </button>
+                        <button class="oe_stat_button" type="object"
+                                name="action_show_purchase_order_lines"
+                                icon="fa-pencil-square-o">
+                            <div>Purchase Lines</div>
+                        </button>
+                        <button class="oe_stat_button" type="object"
+                                name="action_open_related_fees"
+                                icon="fa-bars">
+                            <div>Fee Lines</div>
+                        </button>
+                        <button class="oe_stat_button" type="object"
+                                name="action_open_related_lines"
+                                icon="fa-bars">
+                            <div>Material Lines</div>
+                        </button>
                     </div>
                 </h1>
+                 <field name="quotation_notes" position="after">
+                    <separator string="General conditions" />
+                    <field name="general_conditions" nolabel="1"  placeholder="Add general conditions notes..."/>
+                 </field>
             </field>
         </record>
 
@@ -67,36 +113,9 @@
                 <field name="end_date" position="after">
                     <field name="date_due" attrs="{'invisible': [('proforma', '=', False)]}"/>
                 </field>
-            </field>
-        </record>
-
-        <record id="mrp_repair_view_form" model="ir.ui.view">
-            <field name="name">mrp.repair.form</field>
-            <field name="model">mrp.repair</field>
-            <field name="inherit_id" ref="mrp_repair.mrp_repair_buttons_view_form" />
-            <field name="arch" type="xml">
-                <div name="buttons" position="inside">
-                    <button class="oe_stat_button" type="object"
-                            name="action_show_account_invoice"
-                            icon="fa-pencil-square-o">
-                        <div>Invoices</div>
-                    </button>
-                    <button class="oe_stat_button" type="object"
-                            name="action_show_purchase_order"
-                            icon="fa-pencil-square-o">
-                        <div>Purchases</div>
-                    </button>
-                    <button class="oe_stat_button" type="object"
-                            name="action_show_account_invoice_lines"
-                            icon="fa-pencil-square-o">
-                        <div>Invoice Lines</div>
-                    </button>
-                    <button class="oe_stat_button" type="object"
-                            name="action_show_purchase_order_lines"
-                            icon="fa-pencil-square-o">
-                        <div>Purchase Lines</div>
-                    </button>
-                </div>
+                <field name="partner_id" position="attributes">
+                    <attribute name="domain">[('customer', '=', True)]</attribute>
+                </field>
             </field>
         </record>
 
@@ -133,6 +152,31 @@
                  <filter string="Invoiced" position="after">
                     <filter name="not_to_invoice" string="Not to invoice" domain="[('invoice_method','=','none')]"/>
                  </filter>
+            </field>
+        </record>
+        <record id="mrp_repair_order_view_form_inh_astikar_custom" model="ir.ui.view">
+            <field name="name">mrp.repair.order.view.form.inh.astikar.custom</field>
+            <field name="model">mrp.repair</field>
+            <field name="inherit_id" ref="mrp_repair_estimated_cost.mrp_repair_order_view_form" />
+            <field name="arch" type="xml">
+                 <page string="Repair Costs" position="after">
+                    <page string="Photos">
+                        <group colspan="4">
+                            <separator string="Photo 1" colspan="2"/>
+                            <group colspan="2" />
+                            <field name="photo1" nolabel="1" widget="image" colspan="4"/>
+                            <separator string="Photo 2" colspan="2"/>
+                            <group colspan="2" />
+                            <field name="photo2" nolabel="1" widget="image" colspan="4"/>
+                            <separator string="Photo 3" colspan="2"/>
+                            <group colspan="2" />
+                            <field name="photo3" nolabel="1" widget="image" colspan="4"/>
+                            <separator string="Photo 4" colspan="2"/>
+                            <group colspan="2" />
+                            <field name="photo4" nolabel="1" widget="image" colspan="4"/>
+                        </group>
+                    </page>
+                 </page>
             </field>
         </record>
     </data>

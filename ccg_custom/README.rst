@@ -7,23 +7,20 @@ CCG Custom
 ==========
 
 * Added packaging field to manufacturing orders.
-
 * Sale order and partner related fields are now invisible. Two new fields are
   created for sale order and partner.
-
 * Added check in product packaging in order to define a default one.
-
 * Requested_date and commitment_date are now invisible on sale order tree.
-
 * Client_order_ref is visible on sale orders.
-
 * Reference field is visible on supplier invoices.
 
 Credits
 =======
 
-
 Contributors
 ------------
 * Esther Martín <esthermartin@avanzosc.es>
+* Daniel Campos <danielcampos@avanzosc.es>
 * Ana Juaristi <anajuaristi@avanzosc.es>
+* Gemma Bochaca i Royo <gemma.bochaca@gmail.com>
+* Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>

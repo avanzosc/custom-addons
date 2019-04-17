@@ -4,13 +4,13 @@
         <template id="report_minimal_layout_inherit_custom"
                   inherit_id="report.minimal_layout">
             <xpath expr="//body" position="attributes">
-                <attribute name="style">font-size:10;</attribute>
+                <attribute name="style">font-size:11;</attribute>
             </xpath>
         </template>
         <template id="report_layout_inherit_custom"
                   inherit_id="report.layout">
             <xpath expr="//body" position="attributes">
-                <attribute name="style">font-size:10;</attribute>
+                <attribute name="style">font-size:11;</attribute>
             </xpath>
         </template>
         <template id="external_layout_header"

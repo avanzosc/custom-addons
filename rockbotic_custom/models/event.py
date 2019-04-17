@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # (c) 2016 Alfredo de la Fuente - AvanzOSC
+# Copyright © 2018 Mikel Urbistondo - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
-from openerp import models, fields, exceptions, _
+from openerp import models, fields, api, exceptions, _
 
 
 class EventEvent(models.Model):
@@ -10,6 +11,17 @@ class EventEvent(models.Model):
     sale_order_payer = fields.Selection(
         related='sale_order.payer', string='Event payer',
         store=True)
+    start_hour = fields.Float(
+        string='Start hour', related='sale_order_line.start_hour', store=True)
+    end_hour = fields.Float(
+        string='End hour', related='sale_order_line.end_hour', store=True)
+    level = fields.Selection(
+        selection=[('initial', 'Initial'),
+                   ('mixed', 'Mixed'),
+                   ('expert', 'Expert')],
+        string='Level')
+    course_ids = fields.Many2many(
+        comodel_name='partner.student.course', string='Courses')
 
     def _validate_registrations_email(self):
         for event in self:
@@ -39,8 +51,30 @@ class EventEvent(models.Model):
                     default_model='event.registration',
                     default_res_id=registration.id,
                     force_send=True
-                ).create({'body': body})
+                ).create({'subject': template.subject,
+                          'body': body})
                 wizard.send_mail()
+
+    @api.onchange('group_description')
+    def onchange_group_description(self):
+        for event in self:
+            if event.group_description:
+                event.name = event.group_description
+
+    @api.multi
+    def write(self, values):
+        translation_obj = self.env['ir.translation']
+        res = super(EventEvent, self).write(values)
+        if values.get('name', False):
+            for event in self:
+                cond = [('lang', '=', self.env.context.get('lang')),
+                        ('name', '=', 'event.event,name'),
+                        ('res_id', '=', event.id),
+                        ('type', '=', 'model')]
+                translation = translation_obj.search(cond, limit=1)
+                if translation:
+                    translation._set_src('source', values.get('name'), None)
+        return res
 
 
 class EventTrack(models.Model):
@@ -70,6 +104,16 @@ class EventRegistration(models.Model):
          ('no', 'No')], string='Submitted evaluation', default='no')
     submitted_evaluation_error = fields.Char(
         string='Submitted evaluation error')
+    parent_is_pa_partner = fields.Boolean(
+        related='parent_id.is_pa_partner', store=True)
+    reason_delete = fields.Selection(
+        selection=[('m1', 'Does not have fun in class'),
+                   ('m2', 'He does not like robotics'),
+                   ('m3', 'Incompatibility of schedule'),
+                   ('m4', 'High cost of activity'),
+                   ('m5', 'Other motives'),
+                   ('m6', 'Data/recording error')],
+        string='Reason for leaving')
 
     def _send_email_to_registrations_with_evaluation(self, body):
         attachment_obj = self.env['ir.attachment']
@@ -85,11 +129,10 @@ class EventRegistration(models.Model):
             cond = [('res_model', '=', 'event.registration'),
                     ('res_id', '=', registration.id)]
             attachments = attachment_obj.search(cond)
+            if attachments:
+                attachments = max(attachments, key=lambda x: x.id)
             if len(attachments) == 0:
                 vals['submitted_evaluation_error'] = _('Attachment not found')
-            elif len(attachments) > 1:
-                vals['submitted_evaluation_error'] = _('Found more than one '
-                                                       'attachment')
             elif not registration.partner_id.parent_id:
                 vals['submitted_evaluation_error'] = _('Student without '
                                                        'parent')
@@ -112,3 +155,13 @@ class EventRegistration(models.Model):
                 vals = {'submitted_evaluation': 'yes',
                         'submitted_evaluation_error': ''}
             registration.write(vals)
+
+    def _prepare_wizard_registration_open_vals(self):
+        vals = super(
+            EventRegistration, self)._prepare_wizard_registration_open_vals()
+        today = fields.Date.from_string(fields.Date.context_today(self))
+        if (today > vals.get('from_date') and today.month !=
+                vals.get('from_date').month):
+            new_date = '{}-{}-01'.format(today.year, today.month)
+            vals['from_date'] = new_date
+        return vals

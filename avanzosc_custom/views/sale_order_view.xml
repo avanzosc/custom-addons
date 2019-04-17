@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="view_order_form" model="ir.ui.view">
+            <field name="name">Sales order form (project_id editable)</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <field name="project_id" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', 'in', 'done')]}</attribute>
+                </field>
+                <field name="note" position="attributes">
+                    <attribute name="class"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

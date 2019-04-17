@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+    <record id="view_company_form_inh_hispaled" model="ir.ui.view">
+        <field name="name">view.company.form.inh.hispaled</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form" />
+        <field name="arch" type="xml">
+            <page string="Report Configuration" position="after">
+                <page string="Reporting feet">
+                    <group colspan="4">
+                        <separator string="Sale order" colspan="4" />
+                        <field name="sale_order_footer" nolabel="1" colspan="4" />
+                        <separator string="Purchase order" colspan="4" />
+                        <field name="purchase_order_footer" nolabel="1" colspan="4" />
+                        <separator string="Out picking" colspan="4" />
+                        <field name="out_picking_footer" nolabel="1" colspan="4" />
+                        <separator string="In picking" colspan="4" />
+                        <field name="in_picking_footer" nolabel="1" colspan="4" />
+                        <separator string="In invoice" colspan="4" />
+                        <field name="in_invoice_footer" nolabel="1" colspan="4" />
+                        <separator string="Out invoice" colspan="4" />
+                        <field name="out_invoice_footer" nolabel="1" colspan="4" />
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+</data>
+</openerp>

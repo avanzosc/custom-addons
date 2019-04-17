@@ -1,0 +1,124 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* bainu_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-10 13:14+0000\n"
+"PO-Revision-Date: 2017-10-10 13:14+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bainu_custom
+#: view:account.invoice:bainu_custom.view_account_invoice_filter_inh_bainu
+#: field:account.invoice,almu:0
+msgid "Almu"
+msgstr "Almu"
+
+#. module: bainu_custom
+#: view:account.invoice:bainu_custom.view_account_invoice_filter_inh_bainu
+msgid "Due Month"
+msgstr "Mes de vencimiento"
+
+#. module: bainu_custom
+#: model:ir.model,name:bainu_custom.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: bainu_custom
+#: model:ir.model,name:bainu_custom.model_account_invoice_tax
+msgid "Invoice Tax"
+msgstr "Impuesto de factura"
+
+#. module: bainu_custom
+#: view:website:account.report_invoice_document
+msgid "Expiration"
+msgstr "Vencimiento"
+
+#. module: bainu_custom
+#: view:website:account.report_invoice_document
+msgid "Amount pending"
+msgstr "Importe pendiente"
+
+#. module: bainu_custom
+#: view:website:account.report_invoice_document
+msgid "Advance payment / Payment on account"
+msgstr "Anticipo / Pago a cuenta"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Date Ordered:"
+msgstr "Fecha pedido:"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Description"
+msgstr "Descripción"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Invoice address:"
+msgstr "Dirección de facturación:"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Invoice and shipping address:"
+msgstr "Dirección de facturación y de envío:"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Order N°"
+msgstr "Pedido Nº"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Payment Term:"
+msgstr "Plazo de pago:"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Quotation Date:"
+msgstr "Fecha de presupuesto:"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Quotation N°"
+msgstr "Presupuesto Nº"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Salesperson:"
+msgstr "Comercial:"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Shipping address:"
+msgstr "Dirección de envío:"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "VAT:"
+msgstr "NIF:"
+
+#. module: bainu_custom
+#: view:website:bainu_custom.report_saleorder_without_amounts_document
+msgid "Your Reference:"
+msgstr "Su referencia:"
+
+#. module: bainu_custom
+#: model:ir.actions.report.xml,name:bainu_custom.report_sale_order_without_amounts
+msgid "Quotation / Order without amounts"
+msgstr "Presupuesto / Pedido sin importes"
+
+

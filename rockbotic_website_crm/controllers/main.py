@@ -10,6 +10,7 @@ import werkzeug.urls
 from openerp import http, SUPERUSER_ID
 from openerp.http import request
 from openerp.tools.translate import _
+from openerp.addons.website.models.website import unslug
 
 
 class StudentSignUp(http.Controller):
@@ -21,10 +22,7 @@ class StudentSignUp(http.Controller):
             )
         return url
 
-    @http.route(['/page/rockbotic_website_crm.student_signup',
-                 '/page/student_signup'],
-                type='http', auth='public', website=True)
-    def contact(self, **kwargs):
+    def signup_values(self, group_id=None, event_id=None, data=None):
         cr, context, registry = request.cr, request.context, request.registry
         orm_partner = registry.get('res.partner')
         orm_event = registry.get('event.event')
@@ -35,22 +33,37 @@ class StudentSignUp(http.Controller):
                                ('customer', '=', True),
                                ('payer', '=', 'student')],
             order='name', context=context)
+        partner_ids = [group_id] if group_id in partner_ids else partner_ids
         groups = orm_partner.browse(cr, SUPERUSER_ID, partner_ids, context)
         event_ids = orm_event.search(
             cr, SUPERUSER_ID, [('state', 'not in', ('done', 'cancel')),
                                ('address_id', 'in', partner_ids)],
             order='name', context=context)
+        event_ids = [event_id] if event_id in event_ids else event_ids
         events = orm_event.browse(cr, SUPERUSER_ID, event_ids, context)
+        show_school_message = (
+            groups.event_web_warning if len(groups) == 1 else False)
         values = {
-            'zip': '',
             'groups': groups,
             'events': events,
+            'show_school_message': show_school_message,
         }
+        return values
+
+    @http.route(['/page/student_signup', '/page/student_signup/<group_id>',
+                 '/page/student_signup/<group_id>/'
+                 '<model("event.event"):event>'],
+                type='http', auth='public', website=True)
+    def contact(self, group_id=None, event=None, **kwargs):
+        if group_id:
+            _, group_id = unslug(group_id)
+        values = self.signup_values(
+            group_id=group_id, event_id=event and event.id)
         for field in ['partner_name', 'phone', 'contact_name', 'email_from',
                       'name']:
             if kwargs.get(field):
                 values[field] = kwargs.pop(field)
-        values.update(kwargs=kwargs.items())
+        values.update(values={}, kwargs=kwargs.items())
         return request.website.render(
             "rockbotic_website_crm.student_signup", values)
 
@@ -99,8 +112,9 @@ class StudentSignUp(http.Controller):
         _BLACKLIST = ['id', 'create_uid', 'create_date', 'write_uid',
                       'write_date', 'user_id', 'active']
         # Allow in description
-        _REQUIRED = ['name', 'partner_name', 'contact_name', 'email_from',
-                     'birth_date', 'journal_permission', 'blog_permission',
+        _REQUIRED = ['name', 'student_name', 'student_surname1',
+                     'parent_name', 'parent_surname1', 'birth_date',
+                     'journal_permission', 'blog_permission',
                      'media_permission']
         # Could be improved including required from model
 
@@ -126,16 +140,72 @@ class StudentSignUp(http.Controller):
                 # allow to add some free fields or blacklisted field like ID
                 post_description.append("%s: %s" % (field_name, field_value))
 
+        if values.get('student_surname2', '') != '':
+            student_name = u'{} {}, {}'.format(
+                values.get('student_surname1').capitalize(),
+                values.get('student_surname2').capitalize(),
+                values.get('student_name').capitalize())
+        else:
+            student_name = u'{}, {}'.format(
+                values.get('student_surname1').capitalize(),
+                values.get('student_name').capitalize())
+
+        if values.get('parent_surname2', '') != '':
+            parent_name = u'{} {}, {}'.format(
+                values.get('parent_surname1').capitalize(),
+                values.get('parent_surname2').capitalize(),
+                values.get('parent_name').capitalize())
+        else:
+            parent_name = u'{}, {}'.format(
+                values.get('parent_surname1').capitalize(),
+                values.get('parent_name').capitalize())
+
+        values.update({
+            'contact_name': student_name,
+            'partner_name': parent_name,
+            'school_id': int(values.get('school_id') or 0),
+            'event_id': int(values.get('event_id') or 0),
+            'rockbotic_before': (
+                True if values.get('rockbotic_before') == 'on' else False),
+            'opt_out': (
+                True if values.get('opt_out') == 'on' else False),
+            'no_confirm_mail': (
+                True if values.get('no_confirm_mail') == 'on' else False),
+        })
+
         if "name" not in kwargs and values.get("contact_name"):
             # if kwarg.name is empty, it's an error, we cannot copy
             # the contact_name
             values["name"] = values.get("contact_name")
+
         # fields validation : Check that required field from
         # model crm_lead exists
         error = set(field for field in _REQUIRED if not values.get(field))
 
+        if values.get('vat'):
+            vat = (
+                u'ES{}'.format(values.get('vat'))
+                if len(values.get('vat')) == 9 else values.get('vat'))
+            orm_partner = request.registry['res.partner']
+            vat_country, vat_number = orm_partner._split_vat(vat)
+            if not orm_partner.simple_vat_check(
+                    request.cr, SUPERUSER_ID, vat_country, vat_number):
+                error.add('vat')
+                # The VAT number does not seem to be valid
+
+        iban = values.get('account_number')
+        orm_bank = request.registry['res.partner.bank']
+        if not orm_bank.is_iban_valid(request.cr, SUPERUSER_ID, iban):
+            error.add('account_number')
+            # The IBAN does not seem to be correct.
+
         if error:
-            values = dict(values, error=error, kwargs=kwargs.items())
+            signup_values = self.signup_values(
+                group_id=values.get('school_id'),
+                event_id=values.get('event_id'))
+            values = dict(
+                signup_values, values=values, error=error,
+                kwargs=kwargs.items())
             return request.website.render(kwargs.get(
                 "view_from", "rockbotic_website_crm.student_signup"), values)
 

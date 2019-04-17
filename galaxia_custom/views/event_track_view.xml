@@ -1,0 +1,17 @@
+<openerp>
+    <data>
+        <record id="event_track_tree_view_inh_galaxia" model="ir.ui.view" >
+            <field name="name">event.track.tree.view.inh.galaxia</field>
+            <field name="model">event.track</field>
+            <field name="inherit_id" ref="event_track_assistant.view_event_track_tree_inh_assistant"/>
+            <field name="arch" type="xml">
+                <field name="duration" position="attributes">
+                    <attribute name="widget"></attribute>
+                </field>
+                <field name="real_duration" position="attributes">
+                    <attribute name="widget"></attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

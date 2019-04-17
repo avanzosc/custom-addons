@@ -2,6 +2,7 @@
 # (c) 2016 Alfredo de la Fuente - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 import openerp.tests.common as common
+from openerp import exceptions
 
 
 class TestGalaxiaCustom(common.TransactionCase):
@@ -16,10 +17,22 @@ class TestGalaxiaCustom(common.TransactionCase):
         self.wiz_add_model = self.env['wiz.event.append.assistant']
         self.work_model = self.env['project.task.work']
         self.export_model = self.env['wiz.export.presence.information']
+        self.invoice_line_model = self.env['account.analytic.invoice.line']
         account_vals = {'name': 'account procurement service project',
                         'date_start': '2016-01-15',
-                        'date': '2016-02-28'}
+                        'date': '2016-02-28',
+                        'start_time': 15,
+                        'end_time': 18}
         self.account = self.account_model.create(account_vals)
+        calendar_lines_vals = {'name': 'monday',
+                               'dayofweek': '0',
+                               'hour_from': 15,
+                               'hour_to': 18}
+        calendar_vals = {'name': 'Resource calendar',
+                         'attendance_ids': [(0, 0, calendar_lines_vals)]}
+        self.resource_calendar = self.env['resource.calendar'].create(
+            calendar_vals)
+        self.account.write({'working_hours': self.resource_calendar.id})
         project_vals = {'name': 'project 1',
                         'analytic_account_id': self.account.id}
         self.project = self.project_model.create(project_vals)
@@ -57,9 +70,34 @@ class TestGalaxiaCustom(common.TransactionCase):
             'thursday': True,
             'friday': True,
             'saturday': True,
-            'sunday': True}
+            'sunday': True,
+            'start_date': '2016-01-15',
+            'end_date': '2016-02-28',
+            'start_hour': 15,
+            'end_hour': 18}
         sale_vals['order_line'] = [(0, 0, sale_line_vals)]
         self.sale_order = self.sale_model.create(sale_vals)
+        sale_line_vals = {
+            'order_id': self.sale_order.id,
+            'product_tmpl_id': service_product.id,
+            'product_type': False,
+            'name': service_product.name,
+            'product_uom_qty': 7,
+            'product_uos_qty': 7,
+            'product_uom': service_product.uom_id.id,
+            'price_unit': service_product.list_price,
+            'performance': 5.0,
+            'january': True,
+            'february': True,
+            'week4': True,
+            'week5': True,
+            'monday': True,
+            'tuesday': True,
+            'wednesday': True,
+            'thursday': True,
+            'friday': True,
+            'saturday': True,
+            'sunday': True}
         self.partner = self.env['res.partner'].create({
             'name': 'Test Partner',
         })
@@ -72,6 +110,14 @@ class TestGalaxiaCustom(common.TransactionCase):
         self.env['ir.config_parameter'].create({
             'key': 'show.all.customers.in.presences',
             'value': True})
+        invoice_line_vals = {'analytic_account_id': self.account.id,
+                             'product_id': service_product.id,
+                             'name': 'aaaaaa',
+                             'quantity': 1,
+                             'uom_id': service_product.uom_id.id,
+                             'price_unit': 1}
+        self.analytic_invoice_line = self.invoice_line_model.create(
+            invoice_line_vals)
 
     def test_galaxia_custom(self):
         self.sale_order.action_button_confirm()
@@ -115,3 +161,48 @@ class TestGalaxiaCustom(common.TransactionCase):
                           'Bad project manager in task imputation')
         self.assertEquals(work.project_members_ids, work.project.members,
                           'Bad project members in task imputation')
+        self.sale_order.order_line[0].product_id.recurring_service = True
+        self.sale_order.project_id.working_hours = [(5)]
+        with self.assertRaises(exceptions.Warning):
+            self.sale_order.action_button_confirm()
+        self.sale_order._compute_count_lines()
+        self.sale_order.order_line[0].write({'price_unit': 1,
+                                             'product_uom_qty': 1,
+                                             'session_description': 'a',
+                                             'january': True,
+                                             'february': True,
+                                             'march': True,
+                                             'april': True,
+                                             'may': True,
+                                             'june': True,
+                                             'july': True,
+                                             'august': True,
+                                             'september': True,
+                                             'october': True,
+                                             'november': True,
+                                             'december': True,
+                                             'week1': True,
+                                             'week2': True,
+                                             'week3': True,
+                                             'week4': True,
+                                             'week5': True,
+                                             'week6': True,
+                                             'monday': True,
+                                             'tuesday': True,
+                                             'wednesday': True,
+                                             'thursday': True,
+                                             'friday': True,
+                                             'saturday': True,
+                                             'sunday': True})
+        historical = self.sale_order.order_line[0].sale_line_historical_ids
+        self.assertEqual(len(historical), 28, 'Bad historical for sale line')
+        self.analytic_invoice_line.price_unit = 5
+        historical = self.account.analytic_account_historical_ids
+        self.assertEqual(len(historical), 1, 'Bad historical for account')
+
+    def test_galaxia_custom_create_project(self):
+        self.sale_order.write({'project_id': False,
+                               'working_hours': self.resource_calendar.id})
+        self.sale_order.button_create_sale_contract()
+        self.assertEqual(self.sale_order.project_id.date_start, '2016-01-15')
+        self.assertEqual(self.sale_order.project_id.date, '2016-02-28')

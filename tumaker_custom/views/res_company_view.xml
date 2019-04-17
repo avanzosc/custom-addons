@@ -2,7 +2,7 @@
 <openerp>
     <data>
         <record id="sale_note_report_company_view_form" model="ir.ui.view">
-            <field name="name">sale.note.report.company.form</field>
+            <field name="name">view.company.inherit.form2.inh.tumaker</field>
             <field name="model">res.company</field>
             <field name="inherit_id" ref="sale.view_company_inherit_form2"/>
             <field name="arch" type="xml">
@@ -11,6 +11,29 @@
                         <field name="sale_note_report" nolabel="1" placeholder="Default note for sale reports..."/>
                     </group>
                 </group>
+            </field>
+        </record>
+        <record id="view_company_form_inh_gdpr_inh_tumaker" model="ir.ui.view">
+            <field name="name">view.company.form.inh.gdpr.inh.tumaker</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="report_gdpr.view_company_form_inh_gdpr"/>
+            <field name="arch" type="xml">
+                <field name="out_picking_gdpr" position="after">
+                    <separator string="Out pickings in basque" colspan="4" />
+                    <field name="out_picking_gdpr_eus" nolabel="1" colspan="4" />
+                </field>
+                <field name="in_picking_gdpr" position="after">
+                    <separator string="In pickings in_basque" colspan="4" />
+                    <field name="in_picking_gdpr_eus" nolabel="1" colspan="4" />
+                </field>
+                <field name="out_invoice_gdpr" position="after">
+                    <separator string="Out invoices in basque" colspan="4" />
+                    <field name="out_invoice_gdpr_eus" nolabel="1" colspan="4" />
+                </field>
+                <field name="in_invoice_gdpr" position="after">
+                    <separator string="In invoices in basque" colspan="4" />
+                    <field name="in_invoice_gdpr_eus" nolabel="1" colspan="4" />
+                </field>
             </field>
         </record>
     </data>

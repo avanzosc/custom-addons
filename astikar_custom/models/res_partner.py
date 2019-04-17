@@ -9,3 +9,9 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     is_company = fields.Boolean(default=True)
+    campaign_id = fields.Many2one(
+        comodel_name='crm.tracking.campaign', string="Campaign")
+    medium_id = fields.Many2one(
+        comodel_name='crm.tracking.medium', string="Channel")
+    source_id = fields.Many2one(comodel_name='crm.tracking.source',
+                                string='Source')

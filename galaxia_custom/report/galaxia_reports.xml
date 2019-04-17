@@ -8,6 +8,139 @@
         <report id="report_sale_only_services_report" string="Solo servicios" model="sale.order"
             report_type="qweb-pdf" file="galaxia_custom.report_sale_only_services_printing" name="galaxia_custom.report_sale_only_services_printing" />
     </data>
+    <data noupdate="1">
+        <template id="report_analytic_cuota">
+            <t t-call="report.external_layout">
+                <div class="page">
+                    <div class="row">
+                        <div class="col-xs-4 pull-right">
+                            <t t-if="o.partner_id.partner_group">
+                                <span t-field="o.partner_id.partner_group.name"/>
+                                <br/>
+                                <span t-field="o.partner_id.partner_group.street"/>
+                                <br/>
+                                <span t-field="o.partner_id.partner_group.zip"/>
+                                -
+                                <span t-field="o.partner_id.partner_group.city"/>
+                                <br/>
+                                <t t-if="o.partner_id.partner_group.state_id">
+                                    <span t-field="o.partner_id.partner_group.state_id"/>
+                                </t>
+                            </t>
+                            <t t-if="o.partner_id.parent_id and o.partner_id.parent_id.partner_group">
+                                <span t-field="o.partner_id.parent_id.partner_group.name"/>
+                                <br/>
+                                <span t-field="o.partner_id.parent_id.partner_group.street"/>
+                                <br/>
+                                <span t-field="o.partner_id.parent_id.partner_group.zip"/>
+                                -
+                                <span t-field="o.partner_id.parent_id.partner_group.city"/>
+                                <br/>
+                                <t t-if="o.partner_id.parent_id.partner_group.state_id">
+                                    <span t-field="o.partner_id.parent_id.partner_group.state_id"/>
+                                </t>
+                            </t>
+                            <t t-if="not o.partner_id.partner_group and not o.partner_id.parent_id">
+                                <span t-field="o.partner_id.name"/>
+                                <br/>
+                                <span t-field="o.partner_id.street"/>
+                                <br/>
+                                <span t-field="o.partner_id.zip"/>
+                                -
+                                <span t-field="o.partner_id.city"/>
+                                <br/>
+                                <t t-if="o.partner_id.state_id">
+                                    <span t-field="o.partner_id.state_id"/>
+                                </t>
+                            </t>
+                        </div>
+                    </div><br/>
+                    <div class="row">
+                        <div class="col-xs-4 pull-right">
+                            <span>FECHA: ENERO</span>
+                            <span t-esc="time.strftime('%Y')"/>
+                        </div>
+                    </div><br/>
+                    <div class="text-center">
+                        <span>
+                            <b>
+                                <u>ACTUALIZACIÓN DE PRECIOS SERVICIO</u>
+                            </b>
+                        </span>
+                    </div>
+                    <br/>
+                    <div>
+                        <span>
+                            <b>CENTRO:</b>
+                        </span>
+                        <span t-field="o.complete_name"/>
+                        <br/>
+                        <span>
+                            <b>CONTRATO:</b>
+                        </span>
+                        <span t-field="o.code"/>
+                    </div>
+                    <br/>
+                    <div style="width:90%;text-align:justify;">
+                        Muy Sres. Nuestros:
+                        <br/>
+                        <br/>
+                        <div style="text-indent: 25px;">Nos dirigimos a Vds., para actualizar los precios, relativos a los servicios de limpieza que les prestamos, 
+                            siguiendo el condicionado que estructura nuestra relación comercial.</div>
+                        <br/>
+                        <div style="text-indent: 25px;">La valoración de los gastos de personal basándonos en el convenio del sector que incluye incrementos para este
+                        año desde el 1 de enero y así como en el incremento en el costo de materiales, útiles, maquinaria y vehículos y en los costes de gestión de
+                        dichos servicios, nos sitúan en la necesidad de establecer un nuevo precio, indicando al pie de la presente y se mantendrá en vigor desde 1 
+                        de Enero hasta el próximo 31 de Diciembre del presente año.</div>
+                        <br/>
+                        <div style="text-indent: 25px;">Aprovechamos la oportunidad para agradecerles la confianza que vienen depositando en nuetros servicios y quedamos a
+                        su disposición para resolver cualquier consulta.</div>
+                        <br/>
+                        
+                    </div>
+                    <div>
+                        VIGENCIA PRECIO POR Nº DE CUOTAS:
+                        <t t-if="o.recurring_interval == 1">
+                            <span>MENSUAL</span>
+                        </t>
+                        <t t-if="o.recurring_interval == 2">
+                            <span>BIMENSUAL</span>
+                        </t>
+                        <t t-if="o.recurring_interval == 3">
+                            <span>TRIMESTRAL</span>
+                        </t>
+                        <t t-if="o.recurring_interval == 4">
+                            <span>CUATRIMESTRAL</span>
+                        </t>
+                        <t t-if="o.recurring_interval == 6">
+                            <span>SEMESTRAL</span>
+                        </t>
+                        <t t-if="o.recurring_interval == 12">
+                            <span>ANUAL</span>
+                        </t>
+                    </div>
+                    <div>
+                        <span>NUEVO PRECIO CUOTA:</span>
+                        <t t-foreach="o.recurring_invoice_line_ids" t-as="line">
+                            <span t-esc="str(round(line.price_unit, 2)).replace('.', ',')"/>
+                            € + IVA
+                        </t>
+                        <br/>
+                        <br/>
+                        El precio se regirá bajo las condiciones generales.
+                        <br/>
+                        Sin otro particular, les saluda atentamente.
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 pull-right">
+                            <img src="/galaxia_custom/static/src/img/firma.png" style="max-height:100px;"/>
+                            <p>IGOR ARRIETA ESTEVEZ</p>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
     <data>
         <template id="galaxia_invoice_report" inherit_id="account_payment_partner.report_invoice_payment_mode">
             <xpath expr="//div[@class='row']/div[@class='col-xs-5 col-xs-offset-7']" position="replace">
@@ -163,137 +296,6 @@
                     </t>
                 </p>
             </xpath>
-        </template>
-        <template id="report_analytic_cuota">
-            <t t-call="report.external_layout">
-                <div class="page">
-                    <div class="row">
-                        <div class="col-xs-4 pull-right">
-                            <t t-if="o.partner_id.partner_group">
-                                <span t-field="o.partner_id.partner_group.name"/>
-                                <br/>
-                                <span t-field="o.partner_id.partner_group.street"/>
-                                <br/>
-                                <span t-field="o.partner_id.partner_group.zip"/>
-                                -
-                                <span t-field="o.partner_id.partner_group.city"/>
-                                <br/>
-                                <t t-if="o.partner_id.partner_group.state_id">
-                                    <span t-field="o.partner_id.partner_group.state_id"/>
-                                </t>
-                            </t>
-                            <t t-if="o.partner_id.parent_id and o.partner_id.parent_id.partner_group">
-                                <span t-field="o.partner_id.parent_id.partner_group.name"/>
-                                <br/>
-                                <span t-field="o.partner_id.parent_id.partner_group.street"/>
-                                <br/>
-                                <span t-field="o.partner_id.parent_id.partner_group.zip"/>
-                                -
-                                <span t-field="o.partner_id.parent_id.partner_group.city"/>
-                                <br/>
-                                <t t-if="o.partner_id.parent_id.partner_group.state_id">
-                                    <span t-field="o.partner_id.parent_id.partner_group.state_id"/>
-                                </t>
-                            </t>
-                            <t t-if="not o.partner_id.partner_group and not o.partner_id.parent_id">
-                                <span t-field="o.partner_id.name"/>
-                                <br/>
-                                <span t-field="o.partner_id.street"/>
-                                <br/>
-                                <span t-field="o.partner_id.zip"/>
-                                -
-                                <span t-field="o.partner_id.city"/>
-                                <br/>
-                                <t t-if="o.partner_id.state_id">
-                                    <span t-field="o.partner_id.state_id"/>
-                                </t>
-                            </t>
-                        </div>
-                    </div><br/>
-                    <div class="row">
-                        <div class="col-xs-4 pull-right">
-                            <span>FECHA: ENERO</span>
-                            <span t-esc="time.strftime('%Y')"/>
-                        </div>
-                    </div><br/>
-                    <div class="text-center">
-                        <span>
-                            <b>
-                                <u>ACTUALIZACIÓN DE PRECIOS SERVICIO</u>
-                            </b>
-                        </span>
-                    </div>
-                    <br/>
-                    <div>
-                        <span>
-                            <b>CENTRO:</b>
-                        </span>
-                        <span t-field="o.complete_name"/>
-                        <br/>
-                        <span>
-                            <b>CONTRATO:</b>
-                        </span>
-                        <span t-field="o.code"/>
-                    </div>
-                    <br/>
-                    <div style="width:90%;text-align:justify;">
-                        Muy Sres. Nuestros:
-                        <br/>
-                        <br/>
-                        <div style="text-indent: 25px;">Nos dirigimos a Vds., para actualizar los precios, relativos a los servicios de limpieza que les prestamos, 
-                            siguiendo el condicionado que estructura nuestra relación comercial.</div>
-                        <br/>
-                        <div style="text-indent: 25px;">La valoración de los gastos de personal basándonos en el convenio del sector que incluye incrementos para este
-                        año desde el 1 de enero y así como en el incremento en el costo de materiales, útiles, maquinaria y vehículos y en los costes de gestión de
-                        dichos servicios, nos sitúan en la necesidad de establecer un nuevo precio, indicando al pie de la presente y se mantendrá en vigor desde 1 
-                        de Enero hasta el próximo 31 de Diciembre del presente año.</div>
-                        <br/>
-                        <div style="text-indent: 25px;">Aprovechamos la oportunidad para agradecerles la confianza que vienen depositando en nuetros servicios y quedamos a
-                        su disposición para resolver cualquier consulta.</div>
-                        <br/>
-                        
-                    </div>
-                    <div>
-                        VIGENCIA PRECIO POR Nº DE CUOTAS:
-                        <t t-if="o.recurring_interval == 1">
-                            <span>MENSUAL</span>
-                        </t>
-                        <t t-if="o.recurring_interval == 2">
-                            <span>BIMENSUAL</span>
-                        </t>
-                        <t t-if="o.recurring_interval == 3">
-                            <span>TRIMESTRAL</span>
-                        </t>
-                        <t t-if="o.recurring_interval == 4">
-                            <span>CUATRIMESTRAL</span>
-                        </t>
-                        <t t-if="o.recurring_interval == 6">
-                            <span>SEMESTRAL</span>
-                        </t>
-                        <t t-if="o.recurring_interval == 12">
-                            <span>ANUAL</span>
-                        </t>
-                    </div>
-                    <div>
-                        <span>NUEVO PRECIO CUOTA:</span>
-                        <t t-foreach="o.recurring_invoice_line_ids" t-as="line">
-                            <span t-esc="str(round(line.price_unit, 2)).replace('.', ',')"/>
-                            € + IVA
-                        </t>
-                        <br/>
-                        <br/>
-                        El precio se regirá bajo las condiciones generales.
-                        <br/>
-                        Sin otro particular, les saluda atentamente.
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-4 pull-right">
-                            <img src="/galaxia_custom/static/src/img/firma.png" style="max-height:100px;"/>
-                            <p>IGOR ARRIETA ESTEVEZ</p>
-                        </div>
-                    </div>
-                </div>
-            </t>
         </template>
         <template id="report_sale_information_footer">
             <t t-call="galaxia_custom.galaxia_footer_information">
@@ -487,10 +489,7 @@
                        <tbody class="sale_tbody">
                             <tr t-foreach="o._get_service_lines()" t-as="l">
                                 <td>
-                                   <t t-if="l.name and l.training">
-                                    <span t-field="l.training"/>
-                                   </t>
-                                   <t t-if="l.name and not l.training">
+                                   <t t-if="l.name">
                                     <span t-field="l.name"/>
                                    </t>
                                 </td>

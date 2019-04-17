@@ -27,6 +27,13 @@ Astikar Custom
 
 * Product cost price in sale order line.
 
+* Updated code to work with 'purchase_last_price_info' last version.
+
+* New field to compute product qty in workshop and filter for repair lines.
+* Add repair fields on repair invoices
+* Custom Purchase reports added.
+* Automatic assign of repair lines when an incoming picking is processed from a purchase with analytic account.
+
 Credits
 =======
 
@@ -37,3 +44,4 @@ Contributors
 * Esther Martín <esthermartin@avanzosc.es>
 * Ainara Galdona <ainaragaldona@avanzosc.es>
 * Ana Juaristi <anajuaristi@avanzosc.es>
+* Daniel Campos <danielcampos@avanzosc.es

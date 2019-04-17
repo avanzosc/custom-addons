@@ -10,6 +10,7 @@ class TestTumakerCustom(common.TransactionCase):
 
     def setUp(self):
         super(TestTumakerCustom, self).setUp()
+        self.crm_sale_wiz_obj = self.env['crm.make.sale']
         self.analytic_model = self.env['account.analytic.account']
         self.analytic_line_model = self.env['account.analytic.line']
         self.purchase_model = self.env['purchase.order']
@@ -18,10 +19,15 @@ class TestTumakerCustom(common.TransactionCase):
         self.location_obj = self.env['stock.location']
         self.sale_model = self.env['sale.order']
         self.product_model = self.env['product.product']
+        self.production_model = self.env['mrp.production']
+        self.bom = self.env.ref('mrp.mrp_bom_1')
         self.partner_id = self.ref('base.res_partner_5')
         self.pricelist_id = self.ref('purchase.list0')
         self.picking = self.env.ref('stock.incomming_shipment')
         self.wiz_obj = self.env['stock.transfer_details']
+        self.location = self.env['stock.location'].create(
+            {'name': 'Test Location',
+             'usage': 'internal'})
         analytic_vals = {
             'name': 'Analytic test',
             'type': 'normal',
@@ -85,6 +91,10 @@ class TestTumakerCustom(common.TransactionCase):
                                    (0, 0, sale_line_vals2)]
         self.sale_order = self.sale_model.create(sale_vals)
         self.black_product = self.env.ref('product.product_product_4b')
+        self.crm_lead = self.env.ref('crm.crm_case_1')
+        self.warehouse = self.env['stock.warehouse'].create({'name': 'New WRH',
+                                                             'code': 'NEW',
+                                                             })
 
     def test_print_float_time_widget(self):
         text = self.analytic_id.convert_to_float_time_widget(20.5)
@@ -232,11 +242,13 @@ class TestTumakerCustom(common.TransactionCase):
         suppinfo_model = self.env['product.supplierinfo']
         suppinfo_model.create({
             'product_tmpl_id': self.black_product.product_tmpl_id.id,
+            'product_id': self.black_product.id,
             'name': self.partner_id,
             'product_code': 'TestName',
             'type': 'customer'})
         suppinfo_model.create({
             'product_tmpl_id': self.black_product.product_tmpl_id.id,
+            'product_id': self.black_product.id,
             'name': self.partner_id,
             'product_code': 'CODXXTEST',
             'type': 'supplier'})
@@ -306,3 +318,43 @@ class TestTumakerCustom(common.TransactionCase):
                 move.purchase_line_id.price_unit * move.product_uom_qty *
                 (1 - (move.purchase_line_id.discount / 100)))
             self.assertEqual(move.price_subtotal, subtotal)
+
+    def test_production_change(self):
+        production = self.production_model.create(
+            {'product_id': self.bom.product_tmpl_id.id,
+             'product_qty': 100,
+             'product_uom': self.bom.product_tmpl_id.uom_id.id,
+             'bom_id': self.bom.id,
+             })
+        self.assertNotEqual(production.location_src_id, self.location)
+        self.bom.routing_id.location_id = self.location
+        production.routing_id = self.bom.routing_id
+        production.onchange_routing_id()
+        self.assertEqual(production.location_src_id, self.location)
+
+    def test_crm_lead_make_sale(self):
+        self.crm_lead.partner_id = self.partner_id
+        crm_sale_wiz = self.crm_sale_wiz_obj.with_context(
+            active_id=self.crm_lead.id, active_ids=[self.crm_lead.id],
+            active_model='crm.lead').create({
+                'warehouse_id': self.warehouse.id})
+        action = crm_sale_wiz.makeOrder()
+        sale_id = action.get('res_id')
+        sale = self.sale_model.browse(sale_id)
+        self.assertEqual(sale.warehouse_id, self.warehouse)
+
+    def test_product_computed_field(self):
+        moves = self.product_id.move_ids.filtered(lambda x: x.state == 'done')
+        quants = self.product_id.quant_ids.filtered(
+            lambda x: x.location_id.usage == 'internal')
+        self.assertEqual(self.product_id.count_move_ids, len(moves))
+        self.assertEqual(self.product_id.real_stock, sum(quants.mapped('qty')))
+        product2 = self.product_id.copy()
+        lst = [self.product_id.id, product2.id]
+        lst2 = [product2.id, self.product_id.id]
+        search1 = self.product_model.with_context(
+            order_by='count_move_ids desc').search([('id', 'in', lst)])
+        self.assertEqual(lst, search1.ids)
+        search2 = self.product_model.with_context(
+            order_by='count_move_ids asc').search([('id', 'in', lst)])
+        self.assertEqual(lst2, search2.ids)
