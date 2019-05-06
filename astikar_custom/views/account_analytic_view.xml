@@ -8,6 +8,17 @@
         <field name="arch" type="xml">
             <field name="date" position="after">
                  <field name="create_date" readonly="1"/>
+                 <field name="repair_id" readonly="1"/>
+            </field>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_account_analytic_line_form">
+        <field name="name">account.analytic.line.form</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="account.view_account_analytic_line_form" />
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                 <field name="repair_id" readonly="1"/>
             </field>
         </field>
     </record>
