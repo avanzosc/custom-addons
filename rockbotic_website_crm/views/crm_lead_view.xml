@@ -48,6 +48,12 @@
                         <filter string="Student" help="Partner" domain="[]"
                                 name="groupby_partner_id"
                                 context="{'group_by':'partner_id'}" />
+                        <filter string="Accept whatsapp"
+                                name="groupby_accept_whatsapp"
+                                context="{'group_by': 'accept_whatsapp'}"/>
+                        <filter string="Accept center information"
+                                name="groupby_accept_center_information"
+                                context="{'group_by': 'accept_center_information'}"/>
                     </group>
                 </search>
             </field>
@@ -158,6 +164,13 @@
                             <field name="opt_out" />
                         </group>
                         <field name="description" />
+                    </group>
+                    <group>
+                        <group>
+                            <field name="accept_whatsapp" />
+                            <field name="accept_center_information" />
+                        </group>
+                        <group />
                     </group>
                 </sheet>
                 <div class="oe_chatter">

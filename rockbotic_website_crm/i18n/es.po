@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-26 11:35+0000\n"
-"PO-Revision-Date: 2018-10-26 11:35+0000\n"
+"POT-Creation-Date: 2019-05-14 14:15+0000\n"
+"PO-Revision-Date: 2019-05-14 14:15+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -265,6 +265,16 @@ msgid "AUTHORIZATION SEPA MANDATE - ROBOTIC CLASSES - ROCKBOTIC"
 msgstr "AUTORIZACIÓN MANDATO SEPA - CLASES DE ROBÓTICA - ROCKBOTIC"
 
 #. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Accept center information"
+msgstr "Acepta información del centro"
+
+#. module: rockbotic_website_crm
+#: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
+msgid "Accept whatsapp"
+msgstr "Acepta whatsapp"
+
+#. module: rockbotic_website_crm
 #: field:crm.lead,account_number:0
 #: field:res.partner.enroll.search.item,parent_acc_number:0
 #: view:website:rockbotic_website_crm.student_signup
@@ -358,8 +368,8 @@ msgid "Created on"
 msgstr "Creado en"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/controllers/main.py:212
 #: code:addons/rockbotic_website_crm/controllers/main.py:214
+#: code:addons/rockbotic_website_crm/controllers/main.py:218
 #, python-format
 msgid "Custom Fields: "
 msgstr "Campos personalizados: "
@@ -378,6 +388,11 @@ msgstr "Describa la inscripción..."
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Digits and uppercase letters, do not use space nor '-'"
 msgstr "Números y mayúsculas, nada de espacios ni guiones"
+
+#. module: rockbotic_website_crm
+#: field:mail.mail,path:0
+msgid "Discussion Path"
+msgstr "Discussion Path"
 
 #. module: rockbotic_website_crm
 #: field:res.partner.enroll.search,display_name:0
@@ -442,8 +457,8 @@ msgid "Enrollments that are assigned to me"
 msgstr "Inscripciones asignadas a mí"
 
 #. module: rockbotic_website_crm
-#: code:addons/rockbotic_website_crm/controllers/main.py:228
 #: code:addons/rockbotic_website_crm/controllers/main.py:230
+#: code:addons/rockbotic_website_crm/controllers/main.py:234
 #, python-format
 msgid "Environ Fields: "
 msgstr "Campos de entorno: "
@@ -498,6 +513,16 @@ msgid "Has ever been enrolled?"
 msgstr "¿Ha realizado previamente algún curso con Rockbotic?"
 
 #. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "I accept and consent that my telephone number may be used to send me communications via whatsapp."
+msgstr "Acepto y consiento que mi número de telefono sea utilizado para enviarme comunicaciones vía whatsapp."
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "I accept and consent that the information from the center, with the purpose of commercial prospection."
+msgstr "Acepto y consiento que me envien información del centro, con la finalidad de la prospección comercial."
+
+#. module: rockbotic_website_crm
 #: field:res.partner.enroll.search,id:0
 #: field:res.partner.enroll.search.item,id:0
 msgid "ID"
@@ -517,6 +542,32 @@ msgstr "Si no encuentra su centro escolar, o no aparece grupo, muy pronto nos po
 #: view:website:rockbotic_website_crm.student_signup_thanks
 msgid "If you have an emergency, do not hesitate to contact us by phone:"
 msgstr "Si tiene una emergencia, no dude en contactarnos por teléfono:"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "In accordance with the provisions of the RGPD 2016/679 of April 27, 2016,\n"
+"                                    on Protection of Personal Data and we inform you that both your data and\n"
+"                                    those of your child collected from this form \"Students\", are are under the\n"
+"                                    responsibility of LUNA TIC DESIGN SL, with the purpose of carrying out the\n"
+"                                    registration, organization, management and billing of the training activity\n"
+"                                    contracted. The data will be preserved while the purpose for which they were\n"
+"                                    collected persists. You can exercise your rights, and those of your child,\n"
+"                                    access, rectification, limitation, deletion, portability and opposition by\n"
+"                                    writing to our address: C / Arganda 6, 28005 Madrid, or to the e-mail address\n"
+"                                    info@rockbotic.com, clearly identifying the right exercised and identifying\n"
+"                                    through the DNI or family book."
+msgstr "De acuerdo con lo que establece la RGPD 2016/679 de 27 de abril de 2016,\n"
+"                                    de Protección de Datos de Carácter Personal y le informamos que tanto sus\n"
+"                                    datos como los de su hijo/a recogidos a partir del presente formulario\n"
+"                                    \"Alumnos\", se encuentran bajo la responsabilidad de LUNA TIC DESIGN SL,\n"
+"                                    con la finalidad de llevar a cabo la matriculación, organización, gestión y\n"
+"                                    facturación de la actividad formativa contratada. Los datos serán conservados\n"
+"                                    mientras persista la finalidad por la que fueron recogidos Puede ejercer sus\n"
+"                                    derechos, y los de su hijo/a, de acceso, rectificación, limitación, supresión,\n"
+"                                    portabilidad y oposición mediante un escrito a nuestra dirección: C/ Arganda 6,\n"
+"                                    28005 Madrid, o a la dirección de correo-e info@rockbotic.com, identificando\n"
+"                                    claramente el derecho que ejercita e identificándose a través del DNI o libro\n"
+"                                    de familia."
 
 #. module: rockbotic_website_crm
 #: field:res.partner.enroll.search,item_ids:0
@@ -550,7 +601,7 @@ msgstr "Última actualización en"
 #. module: rockbotic_website_crm
 #: model:ir.model,name:rockbotic_website_crm.model_crm_lead2opportunity_partner
 msgid "Lead To Opportunity Partner"
-msgstr "Iniciativa a Oportunidad"
+msgstr "Iniciativa/Oportunidad a Empresa"
 
 #. module: rockbotic_website_crm
 #: model:ir.model,name:rockbotic_website_crm.model_crm_lead
@@ -642,11 +693,6 @@ msgid "Parent id"
 msgstr "Persona responsable"
 
 #. module: rockbotic_website_crm
-#: field:event.event,count_parents:0
-msgid "Parents"
-msgstr "Responsables"
-
-#. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
 #: model:ir.model,name:rockbotic_website_crm.model_res_partner
 #: field:res.partner.enroll.search.item,partner_id:0
@@ -661,7 +707,7 @@ msgstr "Estudiante"
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Phone Number"
-msgstr "Móvil"
+msgstr "Nº teléfono"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
@@ -851,6 +897,11 @@ msgstr "Esto hará que aparezcan las actividades disponibles en el Centro."
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
 msgid "Unassigned"
 msgstr "Sin asignar"
+
+#. module: rockbotic_website_crm
+#: help:mail.mail,path:0
+msgid "Used to display messages in a paragraph-based chatter using a unique path;"
+msgstr "Used to display messages in a paragraph-based chatter using a unique path;"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup

@@ -171,6 +171,10 @@ class StudentSignUp(http.Controller):
                 True if values.get('opt_out') == 'on' else False),
             'no_confirm_mail': (
                 True if values.get('no_confirm_mail') == 'on' else False),
+            'accept_whatsapp': (
+                True if values.get('accept_whatsapp') else False),
+            'accept_center_information': (
+                True if values.get('accept_center_information') else False),
         })
 
         if "name" not in kwargs and values.get("contact_name"):
