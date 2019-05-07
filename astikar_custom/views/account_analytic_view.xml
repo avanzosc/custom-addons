@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <field name="date" position="after">
                  <field name="create_date" readonly="1"/>
-                 <field name="repair_id" readonly="1"/>
+                 <field name="repair_id"/>
             </field>
         </field>
     </record>
@@ -18,7 +18,7 @@
         <field name="inherit_id" ref="account.view_account_analytic_line_form" />
         <field name="arch" type="xml">
             <field name="user_id" position="after">
-                 <field name="repair_id" readonly="1"/>
+                 <field name="repair_id"/>
             </field>
         </field>
     </record>
