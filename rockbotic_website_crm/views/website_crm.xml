@@ -159,6 +159,41 @@
                                         </select>
                                     </div>
                                 </div>
+                                <p>
+                                    In accordance with the provisions of the RGPD 2016/679 of April 27, 2016,
+                                    on Protection of Personal Data and we inform you that both your data and
+                                    those of your child collected from this form "Students", are are under the
+                                    responsibility of LUNA TIC DESIGN SL, with the purpose of carrying out the
+                                    registration, organization, management and billing of the training activity
+                                    contracted. The data will be preserved while the purpose for which they were
+                                    collected persists. You can exercise your rights, and those of your child,
+                                    access, rectification, limitation, deletion, portability and opposition by
+                                    writing to our address: C / Arganda 6, 28005 Madrid, or to the e-mail address
+                                    info@rockbotic.com, clearly identifying the right exercised and identifying
+                                    through the DNI or family book.
+                                </p>
+                                <div t-attf-class="form-group #{error and 'accept_whatsapp' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label" for="media_permission">I accept and consent that my telephone number may be used to send me communications via whatsapp.</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <select name="accept_whatsapp"
+                                                required="True" class="form-control">
+                                            <option value="">select...</option>
+                                            <option value="yes" t-att-selected="values.get('accept_whatsapp')">Yes</option>
+                                            <option value="no" t-att-selected="not values.get('accept_whatsapp')">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'accept_center_information' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label" for="media_permission">I accept and consent that the information from the center, with the purpose of commercial prospection.</label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <select name="accept_whatsapp"
+                                                required="True" class="form-control">
+                                            <option value="">select...</option>
+                                            <option value="yes" t-att-selected="values.get('accept_center_information')">Yes</option>
+                                            <option value="no" t-att-selected="not values.get('accept_center_information')">No</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </fieldset>
                             <fieldset class="col-md-12">
                                 <legend>Parent Data</legend>
