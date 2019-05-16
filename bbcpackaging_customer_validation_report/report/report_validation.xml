@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report
+                id="customer_validation_document"
+                string="Print Customer Validation"
+                model="res.partner"
+                report_type="qweb-pdf"
+                name="bbcpackaging_customer_validation_report.report_customer_validation"
+                file="bbcpackaging_customer_validation_report.report_customer_validation"
+
+        />
+    <template id="external_layout_standard_bbcpackaging"
+              inherit_id="report.external_layout_header">
+        <div class="header" position="replace">
+            <div class="header">
+
+            </div>
+        </div>
+    </template>
+    <template id="external_layout_standard_footer_bbcpackaging"
+              inherit_id="report.external_layout_footer">
+        <div class="footer" position="replace">
+            <div class="footer">
+
+            </div>
+        </div>
+    </template>
+
+        <template
+                id="bbcpackaging_customer_validation_report.report_customer_validation_document">
+            <t t-call="report.external_layout">
+            <div class="page"
+                 t-attf-style="background-image:url('/bbcpackaging_customer_validation_report/static/src/img/background_bbcpackaging.png'); background-size:195mm 282mm; width:195mm; height:282mm;">
+                    <div class="row">
+                        <div class="col-xs-5 col-xs-offset-7"
+                             style="margin-top:135px;margin-left:457px">
+                            <!--<p>-->
+                                <!--<span style="color: #008000;">PROVEIDOR-->
+                                <!--</span>-->
+                            <!--</p>-->
+
+                            <span t-field="o.name"/>
+                            <br/>
+                            <span t-field="o.zip"/>
+                            -
+                            <span t-field="o.city"/>
+                            <br/>
+                            <span t-field="o.vat"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-5 "
+                             style="margin-top:636px; margin-left:270px">
+                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                        </div>
+                    </div>
+                    <!--<table class="table table-condensed">-->
+                        <!--<tr>-->
+                            <!--<td>-->
+
+                                <!--Estimado proveedor,-->
+
+                                <!--En BBC PACKAGING, S.L. disponemos de un sistema-->
+                                <!--de gestión de la calidad según ISO 9001 y les-->
+                                <!--comunicamos que evaluamos y reevaluamos a-->
+                                <!--nuestros proveedores en base a los criterios-->
+                                <!--siguientes:-->
+                                <!--<ul style="PADDING-LEFT: 36px">-->
+                                    <!--<li>Calidad del producto</li>-->
+                                    <!--<li>Plazos de entrega</li>-->
+                                    <!--<li>Precio</li>-->
+                                    <!--<li>No conformidades</li>-->
+                                <!--</ul>-->
+                                <!--Tras evaluar a su empresa, le informamos-->
+                                <!--gratamente de que ha obtenido la calificación-->
+                                <!--de PROVEDOR APTO. Si hubiera cambios referentes-->
+                                <!--a la evaluación serían informados.-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td>-->
+                                <!--Benvolgut proveïdor.-->
+
+                                <!--A BBC PACKAGING, S.L. disposem d'un sistema de-->
+                                <!--gestió de la qualitat segons ISO 9001 i els-->
+                                <!--comuniquem que avaluem i revaluem als nostres-->
+                                <!--proveïdors en base als criteris següents:-->
+                                <!--<ul style="PADDING-LEFT: 36px">-->
+
+                                    <!--<li>Qualitat del producte</li>-->
+                                    <!--<li>Terminis de lliurament</li>-->
+                                    <!--<li>Preu</li>-->
+                                    <!--<li>No conformitats</li>-->
+                                <!--</ul>-->
+                                <!--Un cop avaluada la seva empresa, l’informem-->
+                                <!--gratament que ha obtingut la qualificació de-->
+                                <!--PROVEÏDOR APTE. Si hi hagués algun canvi-->
+                                <!--referent a l’avaluació serien informats.-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td>-->
+                                <!--Dear supplier,-->
+
+                                <!--We at BBC Packaging, S.L. have a Quality-->
+                                <!--Management System according to ISO 9001, and we-->
+                                <!--inform you that we evaluate our suppliers based-->
+                                <!--on the following criteria:-->
+                                <!--<ul style="PADDING-LEFT: 36px">-->
+                                    <!--<li>Product quality</li>-->
+                                    <!--<li>Delivery terms</li>-->
+                                    <!--<li>Price</li>-->
+                                    <!--<li>Non conformities</li>-->
+                                <!--</ul>-->
+                                <!--Once evaluated your company, we gladly inform-->
+                                <!--you that it has been qualified as APPROPRIATE-->
+                                <!--SUPPLIER. We also inform you that if there are-->
+                                <!--any changes on the evaluation you will be-->
+                                <!--informed.-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                    <!--</table>-->
+
+
+                </div>
+            </t>
+        </template>
+
+        <template id="report_customer_validation">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t
+                            t-raw="translate_doc(doc_id, doc_model, 'lang', 'bbcpackaging_customer_validation_report.report_customer_validation_document')"/>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>
