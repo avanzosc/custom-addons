@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-14 14:15+0000\n"
-"PO-Revision-Date: 2019-05-14 14:15+0000\n"
+"POT-Creation-Date: 2019-05-16 11:31+0000\n"
+"PO-Revision-Date: 2019-05-16 11:31+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -256,6 +256,13 @@ msgstr "(recalcular url)"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
+msgid ": Your rights in relation to the previous order of direct debit are explained\n"
+"                                    in the statement that you can request from your bank."
+msgstr ": Sus derechos en relación con la anterior orden de domiciliación se explican\n"
+"                                    en el extracto que puede solicitar a su banco."
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
 msgid "A spanish IBAN has 24 digits, starting with ES"
 msgstr "Un IBAN español tiene 24 dígitos, comenzando con ES"
 
@@ -293,6 +300,20 @@ msgstr "Dirección"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
+msgid "Address: C / Arganda 6 28005 (Madrid) - SPAIN"
+msgstr "Dirección: C / Arganda 6 28005 (Madrid) - SPAIN"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "As part of your rights, you have the right to be reimbursed by your bank under the\n"
+"                                    terms and conditions of the agreement entered into with your bank. Said reimbursement\n"
+"                                    must be claimed within 8 weeks from the charge date in your account."
+msgstr "Como parte de sus derechos, tiene derecho a ser rembolsado por su banco en virtud de\n"
+"                                    los términos y condiciones del acuerdo suscrito con su banco. Dicho rembolso deberá\n"
+"                                    reclamarse en un plazo de 8 semanas a partir de la fecha de cargo en su cuenta."
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
 msgid "Authorizations"
 msgstr "Autorizaciones sobre imágenes del/la menor"
 
@@ -307,6 +328,11 @@ msgstr "Fecha de nacimiento"
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Blog"
 msgstr "Sitio web www.rockbotic.com y en el blog contenido en dicho sitio web"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "By signing this Mandate Form, you authorize:"
+msgstr "Mediante la firma de este Formulario de Orden de domiciliación, usted autoriza a:"
 
 #. module: rockbotic_website_crm
 #: model:email.template,subject:rockbotic_website_crm.email_to_new_registration_from_enrollment
@@ -366,6 +392,11 @@ msgstr "Creado por"
 #: field:res.partner.enroll.search.item,create_date:0
 msgid "Created on"
 msgstr "Creado en"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Creditor Name: LUNA TIC DESIGN S.L. / CIF: B86715067"
+msgstr "Nombre del Acreedor: LUNA TIC DESIGN S.L. / CIF: B86715067"
 
 #. module: rockbotic_website_crm
 #: code:addons/rockbotic_website_crm/controllers/main.py:214
@@ -523,6 +554,11 @@ msgid "I accept and consent that the information from the center, with the purpo
 msgstr "Acepto y consiento que me envien información del centro, con la finalidad de la prospección comercial."
 
 #. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "I sign SEPA mandate"
+msgstr "Acepto los terminos de firmar el mandato SEPA"
+
+#. module: rockbotic_website_crm
 #: field:res.partner.enroll.search,id:0
 #: field:res.partner.enroll.search.item,id:0
 msgid "ID"
@@ -581,6 +617,11 @@ msgid "Journal"
 msgstr "Revistas"
 
 #. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "LUNA TIC DESIGN S.L. to send orders to your financial institution to debit your account."
+msgstr "LUNA TIC DESIGN S.L. a enviar órdenes a su entidad financiera para adeudar su cuenta."
+
+#. module: rockbotic_website_crm
 #: field:res.partner.enroll.search,__last_update:0
 #: field:res.partner.enroll.search.item,__last_update:0
 msgid "Last Modified on"
@@ -634,6 +675,11 @@ msgstr "Sin comercial"
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
 msgid "Not Registered Yet"
 msgstr "No inscritos"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Note"
+msgstr "Nota"
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup
@@ -726,6 +772,11 @@ msgid "Please select one line."
 msgstr "Selecciona una línea."
 
 #. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "ROCKBOTIC is a registered trademark owned by LUNA TIC DESIGN S.L."
+msgstr "ROCKBOTIC es una marca registrada propiedad de LUNA TIC DESIGN S.L."
+
+#. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_form_view
 #: view:crm.lead2opportunity.partner:rockbotic_website_crm.crm_lead2opportunity_partner_form
 #: model:ir.actions.act_window,name:rockbotic_website_crm.action_crm_lead2opportunity_partner
@@ -770,6 +821,11 @@ msgstr "Rockbotic: Reserva de plaza confirmada"
 #: view:website:rockbotic_website_crm.student_signup
 msgid "SCHOOL CENTER"
 msgstr "CENTRO ESCOLAR"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "SEPA direct debit mandate:"
+msgstr "Orden de domiciliación de débito directo SEPA:"
 
 #. module: rockbotic_website_crm
 #: view:crm.lead:rockbotic_website_crm.crm_lead_enrollment_search_view
@@ -946,6 +1002,13 @@ msgstr "XXXXX"
 #: view:website:rockbotic_website_crm.student_signup
 msgid "Yes"
 msgstr "Si"
+
+#. module: rockbotic_website_crm
+#: view:website:rockbotic_website_crm.student_signup
+msgid "Your bank to debit the corresponding amounts in your account in accordance with\n"
+"                                            the orders of Luna TIC DESIGN S.L."
+msgstr "Su banco para adeudar los importes correspondientes en su cuenta de acuerdo\n"
+"                                            con las órdenes de Luna TIC DESIGN S.L."
 
 #. module: rockbotic_website_crm
 #: view:website:rockbotic_website_crm.student_signup_thanks
