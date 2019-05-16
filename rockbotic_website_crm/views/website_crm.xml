@@ -179,7 +179,7 @@
                                                 required="True" class="form-control">
                                             <option value="">select...</option>
                                             <option value="yes" t-att-selected="values.get('accept_whatsapp')">Yes</option>
-                                            <option value="no" t-att-selected="not values.get('accept_whatsapp')">No</option>
+                                            <option value="no" t-att-selected="not values.get('accept_whatsapp', True)">No</option>
                                         </select>
                                     </div>
                                 </div>
@@ -190,7 +190,7 @@
                                                 required="True" class="form-control">
                                             <option value="">select...</option>
                                             <option value="yes" t-att-selected="values.get('accept_center_information')">Yes</option>
-                                            <option value="no" t-att-selected="not values.get('accept_center_information')">No</option>
+                                            <option value="no" t-att-selected="not values.get('accept_center_information', True)">No</option>
                                         </select>
                                     </div>
                                 </div>
@@ -273,6 +273,30 @@
                                                pattern="^ES\d{2}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{4}|ES\d{22}$"
                                                title="A spanish IBAN has 24 digits, starting with ES"
                                                t-att-value="values.get('account_number')" required="True"/>
+                                    </div>
+                                </div>
+                                <p>SEPA direct debit mandate:<br />
+                                    <ul>
+                                        <li>Creditor Name: LUNA TIC DESIGN S.L. / CIF: B86715067</li>
+                                        <li>Address: C / Arganda 6 28005 (Madrid) - SPAIN</li>
+                                    </ul>
+                                    <b>Note</b>: Your rights in relation to the previous order of direct debit are explained
+                                    in the statement that you can request from your bank.<br />
+                                    ROCKBOTIC is a registered trademark owned by LUNA TIC DESIGN S.L.<br />
+                                    By signing this Mandate Form, you authorize:
+                                    <ul>
+                                        <li>LUNA TIC DESIGN S.L. to send orders to your financial institution to debit your account.</li>
+                                        <li>Your bank to debit the corresponding amounts in your account in accordance with
+                                            the orders of Luna TIC DESIGN S.L.</li>
+                                    </ul>
+                                    As part of your rights, you have the right to be reimbursed by your bank under the
+                                    terms and conditions of the agreement entered into with your bank. Said reimbursement
+                                    must be claimed within 8 weeks from the charge date in your account.</p>
+                                <div t-attf-class="form-group #{error and 'sepaaccepted' in error and 'has-error' or ''}">
+                                    <label
+                                            class="col-md-6 col-sm-6 control-label" for="sepaaccepted">I sign SEPA mandate</label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input type="checkbox" name="sepaaccepted" required="True"/>
                                     </div>
                                 </div>
                                 <div t-attf-class="form-group #{error and 'description' in error and 'has-error' or ''}">
