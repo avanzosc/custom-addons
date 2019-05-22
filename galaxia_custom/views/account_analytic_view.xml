@@ -91,6 +91,16 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='recurring_invoice_line_ids']/.." position="after">
                     <div attrs="{'invisible': [('recurring_invoices','=',False)]}">
+                        <separator string="Recurring invoice incidences" />
+                        <field name="recurring_invoice_incidence_ids" nolabel="1">
+                            <tree string="Incidences" editable="top">
+                                <field name="analytic_account_id" invisible="1"/>
+                                <field name="from_date" required="1" />
+                                <field name="to_date" required="1" />
+                                <field name="name" required="1" />
+                                <field name="price" required="1"/>
+                            </tree>
+                        </field>
                         <separator string="Historical" />
                         <field name="analytic_account_historical_ids" readonly="1" nolabel="1">
                             <tree string="Historical" >

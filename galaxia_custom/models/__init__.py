@@ -9,3 +9,4 @@ from . import product
 from . import project
 from . import account_analytic_invoice_line
 from . import crm_lead
+from . import account_invoice

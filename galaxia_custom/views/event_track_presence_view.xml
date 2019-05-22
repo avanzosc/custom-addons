@@ -16,9 +16,11 @@
             <field name="inherit_id" ref="sale_order_create_event_hour.event_track_presence_type_hour_search_view"/>
             <field name="arch" type="xml">
                 <field name="type_hour" position="after">
+                    <field name="task_id" />
                     <field name="recoverable" />
                 </field>
                 <filter string="Type hour" position="after">
+                    <filter string="Task" domain="[]" context="{'group_by':'task_id'}"/>
                     <filter string="Recoverable" domain="[]" context="{'group_by':'recoverable'}"/>
                 </filter>
             </field>

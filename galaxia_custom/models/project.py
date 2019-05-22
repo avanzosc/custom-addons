@@ -5,11 +5,7 @@
 from openerp import models, fields, api
 from openerp.addons.event_track_assistant._common import\
     _convert_to_local_date
-
-
-class ProjectProject(models.Model):
-    _inherit = 'project.project'
-    _order = 'name'
+from __builtin__ import False
 
 
 class ProjectTask(models.Model):
@@ -23,7 +19,6 @@ class ProjectTask(models.Model):
             procurement.sale_line_id.session_description or
             procurement.sale_line_id.name)
         return vals
-
 
 class ProjectTaskWork(models.Model):
     _inherit = 'project.task.work'

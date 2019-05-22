@@ -7,6 +7,8 @@
             report_type="qweb-pdf" file="galaxia_custom.report_sale_information_footer_printing" name="galaxia_custom.report_sale_information_footer_printing" />
         <report id="report_sale_only_services_report" string="Solo servicios" model="sale.order"
             report_type="qweb-pdf" file="galaxia_custom.report_sale_only_services_printing" name="galaxia_custom.report_sale_only_services_printing" />
+        <report id="report_envio_presupuesto_report" string="Presupuesto para envío" model="sale.order"
+            report_type="qweb-pdf" file="galaxia_custom.report_envio_presupuesto_printing" name="galaxia_custom.report_envio_presupuesto_printing" />
     </data>
     <data noupdate="1">
         <template id="report_analytic_cuota">
@@ -135,6 +137,423 @@
                         <div class="col-xs-4 pull-right">
                             <img src="/galaxia_custom/static/src/img/firma.png" style="max-height:100px;"/>
                             <p>IGOR ARRIETA ESTEVEZ</p>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+        <template id="report_envio_presupuesto">
+            <t t-call="report.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="row">
+                        <div class="col-xs-7" />
+                        <div class="col-xs-5 pull-right">
+                            <table >
+                                <tr style="font-weight: bold;">
+                                    <td class="text-left">ADDRESS:</td>
+                                    <td><spam>&amp;nbsp;&amp;nbsp;</spam></td>
+                                    <td class="text-left">
+                                        <span t-field="o.partner_id.name"/>
+                                        <br/>
+                                        <span t-if="o.partner_id.street" >
+                                            <span t-field="o.partner_id.street"/>
+                                        </span>
+                                        <span t-if="o.partner_id.street2 and o.partner_id.street" >
+                                            <br/>
+                                        </span>
+                                        <span t-if="o.partner_id.street2" >
+                                            <span t-field="o.partner_id.street2"/>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr style="font-weight: bold;">
+                                    <td class="text-left">LOCATION:</td>
+                                    <td><spam>&amp;nbsp;&amp;nbsp;</spam></td>
+                                    <td class="text-left">
+                                        <span t-if="o.partner_id.city" >
+                                            <span t-field="o.partner_id.city"/>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr style="font-weight: bold;">
+                                    <td class="text-left">ZIP:</td>
+                                    <td><spam>&amp;nbsp;&amp;nbsp;</spam></td>
+                                    <td class="text-left">
+                                        <span t-if="o.partner_id.zip" >
+                                            <span t-field="o.partner_id.zip"/>
+                                        </span>
+                                    </td>
+                                 </tr>
+                                <tr style="font-weight: bold;">
+                                    <td class="text-left">STATE:</td>
+                                    <td><spam>&amp;nbsp;&amp;nbsp;</spam></td>
+                                    <td class="text-left">
+                                        <span t-if="o.partner_id.state_id" >
+                                            <span t-field="o.partner_id.state_id"/>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr style="font-weight: bold;">
+                                    <td class="text-left">PHONE:</td>
+                                    <td><spam>&amp;nbsp;&amp;nbsp;</spam></td>
+                                    <td class="text-left">
+                                        <span t-if="o.partner_id.phone" >
+                                            <span t-field="o.partner_id.phone"/>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr style="font-weight: bold;">
+                                    <td class="text-left">FAX:</td>
+                                    <td><spam>&amp;nbsp;&amp;nbsp;</spam></td>
+                                    <td class="text-left">
+                                        <span t-if="o.partner_id.fax" >
+                                            <span t-field="o.partner_id.fax"/>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr style="font-weight: bold;">
+                                    <td class="text-left">E-MAIL:</td>
+                                    <td><spam>&amp;nbsp;&amp;nbsp;</spam></td>
+                                    <td class="text-left">
+                                        <span t-if="o.partner_id.email" >
+                                            <span t-field="o.partner_id.email"/>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr style="font-weight: bold;">
+                                    <td class="text-left">WEB:</td>
+                                    <td><spam>&amp;nbsp;&amp;nbsp;</spam></td>
+                                    <td class="text-left">
+                                        <span t-if="o.partner_id.website" >
+                                            <span t-field="o.partner_id.website"/>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 text-right" style="font-weight:bold;">
+                                <br/>
+                                <br/>
+                                DATE:&amp;nbsp;&amp;nbsp;<span t-field="o.date_order" t-field-options='{"format": "dd/MM/yyyy"}'/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 text-left" style="font-weight:bold;">
+                                <br/>
+                                <br/>
+                                BUDGET Nº:&amp;nbsp;&amp;nbsp;
+                                <span t-field="o.name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2" />
+                            <div class="col-xs-8 text-center" style="font-weight:bold;">
+                                <br/>
+                                <br/>
+                                <span t-field="o.client_order_ref"/>
+                            </div>
+                            <div class="col-xs-2" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 pull-left" style="font-weight:bold;">
+                            <table >
+                                <tr style="font-weight: bold;">
+                                    <td class="text-left">Ref.:</td>
+                                    <td><spam>&amp;nbsp;&amp;nbsp;</spam></td>
+                                    <td class="text-left">
+                                        <span t-field="o.partner_id.name"/>
+                                        <br/>
+                                        <span t-if="o.partner_id.street" >
+                                            <span t-field="o.partner_id.street"/>
+                                        </span>
+                                        <span t-if="o.partner_id.street2 and o.partner_id.street" >
+                                            <br/>
+                                        </span>
+                                        <span t-if="o.partner_id.street2" >
+                                            <span t-field="o.partner_id.street2"/>
+                                        </span>
+                                        <span t-if="o.partner_id.city" >
+                                            <br/>
+                                            <span t-field="o.partner_id.city"/>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4" />
+                        <div class="col-xs-4 pull-center" >
+                            <u><strong>MAINTENANCE CLEANING</strong></u>
+                        </div>
+                        <div class="col-xs-4" />
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 text-left" style="font-weight:bold;">
+                            <br/>
+                            <u>
+                            OBJECT OF THE SERVICE
+                            </u>
+                        </div>
+                        <div class="col-xs-12" style="text-align:justify;">
+                            <br/>
+                            <span t-field="o.objeto_del_servicio"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 text-left" style="font-weight:bold;">
+                            <br/>
+                            <br/>
+                            <u>
+                            WORKS TO REALIZE
+                            </u>
+                        </div>
+                        <div class="col-xs-12" style="text-align:justify;">
+                            <br/>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                               </thead>
+                               <tbody class="sale_tbody">
+                                    <t t-set="count_lin" t-value="0" />
+                                    <tr t-foreach="o.sale_print_line_ids" t-as="l">
+                                        <t t-set="count_lin" t-value="count_lin + 1" />
+                                        <td>
+                                            <t t-if="count_lin == 1">
+                                                A.-
+                                            </t>
+                                            <t t-if="count_lin == 2">
+                                                B.-
+                                            </t>
+                                            <t t-if="count_lin == 3">
+                                                C.-
+                                            </t>
+                                            <t t-if="count_lin == 4">
+                                                D.-
+                                            </t>
+                                            <t t-if="count_lin == 5">
+                                                E.-
+                                            </t>
+                                            <t t-if="count_lin == 6">
+                                                F.-
+                                            </t>
+                                            <t t-if="count_lin == 7">
+                                                G.-
+                                            </t>
+                                            <t t-if="count_lin == 8">
+                                                H.-
+                                            </t>
+                                            <t t-if="count_lin == 9">
+                                                I.-
+                                            </t>
+                                            <t t-if="count_lin == 10">
+                                                J.-
+                                            </t>
+                                            <t t-if="count_lin == 11">
+                                                K.-
+                                            </t>
+                                            <t t-if="count_lin == 12">
+                                                L.-
+                                            </t>
+                                            <t t-if="count_lin == 13">
+                                                M.-
+                                            </t>
+                                            <t t-if="count_lin == 14">
+                                                N.-
+                                            </t>
+                                            <t t-if="count_lin == 15">
+                                                Ñ.-
+                                            </t>
+                                            <t t-if="count_lin == 16">
+                                                O.-
+                                            </t>
+                                            <t t-if="count_lin == 17">
+                                                P.-
+                                            </t>
+                                            <t t-if="count_lin == 18">
+                                                Q.-
+                                            </t>
+                                            <t t-if="count_lin == 19">
+                                                R.-
+                                            </t>
+                                            <t t-if="count_lin == 20">
+                                                S.-
+                                            </t>
+                                            <t t-if="count_lin == 21">
+                                                T.-
+                                            </t>
+                                            <t t-if="count_lin == 22">
+                                                V.-
+                                            </t>
+                                            <t t-if="count_lin == 23">
+                                                W.-
+                                            </t>
+                                            <t t-if="count_lin == 24">
+                                                X.-
+                                            </t>
+                                            <t t-if="count_lin == 25">
+                                                Y.-
+                                            </t>
+                                            <t t-if="count_lin == 26">
+                                                Z.-
+                                            </t>
+                                        </td>
+                                        <td>&amp;nbsp;&amp;nbsp;</td>
+                                        <td>
+                                           <t t-if="l.name">
+                                            <span t-field="l.product_id"/>
+                                            <br/>
+                                            <span t-field="l.name"/>
+                                           </t>
+                                        </td>
+                                    </tr>
+                               </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 text-left" style="font-weight:bold;">
+                            <br/>
+                            <br/>
+                            <u>
+                            PRESENCE OF PERSONNEL
+                            </u>
+                        </div>
+                        <div class="col-xs-12" style="text-align:justify;">
+                            <br/>
+                            <span t-field="o.presencia_de_personal"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 text-left" style="font-weight:bold;">
+                            <br/>
+                            <br/>
+                            <u>
+                            ECONOMICAL OFFER
+                            </u>
+                        </div>
+                        <div class="col-xs-12" style="text-align:justify;">
+                            <br/>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                               </thead>
+                               <tbody class="sale_tbody">
+                                    <t t-set="count_lin" t-value="0" />
+                                    <tr t-foreach="o.sale_print_line_ids" t-as="l">
+                                        <t t-set="count_lin" t-value="count_lin + 1" />
+                                        <td>
+                                            <t t-if="count_lin == 1">
+                                                A.-
+                                            </t>
+                                            <t t-if="count_lin == 2">
+                                                B.-
+                                            </t>
+                                            <t t-if="count_lin == 3">
+                                                C.-
+                                            </t>
+                                            <t t-if="count_lin == 4">
+                                                D.-
+                                            </t>
+                                            <t t-if="count_lin == 5">
+                                                E.-
+                                            </t>
+                                            <t t-if="count_lin == 6">
+                                                F.-
+                                            </t>
+                                            <t t-if="count_lin == 7">
+                                                G.-
+                                            </t>
+                                            <t t-if="count_lin == 8">
+                                                H.-
+                                            </t>
+                                            <t t-if="count_lin == 9">
+                                                I.-
+                                            </t>
+                                            <t t-if="count_lin == 10">
+                                                J.-
+                                            </t>
+                                            <t t-if="count_lin == 11">
+                                                K.-
+                                            </t>
+                                            <t t-if="count_lin == 12">
+                                                L.-
+                                            </t>
+                                            <t t-if="count_lin == 13">
+                                                M.-
+                                            </t>
+                                            <t t-if="count_lin == 14">
+                                                N.-
+                                            </t>
+                                            <t t-if="count_lin == 15">
+                                                Ñ.-
+                                            </t>
+                                            <t t-if="count_lin == 16">
+                                                O.-
+                                            </t>
+                                            <t t-if="count_lin == 17">
+                                                P.-
+                                            </t>
+                                            <t t-if="count_lin == 18">
+                                                Q.-
+                                            </t>
+                                            <t t-if="count_lin == 19">
+                                                R.-
+                                            </t>
+                                            <t t-if="count_lin == 20">
+                                                S.-
+                                            </t>
+                                            <t t-if="count_lin == 21">
+                                                T.-
+                                            </t>
+                                            <t t-if="count_lin == 22">
+                                                V.-
+                                            </t>
+                                            <t t-if="count_lin == 23">
+                                                W.-
+                                            </t>
+                                            <t t-if="count_lin == 24">
+                                                X.-
+                                            </t>
+                                            <t t-if="count_lin == 25">
+                                                Y.-
+                                            </t>
+                                            <t t-if="count_lin == 26">
+                                                Z.-
+                                            </t>
+                                        </td>
+                                        <td>&amp;nbsp;&amp;nbsp;</td>
+                                        <td>
+                                           The amount corresponding to the performance of the works would amount to&amp;nbsp;
+                                           <strong style="color: black;">
+                                               <span t-field="l.price_subtotal"
+                                                    t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                                               + BEZ EACH TIME IT IS REALIZED.
+                                           </strong>
+                                        </td>
+                                    </tr>
+                               </tbody>
+                            </table>
+                        </div>
+                        <div class="col-xs-12" style="text-align:justify;">
+                            <p>
+                                In case of hiring the supply of materials and hygienic tools such as; paper (wipes, wick, roll, ...), soap, containers ..., consumptions would be billed by administration.
+                                <br/>
+                                The price will be governed by the general conditions attached to the budget.
+                                <br/>
+                                The work will be carried out exclusively with personnel from<strong style="color: black;">GALAXIA FACILITIES, S.L.</strong> 
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -566,6 +985,14 @@
             <t t-call="report.html_container">
                 <t t-foreach="doc_ids" t-as="doc_id">
                     <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'galaxia_custom.report_sale_only_services')"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_envio_presupuesto_printing">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'galaxia_custom.report_envio_presupuesto')"/>
                 </t>
             </t>
         </template>

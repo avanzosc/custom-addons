@@ -8,6 +8,31 @@
                 <field name="organizer_id" position="after">
                     <field name="key_code" />
                 </field>
+                <page string="Event Details" position="after">
+                    <page string="Invoice lines" groups="sale.group_analytic_accounting">
+                        <separator string="Recurring invoice lines" />
+                        <field name="recurring_invoice_line_ids" >
+                            <tree string="Account Analytic Lines" editable="bottom">
+                                <field name="product_id" on_change="product_id_change(product_id, uom_id, quantity, False, parent.partner_id, False, parent.pricelist_id, parent.company_id)"/>
+                                <field name="name"/>
+                                <field name="quantity"/>
+                                <field name="uom_id"/>
+                                <field name="price_unit"/>
+                                <field name="price_subtotal"/>
+                            </tree>
+                        </field>
+                        <separator string="Recurring invoice incidences" />
+                        <field name="recurring_invoice_incidence_ids" nolabel="1">
+                            <tree string="Recurring invoice incidences" editable="top">
+                                <field name="analytic_account_id" invisible="1"/>
+                                <field name="from_date" required="1" />
+                                <field name="to_date" required="1" />
+                                <field name="name" required="1" />
+                                <field name="price" required="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                </page>
             </field>
         </record>
 

@@ -206,3 +206,17 @@ class TestGalaxiaCustom(common.TransactionCase):
         self.sale_order.button_create_sale_contract()
         self.assertEqual(self.sale_order.project_id.date_start, '2016-01-15')
         self.assertEqual(self.sale_order.project_id.date, '2016-02-28')
+
+    def test_galaxia_custom_send_budget_by_email(self):
+        self.sale_order.partner_id.email = ''
+        with self.assertRaises(exceptions.Warning):
+            self.sale_order.action_report_envio_presupuesto_send()
+        self.sale_order.partner_id.email = 'ja@ja.com'
+        res = self.sale_order.action_report_envio_presupuesto_send()
+        context = res.get('context')
+        self.assertEqual(
+            context.get('default_template_id'),
+            self.browse_ref('galaxia_custom.email_template_report_envio_'
+                            'presupuesto').id)
+        self.assertEqual(
+            context.get('default_res_id'), self.sale_order.id)

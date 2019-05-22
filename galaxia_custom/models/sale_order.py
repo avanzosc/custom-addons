@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # © 2015 Esther Martín - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
-from openerp import models, fields, api, _
+from openerp import models, fields, api, exceptions, _
 import openerp.addons.decimal_precision as dp
 from openerp.addons.event_track_assistant._common import _convert_to_utc_date
 from openerp.addons.event_track_assistant._common import _convert_to_local_date
@@ -60,10 +60,24 @@ class SaleOrder(models.Model):
         string='Lines to print')
     working_hours = fields.Many2one(
         comodel_name='resource.calendar', string='Working Schedule')
+    objeto_del_servicio = fields.Text(
+        string='Object of the service')
+    presencia_de_personal = fields.Text(
+        string='Presence of personnel')
 
     @api.multi
     def action_button_confirm(self):
         event_model = self.env['event.event']
+        route_task_id = self.env.ref(
+            'procurement_service_project.route_serv_project')
+        route_buy_id = self.env.ref('purchase.route_warehouse0_buy')
+        for sale in self:
+            for line in sale.order_line.filtered(
+                    lambda x: x.product_id.type == 'service'):
+                if (route_task_id in line.product_id.route_ids and
+                        route_buy_id in line.product_id.route_ids):
+                    line.product_id.route_ids =  [
+                        (6, 0, [route_task_id.id])]
         result = super(SaleOrder, self.with_context(
             without_sale_name=True)).action_button_confirm()
         for sale in self.filtered(lambda x: x.project_id):
@@ -72,7 +86,10 @@ class SaleOrder(models.Model):
             if event:
                 event.write({'name': u"{}: {}".format(
                     sale.name, sale.partner_id.name)})
-                event._merge_event_tracks()
+                sessions = event.mapped('task_ids').filtered(
+                    lambda x: x.attached)
+                if len(sessions) > 1:
+                    event._merge_event_tracks()
         return result
 
     def _prepare_session_data_from_sale_line(
@@ -149,6 +166,56 @@ class SaleOrder(models.Model):
             account = self.env['account.analytic.account'].create(vals)
             sale.project_id = account.id
 
+    @api.multi
+    def action_report_envio_presupuesto_send(self):
+        ir_model_data = self.env['ir.model.data']
+        if not self.partner_id.email:
+            raise exceptions.Warning(_("Partner %s without email.") %
+                                     self.partner_id.name)
+        template_id = self.env.ref(
+            'galaxia_custom.email_template_report_envio_presupuesto', False)
+        compose_form_id = (ir_model_data.get_object_reference(
+            'mail', 'email_compose_message_wizard_form') and
+            ir_model_data.get_object_reference(
+                'mail', 'email_compose_message_wizard_form')[1] or False)
+        ctx = {
+            'default_model': 'sale.order',
+            'default_res_id': self.id,
+            'default_use_template': bool(template_id),
+            'default_template_id': template_id.id,
+            'default_composition_mode': 'mass_mail'}
+        return {
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'mail.compose.message',
+            'views': [(compose_form_id, 'form')],
+            'view_id': compose_form_id,
+            'target': 'new',
+            'context': ctx}
+
+    def _search_old_event_registrations(self, old_sale):
+        event_obj = self.env['event.event']
+        my_registrations = self.env['event.registration']
+        registrations = (
+            super(SaleOrder, self)._search_old_event_registrations(old_sale))
+        cond = [('sale_order', '=', self.id)]
+        new_event = event_obj.search(cond, limit=1)
+        cond = [('sale_order', '=', old_sale.id)]
+        old_event = event_obj.search(cond, limit=1)
+        tasks = new_event.mapped('task_ids').filtered(
+                lambda x: not x.attached)
+        if (len(new_event.task_ids) > 0 and
+                len(new_event.task_ids) == len(tasks)):
+            return my_registrations
+        for registration in registrations:
+            presences = old_event.mapped('presence_ids').filtered(
+                lambda x: x.partner == registration.partner_id and
+                    x.task_id and x.task_id.attached)
+            if presences:
+                my_registrations += registration
+        return my_registrations
+
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
@@ -185,6 +252,14 @@ class SaleOrderLine(models.Model):
 
     @api.multi
     def write(self, values):
+        group = self.env.ref(
+            'galaxia_custom.group_delete_modifi_confirmed_sale_lines', False)
+        for line in self:
+            if (line.state not in ['draft', 'cancel'] and
+                    self.env.user not in group.users):
+                raise exceptions.Warning(
+                    'No tiene permisos para modificar una linea que no esta en'
+                    ' estado borrador o cancelada')
         historical_obj = self.env['sale.order.line.historical']
         check_values = [
             ('price_unit', _('Price unit')),
@@ -213,6 +288,18 @@ class SaleOrderLine(models.Model):
                     historical_obj.create(vals)
         return super(SaleOrderLine, self).write(values)
 
+    @api.multi
+    def unlink(self):
+        group = self.env.ref(
+            'galaxia_custom.group_delete_modifi_confirmed_sale_lines', False)
+        for line in self:
+            if self.env.user not in group.users:
+                super(SaleOrderLine, line).unlink()
+            else:
+                if line.state not in ['draft', 'cancel']:
+                    line.button_cancel()
+                super(SaleOrderLine, line).unlink()
+
 
 class SaleOrderLineHistorical(models.Model):
     _name = 'sale.order.line.historical'
@@ -235,7 +322,7 @@ class SalePrintLine(models.Model):
     product_id = fields.Many2one(
         comodel_name='product.product', domain="[('sale_ok', '=', True)]",
         string="Product")
-    name = fields.Char(string='Description', required=True)
+    name = fields.Text(string='Description', required=True)
     product_uom_qty = fields.Float(
         string='Quantity', digits=dp.get_precision('Product UoS'),
         required=True)

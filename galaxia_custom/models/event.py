@@ -9,11 +9,16 @@ class EventEvent(models.Model):
     _inherit = 'event.event'
 
     key_code = fields.Char()
-
-    def _take_sessions_to_date(self, date):
-        sessions = super(EventEvent, self)._take_sessions_to_date(date)
-        sessions = sessions.filtered(lambda x: x.tasks and x.tasks[0].attached)
-        return sessions
+    presence_ids = fields.One2many(
+        string='Presences', comodel_name='event.track.presence',
+        inverse_name='event')
+    recurring_invoice_line_ids = fields.One2many(
+        string='Invoice Lines', comodel_name='account.analytic.invoice.line',
+        related='analytic_account_id.recurring_invoice_line_ids')
+    recurring_invoice_incidence_ids = fields.One2many(
+        string='Recurring invoice incidences',
+        comodel_name='account.analytic.recurring.invoice.incidence',
+        related='analytic_account_id.recurring_invoice_incidence_ids')
 
 
 class EventTrackPresence(models.Model):
@@ -25,6 +30,9 @@ class EventTrackPresence(models.Model):
                    ('is_discounted', 'Is discounted')],
         related='event.sale_order.project_id.recoverable', store=True,
         string='Recoverable')
+    task_id = fields.Many2one(
+        comodel_name="project.task", related="session.task_id", store=True,
+        string='Task')
 
     @api.depends('session', 'session.allowed_partner_ids')
     def _compute_allowed_partner_ids(self):

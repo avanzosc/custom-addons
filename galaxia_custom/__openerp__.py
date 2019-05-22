@@ -4,7 +4,7 @@
 
 {
     "name": "Galaxia - Custom",
-    "version": "8.0.3.2.0",
+    "version": "8.0.3.6.0",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -41,7 +41,9 @@
         "event_track_info",
         "event_track_merge",
         "sale_order_back2draft",
-        "base_location"
+        "base_location",
+        "event_registration_copy",
+        "account_analytic_analysis"
     ],
     "data": [
         "data/request_link_data.xml",
@@ -65,6 +67,8 @@
         "report/event_track_presence_report_view.xml",
         "security/project_task_work.xml",
         "security/ir.model.access.csv",
+        "security/res_groups.xml",
+        "data/galaxia_custom_action_data.xml",
     ],
     "installable": True,
     "external_dependencies": {
