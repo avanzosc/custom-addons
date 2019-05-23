@@ -82,6 +82,8 @@ class CrmLead(models.Model):
                 'magazine': lead.journal_permission == 'yes',
                 'web_blog': lead.blog_permission == 'yes',
                 'social_networks': lead.media_permission == 'yes',
+                'accept_whatsapp': lead.accept_whatsapp,
+                'accept_center_information': lead.accept_center_information,
             })
         else:
             vat = u'ES{}'.format(lead.vat) if lead.vat and\
@@ -92,6 +94,8 @@ class CrmLead(models.Model):
             partner.write({
                 'vat': vat,
                 'bank_ids': [(0, 0, bank_data)] if bank_data else [],
+                'accept_whatsapp': lead.accept_whatsapp,
+                'accept_center_information': lead.accept_center_information,
             })
             lead.parent_id = partner
         return partner_id
@@ -268,6 +272,14 @@ class CrmLead(models.Model):
                 default_type='contact')._send_email_to_new_enrollment(
                 template)
         return lead
+
+    @api.multi
+    def write(self, values):
+        if 'accept_whatsapp' in values:
+            del values['accept_whatsapp']
+        if 'accept_center_information' in values:
+            del values['accept_center_information']
+        return super(CrmLead, self).write(values)
 
     def _send_email_to_new_enrollment(self, template):
         partner_obj = self.env['res.partner']
