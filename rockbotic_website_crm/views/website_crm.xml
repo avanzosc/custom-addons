@@ -186,7 +186,7 @@
                                 <div t-attf-class="form-group #{error and 'accept_center_information' in error and 'has-error' or ''}">
                                     <label class="col-md-3 col-sm-4 control-label" for="media_permission">I accept and consent that the information from the center, with the purpose of commercial prospection.</label>
                                     <div class="col-md-9 col-sm-8">
-                                        <select name="accept_whatsapp"
+                                        <select name="accept_center_information"
                                                 required="True" class="form-control">
                                             <option value="">select...</option>
                                             <option value="yes" t-att-selected="values.get('accept_center_information')">Yes</option>
