@@ -26,6 +26,8 @@ class StockPicking(models.Model):
                         uom=move_line.product_uom.id,
                         partner_id=move_line.purchase_line_id.partner_id.id
                         )['value']
+                    line_values.update(repair_line_obj.onchange_operation_type(
+                        'add', repair.guarantee_limit)['value'])
                     line_values.update({
                         'product_id': move_line.product_id.id,
                         'repair_id': repair[0].id,
@@ -33,8 +35,6 @@ class StockPicking(models.Model):
                         'type': 'add',
                         'product_uom_qty': move_line.product_uom_qty,
                         'expected_qty': move_line.product_uom_qty,
-                        'location_id': repair[0].location_id.id,
-                        'location_dest_id': repair[0].location_dest_id.id,
                         'tax_id': [(6, 0, 'tax_id' in line_values and
                                     line_values['tax_id'] or [])],
                     })
