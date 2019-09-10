@@ -1154,7 +1154,7 @@
                     </div>
                     <div t-if="o.type == 'out_invoice' and o.fiscal_position and o.fiscal_position.note">
                         <p>
-                            <span t-field="o.fiscal_position.note"/>
+                            <strong><span t-field="o.fiscal_position.note"/></strong>
                         </p>
                         <br/>
                     </div>
