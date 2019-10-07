@@ -175,7 +175,7 @@
                                             <span t-field="o.partner_id.customer_payment_mode" />
                                         </p>
                                         <div t-if="o.partner_id.customer_payment_mode">
-                                            <div t-if="o.partner_id.customer_payment_mode.name=='Transferencia bancaria' or o.partner_id.customer_payment_mode.name=='TRANSFERENCIA BANCARIA'">
+                                            <div t-if="'Transferencia bancaria' in o.partner_id.customer_payment_mode.name or 'TRANSFERENCIA BANCARIA' in o.partner_id.customer_payment_mode.name">
                                                 <p t-if="o.partner_id.customer_payment_mode.bank_id">
                                                     <strong>CUENTA:</strong>
                                                     <span t-field="o.partner_id.customer_payment_mode.bank_id.bank_name"/>
@@ -404,7 +404,7 @@
                                             <span t-field="o.partner_id.customer_payment_mode" />
                                         </p>
                                         <div t-if="o.partner_id.customer_payment_mode">
-                                            <div t-if="o.partner_id.customer_payment_mode.name=='Transferencia bancaria' or o.partner_id.customer_payment_mode.name=='TRANSFERENCIA BANCARIA'">
+                                            <div t-if="'Transferencia bancaria' in o.partner_id.customer_payment_mode.name or 'TRANSFERENCIA BANCARIA' in o.partner_id.customer_payment_mode.name">
                                                 <p t-if="o.partner_id.customer_payment_mode.bank_id">
                                                     <strong>KONTUA:</strong>
                                                     <span t-field="o.partner_id.customer_payment_mode.bank_id.bank_name"/>
@@ -945,7 +945,7 @@
                                    <span t-field="o.payment_mode_id" />
                                </p>
                                <div t-if="o.payment_mode_id">
-                                   <div t-if="o.payment_mode_id.name=='Transferencia bancaria' or o.payment_mode_id.name=='TRANSFERENCIA BANCARIA'">
+                                   <div t-if="'Transferencia bancaria' in o.payment_mode_id.name or 'TRANSFERENCIA BANCARIA' in o.payment_mode_id.name">
                                        <p t-if="o.partner_bank_id">
                                            <strong>KONTUA:</strong>
                                            <span t-field="o.partner_bank_id.bank_name"/>
@@ -1166,7 +1166,8 @@
                                    <span t-field="o.payment_mode_id" />
                                </p>
                                <div t-if="o.payment_mode_id">
-                                   <div t-if="o.payment_mode_id.name=='Transferencia bancaria' or o.payment_mode_id.name=='TRANSFERENCIA BANCARIA'">
+                                   
+                                   <div t-if="'Transferencia bancaria in o.payment_mode_id.name or 'TRANSFERENCIA BANCARIA' in o.payment_mode_id.name">
                                        <p t-if="o.partner_bank_id">
                                            <strong>CUENTA:</strong>
                                            <span t-field="o.partner_bank_id.bank_name"/>
@@ -1428,7 +1429,7 @@
                                         <span t-field="o.payment_mode_id" />
                                     </p>
                                     <div t-if="o.payment_mode_id">
-                                        <div t-if="o.payment_mode_id.name=='Transferencia bancaria' or o.payment_mode_id.name=='TRANSFERENCIA BANCARIA'">
+                                        <div t-if="'Transferencia bancaria' in o.payment_mode_id.name or 'TRANSFERENCIA BANCARIA' in o.payment_mode_id.name">
                                             <p t-if="o.partner_bank_id">
                                                 <strong>KONTUA:</strong>
                                                 <span t-field="o.partner_bank_id.bank_name"/>
