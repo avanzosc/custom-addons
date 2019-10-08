@@ -4,7 +4,7 @@
 
 {
     "name": "Astikar - Custom",
-    "version": "8.0.3.14.1",
+    "version": "8.0.3.15.1",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",
