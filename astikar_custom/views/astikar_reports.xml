@@ -1167,7 +1167,7 @@
                                </p>
                                <div t-if="o.payment_mode_id">
                                    
-                                   <div t-if="'Transferencia bancaria in o.payment_mode_id.name or 'TRANSFERENCIA BANCARIA' in o.payment_mode_id.name">
+                                   <div t-if="'Transferencia bancaria' in o.payment_mode_id.name or 'TRANSFERENCIA BANCARIA' in o.payment_mode_id.name">
                                        <p t-if="o.partner_bank_id">
                                            <strong>CUENTA:</strong>
                                            <span t-field="o.partner_bank_id.bank_name"/>
