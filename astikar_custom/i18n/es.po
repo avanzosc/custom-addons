@@ -1191,3 +1191,32 @@ msgstr "Fotos"
 msgid "General conditions"
 msgstr "Condiciones generales"
 
+#. module: astikar_custom
+#: field:mrp.repair,cost_total:0
+msgid "Cost Total"
+msgstr "Coste total"
+
+#. module: astikar_custom
+#: field:mrp.repair,fee_subtotal:0
+msgid "Fee Cost"
+msgstr "Horas"
+
+#. module: astikar_custom
+#: field:mrp.repair,real_hours_cost:0
+msgid "Real Hours Cost"
+msgstr "Coste M.O."
+
+#. module: astikar_custom
+#: field:mrp.repair,operation_subtotal:0
+msgid "Material Cost"
+msgstr "Material"
+
+#. module: astikar_custom
+#: field:mrp.repair,estimated_hours:0
+msgid "Estimated Hours"
+msgstr "Horas estimadas"
+
+#. module: astikar_custom
+#: field:mrp.repair,real_hours_qty:0
+msgid "Real Hours Qty"
+msgstr "Horas reales"
