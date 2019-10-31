@@ -86,19 +86,46 @@
                         <button class="oe_stat_button" type="object"
                                 name="action_open_related_fees"
                                 icon="fa-bars">
-                            <div>Fee Lines</div>
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="fee_subtotal" widget="statinfo" nolabel="1" class="mr4"/>
+                                </span>
+                                <span class="o_stat_text">Fee Lines</span>
+                            </div>
                         </button>
                         <button class="oe_stat_button" type="object"
                                 name="action_open_related_lines"
                                 icon="fa-bars">
-                            <div>Material Lines</div>
+                                <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="operation_subtotal" widget="statinfo" nolabel="1" class="mr4"/>
+                                </span>
+                                <span class="o_stat_text">Material Lines</span>
+                            </div>
                         </button>
                     </div>
                 </h1>
-                 <field name="quotation_notes" position="after">
+                <field name="quotation_notes" position="after">
                     <separator string="General conditions" />
                     <field name="general_conditions" nolabel="1"  placeholder="Add general conditions notes..."/>
-                 </field>
+                </field>
+            </field>
+        </record>
+
+        <record id="mrp_repair_view_tree" model="ir.ui.view">
+            <field name="name">mrp.repair.tree</field>
+            <field name="model">mrp.repair</field>
+            <field name="inherit_id" ref="mrp_repair_date.mrp_repair_view_tree" />
+            <field name="arch" type="xml">
+                <field name="scheduled_departure_date" position="attributes">
+                     <attribute name="invisible">1</attribute>"
+                </field>
+                <field name="end_date" position="attributes">
+                     <attribute name="invisible">1</attribute>"
+                </field>
+                <field name="product_id" position="after">
+                    <field name="repair_type_id"/>
+                </field>
             </field>
         </record>
 
@@ -119,11 +146,35 @@
             </field>
         </record>
 
+        <record id="view_repair_order_tree_inh_cancelreason" model="ir.ui.view">
+            <field name="name">view.repair.order.tree.inh.cancelreason</field>
+            <field name="model">mrp.repair</field>
+            <field name="inherit_id" ref="mrp_repair_cancel_reason.view_repair_order_tree_inh_cancelreason" />
+            <field name="arch" type="xml">
+                <field name="cancel_reason_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+            </record>
+
+        <record id="view_repair_order_tree" model="ir.ui.view">
+            <field name="name">mrp.repair.tree</field>
+            <field name="model">mrp.repair</field>
+            <field name="inherit_id" ref="mrp_repair_warranty.view_repair_order_tree" />
+            <field name="arch" type="xml">
+                <field name="is_in_warranty" position="replace">
+                </field>
+            </field>
+        </record>
+
         <record id="mrp_repair_location_view_tree" model="ir.ui.view">
             <field name="name">mrp.repair.location.tree</field>
             <field name="model">mrp.repair</field>
             <field name="inherit_id" ref="mrp_repair.view_repair_order_tree" />
             <field name="arch" type="xml">
+                <field name="guarantee_limit" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
                 <field name="address_id" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </field>
@@ -134,10 +185,18 @@
                     <attribute name="invisible">1</attribute>
                 </field>
                 <field name="state" position="after">
-                    <field name="invoice_method"/>
+                    <field name="invoice_method" invisible="1"/>
+                    <field name="amnt_untaxed" />
+                    <field name="cost_total"/>
+                    <field name="estimated_hours"/>
+                    <field name="real_hours_qty"/>
+                    <field name="operation_subtotal"/>
+                    <field name="real_hours_cost"/>
+                    <field name="is_in_warranty"/>
                 </field>
                 <tree string="Repairs order" position="attributes">
                     <attribute name="colors">gray:state in ('done','cancel');gray:invoice_method=='none' and state=='done';black:state not in ('done','cancel');blue:state=='draft'</attribute>
+                    <attribute name="default_order">create_date desc</attribute>
                 </tree>
             </field>
         </record>

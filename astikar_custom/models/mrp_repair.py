@@ -25,31 +25,45 @@ class MrpRepair(models.Model):
     @api.multi
     def _compute_repair_amount(self):
         for repair in self:
-            untaxed = 0.0
-            taxed = 0.0
-            for line in repair.operations.filtered(lambda x: x.to_invoice):
-                untaxed += line.price_subtotal
-                qty = line.expected_qty or line.product_uom_qty
-                price = (line.price_unit *
-                         (1 - (line.discount or 0.0) / 100) *
-                         (1 - (line.discount2 or 0.0) / 100) *
-                         (1 - (line.discount3 or 0.0) / 100))
-                tax_calculate = line.tax_id.compute_all(
-                    price, qty, line.product_id, repair.partner_id)
-                taxed += sum(x['amount'] for x in tax_calculate['taxes'])
-            for line in repair.fees_lines.filtered(lambda x: x.to_invoice):
-                untaxed += line.price_subtotal
-                price = (line.price_unit *
-                         (1 - (line.discount or 0.0) / 100) *
-                         (1 - (line.discount2 or 0.0) / 100) *
-                         (1 - (line.discount3 or 0.0) / 100))
-                tax_calculate = line.tax_id.compute_all(
-                    price, line.product_uom_qty, line.product_id,
-                    repair.partner_id)
-                taxed += sum(x['amount'] for x in tax_calculate['taxes'])
+            untaxed = taxed = 0.0
+            operation_subtotal = fee_subtotal = 0.0
+            real_hours_cost = real_hours_qty = 0.0
+            for line in repair.operations:
+                operation_subtotal = operation_subtotal + line.cost_subtotal
+                if line.to_invoice:
+                    untaxed += line.price_subtotal
+                    qty = line.expected_qty or line.product_uom_qty
+                    price = (line.price_unit *
+                             (1 - (line.discount or 0.0) / 100) *
+                             (1 - (line.discount2 or 0.0) / 100) *
+                             (1 - (line.discount3 or 0.0) / 100))
+                    tax_calculate = line.tax_id.compute_all(
+                        price, qty, line.product_id, repair.partner_id)
+                    taxed += sum(x['amount'] for x in tax_calculate['taxes'])
+            for line in repair.fees_lines:
+                fee_subtotal = fee_subtotal + line.cost_subtotal
+                if line.is_from_menu:
+                    # Coste horas reales creadas desde menu
+                    real_hours_cost = real_hours_cost + line.cost_subtotal
+                    real_hours_qty = real_hours_qty + line.product_uom_qty
+                if line.to_invoice:
+                    untaxed += line.price_subtotal
+                    price = (line.price_unit *
+                             (1 - (line.discount or 0.0) / 100) *
+                             (1 - (line.discount2 or 0.0) / 100) *
+                             (1 - (line.discount3 or 0.0) / 100))
+                    tax_calculate = line.tax_id.compute_all(
+                        price, line.product_uom_qty, line.product_id,
+                        repair.partner_id)
+                    taxed += sum(x['amount'] for x in tax_calculate['taxes'])
             repair.amnt_untaxed = untaxed
             repair.amnt_tax = taxed
             repair.amnt_total = untaxed + taxed
+            repair.operation_subtotal = operation_subtotal
+            repair.fee_subtotal = fee_subtotal
+            repair.real_hours_qty = real_hours_qty
+            repair.real_hours_cost = real_hours_cost
+            repair.cost_total = operation_subtotal + real_hours_cost
 
     @api.multi
     @api.depends('partner_id', 'partner_id.property_payment_term')
@@ -94,6 +108,22 @@ class MrpRepair(models.Model):
     photo2 = fields.Binary(string='Photo 2')
     photo3 = fields.Binary(string='Photo 3')
     photo4 = fields.Binary(string='Photo 4')
+    estimated_hours = fields.Float(string='Estimated Hours')
+    cost_total = fields.Float(string='Cost Total',
+                              compute='_compute_repair_amount', store=True)
+    operation_subtotal = fields.Float(string='Material Cost',
+                                      compute='_compute_repair_amount',
+                                      store=True)
+    fee_subtotal = fields.Float(string='Fee Cost',
+                                compute='_compute_repair_amount', store=True)
+    real_hours_cost = fields.Float(
+        string='Real Hours Cost', compute='_compute_repair_amount', store=True)
+    real_hours_qty = fields.Float(
+        string='Real Hours Qty', compute='_compute_repair_amount', store=True)
+    product_id = fields.Many2one(states={'draft': [('readonly', False)],
+                                         'confirmed': [('readonly', False)],
+                                         'under_repair': [('readonly', False)],
+                                         '2binvoiced': [('readonly', False)]})
 
     @api.model
     def create(self, vals):
