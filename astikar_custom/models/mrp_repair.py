@@ -9,6 +9,21 @@ from openerp.addons import decimal_precision as dp
 class MrpRepair(models.Model):
     _inherit = 'mrp.repair'
 
+    @api.multi
+    @api.onchange('lot_id')
+    def onchange_lot_id(self):
+        if self.lot_id:
+            self.product_id = self.lot_id.product_id.id
+        return super(MrpRepair, self).onchange_lot_id()
+
+    @api.multi
+    @api.onchange('product_id', 'lot_id')
+    def onchange_product_id(self, product_id=None):
+        res = super(MrpRepair, self).onchange_product_id(product_id=product_id)
+        if res['value'] and 'lot_id' in res['value']:
+            del res['value']['lot_id']
+        return res
+
     def _defaul_quotation_notes(self):
         return self.env.user.company_id.sale_note
 

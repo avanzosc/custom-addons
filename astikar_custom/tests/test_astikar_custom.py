@@ -40,6 +40,7 @@ class TestAstikarCustom(common.TransactionCase):
                 'product_uom': self.product.uom_id.id,
                 'partner_id': self.customer.id}
         self.mrp_repair_customer = self.env['mrp.repair'].create(vals)
+        self.lot = self.browse_ref('stock.lot_icecream_0')
 
     def test_default_quotation_note(self):
         note = 'Test Sale Note'
@@ -316,5 +317,12 @@ class TestAstikarCustom(common.TransactionCase):
 
     def test_vat_exist(self):
         self.customer.vat = 'ES12345678Z'
-        res = self.env['res.partner'].vat_change(self, self.customer.vat)
+        res = self.env['res.partner'].vat_change(self.customer.vat)
         self.assertTrue(res['warning'])
+
+    def test_lot_change(self):
+        self.assertNotEqual(self.mrp_repair.product_id, self.lot.product_id)
+        self.mrp_repair.lot_id = self.lot.id
+        self.mrp_repair.onchange_lot_id()
+        self.assertEqual(self.mrp_repair.product_id, self.lot.product_id)
+        self.mrp_repair.onchange_product_id(self.product.id)
