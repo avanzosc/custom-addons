@@ -1220,3 +1220,9 @@ msgstr "Horas estimadas"
 #: field:mrp.repair,real_hours_qty:0
 msgid "Real Hours Qty"
 msgstr "Horas reales"
+
+#. module: astikar_custom
+#: code:addons/astikar_custom/models/res_partner.py:31
+#, python-format
+msgid "VAT already exist: {}"
+msgstr "El NIF ya existe: {}"
