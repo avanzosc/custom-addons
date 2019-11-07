@@ -313,3 +313,8 @@ class TestAstikarCustom(common.TransactionCase):
         tax = self.env['account.tax'].create(tax_vals)
         repair.operations[0].tax_id = [(6, 0, [tax.id])]
         self.assertEqual(repair.bez, 25.0)
+
+    def test_vat_exist(self):
+        self.customer.vat = 'ES12345678Z'
+        res = self.env['res.partner'].vat_change(self, self.customer.vat)
+        self.assertTrue(res['warning'])
