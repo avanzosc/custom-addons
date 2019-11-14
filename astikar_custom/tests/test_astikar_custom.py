@@ -13,6 +13,7 @@ class TestAstikarCustom(common.TransactionCase):
         super(TestAstikarCustom, self).setUp()
         self.ir_sequence_model = self.env['ir.sequence']
         self.mrp_repair_model = self.env['mrp.repair']
+        self.move_model = self.env['stock.move']
         self.quant_model = self.env['stock.quant']
         self.purchase_model = self.env['purchase.order']
         self.mrp_repair_sequence = self.browse_ref('mrp_repair.seq_mrp_repair')
@@ -279,6 +280,7 @@ class TestAstikarCustom(common.TransactionCase):
             'account_analytic_id':
             self.mrp_repair_customer.analytic_account.id,
             'date_planned': fields.Date.today(),
+            'repair_id': self.mrp_repair_customer.id
         }
         purchase_vals = {
             'partner_id': self.partner.id,
@@ -298,6 +300,8 @@ class TestAstikarCustom(common.TransactionCase):
         for move in picking.move_lines:
             self.assertEqual(move.state, 'assigned',
                              'Wrong state of move line.')
+            self.move_model._get_invoice_line_vals(move, self.partner,
+                                                   'out_invoice')
         picking.do_transfer()
         self.assertEqual(picking.state, 'done',
                          'Incoming shipment state should be done.')

@@ -23,6 +23,9 @@
                         <field name="warning"/>
                     </page>
                 </xpath>
+                <xpath expr="//notebook//field[@name='invoice_line']/tree/field[@name='account_analytic_id']" position="after">
+                    <field name="repair_id" />
+                </xpath>
             </field>
         </record>
 
