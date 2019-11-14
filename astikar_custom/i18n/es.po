@@ -548,7 +548,7 @@ msgid "Produktua"
 msgstr "Produktua"
 
 #. module: astikar_custom
-#: view:mrp.repair:astikar_custom.mrp_repair_view_form
+#: view:mrp.repair:astikar_custom.mrp_repair_buttons_view_form
 #: field:product.product,purchase_line_ids:0
 msgid "Purchase Lines"
 msgstr "Líneas de compra"
@@ -618,6 +618,12 @@ msgstr "Línea reparación"
 #: model:ir.model,name:astikar_custom.model_mrp_repair
 msgid "Repair Order"
 msgstr "Orden de reparación"
+
+#. module: astikar_custom
+#: field:account.invoice.line,repair_id:0
+#: field:purchase.order.line,repair_id:0
+msgid "Repair Order"
+msgstr "Nº O.T."
 
 #. module: astikar_custom
 #: field:product.product,repair_line_ids:0

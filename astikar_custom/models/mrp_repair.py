@@ -158,6 +158,8 @@ class MrpRepair(models.Model):
         self.ensure_one()
         self = self.with_context(
             default_repair_analytic_id=self.analytic_account.id)
+        purchase_ids = self.env['purchase.order.line'].search(
+            [('repair_id', '=', self.id)]).mapped('order_id').ids
         return {
             'view_type': 'form',
             'view_mode': 'tree,form,graph,calendar',
@@ -165,8 +167,7 @@ class MrpRepair(models.Model):
             'type': 'ir.actions.act_window',
             'search_view_id': self.env.ref(
                 'purchase.view_purchase_order_filter').id,
-            'domain': "[('repair_analytic_id', '=', " +
-            str(self.analytic_account.id) + ")]",
+            'domain': "[('id','in',{})]".format(purchase_ids),
             'context': self.env.context
             }
 
@@ -177,6 +178,8 @@ class MrpRepair(models.Model):
             default_repair_analytic_id=self.analytic_account.id,
             default_type='in_invoice', type='in_invoice',
             journal_type='purchase')
+        invoice_ids = self.env['account.invoice.line'].search(
+            [('repair_id', '=', self.id)]).mapped('invoice_id').ids
         return {
             'view_type': 'form',
             'view_mode': 'tree,form,calendar,graph',
@@ -184,8 +187,7 @@ class MrpRepair(models.Model):
             'type': 'ir.actions.act_window',
             'search_view_id': self.env.ref(
                 'account.view_account_invoice_filter').id,
-            'domain': "[('repair_analytic_id', '=', " +
-            str(self.analytic_account.id) + "), ('type','=','in_invoice')]",
+            'domain': "[('id','in',{})]".format(invoice_ids),
             'context': self.env.context
             }
 
@@ -193,7 +195,10 @@ class MrpRepair(models.Model):
     def action_show_purchase_order_lines(self):
         self.ensure_one()
         self = self.with_context(
-            default_account_analytic_id=self.analytic_account.id)
+            default_account_analytic_id=self.analytic_account.id,
+            default_repair_id=self.id)
+        purchase_line_ids = self.env['purchase.order.line'].search(
+            [('repair_id', '=', self.id)]).ids
         return {
             'view_type': 'form',
             'view_mode': 'tree,form',
@@ -201,8 +206,7 @@ class MrpRepair(models.Model):
             'type': 'ir.actions.act_window',
             'search_view_id': self.env.ref(
                 'purchase.view_purchase_order_filter').id,
-            'domain': "[('account_analytic_id', '=', " +
-            str(self.analytic_account.id) + ")]",
+            'domain': "[('id','in',{})]".format(purchase_line_ids),
             'context': self.env.context
             }
 
@@ -210,7 +214,10 @@ class MrpRepair(models.Model):
     def action_show_account_invoice_lines(self):
         self.ensure_one()
         self = self.with_context(
-            default_account_analytic_id=self.analytic_account.id)
+            default_account_analytic_id=self.analytic_account.id,
+            default_repair_id=self.id)
+        invoice_line_ids = self.env['account.invoice.line'].search(
+            [('repair_id', '=', self.id)]).ids
         return {
             'view_type': 'form',
             'view_mode': 'tree,form,calendar,graph',
@@ -218,9 +225,7 @@ class MrpRepair(models.Model):
             'type': 'ir.actions.act_window',
             'search_view_id': self.env.ref(
                 'account.view_account_invoice_filter').id,
-            'domain': "[('account_analytic_id', '=', " +
-            str(self.analytic_account.id) + "),"
-            "('invoice_id.type', '=', 'in_invoice')]",
+            'domain': "[('id','in',{})]".format(invoice_line_ids),
             'context': self.env.context
             }
 

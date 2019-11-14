@@ -63,6 +63,8 @@ class AccountInvoiceLine(models.Model):
     quantity_2_decimals = fields.Float(
         string='Quantity', compute='_compute_quantity_2_decimals',
         digits=dp.get_precision('Product Price'))
+    repair_id = fields.Many2one(
+        comodel_name='mrp.repair', string="Repair Order")
 
     @api.multi
     def product_id_change(
