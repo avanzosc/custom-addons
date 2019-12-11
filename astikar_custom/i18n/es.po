@@ -1232,3 +1232,13 @@ msgstr "Horas reales"
 #, python-format
 msgid "VAT already exist: {}"
 msgstr "El NIF ya existe: {}"
+
+#. module: astikar_custom
+#: view:mrp.repair.line:astikar_custom.view_account_analytic_account_overdue_search
+msgid "Only Childs"
+msgstr "Solo hijas"
+
+#. module: astikar_custom
+#: view:mrp.repair.line:astikar_custom.view_account_analytic_account_overdue_search
+msgid "Child Accounts"
+msgstr "Cuentas hijas"

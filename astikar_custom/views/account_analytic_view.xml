@@ -22,5 +22,17 @@
             </field>
         </field>
     </record>
+
+    <record model="ir.ui.view" id="view_account_analytic_account_overdue_search">
+        <field name="name">account.analytic.account.search</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="account_analytic_analysis.view_account_analytic_account_overdue_search"/>
+        <field name="arch" type="xml">
+            <filter name="cancelled" position="after">
+                <filter string="Only Childs" help="Child Accounts" domain="[('parent_id', '=', False)]"/>
+            </filter>
+        </field>
+    </record>
+
     </data>
 </openerp>
