@@ -29,7 +29,8 @@
         <field name="inherit_id" ref="account_analytic_analysis.view_account_analytic_account_overdue_search"/>
         <field name="arch" type="xml">
             <filter name="cancelled" position="after">
-                <filter string="Only Childs" help="Child Accounts" domain="[('parent_id', '=', False)]"/>
+                <filter string="Only Childs" help="Child Accounts"
+                domain="[('parent_id', '!=', False),('parent_id', 'not in', (%(res_partner_analytic.customer_analytic_account)d,%(project.all_projects_account)d))]"/>
             </filter>
         </field>
     </record>
