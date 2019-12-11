@@ -330,3 +330,10 @@ class TestAstikarCustom(common.TransactionCase):
         self.mrp_repair.onchange_lot_id()
         self.assertEqual(self.mrp_repair.product_id, self.lot.product_id)
         self.mrp_repair.onchange_product_id(self.product.id)
+
+    def test_analytic_chart(self):
+        chart_obj = self.env['account.analytic.chart']
+        chart = chart_obj.create({'from_date': '2014-10-01',
+                                  'to_date': '2015-04-04', })
+        res = chart.analytic_account_chart_open_window2()
+        self.assertEqual(res['view_type'], 'form')
