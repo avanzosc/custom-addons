@@ -1,0 +1,25 @@
+<openerp>
+    <data>
+        <record id="currency_del_img_inh_astikar_custom" model="ir.ui.view" >
+            <field name="name">currency.del.img.inh.astikar.custom</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="report_webkit.currency_del_img"/>
+            <field name="arch" type="xml">
+                <group string="Configuration (Webkit)" position="before">
+                    <group string="General conditions in Basque" colspan="4">
+                        <field name="general_conditions" nolabel="1" />
+                    </group>
+                    <group string="General conditions in Spanish" colspan="4">
+                        <field name="general_conditions_cas" nolabel="1" />
+                    </group>
+                    <group string="LOPD for Basque reports" colspan="4">
+                        <field name="lopd_eusk_text" nolabel="1" />
+                    </group>
+                    <group string="LOPD for Spanish reports" colspan="4">
+                        <field name="lopd_cast_text" nolabel="1" />
+                    </group>
+                </group>
+            </field>
+        </record>
+    </data>
+</openerp>

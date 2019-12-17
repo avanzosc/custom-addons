@@ -106,8 +106,15 @@ class MrpRepair(models.Model):
                     for tax in line.tax_id:
                         repair.bez = tax.amount * 100
 
+    @api.multi
+    def _get_general_conditions(self):
+        return self.env.user.company_id.general_conditions
+
+    @api.multi
+    def _get_general_conditions_cas(self):
+        return self.env.user.company_id.general_conditions_cas
+
     name = fields.Char(default='/')
-    quotation_notes = fields.Text(default=_defaul_quotation_notes)
     amnt_untaxed = fields.Float(string='Untaxed Amount',
                                 compute='_compute_repair_amount', store=True)
     amnt_tax = fields.Float(string='Taxes', compute='_compute_repair_amount',
@@ -118,7 +125,12 @@ class MrpRepair(models.Model):
     create_date2 = fields.Char(compute='_compute_create_date2')
     bez = fields.Float(
         string="BEZ", compute='_compute_bez', digits=(3, 2))
-    general_conditions = fields.Text(string='General conditions')
+    general_conditions = fields.Text(
+        string='General conditions in Basque',
+        default=_get_general_conditions)
+    general_conditions_cas = fields.Text(
+        string='General conditions in Spanish',
+        default=_get_general_conditions_cas)
     photo1 = fields.Binary(string='Photo 1')
     photo2 = fields.Binary(string='Photo 2')
     photo3 = fields.Binary(string='Photo 3')
@@ -139,6 +151,8 @@ class MrpRepair(models.Model):
                                          'confirmed': [('readonly', False)],
                                          'under_repair': [('readonly', False)],
                                          '2binvoiced': [('readonly', False)]})
+    quotation_notes = fields.Html(
+        string='Quotation Notes', default=_defaul_quotation_notes)
 
     @api.model
     def create(self, vals):

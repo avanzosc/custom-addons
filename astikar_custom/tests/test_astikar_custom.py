@@ -51,8 +51,7 @@ class TestAstikarCustom(common.TransactionCase):
         self.assertTrue(repair.quotation_notes)
         self.assertEqual(repair.quotation_notes,
                          self.env.user.company_id.sale_note)
-        self.assertEqual(repair.quotation_notes,
-                         note)
+        self.assertEqual(repair.quotation_notes, '<p>Test Sale Note</p>')
 
     def test_new_repair_sequence_assign(self):
         name = self._get_next_name()

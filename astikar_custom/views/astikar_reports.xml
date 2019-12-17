@@ -23,6 +23,20 @@
             report_type="qweb-pdf"
             name="astikar_custom.report_mrp_repair_quotation_cas"
             file="astikar_custom.report_mrp_repair_quotation_cas"/>
+        <report
+            string="Orden Trabajo castellano"
+            id="action_report_mrp_repair_cas"
+            model="mrp.repair"
+            report_type="qweb-pdf"
+            name="astikar_custom.report_mrp_repair_cas"
+            file="astikar_custom.report_mrp_repair_cas"/>
+        <report
+            string="Albarán castellano"
+            id="action_report_mrp_repair_picking_cas"
+            model="mrp.repair"
+            report_type="qweb-pdf"
+            name="astikar_custom.report_mrp_repair_picking_cas"
+            file="astikar_custom.report_mrp_repair_picking_cas"/>
     </data>
 
     <data>
@@ -30,7 +44,7 @@
                 <t t-call="astikar_custom.astikar_no_phone_external_layout" >
                     <div class="page">
                         <h3>
-                            <span t-if="o.state != 'draft' and o.proforma == False">PEDIDO Nº:</span>
+                            <span t-if="o.state != 'draft' and o.proforma == False">SOLICITUD Nº.:</span>
                             <span t-if="o.state == 'draft' and o.proforma == False">PRESUPUESTO Nº:</span>
                             <span t-if="o.proforma == True">PROFORMA Nº:</span>
                             <span t-field="o.name"/>
@@ -45,18 +59,18 @@
                                 <strong>UNIDAD:</strong>
                                 <span t-field="o.product_id.name"/>
                                 <p t-if="o.lot_id">
-                                    <strong>Nº SERIE/MATRICULA:</strong>
+                                    <strong>Nª SERIE/MATRICULA:</strong>
                                     <span t-field="o.lot_id.name"/>
                                 </p>
                             </div>
                             <div class="col-xs-4 pull-right">
-                                <strong>Fecha:</strong>
+                                <strong>FECHA:</strong>
                                 <span t-esc="o.create_date2"/>
                             </div>
                         </div>
                         <div>
                             <strong>
-                                <p t-field="o.quotation_notes"/>
+                                <span t-field="o.quotation_notes"/>
                             </strong>
                         </div>
                         <table class="table table-condensed">
@@ -64,20 +78,13 @@
                                 <tr>
                                     <th>DESCRIPCIÓN</th>
                                     <th class="text-right">CANTIDAD</th>
-                                    <th class="text-right">PRECIO €</th>
+                                    <th class="text-right">PRECIO</th>
                                     <th class="text-right">%DTO.</th>
                                     <th class="text-right">IMPORTE</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <t t-if="o.operations">
-                                    <t t-if="not o.proforma">
-                                        <tr>
-                                            <td colspan="5">
-                                                <strong>MATERIAL</strong>
-                                            </td>
-                                        </tr>
-                                    </t>
                                     <tr t-foreach="o.operations" t-as="line">
                                         <t t-if="(line.to_invoice is True)">
                                             <td>
@@ -89,7 +96,8 @@
                                                 <span groups="product.group_uom" t-field="line.product_uom.name"/>
                                             </td>
                                             <td class="text-right">
-                                                <span t-field="line.price_unit"/>
+                                                <span t-field="line.price_unit" t-field-options='{"widget": "monetary", "display_currency":
+                                                    "o.pricelist_id.currency_id"}'/>
                                             </td>
                                             <td class="text-right">
                                                 <span t-field="line.discount"/>
@@ -102,13 +110,6 @@
                                     </tr>
                                 </t>
                                 <t t-if="o.fees_lines">
-                                    <t t-if="not o.proforma">
-                                    <tr>
-                                        <td colspan="5">
-                                            <strong>MANO DE OBRA</strong>
-                                        </td>
-                                    </tr>
-                                    </t>
                                     <tr t-foreach="o.fees_lines" t-as="fees">
                                         <t t-if="fees.to_invoice is True">
                                             <td>
@@ -195,7 +196,7 @@
                                             </div>
                                         </div>
                                         <p>
-                                            <strong>FECHA VENCIMIENTO:</strong>
+                                            <strong>PLAZO DE PAGO:</strong>
                                             <span t-field="o.date_due" />
                                         </p>
                                         <p>
@@ -212,23 +213,42 @@
                                 <div class="row" t-if="o.general_conditions">
                                     <p>
                                         <b>CONDICIONES GENERALES:</b>
-                                        <span t-field="o.general_conditions"/>
+                                        <span t-field="o.general_conditions_cas"/>
                                     </p>
                                 </div>
                                 <div class="row">
                                     <p>
                                         <b>NOTA:</b>
-                                        Si este presupuesto es de su conformidad, agradeceríamos remitiesen el mismo con su
-                                        firma de conformidad o correspondiente pedido.
+                                        Si este presupuesto es de su conformidad, agradeceríamos remitiesen el mismo con su firma de conformidad o correspondiente pedido.
                                     </p>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-6">CONFORME CLIENTE</div>
                                     <div class="col-xs-6">
+                                         CONFORMIDAD CLIENTE
+                                         <br/>
+                                         NOMBRE:
+                                         <br/>
+                                         FECHA:
+                                         <br/>
+                                         D.N.I.:
+                                         <br/>
+                                         <br/>
+                                         <br/>
+                                         <br/>
+                                         <br/>
+                                         FIRMA
+                                    </div>
+                                    <div class="col-xs-2" />
+                                    <div class="col-xs-4">
+                                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
                                         ASTIKAR, S.A.
-                                        <p t-field="o.create_uid.partner_id"/>
-                                        <img t-if="o.create_uid.signature_logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.signature_logo"
-                                            style="max-height:100px;"/>
+                                        <br/>
+                                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                        <img src="/astikar_custom/static/src/img/Firma-y-Sello.png" style="max-height:100px;"/>
                                     </div>
                                 </div>
                             </div>
@@ -251,6 +271,13 @@
                                 <br/>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-xs-12" style="text-align:justify;" t-if="o.company_id.lopd_eusk_text">
+                                <br/>
+                                <br/>
+                                <span t-field="o.company_id.lopd_cast_text" />
+                            </div>
+                        </div>
                     </div>
                 </t>
         </template>
@@ -271,7 +298,7 @@
                         </t>
                         <div class="row mt32 mb32">
                             <div t-if="o.product_id.name" class="col-xs-8">
-                                <strong>UNITATEA:</strong>
+                                <strong>KONZEPTOA:</strong>
                                 <span t-field="o.product_id.name"/>
                                 <p t-if="o.lot_id">
                                     <strong>SERIE ZK/MATRIKULA:</strong>
@@ -285,7 +312,7 @@
                         </div>
                         <div>
                             <strong>
-                                <p t-field="o.quotation_notes"/>
+                                <span t-field="o.quotation_notes"/>
                             </strong>
                         </div>
                         <table class="table table-condensed">
@@ -293,20 +320,13 @@
                                 <tr>
                                     <th>AZALPENA</th>
                                     <th class="text-right">KOPURUA</th>
-                                    <th class="text-right">PREZIOA €</th>
+                                    <th class="text-right">PREZIOA</th>
                                     <th class="text-right">%DTU.</th>
                                     <th class="text-right">ZENBATEKOA</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <t t-if="o.operations">
-                                    <t t-if="not o.proforma">
-                                        <tr>
-                                            <td colspan="5">
-                                                <strong>MATERIAL</strong>
-                                            </td>
-                                        </tr>
-                                    </t>
                                     <tr t-foreach="o.operations" t-as="line">
                                         <t t-if="(line.to_invoice is True)">
                                             <td>
@@ -318,7 +338,8 @@
                                                 <span groups="product.group_uom" t-field="line.product_uom.name"/>
                                             </td>
                                             <td class="text-right">
-                                                <span t-field="line.price_unit"/>
+                                                <span t-field="line.price_unit" t-field-options='{"widget": "monetary", "display_currency":
+                                                    "o.pricelist_id.currency_id"}'/>
                                             </td>
                                             <td class="text-right">
                                                 <span t-field="line.discount"/>
@@ -331,13 +352,6 @@
                                     </tr>
                                 </t>
                                 <t t-if="o.fees_lines">
-                                    <t t-if="not o.proforma">
-                                    <tr>
-                                        <td colspan="5">
-                                            <strong>MANO DE OBRA</strong>
-                                        </td>
-                                    </tr>
-                                    </t>
                                     <tr t-foreach="o.fees_lines" t-as="fees">
                                         <t t-if="fees.to_invoice is True">
                                             <td>
@@ -446,18 +460,37 @@
                                 </div>
                                 <div class="row">
                                     <p>
-                                        <b>NOTA:</b>
-                                        Si este presupuesto es de su conformidad, agradeceríamos remitiesen el mismo con su
-                                        firma de conformidad o correspondiente pedido.
+                                        <b>OHARRA:</b>
+                                        Aurrekontu hau zure onesperekoa bada, genuke zure adostasun sinadurarekin edo dagokion eskaerarekin bidaltzea eskertuko genuke.
                                     </p>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-6">CONFORME CLIENTE</div>
                                     <div class="col-xs-6">
+                                         BEZEROAREN ADOSTASUNA
+                                         <br/>
+                                         IZENA:
+                                         <br/>
+                                         DATA:
+                                         <br/>
+                                         N.A.N.:
+                                         <br/>
+                                         <br/>
+                                         <br/>
+                                         <br/>
+                                         <br/>
+                                         SINADURA
+                                    </div>
+                                    <div class="col-xs-2" />
+                                    <div class="col-xs-4">
+                                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
                                         ASTIKAR, S.A.
-                                        <p t-field="o.create_uid.partner_id"/>
-                                        <img t-if="o.create_uid.signature_logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.signature_logo"
-                                            style="max-height:100px;"/>
+                                        <br/>
+                                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                        <img src="/astikar_custom/static/src/img/Firma-y-Sello.png" style="max-height:100px;"/>
                                     </div>
                                 </div>
                             </div>
@@ -478,6 +511,13 @@
                             <div class="col-xs-12" t-if="o.photo4">
                                 <img t-if="o.photo4" t-att-src="'data:image/png;base64,%s' % o.photo4" />
                                 <br/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12" style="text-align:justify;" t-if="o.company_id.lopd_eusk_text">
+                                <br/>
+                                <br/>
+	                            <span t-field="o.company_id.lopd_eusk_text" />
                             </div>
                         </div>
                     </div>
@@ -505,7 +545,6 @@
                             <table class="table table-condensed astikar">
                                 <thead>
                                     <tr>
-                                        <th>BEZERO KODEA</th>
                                         <th>BEZEROA</th>
                                         <th>I.F.K. / N.A.N.</th>
                                         <th>ORDAINTZEKO ERA</th>
@@ -513,9 +552,6 @@
                                 </thead>
                                 <tbody>
                                     <tr class="astikar_bigger">
-                                        <td>
-                                            <span t-field="o.partner_id.ref" />
-                                        </td>
                                         <td>
                                             <span t-field="o.partner_id.name" />
                                         </td>
@@ -534,8 +570,8 @@
                                     <tr>
                                         <th>HELBIDEA</th>
                                         <th>K.P. - HERRIA</th>
-                                        <th>TELEFONOA</th>
-                                        <th>FAX</th>
+                                        <th>MUGIKORRA</th>
+                                        <th>EPOSTA</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -549,28 +585,17 @@
                                             <span t-field="o.partner_id.city" />
                                         </td>
                                         <td>
-                                            <span t-field="o.partner_id.phone" />
+                                            <span t-field="o.partner_id.mobile" />
                                         </td>
                                         <td>
-                                            <span t-field="o.partner_id.fax" />
+                                            <span t-field="o.partner_id.email" />
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="text-right">
-                                <span>
-                                    <strong>ORDU KOPURUA:</strong>
-                                </span>
-                                <t t-esc="sum(l.product_uom_qty for l in o.fees_lines_to_invoice)"/>
-                                <span>
-                                    <strong>ORD. ERABILTZEKE:</strong>
-                                </span>
-                                <t t-esc="sum(l.product_uom_qty for l in o.fees_lines_to_invoice)- sum(l.product_uom_qty
-                                    for l in o.fees_lines_no_to_invoice)"/>
-                            </div>
                             <p class="astikar_bigger">
                                 <b>
-                                    UNITATEA:
+                                    KONZEPTUA:
                                     <span t-field="o.product_id"/>
                                 </b>
                             </p>
@@ -602,9 +627,152 @@
                                 <table class="table table-condensed astikar" style="width: 100%">
                                     <thead style="background-color: #d3d3d3;">
                                         <tr>
-                                            <th colspan="2" style="width:33%">PLAZO</th>
-                                            <th style="width:33%">CONFORME: CLIENTE</th>
-                                            <th style="width:33%">CONFORME: TALLER</th>
+                                            <th class="text-center" colspan="2" style="width:33%">EPEA</th>
+                                            <th class="text-center" style="width:33%">BEZEROAREN ADOSTASUNA:</th>
+                                            <th class="text-center" style="width:33%">ASTIKAR, S.A.</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <p>
+                                                    <strong>Lanaren hasiera eguna:</strong>
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.start_date"/>
+                                            </td>
+                                            <td rowspan="3">
+                                            </td>
+                                            <td class="text-center" rowspan="3">
+                                                <img src="/astikar_custom/static/src/img/Firma-y-Sello.png" style="max-height:90px;"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>
+                                                    <strong>Entregatzeko eguna:</strong>
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.scheduled_departure_date"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </xpath>
+                        <div class="oe_structure" />
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_mrp_repair_cas_document">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <div class="oe_structure" />
+                            <div class="row">
+                                <div class="col-xs-12 text-right">
+                                    <form>
+                                        <h2>
+                                            ORDEN DE TRABAJO NUM.
+                                            <span t-field="o.name" />
+                                        </h2>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <table class="table table-condensed astikar">
+                                <thead>
+                                    <tr>
+                                        <th>CLIENTE</th>
+                                        <th>I.F.K. / D.N.I.</th>
+                                        <th>MODO DE PAGO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="astikar_bigger">
+                                        <td>
+                                            <span t-field="o.partner_id.name" />
+                                        </td>
+                                        <td>
+                                            <span t-field="o.partner_id.vat" />
+                                        </td>
+                                        <td>
+                                            <span t-field="o.partner_id.customer_payment_mode" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-condensed astikar">
+                                <thead>
+                                    <tr>
+                                        <th>DIRECCIÓN</th>
+                                        <th>C.P. - POBLACIÓN</th>
+                                        <th>MÓVIL</th>
+                                        <th>EMAIL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span t-field="o.partner_id.street" />
+                                        </td>
+                                        <td>
+                                            <span t-field="o.partner_id.zip" />
+                                            -
+                                            <span t-field="o.partner_id.city" />
+                                        </td>
+                                        <td>
+                                            <span t-field="o.partner_id.mobile" />
+                                        </td>
+                                        <td>
+                                            <span t-field="o.partner_id.email" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="astikar_bigger">
+                                <b>
+                                    UNIDAD:
+                                    <span t-field="o.product_id"/>
+                                </b>
+                            </p>
+                            <table class="table table-condensed astikar">
+                                <thead>
+                                    <tr>
+                                        <th>REFERENCIA INTERNA</th>
+                                        <th>Nº SERIE/MATRICULA</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="astikar_bigger">
+                                        <td>
+                                            <span t-field="o.lot_id.ref" />
+                                        </td>
+                                        <td>
+                                            <span t-field="o.lot_id" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div t-if="o.quotation_notes">
+                                <p class="astikar_p">TRABAJOS A REALIZAR</p>
+                                <span t-field="o.quotation_notes" />
+                            </div>
+                        </div>
+                        <xpath expr="//div[@class='footer']" position="replace">
+                            <div class="footer">
+                                <table class="table table-condensed astikar" style="width: 100%">
+                                    <thead style="background-color: #d3d3d3;">
+                                        <tr>
+                                            <th class="text-center" colspan="2" style="width:33%">PLAZO</th>
+                                            <th class="text-center" style="width:33%">CONFORMIDAD CLIENTE:</th>
+                                            <th class="text-center" style="width:33%">ASTIKAR, S.A.</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -619,9 +787,8 @@
                                             </td>
                                             <td rowspan="3">
                                             </td>
-                                            <td rowspan="3">
-                                                <img t-if="o.create_uid.signature_logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.signature_logo"
-                                                    style="max-height:100px;"/>
+                                            <td class="text-center" rowspan="3">
+                                                <img src="/astikar_custom/static/src/img/Firma-y-Sello.png" style="max-height:90px;"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -632,16 +799,6 @@
                                             </td>
                                             <td>
                                                 <span t-field="o.scheduled_departure_date"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <p>
-                                                    <strong>Fecha Real Term.:</strong>
-                                                </p>
-                                            </td>
-                                            <td>
-                                                <p t-field="o.end_date"/>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -666,7 +823,7 @@
                             </h2>
                             <div class="row mt32 mb32">
                                 <div t-if="o.product_id.name" class="col-xs-4">
-                                    <strong>UNITATEA</strong>
+                                    <strong>KONZEPTOA</strong>
                                     <p t-field="o.product_id.name" />
                                 </div>
                                 <div class="col-xs-5" groups="stock.group_production_lot">
@@ -685,12 +842,11 @@
                                 </div>
                             </div>
                             <p class="lanak">EGINDAKO LANAK</p>
-                            <p t-field="o.quotation_notes" />
+                            <spam t-field="o.quotation_notes" />
                             <table class="table table-condensed">
                                 <thead>
                                     <tr>
                                         <th>AZALPENA</th>
-                                        <th class="text-center">B.E.Z</th>
                                         <th class="text-right">KOPURUA</th>
                                         <th class="text-right">PREZIOA</th>
                                         <th class="text-right">ZENBATEKOA</th>
@@ -698,11 +854,6 @@
                                 </thead>
                                 <tbody>
                                     <t t-if="o.operations">
-                                        <tr>
-                                            <td colspan="5">
-                                                <strong>MATERIAL</strong>
-                                            </td>
-                                        </tr>
                                         <tr t-foreach="o.operations" t-as="line">
                                             <t t-if="(line.to_invoice is True)">
                                                 <td>
@@ -710,15 +861,14 @@
                                                         <span t-field="line.name" />
                                                     </p>
                                                 </td>
-                                                <td class="text-center">
-                                                    <span t-esc="','.join(map( lambda x: x.name, line.tax_id))" />
-                                                </td>
                                                 <td class="text-right">
                                                     <span t-field="line.product_uom_qty" />
                                                     <span groups="product.group_uom" t-field="line.product_uom.name" />
                                                 </td>
                                                 <td class="text-right">
-                                                    <span t-field="line.price_unit" />
+                                                    <span t-field="line.price_unit" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                        &quot;display_currency&quot;:
+                                                        &quot;o.pricelist_id.currency_id&quot;}"/>
                                                 </td>
                                                 <td class="text-right">
                                                     <span t-field="line.price_subtotal" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
@@ -730,25 +880,19 @@
                                         </tr>
                                     </t>
                                     <t t-if="o.fees_lines">
-                                        <tr>
-                                            <td colspan="5">
-                                                <strong>MANO DE OBRA</strong>
-                                            </td>
-                                        </tr>
                                         <tr t-foreach="o.fees_lines" t-as="fees">
                                             <t t-if="fees.to_invoice is True">
                                                 <td>
                                                     <span t-field="fees.name" />
-                                                </td>
-                                                <td class="text-center">
-                                                    <span t-esc="','.join(map( lambda x: x.name, fees.tax_id))" />
                                                 </td>
                                                 <td class="text-right">
                                                     <span t-field="fees.product_uom_qty" />
                                                     <span groups="product.group_uom" t-field="fees.product_uom.name" />
                                                 </td>
                                                 <td class="text-right">
-                                                    <span t-field="fees.price_unit" />
+                                                    <span t-field="fees.price_unit" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                        &quot;display_currency&quot;:
+                                                        &quot;o.pricelist_id.currency_id&quot;}"/>
                                                 </td>
                                                 <td class="text-right">
                                                     <span t-field="fees.price_subtotal" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
@@ -777,7 +921,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>B.E.Z.</td>
+                                            <td>B.E.Z. <span t-field="o.bez" />%</td>
                                             <td class="text-right">
                                                 <span t-field="o.amnt_tax" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
                                                     &quot;display_currency&quot;:
@@ -790,22 +934,227 @@
                                                 <strong>GUZTIRA</strong>
                                             </td>
                                             <td class="text-right">
-                                                <span t-field="o.amnt_total" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
-                                                    &quot;display_currency&quot;:
-                                                    &quot;o.pricelist_id.currency_id&quot;}"
+                                                <strong>
+                                                    <span t-field="o.amnt_total" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                        &quot;display_currency&quot;:
+                                                        &quot;o.pricelist_id.currency_id&quot;}"
                                                     />
+                                                </strong>
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
                             </div>
                             <div class="row" style="page-break-inside: avoid">
-                                <div class="col-xs-6">CONFORME CLIENTE</div>
                                 <div class="col-xs-6">
+                                     BEZEROAREN ADOSTASUNA
+                                     <br/>
+                                     IZENA:
+                                     <br/>
+                                     DATA:
+                                     <br/>
+                                     N.A.N.:
+                                     <br/>
+                                     <br/>
+                                     <br/>
+                                     <br/>
+                                     <br/>
+                                     SINADURA
+                                </div>
+                                <div class="col-xs-2" />
+                                <div class="col-xs-4">
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
                                     ASTIKAR, S.A.
-                                    <p t-field="o.create_uid.partner_id"/>
-                                    <img t-if="o.create_uid.signature_logo" t-att-src="'data:image/png;base64,%s' % o.create_uid.signature_logo"
-                                        style="max-height:100px;"/>
+                                    <br/>
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    <img src="/astikar_custom/static/src/img/Firma-y-Sello.png" style="max-height:100px;"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12" style="text-align:justify;" t-if="o.company_id.lopd_eusk_text">
+                                    <br/>
+                                    <br/>
+                                    <span t-field="o.company_id.lopd_eusk_text" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="oe_structure" />
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_mrp_repair_picking_cas_document">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="astikar_custom.astikar_no_phone_external_layout">
+                        <div class="page">
+                            <div class="oe_structure" />
+                            <h2>
+                                <span>ALBARAN Nº:</span>
+                                <span t-field="o.name" />
+                            </h2>
+                            <div class="row mt32 mb32">
+                                <div t-if="o.product_id.name" class="col-xs-4">
+                                    <strong>UNIDAD</strong>
+                                    <p t-field="o.product_id.name" />
+                                </div>
+                                <div class="col-xs-5" groups="stock.group_production_lot">
+                                    <strong>Nº SERIE/MATRICULA</strong>
+                                    <t t-if="o.lot_id">
+                                        <p t-field="o.lot_id.name" />
+                                    </t>
+                                </div>
+                                <div t-if="o.guarantee_limit" class="col-xs-4">
+                                    <strong>Vencimiento garantía:</strong>
+                                    <p t-field="o.guarantee_limit" />
+                                </div>
+                                <div class="col-xs-3">
+                                    <strong>FECHA:</strong>
+                                    <p t-esc="time.strftime('%Y-%m-%d')" />
+                                </div>
+                            </div>
+                            <p class="lanak">TRABAJOS REALIZADOS</p>
+                            <spam t-field="o.quotation_notes" />
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>DESCRIPCIÓN</th>
+                                        <th class="text-right">CANTIDAD</th>
+                                        <th class="text-right">PRECIO</th>
+                                        <th class="text-right">IMPORTE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-if="o.operations">
+                                        <tr t-foreach="o.operations" t-as="line">
+                                            <t t-if="(line.to_invoice is True)">
+                                                <td>
+                                                    <p>
+                                                        <span t-field="line.name" />
+                                                    </p>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-field="line.product_uom_qty" />
+                                                    <span groups="product.group_uom" t-field="line.product_uom.name" />
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-field="line.price_unit" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                        &quot;display_currency&quot;:
+                                                        &quot;o.pricelist_id.currency_id&quot;}"/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-field="line.price_subtotal" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                        &quot;display_currency&quot;:
+                                                        &quot;o.pricelist_id.currency_id&quot;}"
+                                                        />
+                                                </td>
+                                            </t>
+                                        </tr>
+                                    </t>
+                                    <t t-if="o.fees_lines">
+                                        <tr t-foreach="o.fees_lines" t-as="fees">
+                                            <t t-if="fees.to_invoice is True">
+                                                <td>
+                                                    <span t-field="fees.name" />
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-field="fees.product_uom_qty" />
+                                                    <span groups="product.group_uom" t-field="fees.product_uom.name" />
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-field="fees.price_unit" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                        &quot;display_currency&quot;:
+                                                        &quot;o.pricelist_id.currency_id&quot;}"/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-field="fees.price_subtotal" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                        &quot;display_currency&quot;:
+                                                        &quot;o.pricelist_id.currency_id&quot;}"
+                                                        />
+                                                </td>
+                                            </t>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col-xs-4 pull-right" style="page-break-inside: avoid">
+                                    <table class="table table-condensed">
+                                        <tr class="border-black">
+                                            <td>
+                                                <strong>IMPORTE BRUTO</strong>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="o.amnt_untaxed" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                    &quot;display_currency&quot;:
+                                                    &quot;o.pricelist_id.currency_id&quot;}"
+                                                    />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>I.V.A. <span t-field="o.bez" />%</td>
+                                            <td class="text-right">
+                                                <span t-field="o.amnt_tax" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                    &quot;display_currency&quot;:
+                                                    &quot;o.pricelist_id.currency_id&quot;}"
+                                                    />
+                                            </td>
+                                        </tr>
+                                        <tr class="border-black">
+                                            <td>
+                                                <strong>TOTAL</strong>
+                                            </td>
+                                            <td class="text-right">
+                                                <strong>
+                                                    <span t-field="o.amnt_total" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
+                                                        &quot;display_currency&quot;:
+                                                        &quot;o.pricelist_id.currency_id&quot;}"
+                                                    />
+                                                </strong>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row" style="page-break-inside: avoid">
+                                <div class="col-xs-6">
+                                     CONFORMIDAD CLIENTE
+                                     <br/>
+                                     NOMBRE:
+                                     <br/>
+                                     FECHA:
+                                     <br/>
+                                     D.N.I.:
+                                     <br/>
+                                     <br/>
+                                     <br/>
+                                     <br/>
+                                     <br/>
+                                     FIRMA
+                                </div>
+                                <div class="col-xs-2" />
+                                <div class="col-xs-4">
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    ASTIKAR, S.A.
+                                    <br/>
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    <img src="/astikar_custom/static/src/img/Firma-y-Sello.png" style="max-height:100px;"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12" style="text-align:justify;" t-if="o.company_id.lopd_eusk_text">
+                                    <br/>
+                                    <br/>
+                                    <span t-field="o.company_id.lopd_cast_text" />
                                 </div>
                             </div>
                         </div>
@@ -1031,9 +1380,6 @@
             <t t-call="astikar_custom.astikar_no_phone_external_layout" >
                 <div class="page">
                     <h2>
-                        <br/>
-                        <br/>
-                        <br/>
                         <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">FACTURA</span>
                         <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PROFORMA</span>
                         <span t-if="o.type == 'out_invoice' and o.state == 'draft'">FACTURA BORRADOR</span>
@@ -1052,7 +1398,7 @@
                             <span t-field="o.date_invoice"/>
                         </div>
                         <div class="col-xs-4" t-if="o.origin">
-                            <strong>NUM.ALBARAN:</strong>
+                            <strong>Nº ALBARAN:</strong>
                             <span t-field="o.origin"/>
                         </div>
                         <div class="col-xs-4" />
@@ -1060,7 +1406,7 @@
                     <div class="row">
                         <t t-foreach="o.repair_ids" t-as="repairs">
                             <div class="col-xs-4" t-if="repairs.product_id">
-                                <strong>ORDEN REPARACIÓN:</strong>
+                                <strong>ORDEN DE REPARACION:</strong>
                                 <span t-field="repairs.name"/>
                             </div>
                             <div class="col-xs-4" t-if="repairs.product_id">
@@ -1068,7 +1414,7 @@
                                 <span t-field="repairs.product_id.name"/>
                             </div>
                             <div class="col-xs-4" t-if="repairs.lot_id">
-                                <strong>NUM.SERIE/MATRICULA:</strong>
+                                <strong>Nº SERIE/MATRICULA:</strong>
                                 <span t-field="repairs.lot_id"/>
                             </div>
                         </t>
@@ -1152,21 +1498,14 @@
                         </p>
                         <br/>
                     </div>
-                    <div t-if="o.type == 'out_invoice' and o.fiscal_position and o.fiscal_position.note">
-                        <p>
-                            <strong><span t-field="o.fiscal_position.note"/></strong>
-                        </p>
-                        <br/>
-                    </div>
                     <div class="row">
                         <div class="col-xs-4 pull-left" style="border-width: 1px; border-style: solid;font-size: 8px;margin-left: 15px;">
                             <div style="margin-top:10px">
                                <p>
-                                   <strong>FORMA DE PAGO:</strong>
+                                   <strong>MODO DE PAGO:</strong>
                                    <span t-field="o.payment_mode_id" />
                                </p>
                                <div t-if="o.payment_mode_id">
-                                   
                                    <div t-if="'Transferencia bancaria' in o.payment_mode_id.name or 'TRANSFERENCIA BANCARIA' in o.payment_mode_id.name">
                                        <p t-if="o.partner_bank_id">
                                            <strong>CUENTA:</strong>
@@ -1188,7 +1527,7 @@
                                </div>
                                <div t-if="not o.move_id">
                                    <p>
-                                       <strong>FECHA VENCIMIENTO:</strong>
+                                       <strong>FECHA DE VENCIMIENTO:</strong>
                                        <span t-field="o.date_due" />
                                    </p>
                                    <p>
@@ -1201,7 +1540,7 @@
                                    <t t-foreach="o.move_id.line_id.sorted(key=lambda a:(a.date_maturity))" t-as="mline">
                                        <t t-if="mline.account_id == o.account_id">
                                            <p>
-                                               <strong>FECHA VENCIMIENTO:</strong>
+                                               <strong>FECHA DE VENCIMIENTO:</strong>
                                                <span t-field="mline.date_maturity"/>
                                                <strong class="text-right">IMPORTE:</strong>
                                                <span t-field="mline.debit" t-field-options='{"widget": "monetary", "display_currency":
@@ -1738,6 +2077,20 @@
             <t t-call="report.html_container">
                 <t t-foreach="doc_ids" t-as="doc_id">
                     <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'astikar_custom.report_mrp_repair_quotation_cas_document')"/>
+                </t>
+            </t>
+        </template>
+        <template id="report_mrp_repair_cas">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'astikar_custom.report_mrp_repair_cas_document')"/>
+                </t>
+            </t>
+        </template>
+        <template id="report_mrp_repair_picking_cas">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'astikar_custom.report_mrp_repair_picking_cas_document')"/>
                 </t>
             </t>
         </template>

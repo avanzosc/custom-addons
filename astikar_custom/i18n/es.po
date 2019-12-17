@@ -1234,11 +1234,30 @@ msgid "VAT already exist: {}"
 msgstr "El NIF ya existe: {}"
 
 #. module: astikar_custom
-#: view:mrp.repair.line:astikar_custom.view_account_analytic_account_overdue_search
-msgid "Only Childs"
-msgstr "Solo hijas"
+#: view:mrp.repair:astikar_custom.mrp_repair_buttons_view_form
+#: field:mrp.repair,general_conditions:0
+#: view:res.company:astikar_custom.currency_del_img_inh_astikar_custom
+#: field:res.company,general_conditions:0
+msgid "General conditions in Basque"
+msgstr "Condiciones generales en Euskera"
 
 #. module: astikar_custom
-#: view:mrp.repair.line:astikar_custom.view_account_analytic_account_overdue_search
-msgid "Child Accounts"
-msgstr "Cuentas hijas"
+#: view:mrp.repair:astikar_custom.mrp_repair_buttons_view_form
+#: field:mrp.repair,general_conditions_cas:0
+#: view:res.company:astikar_custom.currency_del_img_inh_astikar_custom
+#: field:res.company,general_conditions_cas:0
+msgid "General conditions in Spanish"
+msgstr "Condiciones generales en Castellano"
+
+#. module: astikar_custom
+#: view:res.company:astikar_custom.currency_del_img_inh_astikar_custom
+#: field:res.company,lopd_eusk_text:0
+msgid "LOPD for Basque reports"
+msgstr "LOPD para informes en Euskera"
+
+#. module: astikar_custom
+#: view:res.company:astikar_custom.currency_del_img_inh_astikar_custom
+#: field:res.company,lopd_cast_text:0
+msgid "LOPD for Spanish reports"
+msgstr "LOPD para informes en Castellano"
+
