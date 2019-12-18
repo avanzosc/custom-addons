@@ -4,7 +4,7 @@
 
 {
     "name": "Astikar - Custom",
-    "version": "8.0.3.19.0",
+    "version": "8.0.3.20.0",
     "category": "Custom Module",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -49,7 +49,8 @@
         "stock_valued_picking_report",
         "warning",
         "web",
-        "mrp_repair_estimated_cost"
+        "mrp_repair_estimated_cost",
+        "report_webkit"
     ],
     "data": [
         "views/account_analytic_view.xml",
@@ -66,7 +67,7 @@
         "views/res_users_view.xml",
         "views/stock_history_view.xml",
         "views/stock_quant_view.xml",
-        "wizard/account_analytic_chart_view.xml",
+        "views/res_company_view.xml",
         "report/report_purchase_order.xml",
     ],
     "installable": True,
