@@ -298,7 +298,7 @@
                         </t>
                         <div class="row mt32 mb32">
                             <div t-if="o.product_id.name" class="col-xs-8">
-                                <strong>KONZEPTOA:</strong>
+                                <strong>KONZEPTUA:</strong>
                                 <span t-field="o.product_id.name"/>
                                 <p t-if="o.lot_id">
                                     <strong>SERIE ZK/MATRIKULA:</strong>
@@ -321,7 +321,7 @@
                                     <th>AZALPENA</th>
                                     <th class="text-right">KOPURUA</th>
                                     <th class="text-right">PREZIOA</th>
-                                    <th class="text-right">%DTU.</th>
+                                    <th class="text-right">%DTUA.</th>
                                     <th class="text-right">ZENBATEKOA</th>
                                 </tr>
                             </thead>
@@ -823,7 +823,7 @@
                             </h2>
                             <div class="row mt32 mb32">
                                 <div t-if="o.product_id.name" class="col-xs-4">
-                                    <strong>KONZEPTOA</strong>
+                                    <strong>KONZEPTUA</strong>
                                     <p t-field="o.product_id.name" />
                                 </div>
                                 <div class="col-xs-5" groups="stock.group_production_lot">
