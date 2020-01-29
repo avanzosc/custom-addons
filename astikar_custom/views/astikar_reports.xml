@@ -1372,6 +1372,9 @@
                             </table>
                         </div>
                     </div>
+                    <div t-if="o.partner_id.property_account_position and o.partner_id.property_account_position.note">
+                         <strong><span t-field="o.partner_id.property_account_position.note" /></strong>
+                    </div>
                 </div>
             </t>
         </template>
@@ -1583,6 +1586,9 @@
                                 </tr>
                             </table>
                         </div>
+                    </div>
+                    <div t-if="o.partner_id.property_account_position and o.partner_id.property_account_position.note">
+                         <strong><span t-field="o.partner_id.property_account_position.note" /></strong>
                     </div>
                 </div>
             </t>
