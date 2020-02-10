@@ -125,10 +125,10 @@ class MrpRepair(models.Model):
     create_date2 = fields.Char(compute='_compute_create_date2')
     bez = fields.Float(
         string="BEZ", compute='_compute_bez', digits=(3, 2))
-    general_conditions = fields.Text(
+    general_conditions = fields.Html(
         string='General conditions in Basque',
         default=_get_general_conditions)
-    general_conditions_cas = fields.Text(
+    general_conditions_cas = fields.Html(
         string='General conditions in Spanish',
         default=_get_general_conditions_cas)
     photo1 = fields.Binary(string='Photo 1')

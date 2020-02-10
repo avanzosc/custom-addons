@@ -38,6 +38,7 @@ class AccountInvoice(models.Model):
     bez = fields.Float(string='B.E.Z.', compute='_compute_bez',
                        digits=dp.get_precision('Product Price'))
     vat = fields.Char(string="VAT", related='partner_id.vat', readonly=True)
+    comment = fields.Html(string='Additional Information')
 
     @api.model
     def create(self, vals):

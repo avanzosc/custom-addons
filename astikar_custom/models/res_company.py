@@ -10,9 +10,9 @@ class ResCompany(models.Model):
 
     lopd_eusk_text = fields.Text(string="LOPD for Basque reports")
     lopd_cast_text = fields.Text(string="LOPD for Spanish reports")
-    general_conditions = fields.Text(
+    general_conditions = fields.Html(
         string="General conditions in Basque")
-    general_conditions_cas = fields.Text(
+    general_conditions_cas = fields.Html(
         string="General conditions in Spanish")
     sale_note = fields.Html(
         string="'Default Terms and Conditions", translate=True,
