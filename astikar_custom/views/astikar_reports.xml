@@ -69,9 +69,7 @@
                             </div>
                         </div>
                         <div>
-                            <strong>
-                                <span t-field="o.quotation_notes"/>
-                            </strong>
+                            <t t-raw="o.quotation_notes"/>
                         </div>
                         <table class="table table-condensed">
                             <thead>
@@ -213,7 +211,7 @@
                                 <div class="row" t-if="o.general_conditions">
                                     <p>
                                         <b>CONDICIONES GENERALES:</b>
-                                        <span t-field="o.general_conditions_cas"/>
+                                        <t t-raw="o.general_conditions_cas" />
                                     </p>
                                 </div>
                                 <div class="row">
@@ -311,9 +309,7 @@
                             </div>
                         </div>
                         <div>
-                            <strong>
-                                <span t-field="o.quotation_notes"/>
-                            </strong>
+                            <t t-raw="o.quotation_notes"/>
                         </div>
                         <table class="table table-condensed">
                             <thead>
@@ -455,7 +451,7 @@
                                 <div class="row" t-if="o.general_conditions">
                                     <p>
                                         <b>BALDINTZA OROKORRAK:</b>
-                                        <span t-field="o.general_conditions"/>
+                                        <t t-raw="o.general_conditions"/>
                                     </p>
                                 </div>
                                 <div class="row">
@@ -619,7 +615,7 @@
                             </table>
                             <div t-if="o.quotation_notes">
                                 <p class="astikar_p">EGIN BEHARREKO LANAK</p>
-                                <span t-field="o.quotation_notes" />
+                                <t t-raw="o.quotation_notes" />
                             </div>
                         </div>
                         <xpath expr="//div[@class='footer']" position="replace">
@@ -762,7 +758,7 @@
                             </table>
                             <div t-if="o.quotation_notes">
                                 <p class="astikar_p">TRABAJOS A REALIZAR</p>
-                                <span t-field="o.quotation_notes" />
+                                <t t-raw="o.quotation_notes" />
                             </div>
                         </div>
                         <xpath expr="//div[@class='footer']" position="replace">
@@ -842,7 +838,7 @@
                                 </div>
                             </div>
                             <p class="lanak">EGINDAKO LANAK</p>
-                            <spam t-field="o.quotation_notes" />
+                            <t t-raw="o.quotation_notes" />
                             <table class="table table-condensed">
                                 <thead>
                                     <tr>
@@ -1019,7 +1015,7 @@
                                 </div>
                             </div>
                             <p class="lanak">TRABAJOS REALIZADOS</p>
-                            <spam t-field="o.quotation_notes" />
+                            <t t-raw="o.quotation_notes" />
                             <table class="table table-condensed">
                                 <thead>
                                     <tr>
@@ -1282,7 +1278,7 @@
                         <br/>
                         <p class="lanak">EGINDAKO LANAK</p>
                         <p>
-                            <span t-field="o.comment"/>
+                            <t raw="o.comment"/>
                         </p>
                         <br/>
                     </div>
@@ -1497,7 +1493,7 @@
                         <br/>
                         <p class="lanak">TRABAJOS REALIZADOS</p>
                         <p>
-                            <span t-field="o.comment"/>
+                            <t raw="o.comment"/>
                         </p>
                         <br/>
                     </div>
@@ -1666,7 +1662,7 @@
                         <div t-if="o.comment">
                             <p class="lanak">EGINDAKO LANAK</p>
                             <p>
-                                <span t-field="o.comment"/>
+                                <t raw="o.comment"/>
                             </p>
                         </div>
                         <table class="table table-condensed">
