@@ -1277,9 +1277,8 @@
                     <div t-if="o.comment">
                         <br/>
                         <p class="lanak">EGINDAKO LANAK</p>
-                        <p>
-                            <t raw="o.comment"/>
-                        </p>
+                        <span t-raw="o.comment"/>
+                        <br/>
                         <br/>
                     </div>
                     <div class="row">
@@ -1492,9 +1491,8 @@
                     <div t-if="o.comment">
                         <br/>
                         <p class="lanak">TRABAJOS REALIZADOS</p>
-                        <p>
-                            <t raw="o.comment"/>
-                        </p>
+                        <span t-raw="o.comment"/>
+                        <br/>
                         <br/>
                     </div>
                     <div class="row">
@@ -1660,10 +1658,11 @@
                             </t>
                         </div>
                         <div t-if="o.comment">
+                            <br/>
                             <p class="lanak">EGINDAKO LANAK</p>
-                            <p>
-                                <t raw="o.comment"/>
-                            </p>
+                            <span t-raw="o.comment"/>
+                            <br/>
+                            <br/>
                         </div>
                         <table class="table table-condensed">
                             <thead>
