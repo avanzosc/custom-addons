@@ -10,5 +10,4 @@ from . import product_product
 from . import purchase_order
 from . import res_partner
 from . import sale
-from . import stock_account
-from . import stock_picking
+from . import stock

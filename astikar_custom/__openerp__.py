@@ -68,7 +68,9 @@
         "views/stock_history_view.xml",
         "views/stock_quant_view.xml",
         "views/res_company_view.xml",
+        "views/stock_warehouse_view.xml",
         "report/report_purchase_order.xml",
+        "wizard/wiz_create_excel_quant_view.xml",
     ],
     "installable": True,
 }

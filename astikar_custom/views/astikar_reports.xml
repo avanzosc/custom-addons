@@ -37,6 +37,20 @@
             report_type="qweb-pdf"
             name="astikar_custom.report_mrp_repair_picking_cas"
             file="astikar_custom.report_mrp_repair_picking_cas"/>
+        <report
+            string="Albarán de entrega"
+            id="action_report_mrp_repair_picking_delivery"
+            model="mrp.repair"
+            report_type="qweb-pdf"
+            name="astikar_custom.report_mrp_repair_picking_delivery"
+            file="astikar_custom.report_mrp_repair_picking_delivery"/>
+        <report
+            string="Albarán de entrega castellano"
+            id="action_report_mrp_repair_picking_delivery_cas"
+            model="mrp.repair"
+            report_type="qweb-pdf"
+            name="astikar_custom.report_mrp_repair_picking_delivery_cas"
+            file="astikar_custom.report_mrp_repair_picking_delivery_cas"/>
     </data>
 
     <data>
@@ -230,10 +244,6 @@
                                          <br/>
                                          D.N.I.:
                                          <br/>
-                                         <br/>
-                                         <br/>
-                                         <br/>
-                                         <br/>
                                          FIRMA
                                     </div>
                                     <div class="col-xs-2" />
@@ -251,6 +261,8 @@
                                 </div>
                             </div>
                         </t>
+                        <br/>
+                        <br/>
                         <div class="row">
                             <div class="col-xs-12" t-if="o.photo1">
                                 <img t-if="o.photo1" t-att-src="'data:image/png;base64,%s' % o.photo1" />
@@ -470,10 +482,6 @@
                                          <br/>
                                          N.A.N.:
                                          <br/>
-                                         <br/>
-                                         <br/>
-                                         <br/>
-                                         <br/>
                                          SINADURA
                                     </div>
                                     <div class="col-xs-2" />
@@ -491,6 +499,8 @@
                                 </div>
                             </div>
                         </t>
+                        <br/>
+                        <br/>
                         <div class="row">
                             <div class="col-xs-12" t-if="o.photo1">
                                 <img t-if="o.photo1" t-att-src="'data:image/png;base64,%s' % o.photo1" />
@@ -901,7 +911,6 @@
                                     </t>
                                 </tbody>
                             </table>
-                            
                             <div class="row">
                                 <div class="col-xs-4 pull-right" style="page-break-inside: avoid">
                                     <table class="table table-condensed">
@@ -941,6 +950,81 @@
                                     </table>
                                 </div>
                             </div>
+                            <div class="row" style="page-break-inside: avoid">
+                                <div class="col-xs-6">
+                                     BEZEROAREN ADOSTASUNA
+                                     <br/>
+                                     IZENA:
+                                     <br/>
+                                     DATA:
+                                     <br/>
+                                     N.A.N.:
+                                     <br/>
+                                     <br/>
+                                     <br/>
+                                     <br/>
+                                     <br/>
+                                     SINADURA
+                                </div>
+                                <div class="col-xs-2" />
+                                <div class="col-xs-4">
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    ASTIKAR, S.A.
+                                    <br/>
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    <img src="/astikar_custom/static/src/img/Firma-y-Sello.png" style="max-height:100px;"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12" style="text-align:justify;" t-if="o.company_id.lopd_eusk_text">
+                                    <br/>
+                                    <br/>
+                                    <span t-field="o.company_id.lopd_eusk_text" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="oe_structure" />
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_mrp_repair_picking_delivery_document">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="astikar_custom.astikar_no_phone_external_layout">
+                        <div class="page">
+                            <div class="oe_structure" />
+                            <h2>
+                                <span>ALBARAN ZK:</span>
+                                <span t-field="o.name" />
+                            </h2>
+                            <div class="row mt32 mb32">
+                                <div t-if="o.product_id.name" class="col-xs-4">
+                                    <strong>KONZEPTUA</strong>
+                                    <p t-field="o.product_id.name" />
+                                </div>
+                                <div class="col-xs-5" groups="stock.group_production_lot">
+                                    <strong>SERIE ZK./MATRIKULA</strong>
+                                    <t t-if="o.lot_id">
+                                        <p t-field="o.lot_id.name" />
+                                    </t>
+                                </div>
+                                <div t-if="o.guarantee_limit" class="col-xs-4">
+                                    <strong>Guarantee Limit:</strong>
+                                    <p t-field="o.guarantee_limit" />
+                                </div>
+                                <div class="col-xs-3">
+                                    <strong>DATA:</strong>
+                                    <p t-esc="time.strftime('%Y-%m-%d')" />
+                                </div>
+                            </div>
+                            <p class="lanak">EGINDAKO LANAK</p>
+                            <t t-raw="o.quotation_notes" />
                             <div class="row" style="page-break-inside: avoid">
                                 <div class="col-xs-6">
                                      BEZEROAREN ADOSTASUNA
@@ -1117,6 +1201,81 @@
                                     </table>
                                 </div>
                             </div>
+                            <div class="row" style="page-break-inside: avoid">
+                                <div class="col-xs-6">
+                                     CONFORMIDAD CLIENTE
+                                     <br/>
+                                     NOMBRE:
+                                     <br/>
+                                     FECHA:
+                                     <br/>
+                                     D.N.I.:
+                                     <br/>
+                                     <br/>
+                                     <br/>
+                                     <br/>
+                                     <br/>
+                                     FIRMA
+                                </div>
+                                <div class="col-xs-2" />
+                                <div class="col-xs-4">
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    ASTIKAR, S.A.
+                                    <br/>
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                    <img src="/astikar_custom/static/src/img/Firma-y-Sello.png" style="max-height:100px;"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12" style="text-align:justify;" t-if="o.company_id.lopd_eusk_text">
+                                    <br/>
+                                    <br/>
+                                    <span t-field="o.company_id.lopd_cast_text" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="oe_structure" />
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_mrp_repair_picking_delivery_cas_document">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="astikar_custom.astikar_no_phone_external_layout">
+                        <div class="page">
+                            <div class="oe_structure" />
+                            <h2>
+                                <span>ALBARAN Nº:</span>
+                                <span t-field="o.name" />
+                            </h2>
+                            <div class="row mt32 mb32">
+                                <div t-if="o.product_id.name" class="col-xs-4">
+                                    <strong>UNIDAD</strong>
+                                    <p t-field="o.product_id.name" />
+                                </div>
+                                <div class="col-xs-5" groups="stock.group_production_lot">
+                                    <strong>Nº SERIE/MATRICULA</strong>
+                                    <t t-if="o.lot_id">
+                                        <p t-field="o.lot_id.name" />
+                                    </t>
+                                </div>
+                                <div t-if="o.guarantee_limit" class="col-xs-4">
+                                    <strong>Vencimiento garantía:</strong>
+                                    <p t-field="o.guarantee_limit" />
+                                </div>
+                                <div class="col-xs-3">
+                                    <strong>FECHA:</strong>
+                                    <p t-esc="time.strftime('%Y-%m-%d')" />
+                                </div>
+                            </div>
+                            <p class="lanak">TRABAJOS REALIZADOS</p>
+                            <t t-raw="o.quotation_notes" />
                             <div class="row" style="page-break-inside: avoid">
                                 <div class="col-xs-6">
                                      CONFORMIDAD CLIENTE
@@ -1861,7 +2020,11 @@
                                         <span t-field="move.product_uom" groups="product.group_uom"/>
                                     </t>
                                 </td>
-                                <t t-if="o.picking_type_id.code == 'outgoing'"><td class="text-right"><span t-field="move.procurement_id.sale_line_id.price_unit"/></td></t>
+                                <t t-if="o.picking_type_id.code == 'outgoing'">
+                                    <td class="text-right">
+                                        <span t-field="move.procurement_id.sale_line_id.price_unit"/>
+                                    </td>
+                                </t>
                                 <t t-if="o.picking_type_id.code == 'outgoing'">
                                     <td class="text-right">
                                         <t t-foreach="move.procurement_id.sale_line_id.tax_id" t-as="tax">
@@ -1869,7 +2032,28 @@
                                         </t>
                                     </td>
                                 </t>
-                                <t t-if="o.picking_type_id.code == 'outgoing'"><td class="text-right"><span t-field="move.sale_price_subtotal" /></td></t>
+                                <t t-if="o.picking_type_id.code == 'outgoing'">
+                                    <td class="text-right">
+                                        <span t-field="move.sale_price_subtotal" />
+                                    </td>
+                                </t>
+                                <t t-if="o.picking_type_id.code == 'incoming' and move.purchase_line_id">
+                                    <td class="text-right">
+                                        <span t-field="move.purchase_line_id.price_unit"/>
+                                    </td>
+                                </t>
+                                <t t-if="o.picking_type_id.code == 'incoming' and move.purchase_line_id">
+                                    <td class="text-right">
+                                        <t t-foreach="move.purchase_line_id.taxes_id" t-as="tax">
+                                            <span t-field="tax.name" />
+                                        </t>
+                                    </td>
+                                </t>
+                                <t t-if="o.picking_type_id.code == 'incoming' and move.purchase_line_id">
+                                    <td class="text-right">
+                                        <span t-field="move.purchase_line_id.price_subtotal" />
+                                    </td>
+                                </t>
                             </t>
                         </tr>
                     </tbody>
@@ -1920,9 +2104,11 @@
                                         <span t-field="move_operation.move_id.product_uom_id" groups="product.group_uom"/>
                                     </t>
                                 </td>
-                                <td class="text-right">
-                                    <span t-field="move_operation.move_id.procurement_id.sale_line_id.price_unit" />
-                                </td>
+                                <t t-if="o.picking_type_id.code == 'outgoing'">
+                                    <td class="text-right">
+                                        <span t-field="move_operation.move_id.procurement_id.sale_line_id.price_unit" />
+                                    </td>
+                                </t>
                                 <t t-if="o.picking_type_id.code == 'outgoing'">
                                     <td class="text-right">
                                         <t t-foreach="move_operation.move_id.procurement_id.sale_line_id.tax_id" t-as="tax">
@@ -1930,9 +2116,28 @@
                                         </t>
                                     </td>
                                 </t>
-                                <td class="text-right">
-                                    <span t-field="move_operation.move_id.sale_price_subtotal" />
-                                </td>
+                                <t t-if="o.picking_type_id.code == 'outgoing'">
+                                    <td class="text-right">
+                                        <span t-field="move_operation.move_id.sale_price_subtotal" />
+                                    </td>
+                                </t>
+                                <t t-if="o.picking_type_id.code == 'incoming' and move_operation.move_id.purchase_line_id">
+                                    <td class="text-right">
+                                        <span t-field="move_operation.move_id.purchase_line_id.price_unit" />
+                                    </td>
+                                </t>
+                                <t t-if="o.picking_type_id.code == 'outgoing' and move_operation.move_id.purchase_line_id">
+                                    <td class="text-right">
+                                        <t t-foreach="move_operation.move_id.purchase_line_id.taxes_id" t-as="tax">
+                                            <span t-field="tax.name" />
+                                        </t>
+                                    </td>
+                                </t>
+                                <t t-if="o.picking_type_id.code == 'outgoing' and move_operation.move_id.purchase_line_id">
+                                    <td class="text-right">
+                                        <span t-field="move_operation.move_id.purchase_line_id.price_subtotal" />
+                                    </td>
+                                </t>
                             </tr>
                         </t>
                     </tbody>
@@ -1944,21 +2149,42 @@
                         <table class="table table-condensed">
                             <tr class="border-black">
                                 <td><strong>Oinarri zergagarria</strong></td>
-                                <td class="text-right">
-                                    <span t-field="o.amount_untaxed"/>
-                                </td>
+                                <t t-if="o.picking_type_id.code == 'outgoing'">
+                                    <td class="text-right">
+                                        <span t-field="o.amount_untaxed"/>
+                                    </td>
+                                </t>
+                                <t t-if="o.picking_type_id.code == 'incoming' and o.move_lines and o.move_lines[0].purchase_line_id">
+                                    <td class="text-right">
+                                        <span t-field="o.move_lines[0].purchase_line_id.order_id.amount_untaxed"/>
+                                    </td>
+                                </t>
                             </tr>
                             <tr>
                                 <td>B.E.Z.</td>
-                                <td class="text-right">
-                                    <span t-field="o.amount_tax"/>
-                                </td>
+                                <t t-if="o.picking_type_id.code == 'outgoing'">
+                                    <td class="text-right">
+                                        <span t-field="o.amount_tax"/>
+                                    </td>
+                                </t>
+                                <t t-if="o.picking_type_id.code == 'incoming' and o.move_lines and o.move_lines[0].purchase_line_id">
+                                    <td class="text-right">
+                                        <span t-field="o.move_lines[0].purchase_line_id.order_id.amount_tax"/>
+                                    </td>
+                                </t>
                             </tr>
                             <tr class="border-black">
                                 <td><strong>Guztira</strong></td>
-                                <td class="text-right">
-                                    <span t-field="o.amount_total" />
-                                </td>
+                                <t t-if="o.picking_type_id.code == 'outgoing'">
+                                    <td class="text-right">
+                                        <span t-field="o.amount_total" />
+                                    </td>
+                                </t>
+                                <t t-if="o.picking_type_id.code == 'incoming' and o.move_lines and o.move_lines[0].purchase_line_id">
+                                    <td class="text-right">
+                                        <span t-field="o.move_lines[0].purchase_line_id.order_id.amount_total" />
+                                    </td>
+                                </t>
                             </tr>
                         </table>
                     </div>
@@ -2092,6 +2318,20 @@
             <t t-call="report.html_container">
                 <t t-foreach="doc_ids" t-as="doc_id">
                     <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'astikar_custom.report_mrp_repair_picking_cas_document')"/>
+                </t>
+            </t>
+        </template>
+        <template id="report_mrp_repair_picking_delivery">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'astikar_custom.report_mrp_repair_picking_delivery_document')"/>
+                </t>
+            </t>
+        </template>
+        <template id="report_mrp_repair_picking_delivery_cas">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'astikar_custom.report_mrp_repair_picking_delivery_cas_document')"/>
                 </t>
             </t>
         </template>

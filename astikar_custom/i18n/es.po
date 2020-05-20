@@ -1261,3 +1261,13 @@ msgstr "LOPD para informes en Euskera"
 msgid "LOPD for Spanish reports"
 msgstr "LOPD para informes en Castellano"
 
+#. module: astikar_custom
+#: view:wiz.create.excel.quant:astikar_custom.wiz_create_excel_quant_form
+msgid "Generate excel"
+msgstr "Generar excel"
+
+#. module: astikar_custom
+#: view:stock.warehouse:astikar_custom.view_warehouse_inh_astikar_custom
+msgid "Excel with quants information"
+msgstr "Excel con información de quants"
+
