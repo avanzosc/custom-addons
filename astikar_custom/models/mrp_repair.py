@@ -161,6 +161,24 @@ class MrpRepair(models.Model):
         return super(MrpRepair, self).create(vals)
 
     @api.multi
+    def write(self, vals):
+        result = super(MrpRepair, self).write(vals)
+        if 'end_date' in vals and vals.get('end_date', False):
+            for repair in self:
+                cond = [('origin', '=', repair.name)]
+                moves = self.env['stock.move'].search(cond)
+                if moves:
+                    moves.write({'date': vals.get('end_date')})
+                    for move in moves:
+                        my_date = fields.Datetime.from_string(move.date)
+                        today = fields.Datetime.from_string(
+                            fields.Datetime.now())
+                        my_date = my_date.replace(
+                            hour=today.hour, minute=today.minute)
+                        move.write({'date': my_date})
+        return result
+
+    @api.multi
     def copy(self, default=None):
         if default is None:
             default = {}

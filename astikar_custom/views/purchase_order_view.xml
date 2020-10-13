@@ -6,6 +6,9 @@
             <field name="model">purchase.order</field>
             <field name="inherit_id" ref="purchase.purchase_order_form"/>
             <field name="arch" type="xml">
+                <field name="partner_id" position="attributes">
+                        <attribute name="domain">[('is_company', '!=', False)]</attribute>
+                </field>
                 <field name="partner_id" position="after">
                     <field name="vat"/>
                 </field>
@@ -13,7 +16,7 @@
                     <field name="repair_analytic_id" groups="analytic.group_analytic_accounting"  domain="[('type','!=','view'), ('company_id', '=', company_id), ('state','not in',('close','cancelled'))]"/>
                 </field>
                 <field name="order_line" position="attributes">
-                    <attribute name="context">{'default_account_analytic_id': repair_analytic_id}</attribute>
+                    <attribute name="context">{'pricelist_id': pricelist_id, 'default_date_planned': date_order,'default_account_analytic_id': repair_analytic_id}</attribute>
                 </field>
                 <xpath expr="//tree/field[@name='account_analytic_id']" position="after">
                     <field name="repair_id" />
