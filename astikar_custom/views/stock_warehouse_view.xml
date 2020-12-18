@@ -1,0 +1,20 @@
+<openerp>
+    <data>
+        <record id="view_warehouse_inh_astikar_custom" model="ir.ui.view" >
+            <field name="name">view.warehouse.inh.astikar.custom</field>
+            <field name="model">stock.warehouse</field>
+            <field name="inherit_id" ref="stock.view_warehouse"/>
+            <field name="arch" type="xml">
+                <page string="Technical Information" position="after">
+                    <page string="Excel with quants information">
+                        <group>
+                            <field name="quant_excel_file_name" invisible="1"/>
+                            <field name="quant_excel_file_data"
+                                    nolabel="1" filename="quant_excel_file_name"/>
+                        </group>
+                    </page>
+                </page>
+            </field>
+        </record>
+    </data>
+</openerp>

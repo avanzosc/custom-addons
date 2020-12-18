@@ -2,7 +2,7 @@
 # Copyright 2018 Daniel Campos - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.htm
 
-from openerp import api, models
+from openerp import api, models, fields
 
 
 class StockPicking(models.Model):
@@ -41,6 +41,13 @@ class StockPicking(models.Model):
                     repair_line_obj.create(line_values)
         return res
 
+    @api.multi
+    @api.onchange('date')
+    def onchange_date(self):
+        for picking in self.filtered(
+                lambda x: x.picking_type_id.code == 'incoming' and x.date):
+            picking.min_date = picking.date
+
 
 class StockMove(models.Model):
     _inherit = 'stock.move'
@@ -52,3 +59,25 @@ class StockMove(models.Model):
         if move.purchase_line_id.repair_id:
             res['repair_id'] = move.purchase_line_id.repair_id.id
         return res
+
+    @api.multi
+    def write(self, vals):
+        found = False
+        if ('state' in vals and vals.get('state', False) == 'done' and
+                'date' in vals):
+            for move in self:
+                if (move.picking_id and move.picking_id.picking_type_id and
+                        move.picking_id.picking_type_id.code == 'incoming'):
+                    found = True
+        if found:
+            vals.pop('date')
+        result = super(StockMove, self).write(vals)
+
+        return result
+
+
+class StockWarehouse(models.Model):
+    _inherit = 'stock.warehouse'
+
+    quant_excel_file_data = fields.Binary('File')
+    quant_excel_file_name = fields.Char('Filename')

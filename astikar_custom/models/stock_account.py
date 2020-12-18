@@ -129,3 +129,20 @@ class StockQuant(models.Model):
         string="Standard Value", store=True, compute="_compute_standard_value",
         digits=dp.get_precision('Product Price'))
     categ_id = fields.Many2one(related='product_id.categ_id', store=True)
+    product_tmpl_id = fields.Many2one(
+        string='Product template', comodel_name='product.template',
+        related='product_id.product_tmpl_id', store=True)
+
+    @api.model
+    def _quant_create(self, qty, move, lot_id=False, owner_id=False,
+                      src_package_id=False, dest_package_id=False,
+                      force_location_from=False, force_location_to=False):
+        quant = super(StockQuant, self)._quant_create(
+            qty, move, lot_id=lot_id, owner_id=owner_id,
+            src_package_id=src_package_id, dest_package_id=dest_package_id,
+            force_location_from=force_location_from,
+            force_location_to=force_location_to)
+        if (move.picking_id and move.picking_id.picking_type_id and
+                move.picking_id.picking_type_id.code == 'incoming'):
+            quant.in_date = move.picking_id.date
+        return quant
