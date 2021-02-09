@@ -1261,3 +1261,19 @@ msgstr "LOPD para informes en Euskera"
 msgid "LOPD for Spanish reports"
 msgstr "LOPD para informes en Castellano"
 
+#. module: astikar_custom
+#: view:wiz.create.excel.quant:astikar_custom.wiz_create_excel_quant_form
+msgid "Generate excel"
+msgstr "Generar excel"
+
+#. module: astikar_custom
+#: view:stock.warehouse:astikar_custom.view_warehouse_inh_astikar_custom
+msgid "Excel with quants information"
+msgstr "Excel con información de quants"
+
+#. module: astikar_custom
+#: code:addons/astikar_custom/models/purchase_order.py:34
+#, python-format
+msgid "You cannot add lines to this purchase order. The purchase lines with product: %s, is associated with the repair order: %s, and its status is completed, or to be invoiced."
+msgstr "No puede añadir líneas a este pedido de compr. La línea de compra con producto: %s, esta asociada con la órden de reparación: %s, y su estado es realizado, o a facturar."
+

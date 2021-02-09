@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="wiz_create_excel_quant_form">
+            <field name="name">wiz.create.excel.quant.form</field>
+            <field name="model">wiz.create.excel.quant</field>
+            <field name="arch" type="xml">
+                <form string="Crear excel con informacion de quants" version="7.0">
+                    <footer>
+                        <button name="button_create_excel" type="object"
+                            string="Generate excel" class="oe_highlight" />
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <act_window id="action_wiz_create_excel_quant"
+            key2="client_action_multi" name="Crear excel"
+            res_model="wiz.create.excel.quant" src_model="stock.quant"
+            view_mode="form" target="new" />
+    </data>
+</openerp>

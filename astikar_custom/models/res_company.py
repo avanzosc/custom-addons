@@ -17,3 +17,5 @@ class ResCompany(models.Model):
     sale_note = fields.Html(
         string="'Default Terms and Conditions", translate=True,
         help="Default terms and conditions for quotations.")
+    quant_excel_file_data = fields.Binary('File')
+    quant_excel_file_name = fields.Char('Filename')

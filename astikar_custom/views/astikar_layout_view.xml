@@ -40,7 +40,7 @@
                 </div>
             </xpath>
         </template>
-        
+
         <template id="astikar_no_phone_external_layout">
             <!-- Multicompany -->
             <t t-if="o and 'company_id' in o">
@@ -56,6 +56,37 @@
             <t t-raw="0" />
             <t t-call="report.external_layout_footer" />
         </template>
+
+        <template id="astikar_no_phone_external_layout_mrp_repair_quotation_eus">
+            <!-- Multicompany -->
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id">
+                </t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company">
+                </t>
+            </t>
+            <t t-call="astikar_custom.astikar_external_layout_header_no_phone_mrp_repair_quotation_eus" />
+            <t t-raw="0" />
+            <t t-call="report.external_layout_footer" />
+        </template>
+
+        <template id="astikar_no_phone_external_layout_mrp_repair_quotation_cas">
+            <!-- Multicompany -->
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id">
+                </t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company">
+                </t>
+            </t>
+            <t t-call="astikar_custom.astikar_external_layout_header_no_phone_mrp_repair_quotation_cas" />
+            <t t-raw="0" />
+            <t t-call="report.external_layout_footer" />
+        </template>
+
         <template id="astikar_external_layout_header_no_phone">
             <div class="header">
                 <div class="row">
@@ -114,6 +145,144 @@
                                 <span t-field="o.partner_id.vat"/>
                             </p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="astikar_external_layout_header_no_phone_mrp_repair_quotation_eus">
+            <div class="header">
+                <div class="row">
+                    <div class="col-xs-7">
+                        <img src="/astikar_custom/static/src/img/astikar.png"/>
+                        <div style="margin-left:15px;">
+                            <address class="mb0 astikar_header" itemscope="itemscope" itemtype="http://schema.org/Organization">
+                                <span t-field="company.partner_id.street" />
+                                <br />
+                                <div class="col-xs-12" style="padding-left:0px;">
+                                    <div class="col-xs-6" style="padding-left:0px;">
+                                        <span t-field="company.partner_id.street2" />
+                                        <br />
+                                        <span t-field="company.partner_id.zip" />
+                                        -
+                                        <span t-field="company.partner_id.city" />
+                                        (
+                                        <span t-field="company.partner_id.state_id" />
+                                        )
+                                        <br />
+                                    </div>
+                                    <div class="col-xs-6" style="padding-left:0px;">
+                                        Tel.:
+                                        <span t-field="company.partner_id.phone"/>
+                                        <br />
+                                        Fax:
+                                        <span t-field="company.partner_id.fax" />
+                                    </div>
+                                </div>
+                            </address>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 pull-right">
+                        <div t-if="o.partner_id">
+                            <br/>
+                            <br/>
+                            <span t-field="o.partner_id.name"/>
+                            <br />
+                            <span t-field="o.partner_id.street"/>
+                            <br />
+                            <span t-field="o.partner_id.zip" />
+                            -
+                            <span t-field="o.partner_id.city" />
+                            <span t-if="o.partner_id.state_id">
+                                (
+                                <span t-field="o.partner_id.state_id"/>
+                                )
+                            </span>
+                            <br />
+                            <div t-if="(o.partner_id.country_id.id != %(base.es)d)">
+                                <span t-field="o.partner_id.country_id"/>
+                            </div>
+                            <br />
+                            <p t-if="o.partner_id.vat">
+                                VAT:
+                                <span t-field="o.partner_id.vat"/>
+                            </p>
+                        </div>
+                        <strong>
+                            <span t-if="o.state != 'draft' and o.proforma == False">ESKAERA ZK:</span>
+                            <span t-if="o.state == 'draft' and o.proforma == False">AURREKONTU ZK:</span>
+                            <span t-if="o.proforma == True">PROFORMA ZKº:</span>
+                            <span t-field="o.name"/>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="astikar_external_layout_header_no_phone_mrp_repair_quotation_cas">
+            <div class="header">
+                <div class="row">
+                    <div class="col-xs-7">
+                        <img src="/astikar_custom/static/src/img/astikar.png"/>
+                        <div style="margin-left:15px;">
+                            <address class="mb0 astikar_header" itemscope="itemscope" itemtype="http://schema.org/Organization">
+                                <span t-field="company.partner_id.street" />
+                                <br />
+                                <div class="col-xs-12" style="padding-left:0px;">
+                                    <div class="col-xs-6" style="padding-left:0px;">
+                                        <span t-field="company.partner_id.street2" />
+                                        <br />
+                                        <span t-field="company.partner_id.zip" />
+                                        -
+                                        <span t-field="company.partner_id.city" />
+                                        (
+                                        <span t-field="company.partner_id.state_id" />
+                                        )
+                                        <br />
+                                    </div>
+                                    <div class="col-xs-6" style="padding-left:0px;">
+                                        Tel.:
+                                        <span t-field="company.partner_id.phone"/>
+                                        <br />
+                                        Fax:
+                                        <span t-field="company.partner_id.fax" />
+                                    </div>
+                                </div>
+                            </address>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 pull-right">
+                        <div t-if="o.partner_id">
+                            <br/>
+                            <br/>
+                            <span t-field="o.partner_id.name"/>
+                            <br />
+                            <span t-field="o.partner_id.street"/>
+                            <br />
+                            <span t-field="o.partner_id.zip" />
+                            -
+                            <span t-field="o.partner_id.city" />
+                            <span t-if="o.partner_id.state_id">
+                                (
+                                <span t-field="o.partner_id.state_id"/>
+                                )
+                            </span>
+                            <br />
+                            <div t-if="(o.partner_id.country_id.id != %(base.es)d)">
+                                <span t-field="o.partner_id.country_id"/>
+                            </div>
+                            <br />
+                            <p t-if="o.partner_id.vat">
+                                VAT:
+                                <span t-field="o.partner_id.vat"/>
+                            </p>
+                        </div>
+                        <strong>
+                            <span t-if="o.state != 'draft' and o.proforma == False">SOLICITUD Nº.:</span>
+                            <span t-if="o.state == 'draft' and o.proforma == False">PRESUPUESTO Nº:</span>
+                            <span t-if="o.proforma == True">PROFORMA Nº:</span>
+                            <span t-field="o.name"/>
+                        </strong>
                     </div>
                 </div>
             </div>
