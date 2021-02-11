@@ -6,6 +6,9 @@
             <field name="inherit_id" ref="report_webkit.currency_del_img"/>
             <field name="arch" type="xml">
                 <group string="Configuration (Webkit)" position="before">
+                    <group string="Notes for out invoices" colspan="4">
+                        <field name="note_for_out_invoice" nolabel="1" />
+                    </group>
                     <group string="General conditions in Basque" colspan="4">
                         <field name="general_conditions" nolabel="1" />
                     </group>

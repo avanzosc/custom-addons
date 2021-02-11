@@ -19,3 +19,5 @@ class ResCompany(models.Model):
         help="Default terms and conditions for quotations.")
     quant_excel_file_data = fields.Binary('File')
     quant_excel_file_name = fields.Char('Filename')
+    note_for_out_invoice = fields.Html(
+        string='Notes for out invoices')

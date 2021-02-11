@@ -1277,3 +1277,9 @@ msgstr "Excel con información de quants"
 msgid "You cannot add lines to this purchase order. The purchase lines with product: %s, is associated with the repair order: %s, and its status is completed, or to be invoiced."
 msgstr "No puede añadir líneas a este pedido de compr. La línea de compra con producto: %s, esta asociada con la órden de reparación: %s, y su estado es realizado, o a facturar."
 
+#. module: astikar_custom
+#: view:res.company:astikar_custom.currency_del_img_inh_astikar_custom
+#: field:res.company,note_for_out_invoice:0
+msgid "Notes for out invoices"
+msgstr "Notas para facturas de clientes"
+
