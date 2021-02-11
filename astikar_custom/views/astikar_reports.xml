@@ -1449,13 +1449,6 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div t-if="o.comment">
-                        <br/>
-                        <p class="lanak">EGINDAKO LANAK</p>
-                        <span t-raw="o.comment"/>
-                        <br/>
-                        <br/>
-                    </div>
                     <div class="row">
                         <div class="col-xs-4 pull-left" style="border-width: 1px; border-style: solid;font-size: 8px;margin-left: 15px;">
                             <div style="margin-top:10px">
@@ -1675,13 +1668,6 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div t-if="o.comment">
-                        <br/>
-                        <p class="lanak">TRABAJOS REALIZADOS</p>
-                        <span t-raw="o.comment"/>
-                        <br/>
-                        <br/>
-                    </div>
                     <div class="row">
                         <div class="col-xs-4 pull-left" style="border-width: 1px; border-style: solid;font-size: 8px;margin-left: 15px;">
                             <div style="margin-top:10px">

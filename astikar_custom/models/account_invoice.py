@@ -25,6 +25,13 @@ class AccountInvoice(models.Model):
             if lines and lines[0].invoice_line_tax_id.type != 'percent':
                 invoice.bez = lines[0].invoice_line_tax_id.amount
 
+    @api.multi
+    def _get_notes(self):
+        if ('type' in self.env.context and
+            self.env.context.get('type', False) == 'out_invoice'):
+            return self.env.user.company_id.note_for_out_invoice
+        return False
+
     repair_analytic_id = fields.Many2one(
         comodel_name='account.analytic.account',
         string="Repair Analytic Account")
@@ -39,7 +46,7 @@ class AccountInvoice(models.Model):
                        digits=dp.get_precision('Product Price'))
     vat = fields.Char(string="VAT", related='partner_id.vat', readonly=True)
     comment = fields.Html(string='Additional Information')
-    notes = fields.Html(string='Notes')
+    notes = fields.Html(string='Notes', default=_get_notes)
 
     @api.model
     def create(self, vals):
