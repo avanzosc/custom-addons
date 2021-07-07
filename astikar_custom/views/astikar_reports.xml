@@ -151,7 +151,7 @@
                                 <table class="table table-condensed">
                                     <tr class="border-black">
                                         <td>
-                                            <strong>IMPORTE BRUTO</strong>
+                                            <strong>BASE IMPONIBLE</strong>
                                         </td>
                                         <td class="text-right">
                                             <span t-field="o.amnt_untaxed" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
@@ -1176,7 +1176,7 @@
                                     <table class="table table-condensed">
                                         <tr class="border-black">
                                             <td>
-                                                <strong>IMPORTE BRUTO</strong>
+                                                <strong>BASE IMPONIBLE</strong>
                                             </td>
                                             <td class="text-right">
                                                 <span t-field="o.amnt_untaxed" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,
@@ -1450,7 +1450,7 @@
                         </tbody>
                     </table>
                     <div class="row">
-                        <div class="col-xs-4 pull-left" style="border-width: 1px; border-style: solid;font-size: 8px;margin-left: 15px;">
+                        <div class="col-xs-4 pull-left" style="border-width: 1px; border-style: solid;font-size: 10px;margin-left: 15px;">
                             <div style="margin-top:10px">
                                <p>
                                    <strong>ORDAINTZEKO ERA:</strong>
@@ -1669,7 +1669,7 @@
                         </tbody>
                     </table>
                     <div class="row">
-                        <div class="col-xs-4 pull-left" style="border-width: 1px; border-style: solid;font-size: 8px;margin-left: 15px;">
+                        <div class="col-xs-4 pull-left" style="border-width: 1px; border-style: solid;font-size: 10px;margin-left: 15px;">
                             <div style="margin-top:10px">
                                <p>
                                    <strong>MODO DE PAGO:</strong>
@@ -1726,7 +1726,7 @@
                             <table class="table table-condensed">
                                 <tr class="border-black">
                                     <td>
-                                        <strong>IMPORTE BRUTO</strong>
+                                        <strong>BASE IMPONIBLE</strong>
                                     </td>
                                     <td class="text-right">
                                         <span t-field="o.amount_untaxed" t-field-options='{"widget": "monetary", "display_currency":
