@@ -1450,7 +1450,7 @@
                         </tbody>
                     </table>
                     <div class="row">
-                        <div class="col-xs-4 pull-left" style="border-width: 1px; border-style: solid;font-size: 10px;margin-left: 15px;">
+                        <div class="col-xs-6 pull-left" style="border-width: 1px; border-style: solid;font-size: 12px;margin-left: 15px;">
                             <div style="margin-top:10px">
                                <p>
                                    <strong>ORDAINTZEKO ERA:</strong>
@@ -1669,7 +1669,7 @@
                         </tbody>
                     </table>
                     <div class="row">
-                        <div class="col-xs-4 pull-left" style="border-width: 1px; border-style: solid;font-size: 10px;margin-left: 15px;">
+                        <div class="col-xs-6 pull-left" style="border-width: 1px; border-style: solid;font-size: 12px;margin-left: 15px;">
                             <div style="margin-top:10px">
                                <p>
                                    <strong>MODO DE PAGO:</strong>
@@ -1940,8 +1940,12 @@
                                     </tr>
                                 </table>
                             </div>
+                            <!-- 
                             <div class="box">
                                 <div style="margin-left:10px; margin-top:10px">
+                                -->
+	                        <div class="col-xs-6 pull-left" style="border-width: 1px; border-style: solid;font-size: 12px;margin-left:15px;">
+	                            <div style="margin-top:10px">
                                     <p>
                                         <strong>ORDAINTZEKO ERA:</strong>
                                         <span t-field="o.payment_mode_id" />
