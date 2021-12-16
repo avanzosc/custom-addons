@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+        <record id="product_product_tree_view" model="ir.ui.view" >
+            <field name="name">product.product.tree</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="lst_price" position="after">
+                    <field name="last_purchase_price"/>
+                    <field name="last_purchase_price_stock"/>
+                </field>
+            </field>
+        </record>
         <record id="product_repair_line_view_form" model="ir.ui.view" >
             <field name="name">product.repair.line.form</field>
             <field name="model">product.product</field>

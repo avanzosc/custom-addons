@@ -43,6 +43,10 @@ class ProductProduct(models.Model):
     last_supplier_id = fields.Many2one(
         compute='_compute_get_last_purchase', inverse='_inverse_last_purchase',
         store=True)
+    last_purchase_price_stock = fields.Float(
+        string='Last Purchase Price Stock',
+        compute='_compute_get_purchase_stock',
+        store=True, digits=dp.get_precision('Product Price'))
     manual_purchase_price = fields.Float(
         string='Manual Last Purchase Price',
         digits=dp.get_precision('Product Price'))
@@ -63,6 +67,14 @@ class ProductProduct(models.Model):
                 record.last_purchase_price = record.manual_purchase_price
                 record.last_purchase_date = record.manual_purchase_date
                 record.last_supplier_id = record.manual_supplier_id
+
+    @api.depends('last_purchase_price', 'qty_available',)
+    def _compute_get_purchase_stock(self):
+        for record in self:
+            total = 0
+            if record.last_purchase_price and record.qty_available:
+                total = record.last_purchase_price * record.qty_available
+            record.last_purchase_price_stock = total
 
     @api.multi
     def _inverse_last_purchase(self):
