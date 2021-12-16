@@ -120,6 +120,10 @@
                 <field name="lot_id" position="before">
                     <field name="estimated_hours" class="oe_inline"/>
                 </field>
+                <xpath expr="//page[@string='Operations']//tree/field[@name='price_unit']" position="after">
+                   <field name="last_purchase_price"/>
+                    <field name="last_purchase_price_stock"/>
+                </xpath>
             </field>
         </record>
 

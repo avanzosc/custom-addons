@@ -309,6 +309,12 @@ class MrpRepairLine(models.Model):
         digits=dp.get_precision('Product Price'))
     expected_qty = fields.Float(
         digits=dp.get_precision('Product Price'))
+    last_purchase_price = fields.Float(
+        string='Last Purchase Price',
+        related='product_id.last_purchase_price', readonly=True)
+    last_purchase_price_stock = fields.Float(
+        string='Last Purchase Price Stock',
+        related='product_id.last_purchase_price_stock', readonly=True)
 
 
 class MrpRepairFee(models.Model):

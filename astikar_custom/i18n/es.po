@@ -1283,3 +1283,13 @@ msgstr "No puede añadir líneas a este pedido de compr. La línea de compra con
 msgid "Notes for out invoices"
 msgstr "Notas para facturas de clientes"
 
+#. module: astikar_custom
+#: field:product.product,last_purchase_price_stock:0
+#: field:rmp.repair.line,last_purchase_price_stock:0
+msgid "Last Purchase Price Stock"
+msgstr "Último precio de compra stock"
+
+#. module: astikar_custom
+#: field:mrp.repair.line,last_purchase_price:0
+msgid "Last Purchase Price"
+msgstr "Último precio de compra"
