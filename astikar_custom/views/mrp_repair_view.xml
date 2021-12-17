@@ -122,7 +122,7 @@
                 </field>
                 <xpath expr="//page[@string='Operations']//tree/field[@name='price_unit']" position="after">
                    <field name="last_purchase_price"/>
-                    <field name="last_purchase_price_stock"/>
+                   <field name="last_purchase_price_valued" sum="Total"/>
                 </xpath>
             </field>
         </record>
@@ -206,6 +206,7 @@
                     <field name="estimated_hours"/>
                     <field name="real_hours_qty"/>
                     <field name="operation_subtotal"/>
+                    <field name="last_purchase_price_valued"/>
                     <field name="real_hours_cost"/>
                     <field name="is_in_warranty"/>
                 </field>

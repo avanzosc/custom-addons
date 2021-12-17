@@ -41,10 +41,12 @@ class MrpRepair(models.Model):
     def _compute_repair_amount(self):
         for repair in self:
             untaxed = taxed = 0.0
-            operation_subtotal = fee_subtotal = 0.0
+            operation_subtotal = fee_subtotal = last_cost_total = 0.0
             real_hours_cost = real_hours_qty = 0.0
             for line in repair.operations:
                 operation_subtotal = operation_subtotal + line.cost_subtotal
+                last_cost_total = last_cost_total + \
+                    line.last_purchase_price_valued
                 if line.to_invoice:
                     untaxed += line.price_subtotal
                     qty = line.expected_qty or line.product_uom_qty
@@ -79,6 +81,7 @@ class MrpRepair(models.Model):
             repair.real_hours_qty = real_hours_qty
             repair.real_hours_cost = real_hours_cost
             repair.cost_total = operation_subtotal + real_hours_cost
+            repair.last_purchase_price_valued = last_cost_total
 
     @api.multi
     @api.depends('partner_id', 'partner_id.property_payment_term')
@@ -153,6 +156,9 @@ class MrpRepair(models.Model):
                                          '2binvoiced': [('readonly', False)]})
     quotation_notes = fields.Html(
         string='Quotation Notes', default=_defaul_quotation_notes)
+    last_purchase_price_valued = fields.Float(
+        string='Last Purchase Price Valued', compute='_compute_repair_amount',
+        store=True)
 
     @api.model
     def create(self, vals):
@@ -302,6 +308,14 @@ class MrpRepairLine(models.Model):
                 line.product_id.qty_available -
                 line.product_id.repair_product_count)
 
+    @api.depends('last_purchase_price', 'product_uom_qty',)
+    def _compute_get_purchase_valued(self):
+        for record in self:
+            total = 0
+            if record.last_purchase_price and record.product_uom_qty:
+                total = record.last_purchase_price * record.product_uom_qty
+            record.last_purchase_price_valued = total
+
     available_qty = fields.Float(
         string='Available Qty', compute='_compute_available_qty',
         digits=dp.get_precision('Product Unit of Measure'))
@@ -312,9 +326,10 @@ class MrpRepairLine(models.Model):
     last_purchase_price = fields.Float(
         string='Last Purchase Price',
         related='product_id.last_purchase_price', readonly=True)
-    last_purchase_price_stock = fields.Float(
-        string='Last Purchase Price Stock',
-        related='product_id.last_purchase_price_stock', readonly=True)
+    last_purchase_price_valued = fields.Float(
+        string='Last Purchase Price Valued',
+        compute='_compute_get_purchase_valued',
+        store=True, digits=dp.get_precision('Product Price'))
 
 
 class MrpRepairFee(models.Model):
