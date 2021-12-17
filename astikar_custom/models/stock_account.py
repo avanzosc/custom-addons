@@ -125,9 +125,22 @@ class StockQuant(models.Model):
             record.standard_value = (record.product_id.standard_price *
                                      record.qty)
 
+    @api.multi
+    @api.depends('product_id', 'qty',)
+    def _compute_get_purchase_valued(self):
+        for record in self:
+            total = 0
+            if record.product_id and record.qty:
+                total = record.product_id.last_purchase_price * record.qty
+            record.last_purchase_price_valued = total
+
     standard_value = fields.Float(
         string="Standard Value", store=True, compute="_compute_standard_value",
         digits=dp.get_precision('Product Price'))
+    last_purchase_price_valued = fields.Float(
+        string='Last Purchase Price Valued',
+        compute='_compute_get_purchase_valued',
+        store=True, digits=dp.get_precision('Product Price'))
     categ_id = fields.Many2one(related='product_id.categ_id', store=True)
     product_tmpl_id = fields.Many2one(
         string='Product template', comodel_name='product.template',

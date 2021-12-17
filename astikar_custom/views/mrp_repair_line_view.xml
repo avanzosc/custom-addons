@@ -11,6 +11,7 @@
                     <field name="price_unit"/>
                     <field name="product_uom_qty" string="Qty" sum="Qty Total" />
                     <field name="product_uom" string="Unit of Measure" groups="product.group_uom"/>
+                    <field name="last_purchase_price_valued" sum="Total"/>
                     <field name="lot_id" />
                     <field name="invoiced"/>
                     <field name="repair_id" />

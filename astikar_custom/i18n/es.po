@@ -1285,7 +1285,6 @@ msgstr "Notas para facturas de clientes"
 
 #. module: astikar_custom
 #: field:product.product,last_purchase_price_stock:0
-#: field:rmp.repair.line,last_purchase_price_stock:0
 msgid "Last Purchase Price Stock"
 msgstr "Último precio de compra stock"
 
@@ -1293,3 +1292,10 @@ msgstr "Último precio de compra stock"
 #: field:mrp.repair.line,last_purchase_price:0
 msgid "Last Purchase Price"
 msgstr "Último precio de compra"
+
+#. module: astikar_custom
+#: field:mrp.repair,last_purchase_price_valued:0
+#: field:mrp.repair.line,last_purchase_price_valued:0
+#: field:stock.quant,last_purchase_price_valued:0
+msgid "Last Purchase Price Valued"
+msgstr "Valoración UPC"
