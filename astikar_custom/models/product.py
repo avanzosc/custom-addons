@@ -6,6 +6,22 @@ from openerp import api, models, fields
 from openerp.addons import decimal_precision as dp
 
 
+class ProductTemplate(models.Model):
+    _inherit = 'product.template'
+
+    @api.multi
+    @api.onchange('type')
+    def onchange_type(self, type):
+        res = super(ProductTemplate, self).onchange_type(type)
+        if not 'value' in res:
+            res['value'] = {}
+        if self and type == 'product' and self.cost_method != 'average':
+            res['value'].update({'cost_method': 'average'})
+        elif self and type == 'consu' and self.cost_method != 'standard':
+            res['value'].update({'cost_method': 'standard'})
+        return res
+
+
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
@@ -83,3 +99,15 @@ class ProductProduct(models.Model):
             product.manual_purchase_price = product.last_purchase_price
             product.manual_purchase_date = product.last_purchase_date
             product.manual_supplier_id = product.last_supplier_id
+
+    @api.multi
+    @api.onchange('type')
+    def onchange_type(self, type):
+        res = super(ProductProduct, self).onchange_type(type)
+        if not 'value' in res:
+            res['value'] = {}
+        if self and type == 'product' and self.cost_method != 'average':
+            res['value'].update({'cost_method': 'average'})
+        elif self and type == 'consu' and self.cost_method != 'standard':
+            res['value'].update({'cost_method': 'standard'})
+        return res
