@@ -5,7 +5,7 @@ from . import res_company
 from . import account_analytic_chart
 from . import account_invoice
 from . import mrp_repair
-from . import product_product
+from . import product
 from . import purchase_order
 from . import res_partner
 from . import sale
