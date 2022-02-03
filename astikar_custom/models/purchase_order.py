@@ -16,6 +16,13 @@ class PurchaseOrder(models.Model):
     vat = fields.Char(string="VAT", related='partner_id.vat', readonly=True)
     date_order = fields.Datetime(default=False)
 
+    @api.multi
+    def copy(self, default=None):
+        if default is None:
+            default = {}
+        default.update({'date_order': fields.Date.context_today(self)})
+        return super(PurchaseOrder, self).copy(default)
+
 
 class PurchaseOrderLine(models.Model):
     _inherit = 'purchase.order.line'
