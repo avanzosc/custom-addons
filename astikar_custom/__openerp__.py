@@ -40,7 +40,7 @@
         "mrp_repair_warranty",
         "project",
         "purchase",
-        "purchase_last_price_info",
+        "purchase_last_price_info_ext",
         "report",
         "res_partner_analytic",
         "sale_order_type",
