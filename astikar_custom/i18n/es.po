@@ -1299,3 +1299,13 @@ msgstr "Último precio de compra"
 #: field:stock.quant,last_purchase_price_valued:0
 msgid "Last Purchase Price Valued"
 msgstr "Valoración UPC"
+
+#. module: astikar_custom
+#: field:stock.inventory.line,categ_id:0
+msgid "Category"
+msgstr "Categoría"
+
+#. module: astikar_custom
+#: field:stock.inventory.line,product_type:0
+msgid "Type"
+msgstr "Tipo de producto"
