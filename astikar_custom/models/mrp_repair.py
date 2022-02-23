@@ -182,6 +182,12 @@ class MrpRepair(models.Model):
                         my_date = my_date.replace(
                             hour=today.hour, minute=today.minute)
                         move.write({'date': my_date})
+        if 'invoice_id' in vals and vals.get('invoice_id', False):
+            for repair in self.filtered(
+                    lambda x: x.company_id and
+                        x.company_id.note_for_out_invoice):
+                repair.invoice_id.notes = (
+                    repair.company_id.note_for_out_invoice)
         return result
 
     @api.multi
