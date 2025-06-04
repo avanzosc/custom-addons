@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_347_partner_document" inherit_id="l10n_es_aeat_mod347.report_347_partner_document">
+        <t t-call="web.external_layout" position="inside">
+            <div class="header" style="font-size: 12px;">
+                <div class="row mt16 mb16">
+                    <div class="col-12 text-right">
+                        <img src="/dttca_custom_reports/static/src/img/logo_left.png"
+                            style="height: 100px;"/>
+                    </div>
+                </div>
+            </div>
+        </t>
+        <t t-call="web.external_layout" position="attributes">
+            <attribute name="t-call">dttca_custom_reports.external_layout_alq</attribute>
+        </t>
+    </template>
+</odoo>
