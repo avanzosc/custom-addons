@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="0">
+    <record id="paperformat_alq" model="report.paperformat">
+        <field name="name">A4 Reports Alquemy</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">100</field>
+        <field name="margin_bottom">25</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">90</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="paperformat_no_footer_alq" model="report.paperformat">
+        <field name="name">A4 No Footer Reports Alquemy</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">85</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">80</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="shipping_label_paperformat" model="report.paperformat">
+        <field name="name">Shipping label (Custom)</field>
+        <field name="format">custom</field>
+        <field name="page_height">80</field>
+        <field name="page_width">80</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">1</field>
+        <field name="margin_bottom">1</field>
+        <field name="margin_left">1</field>
+        <field name="margin_right">1</field>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+</odoo>

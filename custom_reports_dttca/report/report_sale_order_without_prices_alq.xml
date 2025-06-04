@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_saleorder_document_without_prices_alq">
+        <t t-call="custom_reports_dttca.external_layout_empty_alq">
+            <t t-set="doc" t-value="doc.with_context({'lang':request.env.user.partner_id.lang})"/>
+
+            <div class="header" style="font-size: 13px;">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <!--
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)"
+                             style="max-height: 50px;"/>
+                          -->
+                        <img src="/custom_reports_dttca/static/src/img/logo_left.jpg"
+                             style="height: 50px;"/>
+
+                    </div>
+                    <div class="col-xs-8 text-right" style="margin-right:0px">
+                        <img src="/custom_reports_dttca/static/src/img/logo_right.jpg"
+                             style="height: 47px;"/>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:10mm">
+                    <div class="col-xs-6">
+
+                        <div style="color: #7F7F7F;font-size: 9px;font-weight: bold;margin-top:5mm;">
+                            Sales Person:
+                        </div>
+                        <div style="font-size: 10px;">
+                            <div>
+                                <span t-field="doc.user_id.name"/>
+                            </div>
+                            <div t-if="doc.user_id.phone">
+                                <i class="fa fa-phone"></i>
+                                <span t-field="doc.user_id.phone"/>
+                            </div>
+                            <div t-if="doc.user_id.email">
+                                <i class="fa fa-at"></i>
+                                <span t-field="doc.user_id.email"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6" style="font-size: ">
+                        <div class="col-xs-12">
+                            <div style="color: #7F7F7F;font-size: 11px;font-weight: bold;">
+                                Invoiced / Consignee
+                            </div>
+                            <div name="invoice_address">
+                                <div style="font-weight: bold;">
+                                    <span t-field="doc.partner_id.name"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12" style="margin-top:4mm">
+                            <div style="color: #7F7F7F;font-size: 11px;font-weight: bold;">
+                                Delivery / Notify
+                            </div>
+                            <t t-if="doc.partner_id!=doc.partner_shipping_id">
+                                <div>
+                                    <div style="font-weight: bold;">
+                                        <span t-field="doc.partner_shipping_id.name"/>
+                                    </div>
+
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <div>
+                                    SAME AS INVOICED
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12" style="font-size: 15px;font-weight: bold;margin-top:10mm;">
+                        <div>
+                            <span style="font-size: 18px;font-weight: bold">Propuesta de Pedido</span>
+
+                            <span style="left:70mm;position: absolute;">
+                                <span style="font-weight: bold;">
+                                    Nº:
+                                </span>
+                                <span t-field="doc.name"></span>
+                            </span>
+
+                            <span style="left:110mm;position: absolute;">
+                                <span style="font-weight: bold;">
+                                    Fecha Pedido:
+                                </span>
+                                <span t-field="doc.order_date"
+                                      t-field-options="{'format':'dd/MM/yy'}"/>
+                            </span>
+                        </div>
+                        <div>
+                            <span style="left:110mm;position: absolute;">
+                                <span>
+                                    <span style="font-weight: bold;">
+                                        Fecha Entrega Requerida:
+                                    </span>
+                                    <span t-field="doc.requested_date"
+                                          t-field-options="{'format':'dd/MM/yy'}"/>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!--
+                    <div style="font-size: 12px;">
+                        <span>
+                            <span style="font-weight: bold;">
+                                Transporte Salida:
+                            </span>
+                            <span t-field="doc.transportista_id.name"/>
+                        </span>
+                    </div>
+                    -->
+                </div>
+            </div>
+
+            <div class="page" style="font-size: 12px !important;">
+                <div class="oe_structure"/>
+
+                <!-- Is there a discount on at least one line? -->
+                <t t-set="display_discount" t-value="any([l.discount for l in doc.order_line])"/>
+
+                <t t-foreach="doc.order_lines_layouted()" t-as="page">
+                    <table class="table table-condensed">
+                        <thead style="border-bottom: 2px solid black;">
+                            <tr>
+                                <th width="10%">Reference</th>
+                                <th width="10%" class="text-right">Nº Boxes</th>
+                                <th width="10%" class="text-right">Total Units</th>
+                                <th width="70%">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-foreach="page" t-as="layout_category">
+                                <t t-if="layout_category_size > 1 or page_size > 1" groups="sale.group_sale_layout">
+                                    <tr class="active">
+                                        <td colspan="7" style="font-weight: bold; border-bottom: 1px solid black;">
+                                            &amp;bull;
+                                            <t t-esc="layout_category['name']"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                                <!-- Lines associated -->
+                                <t t-foreach="layout_category['lines']" t-as="l">
+                                    <tr t-attf-style="page-break-inside: avoid !important;">
+                                        <!--
+                                        <td class="text-center">
+                                            <span t-field="l.product_id.image_small"
+                                                  t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;img-rounded&quot;}"/>
+                                        </td>
+                                        -->
+                                        <td>
+                                            <span t-field="l.product_id.default_code"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="int(l.alt_uom_qty)"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="int(l.product_uom_qty)"/>
+                                            <!--
+                                            <span t-field="l.uom_id" groups="product.group_uom"/>
+                                            -->
+                                        </td>
+                                        <td>
+                                            <t t-if="']' in l.name">
+                                                <span t-esc="l.name.split(']')[1]"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span t-esc="l.name"/>
+                                            </t>
+                                        </td>
+                                    </tr>
+
+                                </t>
+                            </t>
+                            <tr t-foreach="range(max(5-len(doc.order_lines_layouted()),0))" t-as="l">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <t t-if="page_index &lt; page_size - 1" groups="sale.group_sale_layout">
+                        <p style="page-break-before:always;"></p>
+                    </t>
+                </t>
+
+                <div style="position:absolute;top:520px; page-break-inside: avoid;">
+                    <div class="col-xs-12 text-center">
+                        <div style="border-bottom: 1px solid black;margin-bottom:5px;margin-top:5px;"/>
+                    </div>
+                    <div class="col-xs-12">
+                        <span style="font-size:12pt;font-weight: bold;">CONTROL DE CALIDAD:</span>
+                    </div>
+                    <table class="table table-bordered" style="font-size:7pt;">
+                        <thead>
+                            <tr>
+                                <th width="5%">Proceso</th>
+                                <th width="40%">Descripción</th>
+                                <th width="9%">Fecha</th>
+                                <th width="32%">Observaciones</th>
+                                <th width="14%">Operario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>COMPROBADA la cantidad de Materia Prima suficiente para realizar el pedido</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered" style="font-size:7pt;">
+                        <thead>
+                            <tr>
+                                <th width="5%">Proceso</th>
+                                <th width="40%">Descripción</th>
+                                <th width="9%">Conforme</th>
+                                <th width="32%">Observaciones</th>
+                                <th width="14%">Operario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>FABRICADO según instrucciones de la Propuesta de Pedido</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>COMPROBADA la cantidad Fabricada y Embalada</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="col-xs-6">
+                        <span style="font-size:12pt;font-weight: bold;">NOTAS INTERNAS:</span>
+                        <p t-if="doc.manufacture_des" styte="margin-top:10px;">
+                            <span t-field="doc.manufacture_des"/>
+                        </p>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="panel panel-default">
+                            <div class="panel-body" style="margin-bottom:2cm;">
+                                Vº Bº Encargado Sección - FECHA:
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="oe_structure"/>
+            </div>
+
+            <div class="footer">
+                <div class="col-xs-12 text-right" style="font-size:6pt;">
+                    Page:
+                    <span class="page"/>
+                    /
+                    <span class="topage"/>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_saleorder_without_prices_alq">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="custom_reports_dttca.report_saleorder_document_without_prices_alq" t-lang="request.env.user.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+    <!--
+    <report id="id_report_saleorder_without_prices_alq"
+            string="Orden de Fabricación ALQ"
+            model="sale.order"
+            report_type = "qweb-pdf"
+            file="custom_reports_dttca.report_saleorder_without_prices_alq"
+            name="custom_reports_dttca.report_saleorder_without_prices_alq"
+            groups="alquemy_sale_block_rules.alquemy_sales_maximum_group,sales_team.group_sale_salesman,sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"
+            menu="True"
+            paperformat="custom_reports_dttca.paperformat_no_footer_alq"
+    />
+    -->
+</odoo>
