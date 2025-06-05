@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="external_layout_alq">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+        </t>
+
+        <div class="article o_report_layout_standard"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-raw="0"/>
+        </div>
+
+        <div class="footer">
+            <div class="row mb32 mt32">
+                <div class="col-3">
+                    <img src="/custom_reports_vmter/static/src/img/Sello_STAR-22000-2018_black.png"
+                         style="height: 75px; width: 165px;"/>
+                </div>
+                <div class="col-9 text-right">
+<!--                    <div class="text-left col-6">-->
+<!--                        <span Style="font-size:9pt;font-weight: bold;color:#656565;">GOODS OF E.U. ORIGIN</span>-->
+<!--                    </div>-->
+                    <div class="col-12" style="text-align:right !important;">
+                        <span t-esc="company.website.replace('https://','')"
+                              Style="font-size:9pt;font-weight: bold;color:#598800"/>
+                    </div>
+                    <div style="color:#656565;font-size:10px">
+                        <div class="col-12 text-center">
+                            <div style="border-bottom: 1px solid #656565;margin-bottom:5px;margin-top:5px;"/>
+                        </div>
+                        <div name="financial_infos" class="text-justify col-12">
+                            <span t-field="company.report_footer"/>
+                        </div>
+                        <div class="col-12 text-center">
+                            <div style="border-bottom: 1px solid #656565;margin-bottom:5px;margin-top:5px;"/>
+                        </div>
+                        <div class="col-12 text-justify">
+                            <span t-field="company.company_registry"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div t-if="report_type == 'pdf'" class="col-12" style="font-size:8px; text-align:right !important;">
+                Page: <span class="page"/> / <span class="topage"/>
+            </div>
+        </div>
+    </template>
+</odoo>

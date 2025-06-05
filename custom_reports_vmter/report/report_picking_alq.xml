@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_picking_document_alq">
+        <t t-call="custom_reports_vmter.external_layout_alq">
+            <div class="header" style="font-size: 12px;">
+                <div class="row mt16 mb16">
+                    <div class="col-6">
+                        <div style="font-size: 18px;font-weight: bold;padding-top:10mm">
+                            <span style="font-size: 18px">DELIVERY NOTE</span>
+                        </div>
+                        <div>
+                            <span style="font-size: 18px;position: absolute;">
+                                <span style="font-weight: bold;">
+                                    Nº:
+                                </span>
+                                <span t-field="o.name"/>
+                            </span>
+                            <span style="font-size: 18px;left:55mm;position: absolute;">
+                                <span style="font-weight: bold;">
+                                    Date:
+                                </span>
+                                <span t-field="o.scheduled_date"
+                                      t-options='{"widget": "date", "format": "dd/MM/yy"}'/>
+                            </span>
+                        </div>
+                        <!--
+                        <div t-if="o.sale_id">
+                            <span style="font-size: 14px;">
+                                <span style="font-weight: bold;">
+                                    Customer Order:
+                                </span>
+                                <span t-field="o.sale_id.client_order_ref"/>
+                            </span>
+                            <span style="font-size: 14px;left:85mm;position: absolute;">
+                                <span style="font-weight: bold;">
+                                    Origin:
+                                </span>
+                                <span t-field="o.origin"/>
+                            </span>
+                        </div>
+                        -->
+                    </div>
+                    <div class="col-6 text-right">
+                        <img src="/custom_reports_vmter/static/src/img/logo_left.png"
+                             style="height: 100px;"/>
+                    </div>
+                </div>
+
+
+                <div class="row mt16 mb16">
+                    <div class="col-6">
+                        <!--<t t-if="'Extracom' in o.partner_id.property_account_position_id.name">-->
+                        <div style="color: #7F7F7F;font-size: 10px;font-weight: bold;">
+                            Seller / Shipper
+                        </div>
+                        <div style="color: #8B857F;">
+                            <div style="font-weight: bold;">
+                                <span t-field="o.company_id.partner_id.name"/>
+                            </div>
+                            <div>
+                                <span t-field="o.company_id.street"/>
+                            </div>
+                            <div>
+                                <span t-field="o.company_id.street2"/>
+                            </div>
+                            <div>
+                                <span t-field="o.company_id.zip"/>
+                                <span t-field="o.company_id.city"/>
+                                (<t t-esc="o.company_id.country_id.name"/>)
+                            </div>
+                            <div>
+                                VAT:
+                                <span t-field="o.company_id.vat"/>
+                            </div>
+                        </div>
+                        <div style="color: #8B857F;font-size: 10px;margin-top:2mm;">
+                            <div>
+                                <i class="fa fa-phone"/>
+                                <span t-field="o.company_id.phone"/>
+                            </div>
+                            <div>
+                                <i class="fa fa-at"/>
+                                <span t-field="o.company_id.email"/>
+                            </div>
+                        </div>
+                        <t t-if="o.sale_id">
+                            <div style="color: #7F7F7F;font-size: 10px;font-weight: bold;margin-top:5mm;">
+                                Sales Person:
+                            </div>
+                            <div style="font-size: 10px;">
+                                <div>
+                                    <span t-field="o.sale_id.user_id.name"/>
+                                </div>
+                                <div t-if="o.sale_id.user_id.phone">
+                                    <i class="fa fa-phone"/>
+                                    <span t-field="o.sale_id.user_id.phone"/>
+                                </div>
+                                <div t-if="o.sale_id.user_id.email">
+                                    <i class="fa fa-at"/>
+                                    <span t-field="o.sale_id.user_id.email"/>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                    <div class="col-6">
+                        <div style="color: #7F7F7F;font-size: 10px;font-weight: bold;">
+                            Delivery / Notify
+                        </div>
+                        <div name="delivery_address">
+                            <div style="font-weight: bold;">
+                                <span t-field="o.partner_id.name"/>
+                            </div>
+                            <div>
+                                <span t-field="o.partner_id.street"/>
+                            </div>
+                            <div>
+                                <span t-field="o.partner_id.street2"/>
+                            </div>
+                            <div>
+                                <span t-field="o.partner_id.zip"/>
+                                <span t-field="o.partner_id.city"/>
+                                (
+                                <t t-esc="o.partner_id.country_id.name"/>
+                                )
+                            </div>
+                        </div>
+                        <div style="font-size: 10px;margin-top:2mm;">
+                            <div t-if="o.partner_id.phone">
+                                <i class="fa fa-phone"/>
+                                <span t-field="o.partner_id.phone"/>
+                            </div>
+                            <div t-if="o.partner_id.email">
+                                <i class="fa fa-at"/>
+                                <span t-field="o.partner_id.email"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div t-if="o.origin">
+                            <strong>Origin doc.:</strong> <span t-field="o.origin"/>
+                        </div>
+                        <div>
+                          <strong>Weight:</strong>
+                          <span t-field="o.shipping_weight"/>
+                          <span t-field="o.weight_uom_name"/>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div>
+                          <strong t-if="o.picking_type_id and o.picking_type_id.code == 'outgoing'">Customer reference:</strong>
+                          <strong t-if="o.picking_type_id and o.picking_type_id.code == 'incoming'">Supplier reference:</strong>
+                          <span t-if="o.partner_id.parent_id" t-field="o.partner_id.parent_id.ref"/>
+                          <span t-if="not o.partner_id.parent_id" t-field="o.partner_id.ref"/>
+                        </div>
+                        <div>
+                          <strong>Packages:</strong> <span t-field="o.number_of_packages"/>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div t-if="o.carrier_tracking_ref">
+                          <strong>Tracking N.:</strong> <span t-field="o.carrier_tracking_ref"/>
+                        </div>
+                        <div t-if="o.carrier_id">
+                          <strong>Carrier:</strong> <span t-field="o.carrier_id"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page" style="font-size: 11px;">
+                <div class="clearfix" />
+                <br />
+                <br />
+                <table class="table table-sm" t-if="o.move_line_ids">
+                    <t t-set="has_barcode"
+                       t-value="any([move_lines.product_id and move_lines.product_id.sudo().barcode or move_lines.package_id for move_lines in o.move_line_ids])"/>
+                    <t t-set="has_serial_number"
+                       t-value="o.move_line_ids.filtered(lambda ml: ml.lot_id or ml.lot_name)"
+                       groups="stock.group_production_lot"/>
+                    <thead style="border-bottom: 2px solid black;">
+                        <tr>
+                            <th width="80%">Product</th>
+                            <th width="20%">Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="o.move_ids.sorted(key=lambda m: m.product_id.id)" t-as="move">
+                            <tr>
+                                <td>
+                                    <span t-field="move.product_id.display_name"/>
+                                    <br/>
+                                    <span t-field="move.product_id.description_picking"/>
+                                </td>
+                                <td style="text-align:right !important;">
+                                    <span t-if="move.product_qty" t-field="move.product_qty"/>
+                                    <span t-if="not move.product_qty"
+                                          t-esc="move.product_uom._compute_quantity(move.quantity_done, move.product_id.uom_id, rounding_method='HALF-UP')"/>
+                                    <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
+                                </td>
+                            </tr>
+                            <tr t-foreach="move.mapped('move_line_ids.lot_id')" t-as="lot">
+                              <t t-set="lot_lines" t-value="move.move_line_ids.filtered(lambda l: l.lot_id == lot)" />
+                              <td style="text-align:right !important;" colspan="2">
+                                <span class="col-3">
+                                  <span>Lot:</span> <span t-field="lot.name" />
+                                </span>
+                                <span class="col-5">
+                                  <t t-if="lot.expiration_date">
+                                    <span>Expiry date:</span>
+                                    <span t-esc="lot.expiration_date" t-options="{'widget': 'date'}" />
+                                  </t>
+                                  <t t-elif="lot.use_date">
+                                    <span>Use date:</span>
+                                    <span t-esc="lot.use_date" t-options="{'widget': 'date'}" />
+                                  </t>
+                                </span>
+                                <span class="col-4">
+                                  <span>Quantity:</span>
+                                  <span t-esc="sum(lot_lines.mapped('qty_done'))" t-options="{'widget': 'float', 'precision': 2}" />
+                                  <span t-field="move.product_uom"/>
+                                </span>
+                              </td>
+
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+                <table class="table table-sm"
+                       t-if="o.package_level_ids_details and o.picking_type_entire_packs">
+                    <thead style="border-bottom: 2px solid black;">
+                        <tr>
+                            <th width="40%">Package</th>
+                            <th width="30%">Source</th>
+                            <th width="30%">Destination</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="o.package_level_ids_details.sorted(key=lambda p: p.package_id.name)" t-as="package">
+                            <t t-set="package" t-value="package.with_context({'picking_id':o.id})"/>
+                            <td>
+                                <span t-field="package.package_id"/>
+                            </td>
+                            <td>
+                                <span t-field="package.location_id"/>
+                            </td>
+                            <td>
+                                <span t-field="package.location_dest_id"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p t-field="o.note"/>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_picking_alq">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="custom_reports_vmter.report_picking_document_alq" t-lang="o.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+   <record id="id_report_picking_alq" model="ir.actions.report">
+        <field name="name">ALQ Pickings</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">custom_reports_vmter.report_picking_alq</field>
+        <field name="report_file">custom_reports_vmter.report_picking_alq</field>
+        <field name="print_report_name">(object.name)</field>
+        <field name="attachment">(object.name+'.pdf')</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking" />
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="custom_reports_vmter.paperformat_alq"/>
+   </record>
+</odoo>

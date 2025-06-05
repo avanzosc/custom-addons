@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="shipping_label_document_template">
+        <t t-call="custom_reports_vmter.external_layout_empty_alq">
+            <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+            <style type="text/css">
+                .label-border { border: 1px solid black; padding: 1% }
+            </style>
+            <div class="header"></div>
+            <t t-foreach="range(o.number_of_packages)" t-as="package">
+                <div class="page" style="font-size: 10px;page-break-after:always;">
+                    <div class="row label-border">
+                        <div class="col-12">
+                            <span>Packages:</span>
+                            <span t-esc="package + 1"/>
+                            <span>/</span>
+                            <span t-field="o.number_of_packages"/>
+                            <span> Weight: </span>
+                            <span t-esc="o._get_format_float_by_lang(o.weight)"/>
+                            <span t-field="o.weight_uom_name"/>
+                            <span> Shipping costs: </span>
+                            <!--<span t-field="o.shipping_costs" t-field-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/>-->
+                            <span> Date: </span>
+                            <span t-field="o.date" t-field-options='{"widget": "date"}'/>
+                        </div>
+                        <div class="col-12">
+                            <br/>
+                            <span t-field="o.carrier_id"/>
+                            <br/>
+                            <span t-field="o.carrier_tracking_ref"/>
+                        </div>
+                    </div>
+                    <div class="row label-border">
+                        <h4>DESTINATION</h4>
+                    </div>
+                    <div class="row label-border">
+                        <span t-field="o.partner_id"/>
+                        <br/>
+                        <t t-if="o.partner_id.street">
+                            <span t-field="o.partner_id.street"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.partner_id.street2">
+                            <span t-field="o.partner_id.street2"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.partner_id.zip or o.partner_id.city">
+                            <span t-if="o.partner_id.zip" t-field="o.partner_id.zip"/>
+                            <span t-if="o.partner_id.city" t-field="o.partner_id.city"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.partner_id.state_id or o.partner_id.country_id">
+                            <span t-if="o.partner_id.state_id" t-field="o.partner_id.state_id"/>
+                            <span t-if="o.partner_id.state_id and o.partner_id.country_id">,</span>
+                            <span t-if="o.partner_id.country_id" t-field="o.partner_id.country_id"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.partner_id.phone">
+                            <span>Phone:</span>
+                            <span t-field="o.partner_id.phone"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.partner_id.mobile">
+                            <span>Mobile:</span>
+                            <span t-field="o.partner_id.mobile"/>
+                            <br/>
+                        </t>
+                    </div>
+                    <div class="row label-border">
+                        <h4>SENDER</h4>
+                    </div>
+                    <div class="row label-border">
+                        <t t-if="o.company_id.name">
+                            <span t-field="o.company_id.name"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.company_id.street">
+                            <span t-field="o.company_id.street"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.company_id.street2">
+                            <span t-field="o.company_id.street2"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.company_id.zip or o.company_id.city">
+                            <span t-if="o.company_id.zip" t-field="o.company_id.zip"/>
+                            <span t-if="o.company_id.city" t-field="o.company_id.city"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.company_id.state_id or o.company_id.country_id">
+                            <span t-if="o.company_id.state_id" t-field="o.company_id.state_id"/>
+                            <span t-if="o.company_id.state_id and o.company_id.country_id">,</span>
+                            <span t-if="o.company_id.country_id" t-field="o.company_id.country_id"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.company_id.phone">
+                            <span>Phone:</span>
+                            <span t-field="o.company_id.phone"/>
+                            <br/>
+                        </t>
+                    </div>
+                    <div class="oe_structure"/>
+                </div>
+            </t>
+            <div class="footer"></div>
+        </t>
+    </template>
+
+    <template id="shipping_label_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="custom_reports_vmter.shipping_label_document_template" t-lang="o.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+    <record id="shipping_label_report" model="ir.actions.report">
+         <field name="name">Shipping label</field>
+         <field name="model">stock.picking</field>
+         <field name="report_type">qweb-pdf</field>
+         <field name="report_name">custom_reports_vmter.shipping_label_template</field>
+         <field name="report_file">custom_reports_vmter.shipping_label_template</field>
+         <field name="print_report_name">'Shipping Label For Picking - %s' % (object.name)</field>
+         <field name="attachment">(object.name+'.pdf')</field>
+         <field name="binding_model_id" ref="stock.model_stock_picking" />
+         <field name="binding_type">report</field>
+         <field name="paperformat_id" ref="custom_reports_vmter.shipping_label_paperformat" />
+     </record>
+</odoo>

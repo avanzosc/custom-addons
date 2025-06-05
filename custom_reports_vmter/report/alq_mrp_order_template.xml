@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="alq_mrp_order_template_document">
+        <t t-call="custom_reports_vmter.alq_report_mrp_layout">
+            <style type="text/css">
+                .table-margin {margin-top: 3%;}
+            </style>
+            <div class="page" style="font-size: 12px;">
+                <div class="oe_structure"/>
+                <div class="row">
+                    <h2>
+                        <span>MRP order N°</span>
+                        <span t-field="o.name"/>
+                    </h2>
+                </div>
+                <div class="row mt16 mb16">
+                    <div class="col-12">
+                        <span>
+                            <strong>Product:</strong>
+                            <span t-field="o.product_id"/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row mt16 mb16">
+                    <div class="col-6 pull-left">
+                        <span>
+                            <strong>Quantity:</strong>
+                            <span t-field="o.product_qty"/>
+                            <span t-field="o.product_uom_id.name"/>
+                            <br/>
+                        </span>
+                        <span>
+                            <strong>Date planned:</strong>
+                            <span t-field="o.date_planned_start" t-field-options='{"widget": "date"}'/>
+                            <br/>
+                        </span>
+                        <span>
+                            <strong>State:</strong>
+                            <span t-field="o.state"/>
+                            <br/>
+                        </span>
+                    </div>
+                    <div class="col-6 pull-right">
+                        <span t-if="o.origin">
+                            <strong>Origin document:</strong>
+                            <span t-field="o.origin"/>
+                            <br/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row" t-if="o.finished_move_line_ids">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Lot</th>
+                                <th>Use date</th>
+                                <th>Expiry date</th>
+                                <th class="text-right">Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="o.mapped('finished_move_line_ids.lot_id')" t-as="lot">
+                                <t t-set="lot_lines" t-value="o.finished_move_line_ids.filtered(lambda l: l.lot_id == lot)"/>
+                                <t t-set="quantity" t-value="sum(lot_lines.mapped('qty_done'))" />
+                                <t t-set="uom" t-value="lot_lines[:1].product_uom_id" />
+                                <td><span t-field="lot.name"/></td>
+                                <td style="text-align:right !important;"><span t-field="lot.use_date" t-options="{'widget': 'datetime', 'format': 'dd/MM/yyyy'}"/></td>
+                                <td style="text-align:right !important;"><span t-field="lot.expiration_date" t-options="{'widget': 'datetime', 'format': 'dd/MM/yyyy'}"/></td>
+                                <td style="text-align:right !important;"><span t-esc="quantity" /> <span t-field="uom.name" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row table-margin" t-if="o.move_raw_ids">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th class="text-right">Quantity</th>
+                                <th>Source location</th>
+                                <th>Destination location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="o.move_raw_ids">
+                                <tr>
+                                    <td colspan="4">
+                                        <strong>Consumed products</strong>
+                                    </td>
+                                </tr>
+                                <t t-foreach="o.move_raw_ids" t-as="line2">
+                                    <tr>
+                                        <td>
+                                            <span t-field="line2.product_id"/>
+                                        </td>
+                                        <td style="text-align:right !important;">
+                                            <span t-field="line2.product_uom_qty"/>
+                                            <span t-field="line2.product_uom.name"/>
+                                        </td>
+                                        <td style="text-align:right !important;">
+                                            <span t-field="line2.location_id.name"/>
+                                        </td>
+                                        <td style="text-align:right !important;">
+                                            <span t-field="line2.location_dest_id.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr t-foreach="line2.move_line_ids.filtered(lambda l: l.workorder_id and l.workorder_id.state == 'done')" 
+                                            t-as="active_line">
+                                        <td style="text-align:right !important;" colspan="4">
+                                            <span class="col-3">
+                                                <span>Lot:</span>
+                                                <span t-field="active_line.lot_id"/>
+                                            </span>
+                                            <span class="col-5">
+                                                <t t-if="active_line.lot_id.expiration_date">style="text-align:right !important;"
+                                                    <span>Expiry date:</span>
+                                                    <span t-esc="active_line.lot_id.expiration_date"
+                                                        t-options="{'widget': 'datetime', 'format': 'dd/MM/yyyy'}" />
+                                                </t>
+                                                <t t-elif="active_line.lot_id.use_date">
+                                                    <span>Use date:</span>
+                                                    <span t-esc="active_line.lot_id.use_date"
+                                                        t-options="{'widget': 'datetime', 'format': 'dd/MM/yyyy'}" />
+                                                </t>
+                                            </span>
+                                            <span class="col-4">
+                                                <span>Quantity:</span>
+                                                <span t-field="active_line.qty_done"/>
+                                                <span t-field="active_line.product_uom_id"/>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="oe_structure"/>
+            </div>
+        </t>
+    </template>
+
+    <template id="mrp.report_mrporder">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="custom_reports_vmter.alq_mrp_order_template_document"/>
+            </t>
+        </t>
+    </template>
+
+    <!--
+    <record id="mrp.action_report_production_order" model="ir.actions.report">
+        <field name="name">Production Order</field>
+        <field name="model">mrp.production</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">custom_reports_vmter.alq_mrp_order_template</field>
+        <field name="report_file">custom_reports_vmter.alq_mrp_order_template</field>
+        <field name="print_report_name">'Production Order - %s' % object.name</field>
+        <field name="binding_model_id" ref="model_mrp_production"/>
+        <field name="binding_type">report</field>
+    </record>
+    -->
+</odoo>

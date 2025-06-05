@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale.action_report_saleorder" model="ir.actions.report">
+        <field name="paperformat_id" ref="custom_reports_vmter.paperformat_alq"/>
+    </record>
+
+    <record id="sale.action_report_pro_forma_invoice" model="ir.actions.report">
+        <field name="paperformat_id" ref="custom_reports_vmter.paperformat_alq"/>
+    </record>
+
+    <record id="purchase.action_report_purchase_order" model="ir.actions.report">
+        <field name="paperformat_id" ref="custom_reports_vmter.paperformat_alq"/>
+    </record>
+
+    <record id="purchase.report_purchase_quotation" model="ir.actions.report">
+        <field name="paperformat_id" ref="custom_reports_vmter.paperformat_alq"/>
+    </record>
+
+    <record id="account.account_invoices" model="ir.actions.report">
+        <field name="paperformat_id" ref="custom_reports_vmter.paperformat_alq"/>
+    </record>
+
+    <record id="mrp.action_report_production_order" model="ir.actions.report">
+        <field name="paperformat_id" ref="custom_reports_vmter.alq_mrp_paperformat"/>
+    </record>
+
+    <record id="stock.action_report_delivery" model="ir.actions.report">
+        <field name="paperformat_id" ref="custom_reports_vmter.paperformat_alq"/>
+    </record>
+</odoo>
