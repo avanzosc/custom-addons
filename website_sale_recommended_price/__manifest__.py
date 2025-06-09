@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 {
-    "name": "Website sale dttca",
+    "name": "Website sale recommended price",
     "version": "16.0.1.0.0",
     "category": "Website",
     "license": "AGPL-3",
@@ -17,3 +17,4 @@
     ],
     "installable": True,
 }
+
