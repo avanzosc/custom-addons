@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_order_tree" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_stock.view_order_tree"/>
+        <field name="arch" type="xml">
+            <field name="delivery_status" position="attributes">
+                <attribute name="decoration-info">delivery_status == 'pending'</attribute>
+                <attribute name="decoration-success">delivery_status == 'full'</attribute>
+                <attribute name="decoration-danger"></attribute>
+                <attribute name="decoration-warning">delivery_status == 'partial'</attribute>
+            </field>
+        </field>
+     </record>
+</odoo>
