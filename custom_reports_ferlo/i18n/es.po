@@ -1,0 +1,95 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* custom_reports_ferlo
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-09 08:43+0000\n"
+"PO-Revision-Date: 2025-07-09 08:43+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: custom_reports_ferlo
+#: model_terms:ir.ui.view,arch_db:custom_reports_ferlo.external_layout_standard_invoice_ferlo
+msgid ""
+"<br/>\n"
+"                        <span>VAT: </span>"
+msgstr ""
+"<br/>\n"
+"                        <span>NIF: </span>"
+
+#. module: custom_reports_ferlo
+#: model_terms:ir.ui.view,arch_db:custom_reports_ferlo.report_invoice_document
+msgid ""
+"<br/>\n"
+"                    <span>VAT: </span>"
+msgstr ""
+"<br/>\n"
+"                    <span>NIF: </span>"
+
+#. module: custom_reports_ferlo
+#: model_terms:ir.ui.view,arch_db:custom_reports_ferlo.report_invoice_document
+msgid "<span>Credit Note Date</span>"
+msgstr "<span>Fecha de la factura rectificativa</span>"
+
+#. module: custom_reports_ferlo
+#: model_terms:ir.ui.view,arch_db:custom_reports_ferlo.report_invoice_document
+msgid "<span>Customer Code</span>"
+msgstr "<span>Código del cliente</span>"
+
+#. module: custom_reports_ferlo
+#: model_terms:ir.ui.view,arch_db:custom_reports_ferlo.report_invoice_document
+msgid "<span>Date</span>"
+msgstr "<span>Fecha</span>"
+
+#. module: custom_reports_ferlo
+#: model_terms:ir.ui.view,arch_db:custom_reports_ferlo.report_invoice_document
+msgid "<span>Due Date</span>"
+msgstr "<span>Fecha de vencimiento</span>"
+
+#. module: custom_reports_ferlo
+#: model_terms:ir.ui.view,arch_db:custom_reports_ferlo.report_invoice_document
+msgid "<span>Invoice Date</span>"
+msgstr "<span>Fecha de factura</span>"
+
+#. module: custom_reports_ferlo
+#: model_terms:ir.ui.view,arch_db:custom_reports_ferlo.report_invoice_document
+msgid "<span>Receipt Date</span>"
+msgstr "<span>Fecha de recepción:</span>"
+
+#. module: custom_reports_ferlo
+#: model_terms:ir.ui.view,arch_db:custom_reports_ferlo.report_invoice_document
+msgid "<span>Reference</span>"
+msgstr "<span>Referencia</span>"
+
+#. module: custom_reports_ferlo
+#: model_terms:ir.ui.view,arch_db:custom_reports_ferlo.report_invoice_document
+msgid "<span>Source</span>"
+msgstr "<span>Origen</span>"
+
+#. module: custom_reports_ferlo
+#: model_terms:ir.ui.view,arch_db:custom_reports_ferlo.report_invoice_payment_mode
+msgid ""
+"<strong style=\"font-size: 13px !important; margin-top: 0px; padding-top: "
+"0px; margin-bottom: 0px; padding-bottom: 0px !important;\">Payment "
+"Mode:</strong>"
+msgstr ""
+"<strong style=\"font-size: 13px !important; margin-top: 0px; padding-top: "
+"0px; margin-bottom: 0px; padding-bottom: 0px !important;\">Modo "
+"de pago:</strong>"
+
+#. module: custom_reports_ferlo
+#: model_terms:ir.ui.view,arch_db:custom_reports_ferlo.external_layout_standard_invoice_ferlo
+msgid "Logo"
+msgstr "Logo"
+
+#. module: custom_reports_ferlo
+#: model_terms:ir.ui.view,arch_db:custom_reports_ferlo.external_layout_standard_invoice_ferlo
+msgid "Page: <span class=\"page\"/> / <span class=\"topage\"/>"
+msgstr "Página: <span class=\"page\"/> / <span class=\"topage\"/>"
