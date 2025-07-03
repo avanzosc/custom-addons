@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_347_partner_document" inherit_id="l10n_es_aeat_mod347.report_347_partner_document">
+      <t t-call="web.external_layout" position="inside">
+        <div class="header" style="font-size: 12px;">
+          <div class="row mt16 mb16">
+            <div class="col-12 text-right">
+              <img src="/custom_reports_vmter/static/src/img/logo_left.png"
+                   style="height: 100px;"/>
+            </div>
+          </div>
+        </div>
+      </t>
+      <t t-call="web.external_layout" position="attributes">
+        <attribute name="t-call">custom_reports_vmter.external_layout_alq</attribute>
+      </t>
+    </template>
+
+    <template id="report_347_partner_document_alq">
+      <t t-call="custom_reports_vmter.external_layout_alq">
+        <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+        <div class="header" style="font-size: 12px;">
+            <div class="row mt16 mb16">
+                <div class="col-6">
+                    <spam>&amp;nbsp;</spam>
+                </div>
+                <div class="col-6 text-right">
+                    <img src="/custom_reports_vmter/static/src/img/logo_left.png"
+                         style="height: 100px;"/>
+                </div>
+            </div>
+            <div class="row mt16 mb16">
+                <div class="col-6">
+                    <div style="color: #8B857F;">
+                        <div style="font-weight: bold;">
+                            <span t-field="o.partner_id.company_id.partner_id.name"/>
+                        </div>
+                        <div>
+                            <span t-field="o.partner_id.company_id.street"/>
+                        </div>
+                        <div>
+                            <span t-field="o.partner_id.company_id.street2"/>
+                        </div>
+                        <div>
+                            <span t-field="o.partner_id.company_id.zip"/>
+                            <span t-field="o.partner_id.company_id.city"/>
+                            (<t t-esc="o.partner_id.company_id.country_id.name"/>)
+                        </div>
+                        <div>
+                            VAT:
+                            <span t-field="o.partner_id.company_id.vat"/>
+                        </div>
+                    </div>
+                    <div style="color: #8B857F;font-size: 10px;margin-top:2mm;">
+                        <div>
+                            <i class="fa fa-phone"/>
+                            <span t-field="o.partner_id.company_id.phone"/>
+                        </div>
+                        <div>
+                            <i class="fa fa-at"/>
+                            <span t-field="o.partner_id.company_id.email"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div name="delivery_address">
+                        <div style="font-weight: bold;">
+                            <span t-field="o.partner_id.name"/>
+                        </div>
+                        <div>
+                            <span t-field="o.partner_id.street"/>
+                        </div>
+                        <div>
+                            <span t-field="o.partner_id.street2"/>
+                        </div>
+                        <div>
+                            <span t-field="o.partner_id.zip"/>
+                            <span t-field="o.partner_id.city"/>
+                            (
+                            <t t-esc="o.partner_id.country_id.name"/>
+                            )
+                        </div>
+                        <div t-if="o.partner_id.vat" class="mt16"><t t-esc="o.report_id.company_id.country_id.vat_label or 'TIN'"/>:
+                            <span t-field="o.partner_id.vat"/>
+                         </div>
+                    </div>
+                    <div style="font-size: 10px;margin-top:2mm;">
+                        <div t-if="o.partner_id.phone">
+                            <i class="fa fa-phone"/>
+                            <span t-field="o.partner_id.phone"/>
+                        </div>
+                        <div t-if="o.partner_id.email">
+                            <i class="fa fa-at"/>
+                            <span t-field="o.partner_id.email"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page">
+          <div class="row">
+            <div name="invoice_address" class="col-xs-5 col-xs-offset-7">
+                <spam>&amp;nbsp;</spam>
+            </div>
+          </div>
+
+          <div class="row mt32 mb32">
+              <div class="col-12" t-if="o.operation_key">
+              <spam>&amp;nbsp;</spam>
+              <br/>
+              <spam>&amp;nbsp;</spam>
+              <br/>
+              <strong>Operation Key:</strong>
+              <p t-field="o.operation_key"/>
+            </div>
+          </div>
+
+          <t t-if="o.amount">
+            <h2>Invoices</h2>
+            <div class="row mt32 mb32">
+              <div class="col-12">
+                <strong>
+                    Amount: <span t-field="o.amount"/>
+                    <spam>&amp;nbsp;</spam>
+                    Amount-1Q: <span t-field="o.first_quarter"/>
+                    <spam>&amp;nbsp;</spam>
+                    Amount-2Q: <span t-field="o.second_quarter"/>
+                    <spam>&amp;nbsp;</spam>
+                    Amount-3Q: <span t-field="o.third_quarter"/>
+                    <spam>&amp;nbsp;</spam>
+                    Amount-4Q: <span t-field="o.fourth_quarter"/>
+                </strong>
+              </div>
+            </div>
+            <t t-if="o.move_record_ids">
+              <table class="table table-condensed" name="invoice_line_table">
+                <thead>
+                  <tr>
+                    <th>Invoice</th>
+                    <th>Date</th>
+                    <th style="text-align:right !important;">Amount</th>
+                  </tr>
+                </thead>
+                <tbody class="invoice_tbody">
+                  <tr t-foreach="o.move_record_ids" t-as="l">
+                    <td><span t-esc="l.move_id.ref or l.move_id.name"/></td>
+                    <td><span t-field="l.move_id.date"/></td>
+                    <td style="text-align:right !important;" id="subtotal">
+                      <span t-field="l.amount_signed"/>
+                    </td>
+                  </tr>
+                  <tr t-foreach="range(max(5-len(o.move_record_ids),0))" t-as="l">
+                    <td t-translation="off">&amp;nbsp;</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </t>
+          </t>
+
+          <t t-if="o.cash_amount">
+            <h2>Cash Register</h2>
+            <div class="row mt32 mb32">
+              <div class="col-4">
+                <strong style="text-align:right !important;">Amount:</strong>
+                <p class="text-right" t-field="o.cash_amount"/>
+              </div>
+            </div>
+
+            <t t-if="o.cash_record_ids">
+              <table class="table table-condensed" name="invoice_line_table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th style="text-align:right !important;">Amount</th>
+                  </tr>
+                </thead>
+                <tbody class="invoice_tbody">
+                  <tr t-foreach="o.cash_record_ids" t-as="l">
+                    <td><span t-field="l.date"/></td>
+                    <td style="text-align:right !important;" id="subtotal">
+                      <span t-field="l.balance"/>
+                    </td>
+                  </tr>
+                  <tr t-foreach="range(max(5-len(o.cash_record_ids),0))" t-as="l">
+                    <td t-translation="off">&amp;nbsp;</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </t>
+          </t>
+
+          <t t-if="o.real_estate_transmissions_amount">
+            <h2>Real State Transmissions</h2>
+            <div class="row mt32 mb32">
+              <div class="col-4">
+                <strong style="text-align:right !important;">Amount:</strong>
+                <p style="text-align:right !important;" t-field="o.real_estate_transmissions_amount"/>
+              </div>
+              <div class="col-2">
+                <strong style="text-align:right !important;">Amount 1Q:</strong>
+                <p style="text-align:right !important;" t-field="o.first_quarter_real_estate_transmissions_amount"/>
+              </div>
+              <div class="col-2">
+                <strong style="text-align:right !important;">Amount 2Q:</strong>
+                <p style="text-align:right !important;" t-field="o.second_quarter_real_estate_transmissions_amount"/>
+              </div>
+              <div class="col-2">
+                <strong style="text-align:right !important;">Amount 3Q:</strong>
+                <p style="text-align:right !important;" t-field="o.third_quarter_real_estate_transmissions_amount"/>
+              </div>
+              <div class="col-2">
+                <strong style="text-align:right !important;">Amount 4Q:</strong>
+                <p style="text-align:right !important;" t-field="o.fourth_quarter_real_estate_transmissions_amount"/>
+              </div>
+            </div>
+          </t>
+        </div>
+      </t>
+    </template>
+
+    <template id="report_347_partner_alq">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+          <t t-call="custom_reports_vmter.report_347_partner_document_alq" t-lang="o.partner_id.lang"/>
+        </t>
+      </t>
+    </template>
+
+    <report id="347_partner"
+            string="347 Partner Detail ALQ"
+            model="l10n.es.aeat.mod347.partner_record"
+            report_type = "qweb-pdf"
+            file="custom_reports_vmter.report_347_partner_alq"
+            name="custom_reports_vmter.report_347_partner_alq"
+    />
+</odoo>

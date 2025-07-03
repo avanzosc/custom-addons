@@ -1,0 +1,788 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* custom_reports_vmter
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-03 06:43+0000\n"
+"PO-Revision-Date: 2025-07-03 06:43+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+msgid "&amp;nbsp;"
+msgstr ""
+
+#. module: custom_reports_vmter
+#: model:ir.actions.report,print_report_name:custom_reports_vmter.shipping_label_report
+msgid "'Shipping Label For Picking - %s' % (object.name)"
+msgstr "Etiqueta envío para albarán - %s' % (object.name)"
+
+#. module: custom_reports_vmter
+#: model:ir.actions.report,print_report_name:custom_reports_vmter.id_report_picking_alq
+msgid "(object.name)"
+msgstr ""
+
+#. module: custom_reports_vmter
+#: model:ir.actions.report,name:custom_reports_vmter.347_partner
+msgid "347 Partner Detail ALQ"
+msgstr "Detalle de empresa 347 ALQ"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid "<b style=\"margin-left:180px\">Picking:</b>"
+msgstr "<b style=\"margin-left:180px\">Albarán:</b>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid ""
+"<br/>\n"
+"                                    <strong style=\"color: white;\">Bank account:</strong>"
+msgstr ""
+"<br/>\n"
+"                                        <strong style=\"color: white;\">Cuenta bancaria:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+msgid ""
+"<br/>\n"
+"              <strong>Operation Key:</strong>"
+msgstr ""
+"<br/>\n"
+"              <strong>Clave de operación:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid "<span style=\"font-size: 18px\">DELIVERY NOTE</span>"
+msgstr "<span style=\"font-size: 18px\">ALBARÁN</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+msgid "<span style=\"font-size: 18px\">PURCHASE ORDER</span>"
+msgstr "<span style=\"font-size: 18px\">PEDIDO DE COMPRA</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "<span style=\"font-size: 18px\">Proforma Invoice</span>"
+msgstr "<span style=\"font-size: 18px\">Factura Proforma</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchasequotation_document_alq
+msgid "<span style=\"font-size: 18px\">REQUEST FOR QUOTATION</span>"
+msgstr "<span style=\"font-size: 18px\">SOLICITUD DE PRESUPUESTO</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid ""
+"<span style=\"font-weight: bold;\">\n"
+"                                    Date:\n"
+"                                </span>"
+msgstr ""
+"<span style=\"font-weight: bold;\">\n"
+"                                        Fecha:\n"
+"                                    </span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid ""
+"<span style=\"font-weight: bold;\">\n"
+"                                    Nº:\n"
+"                                </span>"
+msgstr ""
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchasequotation_document_alq
+msgid ""
+"<span style=\"font-weight: bold;\">\n"
+"                                Partner Ref.:\n"
+"                            </span>"
+msgstr ""
+"<span style=\"font-weight: bold;\">\n"
+"                                Ref. Proveedor:\n"
+"                            </span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid ""
+"<span style=\"font-weight: bold;\">\n"
+"                            Customer Order:\n"
+"                        </span>"
+msgstr ""
+"<span style=\"font-weight: bold;\">\n"
+"                            Ref. Cliente:\n"
+"                        </span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchasequotation_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "<span style=\"font-weight: bold;\">Date:</span>"
+msgstr "<span style=\"font-weight: bold;\">Fecha:</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchasequotation_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "<span style=\"font-weight: bold;\">Nº:</span>"
+msgstr ""
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid ""
+"<span style=\"margin-left:6px\"/>\n"
+"                                                <b>Date:</b>"
+msgstr ""
+"<span style=\"margin-left:6px\"/>\n"
+"                                                <b>Fecha:</b>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.shipping_label_document_template
+msgid "<span> Date: </span>"
+msgstr "<span>Fecha:</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.shipping_label_document_template
+msgid "<span> Shipping costs: </span>"
+msgstr "<span>Costes envío:</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.shipping_label_document_template
+msgid "<span> Weight: </span>"
+msgstr "<span>Peso:</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.shipping_label_document_template
+msgid "<span>/</span>"
+msgstr ""
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid "<span>Best Before Date:</span>"
+msgstr "<span>Fecha consumo preferente:</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "<span>Disc.(%)</span>"
+msgstr "<span>Desc.(%)</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid "<span>Expiry date:</span>"
+msgstr "<span>Fecha de caducidad:</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid "<span>Lot:</span>"
+msgstr "<span>Lote:</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "<span>MRP order N°</span>"
+msgstr "<span>Orden de producción N°</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.shipping_label_document_template
+msgid "<span>Mobile:</span>"
+msgstr "<span>Móvil:</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+msgid "<span>PACKING LIST</span>"
+msgstr ""
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.shipping_label_document_template
+msgid "<span>Packages:</span>"
+msgstr "<span>Bultos:</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.shipping_label_document_template
+msgid "<span>Phone:</span>"
+msgstr "<span>Teléfono:</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid "<span>Quantity:</span>"
+msgstr "<span>Cantidad:</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid "<span>Rec. Price</span>"
+msgstr "<span>P. Rec.</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid "<span>Use date:</span>"
+msgstr "<span>Cons. Prefer. antes de:</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "<strong class=\"mr16\">Subtotal</strong>"
+msgstr ""
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+msgid "<strong style=\"text-align:right !important;\">Amount 1Q:</strong>"
+msgstr "<strong style=\"text-align:right !important;\">Importe 1T:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+msgid "<strong style=\"text-align:right !important;\">Amount 2Q:</strong>"
+msgstr "<strong style=\"text-align:right !important;\">Importe 2T:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+msgid "<strong style=\"text-align:right !important;\">Amount 3Q:</strong>"
+msgstr "<strong style=\"text-align:right !important;\">Importe 3T:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+msgid "<strong style=\"text-align:right !important;\">Amount 4Q:</strong>"
+msgstr "<strong style=\"text-align:right !important;\">Importe 4T:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+msgid "<strong style=\"text-align:right !important;\">Amount:</strong>"
+msgstr "<strong style=\"text-align:right !important;\">Importe:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+msgid "<strong>Amount</strong>"
+msgstr "<strong>Importe</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid "<strong>Bank account:</strong>"
+msgstr "<strong>Cuenta bancaria:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid "<strong>Carrier:</strong>"
+msgstr "<strong>Envío:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "<strong>Consumed products</strong>"
+msgstr "<strong>Productos consumidos</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+msgid "<strong>Customer Order:</strong>"
+msgstr "<strong>Referencia del cliente:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid "<strong>Date Due:</strong>"
+msgstr "<strong>Fecha vencimiento:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+msgid "<strong>Date Req.</strong>"
+msgstr "<strong>Fecha req.</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "<strong>Date planned:</strong>"
+msgstr "<strong>Fecha programada:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchasequotation_document_alq
+msgid "<strong>Description</strong>"
+msgstr "<strong>Descripción</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchasequotation_document_alq
+msgid "<strong>Expected Date</strong>"
+msgstr "<strong>Fecha prevista</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "<strong>IBAN:</strong>"
+msgstr ""
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "<strong>Incoterm:</strong>"
+msgstr ""
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid "<strong>Origin doc.:</strong>"
+msgstr "<strong>Doc. Origen:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "<strong>Origin document:</strong>"
+msgstr "<strong>Origen:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+msgid "<strong>Package</strong>"
+msgstr "<strong>Paquete</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid "<strong>Packages:</strong>"
+msgstr "<strong>Bultos:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "<strong>Payment Mode:</strong>"
+msgstr "<strong>Modo de pago:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "<strong>Payment Term:</strong>"
+msgstr "<strong>Término de pago:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "<strong>Product:</strong>"
+msgstr "<strong>Producto:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+msgid "<strong>Product</strong>"
+msgstr "<strong>Producto</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchasequotation_document_alq
+msgid "<strong>Qty</strong>"
+msgstr "<strong>Cant</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "<strong>Quantity:</strong>"
+msgstr "<strong>Cantidad:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+msgid "<strong>Quantity</strong>"
+msgstr "<strong>Cantidad</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "<strong>SWIFT CODE:</strong>"
+msgstr ""
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "<strong>State:</strong>"
+msgstr "<strong>Estado:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+msgid "<strong>Subtotal</strong>"
+msgstr ""
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+msgid "<strong>Taxes</strong>"
+msgstr "<strong>Impuestos</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+msgid "<strong>Total</strong>"
+msgstr ""
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid "<strong>Tracking N.:</strong>"
+msgstr "<strong>Nº seguimiento:</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+msgid "<strong>Unit Price</strong>"
+msgstr "<strong>Precio Unidad</strong>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid "<strong>Weight:</strong>"
+msgstr "<strong>Peso:</strong>"
+
+#. module: custom_reports_vmter
+#: model:ir.actions.report,name:custom_reports_vmter.id_report_picking_alq
+msgid "ALQ Pickings"
+msgstr "Albaranes ALQ"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+msgid ""
+"All items couldn't be shipped, the remaining ones will be shipped as soon as"
+" they become available."
+msgstr ""
+"Todos los artículos no pudieron ser enviados, los restantes serán enviados "
+"tan pronto como estén disponibles."
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "Amount"
+msgstr "Importe"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+msgid "Amount-1Q:"
+msgstr "Importe 1T:"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+msgid "Amount-2Q:"
+msgstr "Importe 2T:"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+msgid "Amount-3Q:"
+msgstr "Importe 3T:"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+msgid "Amount-4Q:"
+msgstr "Importe 4T:"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+msgid "Amount:"
+msgstr "Importe:"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid "Cancelled Invoice"
+msgstr "Factura cancelada"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+msgid "Cash Register"
+msgstr "Registro de efectivo"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid "Credit Note"
+msgstr "Rectificativa"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid "Customer Order:"
+msgstr "Ref. Cliente:"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid "Customer reference:"
+msgstr "Ref. Cliente:"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.shipping_label_document_template
+msgid "DESTINATION"
+msgstr "DESTINO"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+msgid "Date"
+msgstr "Fecha"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchasequotation_document_alq
+msgid "Delivery"
+msgstr "Entrega"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "Delivery / Notify"
+msgstr "Entregado a:"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "Description"
+msgstr "Descripción"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid "Destination"
+msgstr "Destino"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "Destination location"
+msgstr "Ubicación destino"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid "Disc.(%)"
+msgstr "Desc.(%)"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid "Draft Invoice"
+msgstr "Factura borrador"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+msgid "Expiry Date"
+msgstr "Fecha de expiración"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "Expiry date"
+msgstr "Fecha de caducidad"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid "INVOICE"
+msgstr "FACTURA"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchasequotation_document_alq
+msgid "Invoiced"
+msgstr "Facturado"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "Invoiced / Consignee"
+msgstr "Facturado a:"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+msgid "Invoices"
+msgstr "Facturas"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "Lot"
+msgstr "Lote"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+msgid "Lot/Serial Number"
+msgstr "Lote/Nº de serie"
+
+#. module: custom_reports_vmter
+#: model:ir.model.fields,field_description:custom_reports_vmter.field_stock_move__mrp_product_id
+msgid "Manufactured product"
+msgstr "Producto fabricado"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid "Order Nº:"
+msgstr "Nº Pedido:"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid "Package"
+msgstr "Paquete"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_report_mrp_layout
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.external_layout_alq
+msgid "Page: <span class=\"page\"/> / <span class=\"topage\"/>"
+msgstr "Página: <span class=\"page\"/>/<span class=\"topage\"/>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid "Product"
+msgstr "Producto"
+
+#. module: custom_reports_vmter
+#: model:ir.model,name:custom_reports_vmter.model_mrp_production
+msgid "Production Order"
+msgstr "Orden de producción"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "Quotation"
+msgstr "Presupuesto"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+msgid "Real State Transmissions"
+msgstr "Transmisiones de inmuebles"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchasequotation_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "SAME AS INVOICED"
+msgstr "MISMO QUE FACTURADO"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.shipping_label_document_template
+msgid "SENDER"
+msgstr "EMISOR"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "Sale Order"
+msgstr "Pedido de venta"
+
+#. module: custom_reports_vmter
+#: model:ir.model,name:custom_reports_vmter.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "Sales Person:"
+msgstr "Comercial:"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchasequotation_document_alq
+msgid "Seller"
+msgstr "Vendedor"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "Seller / Shipper"
+msgstr "Vendedor / Expedidor"
+
+#. module: custom_reports_vmter
+#: model:ir.actions.report,name:custom_reports_vmter.shipping_label_report
+msgid "Shipping label"
+msgstr "Etiqueta"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid "Source"
+msgstr "Origen"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "Source location"
+msgstr "Ubicación origen"
+
+#. module: custom_reports_vmter
+#: model:ir.model,name:custom_reports_vmter.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de stock"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+msgid "Supplier reference:"
+msgstr "Referencia del proveedor:"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "Taxes"
+msgstr "Impuestos"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+msgid "This shipment is a backorder of"
+msgstr ""
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "Total Price"
+msgstr "Precio total"
+
+#. module: custom_reports_vmter
+#: model:ir.model,name:custom_reports_vmter.model_stock_picking
+msgid "Transfer"
+msgstr "Traslado"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid "U. Price"
+msgstr "P. Unitario"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "Use date"
+msgstr "Fecha de consumo preferente"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchasequotation_document_alq
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
+msgid "VAT:"
+msgstr "NIF:"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid "Vendor Bill"
+msgstr "Factura de proveedor"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid "Vendor Credit Note"
+msgstr "Factura rectificativa de proveedor"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid ""
+"style=\"text-align:right !important;\"\n"
+"                                                    <span>Expiry date:</span>"
+msgstr ""
+"style=\"text-align:right !important;\"\n"
+"                                                    <span>Fecha caducidad:</span>"

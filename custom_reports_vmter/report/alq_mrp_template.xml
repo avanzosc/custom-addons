@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="alq_report_mrp_layout">
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id"/>
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company"/>
+        </t>
+
+        <div class="header">
+            <div class="row">
+                <div class="col-4">
+                    <img src="/custom_reports_vmter/static/src/img/logo_left.png"
+                                 style="height: 100px;"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5" style="font-size: 10px !important;">
+                    <br/>
+                    <strong><span style="text-decoration: underline !important;" t-field="company.partner_id.name"/></strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="article o_report_layout_standard">
+            <t t-raw="0"/>
+        </div>
+
+        <div class="footer" style="font-size: 12px;">
+            <div class="row" style="border-top: 1px solid black; font-size: 10px !important;">
+                <!--
+                <div t-if="company.custom_footer" class="col-xs-12">
+                    <span t-raw="company.rml_footer"/>
+                </div>
+                -->
+                <div t-if="report_type == 'pdf'" class="col-12" style="padding-top: 1%; text-align:right !important;">
+                    Page: <span class="page"/> / <span class="topage"/>
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>
