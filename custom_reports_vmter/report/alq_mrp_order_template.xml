@@ -104,7 +104,7 @@
                                             <span t-field="line2.location_dest_id.name"/>
                                         </td>
                                     </tr>
-                                    <tr t-foreach="line2.move_line_ids.filtered(lambda l: l.workorder_id and l.workorder_id.state == 'done')" 
+                                    <tr t-foreach="line2.move_line_ids.filtered(lambda l: l.lot_id)" 
                                             t-as="active_line">
                                         <td style="text-align:right !important;" colspan="4">
                                             <span class="col-3">
