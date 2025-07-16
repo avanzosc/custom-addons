@@ -112,7 +112,7 @@
                                                 <span t-field="active_line.lot_id"/>
                                             </span>
                                             <span class="col-5">
-                                                <t t-if="active_line.lot_id.expiration_date">style="text-align:right !important;"
+                                                <t t-if="active_line.lot_id.expiration_date">
                                                     <span>Expiry date:</span>
                                                     <span t-esc="active_line.lot_id.expiration_date"
                                                         t-options="{'widget': 'datetime', 'format': 'dd/MM/yyyy'}" />
