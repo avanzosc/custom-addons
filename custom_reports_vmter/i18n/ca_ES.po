@@ -163,6 +163,7 @@ msgid "<span>Disc.(%)</span>"
 msgstr ""
 
 #. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq
 msgid "<span>Expiry date:</span>"
 msgstr ""
@@ -761,9 +762,3 @@ msgstr ""
 msgid "Vendor Credit Note"
 msgstr ""
 
-#. module: custom_reports_vmter
-#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
-msgid ""
-"style=\"text-align:right !important;\"\n"
-"                                                    <span>Expiry date:</span>"
-msgstr ""
