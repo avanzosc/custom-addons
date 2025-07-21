@@ -334,7 +334,7 @@
                                         <span t-field="l.uom_id" groups="product.group_uom"/>
                                     </td>
                                     <td class="text-right">
-                                        <span t-esc="', '.join(map(lambda x: (x.description or x.name), l.invoice_line_tax_ids))"/>
+                                        <span t-esc="', '.join(map(lambda x: (x.description or x.name), l.tax_ids))"/>
                                     </td>
                                     <td class="text-right">
                                         <t t-if="res_company.show_recommended_price">
