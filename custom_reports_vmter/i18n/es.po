@@ -779,3 +779,13 @@ msgstr "Factura de proveedor"
 msgid "Vendor Credit Note"
 msgstr "Factura rectificativa de proveedor"
 
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "<strong>Scrap Quantity:</strong>"
+msgstr "<strong>Cantidad desechada:</strong"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "<strong>Real Quantity Produced:</strong>"
+msgstr "<strong>Cantidad real producida:</strong>"
+

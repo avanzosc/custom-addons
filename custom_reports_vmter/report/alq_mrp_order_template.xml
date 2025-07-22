@@ -30,6 +30,18 @@
                             <br/>
                         </span>
                         <span>
+                            <strong>Scrap Quantity:</strong>
+                            <span t-field="o.scrap_qty"/>
+                            <span t-field="o.product_uom_id.name"/>
+                            <br/>
+                        </span>
+                        <span>
+                            <strong>Real Quantity Produced:</strong>
+                            <span t-field="o.real_quantity_produced"/>
+                            <span t-field="o.product_uom_id.name"/>
+                            <br/>
+                        </span>
+                        <span>
                             <strong>Date planned:</strong>
                             <span t-field="o.date_planned_start" t-field-options='{"widget": "date"}'/>
                             <br/>

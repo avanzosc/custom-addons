@@ -27,6 +27,7 @@
         "account_banking_mandate",
         "account_payment_partner",
         "delivery_package_number",
+        "mrp_production_scrap_quantity"
     ],
     "data": [
         "report/paperformat.xml",
