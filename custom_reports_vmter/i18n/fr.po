@@ -764,3 +764,13 @@ msgstr "Facture fournisseur"
 msgid "Vendor Credit Note"
 msgstr "Avoir de fournisseur"
 
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "<strong>Scrap Quantity:</strong>"
+msgstr ""
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "<strong>Real Quantity Produced:</strong>"
+msgstr ""
+
