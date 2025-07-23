@@ -23,8 +23,6 @@
                             <!--<span t-field="o.shipping_costs" t-field-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/>-->
                             <span> Date: </span>
                             <span t-field="o.date" t-field-options='{"widget": "date"}'/>
-                        </div>
-                        <div class="col-12">
                             <br/>
                             <span t-field="o.carrier_id"/>
                             <br/>
