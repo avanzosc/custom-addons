@@ -88,6 +88,7 @@
                         <thead>
                             <tr>
                                 <th>Product</th>
+                                <th>Lineal</th>
                                 <th class="text-right">Quantity</th>
                                 <th>Source location</th>
                                 <th>Destination location</th>
@@ -105,6 +106,9 @@
                                         <td>
                                             <span t-field="line2.product_id"/>
                                         </td>
+                                        <td>
+                                            <span t-field="line2.lineal_id"/>                                            
+                                        </td>  
                                         <td style="text-align:right !important;">
                                             <span t-field="line2.product_uom_qty"/>
                                             <span t-field="line2.product_uom.name"/>
