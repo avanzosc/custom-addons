@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+        <t t-call="web.external_layout" position="attributes">
+            <attribute name="t-call">custom_reports_ferlo.external_layout_invoice_ferlo</attribute>
+        </t>
+        <div name="address_not_same_as_shipping" position="replace">
+            <div class="col-6" name="address_not_same_as_shipping">
+                <span t-field="o.partner_id"/>
+                <br/>
+                <span t-field="o.partner_id.street"/>
+                <t t-if="o.partner_id.street2">
+                    <br/>
+                    <span t-field="o.partner_id.street2"/>
+                </t>
+                <t t-if="o.partner_id.zip or o.partner_id.city">
+                    <br/>
+                    <span t-field="o.partner_id.zip"/>
+                    <span t-field="o.partner_id.city"/>
+                </t>
+                <t t-if="o.partner_id.country_id">
+                    <br/>
+                    <span t-field="o.partner_id.country_id.name"/>
+                </t>
+                <t t-if="o.partner_id.vat">
+                    <br/>
+                    <span>VAT: </span>
+                    <span t-field="o.partner_id.vat"/>
+                </t>
+            </div>
+        </div>
+        <div name="address_same_as_shipping" position="replace" />
+        <div name="no_shipping" position="replace" />
+        <xpath expr="//div[@name='invoice_date']/t[1]/strong" position="attributes">
+            <attribute name="style">background-color: #f0f0f0 !important;</attribute>
+        </xpath>
+        <xpath expr="//div[@name='invoice_date']/t[2]/strong" position="attributes">
+            <attribute name="style">background-color: #f0f0f0 !important;</attribute>
+        </xpath>
+        <xpath expr="//div[@name='invoice_date']/t[3]/strong" position="attributes">
+            <attribute name="style">background-color: #f0f0f0 !important;</attribute>
+        </xpath>
+        <xpath expr="//div[@name='invoice_date']/t[4]/strong" position="attributes">
+            <attribute name="style">background-color: #f0f0f0 !important;</attribute>
+        </xpath>
+        <xpath expr="//div[@name='due_date']/strong" position="attributes">
+            <attribute name="style">background-color: #f0f0f0 !important;</attribute>
+        </xpath>
+        <xpath expr="//div[@name='origin']/strong" position="attributes">
+            <attribute name="style">background-color: #f0f0f0 !important;</attribute>
+        </xpath>
+        <xpath expr="//div[@name='customer_code']/strong" position="attributes">
+            <attribute name="style">background-color: #f0f0f0 !important;</attribute>
+        </xpath>
+        <xpath expr="//div[@name='reference']/strong" position="attributes">
+            <attribute name="style">background-color: #f0f0f0 !important;</attribute>
+        </xpath>
+        <xpath expr="//th[@name='th_description']" position="attributes">
+            <attribute name="style">background-color: #f0f0f0 !important;</attribute>
+        </xpath>
+        <xpath expr="//th[@name='th_quantity']" position="attributes">
+            <attribute name="style">background-color: #f0f0f0 !important;</attribute>
+        </xpath>
+        <xpath expr="//th[@name='th_priceunit']" position="attributes">
+            <attribute name="style">background-color: #f0f0f0 !important;</attribute>
+        </xpath>
+        <xpath expr="//th[@name='th_price_unit']" position="attributes">
+            <attribute name="style">background-color: #f0f0f0 !important;</attribute>
+        </xpath>
+        <xpath expr="//th[@name='th_taxes']" position="attributes">
+            <attribute name="style">background-color: #f0f0f0 !important;</attribute>
+        </xpath>
+        <xpath expr="//th[@name='th_subtotal']" position="attributes">
+            <attribute name="style">background-color: #f0f0f0 !important;</attribute>
+        </xpath>
+        <div t-if="not is_html_empty(o.narration)" name="comment" position="replace"/>
+        <div id="informations" position="after">
+            <table class="table table-sm o_main_table table-borderless" name="invoice_table">
+                <thead>
+                    <tr>
+                        <th name="th_invoice_date"
+                                class="text-start" style="background-color: #f0f0f0 !important;">
+                            <t t-if="o.move_type == 'out_invoice'"><span>Invoice Date</span></t>
+                            <t t-elif="o.move_type == 'out_refund'"><span>Credit Note Date</span></t>
+                            <t t-elif="o.move_type == 'out_receipt'"><span>Receipt Date</span></t>
+                            <t t-else=""><span>Date</span></t>
+                         </th>
+                        <th name="th_due_date" t-if="o.invoice_date_due"
+                            class="text-start" style="background-color: #f0f0f0 !important;"><span>Due Date</span></th>
+                        <th name="th_origin" t-if="o.invoice_origin"
+                            class="text-start" style="background-color: #f0f0f0 !important;"><span>Source</span></th>
+                        <th name="th_customer_code" t-if="o.partner_id.ref"
+                            class="text-start" style="background-color: #f0f0f0 !important;"><span>Customer Code</span></th>
+                        <th name="th_ref" t-if="o.ref"
+                            class="text-start" style="background-color: #f0f0f0 !important;"><span>Reference</span></th>
+                    </tr>
+                </thead>
+                <tbody class="invoice_tbody">
+                    <tr>
+                        <td t-if="o.invoice_date_due" class="text-start">
+                            <span t-field="o.invoice_date"/>
+                        </td>
+                        <td t-if="o.invoice_date_due" class="text-start">
+                            <span t-field="o.invoice_date_due"/>
+                        </td>
+                        <td t-if="o.invoice_origin" class="text-start">
+                            <span t-field="o.invoice_origin" t-options="{'widget': 'text'}"/>
+                        </td>
+                        <td t-if="o.partner_id.ref" class="text-start">
+                            <span t-field="o.partner_id.ref" t-options="{'widget': 'text'}"/>
+                        </td>
+                        <td t-if="o.ref" class="text-start">
+                            <span t-field="o.ref" t-options="{'widget': 'text'}"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="informations" position="replace"/>
+        <h2 position="before">
+            <br/>
+        </h2>
+        <p name="payment_communication" position="attributes">
+            <attribute name="style">font-size: 13px !important; margin-top: 0px; padding-top: 0px; margin-bottom: 0px; padding-bottom: 0px !important;</attribute>
+        </p>
+        <div name="payment_term" position="attributes">
+            <attribute name="style">font-size: 13px !important; margin-top: 0px; padding-top: 0px; margin-bottom: 0px; padding-bottom: 0px !important;</attribute>
+        </div>
+        <div id="total_payment_term_details_table" position="attributes">
+            <attribute name="style">font-size: 13px !important; margin-top: 0px; padding-top: 0px; margin-bottom: 0px; padding-bottom: 0px !important;</attribute>
+        </div>
+        <p name="note" position="attributes">
+            <attribute name="style">font-size: 13px !important; margin-top: 0px; padding-top: 0px; margin-bottom: 0px; padding-bottom: 0px !important;</attribute>
+        </p>
+        <p name="incoterm" position="attributes">
+            <attribute name="style">font-size: 13px !important; margin-top: 0px; padding-top: 0px; margin-bottom: 0px; padding-bottom: 0px !important;</attribute>
+        </p>
+        <h2 position="before">
+            <br/>
+            <br/>
+        </h2>
+    </template>
+
+    <template id="report_invoice_payment_mode" inherit_id="account_payment_partner.report_invoice_payment_mode">
+        <p t-if="o.payment_mode_id.note" position="replace">
+            <t t-if="o.payment_mode_id.note">
+                <strong style="font-size: 13px !important; margin-top: 0px; padding-top: 0px; margin-bottom: 0px; padding-bottom: 0px !important;">Payment Mode:</strong>
+                <span t-field="o.payment_mode_id.note"
+                    style="font-size: 13px !important; margin-top: 0px; padding-top: 0px; margin-bottom: 0px; padding-bottom: 0px !important;"/>
+            </t>
+        </p>
+        <p t-as="partner_bank" position="attributes">
+            <attribute name="style">font-size: 13px !important; margin-top: 0px; padding-top: 0px; margin-bottom: 0px; padding-bottom: 0px !important;</attribute>
+        </p>
+    </template>
+
+    <template id="document_tax_totals" inherit_id="account.document_tax_totals">
+        <tr class="border-black o_subtotal" position="attributes">
+            <attribute name="style">background-color: #f0f0f0 !important;</attribute>
+        </tr>
+        <tr class="border-black o_total" position="attributes">
+            <attribute name="style">background-color: #f0f0f0 !important;</attribute>
+        </tr>
+    </template>
+
+    <record id="account.account_invoices" model="ir.actions.report">
+        <field name="paperformat_id" ref="custom_reports_ferlo.paperformat_ferlo_invoice" />
+    </record>
+
+    <record id="account.account_invoices_without_payment" model="ir.actions.report">
+        <field name="paperformat_id" ref="custom_reports_ferlo.paperformat_ferlo_invoice" />
+    </record>
+</odoo>
