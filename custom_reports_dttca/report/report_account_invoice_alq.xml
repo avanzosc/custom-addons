@@ -309,11 +309,6 @@
                                 </t>
                             </t>
                         </t>
-                        <tr>
-                            <td colspan="8"
-                                style="border-bottom: 2px solid #ab138a;">
-                            </td>
-                        </tr>
                         <t t-foreach="o.invoice_line_ids.sorted(key=lambda b: str(b.move_id.invoice_origin))" t-as="l">
                             <t t-if="not l.move_id.invoice_origin">
                                 <tr t-attf-style="page-break-inside: avoid !important;">
@@ -383,19 +378,6 @@
                                 </t>
                             </t>
                         </t>
-                        <tr t-foreach="range(max(5-len(o.invoice_line_ids),0))" t-as="l"
-                            style="border-top:1px solid #ab138a;">
-                            <td t-translation="off">&amp;nbsp;</td>
-                            <td class="hidden"></td>
-                            <td></td>
-                            <td t-if="o.partner_id.property_account_position_id and 'com' in o.partner_id.property_account_position_id.name">
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
                     </tbody>
                 </table>
 
