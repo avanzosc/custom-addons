@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <template
+    id="report_invoice_document"
+    inherit_id="account.report_invoice_document"
+    priority="100"
+  >
+    <th name="th_taxes" position="replace" />
+    <xpath expr="//span[@id='line_tax_ids']/.." position="replace" />
+    <span t-field="line.product_uom_id" position="replace" />
+    <div name="origin" position="attributes">
+      <attribute
+        name="t-if"
+      >o.invoice_origin and o.move_type != 'out_invoice'</attribute>
+    </div>
+  </template>
+</odoo>

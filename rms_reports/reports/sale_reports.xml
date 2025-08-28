@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <template
+    id="report_saleorder_document"
+    inherit_id="sale.report_saleorder_document"
+    priority="100"
+  >
+    <th name="th_taxes" position="replace" />
+    <td name="td_taxes" position="replace" />
+    <span t-field="line.product_uom" position="replace" />
+  </template>
+</odoo>
