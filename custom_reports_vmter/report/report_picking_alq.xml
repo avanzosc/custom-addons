@@ -19,8 +19,7 @@
                                 <span style="font-weight: bold;">
                                     Date:
                                 </span>
-                                <span t-field="o.scheduled_date"
-                                      t-options='{"widget": "date", "format": "dd/MM/yy"}'/>
+                                <span t-field="o.scheduled_date" t-options="{&quot;widget&quot;: &quot;date&quot;, &quot;format&quot;: &quot;dd/MM/yy&quot;}"/>
                             </span>
                         </div>
                         <!--
@@ -41,12 +40,9 @@
                         -->
                     </div>
                     <div class="col-6 text-right">
-                        <img src="/custom_reports_vmter/static/src/img/logo_left.png"
-                             style="height: 100px;"/>
+                        <img src="/custom_reports_vmter/static/src/img/logo_left.png" style="height: 100px;"/>
                     </div>
                 </div>
-
-
                 <div class="row mt16 mb16">
                     <div class="col-6">
                         <!--<t t-if="'Extracom' in o.partner_id.property_account_position_id.name">-->
@@ -169,15 +165,14 @@
                 </div>
             </div>
             <div class="page" style="font-size: 11px;">
-                <div class="clearfix" />
-                <br />
-                <br />
-                <table class="table table-sm" t-if="o.move_line_ids">
-                    <t t-set="has_barcode"
-                       t-value="any([move_lines.product_id and move_lines.product_id.sudo().barcode or move_lines.package_id for move_lines in o.move_line_ids])"/>
-                    <t t-set="has_serial_number"
-                       t-value="o.move_line_ids.filtered(lambda ml: ml.lot_id or ml.lot_name)"
-                       groups="stock.group_production_lot"/>
+                <div class="clearfix"/>
+                <br/>
+                <br/>
+                <t t-set="lines" t-value="o.move_line_ids" t-if="o.move_line_ids"/>
+                <t t-set="lines" t-value="o.move_ids" t-if="not o.move_line_ids"/>                
+                <table class="table table-sm" t-if="lines">
+                    <t t-set="has_barcode" t-value="any([move_lines.product_id and move_lines.product_id.sudo().barcode or move_lines.package_id for move_lines in o.move_line_ids])"/>
+                    <t t-set="has_serial_number" t-value="o.move_line_ids.filtered(lambda ml: ml.lot_id or ml.lot_name)" groups="stock.group_production_lot"/>
                     <thead style="border-bottom: 2px solid black;">
                         <tr>
                             <th width="80%">Product</th>
@@ -185,7 +180,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <t t-foreach="o.move_ids.sorted(key=lambda m: m.product_id.id)" t-as="move">
+                        <t t-foreach="lines" t-as="move">
                             <tr>
                                 <td>
                                     <span t-field="move.product_id.display_name"/>
@@ -194,30 +189,29 @@
                                 </td>
                                 <td style="text-align:right !important;">
                                     <span t-if="move.product_qty" t-field="move.product_qty"/>
-                                    <span t-if="not move.product_qty"
-                                          t-esc="move.product_uom._compute_quantity(move.quantity_done, move.product_id.uom_id, rounding_method='HALF-UP')"/>
+                                    <span t-if="not move.product_qty" t-esc="move.product_uom._compute_quantity(move.quantity_done, move.product_id.uom_id, rounding_method='HALF-UP')"/>
                                     <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
                                 </td>
                             </tr>
                             <tr t-foreach="move.mapped('move_line_ids.lot_id')" t-as="lot">
-                              <t t-set="lot_lines" t-value="move.move_line_ids.filtered(lambda l: l.lot_id == lot)" />
+                              <t t-set="lot_lines" t-value="move.move_line_ids.filtered(lambda l: l.lot_id == lot)"/>
                               <td style="text-align:right !important;" colspan="2">
                                 <span class="col-3">
-                                  <span>Lot:</span> <span t-field="lot.name" />
+                                  <span>Lot:</span> <span t-field="lot.name"/>
                                 </span>
                                 <span class="col-5">
                                   <t t-if="lot.expiration_date">
                                     <span>Expiry date:</span>
-                                    <span t-esc="lot.expiration_date" t-options="{'widget': 'date'}" />
+                                    <span t-esc="lot.expiration_date" t-options="{'widget': 'date'}"/>
                                   </t>
                                   <t t-elif="lot.use_date">
                                     <span>Use date:</span>
-                                    <span t-esc="lot.use_date" t-options="{'widget': 'date'}" />
+                                    <span t-esc="lot.use_date" t-options="{'widget': 'date'}"/>
                                   </t>
                                 </span>
                                 <span class="col-4">
                                   <span>Quantity:</span>
-                                  <span t-esc="sum(lot_lines.mapped('qty_done'))" t-options="{'widget': 'float', 'precision': 2}" />
+                                  <span t-esc="sum(lot_lines.mapped('qty_done'))" t-options="{'widget': 'float', 'precision': 2}"/>
                                   <span t-field="move.product_uom"/>
                                 </span>
                               </td>
@@ -226,8 +220,7 @@
                         </t>
                     </tbody>
                 </table>
-                <table class="table table-sm"
-                       t-if="o.package_level_ids_details and o.picking_type_entire_packs">
+                <table class="table table-sm" t-if="o.package_level_ids_details and o.picking_type_entire_packs">
                     <thead style="border-bottom: 2px solid black;">
                         <tr>
                             <th width="40%">Package</th>

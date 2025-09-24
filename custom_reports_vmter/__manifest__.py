@@ -45,7 +45,8 @@
         "report/report_purchase_order.xml",
         "report/report_purchase_quotation.xml",
         "report/report_packing_list.xml",
-        "report/report_l10_es_aeat_mod347.xml"
+        "report/report_l10_es_aeat_mod347.xml",
+        "report/report_picking.xml"
     ],
     "installable": True,
 }

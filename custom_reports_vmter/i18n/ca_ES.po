@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-03 06:43+0000\n"
-"PO-Revision-Date: 2025-07-03 06:43+0000\n"
+"POT-Creation-Date: 2025-09-24 06:12+0000\n"
+"PO-Revision-Date: 2025-09-24 06:12+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -374,9 +374,19 @@ msgid "<strong>Quantity</strong>"
 msgstr ""
 
 #. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "<strong>Real Quantity Produced:</strong>"
+msgstr ""
+
+#. module: custom_reports_vmter
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
 msgid "<strong>SWIFT CODE:</strong>"
+msgstr ""
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "<strong>Scrap Quantity:</strong>"
 msgstr ""
 
 #. module: custom_reports_vmter
@@ -575,6 +585,11 @@ msgstr ""
 
 #. module: custom_reports_vmter
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "Lineal"
+msgstr ""
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
 msgid "Lot"
 msgstr ""
 
@@ -613,7 +628,7 @@ msgstr ""
 #. module: custom_reports_vmter
 #: model:ir.model,name:custom_reports_vmter.model_mrp_production
 msgid "Production Order"
-msgstr "Ordre de producció"
+msgstr "Producció"
 
 #. module: custom_reports_vmter
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
@@ -761,14 +776,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
 msgid "Vendor Credit Note"
 msgstr ""
-
-#. module: custom_reports_vmter
-#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
-msgid "<strong>Scrap Quantity:</strong>"
-msgstr ""
-
-#. module: custom_reports_vmter
-#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
-msgid "<strong>Real Quantity Produced:</strong>"
-msgstr ""
-

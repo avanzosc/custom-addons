@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-03 06:43+0000\n"
-"PO-Revision-Date: 2025-07-03 06:43+0000\n"
+"POT-Creation-Date: 2025-09-24 06:19+0000\n"
+"PO-Revision-Date: 2025-09-24 06:19+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -389,10 +389,20 @@ msgid "<strong>Quantity</strong>"
 msgstr "<strong>Cantidad</strong>"
 
 #. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "<strong>Real Quantity Produced:</strong>"
+msgstr "<strong>Cantidad real producida:</strong>"
+
+#. module: custom_reports_vmter
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
 msgid "<strong>SWIFT CODE:</strong>"
 msgstr ""
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "<strong>Scrap Quantity:</strong>"
+msgstr "<strong>Cantidad desechada:</strong>"
 
 #. module: custom_reports_vmter
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
@@ -592,6 +602,11 @@ msgstr "Facturas"
 
 #. module: custom_reports_vmter
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
+msgid "Lineal"
+msgstr ""
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
 msgid "Lot"
 msgstr "Lote"
 
@@ -778,14 +793,3 @@ msgstr "Factura de proveedor"
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
 msgid "Vendor Credit Note"
 msgstr "Factura rectificativa de proveedor"
-
-#. module: custom_reports_vmter
-#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
-msgid "<strong>Scrap Quantity:</strong>"
-msgstr "<strong>Cantidad desechada:</strong"
-
-#. module: custom_reports_vmter
-#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
-msgid "<strong>Real Quantity Produced:</strong>"
-msgstr "<strong>Cantidad real producida:</strong>"
-
