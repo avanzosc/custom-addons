@@ -15,7 +15,7 @@
                             </span>
                             <span style="font-size: 18px;left:55mm;position: absolute;">
                                 <span style="font-weight: bold;">Date:</span>
-                                <span t-field="o.scheduled_date" t-options='{"widget": "date"}'/>
+                                <span t-field="o.scheduled_date" t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
                             </span>
                         </div>
                         <!--
@@ -36,11 +36,9 @@
                         -->
                     </div>
                     <div class="col-6 text-right">
-                        <img src="/custom_reports_vmter/static/src/img/logo_left.png"
-                             style="height: 100px;"/>
+                        <img src="/custom_reports_vmter/static/src/img/logo_left.png" style="height: 100px;"/>
                     </div>
                 </div>
-
                 <div class="row mt16 mb16">
                     <div class="col-6">
                         <!--<t t-if="'Extracom' in o.partner_id.property_account_position_id.name">-->
@@ -139,8 +137,8 @@
                         </div>
                         <div>
                           <strong>Weight:</strong>
-                          <span t-field="o.shipping_weight" />
-                          <span t-field="o.weight_uom_name" />
+                          <span t-field="o.shipping_weight"/>
+                          <span t-field="o.weight_uom_name"/>
                         </div>
                     </div>
                     <div class="col-4">
@@ -151,15 +149,15 @@
                           <span t-if="not o.partner_id.parent_id" t-field="o.partner_id.ref"/>
                         </div>
                         <div>
-                          <strong>Packages:</strong> <span t-field="o.number_of_packages" />
+                          <strong>Packages:</strong> <span t-field="o.number_of_packages"/>
                         </div>
                     </div>
                     <div class="col-4">
                         <div t-if="o.carrier_tracking_ref">
-                          <strong>Tracking N.:</strong> <span t-field="o.carrier_tracking_ref" />
+                          <strong>Tracking N.:</strong> <span t-field="o.carrier_tracking_ref"/>
                         </div>
                         <div>
-                          <strong>Carrier:</strong> <span t-field="o.carrier_id" />
+                          <strong>Carrier:</strong> <span t-field="o.carrier_id"/>
                         </div>
                     </div>
                 </div>
@@ -173,7 +171,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <t t-set="lines" t-value="o.move_lines.filtered(lambda x: x.product_uom_qty)"/>
+                        <t t-set="lines" t-value="o.move_line_ids" t-if="o.move_line_ids"/>
+                        <t t-set="lines" t-value="o.move_ids" t-if="not o.move_line_ids"/>
                         <tr t-foreach="lines" t-as="move">
                             <td>
                                 <span t-field="move.product_id"/>
@@ -231,8 +230,7 @@
                                     </t>
                                 </td>
                                 <td>
-                                    <span t-field="move_line.lot_id.use_date"
-                                          t-options='{"widget": "date"}'/>
+                                    <span t-field="move_line.lot_id.use_date" t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
                                 </td>
                             </t>
                             <td class="text-center">
@@ -245,7 +243,7 @@
                 <p t-if="o.backorder_id" style="margin-top:15px;">
                     This shipment is a backorder of <t t-esc="o.backorder_id.name"/>.
                 </p>
-                <p >
+                <p>
                     <t t-if="o.search([('backorder_id', '=', o.id), ('state', 'not in', ['cancel', 'done'])])">
                         All items couldn't be shipped, the remaining ones will be shipped as soon as they become available.
                     </t>
