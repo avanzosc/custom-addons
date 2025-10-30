@@ -402,14 +402,44 @@
                 <div class="clearfix">
                     <div id="total" class="row mb32 mt32" style="page-break-inside: avoid !important;">
                         <div class="col-7">
-                            <div t-if="o.invoice_date_due">
-                                <strong>Date Due:</strong>
-                                <span t-field="o.invoice_date_due"/>
-                            </div>
                             <div t-if="o.invoice_payment_term_id">
                                 <strong>Payment Term:</strong>
                                 <span t-field="o.invoice_payment_term_id.name"/>
                             </div>
+                            <t t-set="due_list" t-value="o.get_multi_due_list()" />
+                            <div t-if="due_list" class="col-4">               
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Date Due</th>
+                                            <th class="text-right">Amount</th>
+                                            <th class="text-right">Outstanding</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="due_list" t-as="due_tuple">
+                                            <td>
+                                                <span
+                                                    t-esc="due_tuple[0]"
+                                                    t-options="{'widget': 'date'}"
+                                                />
+                                            </td>
+                                            <td class="text-right">
+                                                <span
+                                                    t-esc="due_tuple[1]"
+                                                    t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"
+                                                />
+                                            </td>
+                                            <td class="text-right">
+                                                <span
+                                                    t-esc="due_tuple[2]"
+                                                    t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"
+                                                />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>                     
+                            </div>                            
                             <div t-if="o.payment_mode_id">
                                 <strong>Payment Mode:</strong>
                                 <span t-field="o.payment_mode_id.name"/>

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-30 11:54+0000\n"
-"PO-Revision-Date: 2025-10-30 11:54+0000\n"
+"POT-Creation-Date: 2025-10-30 11:53+0000\n"
+"PO-Revision-Date: 2025-10-30 11:53+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgstr ""
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 msgid "<b style=\"margin-left:180px\">Picking:</b>"
-msgstr "<b style=\"margin-left:180px\">Albarán:</b>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
@@ -36,28 +36,26 @@ msgid ""
 "<br/>\n"
 "                                    <strong style=\"color: white;\">Bank account:</strong>"
 msgstr ""
-"<br/>\n"
-"                                        <strong style=\"color: white;\">Cuenta bancaria:</strong>"
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 msgid "<span style=\"font-size: 18px\">DELIVERY NOTE</span>"
-msgstr "<span style=\"font-size: 18px\">ALBARÁN</span>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchaseorder_document_alq
 msgid "<span style=\"font-size: 18px\">PURCHASE ORDER</span>"
-msgstr "<span style=\"font-size: 18px\">PEDIDO DE COMPRA</span>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "<span style=\"font-size: 18px\">Proforma Invoice</span>"
-msgstr "<span style=\"font-size: 18px\">Factura Proforma</span>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchasequotation_document_alq
 msgid "<span style=\"font-size: 18px\">REQUEST FOR QUOTATION</span>"
-msgstr "<span style=\"font-size: 18px\">SOLICITUD DE PRESUPUESTO</span>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
@@ -66,9 +64,6 @@ msgid ""
 "                                    Date:\n"
 "                                </span>"
 msgstr ""
-"<span style=\"font-weight: bold;\">\n"
-"                                        Fecha:\n"
-"                                    </span>"
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
@@ -94,9 +89,6 @@ msgid ""
 "                            Customer Order:\n"
 "                        </span>"
 msgstr ""
-"<span style=\"font-weight: bold;\">\n"
-"                            Ref. Cliente:\n"
-"                        </span>"
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
@@ -104,7 +96,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchasequotation_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "<span style=\"font-weight: bold;\">Date:</span>"
-msgstr "<span style=\"font-weight: bold;\">Fecha:</span>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
@@ -120,8 +112,6 @@ msgid ""
 "<span style=\"margin-left:6px\"/>\n"
 "                                                <b>Date:</b>"
 msgstr ""
-"<span style=\"margin-left:6px\"/>\n"
-"                                                <b>Fecha:</b>"
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.shipping_label_document_template
@@ -146,23 +136,23 @@ msgstr ""
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "<span>Disc.(%)</span>"
-msgstr "<span>Desc.(%)</span>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 msgid "<span>Expiry date:</span>"
-msgstr "<span>Fecha de caducidad:</span>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 msgid "<span>Lot:</span>"
-msgstr "<span>Lote:</span>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.shipping_label_document_template
 msgid "<span>Mobile:</span>"
-msgstr "<span>Móvil:</span>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.shipping_label_document_template
@@ -172,23 +162,23 @@ msgstr ""
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.shipping_label_document_template
 msgid "<span>Phone:</span>"
-msgstr "<span>Teléfono:</span>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 msgid "<span>Quantity:</span>"
-msgstr "<span>Cantidad:</span>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 msgid "<span>Rec. Price</span>"
-msgstr "<span>P. Rec.</span>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 msgid "<span>Use date:</span>"
-msgstr "<span>Cons. Prefer. antes de:</span>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
@@ -198,29 +188,29 @@ msgstr ""
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchaseorder_document_alq
 msgid "<strong>Amount</strong>"
-msgstr "<strong>Importe</strong>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 msgid "<strong>Bank account:</strong>"
-msgstr "<strong>Cuenta bancaria:</strong>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 msgid "<strong>Carrier:</strong>"
-msgstr "<strong>Transportista:</strong>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchaseorder_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchasequotation_document_alq
 msgid "<strong>Date Req.</strong>"
-msgstr "<strong>Fecha req.</strong>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchaseorder_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchasequotation_document_alq
 msgid "<strong>Description</strong>"
-msgstr "<strong>Descripción</strong>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
@@ -237,30 +227,30 @@ msgstr ""
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 msgid "<strong>Origin doc.:</strong>"
-msgstr "<strong>Origen:</strong>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 msgid "<strong>Packages:</strong>"
-msgstr "<strong>Bultos:</strong>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "<strong>Payment Mode:</strong>"
-msgstr "<strong>Modo de pago:</strong>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "<strong>Payment Term:</strong>"
-msgstr "<strong>Término de pago:</strong>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchaseorder_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchasequotation_document_alq
 msgid "<strong>Qty</strong>"
-msgstr "<strong>Cant</strong>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
@@ -276,7 +266,7 @@ msgstr ""
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchaseorder_document_alq
 msgid "<strong>Taxes</strong>"
-msgstr "<strong>Impuestos</strong>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchaseorder_document_alq
@@ -286,17 +276,17 @@ msgstr ""
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 msgid "<strong>Tracking N.:</strong>"
-msgstr "<strong>Nº seguimiento:</strong>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchaseorder_document_alq
 msgid "<strong>Unit Price</strong>"
-msgstr "<strong>Precio Unidad</strong>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 msgid "<strong>Weight:</strong>"
-msgstr "<strong>Peso:</strong>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model:ir.actions.report,name:custom_reports_dttca.id_report_picking_alq
@@ -307,130 +297,130 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "Amount"
-msgstr "Importe"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 msgid "Cancelled Invoice"
-msgstr "Factura cancelada"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 msgid "Credit Note"
-msgstr "Rectificativa"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 msgid "Customer Order:"
-msgstr "Ref. Cliente:"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 msgid "Customer reference:"
-msgstr "Ref. Cliente:"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.shipping_label_document_template
 msgid "DESTINATION"
-msgstr "DESTINO"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 msgid "Date Due"
-msgstr "Fecha de vencimiento"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchaseorder_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchasequotation_document_alq
 msgid "Delivery"
-msgstr "Entrega"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "Delivery / Notify"
-msgstr "Entregado a:"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 msgid "Destination"
-msgstr "Destino"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 msgid "Disc.(%)"
-msgstr "Desc.(%)"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 msgid "Draft Invoice"
-msgstr "Factura borrador"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 msgid "Expiry date:"
-msgstr "Fecha de caducidad:"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 msgid "INVOICE"
-msgstr "FACTURA"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchaseorder_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchasequotation_document_alq
 msgid "Invoiced"
-msgstr "Facturado"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "Invoiced / Consignee"
-msgstr "Facturado a:"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 msgid "Order Nº:"
-msgstr "Nº Pedido:"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 msgid "Outstanding"
-msgstr "Pendiente"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 msgid "Package"
-msgstr "Paquete"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.external_layout_alq
 msgid "Page: <span class=\"page\"/> / <span class=\"topage\"/>"
-msgstr "Página: <span class=\"page\"/>/<span class=\"topage\"/>"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 msgid "Product"
-msgstr "Producto"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "Quotation"
-msgstr "Presupuesto"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
@@ -438,94 +428,94 @@ msgstr "Presupuesto"
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchasequotation_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "SAME AS INVOICED"
-msgstr "MISMO QUE FACTURADO"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.shipping_label_document_template
 msgid "SENDER"
-msgstr "REMITE"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "Sale Order"
-msgstr "Pedido de venta"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model:ir.model,name:custom_reports_dttca.model_sale_order
 msgid "Sales Order"
-msgstr "Pedido de venta"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "Sales Person:"
-msgstr "Comercial:"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchaseorder_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchasequotation_document_alq
 msgid "Seller"
-msgstr "Vendedor"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "Seller / Shipper"
-msgstr "Vendedor / Expedidor"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model:ir.actions.report,name:custom_reports_dttca.shipping_label_report
 msgid "Shipping label"
-msgstr "Etiqueta"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 msgid "Source"
-msgstr "Fuente"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model:ir.model,name:custom_reports_dttca.model_stock_move
 msgid "Stock Move"
-msgstr "Movimiento de existencias"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_picking_document_alq
 msgid "Supplier reference:"
-msgstr "Referencia proveedor"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchaseorder_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "Taxes"
-msgstr "Impuestos"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "Total Price"
-msgstr "Precio total"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model:ir.model,name:custom_reports_dttca.model_stock_picking
 msgid "Transfer"
-msgstr "Albarán"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 msgid "U. Price"
-msgstr "P. Unitario"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "Unit Price"
-msgstr "Precio unitario"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 msgid "Use date:"
-msgstr "Cons. Prefer. antes de:"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
@@ -534,14 +524,14 @@ msgstr "Cons. Prefer. antes de:"
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_purchasequotation_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_saleorder_document_alq
 msgid "VAT:"
-msgstr "NIF:"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 msgid "Vendor Bill"
-msgstr "Factura de proveedor"
+msgstr ""
 
 #. module: custom_reports_dttca
 #: model_terms:ir.ui.view,arch_db:custom_reports_dttca.report_invoice_document_alq
 msgid "Vendor Credit Note"
-msgstr "Factura rectificativa de proveedor"
+msgstr ""

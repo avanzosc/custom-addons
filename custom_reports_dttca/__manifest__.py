@@ -22,7 +22,8 @@
         "l10n_es_aeat_mod347",
         "product_recommended_price",
         "account_payment_partner",
-        "account_banking_mandate"
+        "account_banking_mandate",
+        "account_invoice_report_due_list"
     ],
     "data": [
         "report/paperformat.xml",
