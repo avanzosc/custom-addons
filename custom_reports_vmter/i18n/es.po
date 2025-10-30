@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-24 06:19+0000\n"
-"PO-Revision-Date: 2025-09-24 06:19+0000\n"
+"POT-Creation-Date: 2025-10-30 08:36+0000\n"
+"PO-Revision-Date: 2025-10-30 08:36+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -291,11 +291,6 @@ msgid "<strong>Customer Order:</strong>"
 msgstr "<strong>Referencia del cliente:</strong>"
 
 #. module: custom_reports_vmter
-#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
-msgid "<strong>Date Due:</strong>"
-msgstr "<strong>Fecha vencimiento:</strong>"
-
-#. module: custom_reports_vmter
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
 msgid "<strong>Date Req.</strong>"
 msgstr "<strong>Fecha req.</strong>"
@@ -524,6 +519,11 @@ msgid "Date"
 msgstr "Fecha"
 
 #. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid "Date Due"
+msgstr "Fecha de vencimiento"
+
+#. module: custom_reports_vmter
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchaseorder_document_alq
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_purchasequotation_document_alq
 msgid "Delivery"
@@ -624,6 +624,11 @@ msgstr "Producto fabricado"
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
 msgid "Order Nº:"
 msgstr "Nº Pedido:"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
+msgid "Outstanding"
+msgstr "Pendiente"
 
 #. module: custom_reports_vmter
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_picking_document_alq

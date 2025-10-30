@@ -29,6 +29,7 @@
         "delivery_package_number",
         "mrp_production_scrap_quantity",
         "product_template_lineal",
+        "account_invoice_report_due_list"
     ],
     "data": [
         "report/paperformat.xml",
