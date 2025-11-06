@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-30 08:36+0000\n"
-"PO-Revision-Date: 2025-10-30 08:36+0000\n"
+"POT-Creation-Date: 2025-11-06 10:42+0000\n"
+"PO-Revision-Date: 2025-11-06 10:42+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -211,6 +211,11 @@ msgstr "<span>Quantité:</span>"
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_invoice_document_alq
 msgid "<span>Rec. Price</span>"
 msgstr "<span>Rec. Prix</span>"
+
+#. module: custom_reports_vmter
+#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
+msgid "<span>Remaining quantities not yet delivered:</span>"
+msgstr ""
 
 #. module: custom_reports_vmter
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.alq_mrp_order_template_document
@@ -425,15 +430,6 @@ msgstr "<strong>Poids:</strong>"
 #: model:ir.actions.report,name:custom_reports_vmter.id_report_picking_alq
 msgid "ALQ Pickings"
 msgstr ""
-
-#. module: custom_reports_vmter
-#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
-msgid ""
-"All items couldn't be shipped, the remaining ones will be shipped as soon as"
-" they become available."
-msgstr ""
-"Tous les éléments n'ont pas pu être expédiés, le reliquat sera expédié dès "
-"qu'il sera disponible"
 
 #. module: custom_reports_vmter
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_347_partner_document_alq
@@ -732,11 +728,6 @@ msgstr "Référence du fournisseur:"
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
 msgid "Taxes"
 msgstr ""
-
-#. module: custom_reports_vmter
-#: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_delivery_document_alq
-msgid "This shipment is a backorder of"
-msgstr "Cet envoi est en rupture de stock de"
 
 #. module: custom_reports_vmter
 #: model_terms:ir.ui.view,arch_db:custom_reports_vmter.report_saleorder_document_alq
