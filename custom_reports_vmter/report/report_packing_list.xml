@@ -171,23 +171,43 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <t t-set="lines" t-value="o.move_line_ids" t-if="o.move_line_ids"/>
-                        <t t-set="lines" t-value="o.move_ids" t-if="not o.move_line_ids"/>
-                        <tr t-foreach="lines" t-as="move">
-                            <td>
-                                <span t-field="move.product_id"/>
-                                <p t-if="o.picking_type_code == 'outgoing'">
-                                    <span t-field="move.product_id.sudo().description_pickingout"/>
-                                </p>
-                                <p t-if="o.picking_type_code == 'incoming'">
-                                    <span t-field="move.product_id.sudo().description_pickingin"/>
-                                </p>
-                            </td>
-                            <td>
-                                <span t-field="move.product_uom_qty"/>
-                                <span t-field="move.product_uom"/>
-                            </td>
-                        </tr>
+                        <t t-if="not o.move_line_ids">
+                            <t t-set="lines" t-value="o.move_ids" t-if="not o.move_line_ids"/>
+                            <tr t-foreach="lines" t-as="move">
+                                <td>
+                                    <span t-field="move.product_id"/>
+                                    <p t-if="o.picking_type_code == 'outgoing'">
+                                        <span t-field="move.product_id.sudo().description_pickingout"/>
+                                    </p>
+                                    <p t-if="o.picking_type_code == 'incoming'">
+                                        <span t-field="move.product_id.sudo().description_pickingin"/>
+                                    </p>
+                                </td>
+                                <td>
+                                    <span t-field="move.product_uom_qty"/>
+                                    <span t-field="move.product_uom"/>
+                                </td>
+                            </tr>                            
+                        </t>
+                        <t t-if="o.move_line_ids">
+                            <t t-set="lines" t-value="o.move_line_ids" t-if="o.move_line_ids"/>
+                            <tr t-foreach="lines" t-as="move">
+                                <td>
+                                    <span t-field="move.product_id"/>
+                                    <p t-if="o.picking_type_code == 'outgoing'">
+                                        <span t-field="move.product_id.sudo().description_pickingout"/>
+                                    </p>
+                                    <p t-if="o.picking_type_code == 'incoming'">
+                                        <span t-field="move.product_id.sudo().description_pickingin"/>
+                                    </p>
+                                </td>
+                                <td>
+                                    <span t-if="move.qty_done" t-field="move.qty_done"/>
+                                    <span t-if="not move.qty_done" t-field="move.move_id.product_uom_qty"/>
+                                    <span t-field="move.product_uom_id"/>
+                                </td>
+                            </tr>
+                        </t>
                     </tbody>
                 </table>
                 <table class="table table-sm" t-if="o.move_line_ids and o.state=='done'">
