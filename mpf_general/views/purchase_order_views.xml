@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <record id="mp_view_purchase_order_filter" model="ir.ui.view">
+    <field name="name">mp.view.purchase.order.filter</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase.view_purchase_order_filter" />
+    <field name="arch" type="xml">
+      <xpath expr="//group/filter[@name='order_date']" position="after">
+        <separator />
+        <filter
+          name="group_comunidad_autonoma"
+          context="{'group_by': 'comunidad_autonoma_nombre'}"
+        />
+      </xpath>
+    </field>
+  </record>
+</odoo>
