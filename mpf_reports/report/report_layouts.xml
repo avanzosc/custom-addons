@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <template
+    id="external_layout_standard_mpfluids"
+    inherit_id="web.external_layout_standard"
+    priority="99"
+  >
+    <img t-if="company.logo" position="attributes">
+      <attribute name="style">max-height: 65px;</attribute>
+    </img>
+    <div name="company_address" position="replace" />
+    <div class="o_footer_content d-flex border-top pt-2" position="replace">
+      <div class="o_footer_content">
+        <img
+          src="/mpf_reports/static/src/img/pie_de_pagina.jpg"
+          style="max-height: 200px; max-width: 835px; display:block;"
+        />
+
+        <div class="text-center text-muted">
+          <div t-if="report_type == 'pdf' and display_name_in_footer" t-out="o.name" />
+          <div t-if="report_type == 'pdf'" class="text-nowrap">
+                        Page <span class="page" /> / <span class="topage" />
+                    </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</odoo>
