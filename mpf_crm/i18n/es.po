@@ -1,0 +1,181 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mpf_crm
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-08 11:58+0000\n"
+"PO-Revision-Date: 2026-01-08 11:58+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mpf_crm
+#: model:ir.model.fields,field_description:mpf_crm.field_belongs__lead_ids
+#: model:ir.model.fields,field_description:mpf_crm.field_brand__lead_ids
+#: model:ir.model.fields,field_description:mpf_crm.field_type__lead_ids
+msgid "Assigned leads"
+msgstr "Leads Asignados"
+
+#. module: mpf_crm
+#: model:ir.model,name:mpf_crm.model_belongs
+msgid "Belongs to"
+msgstr "Pertenece a"
+
+#. module: mpf_crm
+#: model:ir.model,name:mpf_crm.model_brand
+#: model:ir.model.fields,field_description:mpf_crm.field_account_bank_statement_line__lead_brand_id
+#: model:ir.model.fields,field_description:mpf_crm.field_account_move__lead_brand_id
+#: model:ir.model.fields,field_description:mpf_crm.field_crm_lead__brand_id
+#: model_terms:ir.ui.view,arch_db:mpf_crm.crm_lead_view_form
+#: model_terms:ir.ui.view,arch_db:mpf_crm.crm_opportunity_report_view_search
+#: model_terms:ir.ui.view,arch_db:mpf_crm.view_account_invoice_filter
+#: model_terms:ir.ui.view,arch_db:mpf_crm.view_crm_case_leads_filter
+#: model_terms:ir.ui.view,arch_db:mpf_crm.view_crm_case_opportunities_filter
+msgid "Brand"
+msgstr "Marca"
+
+#. module: mpf_crm
+#: model:ir.actions.act_window,name:mpf_crm.crm_lead_brand_action
+#: model:ir.ui.menu,name:mpf_crm.menu_crm_lead_brand
+msgid "Brands"
+msgstr "Marcas"
+
+#. module: mpf_crm
+#: model:ir.model.fields,field_description:mpf_crm.field_crm_lead__cancelled_quotation_count
+msgid "Cancelled quotations"
+msgstr "Presupuestos cancelados"
+
+#. module: mpf_crm
+#: model:ir.model.fields,field_description:mpf_crm.field_belongs__create_uid
+#: model:ir.model.fields,field_description:mpf_crm.field_brand__create_uid
+#: model:ir.model.fields,field_description:mpf_crm.field_type__create_uid
+msgid "Created by"
+msgstr "Agrupar por"
+
+#. module: mpf_crm
+#: model:ir.model.fields,field_description:mpf_crm.field_belongs__create_date
+#: model:ir.model.fields,field_description:mpf_crm.field_brand__create_date
+#: model:ir.model.fields,field_description:mpf_crm.field_type__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: mpf_crm
+#: model:ir.model,name:mpf_crm.model_type
+msgid "Crm Lead Type"
+msgstr "Tipo crm lead"
+
+#. module: mpf_crm
+#: model:ir.ui.menu,name:mpf_crm.crm_custom_menu_config
+msgid "Customizations"
+msgstr "Personalizaciones"
+
+#. module: mpf_crm
+#: model:ir.model.fields,field_description:mpf_crm.field_belongs__name
+#: model:ir.model.fields,field_description:mpf_crm.field_brand__name
+#: model:ir.model.fields,field_description:mpf_crm.field_type__name
+msgid "Description"
+msgstr "Descripción"
+
+#. module: mpf_crm
+#: model:ir.model.fields,field_description:mpf_crm.field_belongs__display_name
+#: model:ir.model.fields,field_description:mpf_crm.field_brand__display_name
+#: model:ir.model.fields,field_description:mpf_crm.field_type__display_name
+msgid "Display Name"
+msgstr "Mostar nombre"
+
+#. module: mpf_crm
+#: model:ir.model.fields,field_description:mpf_crm.field_belongs__id
+#: model:ir.model.fields,field_description:mpf_crm.field_brand__id
+#: model:ir.model.fields,field_description:mpf_crm.field_type__id
+msgid "ID"
+msgstr ""
+
+#. module: mpf_crm
+#: model:ir.actions.act_window,name:mpf_crm.crm_lead_belongs_action
+#: model:ir.model.fields,field_description:mpf_crm.field_crm_lead__belong_id
+#: model:ir.ui.menu,name:mpf_crm.menu_crm_lead_belong
+#: model_terms:ir.ui.view,arch_db:mpf_crm.crm_lead_belongs_tree_view
+#: model_terms:ir.ui.view,arch_db:mpf_crm.crm_lead_view_form
+#: model_terms:ir.ui.view,arch_db:mpf_crm.crm_opportunity_report_view_search
+#: model_terms:ir.ui.view,arch_db:mpf_crm.view_crm_case_leads_filter
+#: model_terms:ir.ui.view,arch_db:mpf_crm.view_crm_case_opportunities_filter
+msgid "It belongs to"
+msgstr "Pertenece a"
+
+#. module: mpf_crm
+#: model:ir.model,name:mpf_crm.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: mpf_crm
+#: model:ir.model.fields,field_description:mpf_crm.field_belongs__write_uid
+#: model:ir.model.fields,field_description:mpf_crm.field_brand__write_uid
+#: model:ir.model.fields,field_description:mpf_crm.field_type__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: mpf_crm
+#: model:ir.model.fields,field_description:mpf_crm.field_belongs__write_date
+#: model:ir.model.fields,field_description:mpf_crm.field_brand__write_date
+#: model:ir.model.fields,field_description:mpf_crm.field_type__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: mpf_crm
+#: model:ir.model.fields,field_description:mpf_crm.field_crm_lead__lead_type_id
+msgid "Lead Type"
+msgstr "Tipo lead"
+
+#. module: mpf_crm
+#: model:ir.model,name:mpf_crm.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Lead/Oportunidad"
+
+#. module: mpf_crm
+#: model_terms:ir.ui.view,arch_db:mpf_crm.crm_lead_brand_tree_view
+msgid "Master of brands"
+msgstr "Maestro de marcas"
+
+#. module: mpf_crm
+#: model:ir.model.fields,field_description:mpf_crm.field_account_bank_statement_line__opportunity_id
+#: model:ir.model.fields,field_description:mpf_crm.field_account_move__opportunity_id
+msgid "Opportunity"
+msgstr "Oportunidad"
+
+#. module: mpf_crm
+#: model_terms:ir.ui.view,arch_db:mpf_crm.crm_lead_view_form
+msgid "Pres.cancel."
+msgstr "Presionar cancelar"
+
+#. module: mpf_crm
+#: model:ir.model,name:mpf_crm.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: mpf_crm
+#: model:ir.model.fields,field_description:mpf_crm.field_account_bank_statement_line__lead_type_id
+#: model:ir.model.fields,field_description:mpf_crm.field_account_move__lead_type_id
+#: model_terms:ir.ui.view,arch_db:mpf_crm.crm_lead_view_form
+#: model_terms:ir.ui.view,arch_db:mpf_crm.crm_opportunity_report_view_search
+#: model_terms:ir.ui.view,arch_db:mpf_crm.view_account_invoice_filter
+#: model_terms:ir.ui.view,arch_db:mpf_crm.view_crm_case_leads_filter
+#: model_terms:ir.ui.view,arch_db:mpf_crm.view_crm_case_opportunities_filter
+msgid "Type"
+msgstr "Tipo"
+
+#. module: mpf_crm
+#: model:ir.actions.act_window,name:mpf_crm.crm_lead_type_action
+#: model:ir.ui.menu,name:mpf_crm.menu_crm_lead_type
+msgid "Types"
+msgstr "Tipos"
+
+#. module: mpf_crm
+#: model_terms:ir.ui.view,arch_db:mpf_crm.crm_lead_type_tree_view
+msgid "Types (master)"
+msgstr "Tipos (maestro)"

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <record id="crm_lead_belongs_tree_view" model="ir.ui.view">
+    <field name="name">crm.lead_belongs.tree.view</field>
+    <field name="model">belongs</field>
+    <field name="arch" type="xml">
+      <list string="It belongs to" editable="top">
+        <field name="name" />
+      </list>
+    </field>
+  </record>
+
+  <record id="crm_lead_belongs_action" model="ir.actions.act_window">
+    <field name="name">It belongs to</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">belongs</field>
+    <field name="view_mode">list</field>
+    <field name="view_id" ref="crm_lead_belongs_tree_view" />
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+  </record>
+
+  <menuitem
+    id="crm_custom_menu_config"
+    name="Customizations"
+    parent="crm.crm_menu_config"
+    sequence="90"
+    groups="sales_team.group_sale_manager"
+  />
+
+  <menuitem
+    id="menu_crm_lead_belong"
+    action="crm_lead_belongs_action"
+    parent="crm_custom_menu_config"
+    sequence="10"
+  />
+</odoo>
