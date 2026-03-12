@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<odoo>
+  <template
+    id="report_delivery_document"
+    inherit_id="stock.report_delivery_document"
+    priority="99"
+  >
+    <xpath expr="/t/t/t/div/h2" position="attributes">
+      <attribute name="class" separator=" " add="text-right" />
+    </xpath>
+
+    <xpath expr="/t/t/t/div/h2/span" position="before">
+      <span>Delivery note #</span>
+    </xpath>
+
+    <xpath expr="//div[@name='div_origin']" position="replace" />
+
+    <xpath expr="//div[@name='div_sched_date']" position="replace">
+      <div t-if="o.state and o.date_done" class="col-auto" name="div_sched_date">
+        <span>
+          <strong>Date:</strong>
+          <br />
+        </span>
+        <span t-field="o.date_done" t-options='{"format": "MM/dd/yyyy"}' />
+      </div>
+    </xpath>
+
+    <!-- TABALA DE MOVIMIENTOS [1]  THEAD-->
+
+    <xpath expr="//table[@name='stock_move_table']/thead/tr/th[2]" position="replace" />
+
+    <xpath
+      expr="//table[@name='stock_move_table']/thead/tr/th[2]/strong"
+      position="replace"
+    >
+      <strong>Quantity</strong>
+    </xpath>
+
+    <xpath
+      expr="//table[@name='stock_move_table']/thead/tr/th[2]"
+      position="attributes"
+    >
+      <attribute name="class" separator=" " add="text-center" />
+      <attribute name="style" separator=";" add="width:75px" />
+    </xpath>
+
+    <xpath
+      expr="//table[@name='stock_move_table']/thead/tr/th[2]"
+      position="attributes"
+    >
+      <attribute name="class" separator=" " add="text-right" />
+    </xpath>
+
+    <xpath expr="//table[@name='stock_move_table']/thead/tr/th[2]" position="after">
+      <th>
+        <strong>HS Code</strong>
+      </th>
+    </xpath>
+
+    <!-- TABALA DE MOVIMIENTOS [1]  TBODY-->
+
+    <xpath expr="//table[@name='stock_move_table']/tbody/tr/td[2]" position="replace" />
+
+    <xpath
+      expr="//table[@name='stock_move_table']/tbody/tr/td[2]"
+      position="attributes"
+    >
+      <attribute name="class" separator=" " add="text-center" />
+    </xpath>
+
+    <xpath expr="//table[@name='stock_move_table']/tbody/tr/td[2]" position="after">
+      <td>
+        <span t-field="move.product_id.hs_code" />
+      </td>
+    </xpath>
+
+    <!-- TABALA DE MOVIMIENTOS [2]  THEAD-->
+
+    <xpath
+      expr="//table[@name='stock_move_line_table']/thead/tr/th[2]"
+      position="replace"
+    >
+      <th name="th_sml_qty_ordered" class="text-center">
+        <strong>Quantity</strong>
+      </th>
+    </xpath>
+
+    <xpath
+      expr="//table[@name='stock_move_line_table']/thead/tr/th[3]"
+      position="replace"
+    >
+      <th name="lot_serial">Lot Number</th>
+    </xpath>
+
+    <!-- TABLA DE MOVIMIENTOS NO ENVIADOS-->
+
+    <div t-else="" position="replace" />
+    <!--
+        <xpath expr="//t[@t-if='o.backorder_ids and backorders']" position="replace"/>
+        -->
+
+    <!-- FOOTER-->
+
+    <xpath expr="/t/t/t/div/div[last()]" position="after">
+      <div class="row">
+        <div class="col">
+          <t t-set="partner_country" t-value="o.partner_id.country_id.name" />
+          <span t-if="o.shipping_weight &gt; 0" class='small'>
+            <span>Total weight:</span>
+            <span t-field="o.shipping_weight" />
+            <span t-field="o.weight_uom_name" />
+            <br />
+          </span>
+          <span
+            t-if="'España' not in partner_country"
+          >The exporter of the products covered by this document (Customs Authorisation No. __________________) declares that, except where otherwise clearly indicated, these products are of SPAIN preferential origin. Santa Coloma de Gramenet. <br
+          />LUXAE SL (REX: ESREX4661)<br /></span>
+        </div>
+      </div>
+    </xpath>
+
+    <xpath expr="/t/t/t/div/div[last()]/div/span[2]/br" position="before">
+      <span t-field="o.date_done" t-options='{"format": "MM/dd/yyyy"}' />
+    </xpath>
+
+    <xpath expr="/t/t/t/div/div[last()]" position="after">
+      <img
+        class="img-fluid"
+        src="/web/image/1938-b2b7f54c/FIRMA%20ADMINISTRADOR%20%2B%20SELLO%20ODOO%20-%20transparente.png"
+      />
+    </xpath>
+
+    <xpath expr="/t/t/t/div/img" position="attributes">
+      <attribute name="style" separator=";" add="width:400px" />
+      <attribute name="style" separator=";" add="margin-left:150px" />
+    </xpath>
+  </template>
+
+  <template
+    id="report_delivery_document2"
+    inherit_id="stock_delivery.report_delivery_document2"
+    priority="99"
+  >
+    <xpath expr="//div[@t-if='o.shipping_weight']/strong" position="replace">
+      <strong>Weight:</strong>
+    </xpath>
+    <xpath expr="//t[@t-set='has_hs_code']" position="before">
+      <div t-if="o.origin" class="col-auto" name="div_origin">
+        <strong>LUXAE order:</strong>
+        <p t-field="o.origin" />
+      </div>
+    </xpath>
+  </template>
+
+  <template
+    id="report_delivery_document_inherit_sale_stock"
+    inherit_id="sale_stock.report_delivery_document_inherit_sale_stock"
+    priority="99"
+  >
+    <xpath expr="//div[@t-if='o.sudo().sale_id.client_order_ref']" position="replace">
+      <div class="row justify-content-end" t-if="o.sudo().sale_id.client_order_ref">
+        <div class="col-auto">
+          <strong>Customer Order:</strong>
+          <p class="small" t-field="o.sudo().sale_id.client_order_ref" />
+        </div>
+      </div>
+    </xpath>
+  </template>
+
+  <template
+    id="stock_report_delivery_has_serial_move_line"
+    inherit_id="stock.stock_report_delivery_has_serial_move_line"
+    priority="99"
+  >
+    <xpath expr="/t/td[2]/span" position="attributes">
+      <attribute name="t-options-widget">"integer"</attribute>
+    </xpath>
+    <xpath expr="/t/td[2]/span[2]" position="replace" />
+  </template>
+
+  <template
+    id="stock_report_delivery_aggregated_move_lines"
+    inherit_id="stock.stock_report_delivery_aggregated_move_lines"
+    priority="99"
+  >
+    <xpath expr="/t/tr/td[2]/span" position="attributes">
+      <attribute name="t-options-widget">"integer"</attribute>
+    </xpath>
+    <xpath expr="/t/tr/td[2]/span[2]" position="replace" />
+    <xpath expr="/t/tr/td[3]/t/span" position="attributes">
+      <attribute name="t-options-widget">"integer"</attribute>
+    </xpath>
+    <xpath expr="/t/tr/td[3]/t/span[2]" position="replace" />
+  </template>
+</odoo>

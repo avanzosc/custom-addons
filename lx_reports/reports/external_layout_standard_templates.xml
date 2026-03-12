@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <template
+    id="external_layout_striped_inherit_luxae_reports"
+    inherit_id="web.external_layout_striped"
+    priority="99"
+  >
+    <xpath expr="//div[contains(@t-attf-class, 'footer')]/div" position="replace">
+      <div class="text-center">
+        <div
+          style="border-top: 1px solid black; border-bottom: 1px solid black; padding: 3px 0;"
+        >
+          <ul
+            style="display: inline-block; white-space: nowrap; margin: 0; padding: 0;"
+          >
+            <li class="list-inline-item">+34 93 242 76 67</li>
+
+            <li class="list-inline-item">
+              <span>
+                <a>info@luxae.com</a>
+              </span>
+              <span>
+                <a
+                  href="mailto:info@luxae.com"
+                  style="display: block; position: absolute; top: 11.5em; left: 19.2em; width: 120px; height: 24px;"
+                />
+              </span>
+            </li>
+
+            <li class="list-inline-item">
+              <span>
+                <a>http://www.luxae.com/</a>
+              </span>
+              <a
+                href="http://www.luxae.com/"
+                style="display: block; position: absolute; top: 11.5em; left: 26.9em; width: 180px; height: 24px;"
+              />
+            </li>
+
+            <li class="list-inline-item">
+              <span>
+                                Page:
+                                <span class="page" />
+                                of
+                                <span class="topage" />
+                            </span>
+            </li>
+          </ul>
+        </div>
+        <div style="font-size: x-small;">
+          <span>
+                        Wire transfers to Banco Bilbao Vizcaya Argentaria | IBAN: ES51 0182 9324 9002 0178 4325 | BIC: BBVAESMXXX | Bank address: Plaza San Nicolás, 4 | 48005 | Bilbao (Vizcaya) Spain
+                    </span>
+          <span>
+                        <a>Privacy Policy</a> |
+                        <a>Sales Terms and ConditionsA</a> |
+                        Registered in the Mercantile Register of Barcelona, Volume 42.034, Folio 196, Page B-399969
+                    </span>
+
+          <a
+            href="https://www.luxae.com/privacy-policy/"
+            style="display: block; position: absolute; top: 22.5em; left: 11em; width: 70px; height: 24px;"
+          />
+
+          <a
+            href="https://www.luxae.com/sales-terms-and-conditions/"
+            style="display: inline-block; position: absolute; top: 22.5em; left: 18em; width: 140px; height: 24px;"
+          />
+        </div>
+      </div>
+    </xpath>
+  </template>
+</odoo>
