@@ -1,0 +1,108 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sghair_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-03 08:04+0000\n"
+"PO-Revision-Date: 2025-11-03 08:04+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sghair_custom
+#: model:ir.actions.act_window,name:sghair_custom.action_company_logos
+#: model:ir.model,name:sghair_custom.model_res_company_logo
+#: model:ir.ui.menu,name:sghair_custom.menu_company_logos
+#: model_terms:ir.ui.view,arch_db:sghair_custom.res_company_logo_list_view
+msgid "Company logos"
+msgstr ""
+
+#. module: sghair_custom
+#: model:ir.model.fields,field_description:sghair_custom.field_res_company_logo__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: sghair_custom
+#: model:ir.model.fields,field_description:sghair_custom.field_res_company_logo__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: sghair_custom
+#: model:ir.model.fields,field_description:sghair_custom.field_res_company_logo__name
+msgid "Description"
+msgstr ""
+
+#. module: sghair_custom
+#: model:ir.model.fields,field_description:sghair_custom.field_res_company_logo__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: sghair_custom
+#: model:ir.model.fields,field_description:sghair_custom.field_res_company_logo__id
+msgid "ID"
+msgstr ""
+
+#. module: sghair_custom
+#: model:ir.model,name:sghair_custom.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: sghair_custom
+#: model:ir.model.fields,field_description:sghair_custom.field_res_company_logo__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: sghair_custom
+#: model:ir.model.fields,field_description:sghair_custom.field_res_company_logo__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: sghair_custom
+#: model:ir.model.fields,field_description:sghair_custom.field_account_bank_statement_line__logo_id
+#: model:ir.model.fields,field_description:sghair_custom.field_account_move__logo_id
+#: model:ir.model.fields,field_description:sghair_custom.field_purchase_order__logo_id
+#: model:ir.model.fields,field_description:sghair_custom.field_res_company_logo__logo
+#: model:ir.model.fields,field_description:sghair_custom.field_sale_order__logo_id
+#: model:ir.model.fields,field_description:sghair_custom.field_stock_picking__logo_id
+#: model_terms:ir.ui.view,arch_db:sghair_custom.external_layout_bold_inh_sangrahair
+#: model_terms:ir.ui.view,arch_db:sghair_custom.external_layout_boxed_inh_sangrahair
+#: model_terms:ir.ui.view,arch_db:sghair_custom.external_layout_standard_inh_sangrahair
+#: model_terms:ir.ui.view,arch_db:sghair_custom.external_layout_striped_inh_sangrahair
+msgid "Logo"
+msgstr ""
+
+#. module: sghair_custom
+#: model:ir.model,name:sghair_custom.model_purchase_order
+msgid "Purchase Order"
+msgstr ""
+
+#. module: sghair_custom
+#: model:ir.model,name:sghair_custom.model_sale_advance_payment_inv
+msgid "Sales Advance Payment Invoice"
+msgstr ""
+
+#. module: sghair_custom
+#: model:ir.model,name:sghair_custom.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: sghair_custom
+#: model:ir.model,name:sghair_custom.model_stock_move
+msgid "Stock Move"
+msgstr ""
+
+#. module: sghair_custom
+#: model:ir.model,name:sghair_custom.model_stock_picking
+msgid "Transfer"
+msgstr ""
+
+#. module: sghair_custom
+#: model:ir.model.fields,field_description:sghair_custom.field_res_company_logo__use_default
+msgid "Use this for default"
+msgstr ""
