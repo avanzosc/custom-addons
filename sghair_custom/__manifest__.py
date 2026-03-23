@@ -2,7 +2,7 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 {
-    "name": "Custom Sghair",
+    "name": "Sghair Custom",
     "version": "18.0.1.0.0",
     "category": "Custom Module",
     "license": "AGPL-3",

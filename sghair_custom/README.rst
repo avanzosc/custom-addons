@@ -3,7 +3,7 @@
    :alt: License: AGPL-3
 
 =============
-Custom sghair
+Sghair Custom 
 =============
 
 * New menu option "Company logos" in "Setup - Users & Companies". You must
