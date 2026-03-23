@@ -28,8 +28,13 @@
                         </div>
                     </div>
                     <div class="col-6 text-right">
-                        <img src="/custom_reports_dttca/static/src/img/logo_left.png"
-                             style="height: 100px;"/>
+                        <img t-if="doc.company_id.logo"
+                             t-att-src="image_data_uri(doc.company_id.logo)"
+                             style="height: 100px; width: auto;"
+                             alt="Logo"/>
+                        <div t-if="not doc.company_id.logo" style="font-size: 20px; font-weight: bold;">
+                            <span t-field="doc.company_id.name"/>
+                        </div>
                     </div>
                 </div>
                 <div class="row mt16 mb16">

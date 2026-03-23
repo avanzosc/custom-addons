@@ -41,8 +41,13 @@
                         -->
                     </div>
                     <div class="col-6 text-right">
-                        <img src="/custom_reports_dttca/static/src/img/logo_left.png"
-                             style="height: 100px;"/>
+                        <img t-if="o.company_id.logo"
+                             t-att-src="image_data_uri(o.company_id.logo)"
+                             style="height: 100px; width: auto;"
+                             alt="Logo"/>
+                        <div t-if="not o.company_id.logo" style="font-size: 20px; font-weight: bold;">
+                            <span t-field="o.company_id.name"/>
+                        </div>
                     </div>
                 </div>
 

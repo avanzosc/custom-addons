@@ -7,12 +7,13 @@
             <div class="header" style="font-size: 13px;">
                 <div class="row">
                     <div class="col-xs-4">
-                        <!--
-                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)"
-                             style="max-height: 50px;"/>
-                          -->
-                        <img src="/custom_reports_dttca/static/src/img/logo_left.jpg"
-                             style="height: 50px;"/>
+                        <img t-if="company.logo"
+                             t-att-src="image_data_uri(company.logo)"
+                             style="height: 50px; width: auto;"
+                             alt="Logo"/>
+                        <div t-if="not company.logo" style="font-size: 20px; font-weight: bold;">
+                            <span t-field="company.name"/>
+                        </div>
 
                     </div>
                     <div class="col-xs-8 text-right" style="margin-right:0px">
