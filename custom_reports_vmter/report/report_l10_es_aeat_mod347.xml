@@ -5,8 +5,13 @@
         <div class="header" style="font-size: 12px;">
           <div class="row mt16 mb16">
             <div class="col-12 text-right">
-              <img src="/custom_reports_vmter/static/src/img/logo_left.png"
-                   style="height: 100px;"/>
+              <img t-if="company.logo"
+                   t-att-src="image_data_uri(company.logo)"
+                   style="height: 100px; width: auto;"
+                   alt="Logo"/>
+              <div t-if="not company.logo" style="font-size: 20px; font-weight: bold;">
+                  <span t-field="company.name"/>
+              </div>
             </div>
           </div>
         </div>
@@ -25,8 +30,13 @@
                     <spam>&amp;nbsp;</spam>
                 </div>
                 <div class="col-6 text-right">
-                    <img src="/custom_reports_vmter/static/src/img/logo_left.png"
-                         style="height: 100px;"/>
+                  <img t-if="o.partner_id.company_id.logo"
+                     t-att-src="image_data_uri(o.partner_id.company_id.logo)"
+                     style="height: 100px; width: auto;"
+                     alt="Logo"/>
+                  <div t-if="not o.partner_id.company_id.logo" style="font-size: 20px; font-weight: bold;">
+                    <span t-field="o.partner_id.company_id.name"/>
+                  </div>
                 </div>
             </div>
             <div class="row mt16 mb16">
