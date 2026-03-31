@@ -12,7 +12,7 @@
         <img
           t-if="company.logo"
           t-att-src="image_data_uri(company.logo)"
-          style="max-height: 45px;"
+          style="max-width: 300px;"
           alt="Logo"
         />
       </t>
@@ -22,13 +22,13 @@
         <img
           t-if="o.logo_id"
           t-att-src="image_data_uri(o.logo_id.logo)"
-          style="max-height: 45px;"
+          style="max-width: 300px;"
           alt="Logo"
         />
         <img
           t-if="not o.logo_id and company.logo"
           t-att-src="image_data_uri(company.logo)"
-          style="max-height: 45px;"
+          style="max-width: 300px;"
           alt="Logo"
         />
       </t>
@@ -44,7 +44,12 @@
       <t
         t-if="o._name not in ('sale.order', 'puchase.order', 'stock.picking', 'account.move')"
       >
-        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo" />
+        <img
+          t-if="company.logo"
+          t-att-src="image_data_uri(company.logo)"
+          style="max-width: 300px;"
+          alt="Logo"
+        />
       </t>
       <t
         t-if="o._name in ('sale.order', 'puchase.order', 'stock.picking', 'account.move')"
@@ -53,6 +58,7 @@
         <img
           t-if="not o.logo_id and company.logo"
           t-att-src="image_data_uri(company.logo)"
+          style="max-width: 300px;"
           alt="Logo"
         />
       </t>
@@ -68,15 +74,26 @@
       <t
         t-if="o._name not in ('sale.order', 'puchase.order', 'stock.picking', 'account.move')"
       >
-        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo" />
+        <img
+          t-if="company.logo"
+          t-att-src="image_data_uri(company.logo)"
+          style="max-width: 300px;"
+          alt="Logo"
+        />
       </t>
       <t
         t-if="o._name in ('sale.order', 'puchase.order', 'stock.picking', 'account.move')"
       >
-        <img t-if="o.logo_id" t-att-src="image_data_uri(o.logo_id.logo)" alt="Logo" />
+        <img
+          t-if="o.logo_id"
+          t-att-src="image_data_uri(o.logo_id.logo)"
+          style="max-width: 300px;"
+          alt="Logo"
+        />
         <img
           t-if="not o.logo_id and company.logo"
           t-att-src="image_data_uri(company.logo)"
+          style="max-width: 300px;"
           alt="Logo"
         />
       </t>
@@ -96,6 +113,7 @@
           t-if="company.logo"
           t-att-src="image_data_uri(company.logo)"
           class="float-start"
+          style="max-width: 300px;"
           alt="Logo"
         />
       </t>
@@ -106,12 +124,14 @@
           t-if="o.logo_id"
           t-att-src="image_data_uri(o.logo_id.logo)"
           class="float-start"
+          style="max-width: 300px;"
           alt="Logo"
         />
         <img
           t-if="not o.logo_id and company.logo"
           t-att-src="image_data_uri(company.logo)"
           class="float-start"
+          style="max-width: 300px;"
           alt="Logo"
         />
       </t>
