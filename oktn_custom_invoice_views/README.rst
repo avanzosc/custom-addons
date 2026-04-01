@@ -6,7 +6,8 @@
 Oktn custom invoice views
 =========================
 
-* Customized account invoice tree view.
+* In invoices new field "Analytic account" and customized account invoice and
+  account move views.
 
 
 Bug Tracker
