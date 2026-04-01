@@ -8,6 +8,40 @@
         <field name="sii_account_registration_date" optional="show" />
         <field name="sii_csv" optional="show" />
       </field>
+      <field name="name" position="after">
+        <field name="id" readonly="1" optional="show" />
+        <field name="account_analytic_id" optional="show" />
+      </field>
+    </field>
+  </record>
+
+  <record id="view_move_form" model="ir.ui.view">
+    <field name="model">account.move</field>
+    <field name="inherit_id" ref="account.view_move_form" />
+    <field name="arch" type="xml">
+      <div name="journal_div" position="after">
+        <field name="account_analytic_id" />
+      </div>
+      <label for="invoice_date" position="before">
+        <field name="id" readonly="1" />
+      </label>
+    </field>
+  </record>
+
+  <record id="view_account_invoice_filter" model="ir.ui.view">
+    <field name="model">account.move</field>
+    <field name="inherit_id" ref="account.view_account_invoice_filter" />
+    <field name="arch" type="xml">
+      <field name="date" position="after">
+        <field name="account_analytic_id" />
+      </field>
+      <filter name="status" position="after">
+        <filter
+          name="analytic-account"
+          string="Analytic Account"
+          context="{'group_by':'account_analytic_id'}"
+        />
+      </filter>
     </field>
   </record>
 </odoo>
