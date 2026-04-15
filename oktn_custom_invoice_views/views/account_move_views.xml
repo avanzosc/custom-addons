@@ -9,4 +9,14 @@
       </field>
     </field>
   </record>
+
+  <record id="view_account_move_filter_by_id" model="ir.ui.view">
+    <field name="model">account.move</field>
+    <field name="inherit_id" ref="account.view_account_move_filter" />
+    <field name="arch" type="xml">
+      <xpath expr="//search/field[@name='name'][1]" position="before">
+        <field name="id" string="ID" operator="=" />
+      </xpath>
+    </field>
+  </record>
 </odoo>
