@@ -1,0 +1,206 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* spcrp_reports
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-07 08:05+0000\n"
+"PO-Revision-Date: 2026-05-07 08:05+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: spcrp_reports
+#: model:ir.actions.report,print_report_name:spcrp_reports.report_sale_order_labels
+msgid "'Sale Label - %s' % (object.name)"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.external_layout_standard
+msgid ""
+"<br/>\n"
+"                                    CIF:"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.external_layout_invoice_standard
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.external_layout_sale_standard
+msgid ""
+"<br/>\n"
+"                                CIF:"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document
+msgid "<span>35%</span>"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document
+msgid "<span>38%</span>"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document
+msgid "<span>40%+10%</span>"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document
+msgid "<span>40%+3%</span>"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document
+msgid "<span>40%+5%</span>"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document
+msgid "<span>40%+7%</span>"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document
+msgid "<span>40%</span>"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document
+msgid "<span>45%</span>"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document
+msgid "<span>50%+10%</span>"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document
+msgid "<span>50%+15%</span>"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document
+msgid "<span>50%+20%</span>"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document
+msgid "<span>50%+5%</span>"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document
+msgid "<span>50%</span>"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.external_layout_invoice_standard
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.external_layout_sale_standard
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.external_layout_standard
+msgid ""
+"<strong style=\"font-size: 11px;\">DELEGACIÓN CANARIAS</strong><br/>\n"
+"                                    Polígono Industrial El Goro<br/>\n"
+"                                    C/ Jose Millares Sall, 36<br/>\n"
+"                                    35219 Telde (Las Palmas)<br/>\n"
+"                                    info.canarias@persum.es<br/>\n"
+"                                    651 813 592"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.external_layout_invoice_standard
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.external_layout_sale_standard
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.external_layout_standard
+msgid ""
+"<strong style=\"font-size: 11px;\">DELEGACIÓN NORTE</strong><br/>\n"
+"                                    Autovia de Logroño km 8<br/>\n"
+"                                    Polígono El Olivar Nave 16<br/>\n"
+"                                    50011 Zaragoza<br/>\n"
+"                                    info.norte@persum.es<br/>\n"
+"                                    625 279 911"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.external_layout_invoice_standard
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.external_layout_sale_standard
+msgid "Email:"
+msgstr ""
+
+#. module: spcrp_reports
+#: model:ir.model.fields,field_description:spcrp_reports.field_account_bank_statement_line__logo_to_print
+#: model:ir.model.fields,field_description:spcrp_reports.field_account_move__logo_to_print
+#: model:ir.model.fields,field_description:spcrp_reports.field_sale_order__logo_to_print
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document
+msgid "Image"
+msgstr ""
+
+#. module: spcrp_reports
+#: model:ir.model,name:spcrp_reports.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document_labels
+msgid "Nº de cajas grandes:"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document_labels
+msgid "Nº de cajas pequeñas:"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document
+msgid "Packaging"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.external_layout_invoice_standard
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.external_layout_sale_standard
+msgid "Page: <span class=\"page\"/> / <span class=\"topage\"/>"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.external_layout_invoice_standard
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.external_layout_sale_standard
+msgid "Phone:"
+msgstr ""
+
+#. module: spcrp_reports
+#: model:ir.actions.report,name:spcrp_reports.report_sale_order_labels
+msgid "Print Cage labels"
+msgstr ""
+
+#. module: spcrp_reports
+#: model:ir.model,name:spcrp_reports.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document
+msgid "Sequence"
+msgstr ""
+
+#. module: spcrp_reports
+#: model:ir.model.fields,field_description:spcrp_reports.field_account_bank_statement_line__three_address_in_sale_report
+#: model:ir.model.fields,field_description:spcrp_reports.field_account_move__three_address_in_sale_report
+#: model:ir.model.fields,field_description:spcrp_reports.field_sale_order__three_address_in_sale_report
+msgid "Show all three addresses in sales reports"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.external_layout_invoice_standard
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.external_layout_sale_standard
+msgid "Web:"
+msgstr ""
+
+#. module: spcrp_reports
+#: model_terms:ir.ui.view,arch_db:spcrp_reports.report_saleorder_document
+msgid "uds.)"
+msgstr ""
