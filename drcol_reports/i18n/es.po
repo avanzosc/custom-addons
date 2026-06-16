@@ -1,0 +1,310 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* drcol_reports
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-13 12:37+0000\n"
+"PO-Revision-Date: 2026-07-13 12:37+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_invoice_document
+msgid ""
+"<br/>\n"
+"                            <span>ABA Routing Number </span>"
+msgstr ""
+"<br/>\n"
+"                            <span>Número de ruta ABA </span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_invoice_document
+msgid ""
+"<br/>\n"
+"                            <span>Bank address </span>"
+msgstr ""
+"<br/>\n"
+"                            <span>Dirección banco </span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_invoice_document
+msgid ""
+"<br/>\n"
+"                            <span>Bank name </span>"
+msgstr ""
+"<br/>\n"
+"                            <span>Nombre del banco </span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_invoice_document
+msgid ""
+"<br/>\n"
+"                            <span>SWIFT (BIC) </span>"
+msgstr ""
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_invoice_document
+msgid ""
+"<br/>\n"
+"                        <span>ABA Routing Number </span>"
+msgstr ""
+"<br/>\n"
+"                        <span>Número de ruta ABA </span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_invoice_document
+msgid ""
+"<br/>\n"
+"                        <span>Account number </span>"
+msgstr ""
+"<br/>\n"
+"                        <span>Número de cuenta </span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_invoice_document
+msgid ""
+"<br/>\n"
+"                        <span>Bank address </span>"
+msgstr ""
+"<br/>\n"
+"                        <span>Dirección del banco </span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_invoice_document
+msgid ""
+"<br/>\n"
+"                        <span>Bank name </span>"
+msgstr ""
+"<br/>\n"
+"                        <span>Nombre del banco </span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_invoice_document
+msgid ""
+"<br/>\n"
+"                        <span>CURRENCY </span>"
+msgstr ""
+"<br/>\n"
+"                        <span>MONEDA </span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_invoice_document
+msgid ""
+"<br/>\n"
+"                        <span>SWIFT (BIC) </span>"
+msgstr ""
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_sale_payment_mode
+msgid ""
+"<br/>\n"
+"                    <span>ABA Routing Number </span>"
+msgstr ""
+"<br/>\n"
+"                    <span>Número de ruta ABA </span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_invoice_document
+msgid ""
+"<br/>\n"
+"                    <span>Account number </span>"
+msgstr ""
+"<br/>\n"
+"                    <span>Número de cuenta </span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_sale_payment_mode
+msgid ""
+"<br/>\n"
+"                    <span>SWIFT (BIC) </span>"
+msgstr ""
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_sale_payment_mode
+msgid ""
+"<br/>\n"
+"                <span>Account number </span>"
+msgstr ""
+"<br/>\n"
+"                <span>Número de cuenta </span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_sale_payment_mode
+msgid ""
+"<br/>\n"
+"                <span>Bank address </span>"
+msgstr ""
+"<br/>\n"
+"                <span>Dirección del banco </span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_sale_payment_mode
+msgid ""
+"<br/>\n"
+"                <span>Bank name </span>"
+msgstr ""
+"<br/>\n"
+"                <span>Nombre del banco </span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_sale_payment_mode
+msgid ""
+"<br/>\n"
+"                <span>CURRENCY </span>"
+msgstr ""
+"<br/>\n"
+"                <span>MONEDA </span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.external_layout_wave
+msgid ""
+"<br/>\n"
+"                <span>VAT: </span>"
+msgstr ""
+"<br/>\n"
+"                    <span>NIF: </span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.external_layout_wave
+msgid ""
+"<span> (Spain)</span>\n"
+"                <br/>\n"
+"                <span>CIF: </span>"
+msgstr ""
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.document_tax_totals_template
+msgid "<span> on </span>"
+msgstr "<span> en </span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_delivery_document
+msgid "<span><strong>Delivery Address:</strong></span>"
+msgstr "<span><strong>Dirección de entrega:</strong></span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_invoice_document
+msgid "<span>CURRENCY </span>"
+msgstr "<span>MONEDA </span>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_saleorder_document
+msgid "<span>SKU</span>"
+msgstr ""
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_delivery_document
+msgid "<strong>Customer Reference</strong>"
+msgstr "<strong>Referencia del cliente</strong>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_delivery_document
+msgid "<strong>Delivery address</strong>"
+msgstr "<strong>Dirección de entrega</strong>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_saleorder_document
+msgid "<strong>Incoterm</strong>"
+msgstr ""
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_saleorder_document
+msgid "<strong>Invoicing Address</strong>"
+msgstr "<strong>Dirección de facturación</strong>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_sale_payment_mode
+msgid "<strong>Payment Mode:</strong>"
+msgstr "<strong>Modo de pago:</strong>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_saleorder_document
+msgid "<strong>Payment Term</strong>"
+msgstr "<strong>Término de pago</strong>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_picking
+msgid "<strong>SKU</strong>"
+msgstr ""
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_saleorder_document
+msgid "<strong>Shipping Address</strong>"
+msgstr "<strong>Dirección de envío</strong>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_delivery_document
+msgid "<strong>Warehouse Address</strong>"
+msgstr "<strong>Dirección del almacén</strong>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_delivery_document
+msgid "<strong>Warehouse address</strong>"
+msgstr "<strong>Dirección del almacén</strong>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_saleorder_document
+msgid "<strong>Your Reference</strong>"
+msgstr "<strong>Su referencia</strong>"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_saleorder_document
+msgid "Issued Date"
+msgstr "Fecha de emisión"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.external_layout_wave
+msgid "Logo"
+msgstr ""
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_invoice_document
+msgid "NIF:"
+msgstr ""
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_saleorder_document
+msgid "Order Date"
+msgstr "Fecha pedido"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_delivery_document
+msgid "Presence depends on the type of operation."
+msgstr "La presencia depende del tipo de operación."
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_saleorder_document
+msgid "Quotation Date"
+msgstr "Fecha del presupuesto"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_delivery_document
+msgid "SKU"
+msgstr ""
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.report_saleorder_document
+msgid "SO0000"
+msgstr ""
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.document_tax_totals_template
+msgid "Tax 15%"
+msgstr "Impueto 15%"
+
+#. module: drcol_reports
+#: model_terms:ir.ui.view,arch_db:drcol_reports.document_tax_totals_template
+msgid "Untaxed Amount"
+msgstr "Importe base"

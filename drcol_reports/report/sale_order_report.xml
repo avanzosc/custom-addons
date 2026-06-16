@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <template
+    id="report_saleorder_document"
+    inherit_id="sale.report_saleorder_document"
+    priority="99"
+  >
+    <t t-set="address" position="replace">
+      <t t-set="address">
+        <strong>Shipping Address</strong>
+        <div
+          t-field="doc.partner_shipping_id"
+          t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'
+        />
+      </t>
+    </t>
+    <xpath expr="//t[@t-set='information_block']/.." position="replace">
+      <t t-set="information_block">
+        <strong>Invoicing Address</strong>
+        <div
+          t-field="doc.partner_invoice_id"
+          t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'
+        />
+      </t>
+    </xpath>
+
+    <div id="informations" position="replace">
+      <div class="row mb-4" id="informations">
+        <div t-if="doc.date_order" class="col" name="informations_date">
+          <strong t-if="is_proforma">Issued Date</strong>
+          <strong t-elif="doc.state in ['draft', 'sent']">Quotation Date</strong>
+          <strong t-else="">Order Date</strong>
+          <div t-field="doc.date_order" t-options='{"widget": "date"}'>2023-12-31</div>
+        </div>
+        <div t-if="doc.client_order_ref" class="col" name="informations_reference">
+          <strong>Your Reference</strong>
+          <div t-field="doc.client_order_ref">SO0000</div>
+        </div>
+        <div t-if="doc.payment_term_id" class="col">
+          <strong>Payment Term</strong>
+          <div t-field="doc.payment_term_id.name" />
+        </div>
+
+        <div class="col" t-if="doc.incoterm" name="incoterm">
+          <strong>Incoterm</strong>
+          <div t-if="doc.incoterm_location">
+            <span t-field="doc.incoterm.code" />
+            <br />
+            <span t-field="doc.incoterm_location" />
+          </div>
+          <div t-else="" t-field="doc.incoterm.code" class="m-0" />
+        </div>
+      </div>
+    </div>
+    <th name="th_description" position="before">
+      <th name="th_sku" class="text-start">
+        <span>SKU</span>
+      </th>
+    </th>
+    <td name="td_name" position="before">
+      <td name="td-sku">
+        <span t-field="line.product_id.default_code" />
+      </td>
+    </td>
+    <td name="td_name" position="replace">
+      <td name="td_name">
+        <span t-if="line.product_id" t-field="line.product_id.name" />
+        <span t-if="not line.product_id" t-field="line.name" />
+      </td>
+    </td>
+    <span t-field="line.product_uom_qty" position="replace">
+      <span t-esc="int(line.product_uom_qty or 0)" class="text-nowrap" />
+    </span>
+    <span t-field="line.product_uom" position="replace" />
+    <th name="th_taxes" position="replace" />
+    <td name="td_taxes" position="replace" />
+    <span t-field="doc.note" position="replace">
+      <table t-if="doc.note" width="50%" style="border-collapse: collapse;">
+        <tr>
+          <td
+            style="border: 1px solid black !important;
+                                background-color: white !important;
+                                color: black !important;
+                               padding: 5px;"
+          >
+            <div
+              style="color: black !important;
+                                    background-color: white !important;"
+            >
+              <span t-field="doc.note" />
+            </div>
+          </td>
+        </tr>
+      </table>
+    </span>
+    <p t-if="not is_html_empty(doc.payment_term_id.note)" position="replace" />
+  </template>
+
+  <template
+    id="report_sale_payment_mode"
+    inherit_id="account_payment_sale.report_sale_payment_mode"
+    priority="99"
+  >
+    <p id="payment_mode_note" position="before">
+      <t
+        t-if="not is_html_empty(doc.payment_mode_id.note)"
+        id="payment_mode_salto"
+        position="before"
+      >
+        <br />
+      </t>
+    </p>
+    <p id="payment_mode_note" position="replace">
+      <t id="payment_mode_note">
+        <span t-if="doc.payment_mode_id.note">
+          <strong t-if="doc.payment_mode_id.note">Payment Mode:</strong>
+        </span>
+        <span t-if="doc.payment_mode_id.note" t-field="doc.payment_mode_id.note" />
+        <p
+          name="payment_communication"
+          t-if="doc.payment_mode_id and doc.payment_mode_id and doc.payment_mode_id.fixed_journal_id and doc.payment_mode_id.fixed_journal_id.bank_id"
+        >
+          <t t-set="journal" t-value="doc.payment_mode_id.fixed_journal_id" />
+          <br />
+          <span>CURRENCY </span>
+          <span t-field="doc.currency_id.name" />
+          <br />
+          <span>Account number </span>
+          <span t-esc="journal.bank_account_id.acc_number" class="fw-bold" />
+          <t t-if="journal.bank_id.aba_routing_number">
+            <br />
+            <span>ABA Routing Number </span>
+            <span t-esc="journal.bank_id.aba_routing_number" class="fw-bold" />
+          </t>
+          <t t-if="journal.bank_id.bic">
+            <br />
+            <span>SWIFT (BIC) </span>
+            <span t-esc="journal.bank_id.bic" class="fw-bold" />
+          </t>
+          <br />
+          <span>Bank name </span>
+          <span t-esc="journal.bank_id.name" class="fw-bold" />
+          <br />
+          <span>Bank address </span>
+          <span t-esc="journal.bank_id.street" class="fw-bold" />
+          <span />
+          <span t-esc="journal.bank_id.city" class="fw-bold" />
+          <span />
+          <span t-esc="journal.bank_id.state" class="fw-bold" />
+          <span />
+          <span t-esc="journal.bank_id.zip" class="fw-bold" />
+          <span />
+          <span t-esc="journal.bank_id.country" class="fw-bold" />
+        </p>
+      </t>
+    </p>
+  </template>
+</odoo>

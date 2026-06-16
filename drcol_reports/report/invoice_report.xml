@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <template
+    id="report_invoice_payment_mode"
+    inherit_id="account_payment_partner.report_invoice_payment_mode"
+    priority="99"
+  >
+    <p t-if="o.payment_mode_id.note" position="replace" />
+    <t
+      t-if="o.payment_mode_id and o.payment_mode_id.show_bank_account != 'no'"
+      position="replace"
+    />
+  </template>
+
+  <template
+    id="report_invoice_document"
+    inherit_id="account.report_invoice_document"
+    priority="99"
+  >
+    <xpath expr="//div[@class='row']" position="replace">
+      <div class="row">
+        <div class="col-6" name="address_not_same_as_shipping">
+          <t t-set="information_block">
+            <address
+              class="mb-0"
+              t-field="o.partner_id"
+              t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'
+            />
+            <div t-if="o.partner_id.vat">
+                            NIF: <span t-field="o.partner_id.vat" />
+                        </div>
+          </t>
+        </div>
+        <div class="col-6" name="shipping_address_block">
+          <t t-set="address">
+            <div groups="account.group_delivery_invoice_address">
+              <strong>Shipping Address</strong>
+              <div
+                t-field="o.partner_shipping_id"
+                t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'
+              />
+            </div>
+          </t>
+        </div>
+      </div>
+    </xpath>
+    <div name="delivery_date" position="replace" />
+    <div name="origin" position="replace" />
+    <div name="customer_code" position="before">
+      <div class="col" t-if="o.invoice_payment_term_id" name="payment-term">
+        <strong>Payment Term</strong>
+        <div t-field="o.invoice_payment_term_id.name" />
+      </div>
+    </div>
+    <span id="payment_terms_note_id" position="replace" />
+
+    <th name="th_description" position="before">
+      <th name="th_sku" class="text-start">
+        <span>SKU</span>
+      </th>
+    </th>
+
+    <td name="account_invoice_line_name" position="before">
+      <td name="td-sku">
+        <span t-field="line.product_id.default_code" />
+      </td>
+    </td>
+    <span t-field="line.name" position="replace">
+      <span t-if="line.product_id" t-field="line.product_id.name" />
+      <span t-if="not line.product_id" t-field="line.name" />
+    </span>
+    <span t-field="line.product_uom_id" position="replace" />
+    <span t-field="line.quantity" position="replace">
+      <span t-esc="int(line.quantity or 0)" />
+    </span>
+    <th name="th_taxes" position="replace" />
+    <td name="td_taxes" position="replace" />
+    <t
+      t-call="account.document_tax_totals_company_currency_template"
+      position="replace"
+    />
+    <span t-field="o.narration" position="replace" />
+    <div
+      t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference"
+      position="replace"
+    />
+    <div class="overflow-hidden" position="after">
+      <t t-if="o.has_narration()">
+        <br />
+        <br />
+        <table width="50%" t-if="o.narration" style="border-collapse: collapse;">
+          <tr>
+            <td
+              style="border: 1px solid black !important;
+                                   background-color: white !important;
+                                   color: black !important;
+                                   padding: 5px;"
+            >
+              <div
+                style="color: black !important;
+                                        background-color: white !important;"
+              >
+                <span t-field="o.narration" />
+              </div>
+            </td>
+          </tr>
+        </table>
+      </t>
+      <div
+        class="mb-3"
+        t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference"
+      >
+        <p name="payment_communication">
+          <br />
+          <br />
+          <t t-if="o.partner_bank_id">
+            <br />
+            <span>CURRENCY </span>
+            <span t-field="o.currency_id.name" />
+            <br />
+            <span>Account number </span>
+            <span t-field="o.partner_bank_id.acc_number" class="fw-bold" />
+            <t
+              t-if="o.partner_bank_id.bank_id and o.partner_bank_id.bank_id.aba_routing_number"
+            >
+              <br />
+              <span>ABA Routing Number </span>
+              <span
+                t-field="o.partner_bank_id.bank_id.aba_routing_number"
+                class="fw-bold"
+              />
+            </t>
+            <t t-if="o.partner_bank_id.bank_id and o.partner_bank_id.bank_id.bic">
+              <br />
+              <span>SWIFT (BIC) </span>
+              <span t-field="o.partner_bank_id.bank_id.bic" class="fw-bold" />
+            </t>
+            <t t-if="o.partner_bank_id.bank_id">
+              <br />
+              <span>Bank name </span>
+              <span t-field="o.partner_bank_id.bank_id.name" class="fw-bold" />
+              <br />
+              <span>Bank address </span>
+              <span t-field="o.partner_bank_id.bank_id.street" class="fw-bold" />
+              <span />
+              <span t-field="o.partner_bank_id.bank_id.city" class="fw-bold" />
+              <span />
+              <span t-field="o.partner_bank_id.bank_id.state" class="fw-bold" />
+              <span />
+              <span t-field="o.partner_bank_id.bank_id.zip" class="fw-bold" />
+              <span />
+              <span t-field="o.partner_bank_id.bank_id.country" class="fw-bold" />
+            </t>
+          </t>
+        </p>
+      </div>
+      <p t-if="o.payment_mode_id.note">
+        <strong>Payment Mode:</strong>
+        <span t-field="o.payment_mode_id.note" />
+      </p>
+      <t t-if="o.payment_mode_id and o.payment_mode_id.show_bank_account != 'no'">
+        <p t-foreach="o.sudo().partner_banks_to_show()" t-as="partner_bank">
+          <span>CURRENCY </span>
+          <span t-field="o.currency_id.name" />
+          <br />
+          <span>Account number </span>
+          <span t-field="partner_bank.acc_number" class="fw-bold" />
+          <t t-if="partner_bank.bank_id and partner_bank.bank_id.aba_routing_number">
+            <br />
+            <span>ABA Routing Number </span>
+            <span t-field="partner_bank.bank_id.aba_routing_number" class="fw-bold" />
+          </t>
+          <t t-if="partner_bank.bank_id and partner_bank.bank_id.bic">
+            <br />
+            <span>SWIFT (BIC) </span>
+            <span t-field="partner_bank.bank_id.bic" class="fw-bold" />
+          </t>
+          <t t-if="partner_bank.bank_id">
+            <br />
+            <span>Bank name </span>
+            <span t-field="partner_bank.bank_id.name" class="fw-bold" />
+            <br />
+            <span>Bank address </span>
+            <span t-field="partner_bank.bank_id.street" class="fw-bold" />
+            <span />
+            <span t-field="partner_bank.bank_id.city" class="fw-bold" />
+            <span />
+            <span t-field="partner_bank.bank_id.state" class="fw-bold" />
+            <span />
+            <span t-field="partner_bank.bank_id.zip" class="fw-bold" />
+            <span />
+            <span t-field="partner_bank.bank_id.country" class="fw-bold" />
+          </t>
+        </p>
+      </t>
+    </div>
+    <t
+      t-if="current_section and (line_last or lines[line_index+1].display_type == 'line_section')"
+      position="replace"
+    />
+  </template>
+
+  <template
+    id="document_tax_totals_template"
+    inherit_id="account.document_tax_totals_template"
+    priority="99"
+  >
+    <xpath expr="//t[@t-as='subtotal']/tr[1]" position="replace" />
+    <t t-as="tax_group" position="replace">
+      <br />
+      <t t-set="print_taxes" t-value="False" />
+      <t t-foreach="subtotal['tax_groups']" t-as="tax_group">
+        <t t-if="tax_group['tax_amount_currency'] > 0">
+          <t t-set="print_taxes" t-value="True" />
+        </t>
+      </t>
+      <tr class="o_subtotal" t-if="print_taxes">
+        <td>
+          <span t-out="subtotal['name']">Untaxed Amount</span>
+        </td>
+        <td class="text-end">
+          <span
+            t-att-class="oe_subtotal_footer_separator"
+            t-out="subtotal['base_amount_currency']"
+            t-options='{"widget": "monetary", "display_currency": currency}'
+          >27.00</span>
+        </td>
+      </tr>
+      <t t-foreach="subtotal['tax_groups']" t-as="tax_group">
+        <t t-if="same_tax_base or tax_group['display_base_amount_currency'] is False">
+          <tr class="o_taxes" t-if="tax_group['tax_amount_currency']">
+            <td style="max-width: 200px;">
+              <span t-out="tax_group['group_name']">Tax 15%</span>
+            </td>
+            <td class="text-end o_price_total">
+              <span
+                class="text-nowrap"
+                t-out="tax_group['tax_amount_currency']"
+                t-options='{"widget": "monetary", "display_currency": currency}'
+              >1.05</span>
+            </td>
+          </tr>
+        </t>
+        <t t-else="">
+          <tr class="o_taxes">
+            <td>
+              <span t-out="tax_group['group_name']">Tax 15%</span>
+              <span> on </span>
+              <span
+                class="text-nowrap"
+                t-out="tax_group['display_base_amount_currency']"
+                t-options='{"widget": "monetary", "display_currency": currency}'
+              >27.00</span>
+            </td>
+            <td class="text-end o_price_total">
+              <span
+                class="text-nowrap"
+                t-out="tax_group['tax_amount_currency']"
+                t-options='{"widget": "monetary", "display_currency": currency}'
+              >4.05</span>
+            </td>
+          </tr>
+        </t>
+      </t>
+    </t>
+  </template>
+</odoo>
