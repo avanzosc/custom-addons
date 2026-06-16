@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <template
+    id="external_layout_wave"
+    inherit_id="web.external_layout_wave"
+    priority="99"
+  >
+    <img t-if="company.logo" position="replace">
+      <img
+        t-if="company.logo"
+        class="o_company_logo mb-2"
+        t-att-src="image_data_uri(company.logo)"
+        alt="Logo"
+        style="max-height: 150px; max-width: 100%; margin-top: -0.5cm;"
+      />
+    </img>
+    <div name="company_address" position="replace">
+      <div name="customized_company_address" class="w-50 text-end">
+        <strong>
+          <span t-esc="company.partner_id.name.upper()" />
+        </strong>
+        <br />
+        <span t-esc="company.partner_id.street" />
+        <br />
+        <span t-esc="company.partner_id.zip" />
+        <span
+          t-esc="company.partner_id.state_id.name.split('(')[-1].replace(')', '').strip()"
+        />
+        <span> (Spain)</span>
+        <br />
+        <span>CIF: </span>
+        <span t-esc="(company.partner_id.vat or '')[2:]" />
+        <br />
+        <span>VAT: </span>
+        <span t-esc="company.partner_id.vat" />
+      </div>
+    </div>
+    <span t-out="str(o.name) + ', '" position="replace" />
+    <span t-if="report_type == 'pdf'" position="replace" />
+  </template>
+</odoo>
