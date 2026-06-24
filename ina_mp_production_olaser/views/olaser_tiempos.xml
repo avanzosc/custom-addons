@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <record id="ina_olaser_tiempos_list" model="ir.ui.view">
+    <field name="name">ina.olaser.tiempos.list</field>
+    <field name="model">order.olaser.tiempos</field>
+    <field name="arch" type="xml">
+      <list string="Seguimiento de O.Laser" editable="top">
+        <field name="laser_tiempos_id" string="OLaser" />
+        <field name="employee_id" />
+        <field name="entrada" />
+        <field name="salida" />
+        <field name="tiempo" widget="float_time" sum="Suma de Tiempos" />
+        <field name="comunicado" sum="Comunicado" />
+        <field name="estado" />
+      </list>
+    </field>
+  </record>
+
+  <record id="ina_olaser_tiempos_filter" model="ir.ui.view">
+    <field name="name">ina.olaser.tiempos.filter</field>
+    <field name="model">order.olaser.tiempos</field>
+    <field name="arch" type="xml">
+      <search string="Tiempos">
+        <field name="employee_id" string="Empleado" />
+        <field name="laser_tiempos_id" string="O.Laser" />
+        <group expand="0" string="Group By">
+          <filter
+            name="grup_emple"
+            string="Empleado"
+            context="{'group_by':'employee_id'}"
+          />
+          <filter
+            name="grup_entra"
+            string="Fecha Inicio"
+            context="{'group_by':'entrada'}"
+          />
+          <filter name="grup_esta" string="Estado" context="{'group_by':'estado'}" />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <!--  ******       DEFINIMOS EL ACTION PARA EL MENU Y EJECUCION  ****** -->
+  <record model="ir.actions.act_window" id="action_ina_olaser_tiempos">
+    <field name="name">Seguimiento O.Laser</field>
+    <field name="res_model">order.olaser.tiempos</field>
+
+    <field name="view_mode">list</field>
+  </record>
+
+  <menuitem
+    id="ina_menu_view_olaser_tiempos"
+    name="Seguimiento O.Laser"
+    action="action_ina_olaser_tiempos"
+    parent="ina_mp_production_olaser.menu_mrp_laser"
+    sequence="200"
+  />
+</odoo>
