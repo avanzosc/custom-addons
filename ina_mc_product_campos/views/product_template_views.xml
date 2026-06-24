@@ -1,0 +1,225 @@
+<?xml version="1.0" ?>
+<odoo>
+  <!-- Product template only plano view -->
+  <record id="ina_template_only_plano_view" model="ir.ui.view">
+    <field name="name">ina.template.only.plano.view</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_only_form_view" />
+    <field name="arch" type="xml">
+      <field name="default_code" position="after">
+        <field name="plano" />
+        <field name="norma" />
+        <field name="plano_cliente" />
+        <field name="planilla" />
+        <field name="especi_tec" />
+        <field name="especi_tec_fab" />
+        <field name="manu_instru" />
+        <field name="declara_conformi" />
+        <field name="hoja_fabrica" />
+        <field name="etiqueta_cable" />
+        <field name="ficha_seguri" />
+      </field>
+    </field>
+  </record>
+
+  <!-- Form view product template fantasma -->
+  <record id="product_template_form_view_fantasma" model="ir.ui.view">
+    <field name="name">product.template.form.view.fantasma</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_form_view" />
+    <field name="arch" type="xml">
+      <label for="purchase_ok" position="after">
+        <field name="bloqueado_product" invisible="1" />
+        <h3 class="color_rojo" invisible="not fantasma">
+                    Producto Fantasma
+                </h3>
+        <h3 class="color_rojo" invisible="not bloqueado_product">
+                    Producto Bloqueado
+                </h3>
+      </label>
+    </field>
+  </record>
+
+  <!-- Tree view product template -->
+  <record id="ina_product_tree_view" model="ir.ui.view">
+    <field name="name">ina.product.tree.view</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_tree_view" />
+    <field name="arch" type="xml">
+      <field name="type" position="after">
+        <field name="plano" />
+      </field>
+    </field>
+  </record>
+
+  <!-- Product template additional properties -->
+  <record model="ir.ui.view" id="ina_mc_product_espesor_view">
+    <field name="name">ina.mc.product.espesor_view</field>
+    <field name="model">product.template</field>
+    <field name="type">form</field>
+    <field name="inherit_id" ref="stock.view_template_property_form" />
+    <field name="arch" type="xml">
+      <xpath expr="//group[@name='group_lots_and_weight']" position="inside">
+        <field name="largo" />
+        <field name="ancho" />
+        <field name="alto" />
+        <field name="tipo_material" />
+        <field name="espesor" />
+      </xpath>
+      <xpath expr="//group[@name='group_lots_and_weight']" position="after">
+        <group name="grupo_pallet" string="Datos de Pallet">
+          <field name="cant_pallet" />
+          <field name="uni_base" />
+          <field name="capas_pallet" />
+          <field name="peso" />
+          <field name="volumen" />
+          <field name="largo_pallet" />
+          <field name="ancho_pallet" />
+          <field name="alto_pallet" />
+        </group>
+      </xpath>
+    </field>
+  </record>
+
+  <!-- Product template extra tabs -->
+  <record model="ir.ui.view" id="mc_product_campos_view">
+    <field name="name">mc_product_campos_view</field>
+    <field name="model">product.template</field>
+    <field name="type">form</field>
+    <field name="inherit_id" ref="product.product_template_form_view" />
+    <field name="arch" type="xml">
+      <notebook position="inside">
+        <page string="Varios">
+          <group col="4" name="g_varios">
+            <group string="General" name="g_general">
+              <field name="comision" invisible="1" />
+              <field name="tipo_comp_fab" />
+              <field name="distri_coste" />
+              <field name="producto_abc" />
+              <field name="funciones" />
+              <field name="inspeccion_oc" />
+              <field name="inspeccion_of" />
+              <field name="unidad_embalaje" />
+              <field
+                name="revision_actual"
+                invisible="tipo_comp_fab != 'comprado'"
+                required="tipo_comp_fab == 'comprado'"
+              />
+            </group>
+
+            <group string="Stock / Planificacion" name="g_mrp">
+              <field name="stock_seguridad" />
+              <field name="agrupa_pedido" />
+              <field name="netea_mps" />
+              <field name="bloqueado_sugerencia" />
+              <field name="dias_fabricacion" />
+              <field name="material_critico" />
+              <field name="cbam" />
+              <field name="rohs_raee" />
+              <field name="ud_estructura" invisible="1" />
+              <field name="ud_ruta" invisible="1" />
+              <field name="proveedor" invisible="1" />
+              <field name="program1" />
+              <field name="program2" />
+            </group>
+
+            <group string="Laser" name="g_laser">
+              <field name="tiempo_chapa" />
+              <field name="product_gas_id" />
+              <field name="peso_gas" />
+            </group>
+          </group>
+        </page>
+      </notebook>
+      <notebook position="inside">
+        <page string="Notas OT">
+          <group string="Nota de OT ">
+            <field name="nota_articulo" colspan="3" />
+          </group>
+        </page>
+        <page string="Calidad">
+          <group string="Nota de Calidad ">
+            <field name="nota_calidad" colspan="3" />
+          </group>
+          <group>
+            <field name="nota_etiqueta" />
+          </group>
+        </page>
+        <page string="Notas Factura">
+          <group>
+            <field name="incluir_nota_fra_en_fabrica" />
+          </group>
+          <separator string="Nota para Factura/Albaran/Oferta " />
+          <field name="nota_id">
+            <list string="Nota" editable="bottom">
+              <field name="secuencia" widget="handle" />
+              <field name="product_compon_id" />
+              <field name="cantidad" />
+              <field name="descripcion" />
+              <field name="incluir_su_texto" />
+            </list>
+          </field>
+        </page>
+      </notebook>
+    </field>
+  </record>
+
+  <!-- Default code visibility -->
+  <record model="ir.ui.view" id="ina_product_default_code_view">
+    <field name="name">ina_product_default_code_view</field>
+    <field name="model">product.template</field>
+    <field name="type">form</field>
+    <field name="inherit_id" ref="product.product_template_only_form_view" />
+    <field name="arch" type="xml">
+      <field name="default_code" position="attributes">
+        <attribute name="required">product_variant_count in (0,1)</attribute>
+        <attribute name="invisible">product_variant_count &gt; 1</attribute>
+      </field>
+    </field>
+  </record>
+
+  <!-- Product template extended search view -->
+  <record model="ir.ui.view" id="ina_product_template_extended_search_view">
+    <field name="name">ina.product.template_search_form_view</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_search_view" />
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='name']" position="after">
+        <!-- Filters simples -->
+        <filter
+          string="Referencias Criticas OFs"
+          name="inspeccion_of"
+          domain="[('inspeccion_of', '=', True)]"
+        />
+        <filter string="Fantasma" name="fantasma" domain="[('fantasma', '=', True)]" />
+        <filter
+          name="tipo_comp_fab"
+          string="Producto sera"
+          domain="[]"
+          context="{'group_by': 'tipo_comp_fab'}"
+        />
+
+        <!-- Filtros por fechas usando context_today() -->
+
+        <filter
+          name="nuevas_7_dias"
+          string="Nuevas 7 dias"
+          domain="[('create_date', '&gt;', datetime.datetime.combine(context_today() - datetime.timedelta(days=7), datetime.time(23, 59, 59)).to_utc())]"
+        />
+        <filter
+          name="nuevas_15_dias"
+          string="Nuevas 15 dias"
+          domain="[('create_date', '&gt;', datetime.datetime.combine(context_today() - datetime.timedelta(days=15), datetime.time(23, 59, 59)).to_utc())]"
+        />
+        <filter
+          name="nuevas_30_dias"
+          string="Nuevas 30 dias"
+          domain="[('create_date', '&gt;', datetime.datetime.combine(context_today() - datetime.timedelta(days=30), datetime.time(23, 59, 59)).to_utc())]"
+        />
+
+        <!-- Campo adicional -->
+        <field name="plano" string="Plano" />
+      </xpath>
+    </field>
+  </record>
+</odoo>

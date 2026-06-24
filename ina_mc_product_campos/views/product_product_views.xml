@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<odoo>
+  <!-- Normal product plano view -->
+  <record id="ina_normal_product_plano_view" model="ir.ui.view">
+    <field name="name">ina.normal.product.plano.view</field>
+    <field name="model">product.product</field>
+    <field name="inherit_id" ref="product.product_normal_form_view" />
+    <field name="arch" type="xml">
+      <field name="default_code" position="after">
+        <field name="plano" />
+        <field name="norma" />
+        <field name="plano_cliente" />
+        <field name="planilla" />
+        <field name="especi_tec" />
+        <field name="especi_tec_fab" />
+        <field name="manu_instru" />
+        <field name="declara_conformi" />
+        <field name="hoja_fabrica" />
+        <field name="etiqueta_cable" />
+        <field name="ficha_seguri" />
+      </field>
+    </field>
+  </record>
+
+  <!-- Tree view product variant -->
+  <record id="ina_product_vari_tree_view" model="ir.ui.view">
+    <field name="name">ina.product.vari.tree.view</field>
+    <field name="model">product.product</field>
+    <field name="inherit_id" ref="product.product_product_tree_view" />
+    <field name="arch" type="xml">
+      <field name="barcode" position="before">
+        <field name="plano" />
+      </field>
+    </field>
+  </record>
+</odoo>
