@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_reparacion_sale_manager,Access product_reparacion Sale Manager,model_product_reparacion,sales_team.group_sale_manager,1,1,0,0
+access_product_revision_sale_manager,Access product_revision Sale Manager,model_product_revision,sales_team.group_sale_manager,1,1,0,0
+access_product_ina_nota_sale_manager,Access product_ina_nota Sale Manager,model_product_ina_nota,sales_team.group_sale_manager,1,1,0,0
