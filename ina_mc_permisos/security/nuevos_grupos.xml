@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+  <!--
+    <record model="ir.module.category" id="module_category_inael_comun">
+            <field name="name">Inael Comun</field>
+            <field name="sequence">20</field>
+    </record>
+    <record id="group_inael_comun_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="module_category_inael_comun"/>
+    </record>
+-->
+
+  <record model="ir.module.category" id="module_category_inael_compras">
+    <field name="name">Inael Compras</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_compras_user" model="res.groups">
+    <field name="name">Usuario</field>
+    <field name="category_id" ref="module_category_inael_compras" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_ventas">
+    <field name="name">Inael Ventas</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_ventas_user" model="res.groups">
+    <field name="name">Usuario</field>
+    <field name="category_id" ref="module_category_inael_ventas" />
+  </record>
+  <record id="group_inael_ventas_exportnacional" model="res.groups">
+    <field name="name">Export-Nacional</field>
+    <field name="category_id" ref="module_category_inael_ventas" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_ot">
+    <field name="name">Inael OT</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_ot_user" model="res.groups">
+    <field name="name">OT Usuario</field>
+    <field name="category_id" ref="module_category_inael_ot" />
+  </record>
+  <record id="group_inael_ot_respon" model="res.groups">
+    <field name="name">OT Responsable</field>
+    <field name="category_id" ref="module_category_inael_ot" />
+  </record>
+  <record id="group_inael_ot_direc" model="res.groups">
+    <field name="name">OT Direccion</field>
+    <field name="category_id" ref="module_category_inael_ot" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_finanzas">
+    <field name="name">Inael Finanzas</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_finanzas_user" model="res.groups">
+    <field name="name">Usuario</field>
+    <field name="category_id" ref="module_category_inael_finanzas" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_produccion">
+    <field name="name">Inael Produccion</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_produccion_user" model="res.groups">
+    <field name="name">Usuario</field>
+    <field name="category_id" ref="module_category_inael_produccion" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_direccion">
+    <field name="name">Inael Direccion</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_direccion_user" model="res.groups">
+    <field name="name">Usuario</field>
+    <field name="category_id" ref="module_category_inael_direccion" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_planificacion">
+    <field name="name">Inael Planificacion</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_planificacion_user" model="res.groups">
+    <field name="name">Usuario</field>
+    <field name="category_id" ref="module_category_inael_planificacion" />
+  </record>
+  <record id="group_inael_planificacion_respon" model="res.groups">
+    <field name="name">Responsable</field>
+    <field name="category_id" ref="module_category_inael_planificacion" />
+  </record>
+  <record id="group_inael_planificacion_direc" model="res.groups">
+    <field name="name">Direccion</field>
+    <field name="category_id" ref="module_category_inael_planificacion" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_calidad">
+    <field name="name">Inael Calidad</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_calidad_user" model="res.groups">
+    <field name="name">Usuario</field>
+    <field name="category_id" ref="module_category_inael_calidad" />
+  </record>
+  <record id="group_inael_calidad_respon" model="res.groups">
+    <field name="name">Responsable</field>
+    <field name="category_id" ref="module_category_inael_calidad" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_almacen">
+    <field name="name">Inael Almacen</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_almacen_user" model="res.groups">
+    <field name="name">Usuario</field>
+    <field name="category_id" ref="module_category_inael_almacen" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_jefe_almacen">
+    <field name="name">Inael Jefe Almacen</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_jefe_almacen_user" model="res.groups">
+    <field name="name">Jefe de Almacen</field>
+    <field name="category_id" ref="module_category_inael_jefe_almacen" />
+  </record>
+
+  <record id="group_inael_almacen_respon" model="res.groups">
+    <field name="name">Responsable</field>
+    <field name="category_id" ref="module_category_inael_almacen" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_fabrica">
+    <field name="name">Inael Fabrica</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_fabrica_user" model="res.groups">
+    <field name="name">Usuario Fabrica</field>
+    <field name="category_id" ref="module_category_inael_fabrica" />
+  </record>
+  <record id="group_inael_fabrica_respon" model="res.groups">
+    <field name="name">Responsable Fabrica</field>
+    <field name="category_id" ref="module_category_inael_fabrica" />
+  </record>
+  <record id="group_inael_fabrica_respon_seccion" model="res.groups">
+    <field name="name">Responsable Seccion</field>
+    <field name="category_id" ref="module_category_inael_fabrica" />
+  </record>
+  <record id="group_inael_fabrica_fichar" model="res.groups">
+    <field name="name">Usuario Fichar</field>
+    <field name="category_id" ref="module_category_inael_fabrica" />
+  </record>
+
+  <record id="group_inael_fabrica_respon_fichar" model="res.groups">
+    <field name="name">Responsable Fichar</field>
+    <field name="category_id" ref="module_category_inael_fabrica" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_costes">
+    <field name="name">Inael Costes</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_costes_user" model="res.groups">
+    <field name="name">Usuario Costes</field>
+    <field name="category_id" ref="module_category_inael_costes" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_jefe_compras">
+    <field name="name">Inael Jefe Compras</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_jefe_compras_user" model="res.groups">
+    <field name="name">Jefe de Compras</field>
+    <field name="category_id" ref="module_category_inael_jefe_compras" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_presidencia">
+    <field name="name">Inael Presidencia</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_presidencia_user" model="res.groups">
+    <field name="name">Presidencia</field>
+    <field name="category_id" ref="module_category_inael_presidencia" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_marketing">
+    <field name="name">Inael Marketing</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_marketing_user" model="res.groups">
+    <field name="name">Usuario Marketing</field>
+    <field name="category_id" ref="module_category_inael_marketing" />
+  </record>
+  <record id="group_inael_marketing_respon" model="res.groups">
+    <field name="name">Responsable</field>
+    <field name="category_id" ref="module_category_inael_marketing" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_recepcion">
+    <field name="name">Inael Recepcion</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_recepcion_user" model="res.groups">
+    <field name="name">Usuario</field>
+    <field name="category_id" ref="module_category_inael_recepcion" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_lat">
+    <field name="name">Inael LAT</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_lat_user" model="res.groups">
+    <field name="name">Usuario</field>
+    <field name="category_id" ref="module_category_inael_lat" />
+  </record>
+
+  <record id="group_inael_lat_ensayos" model="res.groups">
+    <field name="name">Ver Ensayos</field>
+    <field name="category_id" ref="module_category_inael_lat" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_seguridad">
+    <field name="name">Inael Seguridad</field>
+    <field name="sequence">20</field>
+  </record>
+  <record id="group_inael_seguridad_user" model="res.groups">
+    <field name="name">Usuario Seguridad</field>
+    <field name="category_id" ref="module_category_inael_seguridad" />
+  </record>
+  <record id="group_inael_seguridad_respon" model="res.groups">
+    <field name="name">Responsable</field>
+    <field name="category_id" ref="module_category_inael_seguridad" />
+  </record>
+
+  <record model="ir.module.category" id="module_category_inael_rrhh">
+    <field name="name">Inael RRHH</field>
+    <field name="sequence">20</field>
+  </record>
+
+  <record id="group_inael_rrhh_user" model="res.groups">
+    <field name="name">Responsables RRHH</field>
+    <field name="category_id" ref="module_category_inael_rrhh" />
+  </record>
+  <record id="group_inael_rrhh_manager" model="res.groups">
+    <field name="name">Manager RRHH</field>
+    <field name="category_id" ref="module_category_inael_rrhh" />
+  </record>
+</odoo>
