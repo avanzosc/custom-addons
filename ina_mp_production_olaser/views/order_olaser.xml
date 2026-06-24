@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="0">
+  <record id="ina_order_olaser_list" model="ir.ui.view">
+    <field name="name">ina.order.olaser.list</field>
+    <field name="model">order.olaser</field>
+    <field name="arch" type="xml">
+      <list
+        string="OLaser"
+        default_order="id DESC"
+        decoration-success="state=='confirmado'"
+        decoration-muted="state in ('done','cancel')"
+        decoration-info="state=='draft'"
+      >
+        <field name="name" />
+        <field name="product_id" />
+        <field name="cantidad" />
+        <field name="comunicado" />
+        <field name="terminado" />
+        <field name="peso_mp" />
+        <field name="tiempo" />
+        <field name="tiempo_total" sum="Total tiempo" />
+        <field name="tiempo_realizado" sum="Total realizado" />
+        <field name="location_id" invisible="True" />
+        <field name="date" />
+        <field name="state" />
+        <field name="create_uid" string="Creado por" />
+      </list>
+    </field>
+  </record>
+
+  <record id="ina_order_olaser_view" model="ir.ui.view">
+    <field name="name">ina.order.olaser.view</field>
+    <field name="model">order.olaser</field>
+    <field name="arch" type="xml">
+      <form>
+        <header>
+          <button
+            name="action_duplicar"
+            string="Duplicar Orden"
+            type="object"
+            class="oe_highlight"
+            help="Duplicar la orden con las líneas"
+          />
+          <button
+            name="action_validar"
+            string="Confirmar Orden"
+            type="object"
+            class="oe_highlight"
+            invisible="state != 'draft'"
+          />
+          <button
+            name="action_cancelar"
+            string="Cancelar Orden"
+            type="object"
+            class="oe_highlight"
+            confirm="¿Estás seguro que quieres cancelar la orden?"
+            invisible="state not in ('draft','confirmado')"
+          />
+          <button
+            name="action_cerrar"
+            string="Cerrar Orden"
+            type="object"
+            class="oe_highlight"
+            confirm="¿Estás seguro que quieres cerrar la orden?"
+            invisible="state not in ('confirmado','proceso')"
+          />
+          <button
+            name="action_procesar"
+            string="Procesar Comunicado"
+            type="object"
+            class="oe_highlight"
+            invisible="comunicado == 0 or state in ('draft','cancel','done')"
+          />
+          <button
+            name="action_assign"
+            string="Reservar Stock"
+            type="object"
+            class="oe_highlight"
+            invisible="state not in ('draft','confirmado')"
+          />
+          <field
+            name="state"
+            widget="statusbar"
+            statusbar_visible="draft,confirmado,proceso,done"
+          />
+        </header>
+        <sheet>
+          <div class="oe_button_box" name="button_box">
+            <button
+              string="Trazabilidad"
+              type="object"
+              name="action_view_stock_moves"
+              class="oe_stat_button"
+              icon="fa-arrows-v"
+              groups="stock.group_stock_user"
+            />
+          </div>
+          <div class="oe_title">
+            <h1>
+              <field name="name" placeholder="Orden" />
+            </h1>
+          </div>
+          <group>
+            <group>
+              <field
+                name="date"
+                readonly="state in ('confirmado','proceso','done','cancel')"
+              />
+              <field
+                name="product_id"
+                readonly="state in ('confirmado','proceso','done','cancel')"
+              />
+              <field name="product_gas_id" invisible="1" />
+              <field
+                name="location_id"
+                readonly="state in ('confirmado','proceso','done','cancel')"
+              />
+              <field name="create_uid" string="Creado por" readonly="1" />
+              <field name="tiempo" readonly="1" />
+              <field name="tiempo_total" readonly="1" />
+              <field name="tiempo_realizado" readonly="1" />
+            </group>
+            <group>
+              <field
+                name="cantidad"
+                readonly="state in ('confirmado','proceso','done','cancel')"
+              />
+              <field name="comunicado" readonly="state in ('draft','done','cancel')" />
+              <field name="terminado" readonly="1" />
+              <field name="cantidad_consumo_total" readonly="1" />
+              <field name="cantidad_consumo_real" readonly="1" />
+              <field name="desperdicio" readonly="1" />
+              <field
+                name="peso_mp"
+                readonly="state in ('confirmado','proceso','done','cancel')"
+              />
+              <field
+                name="es_retal"
+                readonly="state in ('confirmado','proceso','done','cancel')"
+              />
+              <field name="rechazos_ptes" invisible="1" />
+            </group>
+          </group>
+          <notebook>
+            <!-- DISTRIBUCIÓN -->
+            <page string="Distribución">
+              <field name="listas_ids" readonly="state != 'draft'">
+                <list editable="bottom">
+                  <field name="product_id" />
+                  <field name="cantidad_chapa" />
+                  <field name="cantidad_chapa_total" sum="Total chapas" />
+                  <field name="cantidad_chapa_termi" />
+                  <field name="cantidad_consumo" />
+                  <field name="peso_gas" invisible="1" />
+                  <field name="peso_gas_total" sum="Total gas" invisible="1" />
+                  <field name="cantidad_consumo_total" sum="Total consumo" />
+                  <field name="tiempo_ud" />
+                  <field name="tiempo_total" />
+                  <field name="plano" />
+                </list>
+              </field>
+            </page>
+            <!-- TIEMPOS -->
+            <page string="Tiempos">
+              <field name="laser_tiempos_ids" readonly="state in ['cancel', 'done']">
+                <list editable="bottom">
+                  <field name="employee_id" />
+                  <field name="entrada" />
+                  <field name="salida" />
+                  <field name="tiempo" sum="Total tiempo" />
+                  <field name="comunicado" sum="Total comunicado" />
+                  <field name="estado" />
+                </list>
+              </field>
+            </page>
+            <!-- RECHAZOS -->
+            <page string="Rechazos">
+              <button
+                name="action_procesar_rechazo"
+                type="object"
+                string="Procesar Rechazos Pendientes"
+                class="oe_highlight"
+                help="Procesa las líneas de rechazo que no están procesadas"
+                invisible="not rechazos_ptes"
+              />
+              <field name="rechazos_ids">
+                <list editable="bottom">
+                  <field name="product_id" readonly="procesado" />
+                  <field name="cantidad" readonly="procesado" />
+                  <field name="procesado" readonly="1" />
+                  <field name="write_uid" string="Usuario" readonly="1" />
+                </list>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+        <chatter>
+          <field name="message_follower_ids" widget="mail_followers" />
+          <field name="message_ids" widget="mail_thread" />
+        </chatter>
+      </form>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="ina_order_olaser_search_view">
+    <field name="name">ina.order.olaser.search.view</field>
+    <field name="model">order.olaser</field>
+    <field name="arch" type="xml">
+      <search string="Filtros OLaser">
+        <filter string="Borrador" name="borrador" domain="[('state','=','draft')]" />
+        <filter
+          string="Confirmados"
+          name="confirmados"
+          domain="[('state','=','confirmado')]"
+        />
+        <filter string="En Proceso" name="proceso" domain="[('state','=','proceso')]" />
+        <separator />
+        <filter
+          string="Comunicados"
+          name="comunicados"
+          domain="[('comunicado','>',0)]"
+        />
+        <field name="name" />
+        <field name="product_id" />
+        <separator />
+        <group expand="0" string="Agrupar por">
+          <filter
+            string="Producto"
+            name="group_product"
+            context="{'group_by':'product_id'}"
+          />
+          <filter string="Estado" name="group_state" context="{'group_by':'state'}" />
+          <filter string="Fecha" name="group_date" context="{'group_by':'date'}" />
+          <filter
+            string="Creado por"
+            name="group_create_uid"
+            context="{'group_by':'create_uid'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record id="action_ina_order_olaser" model="ir.actions.act_window">
+    <field name="name">Orden Laser</field>
+    <field name="res_model">order.olaser</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_mode">list,form</field>
+    <field name="search_view_id" ref="ina_order_olaser_search_view" />
+  </record>
+
+  <menuitem id="menu_mrp_laser" name="Laser" sequence="12" parent="mrp.menu_mrp_root" />
+
+  <menuitem
+    action="action_ina_order_olaser"
+    name="Ordenes Laser"
+    id="ina_menu_mrp_olaser"
+    parent="ina_mp_production_olaser.menu_mrp_laser"
+    sequence='10'
+  />
+</odoo>
