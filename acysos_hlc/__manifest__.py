@@ -4,7 +4,7 @@
     "summary": "Minimal HLC catalog and B2B stock support",
     "author": "Acysos S.L, AvanzOSC",
     "license": "AGPL-3",
-    "website": "https://bitbucket.org/hlc_avanzosc/hlc/",
+    "website": "https://github.com/avanzosc/custom-addons",
     "depends": [
         "product",
         "product_brand",
