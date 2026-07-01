@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="stock_location_view_form_inherit_b2b" model="ir.ui.view">
+        <field name="name">stock.location.form.inherit.b2b</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock.view_location_form"/>
+        <field name="arch" type="xml">
+            <field name="usage" position="after">
+                <field name="for_stock_b2b"/>
+            </field>
+        </field>
+    </record>
+</odoo>
