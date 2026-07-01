@@ -1,0 +1,274 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_portal_catalog
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 09:59+0000\n"
+"PO-Revision-Date: 2026-06-24 09:59+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: website_portal_catalog
+#: model:ir.model.fields,field_description:website_portal_catalog.field_product_catalog_ftp__active
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.product_catalog_ftp_view_search
+msgid "Active"
+msgstr "Activo"
+
+#. module: website_portal_catalog
+#. odoo-python
+#: code:addons/website_portal_catalog/controllers/website_catalog_controller.py:0
+msgid "All Brands"
+msgstr "Todas las marcas"
+
+#. module: website_portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.product_catalog_ftp_view_search
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: website_portal_catalog
+#: model:ir.model,name:website_portal_catalog.model_ir_attachment
+msgid "Attachment"
+msgstr "Archivo adjunto"
+
+#. module: website_portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_catalog
+msgid "Available Stock"
+msgstr "Stock Disponible"
+
+#. module: website_portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_catalog
+msgid "Barcode"
+msgstr "Código de barras"
+
+#. module: website_portal_catalog
+#. odoo-python
+#: code:addons/website_portal_catalog/controllers/website_catalog_controller.py:0
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_catalog
+msgid "Brand"
+msgstr "Marca"
+
+#. module: website_portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.product_catalog_ftp_view_search
+msgid "Catalog"
+msgstr "Catálogo"
+
+#. module: website_portal_catalog
+#. odoo-python
+#: code:addons/website_portal_catalog/models/catalog.py:0
+msgid "Catalog XLSX Extended"
+msgstr "Catálogo XLSX extendido"
+
+#. module: website_portal_catalog
+#: model:ir.actions.server,name:website_portal_catalog.ir_cron_catalog_ir_actions_server
+msgid "Catalog create cron (BlueTomato)"
+msgstr "Cron de creación de catálogo (BlueTomato)"
+
+#. module: website_portal_catalog
+#. odoo-python
+#: code:addons/website_portal_catalog/controllers/website_catalog_controller.py:0
+msgid "Category"
+msgstr "Categoría"
+
+#. module: website_portal_catalog
+#: model:ir.model,name:website_portal_catalog.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: website_portal_catalog
+#: model:ir.actions.server,name:website_portal_catalog.ir_cron_product_catalog_ftp_ir_actions_server
+msgid "Create / Upload catalog to FTPs"
+msgstr "Crear / subir catálogo a FTP"
+
+#. module: website_portal_catalog
+#: model:ir.model.fields,field_description:website_portal_catalog.field_product_catalog_ftp__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: website_portal_catalog
+#: model:ir.model.fields,field_description:website_portal_catalog.field_product_catalog_ftp__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: website_portal_catalog
+#: model:ir.model.fields,field_description:website_portal_catalog.field_product_catalog_ftp__partner_id
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.product_catalog_ftp_view_search
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: website_portal_catalog
+#: model:ir.model.fields,field_description:website_portal_catalog.field_product_catalog_ftp__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: website_portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_my_catalog
+msgid "End date"
+msgstr "Fecha fin"
+
+#. module: website_portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.product_catalog_ftp_view_search
+msgid "Errored"
+msgstr "Con error"
+
+#. module: website_portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.product_catalog_ftp_view_search
+msgid "FTP defined"
+msgstr "FTP definido"
+
+#. module: website_portal_catalog
+#: model:ir.model.fields,field_description:website_portal_catalog.field_product_catalog_ftp__ftp_error
+msgid "Ftp Error"
+msgstr "Error FTP"
+
+#. module: website_portal_catalog
+#: model:ir.model.fields,field_description:website_portal_catalog.field_product_catalog_ftp__ftp_folder
+msgid "Ftp Folder"
+msgstr "Carpeta FTP"
+
+#. module: website_portal_catalog
+#: model:ir.model.fields,field_description:website_portal_catalog.field_product_catalog_ftp__ftp_password
+msgid "Ftp Password"
+msgstr "Contraseña FTP"
+
+#. module: website_portal_catalog
+#: model:ir.model.fields,field_description:website_portal_catalog.field_product_catalog_ftp__ftp_server
+msgid "Ftp Server"
+msgstr "Servidor FTP"
+
+#. module: website_portal_catalog
+#: model:ir.model.fields,field_description:website_portal_catalog.field_product_catalog_ftp__ftp_user
+msgid "Ftp User"
+msgstr "Usuario FTP"
+
+#. module: website_portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.product_catalog_ftp_view_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: website_portal_catalog
+#: model:ir.model.fields,field_description:website_portal_catalog.field_product_catalog_ftp__id
+msgid "ID"
+msgstr "ID"
+
+#. module: website_portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_my_catalog
+msgid "Id"
+msgstr "Id"
+
+#. module: website_portal_catalog
+#: model:ir.model.fields,field_description:website_portal_catalog.field_product_catalog_ftp__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: website_portal_catalog
+#: model:ir.model.fields,field_description:website_portal_catalog.field_product_catalog_ftp__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: website_portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_catalog
+msgid "List Price"
+msgstr "Precio"
+
+#. module: website_portal_catalog
+#. odoo-python
+#: code:addons/website_portal_catalog/controllers/website_catalog_controller.py:0
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_my_catalog
+msgid "Name"
+msgstr "Nombre"
+
+#. module: website_portal_catalog
+#. odoo-python
+#: code:addons/website_portal_catalog/controllers/website_catalog_controller.py:0
+msgid "Price"
+msgstr "Precio"
+
+#. module: website_portal_catalog
+#: model:ir.model.fields,field_description:website_portal_catalog.field_product_catalog_ftp__catalog_id
+msgid "Product Catalog"
+msgstr "Catálogo de productos"
+
+#. module: website_portal_catalog
+#: model:ir.model,name:website_portal_catalog.model_product_catalog_web
+msgid "Product Catalog web"
+msgstr "Catálogo de productos web"
+
+#. module: website_portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_catalog
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: website_portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_catalogs
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_my_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_my_home_menu_catalog
+msgid "Product data base download"
+msgstr "Descarga de base de datos de productos"
+
+#. module: website_portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_catalog
+msgid "RRP with Tax"
+msgstr "PVP con IVA"
+
+#. module: website_portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_catalog
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: website_portal_catalog
+#: model:ir.actions.report,name:website_portal_catalog.catalog_product_record_website_xlsx
+msgid "Request for Catalog"
+msgstr "Solicitud de catálogo"
+
+#. module: website_portal_catalog
+#. odoo-python
+#: code:addons/website_portal_catalog/controllers/website_catalog_controller.py:0
+msgid "Search in All"
+msgstr "Buscar en todo"
+
+#. module: website_portal_catalog
+#: model:ir.model.fields,field_description:website_portal_catalog.field_res_partner__send_catalog_id
+#: model:ir.model.fields,field_description:website_portal_catalog.field_res_users__send_catalog_id
+msgid "Send catalog"
+msgstr "Enviar catálogo"
+
+#. module: website_portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_my_catalog
+msgid "Start date"
+msgstr "Fecha inicio"
+
+#. module: website_portal_catalog
+#: model:ir.model.constraint,message:website_portal_catalog.constraint_product_catalog_ftp_catalog_partner_uniq
+msgid "The code of the account must be unique per company !"
+msgstr "El catálogo debe ser único por cliente."
+
+#. module: website_portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_my_catalog
+msgid "There are currently no product data bases for your account."
+msgstr "No hay descargas de información del producto para su cuenta."
+
+#. module: website_portal_catalog
+#: model_terms:ir.ui.view,arch_db:website_portal_catalog.portal_catalog
+msgid "There are currently no products available for this catalog."
+msgstr "No hay productos para este catálogo."
+
+#. module: website_portal_catalog
+#: model:ir.actions.act_window,name:website_portal_catalog.product_catalog_ftp_action
+#: model:ir.ui.menu,name:website_portal_catalog.product_catalog_ftp_menu
+msgid "Upload Catalog to FTP"
+msgstr "Subir catálogo a FTP"
+
+#. module: website_portal_catalog
+#: model:ir.model,name:website_portal_catalog.model_product_catalog_ftp
+msgid "product.catalog.ftp"
+msgstr "FTP de catálogo de productos"
