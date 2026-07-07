@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mrp_repair_tiempos_user,mrp.repair.tiempos user,model_mrp_repair_tiempos,base.group_user,1,1,1,1
+access_mrp_repair_docu_user,mrp.repair.docu user,model_mrp_repair_docu,base.group_user,1,1,1,1
+access_docu_rma_ver_user,docu.rma.ver user,model_docu_rma_ver,base.group_user,1,1,1,1

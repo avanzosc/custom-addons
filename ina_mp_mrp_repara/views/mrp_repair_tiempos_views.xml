@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="mrp_repair_tiempos_tree" model="ir.ui.view">
+    <field name="name">mrp.repair.tiempos.tree</field>
+    <field name="model">mrp.repair.tiempos</field>
+    <field name="arch" type="xml">
+      <list string="Seguimiento Reparaciones" editable="top">
+        <field name="repara_id" string="RMA" />
+        <field name="workcenter_id" />
+        <field name="employee_id" />
+        <field name="entrada" />
+        <field name="salida" />
+        <field name="tiempo" widget="float_time" optional="show" />
+        <field name="estado" />
+      </list>
+    </field>
+  </record>
+
+  <record id="mrp_repair_tiempos_search" model="ir.ui.view">
+    <field name="name">mrp.repair.tiempos.search</field>
+    <field name="model">mrp.repair.tiempos</field>
+    <field name="arch" type="xml">
+      <search string="Tiempos Reparaciones">
+        <field name="repara_id" string="RMA" />
+        <field name="employee_id" />
+        <field name="workcenter_id" />
+        <group expand="0" string="Agrupar por">
+          <filter
+            string="Centro"
+            name="group_workcenter"
+            domain="[]"
+            context="{'group_by': 'workcenter_id'}"
+          />
+          <filter
+            string="Empleado"
+            name="group_employee"
+            domain="[]"
+            context="{'group_by': 'employee_id'}"
+          />
+          <filter
+            string="Estado"
+            name="group_estado"
+            domain="[]"
+            context="{'group_by': 'estado'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record id="action_mrp_repair_tiempos" model="ir.actions.act_window">
+    <field name="name">Seguimiento Reparaciones</field>
+    <field name="res_model">mrp.repair.tiempos</field>
+    <field name="view_mode">list</field>
+  </record>
+
+  <menuitem
+    id="menu_mrp_repair_tiempos"
+    name="Seguimiento Reparaciones"
+    action="action_mrp_repair_tiempos"
+    parent="repair.menu_repair_order"
+    groups="stock.group_stock_manager"
+    sequence="82"
+  />
+</odoo>
