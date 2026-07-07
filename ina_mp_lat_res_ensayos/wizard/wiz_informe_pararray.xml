@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="wiz_informe_pararray" model="ir.ui.view">
+    <field name="name">wiz_listar.pararray.form</field>
+    <field name="model">wiz.informe.pararray</field>
+    <field name="arch" type="xml">
+      <form string="Wizard para listar Informe de Pararrayos">
+        <field name="state" invisible="1" />
+        <field name="name" invisible="1" />
+        <group invisible="state == 'get'" string="Preparación del documento">
+          <field name="pedido_cliente" />
+        </group>
+        <div invisible="state == 'choose'" string="Descarga del documento">
+          <h2>Listo para descargar</h2>
+          <p>Para descargar el documento pulsa aqui: <field
+            name="data"
+            readonly="1"
+            filename="name"
+          /></p>
+        </div>
+        <footer invisible="state == 'get'">
+          <button
+            name="export_pdf"
+            string="Listar PDF"
+            type="object"
+            class="btn-primary"
+          />
+          <button
+            special="cancel"
+            string="Cancelar"
+            type="object"
+            class="btn-default"
+          />
+        </footer>
+        <footer invisible="state == 'choose'">
+          <button special="cancel" string="Cerrar" type="object" class="btn-primary" />
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_wiz_informe_pararray" model="ir.actions.act_window">
+    <field name="name">Informe Pararrayos</field>
+    <field name="res_model">wiz.informe.pararray</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+    <field name="binding_model_id" ref="ina_mp_lat_res_ensayos.model_res_pararrayos" />
+    <field name="binding_view_types">form</field>
+  </record>
+</odoo>

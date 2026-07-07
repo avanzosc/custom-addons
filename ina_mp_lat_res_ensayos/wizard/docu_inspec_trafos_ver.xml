@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="docu_inspec_trafos_ver" model="ir.ui.view">
+    <field name="name">Documentacion Inspeccion Trafos</field>
+    <field name="model">docu.inspec.trafos.ver</field>
+    <field name="arch" type="xml">
+      <form string="Ver Fichero">
+        <field name="state" invisible="1" />
+        <field name="name" invisible="1" />
+        <group invisible="state == 'get'" string="Preparación del documento" />
+        <div invisible="state == 'choose'" string="Descarga del documento">
+          <h2>Listo para descargar</h2>
+          <p>Para descargar el documento pulsa aqui: <field
+            name="data"
+            readonly="1"
+            filename="name"
+          /></p>
+        </div>
+
+        <footer invisible="state == 'get'">
+          <button
+            name="ver_docu_inspec_trafos"
+            string="Ver Documento"
+            type="object"
+            class="btn-primary"
+          />
+        </footer>
+        <footer invisible="state == 'choose'">
+          <button special="cancel" string="Cerrar" type="object" class="btn-primary" />
+        </footer>
+      </form>
+    </field>
+  </record>
+</odoo>
