@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_employee_fichar_fichar,Access hr_employee_fichar Fabrica Fichar,model_hr_employee_fichar,ina_mc_permisos.group_inael_fabrica_fichar,1,1,1,1
+access_hr_employee_fichar_hr_user,Access hr_employee_fichar HR Officer,model_hr_employee_fichar,hr.group_hr_user,1,0,0,0
+access_hr_employee_fichar_user,Access hr_employee_fichar Internal User,model_hr_employee_fichar,base.group_user,1,1,1,1
+access_hr_fichar_historico_fichar,Access hr_fichar_historico Fabrica Fichar,model_hr_fichar_historico,ina_mc_permisos.group_inael_fabrica_fichar,1,1,1,1
+access_hr_fichar_historico_user,Access hr_fichar_historico Internal User,model_hr_fichar_historico,base.group_user,1,1,1,1
+access_hr_puesto_fichar_fichar,Access hr_puesto_fichar Fabrica Fichar,model_hr_puesto_fichar,ina_mc_permisos.group_inael_fabrica_fichar,1,0,0,0
+access_hr_puesto_fichar_user,Access hr_puesto_fichar Internal User,model_hr_puesto_fichar,base.group_user,1,0,0,0

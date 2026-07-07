@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <record id="view_hr_location_tree" model="ir.ui.view">
+    <field name="name">stock.hr.location.list</field>
+    <field name="model">stock.location</field>
+    <field name="priority">100</field>
+    <field name="arch" type="xml">
+      <list string="Ubicaciones Desechos" create="false" delete="false">
+        <field name="active" column_invisible="1" />
+        <field name="display_name" />
+        <field name="usage" />
+        <field name="scrap_location" column_invisible="1" />
+        <field name="posx" />
+        <field name="posy" />
+      </list>
+    </field>
+  </record>
+
+  <record id="view_hr_location_search" model="ir.ui.view">
+    <field name="name">stock.hr.location.search</field>
+    <field name="model">stock.location</field>
+    <field name="priority">100</field>
+    <field name="arch" type="xml">
+      <search string="Stock Locations">
+        <field name="name" string="Ubicacion" />
+        <filter
+          name="desecho"
+          string="Desechos"
+          domain="[('scrap_location', '=', True), ('usage', '=', 'internal')]"
+        />
+      </search>
+    </field>
+  </record>
+
+  <record id="action_hr_location" model="ir.actions.act_window">
+    <field name="name">Ubicaciones Rechazos</field>
+    <field name="res_model">stock.location</field>
+    <field name="view_mode">list,form</field>
+    <field name="view_id" ref="view_hr_location_tree" />
+    <field name="search_view_id" ref="view_hr_location_search" />
+    <field name="context">{'search_default_desecho': 1}</field>
+  </record>
+
+  <menuitem
+    id="menu_action_hr_location_desecho"
+    name="Ubicaciones Rechazos"
+    action="action_hr_location"
+    parent="menu_hr_presencia_fichar_root"
+    sequence="70"
+  />
+
+  <menuitem
+    id="menu_movimien_stock"
+    name="Movimientos Rechazos"
+    action="stock.stock_move_action"
+    parent="menu_hr_presencia_fichar_root"
+    sequence="80"
+  />
+</odoo>
