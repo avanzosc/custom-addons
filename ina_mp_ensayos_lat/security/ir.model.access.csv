@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mrp_ensayos_calidad_respon,access mrp ensayos calidad respon,model_mrp_ensayos,ina_mc_permisos.group_inael_calidad_respon,1,1,1,1
+access_mrp_ensayos_fabrica_respon,access mrp ensayos fabrica respon,model_mrp_ensayos,ina_mc_permisos.group_inael_fabrica_respon,1,1,1,1
+access_mrp_ensayos_user,access mrp ensayos user,model_mrp_ensayos,ina_mc_permisos.group_inael_lat_user,1,1,1,1
+access_mrp_ensayos_producto_calidad_respon,access mrp ensayos producto calidad respon,model_mrp_ensayos_producto,ina_mc_permisos.group_inael_calidad_respon,1,1,1,1
+access_mrp_ensayos_producto_fabrica_respon,access mrp ensayos produto fabrica respon,model_mrp_ensayos_producto,ina_mc_permisos.group_inael_fabrica_respon,1,1,1,1
+access_mrp_ensayos_producto_user,access mrp ensayos producto user,model_mrp_ensayos_producto,ina_mc_permisos.group_inael_lat_user,1,1,1,1
+access_wiz_ensayos_duplica_calidad_respon,access wiz ensayos duplica calidad respon,model_wiz_ensayos_duplica,ina_mc_permisos.group_inael_calidad_respon,1,1,1,1
+access_wiz_ensayos_duplica_fabrica_respon,access wiz ensayos duplica fabrica respon,model_wiz_ensayos_duplica,ina_mc_permisos.group_inael_fabrica_respon,1,1,1,1
+access_wiz_ensayos_duplica_user,access wiz ensayos duplica user,model_wiz_ensayos_duplica,ina_mc_permisos.group_inael_lat_user,1,1,1,1
