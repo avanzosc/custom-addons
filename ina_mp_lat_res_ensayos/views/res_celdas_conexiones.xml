@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="ina_lat_res_celdas_conexio_tree" model="ir.ui.view">
+    <field name="name">ina.lat.res.celdas.conexio.tree</field>
+    <field name="model">res.celdas.conexiones</field>
+    <field name="arch" type="xml">
+      <list string="Celdas Conexiones" default_order="id DESC">
+        <field name="premo_num" widget="char" optional="show" />
+        <field name="familia" optional="show" />
+        <field name="funcion" optional="show" />
+        <field name="fase" optional="show" />
+        <field name="num_serie" optional="show" />
+        <field name="product_id" optional="show" />
+        <field name="nota" optional="show" />
+      </list>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="ina_lat_res_celdas_conexio_search_view">
+    <field name="name">ina.lat.res.celdas.conexio.search.view</field>
+    <field name="model">res.celdas.conexiones</field>
+    <field name="arch" type="xml">
+      <search string="Filtros Ensayos celdas Conexiones">
+        <field name="product_id" />
+        <field name="num_serie" />
+        <field name="premo_num" />
+        <field name="familia" />
+        <field name="funcion" />
+        <separator />
+        <group expand="0" string="Group By">
+          <filter
+            string="Producto"
+            name="group-producto"
+            domain="[]"
+            context="{'group_by':'product_id'}"
+          />
+          <filter
+            string="Familia"
+            name="group-familia"
+            domain="[]"
+            context="{'group_by':'familia'}"
+          />
+          <filter
+            string="Funcion"
+            name="group-funcion"
+            domain="[]"
+            context="{'group_by':'funcion'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record id="action_ina_res_celdas_conexio" model="ir.actions.act_window">
+    <field name="name">Celdas Conexiones</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">res.celdas.conexiones</field>
+    <field name="view_mode">list</field>
+    <field
+      name="view_id"
+      ref="ina_mp_lat_res_ensayos.ina_lat_res_celdas_conexio_tree"
+    />
+    <field
+      name="search_view_id"
+      ref="ina_mp_lat_res_ensayos.ina_lat_res_celdas_conexio_search_view"
+    />
+  </record>
+
+  <menuitem
+    id="menu_lat_celdas"
+    name="Ensayos de Celdas"
+    parent="ina_mp_lat_res_ensayos.ina_qc_lat"
+    sequence="10"
+  />
+
+  <menuitem
+    name="Celdas Conexiones"
+    action="action_ina_res_celdas_conexio"
+    id="ina_menu_res_celdas_conexio"
+    parent="menu_lat_celdas"
+    sequence="60"
+  />
+</odoo>

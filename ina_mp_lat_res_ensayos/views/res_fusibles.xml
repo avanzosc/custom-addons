@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="ina_lat_res_fusibles_tree" model="ir.ui.view">
+    <field name="name">ina.lat.res.fusibles.tree</field>
+    <field name="model">res.fusibles</field>
+    <field name="arch" type="xml">
+      <list
+        string="Resultados fusibles"
+        editable="top"
+        default_order="fecha_ensayo DESC"
+      >
+        <field name="name" optional="show" />
+        <field name="num_serie" optional="show" />
+        <field name="production_id" optional="show" />
+        <field name="product_id" optional="show" />
+        <field name="product_name" optional="show" />
+        <field name="fecha_ensayo" optional="show" />
+        <field name="res_nominal" optional="show" />
+        <field name="tol_resis" optional="show" />
+        <field name="res_medida" optional="show" />
+        <field name="peso_nominal" optional="show" />
+        <field name="tol_peso" optional="show" />
+        <field name="peso_medido" optional="show" />
+        <field name="rechazado_resis" optional="show" />
+        <field name="rechazado_peso" optional="show" />
+      </list>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="ina_lat_res_fusibles_search_view">
+    <field name="name">ina.lat.res.fusibles.search.view</field>
+    <field name="model">res.fusibles</field>
+    <field name="arch" type="xml">
+      <search string="Filtros Ensayos fusibles">
+        <field name="num_serie" />
+        <field name="product_id" />
+        <field name="production_id" />
+        <field name="rechazado_resis" />
+        <field name="rechazado_peso" />
+        <field name="product_name" />
+        <separator />
+        <group expand="0" string="Group By">
+          <filter
+            string="Producto"
+            name="group-producto"
+            domain="[]"
+            context="{'group_by':'product_id'}"
+          />
+          <filter
+            string="Fecha Ensayo"
+            name="group-fecha-ensayo"
+            domain="[]"
+            context="{'group_by':'fecha_ensayo'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record id="action_ina_res_fusibles" model="ir.actions.act_window">
+    <field name="name">Resultado Fusibles</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">res.fusibles</field>
+    <field name="view_mode">list</field>
+    <field name="view_id" ref="ina_mp_lat_res_ensayos.ina_lat_res_fusibles_tree" />
+    <field
+      name="search_view_id"
+      ref="ina_mp_lat_res_ensayos.ina_lat_res_fusibles_search_view"
+    />
+  </record>
+
+  <menuitem
+    name="Fusibles"
+    action="action_ina_res_fusibles"
+    id="ina_menu_res_fusibles"
+    parent="menu_lat_res_ensayos"
+    sequence="200"
+  />
+</odoo>

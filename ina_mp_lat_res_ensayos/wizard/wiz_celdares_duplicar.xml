@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <record id="wiz_celdares_duplicar" model="ir.ui.view">
+    <field name="name">wiz_celdares_duplicar</field>
+    <field name="model">wiz.celdares.duplicar</field>
+    <field name="arch" type="xml">
+      <form string="Wizard para Duplicar Ensayos">
+        <group>
+              Duplicar Resultados de la Celda
+          </group>
+        <footer>
+          <button
+            icon="gtk-execute"
+            name="action_duplica_celda"
+            string="Duplicar Celda"
+            type="object"
+            class="oe_highlight"
+          />
+          <button
+            icon="gtk-cancel"
+            string="Cancelar"
+            class="oe_link"
+            special="cancel"
+          />
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_wiz_celdares_duplica" model="ir.actions.act_window">
+    <field name="name">Duplicar celdas</field>
+    <field name="res_model">wiz.celdares.duplicar</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+    <field name="binding_model_id" ref="ina_mp_lat_res_ensayos.model_res_celdas" />
+    <field name="binding_view_types">form</field>
+  </record>
+</odoo>

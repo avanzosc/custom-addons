@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="ina_lat_res_trafos_tree" model="ir.ui.view">
+    <field name="name">ina.lat.res.trafos.tree</field>
+    <field name="model">res.trafos</field>
+    <field name="arch" type="xml">
+      <list string="Resultados Trafos" default_order="id DESC">
+        <field name="name" widget="char" optional="show" />
+        <field name="product_id" optional="show" />
+        <field name="cliente" widget="char" optional="show" />
+        <field name="production_id" optional="show" />
+        <field name="potencia" widget="char" optional="show" />
+        <field name="fecha" optional="show" />
+      </list>
+    </field>
+  </record>
+
+  <record id="ina_lat_res_trafos_resis_tree" model="ir.ui.view">
+    <field name="name">ina.lat.res.trafos.resis.tree</field>
+    <field name="model">res.trafos</field>
+    <field name="arch" type="xml">
+      <list string="Resistencias Trafos" default_order="id DESC">
+        <field name="num_serie" optional="show" />
+        <field name="temper" optional="show" />
+        <field name="fecha_resis" widget="date" optional="show" />
+        <field name="pos_at1" optional="show" />
+        <field name="pos_at2" optional="show" />
+        <field name="pos_bt2" optional="show" />
+        <field name="pos_bt3" optional="show" />
+        <field name="res_at1_1uv" optional="show" />
+        <field name="res_at2_1uv" optional="show" />
+        <field name="res_bt2_2uv" optional="show" />
+        <field name="res_bt3_2uv" optional="show" />
+        <field name="res_at1_1vw" optional="show" />
+        <field name="res_at2_1vw" optional="show" />
+        <field name="res_bt2_2vw" optional="show" />
+        <field name="res_bt3_2vw" optional="show" />
+        <field name="res_at1_1wu" optional="show" />
+        <field name="res_at2_1wu" optional="show" />
+        <field name="res_bt2_2wu" optional="show" />
+        <field name="res_bt3_2wu" optional="show" />
+      </list>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="res_trafos_form">
+    <field name="name">res.trafos.form</field>
+    <field name="model">res.trafos</field>
+    <field name="arch" type="xml">
+      <form string="Resultado de trafos">
+        <sheet>
+          <group col="4">
+            <group string="Datos Generales">
+              <field name="id" invisible="1" />
+              <field name="name" widget="char" />
+              <field name="num_serie" />
+              <field name="tipo" />
+              <field
+                name="product_id"
+                options="{'no_open': True, 'no_create': True} "
+              />
+              <field name="normas" />
+              <field name="especi_tecnica" />
+              <field name="cliente" />
+              <field name="production_id" />
+              <field name="fecha" />
+            </group>
+            <group string="Caracteristicas">
+              <field name="potencia" />
+              <field name="um" />
+              <field name="frecuencia" />
+              <field name="regula" />
+              <field name="simbo_acopla" />
+              <field name="pot_acus_max" />
+            </group>
+            <group string="Tensiones">
+              <field name="tension_asi_at1" />
+              <field name="tension_asi_at2" />
+              <field name="tension_asi_bt2" />
+              <field name="tension_asi_bt3" />
+              <field name="corrien_asi_at1" />
+              <field name="corrien_asi_at2" />
+              <field name="corrien_asi_bt2" />
+              <field name="corrien_asi_bt3" />
+            </group>
+            <group string="Otros Datos">
+              <field name="factor_reduc" />
+              <field name="liquido_ais" />
+              <field name="densidad_ace" />
+              <field name="vol_liq_ais" />
+              <field name="masa_total" />
+              <field name="masa_desencu" />
+              <field name="masa_bobin" />
+              <field name="masa_nucleo" />
+              <field name="mat_at_bt" />
+              <field name="mat_cir_mag" />
+              <field name="nota" />
+              <field name="inspec_tapas" />
+            </group>
+          </group>
+          <notebook>
+            <page string="Resistencias">
+              <group col="5">
+                <group>
+                  <field name="pos_at1" />
+                  <field name="pos_at2" />
+                  <field name="pos_bt2" />
+                  <field name="pos_bt3" />
+                </group>
+                <group>
+                  <field name="res_at1_1uv" />
+                  <field name="res_at2_1uv" />
+                  <field name="res_bt2_2uv" />
+                  <field name="res_bt3_2uv" />
+                </group>
+                <group>
+                  <field name="res_at1_1vw" />
+                  <field name="res_at2_1vw" />
+                  <field name="res_bt2_2vw" />
+                  <field name="res_bt3_2vw" />
+                </group>
+                <group>
+                  <field name="res_at1_1wu" />
+                  <field name="res_at2_1wu" />
+                  <field name="res_bt2_2wu" />
+                  <field name="res_bt3_2wu" />
+                </group>
+                <group>
+                  <field name="temper" />
+                  <field name="fecha_resis" widget="date" />
+                </group>
+              </group>
+            </page>
+            <page string="Relacion">
+              <field name="lineas_rela_ids">
+                <list string="Relacion" editable="bottom">
+                  <field name="trafo_id" column_invisible="1" />
+                  <field name="num_serie" optional="show" />
+                  <field name="at_bt" optional="show" />
+                  <field name="posicion" widget="char" optional="show" />
+                  <field name="conexion" widget="char" optional="show" />
+                  <field name="val_teori" optional="show" />
+                  <field name="fase_u" optional="show" />
+                  <field name="fase_v" optional="show" />
+                  <field name="fase_w" optional="show" />
+                  <field name="simbol_acopla" optional="show" />
+                  <field name="fecha" optional="show" />
+                </list>
+              </field>
+            </page>
+            <page string="Vacio">
+              <field name="lineas_vacio_ids">
+                <list string="Vacio" editable="bottom">
+                  <field name="trafo_id" column_invisible="1" />
+                  <field name="num_serie" optional="show" />
+                  <field name="devanado" optional="show" />
+                  <field name="tension" optional="show" />
+                  <field name="cor_u" optional="show" />
+                  <field name="cor_v" optional="show" />
+                  <field name="cor_w" optional="show" />
+                  <field name="cor_media1" optional="show" />
+                  <field name="cor_media2" optional="show" />
+                  <field name="perdidas" optional="show" />
+                  <field name="fecha" optional="show" />
+                </list>
+              </field>
+            </page>
+            <page string="Corto">
+              <field name="lineas_corto_ids">
+                <list string="Corto" editable="bottom">
+                  <field name="trafo_id" column_invisible="1" />
+                  <field name="num_serie" optional="show" />
+                  <field name="relacion" optional="show" />
+                  <field name="posicion" optional="show" />
+                  <field name="tension" optional="show" />
+                  <field name="cor_u" optional="show" />
+                  <field name="cor_v" optional="show" />
+                  <field name="cor_w" optional="show" />
+                  <field name="cor_media1" optional="show" />
+                  <field name="perdidas" optional="show" />
+                  <field name="temperatura" optional="show" />
+                  <field name="fecha" optional="show" />
+                </list>
+              </field>
+            </page>
+            <page string="Dielectrico">
+              <field name="lineas_dielectrico_ids">
+                <list string="Dielectrico" editable="bottom">
+                  <field name="trafo_id" column_invisible="1" />
+                  <field name="num_serie" optional="show" />
+                  <field name="tipo" optional="show" />
+                  <field name="terminales" optional="show" />
+                  <field name="tension" optional="show" />
+                  <field name="tiempo" optional="show" />
+                  <field name="frecuencia" optional="show" />
+                  <field name="fecha" optional="show" />
+                </list>
+              </field>
+            </page>
+            <page string="Resultados">
+              <field name="lineas_resultados_ids">
+                <list string="Resultados" editable="bottom">
+                  <field name="trafo_id" column_invisible="1" />
+                  <field name="num_serie" optional="show" />
+                  <field name="relacion" optional="show" />
+                  <field name="ensayo" optional="show" />
+                  <field name="garantia" optional="show" />
+                  <field name="tolerancia" optional="show" />
+                  <field name="resultado" optional="show" />
+                  <field name="fecha" optional="show" />
+                </list>
+              </field>
+            </page>
+            <page string="Equipos">
+              <field name="lineas_equipos_ids">
+                <list string="Equipos" editable="bottom">
+                  <field name="trafo_id" column_invisible="1" />
+                  <field name="num_serie" optional="show" />
+                  <field name="num_serie_equipo" optional="show" />
+                  <field name="product_id" optional="show" />
+                  <field name="fecha" widget="date" optional="show" />
+                  <field name="nota" optional="show" />
+                </list>
+              </field>
+            </page>
+            <page string="Bobinas">
+              <group col="5">
+                <group>
+                  <field name="num_nucleo" />
+                </group>
+                <group>
+                  <field name="num_bob1" />
+                  <field name="num_bob2" />
+                  <field name="num_bob3" />
+                </group>
+                <group>
+                  <field name="esp_bobin" />
+                  <field name="fecha_espesor" />
+                </group>
+                <group string="Curado Bobinas">
+                  <field name="fecha_entbob_horno" />
+                  <field name="fecha_salbob_horno" />
+                </group>
+              </group>
+            </page>
+            <page string="Parte Activa">
+              <group col="5">
+                <group>
+                  <field name="mega_nuc" />
+                  <field name="mega_bob1" />
+                  <field name="mega_bob2" />
+                  <field name="mega_bob3" />
+                  <field name="mega_cul" />
+                  <field name="mega_mon_bobcul" />
+                  <field name="conex_abt" />
+                </group>
+                <group>
+                  <field name="fecha_meg_nuc" />
+                  <field name="fecha_meg_bob" />
+                  <field name="fecha_meg_cul" />
+                  <field name="fecha_meg_mon_bobcul" />
+                  <field name="fecha_conex_abt" />
+                </group>
+                <group>
+                  <field name="rela_transf" />
+                </group>
+                <group string="Resistencia">
+                  <field name="resis_un" />
+                  <field name="resis_vn" />
+                  <field name="resis_wn" />
+                  <field name="resis_uv" />
+                  <field name="resis_uw" />
+                  <field name="resis_vw" />
+                </group>
+                <group string="Curado">
+                  <field name="num_tapa" />
+                  <field name="fecha_entcur_horno" />
+                  <field name="fecha_salcur_horno" />
+                </group>
+              </group>
+            </page>
+            <page string="Encubado y Llenado">
+              <group col="5">
+                <group string="Ensayo Aceite">
+                  <field name="ensay_aisla" />
+                  <field name="tipo_ace" />
+                </group>
+                <group>
+                  <field name="num_cuba" />
+                  <field name="fecha_encubado" />
+                  <field name="fecha_pares" />
+                  <field name="peso_activa" />
+                </group>
+                <group>
+                  <field name="fecha_ini_llenado" />
+                  <field name="fecha_fin_llenado" />
+                  <field name="fecha_ini_vacio" />
+                  <field name="fecha_fin_vacio" />
+                  <field name="fecha_ini_reposo" />
+                  <field name="fecha_fin_reposo" />
+                </group>
+                <group>
+                  <field name="temp_aceite" />
+                  <field name="lit_aceite" />
+                  <field name="peso_total" />
+                </group>
+              </group>
+            </page>
+            <page string="Documentacion">
+              <field name="line_documen_ids">
+                <list string="Documentos" editable="bottom">
+                  <field name="fichero" optional="show" />
+                  <button
+                    type="object"
+                    name="action_ver_docu"
+                    string="Descargar Documento"
+                    icon="fa-download"
+                    attrs="{'invisible': [('existe_fichero', '=', False )]}"
+                  />
+                  <field name="carpeta" readonly="1" optional="show" />
+                  <field name="existe_fichero" optional="show" />
+                  <field name="nota" optional="show" />
+                </list>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="ina_lat_res_trafos_search_view">
+    <field name="name">ina.lat.res.trafos.search.view</field>
+    <field name="model">res.trafos</field>
+    <field name="arch" type="xml">
+      <search string="Filtros Ensayos trafos">
+        <field name="product_id" />
+        <field name="num_serie" />
+        <field name="product_id" />
+        <field name="production_id" />
+        <field name="normas" />
+        <field name="potencia" />
+        <field name="cliente" />
+        <separator />
+        <group expand="0" string="Group By">
+          <filter
+            string="Producto"
+            name="group-producto"
+            domain="[]"
+            context="{'group_by':'product_id'}"
+          />
+          <filter
+            string="Potencia"
+            name="group-potencia"
+            domain="[]"
+            context="{'group_by':'potencia'}"
+          />
+          <filter
+            string="Cliente"
+            name="group-cliente"
+            domain="[]"
+            context="{'group_by':'cliente'}"
+          />
+          <filter
+            string="Fecha"
+            name="group-fecha"
+            domain="[]"
+            context="{'group_by':'fecha'}"
+          />
+          <filter
+            string="Inspeccion tapas"
+            name="group-inspec-tapas"
+            domain="[]"
+            context="{'group_by':'inspec_tapas'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="ina_lat_res_trafos_resis_search_view">
+    <field name="name">ina.lat.res.trafos.resis.search.view</field>
+    <field name="model">res.trafos</field>
+    <field name="arch" type="xml">
+      <search string="Filtros Ensayos trafos">
+        <field name="name" />
+        <separator />
+        <group expand="0" string="Group By">
+          <filter
+            string="Fecha"
+            name="group-fecha"
+            domain="[]"
+            context="{'group_by':'fecha_resis'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record id="action_ina_res_trafos" model="ir.actions.act_window">
+    <field name="name">Resultado Trafos</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">res.trafos</field>
+    <field name="view_mode">list,form</field>
+    <field name="view_id" ref="ina_mp_lat_res_ensayos.ina_lat_res_trafos_tree" />
+    <field
+      name="search_view_id"
+      ref="ina_mp_lat_res_ensayos.ina_lat_res_trafos_search_view"
+    />
+  </record>
+
+  <record id="action_ina_res_trafos_resis" model="ir.actions.act_window">
+    <field name="name">Trafos Resistencias</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">res.trafos</field>
+    <field name="view_mode">list,form</field>
+    <field name="view_id" ref="ina_mp_lat_res_ensayos.ina_lat_res_trafos_resis_tree" />
+    <field
+      name="search_view_id"
+      ref="ina_mp_lat_res_ensayos.ina_lat_res_trafos_resis_search_view"
+    />
+  </record>
+
+  <menuitem
+    name="Trafos"
+    action="action_ina_res_trafos"
+    id="ina_menu_res_trafos"
+    parent="menu_lat_trafos"
+    sequence="10"
+  />
+
+  <menuitem
+    name="Trafos Resistencias"
+    action="action_ina_res_trafos_resis"
+    id="ina_menu_res_trafos_resis"
+    parent="menu_lat_trafos"
+    sequence="15"
+  />
+</odoo>

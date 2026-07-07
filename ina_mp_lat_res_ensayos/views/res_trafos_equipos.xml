@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="ina_lat_res_trafos_equipos_tree" model="ir.ui.view">
+    <field name="name">ina.lat.res.trafos.equipos.tree</field>
+    <field name="model">res.trafos.equipos</field>
+    <field name="arch" type="xml">
+      <list string="Trafos Equipos" default_order="id DESC">
+        <field name="trafo_id" widget="char" column_invisible="1" />
+        <field name="num_serie" optional="show" />
+        <field name="num_serie_equipo" optional="show" />
+        <field name="product_id" optional="show" />
+        <field name="fecha" widget="date" optional="show" />
+        <field name="nota" optional="show" />
+      </list>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="ina_lat_res_trafos_equipos_search_view">
+    <field name="name">ina.lat.res.trafos.equipos.search.view</field>
+    <field name="model">res.trafos.equipos</field>
+    <field name="arch" type="xml">
+      <search string="Filtros Equipos trafos">
+        <field name="num_serie" />
+        <field name="num_serie_equipo" />
+        <field name="product_id" />
+        <separator />
+        <group expand="0" string="Group By">
+          <filter
+            string="Producto"
+            name="group-producto"
+            domain="[]"
+            context="{'group_by':'product_id'}"
+          />
+          <filter
+            string="Fecha"
+            name="group-equipo"
+            domain="[]"
+            context="{'group_by':'fecha'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record id="action_ina_res_trafos_equipos" model="ir.actions.act_window">
+    <field name="name">Trafos Equipos</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">res.trafos.equipos</field>
+    <field name="view_mode">list</field>
+    <field
+      name="view_id"
+      ref="ina_mp_lat_res_ensayos.ina_lat_res_trafos_equipos_tree"
+    />
+    <field
+      name="search_view_id"
+      ref="ina_mp_lat_res_ensayos.ina_lat_res_trafos_equipos_search_view"
+    />
+  </record>
+
+  <menuitem
+    name="Trafos Equipos"
+    action="action_ina_res_trafos_equipos"
+    id="ina_menu_res_trafos_equipos"
+    parent="menu_lat_trafos"
+    sequence="70"
+  />
+</odoo>

@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="ina_lat_res_celdas_tree" model="ir.ui.view">
+    <field name="name">ina.lat.res.celdas.tree</field>
+    <field name="model">res.celdas</field>
+    <field name="arch" type="xml">
+      <list string="Resultados Celdas" default_order="id desc">
+        <field name="id" />
+        <field name="name" widget="char" optional="show" />
+        <field name="venta_id" optional="show" />
+        <field name="premo_num" widget="char" optional="show" />
+        <field name="premo_ref" optional="show" />
+        <field name="llenado_num" widget="char" optional="show" />
+        <field name="llenado_ref" optional="show" />
+        <field name="mont_num" widget="char" optional="show" />
+        <field name="mont_ref" optional="show" />
+        <field name="celda_num" widget="char" optional="show" />
+        <field name="product_id" optional="show" />
+        <field name="celda_fecha" optional="show" />
+      </list>
+    </field>
+  </record>
+
+  <record id="ina_lat_res_celdas_llenado_tree" model="ir.ui.view">
+    <field name="name">ina.lat.res.celdas.llenado.tree</field>
+    <field name="model">res.celdas</field>
+    <field name="arch" type="xml">
+      <list string="Celdas Llenado" default_order="id DESC">
+        <field name="venta_id" optional="show" />
+        <field name="llenado_num" widget="char" optional="show" />
+        <field name="llenado_ref" optional="show" />
+        <field name="llenado_fecha_ens" optional="show" />
+        <field name="niv_fuga_max" optional="show" />
+        <field name="niv_llen_min" optional="show" />
+        <field name="niv_fuga_med" optional="show" />
+        <field name="niv_llen_med" optional="show" />
+        <field name="peso_sf6" optional="show" />
+        <field name="ensayo_llenado" optional="show" />
+      </list>
+    </field>
+  </record>
+
+  <record id="ina_lat_res_celdas_dielectrico_tree" model="ir.ui.view">
+    <field name="name">ina.lat.res.celdas.dielectrico.tree</field>
+    <field name="model">res.celdas</field>
+    <field name="arch" type="xml">
+      <list string="Celdas Dielectrico" default_order="id DESC">
+        <field name="venta_id" optional="show" />
+        <field name="mont_num" widget="char" optional="show" />
+        <field name="mont_ref" optional="show" />
+        <field name="mont_fecha" optional="show" />
+        <field name="v_ens_tierra" optional="show" />
+        <field name="v_ens_bobina" optional="show" />
+        <field name="v_ens_circu" optional="show" />
+        <field name="ens_tierra" optional="show" />
+        <field name="ens_bobina" optional="show" />
+        <field name="ens_circu" optional="show" />
+        <field name="v_supe_disparo1" optional="show" />
+        <field name="v_infe_disparo1" optional="show" />
+        <field name="v_supe_disparo2" optional="show" />
+        <field name="v_infe_disparo2" optional="show" />
+        <field name="tiempo_dis_max" optional="show" />
+        <field name="ens_disparo1" optional="show" />
+        <field name="ens_disparo2" optional="show" />
+        <field name="tiempo_dis_medido" optional="show" />
+        <field name="i2t_disparo" optional="show" />
+        <field name="fecha_dielectrico" optional="show" />
+        <field name="ens_dielectrico" optional="show" />
+      </list>
+    </field>
+  </record>
+
+  <record id="ina_lat_res_celdas_embolsa_tree" model="ir.ui.view">
+    <field name="name">ina.lat.res.celdas.embolsa.tree</field>
+    <field name="model">res.celdas</field>
+    <field name="arch" type="xml">
+      <list string="Celdas Embolsamiento" default_order="id DESC">
+        <field name="venta_id" optional="show" />
+        <field name="celda_num" widget="char" optional="show" />
+        <field name="product_id" optional="show" />
+        <field name="celda_fecha" optional="show" />
+        <field name="conce_max" optional="show" />
+        <field name="conce_medida" optional="show" />
+        <field name="fecha_embolsa" optional="show" />
+        <field name="ens_embolsa" optional="show" />
+      </list>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="res_celdas_form">
+    <field name="name">res.celdas.form</field>
+    <field name="model">res.celdas</field>
+    <field name="arch" type="xml">
+      <form string="Resultado de Celdas">
+        <sheet>
+          <group col="4">
+            <group string="Premo">
+              <field name="id" invisible="1" />
+              <field name="premo_num" widget="char" />
+              <field name="premo_ref" options="{'no_open': True, 'no_create': True} " />
+              <field name="premo_fecha" />
+              <field
+                name="production_premo_id"
+                options="{'no_open': True, 'no_create': True} "
+              />
+            </group>
+            <group string="Llenado">
+              <field name="llenado_num" widget="char" />
+              <field
+                name="llenado_ref"
+                options="{'no_open': True, 'no_create': True} "
+              />
+              <field name="llenado_fecha" />
+              <field
+                name="production_llena_id"
+                options="{'no_open': True, 'no_create': True} "
+              />
+            </group>
+            <group string="Montaje">
+              <field name="mont_num" widget="char" />
+              <field name="mont_ref" options="{'no_open': True, 'no_create': True} " />
+              <field name="mont_fecha" />
+              <field
+                name="production_monta_id"
+                options="{'no_open': True, 'no_create': True} "
+              />
+            </group>
+            <group string="Celda">
+              <field name="name" widget="char" />
+              <field name="celda_num" widget="char" />
+              <field
+                name="product_id"
+                options="{'no_open': True, 'no_create': True} "
+              />
+              <field name="celda_fecha" />
+              <field
+                name="production_id"
+                options="{'no_open': True, 'no_create': True} "
+              />
+            </group>
+          </group>
+          <group col="4">
+            <group>
+              <field name="venta_id" options="{'no_open': True, 'no_create': True} " />
+              <field name="num_secciona" />
+            </group>
+            <group>
+              <field name="enclavamientos" />
+              <field name="inspec_visual" />
+            </group>
+            <group>
+              <field name="c_orden" />
+              <field name="nota" />
+            </group>
+          </group>
+
+          <notebook>
+            <page string="Seccionadores">
+              <field name="lineas_ids">
+                <list string="Seccionadores" editable="bottom">
+                  <field name="celda_id" invisible="1" />
+                  <field name="premo_num" widget="char" />
+                  <field name="posicion" />
+                  <field name="seccionador" />
+                  <field name="descripcion" />
+                  <field name="num_maniobras" />
+                  <field name="resis_nomi" />
+                  <field name="tol_resis" />
+                  <field name="res_r_med" />
+                  <field name="res_s_med" />
+                  <field name="res_t_med" />
+                  <field name="vel_nom_aper" />
+                  <field name="tol_vel_aper" />
+                  <field name="vel_aper_med" />
+                  <field name="vel_nom_cier" />
+                  <field name="tol_vel_cier" />
+                  <field name="vel_cier_med" />
+                  <field name="tiempo_fases_max" />
+                  <field name="tiempo_aper_med" />
+                  <field name="tiempo_cierre_med" />
+                  <field name="fecha_res_vel" />
+                  <field name="ens_res_vel" />
+                  <field name="ensayo_resis" />
+                  <field name="ensayo_veloc" />
+                </list>
+              </field>
+            </page>
+
+            <page string="Ensayo Llenado">
+              <group col="4">
+                <group>
+                  <field name="niv_fuga_max" />
+                  <field name="niv_fuga_med" />
+                  <field name="niv_llen_min" />
+                  <field name="niv_llen_med" />
+                </group>
+                <group>
+                  <field name="peso_sf6" />
+                  <field name="ensayo_llenado" />
+                  <field name="llenado_fecha_ens" />
+                </group>
+              </group>
+            </page>
+
+            <page string="Ensayo Dielectrico">
+              <group col="4">
+                <group>
+                  <field name="v_ens_tierra" />
+                  <field name="v_ens_bobina" />
+                  <field name="v_ens_circu" />
+                  <field name="v_supe_disparo1" />
+                  <field name="v_infe_disparo1" />
+                  <field name="v_supe_disparo2" />
+                  <field name="v_infe_disparo2" />
+                  <field name="tiempo_dis_max" />
+                </group>
+
+                <group>
+                  <field name="ens_tierra" />
+                  <field name="ens_bobina" />
+                  <field name="ens_circu" />
+                  <field name="ens_disparo1" />
+                  <field name="ens_disparo2" />
+                  <field name="tiempo_dis_medido" />
+                  <field name="i2t_disparo" />
+                  <field name="fecha_dielectrico" />
+                </group>
+                <group>
+                  <field name="ens_dielectrico" />
+                </group>
+              </group>
+            </page>
+
+            <page string="Ensayo Embolsamiento">
+              <group col="4">
+                <group>
+                  <field name="conce_max" />
+                  <field name="conce_medida" />
+                  <field name="fecha_embolsa" />
+                  <field name="ens_embolsa" />
+                </group>
+              </group>
+            </page>
+
+            <page string="Conexiones">
+              <field name="lineas_conex_ids">
+                <list string="Conexiones" editable="bottom">
+                  <field name="celda_id" column_invisible="1" />
+                  <field name="premo_num" widget="char" readonly="1" optional="show" />
+                  <field name="familia" optional="show" />
+                  <field name="funcion" optional="show" />
+                  <field name="fase" optional="show" />
+                  <field name="num_serie" required="1" optional="show" />
+                  <field
+                    name="product_id"
+                    required="1"
+                    options="{'no_open': True, 'no_create': True} "
+                    optional="show"
+                  />
+                  <field name="nota" optional="show" />
+                </list>
+              </field>
+            </page>
+            <page string="Otros Equipos">
+              <field name="lineas_equip_ids">
+                <list string="Otros Equipos" editable="bottom">
+                  <field name="celda_id" column_invisible="1" />
+                  <field name="premo_num" widget="char" optional="show" />
+                  <field name="funcion" optional="show" />
+                  <field name="fase" optional="show" />
+                  <field name="num_serie" required="1" optional="show" />
+                  <field
+                    name="product_id"
+                    required="1"
+                    options="{'no_open': True, 'no_create': True} "
+                    optional="show"
+                  />
+                  <field name="nota" optional="show" />
+                </list>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!--     Filtros         -->
+  <record model="ir.ui.view" id="ina_lat_res_celdas_search_view">
+    <field name="name">ina.lat.res.celdas.search.view</field>
+    <field name="model">res.celdas</field>
+    <field name="arch" type="xml">
+      <search string="Filtros Ensayos celdas">
+        <field name="celda_num" />
+        <field name="product_id" />
+        <field name="premo_num" />
+        <field name="mont_num" />
+        <field name="llenado_num" />
+        <field name="premo_ref" />
+        <field name="mont_ref" />
+        <field name="llenado_ref" />
+        <field name="venta_id" />
+        <separator />
+        <group expand="0" string="Group By">
+          <filter
+            string="Celda Ref"
+            name="group-producto"
+            domain="[]"
+            context="{'group_by':'product_id'}"
+          />
+          <filter
+            string="Premo Ref"
+            name="group-premo-ref"
+            domain="[]"
+            context="{'group_by':'premo_ref'}"
+          />
+          <filter
+            string="Montj Ref"
+            name="group-mont-ref"
+            domain="[]"
+            context="{'group_by':'mont_ref'}"
+          />
+          <filter
+            string="Llenado Ref"
+            name="group-llenado-ref"
+            domain="[]"
+            context="{'group_by':'llenado_ref'}"
+          />
+          <filter
+            string="Fecha Celda"
+            name="group-fecha celda"
+            domain="[]"
+            context="{'group_by':'celda_fecha'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="ina_lat_res_celdas_llenado_search_view">
+    <field name="name">ina.lat.res.celdas.llenado.search.view</field>
+    <field name="model">res.celdas</field>
+    <field name="arch" type="xml">
+      <search string="Filtros Ensayos celdas">
+        <field name="llenado_num" />
+        <field name="llenado_ref" />
+        <separator />
+        <group expand="0" string="Group By">
+          <filter
+            string="Ref. LLenado"
+            name="group-ref-llenado"
+            domain="[]"
+            context="{'group_by':'llenado_ref'}"
+          />
+          <filter
+            string="Fecha Llenado"
+            name="group-fecha-llenado"
+            domain="[]"
+            context="{'group_by':'llenado_fecha'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="ina_lat_res_celdas_dielectrico_search_view">
+    <field name="name">ina.lat.res.celdas.dielectrico.search.view</field>
+    <field name="model">res.celdas</field>
+    <field name="arch" type="xml">
+      <search string="Filtros Ensayos celdas">
+        <field name="mont_num" />
+        <field name="mont_ref" />
+        <separator />
+        <group expand="0" string="Group By">
+          <filter
+            string="Producto"
+            name="group-producto"
+            domain="[]"
+            context="{'group_by':'mont_ref'}"
+          />
+          <filter
+            string="Fecha"
+            name="group-fecha"
+            domain="[]"
+            context="{'group_by':'mont_fecha'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="ina_lat_res_celdas_embolsa_search_view">
+    <field name="name">ina.lat.res.celdas.embolsa.search.view</field>
+    <field name="model">res.celdas</field>
+    <field name="arch" type="xml">
+      <search string="Filtros Ensayos celdas">
+        <field name="mont_num" />
+        <field name="mont_ref" />
+        <separator />
+        <group expand="0" string="Group By">
+          <filter
+            string="Producto"
+            name="group-producto"
+            domain="[]"
+            context="{'group_by':'mont_ref'}"
+          />
+          <filter
+            string="Fecha"
+            name="group-fecha"
+            domain="[]"
+            context="{'group_by':'mont_fecha'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <!--     Action          -->
+  <record id="action_ina_res_celdas" model="ir.actions.act_window">
+    <field name="name">Resultado Celdas</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">res.celdas</field>
+    <field name="view_mode">list,form</field>
+    <field name="view_id" ref="ina_mp_lat_res_ensayos.ina_lat_res_celdas_tree" />
+    <field
+      name="search_view_id"
+      ref="ina_mp_lat_res_ensayos.ina_lat_res_celdas_search_view"
+    />
+  </record>
+
+  <record id="action_ina_res_celdas_llenado" model="ir.actions.act_window">
+    <field name="name">Celdas Llenado</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">res.celdas</field>
+    <field name="view_mode">list</field>
+    <field
+      name="view_id"
+      ref="ina_mp_lat_res_ensayos.ina_lat_res_celdas_llenado_tree"
+    />
+    <field
+      name="search_view_id"
+      ref="ina_mp_lat_res_ensayos.ina_lat_res_celdas_llenado_search_view"
+    />
+  </record>
+
+  <record id="action_ina_res_celdas_dielectrico" model="ir.actions.act_window">
+    <field name="name">Celdas Dielectrico</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">res.celdas</field>
+    <field name="view_mode">list</field>
+    <field
+      name="view_id"
+      ref="ina_mp_lat_res_ensayos.ina_lat_res_celdas_dielectrico_tree"
+    />
+    <field
+      name="search_view_id"
+      ref="ina_mp_lat_res_ensayos.ina_lat_res_celdas_dielectrico_search_view"
+    />
+  </record>
+
+  <record id="action_ina_res_celdas_embolsa" model="ir.actions.act_window">
+    <field name="name">Celdas Embolsamiento</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">res.celdas</field>
+    <field name="view_mode">list</field>
+    <field
+      name="view_id"
+      ref="ina_mp_lat_res_ensayos.ina_lat_res_celdas_embolsa_tree"
+    />
+    <field
+      name="search_view_id"
+      ref="ina_mp_lat_res_ensayos.ina_lat_res_celdas_embolsa_search_view"
+    />
+  </record>
+
+  <menuitem
+    name="Celdas"
+    action="action_ina_res_celdas"
+    id="ina_menu_res_celdas"
+    parent="menu_lat_celdas"
+    sequence="10"
+  />
+
+  <menuitem
+    name="Celdas Llenado"
+    action="action_ina_res_celdas_llenado"
+    id="ina_menu_res_celdas_llenado"
+    parent="menu_lat_celdas"
+    sequence="30"
+  />
+  <menuitem
+    name="Celdas Dielectrico"
+    action="action_ina_res_celdas_dielectrico"
+    id="ina_menu_res_celdas_dielectrico"
+    parent="menu_lat_celdas"
+    sequence="40"
+  />
+  <menuitem
+    name="Celdas Embolsamiento"
+    action="action_ina_res_celdas_embolsa"
+    id="ina_menu_res_celdas_embolsa"
+    parent="menu_lat_celdas"
+    sequence="50"
+  />
+</odoo>

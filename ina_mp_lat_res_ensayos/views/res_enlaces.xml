@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="ina_lat_res_enlaces_tree" model="ir.ui.view">
+    <field name="name">ina.lat.res.enlaces.tree</field>
+    <field name="model">res.enlaces</field>
+    <field name="arch" type="xml">
+      <list
+        string="Resultados Enlaces"
+        editable="top"
+        default_order="fecha_ensayo DESC"
+      >
+        <field name="name" optional="show" />
+        <field name="production_id" optional="show" />
+        <field name="product_id" optional="show" />
+        <field name="tension" optional="show" />
+        <field name="fecha_ensayo" optional="show" />
+        <field name="notas" optional="show" />
+      </list>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="ina_lat_res_enlaces_search_view">
+    <field name="name">ina.lat.res.enlaces.search.view</field>
+    <field name="model">res.enlaces</field>
+    <field name="arch" type="xml">
+      <search string="Filtros Ensayos Enlaces">
+        <field name="name" />
+        <field name="product_id" />
+        <field name="production_id" />
+        <separator />
+        <group expand="0" string="Group By">
+          <filter
+            string="Producto"
+            name="group-producto"
+            domain="[]"
+            context="{'group_by':'product_id'}"
+          />
+          <filter
+            string="Fecha Ensayo"
+            name="group-fecha-ensayo"
+            domain="[]"
+            context="{'group_by':'fecha_ensayo'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record id="action_ina_res_enlaces" model="ir.actions.act_window">
+    <field name="name">Resultado Enlaces</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">res.enlaces</field>
+    <field name="view_mode">list</field>
+    <field name="view_id" ref="ina_mp_lat_res_ensayos.ina_lat_res_enlaces_tree" />
+    <field
+      name="search_view_id"
+      ref="ina_mp_lat_res_ensayos.ina_lat_res_enlaces_search_view"
+    />
+  </record>
+
+  <menuitem
+    name="Enlaces"
+    action="action_ina_res_enlaces"
+    id="ina_menu_res_enlaces"
+    parent="menu_lat_res_ensayos"
+    sequence="500"
+  />
+</odoo>
