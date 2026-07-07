@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="hr_entrada_salida_tree" model="ir.ui.view">
+    <field name="name">hr.entrada.salida.tree</field>
+    <field name="model">hr.employee</field>
+    <field name="arch" type="xml">
+      <list
+        string="Entrada - Salida"
+        create="false"
+        delete="false"
+        decoration-info="proximo_movi == 'Salida'"
+        decoration-warning="proximo_movi == 'Entrada'"
+      >
+        <field name="barcode" readonly="1" />
+        <field name="name" readonly="1" />
+        <button
+          name="action_entrada_salida"
+          string="Entrada - Salida"
+          type="object"
+          icon="fa-thumbs-up"
+        />
+        <field name="tipo" />
+        <field name="proximo_movi" readonly="1" />
+        <field name="entrada_ultima" readonly="1" />
+        <field name="salida_ultima" readonly="1" />
+        <field name="fichar" column_invisible="1" />
+        <field name="puesto_id" column_invisible="1" />
+      </list>
+    </field>
+  </record>
+
+  <record id="hr_entrada_salida_alta_tree" model="ir.ui.view">
+    <field name="name">hr.entrada.salida.alta.tree</field>
+    <field name="model">hr.employee</field>
+    <field name="arch" type="xml">
+      <list string="Alta en Fichajes" editable="top" create="false" delete="false">
+        <field name="name" readonly="1" />
+        <field name="barcode" />
+      </list>
+    </field>
+  </record>
+
+  <record id="hr_fichar_fabri_form" model="ir.ui.view">
+    <field name="name">hr.fichar.fabri.form</field>
+    <field name="model">hr.employee</field>
+    <field name="arch" type="xml">
+      <form>
+        <header>
+          <button
+            name="action_parada"
+            string="Parar Orden"
+            type="object"
+            invisible="tipo not in ('of','repara','laser','impro') or fichar != 'fabrica' or proximo_movi != 'Salida'"
+            class="btn-primary"
+          />
+          <button
+            name="action_completada"
+            string="Completada"
+            type="object"
+            invisible="tipo != 'of' or fichar != 'fabrica' or proximo_movi != 'Salida' or not falta_material"
+            class="btn-secondary"
+          />
+          <button
+            name="action_fichar_nueva"
+            string="Nueva Orden"
+            type="object"
+            invisible="tipo in ('of','repara','laser','impro') or fichar != 'fabrica' or proximo_movi != 'Salida'"
+            class="btn-primary"
+          />
+          <button
+            name="action_fichar_nueva"
+            string="Comunicar Cantidad"
+            type="object"
+            invisible="tipo not in ('of','laser') or fichar != 'fabrica' or proximo_movi != 'Salida'"
+            class="btn-secondary"
+          />
+        </header>
+        <sheet>
+          <div class="oe_button_box" name="button_box">
+            <button
+              string="Desechos"
+              type="object"
+              name="button_scrap"
+              class="oe_stat_button"
+              icon="fa-trash"
+              invisible="tipo != 'of'"
+            />
+            <button
+              string="Material de la Orden"
+              type="object"
+              name="action_ver_a_consumir"
+              class="oe_stat_button"
+              icon="fa-eye"
+              invisible="tipo != 'of'"
+            />
+          </div>
+          <group col="4">
+            <group string="Empleado">
+              <field name="name" readonly="1" />
+              <field name="barcode" string="Codigo" readonly="1" />
+              <field name="puesto_id" readonly="1" />
+              <field name="proximo_movi" readonly="1" />
+            </group>
+            <group string="Produccion" invisible="fichar != 'fabrica'">
+              <field name="fichar" invisible="1" />
+              <field name="editar_orden" invisible="1" />
+              <field name="falta_material" invisible="1" />
+              <field name="tipo" readonly="not editar_orden" />
+              <field name="production_id" invisible="tipo != 'of'" readonly="1" />
+              <field
+                name="workorder_id"
+                invisible="tipo != 'of'"
+                readonly="not editar_orden"
+                options="{'no_create': True}"
+              />
+              <field
+                name="repara_id"
+                invisible="tipo != 'repara'"
+                readonly="not editar_orden"
+                options="{'no_create': True}"
+              />
+              <field
+                name="laser_id"
+                invisible="tipo != 'laser'"
+                readonly="not editar_orden"
+                options="{'no_create': True}"
+              />
+              <field
+                name="improductivo"
+                invisible="tipo != 'impro'"
+                readonly="not editar_orden"
+                options="{'no_create': True}"
+              />
+            </group>
+            <group
+              string="Datos Orden"
+              invisible="fichar != 'fabrica' or tipo in ('repara', 'impro')"
+            >
+              <field
+                name="ot_product_id"
+                readonly="1"
+                invisible="tipo != 'of'"
+                options="{'no_create': True}"
+              />
+              <field name="ot_qty_aproducir" readonly="1" invisible="tipo != 'of'" />
+              <field name="ot_qty_comunicada" readonly="1" invisible="tipo != 'of'" />
+              <field name="ot_qty_producida" readonly="1" invisible="tipo != 'of'" />
+              <field
+                name="la_product_id"
+                readonly="1"
+                invisible="tipo != 'laser'"
+                options="{'no_create': True}"
+              />
+              <field name="la_qty_aproducir" readonly="1" invisible="tipo != 'laser'" />
+              <field
+                name="la_qty_comunicada"
+                readonly="1"
+                invisible="tipo != 'laser'"
+              />
+              <field name="la_qty_producida" readonly="1" invisible="tipo != 'laser'" />
+            </group>
+          </group>
+          <notebook>
+            <page string="Historico" name="historico">
+              <field name="line_ids">
+                <list string="Fichajes" default_order="id DESC" create="false">
+                  <field name="tipo" readonly="1" />
+                  <field name="orden" readonly="1" />
+                  <field name="fecha_ini" readonly="1" />
+                  <field name="fecha_fin" readonly="1" />
+                  <field
+                    name="aceptada"
+                    readonly="1"
+                    decoration-success="aceptada > 0"
+                  />
+                  <field
+                    name="rechazada"
+                    readonly="1"
+                    decoration-danger="rechazada > 0"
+                  />
+                  <field name="puesto_id" readonly="1" />
+                  <field name="create_uid" string="Usuario" readonly="1" />
+                </list>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="hr_entrada_salida_view_filter" model="ir.ui.view">
+    <field name="name">hr.entrada.salida.view.filter</field>
+    <field name="model">hr.employee</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="barcode" string="Codigo" />
+        <field name="name" />
+      </search>
+    </field>
+  </record>
+
+  <record id="action_hr_entrada_salida" model="ir.actions.act_window">
+    <field name="name">Entrada - Salida</field>
+    <field name="res_model">hr.employee</field>
+    <field name="view_mode">list,form</field>
+    <field name="view_id" ref="hr_entrada_salida_tree" />
+    <field name="domain">[('fichar', 'in', ('oficina', 'fabrica'))]</field>
+  </record>
+
+  <record id="action_hr_entrada_salida_view_list" model="ir.actions.act_window.view">
+    <field name="sequence" eval="1" />
+    <field name="view_mode">list</field>
+    <field name="view_id" ref="hr_entrada_salida_tree" />
+    <field name="act_window_id" ref="action_hr_entrada_salida" />
+  </record>
+
+  <record id="action_hr_entrada_salida_view_form" model="ir.actions.act_window.view">
+    <field name="sequence" eval="2" />
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="hr_fichar_fabri_form" />
+    <field name="act_window_id" ref="action_hr_entrada_salida" />
+  </record>
+
+  <record id="action_hr_entrada_salida_alta" model="ir.actions.act_window">
+    <field name="name">Alta en Fichajes</field>
+    <field name="res_model">hr.employee</field>
+    <field name="view_mode">list,form</field>
+    <field name="view_id" ref="hr_entrada_salida_alta_tree" />
+    <field name="domain">[('fichar', 'in', ('oficina', 'fabrica'))]</field>
+  </record>
+
+  <menuitem
+    id="hr_entrada_salida_menu"
+    name="Entrada - Salida"
+    action="action_hr_entrada_salida"
+    parent="menu_hr_presencia_fichar_root"
+    sequence="10"
+  />
+  <menuitem
+    id="hr_entrada_salida_alta_menu"
+    name="Alta en Fichajes"
+    action="action_hr_entrada_salida_alta"
+    parent="menu_hr_presencia_fichar_root"
+    sequence="40"
+  />
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="ina_stock_move_fichar_view" model="ir.ui.view">
+    <field name="name">ina.stock.move.fichar.view</field>
+    <field name="model">stock.move</field>
+    <field name="arch" type="xml">
+      <list string="Material a Consumir">
+        <field name="workorder_id" />
+        <field name="product_id" />
+        <field name="product_uom" />
+        <field name="location_id" groups="stock.group_stock_multi_locations" />
+        <field
+          name="location_dest_id"
+          groups="stock.group_stock_multi_locations"
+          optional="hide"
+        />
+        <field name="state" />
+        <field
+          name="forecast_availability"
+          string="Previsto"
+          decoration-danger="forecast_availability &lt; product_uom_qty"
+        />
+        <field name="product_uom_qty" string="A consumir" />
+        <field name="quantity" string="Consumido" />
+        <button name="action_ver_stock" string="Stock" type="object" icon="fa-search" />
+      </list>
+    </field>
+  </record>
+
+  <record id="ina_stock_move_fichar_search_view" model="ir.ui.view">
+    <field name="name">ina.stock.move.fichar.search</field>
+    <field name="model">stock.move</field>
+    <field name="arch" type="xml">
+      <search string="Material a Consumir">
+        <field name="workorder_id" />
+        <field name="product_id" />
+        <field name="location_id" groups="stock.group_stock_multi_locations" />
+      </search>
+    </field>
+  </record>
+
+  <record id="action_hr_stock_move_fichar" model="ir.actions.act_window">
+    <field name="name">Material a Consumir</field>
+    <field name="res_model">stock.move</field>
+    <field name="view_mode">list</field>
+    <field name="view_id" ref="ina_stock_move_fichar_view" />
+    <field name="search_view_id" ref="ina_stock_move_fichar_search_view" />
+  </record>
+</odoo>
