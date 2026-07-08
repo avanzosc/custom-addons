@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="lat_numserie_num_tree" model="ir.ui.view">
+    <field name="name">lat.num.tree</field>
+    <field name="model">lat.num</field>
+    <field name="arch" type="xml">
+      <list string="Numeros de Serie" default_order="id DESC">
+        <field name="ensayo" optional="show" />
+        <field name="venta_id" optional="show" />
+        <field name="create_date" string="Creado el" widget="date" optional="show" />
+        <field name="create_uid" string="Creado por" optional="show" />
+      </list>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="lat_num_search_view">
+    <field name="name">lat.num.search.view</field>
+    <field name="model">lat.num</field>
+    <field name="arch" type="xml">
+      <search string="Filtros Numeros Serie">
+        <field name="venta_id" />
+        <separator />
+        <group expand="0" string="Group By">
+          <filter
+            string="Ensayo"
+            name="group-ensayo"
+            domain="[]"
+            context="{'group_by':'ensayo'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record id="lat_numserie_num_view" model="ir.ui.view">
+    <field name="name">lat.numserie.num.view</field>
+    <field name="model">lat.num</field>
+    <field name="arch" type="xml">
+      <form>
+        <header>
+          <button
+            name="action_genera_docus"
+            string="Generar Documentacion"
+            type="object"
+            class="oe_highlight"
+          />
+        </header>
+        <sheet>
+          <group col="2">
+            <field name="ensayo" invisible="1" />
+            <group string="Ensayos">
+              <field name="ensayo" required="1" />
+              <field name="venta_id" required="1" />
+              <field name="create_date" string="Creado el" readonly="1" widget="date" />
+              <field name="create_uid" string="Creado por" readonly="1" />
+            </group>
+            <group string="Varios">
+              <field name="nota" />
+            </group>
+          </group>
+          <notebook>
+            <page string="Numeros">
+              <field name="lineas_ids">
+                <list editable="top" default_order="id DESC">
+                  <field name="numserie" optional="show" />
+                  <field name="product_id" optional="show" />
+                  <field name="production_id" optional="show" />
+                  <field name="peso_sf6" optional="show" />
+                  <field name="linea_venta_id" />
+                  <field name="ensayo" column_invisible="1" />
+                  <field name="venta_id" column_invisible="0" />
+                  <field name="decla" readonly="0" optional="show" />
+                  <field name="infens" readonly="0" optional="show" />
+                  <field name="chklis" readonly="0" optional="show" />
+                  <field name="otros" readonly="0" optional="show" />
+                  <field name="fichero" readonly="0" />
+                </list>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  <!--   Action     -->
+  <record id="action_lat_num_indi" model="ir.actions.act_window">
+    <field name="name">Numeros Individuales</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">lat.num</field>
+    <field name="view_mode">list,form</field>
+    <field name="view_id" ref="ina_mp_lat_numserie.lat_numserie_num_tree" />
+    <field name="search_view_id" ref="ina_mp_lat_numserie.lat_num_search_view" />
+  </record>
+  <!--   Menu       -->
+  <menuitem
+    id="menu_lat_numserie"
+    name="Numeros de Serie"
+    parent="ina_mp_lat_res_ensayos.ina_qc_lat"
+    sequence="500"
+  />
+  <menuitem
+    name="Numeros Individuales"
+    action="action_lat_num_indi"
+    id="ina_menu_lat_num_indi"
+    parent="menu_lat_numserie"
+    sequence="30"
+  />
+</odoo>

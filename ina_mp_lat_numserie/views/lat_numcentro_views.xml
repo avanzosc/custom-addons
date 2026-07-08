@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="lat_numcentro_tree" model="ir.ui.view">
+    <field name="name">lat.numcentro.tree</field>
+    <field name="model">lat.numcentro</field>
+    <field name="arch" type="xml">
+      <list string="Numeros de Serie en Centros" default_order="id DESC">
+        <field name="default_code" optional="show" />
+        <field name="venta_id" optional="show" />
+        <field name="product_id" optional="show" />
+        <field name="numserie" optional="show" />
+        <field
+          name="fecha_docu_genera"
+          string="Fecha Dctos."
+          widget="date"
+          optional="show"
+        />
+        <field name="production_id" optional="show" />
+        <field name="create_date" string="Creado el" widget="date" optional="show" />
+        <field name="create_uid" string="Creado por" optional="show" />
+      </list>
+    </field>
+  </record>
+
+  <record id="lat_numcentro_num_view" model="ir.ui.view">
+    <field name="name">lat.numcentro.view</field>
+    <field name="model">lat.numcentro</field>
+    <field name="arch" type="xml">
+      <form>
+        <header>
+          <button
+            name="action_genera_docus"
+            string="Generar Documentacion"
+            type="object"
+            class="oe_highlight"
+          />
+        </header>
+        <sheet>
+          <group col="3">
+            <group string="Centro">
+              <field name="default_code" required="1" />
+              <field name="venta_id" required="1" />
+              <field name="product_id" />
+              <field name="numserie" />
+              <field name="production_id" />
+              <field name="venta_name_id" invisible="0" />
+            </group>
+            <group string="Usuario">
+              <field name="create_date" string="Creado el" readonly="1" widget="date" />
+              <field name="create_uid" string="Creado por" readonly="1" />
+            </group>
+            <group string="Varios">
+              <field name="nota" />
+              <field name="fecha_docu_genera" />
+            </group>
+          </group>
+          <notebook>
+            <page string="Numeros">
+              <field name="lineas_ids">
+                <list editable="top" default_order="id DESC">
+                  <field name="ensayo" optional="show" />
+                  <field name="numserie" required="1" optional="show" />
+                  <field name="product_id" optional="show" />
+                  <field name="color_sf6" column_invisible="1" />
+                  <field name="peso_sf6" optional="show" />
+                  <field name="partner_id" optional="show" />
+                  <field name="production_id" optional="show" />
+                  <field name="decla" readonly="0" optional="show" />
+                  <field name="infens" readonly="0" optional="show" />
+                  <field name="chklis" readonly="0" optional="show" />
+                  <field name="etf" readonly="0" optional="show" />
+                  <field name="pla" readonly="0" optional="show" />
+                  <field name="otros" readonly="0" optional="show" />
+                  <field name="fichero" readonly="0" />
+                </list>
+              </field>
+            </page>
+            <page string="Check Noblejas">
+              <group col="4">
+                <group string="Inspeccion Mecanica">
+                  <field name="insta_celdas" />
+                  <field name="monta_equipo" />
+                  <field name="monta_tierra" />
+                  <field name="caja_herraje" />
+                  <field name="monta_cerrad" />
+                  <field name="monta_puerta" />
+                  <field name="termo_trafo" />
+                  <field name="sondas_trafo" />
+                  <field name="mega_tierras" />
+                </group>
+                <group string="Inspeccion Visual">
+                  <field name="pintu_exteri" />
+                  <field name="pintu_interi" />
+                  <field name="limpi_genera" />
+                  <field name="documentacio" />
+                  <field name="manom_sf6" />
+                </group>
+                <group string="Accesorios">
+                  <field name="enclavamien" />
+                  <field name="llave_centro" />
+                  <field name="palan_maniob" />
+                  <field name="guantes" />
+                  <field name="banqueta" />
+                  <field name="extintor" />
+                  <field name="carteleria" />
+                  <field name="alumbrado" />
+                </group>
+                <group>
+                  <field name="nota_noblejas" />
+                  <field name="fecha_noblejas" />
+                </group>
+              </group>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="lat_numcentro_search_view">
+    <field name="name">lat.numcentro.search.view</field>
+    <field name="model">lat.numcentro</field>
+    <field name="arch" type="xml">
+      <search string="Filtros Numeros Serie Centros">
+        <field name="venta_id" />
+        <field name="product_id" />
+        <separator />
+        <group expand="0" string="Group By">
+          <filter
+            string="Producto"
+            name="group-producto"
+            context="{'group_by':'product_id'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <!--   Action     -->
+  <record id="action_lat_numcentro" model="ir.actions.act_window">
+    <field name="name">Centros y Conjuntos</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">lat.numcentro</field>
+    <field name="view_mode">list,form</field>
+    <field name="view_id" ref="ina_mp_lat_numserie.lat_numcentro_tree" />
+    <field name="search_view_id" ref="ina_mp_lat_numserie.lat_num_search_view" />
+  </record>
+
+  <!--   Menu       -->
+  <menuitem
+    name="Centros y Conjuntos"
+    action="action_lat_numcentro"
+    id="ina_menu_lat_numcentro"
+    parent="menu_lat_numserie"
+    sequence="200"
+  />
+</odoo>
