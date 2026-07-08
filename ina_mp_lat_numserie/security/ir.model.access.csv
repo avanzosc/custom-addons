@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_lat_num_calidad_respon,access lat num calidad respon,model_lat_num,ina_mc_permisos.group_inael_calidad_respon,1,1,1,1
+access_lat_num_fabrica_respon,access lat num fabrica respon,model_lat_num,ina_mc_permisos.group_inael_fabrica_respon,1,1,1,1
+access_lat_num_user,access lat num user,model_lat_num,ina_mc_permisos.group_inael_lat_user,1,1,1,1
+access_lat_numcentro_calidad_respon,access lat numcentro calidad respon,model_lat_numcentro,ina_mc_permisos.group_inael_calidad_respon,1,1,1,1
+access_lat_numcentro_fabrica_respon,access lat numcentro fabrica respon,model_lat_numcentro,ina_mc_permisos.group_inael_fabrica_respon,1,1,1,1
+access_lat_numcentro_user,access lat numcentro user,model_lat_numcentro,ina_mc_permisos.group_inael_lat_user,1,1,1,1
+access_lat_numcentro_lineas_calidad_respon,access lat numcentro lineas calidad respon,model_lat_numcentro_lineas,ina_mc_permisos.group_inael_calidad_respon,1,1,1,1
+access_lat_numcentro_lineas_fabrica_respon,access lat numcentro lineas fabrica respon,model_lat_numcentro_lineas,ina_mc_permisos.group_inael_fabrica_respon,1,1,1,1
+access_lat_numcentro_lineas_user,access lat numcentro lineas user,model_lat_numcentro_lineas,ina_mc_permisos.group_inael_lat_user,1,1,1,1
+access_lat_numserie_calidad_respon,access lat numserie calidad respon,model_lat_numserie,ina_mc_permisos.group_inael_calidad_respon,1,1,1,1
+access_lat_numserie_fabrica_respon,access lat numserie fabrica respon,model_lat_numserie,ina_mc_permisos.group_inael_fabrica_respon,1,1,1,1
+access_lat_numserie_user,access lat numserie user,model_lat_numserie,ina_mc_permisos.group_inael_lat_user,1,1,1,1
+access_wiz_informe_centro_calidad_respon,access wiz informe centro calidad respon,model_wiz_informe_centro,ina_mc_permisos.group_inael_calidad_respon,1,1,1,1
+access_wiz_informe_centro_fabrica_respon,access wiz informe centro fabrica respon,model_wiz_informe_centro,ina_mc_permisos.group_inael_fabrica_respon,1,1,1,1
+access_wiz_informe_centro_user,access wiz informe centro user,model_wiz_informe_centro,ina_mc_permisos.group_inael_lat_user,1,1,1,1

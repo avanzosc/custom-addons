@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="wiz_informe_centro" model="ir.ui.view">
+    <field name="name">wiz_listar.sat</field>
+    <field name="model">wiz.informe.centro</field>
+    <field name="arch" type="xml">
+      <form string="Wizard para Informe Centro">
+        <field name="state" invisible="1" />
+        <field name="name" invisible="1" />
+        <div invisible="state == 'choose'" string="Descarga del documento">
+          <h2>Listo para descargar</h2>
+          <p>Para descargar el documento pulsa aqui: <field
+            name="data"
+            readonly="1"
+            filename="name"
+          /></p>
+        </div>
+        <footer invisible="state == 'get'">
+          <button
+            name="export_pdf"
+            string="Informe Centro"
+            type="object"
+            class="btn-primary"
+          />
+          <button
+            special="cancel"
+            string="Cancelar"
+            type="object"
+            class="btn-default"
+          />
+        </footer>
+        <footer invisible="state == 'choose'">
+          <button special="cancel" string="Cerrar" type="object" class="btn-primary" />
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_wiz_informe_centro" model="ir.actions.act_window">
+    <field name="name">Informe Centro</field>
+    <field name="res_model">wiz.informe.centro</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+    <field name="binding_model_id" ref="ina_mp_lat_numserie.model_lat_numcentro" />
+    <field name="binding_view_types">form</field>
+  </record>
+</odoo>

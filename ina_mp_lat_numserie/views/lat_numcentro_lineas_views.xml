@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="lat_numcentro_lineas_tree" model="ir.ui.view">
+    <field name="name">lat.numcentro.lineas.tree</field>
+    <field name="model">lat.numcentro.lineas</field>
+    <field name="arch" type="xml">
+      <list string="Numeros de Serie" editable="top">
+        <field name="ensayo" readonly="1" optional="show" />
+        <field name="numserie" readonly="1" optional="show" />
+        <field name="product_id" readonly="1" optional="show" />
+        <field name="production_id" readonly="1" optional="show" />
+        <field name="venta_id" readonly="1" optional="show" />
+      </list>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="lat_numcentro_lineas_search_view">
+    <field name="name">lat.numcentro.lineas.search.view</field>
+    <field name="model">lat.numcentro.lineas</field>
+    <field name="arch" type="xml">
+      <search string="Filtros Numeros Serie Centros">
+        <field name="numserie" />
+        <field name="production_id" />
+        <field name="product_id" />
+        <field name="ensayo" />
+        <field name="venta_id" />
+        <separator />
+        <group expand="0" string="Group By">
+          <filter
+            string="Producto"
+            name="group-product"
+            context="{'group_by':'product_id'}"
+          />
+          <filter
+            string="Ensayo"
+            name="group-ensayo"
+            domain="[]"
+            context="{'group_by':'ensayo'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <!--   Action     -->
+  <record id="action_lat_numcentro_lineas" model="ir.actions.act_window">
+    <field name="name">Num.Serie - Centros</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">lat.numcentro.lineas</field>
+    <field name="view_mode">list</field>
+    <field name="view_id" ref="ina_mp_lat_numserie.lat_numcentro_lineas_tree" />
+    <field
+      name="search_view_id"
+      ref="ina_mp_lat_numserie.lat_numcentro_lineas_search_view"
+    />
+  </record>
+
+  <!--   Menu       -->
+  <menuitem
+    name="Lineas Centros y Conjuntos"
+    action="action_lat_numcentro_lineas"
+    id="ina_menu_lat_numcentro_lineas"
+    parent="menu_lat_numserie"
+    sequence="610"
+  />
+</odoo>
