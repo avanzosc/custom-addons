@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <template id="report_plegable_invoice_with_payment_custom">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="o">
+        <t t-set="print_with_payments" t-value="True" />
+        <t
+          t-set="lang"
+          t-value="o.user_id.sudo().lang if o.move_type in ('in_invoice', 'in_refund') else o.partner_id.lang"
+        />
+        <t
+          t-call="oktn_custom_invoice_report.report_plegables_invoice_document"
+          t-lang="o.partner_id.lang"
+        />
+      </t>
+    </t>
+  </template>
+
+  <record id="custom_account_foldable_invoices" model="ir.actions.report">
+    <field name="name">Folding Tent Invoices</field>
+    <field name="model">account.move</field>
+    <field name="report_type">qweb-pdf</field>
+    <field
+      name="report_name"
+    >oktn_custom_invoice_report.report_plegable_invoice_with_payment_custom</field>
+    <field
+      name="report_file"
+    >oktn_custom_invoice_report.report_plegable_invoice_with_payment_custom</field>
+    <field name="binding_model_id" ref="account.model_account_move" />
+    <field name="binding_type">report</field>
+    <field
+      name="attachment"
+    >(object.state in ('open','in_payment','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')</field>
+    <field name="print_report_name">(object._get_report_base_filename())</field>
+    <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]" />
+  </record>
+</odoo>
