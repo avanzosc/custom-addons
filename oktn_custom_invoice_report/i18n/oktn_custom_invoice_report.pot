@@ -1,0 +1,227 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* oktn_custom_invoice_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-21 10:46+0000\n"
+"PO-Revision-Date: 2026-07-21 10:46+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: oktn_custom_invoice_report
+#: model:ir.actions.report,print_report_name:oktn_custom_invoice_report.custom_account_foldable_invoices
+#: model:ir.actions.report,print_report_name:oktn_custom_invoice_report.custom_account_foldable_invoices_without_payment
+msgid "(object._get_report_base_filename())"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "- Installment of"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "<br/> on this account:"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid ""
+"<small class=\"text-muted\">\n"
+"                            Protección de datos LOPD 3/2018: Le informamos, que los datos que usted nos\n"
+"                            proporciona han sido incorporados al Tratamiento de actividad denominado clientes, cuyo\n"
+"                            responsable es Okatent, S.L. La finalidad es la gestión de la relación mercantil,\n"
+"                            administrativa y de cumplimiento de obligaciones fiscales. El plazo de conservación de los\n"
+"                            datos será de 6 años. La base jurídica del tratamiento, es la ejecución de un contrato\n"
+"                            mercantil. No realizaremos cesión de datos salvo las de obligación legal. Derechos: usted\n"
+"                            tiene la posibilidad de ejercitar el derecho de acceso, rectificación, supresión y portabilidad,\n"
+"                            dirigiéndose por escrito a la dirección arriba indicada.\n"
+"                            </small>"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "<span> due on </span>"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "<span>Amount</span>"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "<span>Description</span>"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "<span>Disc.%</span>"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "<span>Quantity</span>"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "<span>Unit Price</span>"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "<strong class=\"mr16\">Subtotal</strong>"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "<strong>Due Date</strong>"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "<strong>Invoice Date</strong>"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "<strong>Source</strong>"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "A note, whose content usually applies to the section or product above."
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "A section title"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "Amount Due"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "Cancelled Credit Note"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "Cancelled Invoice"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "Credit Note"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "Draft Credit Note"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "Draft Invoice"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model:ir.actions.report,name:oktn_custom_invoice_report.custom_account_foldable_invoices
+msgid "Folding Tent Invoices"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model:ir.actions.report,name:oktn_custom_invoice_report.custom_account_foldable_invoices_without_payment
+msgid "Folding Tent Invoices Without Payment"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "ICE:"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "INV/2023/00001"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "INV/2023/0001"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "Invoice"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "PROFORMA"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "Paid on"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "Payment Communication:"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "Payment within 30 calendar day"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "Reversed on"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "Scan this QR Code with<br/>your banking application"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "Tax ID"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "Thirty one dollar and Five cents"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "Total amount in words: <br/>"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "Vendor Bill"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "Vendor Credit Note"
+msgstr ""
+
+#. module: oktn_custom_invoice_report
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
+msgid "due if paid before"
+msgstr ""
