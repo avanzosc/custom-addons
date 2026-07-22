@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <template
+    id="report_saleorder_document"
+    inherit_id="sale.report_saleorder_document"
+    priority="99"
+  >
+    <t t-set="layout_document_title" position="replace">
+      <t t-set="layout_document_title">
+        <span t-if="is_proforma">Pro-Forma</span>
+        <span t-elif="doc.state in ['draft','sent']">Quotation # </span>
+        <span t-else="">Order # </span>
+        <span t-field="doc.name" />
+      </t>
+    </t>
+  </template>
+</odoo>
