@@ -13,5 +13,16 @@
         <span t-field="doc.name" />
       </t>
     </t>
+    <span t-field="line.name" position="replace">
+      <t t-if="line.product_id and line.product_id.name != line.name">
+        <span
+          t-esc="line.name.replace(line.product_id.name + '\n', '', 1)"
+          style="white-space: pre-line;"
+        />
+      </t>
+      <t t-else="">
+        <span t-field="line.name" />
+      </t>
+    </span>
   </template>
 </odoo>
