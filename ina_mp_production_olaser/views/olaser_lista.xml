@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="0">
+  <record id="ina_order_olaser_lista_list" model="ir.ui.view">
+    <field name="name">ina.order.olaser.lista.list</field>
+    <field name="model">order.olaser.lista</field>
+    <field name="arch" type="xml">
+      <list
+        string="Historico de Distribucion de Laser"
+        default_order="olaser_id DESC"
+        editable="bottom"
+        create="false"
+        delete="false"
+      >
+        <field name="olaser_id" readonly="1" />
+        <field name="product_id" readonly="1" />
+        <field name="cantidad_chapa" readonly="1" />
+        <field name="cantidad_chapa_total" readonly="1" />
+        <field name="cantidad_consumo" readonly="1" />
+        <field name="cantidad_consumo_total" readonly="1" />
+        <field name="peso_gas_total" readonly="1" />
+        <field name="plano" />
+        <field name="create_date" string="Creado el" readonly="1" widget="date" />
+      </list>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="ina_order_olaser_lista_search_view">
+    <field name="name">ina.order.olaser.lista.search.view</field>
+    <field name="model">order.olaser.lista</field>
+    <field name="arch" type="xml">
+      <search string="Filtros Distribucion Laser">
+        <field name="olaser_id" />
+        <field name="product_id" />
+
+        <separator />
+        <group expand="0" string="Group By">
+          <filter
+            name="gru_produc"
+            string="product_id"
+            context="{'group_by':'product_id'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record id="action_ina_order_olaser_lista" model="ir.actions.act_window">
+    <field name="name">Distribucion de Laser</field>
+    <field name="res_model">order.olaser.lista</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="view_mode">list,form</field>
+    <!--   <field name="context">{"search_default_pendientes":1,"default_pendientes":1}</field>   -->
+    <field name="search_view_id" ref="ina_order_olaser_lista_search_view" />
+  </record>
+
+  <menuitem
+    action="action_ina_order_olaser_lista"
+    name="Distribucion de Corte Laser"
+    id="ina_menu_mrp_olaser_lista"
+    parent="ina_mp_production_olaser.menu_mrp_laser"
+    sequence='20'
+  />
+</odoo>

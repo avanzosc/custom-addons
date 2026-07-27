@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+order_olaser_fabrica_resp,Access order_olaser Fabrica Respon,model_order_olaser,ina_mc_permisos.group_inael_fabrica_respon,1,1,1,1
+order_olaser_lista_fabrica_resp,Access order_olaser_lista Fabrica Respon,model_order_olaser_lista,ina_mc_permisos.group_inael_fabrica_respon,1,1,1,1
+order_olaser_tiempos_fabrica_resp,Access order_olaser_tiempos Fabrica Respon,model_order_olaser_tiempos,ina_mc_permisos.group_inael_fabrica_respon,1,1,1,1
+order_olaser_rechazo_fabrica_resp,Access order_olaser_rechazo Fabrica Respon,model_order_olaser_rechazo,ina_mc_permisos.group_inael_fabrica_respon,1,1,1,1
+wiz_listar_olaser_fabrica_resp,Access wiz_listar_olaser Fabrica Respon,model_wiz_listar_olaser,ina_mc_permisos.group_inael_fabrica_respon,1,1,1,1

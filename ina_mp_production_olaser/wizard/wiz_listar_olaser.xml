@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="wiz_listar_olaser" model="ir.ui.view">
+    <field name="name">Listar O.Laser</field>
+    <field name="model">wiz.listar.olaser</field>
+    <field name="arch" type="xml">
+      <form string="Listar O.Laser">
+        <footer>
+          <button
+            name="export_pdf"
+            string="Crear PDF"
+            type="object"
+            class="btn-primary"
+          />
+          <button
+            special="cancel"
+            string="Cancelar"
+            type="object"
+            class="btn-default"
+          />
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_wiz_listar_olaser" model="ir.actions.act_window">
+    <field name="name">Listar O.Laser</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">wiz.listar.olaser</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+    <field name="binding_model_id" ref="ina_mp_production_olaser.model_order_olaser" />
+  </record>
+</odoo>

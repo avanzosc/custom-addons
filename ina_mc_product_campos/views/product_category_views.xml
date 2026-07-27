@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<odoo>
+  <!-- Category default values -->
+  <record id="ina_category_default_view" model="ir.ui.view">
+    <field name="name">ina.category.default.view</field>
+    <field name="model">product.category</field>
+    <field name="inherit_id" ref="account.view_category_property_form" />
+    <field name="arch" type="xml">
+      <group name="account_property" position="before">
+        <group name="ina_categorias_defecto" string="Valores por Defecto">
+          <field name="stock_seguridad" />
+          <field name="agrupa_pedido" />
+          <field name="netea_mps" />
+        </group>
+      </group>
+    </field>
+  </record>
+</odoo>

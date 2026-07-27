@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+  <record id="secuencia_orden_laser" model="ir.sequence">
+    <field name="name">OLaser Code</field>
+    <field name="code">order.olaser</field>
+    <field eval="4" name="padding" />
+    <field name="prefix">OL%(y)s</field>
+  </record>
+</odoo>
