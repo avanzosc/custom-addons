@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0\n"
+"Project-Id-Version: Odoo Server 18.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-12 12:58+0000\n"
-"PO-Revision-Date: 2026-03-12 12:58+0000\n"
+"POT-Creation-Date: 2026-08-03 08:55+0000\n"
+"PO-Revision-Date: 2026-08-03 08:55+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,108 +16,380 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: lx_reports
-#: model_terms:ir.ui.view,arch_db:lx_reports.external_layout_striped_inherit_luxae_reports
-msgid "+34 93 242 76 67"
-msgstr ""
-
-#. module: lx_reports
-#: model_terms:ir.ui.view,arch_db:lx_reports.external_layout_striped_inherit_luxae_reports
-msgid ""
-"<span>\n"
-"                            Page:\n"
-"                            <span class=\"page\"/>\n"
-"                            of\n"
-"                            <span class=\"topage\"/>\n"
-"                        </span>"
-msgstr ""
-"                            Página:\n"
-"                            <span class=\"page\"/>\n"
-"                            de\n"
-"                            <span class=\"topage\"/>\n"
-"                        </span>"
-
-#. module: lx_reports
 #: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid ""
+".\n"
+"                LUXAE SL (REX: ESREX4661)"
+msgstr ""
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.external_layout_striped_inherit_luxae_reports
+msgid ""
+"<br/>\n"
+"                  VAT"
+msgstr ""
+"<br/>\n"
+"                  CIF"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.external_layout_striped_inherit_luxae_reports
 msgid ""
 "<span>\n"
-"                        <strong>Date:</strong>\n"
-"                        <br/>\n"
+"                                Page:\n"
+"                                <span class=\"page\"/>\n"
+"                                of\n"
+"                                <span class=\"topage\"/>\n"
+"                            </span>"
+msgstr ""
+"<span>\n"
+"                                Página:\n"
+"                                <span class=\"page\"/>\n"
+"                                of\n"
+"                                <span class=\"topage\"/>\n"
+"                            </span>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.external_layout_striped_inherit_luxae_reports
+msgid ""
+"<span>\n"
+"                        Wire transfers to Banco Bilbao Vizcaya Argentaria | IBAN: ES51 0182 9324 9002 0178 4325 | BIC: BBVAESMMXXX | Bank address: Plaza San Nicolás, 4 | 48005 | Bilbao (Vizcaya) Spain\n"
 "                    </span>"
 msgstr ""
 "<span>\n"
-"                        <strong>Fecha:</strong>\n"
-"                        <br/>\n"
+"                        Transferencia bancaria a Banco Bilbao Vizcaya Argentaria | IBAN: ES51 0182 9324 9002 0178 4325 | BIC: BBVAESMXXX | Dirección banco: Plaza San Nicolás, 4 | 48005 | Bilbao (Vizcaya) España\n"
 "                    </span>"
 
 #. module: lx_reports
-#: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document
-msgid "<span>Delivery note #</span>"
-msgstr "<span>Albarán #</span>"
+#: model_terms:ir.ui.view,arch_db:lx_reports.external_layout_striped_inherit_luxae_reports
+msgid "<span> - </span>"
+msgstr ""
 
 #. module: lx_reports
 #: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document
-msgid "<span>Total weight:</span>"
-msgstr "<span>Peso:</span>"
+msgid ""
+"<span>DELIVERY ADDRESS</span>\n"
+"                    <br/>"
+msgstr ""
+"<span>DIRECCIÓN DE ENVÍO</span>\n"
+"                    <br/>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "<span>HS Code</span>"
+msgstr "<span>Cod. HS</span>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid ""
+"<span>INVOICE TO</span>\n"
+"                    <br/>"
+msgstr ""
+"<span>FACTURAR A</span>\n"
+"                    <br/>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "<span>Quantity</span>"
+msgstr "<span>Cant.</span>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "<span>Unit Price</span>"
+msgstr "<span>P. Unit.</span>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_saleorder_document
+msgid "<span>VAT: </span>"
+msgstr "<span>CIF: </span>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_purchaseorder_document
+msgid "<strong class=\"d-block mt-3\">Shipping address</strong>"
+msgstr "<strong class=\"d-block mt-3\">Dirección de envío</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document
+msgid "<strong>CARRIER</strong>"
+msgstr "<strong>TRANSPORTISTA</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "<strong>CONDITIONS </strong>"
+msgstr "<strong>CONDICIONES </strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "<strong>CREDIT NOTE DATE</strong>"
+msgstr "<strong>FECHA DE LA FACTURA RECTIFICATIVA</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document
+msgid "<strong>CUSTOMER REFERENCE</strong>"
+msgstr "<strong>REF. CLIENTE</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_purchaseorder_document
+msgid "<strong>Cancelled Purchase Order</strong>"
+msgstr "<strong>Pedido de compra cancelado</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "<strong>DATE</strong>"
+msgstr "<strong>FECHA</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_saleorder_document
+msgid "<strong>DELIVERY DATE</strong>"
+msgstr "<strong>FEC. ENVÍO</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_purchaseorder_document
+msgid "<strong>EXPECTED ARRIVAL</strong>"
+msgstr "<strong>FEC. REQUERIDA</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_saleorder_document
+msgid "<strong>EXPIRATION</strong>"
+msgstr "<strong>VENCIMIENTO</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_saleorder_document
+msgid "<strong>INCOTERM</strong>"
+msgstr ""
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document
+msgid "<strong>LUXAE ORDER</strong>"
+msgstr "<strong>PEDIDO LUXAE</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_purchaseorder_document
+msgid "<strong>ORDER DATE</strong>"
+msgstr "<strong>FEC. PEDIDO</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_saleorder_document
+msgid "<strong>PAYMENT TERMS</strong>"
+msgstr "<strong>TERMINOS DE PAGO</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_purchaseorder_document
+msgid "<strong>Purchase Order</strong>"
+msgstr "<strong>Pedido de compra</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_purchaseorder_document
+msgid "<strong>Qty (unit)</strong>"
+msgstr "<strong>Cant. (Ud)</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "<strong>RECEIPT DATE</strong>"
+msgstr "<strong>FEC. RECEPCIÓN</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "<strong>REFERENCE</strong>"
+msgstr "<strong>REFERENCIA</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_purchaseorder_document
+msgid "<strong>Request for Quotation</strong>"
+msgstr "<strong>Solicitud de presupuesto</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_purchaseorder_document
+msgid "<strong>Required Date</strong>"
+msgstr "<strong>Fec. Requerida</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "<strong>SOURCE</strong>"
+msgstr "<strong>ORIGEN</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document
+msgid "<strong>TRACKING NUMBER</strong>"
+msgstr "<strong>NUM. SEGUIMIENTO</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_purchaseorder_document
+msgid "<strong>Unit Price</strong>"
+msgstr "<strong>Precio Ud</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document
+msgid ""
+"<strong>WEIGHT</strong>\n"
+"                    <br/>"
+msgstr ""
+"<strong>PESO</strong>\n"
+"                    <br/>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_purchaseorder_document
+msgid "<strong>YOUR ORDER REFERENCE</strong>"
+msgstr "<strong>SU REFERENCIA PEDIDO</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_saleorder_document
+msgid "<strong>YOUR REFERENCE</strong>"
+msgstr "<strong>SU REFERENCIA</strong>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "Cancelled Credit Note"
+msgstr "Factura rectificativa cancelada"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "Cancelled Invoice"
+msgstr "Factura cancelada"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "Credit Note"
+msgstr "Factura rectificativa"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document
+msgid ""
+"Delivery note\n"
+"                        <br/>"
+msgstr ""
+"Albarán\n"
+"                        <br/>"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "Draft Credit Note"
+msgstr "Borrador de factura rectificativa"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "Draft Invoice"
+msgstr "Borrador de factura"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_saleorder_document
+msgid "EORI:"
+msgstr ""
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_saleorder_document
+msgid "ISSUE DATE"
+msgstr "FEC. EXPEDICIÓN"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "Invoice"
+msgstr "Factura"
 
 #. module: lx_reports
 #: model_terms:ir.ui.view,arch_db:lx_reports.external_layout_striped_inherit_luxae_reports
-msgid ""
-"<span>Wire transfers to Banco Bilbao Vizcaya Argentaria | IBAN: ES51 0182 "
-"9324 9002 0178 4325 | BIC: BBVAESMXXX | Bank address: Plaza San Nicolás, 4 |"
-" 48005 | Bilbao (Vizcaya) Spain</span>"
+msgid "Logo"
 msgstr ""
-"<span>Tansferencia bancaria a Banco Bilbao Vizcaya Argentaria | IBAN: ES51 "
-"0182 9324 9002 0178 4325 | BIC: BBVAESMXXX |Dirección del banco: Plaza San "
-"Nicolás, 4 | 48005 | Bilbao (Vizcaya) Spain</span>"
-
-#. module: lx_reports
-#: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document_inherit_sale_stock
-msgid "<strong>Customer Order:</strong>"
-msgstr ""
-
-#. module: lx_reports
-#: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document
-msgid "<strong>HS Code</strong>"
-msgstr "<strong>Ref. del cliente:</strong>"
-
-#. module: lx_reports
-#: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document2
-msgid "<strong>LUXAE order:</strong>"
-msgstr "<strong>Pedido LUXAE:</strong>"
-
-#. module: lx_reports
-#: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document
-msgid "<strong>Quantity</strong>"
-msgstr "<strong>Cantidad</strong>"
-
-#. module: lx_reports
-#: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document2
-msgid "<strong>Weight:</strong>"
-msgstr "<strong>Peso:</strong>"
 
 #. module: lx_reports
 #: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document
 msgid "Lot Number"
-msgstr "Lote número"
+msgstr "Num. Lote"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_saleorder_document
+msgid "ORDER DATE"
+msgstr "FEC. FACTURA"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_saleorder_document
+msgid "Order"
+msgstr "Pedido"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "PROFORMA"
+msgstr ""
 
 #. module: lx_reports
 #: model_terms:ir.ui.view,arch_db:lx_reports.external_layout_striped_inherit_luxae_reports
 msgid "Privacy Policy"
-msgstr "Politica de privacidad"
+msgstr "Política de privacidad"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_saleorder_document
+msgid "Pro-Forma Invoice"
+msgstr "Pro-Forma Invoice #"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_saleorder_document
+msgid "QUOTATION DATE"
+msgstr "FEC. PRESUPUESTO"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_saleorder_document
+msgid "Qty"
+msgstr "Ctd."
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_saleorder_document
+msgid "Quotation"
+msgstr "Presupuesto"
 
 #. module: lx_reports
 #: model_terms:ir.ui.view,arch_db:lx_reports.external_layout_striped_inherit_luxae_reports
-msgid "Sales Terms and ConditionsA"
+msgid "Sales Terms and Conditions"
 msgstr "Términos y condiciones de venta"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid ""
+"The exporter of the products covered by this document (Customs Authorisation No. )\n"
+"                declares that, except where otherwise clearly indicated, these products are of\n"
+"                SPAIN preferential origin. Santa Coloma de Gramenet,"
+msgstr ""
+"El exportador de los productos amparados por este documento (Autorización Aduanera n.º )\n"
+"              declara que, salvo que se indique expresamente lo contrario, estos productos son de\n"
+"              origen preferencial ESPAÑA. Santa Coloma de Gramenet, 01/06/2026.\n"
+"              LUXAE SL (REX: ESREX4661)"
 
 #. module: lx_reports
 #: model_terms:ir.ui.view,arch_db:lx_reports.report_delivery_document
 msgid ""
-"The exporter of the products covered by this document (Customs Authorisation"
-" No. __________________) declares that, except where otherwise clearly "
-"indicated, these products are of SPAIN preferential origin. Santa Coloma de "
-"Gramenet. <br/>LUXAE SL (REX: ESREX4661)<br/>"
+"The exporter of the products covered by this document (Customs Authorisation No. _____________)\n"
+"                declares that, except where otherwise clearly indicated, these products are of\n"
+"                SPAIN preferential origin. Santa Coloma de Gramenet,"
 msgstr ""
+"El exportador de los productos amparados por este documento (Autorización Aduanera No. _____________)\n"
+"                declara que, salvo que se indique expresamente lo contrario, estos productos son de\n"
+"                origen preferencial ESPAÑA. Santa Coloma de Gramenet,"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_saleorder_document_inherit_sale_management
+msgid "Unit Price"
+msgstr "P. Unit."
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "Vendor Bill"
+msgstr "Factura de proveedor"
+
+#. module: lx_reports
+#: model_terms:ir.ui.view,arch_db:lx_reports.report_invoice_document
+msgid "Vendor Credit Note"
+msgstr "Factura rectificativa de proveedor"
 
 #. module: lx_reports
 #: model_terms:ir.ui.view,arch_db:lx_reports.external_layout_striped_inherit_luxae_reports
@@ -132,8 +404,8 @@ msgstr ""
 #. module: lx_reports
 #: model_terms:ir.ui.view,arch_db:lx_reports.external_layout_striped_inherit_luxae_reports
 msgid ""
-"| Registered in the Mercantile Register of Barcelona, Volume 42.034, Folio "
-"196, Page B-399969"
+"|\n"
+"                        Registered in the Mercantile Register of Barcelona, Volume 42.034, Folio 196, Page B-399969"
 msgstr ""
-"| Inscrita en el Registro Mercantil de Barcelona, ​​Tomo 42.034, Folio 196, "
-"Hoja B-399969"
+"|\n"
+"                        Inscrita en el Registro Mercantil de Barcelona, ​​Tomo 42.034, Folio 196, Página B-399969"
