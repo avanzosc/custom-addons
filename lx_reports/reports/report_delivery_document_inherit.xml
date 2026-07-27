@@ -5,134 +5,169 @@
     inherit_id="stock.report_delivery_document"
     priority="99"
   >
-    <xpath expr="/t/t/t/div/h2" position="attributes">
-      <attribute name="class" separator=" " add="text-right" />
+    <xpath expr="//div[contains(@class, 'page')]" position="attributes">
+      <attribute name="style">font-size:10pt;</attribute>
     </xpath>
-
-    <xpath expr="/t/t/t/div/h2/span" position="before">
-      <span>Delivery note #</span>
-    </xpath>
-
-    <xpath expr="//div[@name='div_origin']" position="replace" />
-
-    <xpath expr="//div[@name='div_sched_date']" position="replace">
-      <div t-if="o.state and o.date_done" class="col-auto" name="div_sched_date">
-        <span>
-          <strong>Date:</strong>
-          <br />
-        </span>
-        <span t-field="o.date_done" t-options='{"format": "MM/dd/yyyy"}' />
-      </div>
-    </xpath>
-
-    <!-- TABALA DE MOVIMIENTOS [1]  THEAD-->
-
-    <xpath expr="//table[@name='stock_move_table']/thead/tr/th[2]" position="replace" />
-
-    <xpath
-      expr="//table[@name='stock_move_table']/thead/tr/th[2]/strong"
-      position="replace"
-    >
-      <strong>Quantity</strong>
-    </xpath>
-
-    <xpath
-      expr="//table[@name='stock_move_table']/thead/tr/th[2]"
-      position="attributes"
-    >
-      <attribute name="class" separator=" " add="text-center" />
-      <attribute name="style" separator=";" add="width:75px" />
-    </xpath>
-
-    <xpath
-      expr="//table[@name='stock_move_table']/thead/tr/th[2]"
-      position="attributes"
-    >
-      <attribute name="class" separator=" " add="text-right" />
-    </xpath>
-
-    <xpath expr="//table[@name='stock_move_table']/thead/tr/th[2]" position="after">
-      <th>
-        <strong>HS Code</strong>
-      </th>
-    </xpath>
-
-    <!-- TABALA DE MOVIMIENTOS [1]  TBODY-->
-
-    <xpath expr="//table[@name='stock_move_table']/tbody/tr/td[2]" position="replace" />
-
-    <xpath
-      expr="//table[@name='stock_move_table']/tbody/tr/td[2]"
-      position="attributes"
-    >
-      <attribute name="class" separator=" " add="text-center" />
-    </xpath>
-
-    <xpath expr="//table[@name='stock_move_table']/tbody/tr/td[2]" position="after">
-      <td>
-        <span t-field="move.product_id.hs_code" />
-      </td>
-    </xpath>
-
-    <!-- TABALA DE MOVIMIENTOS [2]  THEAD-->
-
-    <xpath
-      expr="//table[@name='stock_move_line_table']/thead/tr/th[2]"
-      position="replace"
-    >
-      <th name="th_sml_qty_ordered" class="text-center">
-        <strong>Quantity</strong>
-      </th>
-    </xpath>
-
-    <xpath
-      expr="//table[@name='stock_move_line_table']/thead/tr/th[3]"
-      position="replace"
-    >
-      <th name="lot_serial">Lot Number</th>
-    </xpath>
-
-    <!-- TABLA DE MOVIMIENTOS NO ENVIADOS-->
-
-    <div t-else="" position="replace" />
-    <!--
-        <xpath expr="//t[@t-if='o.backorder_ids and backorders']" position="replace"/>
-        -->
-
-    <!-- FOOTER-->
-
-    <xpath expr="/t/t/t/div/div[last()]" position="after">
+    <h2 position="replace" />
+    <t t-set="information_block" position="replace" />
+    <t t-set="address" position="replace">
+      <t
+        t-set="has_hs_code"
+        t-value="o.move_ids.filtered(lambda l: l.product_id.hs_code)"
+      />
       <div class="row">
-        <div class="col">
-          <t t-set="partner_country" t-value="o.partner_id.country_id.name" />
-          <span t-if="o.shipping_weight &gt; 0" class='small'>
-            <span>Total weight:</span>
-            <span t-field="o.shipping_weight" />
-            <span t-field="o.weight_uom_name" />
-            <br />
-          </span>
-          <span
-            t-if="'España' not in partner_country"
-          >The exporter of the products covered by this document (Customs Authorisation No. __________________) declares that, except where otherwise clearly indicated, these products are of SPAIN preferential origin. Santa Coloma de Gramenet. <br
-          />LUXAE SL (REX: ESREX4661)<br /></span>
+        <div class="col-8" nane="div-partner">
+          <span>DELIVERY ADDRESS</span>
+          <br />
+          <strong>
+            <span t-field="o.partner_id.name" />
+          </strong>
+          <br />
+          <span t-field="o.partner_id.street" />
+          <span t-if="o.partner_id.street2" t-field="o.partner_id.street2" />
+          <span t-esc="' - ' + o.partner_id.city" />
+          <span t-field="o.partner_id.zip" />
+          <span t-esc="o.partner_id.country_id.name" />
+          <br />
+          <span t-if="o.partner_id.eori_code">EORI: </span>
+          <span t-if="o.partner_id.eori_code" t-esc="o.partner_id.eori_code" />
+          <spant t-if="o.partner_id.eori_code"> - </spant>
+          <span>VAT: </span>
+          <span t-esc="o.partner_id.vat" />
+          <br />
+          <br />
+          <br />
+        </div>
+        <div class="col-4" name="div-h2" style="text-align:right; font-size:18pt;">
+          <strong>
+                        Delivery note
+                        <br />
+                        <span
+            t-if="o.name and o.name != '/'"
+            t-field="o.name"
+            style="color:#31669B; font-weight:bold"
+          />
+                    </strong>
         </div>
       </div>
-    </xpath>
+    </t>
+    <div id="informations" position="replace">
+      <div id="informations" class="row mb-4">
+        <div class="col" t-if="o.date_done" name="div_date_done">
+          <strong>DATE</strong>
+          <div t-field="o.date_done" t-options='{"widget": "date"}' />
+        </div>
+        <div t-if="o.picking_type_id.code == 'outgoing' and o.carrier_id" class="col">
+          <strong>CARRIER</strong>
+          <div t-field="o.carrier_id" />
+        </div>
+        <div class="col" t-if="o.weight" name="div_weight">
+          <strong>WEIGHT</strong>
+          <br />
+          <t t-esc="'%.2f' % o.shipping_weight" />
+          <span t-field="o.weight_uom_name" />
+        </div>
+        <div t-if="o.carrier_tracking_ref" class="col col-3 mw-100 mb-2">
+          <strong>TRACKING NUMBER</strong>
+          <div t-field="o.carrier_tracking_ref" />
+        </div>
+        <div t-if="o.origin" class="col" name="div_origin">
+          <strong>LUXAE ORDER</strong>
+          <div t-field="o.origin" />
+        </div>
+        <div
+          class="col"
+          t-if="o.sudo().sale_id.client_order_ref"
+          name="div_client_order_ref"
+        >
+          <strong>CUSTOMER REFERENCE</strong>
+          <div t-esc="o.sudo().sale_id.client_order_ref" />
+        </div>
+        <div class="col" t-if="o.sudo().sale_id.incoterm" name="div_incoterm">
+          <strong>INCOTERM</strong>
+          <div t-esc="o.sudo().sale_id.incoterm.name" />
+        </div>
+      </div>
+    </div>
+    <div name="signature" position="replace" />
+    <div t-if="not o.signature" position="replace">
+      <p style="text-align: justify; font-size:8pt;">
+                The exporter of the products covered by this document (Customs Authorisation No. _____________)
+                declares that, except where otherwise clearly indicated, these products are of
+                SPAIN preferential origin. Santa Coloma de Gramenet, <span
+        t-field="o.date_done"
+        t-options='{"widget": "date"}'
+      />.
+                LUXAE SL (REX: ESREX4661)
+            </p>
+      <table
+        style="width:100%; background:white; border:none; margin-top:10px; border-collapse:collapse;"
+      >
+        <tr style="background:white; border:none;">
+          <td style="text-align:right; border:none; background:white; padding:0;">
+            <t t-if="o.company_id.signature_image">
+              <img
+                t-att-src="image_data_uri(o.company_id.signature_image)"
+                style="height:60px; vertical-align:middle;"
+              />
+            </t>
 
-    <xpath expr="/t/t/t/div/div[last()]/div/span[2]/br" position="before">
-      <span t-field="o.date_done" t-options='{"format": "MM/dd/yyyy"}' />
+            <t t-if="o.company_id.stamp_image">
+              <img
+                t-att-src="image_data_uri(o.company_id.stamp_image)"
+                style="height:60px; vertical-align:middle; margin-left:10px;"
+              />
+            </t>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <th name="th_sm_product" position="attributes">
+      <attribute name="style">font-weight: bold;</attribute>
+    </th>
+    <th name="th_sm_ordered" position="attributes">
+      <attribute name="style">font-weight: bold;</attribute>
+    </th>
+    <th name="th_sm_quantity" position="attributes">
+      <attribute name="style">font-weight: bold;</attribute>
+    </th>
+    <th name="th_sml_product" position="attributes">
+      <attribute name="style">font-weight: bold;</attribute>
+    </th>
+    <th name="th_sml_qty_ordered" position="attributes">
+      <attribute name="style">font-weight: bold;</attribute>
+    </th>
+    <th name="th_sml_quantity" position="attributes">
+      <attribute name="style">font-weight: bold;</attribute>
+    </th>
+    <th name="lot_serial" position="replace">
+      <th
+        name="lot_serial"
+        style="font-weight: bold !important;"
+        t-else=""
+      >Lot Number</th>
+    </th>
+    <xpath expr="//span[@t-field='move.product_uom_qty']/.." position="replace">
+      <td class="o_td_quantity text-end">
+        <span t-field="move.product_uom_qty" class="text-nowrap" />
+        <span t-if="move.product_packaging_id">
+                    (<span
+          t-field="move.product_packaging_qty"
+          t-options='{"widget": "integer"}'
+        /> <span t-field="move.product_packaging_id" />)
+                </span>
+      </td>
     </xpath>
-
-    <xpath expr="/t/t/t/div/div[last()]" position="after">
-      <img
-        class="img-fluid"
-        src="/web/image/1938-b2b7f54c/FIRMA%20ADMINISTRADOR%20%2B%20SELLO%20ODOO%20-%20transparente.png"
-      />
-    </xpath>
-
-    <xpath expr="/t/t/t/div/img" position="attributes">
-      <attribute name="style" separator=";" add="width:400px" />
-      <attribute name="style" separator=";" add="margin-left:150px" />
+    <xpath expr="//span[@t-field='move.quantity']/.." position="replace">
+      <td class="o_td_quantity text-end">
+        <span t-field="move.quantity" class="text-nowrap" />
+        <span t-if="move.product_packaging_id">
+                    (<span
+          t-field="move.product_packaging_quantity"
+          t-options='{"widget": "integer"}'
+        /> <span t-field="move.product_packaging_id" />)
+                </span>
+      </td>
     </xpath>
   </template>
 
@@ -141,15 +176,15 @@
     inherit_id="stock_delivery.report_delivery_document2"
     priority="99"
   >
-    <xpath expr="//div[@t-if='o.shipping_weight']/strong" position="replace">
-      <strong>Weight:</strong>
-    </xpath>
-    <xpath expr="//t[@t-set='has_hs_code']" position="before">
-      <div t-if="o.origin" class="col-auto" name="div_origin">
-        <strong>LUXAE order:</strong>
-        <p t-field="o.origin" />
-      </div>
-    </xpath>
+    <div t-if="o.carrier_tracking_ref" position="replace" />
+    <div t-if="o.shipping_weight" position="replace" />
+    <div
+      t-if="o.picking_type_id.code == 'outgoing' and o.carrier_id"
+      position="replace"
+    />
+    <th t-if="has_hs_code" position="attributes">
+      <attribute name="style">font-weight: bold;</attribute>
+    </th>
   </template>
 
   <template
@@ -157,14 +192,17 @@
     inherit_id="sale_stock.report_delivery_document_inherit_sale_stock"
     priority="99"
   >
-    <xpath expr="//div[@t-if='o.sudo().sale_id.client_order_ref']" position="replace">
-      <div class="row justify-content-end" t-if="o.sudo().sale_id.client_order_ref">
-        <div class="col-auto">
-          <strong>Customer Order:</strong>
-          <p class="small" t-field="o.sudo().sale_id.client_order_ref" />
-        </div>
-      </div>
-    </xpath>
+    <div t-if="o.sudo().sale_id.client_order_ref" position="replace" />
+    <div t-if="o.sudo().sale_id.incoterm" position="replace" />
+  </template>
+
+  <template
+    id="base_signature_fields_template"
+    inherit_id="res_company_signature_fields.base_signature_fields_template"
+    priority="99"
+  >
+    <div name="signature_image" position="replace" />
+    <div name="stamp_image" position="replace" />
   </template>
 
   <template
@@ -172,10 +210,8 @@
     inherit_id="stock.stock_report_delivery_has_serial_move_line"
     priority="99"
   >
-    <xpath expr="/t/td[2]/span" position="attributes">
-      <attribute name="t-options-widget">"integer"</attribute>
-    </xpath>
-    <xpath expr="/t/td[2]/span[2]" position="replace" />
+    <xpath expr="//span[@t-esc='description']/.." position="replace" />
+    <span t-field="move_line.product_uom_id" position="replace" />
   </template>
 
   <template
@@ -183,13 +219,36 @@
     inherit_id="stock.stock_report_delivery_aggregated_move_lines"
     priority="99"
   >
-    <xpath expr="/t/tr/td[2]/span" position="attributes">
-      <attribute name="t-options-widget">"integer"</attribute>
-    </xpath>
-    <xpath expr="/t/tr/td[2]/span[2]" position="replace" />
-    <xpath expr="/t/tr/td[3]/t/span" position="attributes">
-      <attribute name="t-options-widget">"integer"</attribute>
-    </xpath>
-    <xpath expr="/t/tr/td[3]/t/span[2]" position="replace" />
+    <p t-if="aggregated_lines[line]['description']" position="replace" />
+    <td name="move_line_aggregated_qty_ordered" position="replace">
+      <td class="text-center" name="move_line_aggregated_qty_ordered">
+        <span
+          t-esc="aggregated_lines[line]['qty_ordered']"
+          t-options="{'widget': 'float', 'decimal_precision': 'Product Unit of Measure'}"
+        />
+        <span t-if="aggregated_lines[line]['packaging'].name">
+                    (<span
+          t-out="aggregated_lines[line]['packaging_qty']"
+          t-options='{"widget": "integer"}'
+        /> <span t-out="aggregated_lines[line]['packaging'].name" />)
+                </span>
+      </td>
+    </td>
+    <td name="move_line_aggregated_quantity" position="replace">
+      <td class="text-center" name="move_line_aggregated_quantity">
+        <t t-if="aggregated_lines[line]['quantity']">
+          <span
+            t-esc="aggregated_lines[line]['quantity']"
+            t-options="{'widget': 'float', 'decimal_precision': 'Product Unit of Measure'}"
+          />
+          <span t-if="aggregated_lines[line]['packaging'].name">
+                        (<span
+            t-out="aggregated_lines[line]['packaging_quantity']"
+            t-options='{"widget": "integer"}'
+          /> <span t-out="aggregated_lines[line]['packaging'].name" />)
+                    </span>
+        </t>
+      </td>
+    </td>
   </template>
 </odoo>

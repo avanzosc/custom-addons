@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<odoo>
+  <template
+    id="report_saleorder_document"
+    inherit_id="sale.report_saleorder_document"
+    priority="99"
+  >
+    <xpath expr="//div[contains(@class, 'page')]" position="attributes">
+      <attribute name="style">font-size:10pt;</attribute>
+    </xpath>
+
+    <xpath expr="//t[@t-set='information_block']/.." position="replace" />
+    <t t-set="address" position="replace">
+      <div class="row">
+        <div class="col-8" nane="div-partner">
+          <strong>
+            <span t-field="doc.partner_id.name" />
+          </strong>
+          <br />
+          <span t-field="doc.partner_id.street" />
+          <span t-if="doc.partner_id.street2" t-field="doc.partner_id.street2" />
+          <span t-esc="' - ' + doc.partner_id.city" />
+          <span t-field="doc.partner_id.zip" />
+          <span t-esc="doc.partner_id.country_id.name" />
+          <br />
+          <span t-if="doc.partner_id.eori_code">EORI: </span>
+          <span t-if="doc.partner_id.eori_code" t-esc="doc.partner_id.eori_code" />
+          <spant t-if="doc.partner_id.eori_code"> - </spant>
+          <span>VAT: </span>
+          <span t-esc="doc.partner_id.vat" />
+          <br />
+          <br />
+          <br />
+        </div>
+        <div class="col-4" name="div-h2" style="text-align:right; font-size:18pt;">
+          <strong>
+            <t
+              t-set="is_proforma"
+              t-value="env.context.get('proforma', False) or is_pro_forma"
+            />
+            <span t-if="is_proforma">Pro-Forma Invoice</span>
+            <span t-elif="doc.state in ['draft','sent']">Quotation</span>
+            <span t-else="">Order</span>
+            <br />
+            <span t-field="doc.name" style="color:#31669B; font-weight:bold" />
+          </strong>
+        </div>
+      </div>
+    </t>
+    <t t-set="layout_document_title" position="replace" />
+    <div name="signature" position="replace" />
+    <div
+      t-if="not doc.signature or not doc.env.context.get('sale_include_signature')"
+      position="replace"
+    />
+    <xpath expr="//span[@t-field='doc.note']/.." position="after">
+      <table
+        style="width:100%; background:white; border:none; margin-top:10px; border-collapse:collapse;"
+      >
+        <tr style="background:white; border:none;">
+          <td style="text-align:right; border:none; background:white; padding:0;">
+            <t t-if="doc.company_id.signature_image">
+              <img
+                t-att-src="image_data_uri(doc.company_id.signature_image)"
+                style="height:60px; vertical-align:middle;"
+              />
+            </t>
+            <t t-if="doc.company_id.stamp_image">
+              <img
+                t-att-src="image_data_uri(doc.company_id.stamp_image)"
+                style="height:60px; vertical-align:middle; margin-left:10px;"
+              />
+            </t>
+          </td>
+        </tr>
+      </table>
+    </xpath>
+
+    <div name="informations_date" position="replace" />
+    <xpath expr="//div[@t-field='doc.user_id']/.." position="replace" />
+
+    <div name="informations_reference" position="before">
+      <div t-if="doc.date_order" class="col" name="informations_date">
+        <strong t-if="is_proforma">ISSUE DATE</strong>
+        <strong t-elif="doc.state in ['draft', 'sent']">QUOTATION DATE</strong>
+        <strong t-else="">ORDER DATE</strong>
+        <div t-field="doc.date_order" t-options='{"widget": "date"}' />
+      </div>
+      <div t-if="doc.commitment_date" class="col" name="commitment_date">
+        <strong>DELIVERY DATE</strong>
+        <div t-field="doc.commitment_date" t-options='{"widget": "date"}' />
+      </div>
+    </div>
+
+    <div name="expiration_date" position="replace">
+      <div t-if="doc.payment_term_id" class="col" name="div-incoterm">
+        <strong>PAYMENT TERMS</strong>
+        <div t-field="doc.payment_term_id.name" />
+      </div>
+      <div t-if="doc.incoterm and doc.incoterm.name" class="col" name="div-incoterm">
+        <strong>INCOTERM</strong>
+        <div t-field="doc.incoterm.name" />
+      </div>
+      <div
+        t-if="doc.validity_date and doc.state in ['draft', 'sent']"
+        class="col"
+        name="expiration_date"
+      >
+        <strong>EXPIRATION</strong>
+        <div t-field="doc.validity_date" />
+      </div>
+    </div>
+
+    <div name="informations_reference" position="replace">
+      <div t-if="doc.client_order_ref" class="col" name="informations_reference">
+        <strong>YOUR REFERENCE</strong>
+        <div t-field="doc.client_order_ref" />
+      </div>
+    </div>
+
+    <th name="th_description" position="attributes">
+      <attribute name="style">font-weight: bold;</attribute>
+    </th>
+    <th name="th_subtotal" position="attributes">
+      <attribute name="style">font-weight: bold;</attribute>
+    </th>
+    <th name="th_quantity" position="replace">
+      <th
+        name="th_quantity"
+        style="font-weight: bold;"
+        class="text-end text-nowrap"
+      >Qty</th>
+    </th>
+    <th name="th_priceunit" position="replace">
+      <th
+        name="th_priceunit"
+        style="font-weight: bold;"
+        class="text-end text-nowrap"
+      >Unit Price</th>
+    </th>
+    <th name="th_taxes" position="replace" />
+    <td name="td_taxes" position="replace" />
+    <span t-field="line.product_uom" position="replace" />
+    <span t-field="line.product_uom_qty" position="replace">
+      <span
+        t-field="line.product_uom_qty"
+        t-options='{"widget": "float", "precision": 2}'
+        class="text-nowrap"
+      />
+    </span>
+    <span t-field="line.price_unit" position="replace">
+      <span
+        t-else=""
+        t-field="line.price_unit"
+        t-options='{"widget": "float", "precision": 2}'
+        class="text-nowrap"
+      />
+    </span>
+  </template>
+
+  <template
+    id="report_saleorder_document2"
+    inherit_id="sale_order_line_date.report_saleorder_document"
+    priority="99"
+  >
+    <th name="th_commitment_date" position="replace" />
+    <td name="td_commitment_date" position="replace" />
+  </template>
+
+  <template
+    id="report_saleorder_document_inherit_sale_management"
+    inherit_id="sale_management.report_saleorder_document_inherit_sale_management"
+    priority="99"
+  >
+    <td name="th_option_name" position="attributes">
+      <attribute name="style">font-weight: bold;</attribute>
+    </td>
+    <td name="th_option_discount" position="attributes">
+      <attribute name="style">font-weight: bold;</attribute>
+    </td>
+    <td name="th_option_price_unit" position="replace">
+      <td
+        name="th_option_price_unit"
+        style="font-weight: bold;"
+        class="text-end"
+      >Unit Price</td>
+    </td>
+  </template>
+</odoo>

@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<odoo>
+  <template
+    id="report_purchaseorder_document"
+    inherit_id="purchase.report_purchaseorder_document"
+    priority="99"
+  >
+    <xpath expr="//div[contains(@class, 'page')]" position="attributes">
+      <attribute name="style">font-size:10pt;</attribute>
+    </xpath>
+    <xpath expr="//t[@t-set='layout_document_title']/.." position="replace" />
+    <t t-set="information_block" position="replace" />
+    <t t-set="address" position="replace">
+      <div class="row">
+        <div class="col-8" nane="div-partner">
+          <strong>
+            <span t-field="o.partner_id.name" />
+          </strong>
+          <br />
+          <span t-field="o.partner_id.street" />
+          <span t-if="o.partner_id.street2" t-field="o.partner_id.street2" />
+          <span t-esc="' - ' + o.partner_id.city" />
+          <span t-field="o.partner_id.zip" />
+          <span t-esc="o.partner_id.country_id.name" />
+          <br />
+          <span t-if="o.partner_id.eori_code">EORI: </span>
+          <span t-if="o.partner_id.eori_code" t-esc="o.partner_id.eori_code" />
+          <spant t-if="o.partner_id.eori_code"> - </spant>
+          <span>VAT: </span>
+          <span t-esc="o.partner_id.vat" />
+          <br />
+          <br />
+          <br />
+        </div>
+        <div class="col-4" name="div-h2" style="text-align:right; font-size:18pt;">
+          <t t-if="o.state in ['draft', 'sent', 'to approve']">
+            <strong>Request for Quotation</strong>
+          </t>
+          <t t-if="o.state in ['purchase', 'done']">
+            <strong>Purchase Order</strong>
+          </t>
+          <t t-if="o.state == 'cancel'">
+            <strong>Cancelled Purchase Order</strong>
+          </t>
+          <br />
+          <span t-field="o.name" style="color:#31669B; font-weight:bold" />
+        </div>
+      </div>
+    </t>
+    <div id="informations" position="replace">
+      <div id="informations" class="row mt32 mb32">
+        <div
+          t-if="o.state in ['purchase','done'] and o.date_approve"
+          class="col-3 bm-2"
+        >
+          <strong>ORDER DATE</strong>
+          <p t-field="o.date_approve" t-options="{'date_only': 'true'}" class="m-0" />
+        </div>
+        <div t-if="o.partner_ref" class="col">
+          <strong>YOUR ORDER REFERENCE</strong>
+          <div t-field="o.partner_ref" />
+        </div>
+      </div>
+      <t t-set="with_discount" t-value="any(line.discount for line in o.order_line)" />
+    </div>
+    <th name="th_price_unit" position="replace">
+      <th name="th_price_unit" class="text-end">
+        <strong>Unit Price</strong>
+      </th>
+    </th>
+    <th name="th_quantity" position="before">
+      <th name="th_date_planned" class="text-end">
+        <strong>Required Date</strong>
+      </th>
+    </th>
+    <th name="th_quantity" position="replace">
+      <th name="th_quantity" class="text-end">
+        <strong>Qty (unit)</strong>
+      </th>
+    </th>
+    <th name="th_discount" position="attributes">
+      <attribute name="t-if">with_discount</attribute>
+    </th>
+    <xpath expr="//t[@t-if='not line.display_type']/td[4]" position="attributes">
+      <attribute name="t-if">with_discount</attribute>
+    </xpath>
+    <th name="th_price_unit" position="replace">
+      <th name="th_price_unit" class="text-end">
+        <strong>Unit Price</strong>
+      </th>
+    </th>
+    <th name="th_taxes" position="replace" />
+    <xpath expr="//t[@t-if='not line.display_type']/td[5]" position="replace" />
+    <span t-field="line.product_uom.name" position="replace" />
+
+    <div id="total" position="replace">
+      <div id="total" class="row mt-n3">
+        <div class="col-8">
+          <t
+            t-set="delivery_partner"
+            t-value="o.company_id.partner_id.child_ids.filtered(lambda p: p.type == 'delivery')[:1]"
+          />
+          <strong class="d-block mt-3">Shipping address</strong>
+          <div
+            t-esc="delivery_partner"
+            t-options='{"widget": "contact", "fields": ["address", "name", "phone", "vat"], "no_marker": True, "phone_icons": True}'
+          />
+        </div>
+        <div class="col-4">
+          <table class="o_total_table table table-borderless">
+            <t t-call="purchase.document_tax_totals">
+              <t t-set="tax_totals" t-value="o.tax_totals" />
+              <t t-set="currency" t-value="o.currency_id" />
+            </t>
+          </table>
+        </div>
+      </div>
+    </div>
+    <span t-field="line.name" position="before">
+      <span t-field="line.product_id" />
+      <br />
+    </span>
+
+    <xpath expr="//span[@t-field='line.product_qty']/.." position="before">
+      <td class="text-end" name="td_date_planned">
+        <span
+          t-if="line.date_planned"
+          t-field="line.date_planned"
+          t-options='{"widget": "date"}'
+        />
+      </td>
+    </xpath>
+  </template>
+</odoo>

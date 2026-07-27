@@ -5,6 +5,42 @@
     inherit_id="web.external_layout_striped"
     priority="99"
   >
+    <xpath expr="//div[1]" position="replace">
+      <div
+        t-attf-class="o_company_#{company.id}_layout header"
+        t-att-style="report_header_style"
+      >
+        <div class="o_background_header">
+          <div class="row mb8" style="border-bottom: 1px solid black !important;">
+            <div class="col-4">
+              <img
+                t-if="company.logo"
+                t-att-src="image_data_uri(company.logo)"
+                alt="Logo"
+                style="max-height: 90px; max-width: 400px;"
+              />
+            </div>
+            <div class="col-8 text-end mb4">
+              <div class="mb4">
+                  <span t-field="company.name" /> - <span t-field="company.street" />
+                  <br />
+                  <span t-field="company.zip" />
+                  <span t-esc="company.city + ', '" />
+                  <span t-esc="company.country_id.name" />
+                  <br />
+                  VAT
+                  <span t-esc="company.vat" />
+                  <span> - </span>
+                  <span t-field="company.phone" />
+                  <span> - </span>
+                  <span t-field="company.email" />
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </xpath>
+
     <xpath expr="//div[contains(@t-attf-class, 'footer')]/div" position="replace">
       <div class="text-center">
         <div
@@ -13,8 +49,9 @@
           <ul
             style="display: inline-block; white-space: nowrap; margin: 0; padding: 0;"
           >
-            <li class="list-inline-item">+34 93 242 76 67</li>
-
+            <li class="list-inline-item">
+              <span t-field="company.phone" />
+            </li>
             <li class="list-inline-item">
               <span>
                 <a>info@luxae.com</a>
@@ -49,11 +86,11 @@
         </div>
         <div style="font-size: x-small;">
           <span>
-                        Wire transfers to Banco Bilbao Vizcaya Argentaria | IBAN: ES51 0182 9324 9002 0178 4325 | BIC: BBVAESMXXX | Bank address: Plaza San Nicolás, 4 | 48005 | Bilbao (Vizcaya) Spain
+                        Wire transfers to Banco Bilbao Vizcaya Argentaria | IBAN: ES51 0182 9324 9002 0178 4325 | BIC: BBVAESMMXXX | Bank address: Plaza San Nicolás, 4 | 48005 | Bilbao (Vizcaya) Spain
                     </span>
           <span>
                         <a>Privacy Policy</a> |
-                        <a>Sales Terms and ConditionsA</a> |
+                        <a>Sales Terms and Conditions</a> |
                         Registered in the Mercantile Register of Barcelona, Volume 42.034, Folio 196, Page B-399969
                     </span>
 
