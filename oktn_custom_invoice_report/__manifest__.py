@@ -13,6 +13,7 @@
     "data": [
         "reports/account_invoice_plegable_report.xml",
         "reports/account_invoice_plegable_with_payments_report.xml",
+        "reports/account_invoice_report.xml",
     ],
     "installable": True,
 }

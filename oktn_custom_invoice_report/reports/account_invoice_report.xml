@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <template
+    id="report_invoice_document"
+    inherit_id="account.report_invoice_document"
+    priority="99"
+  >
+    <span t-field="line.name" position="replace">
+      <t t-if="o.move_type in ('out_invoice','out_refund')">
+        <t t-if="line.product_id and line.product_id.name != line.name">
+          <span
+            t-esc="line.name.replace(line.product_id.name + '\n', '', 1)"
+            style="white-space: pre-line;"
+          />
+        </t>
+        <t t-else="">
+          <span t-if="line.name" t-field="line.name" t-options="{'widget': 'text'}" />
+        </t>
+      </t>
+      <t t-if="o.move_type not in ('out_invoice','out_refund')">
+        <span t-if="line.name" t-field="line.name" t-options="{'widget': 'text'}" />
+      </t>
+    </span>
+  </template>
+</odoo>

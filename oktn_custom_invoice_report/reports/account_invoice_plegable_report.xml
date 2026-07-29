@@ -136,7 +136,20 @@
                     name="account_invoice_line_accountable"
                   >
                     <td name="account_invoice_line_name">
-                      <span t-field="line.product_id" />
+                      <t t-if="o.move_type in ('out_invoice','out_refund')">
+                        <t t-if="line.product_id and line.product_id.name != line.name">
+                          <span
+                            t-esc="line.name.replace(line.product_id.name + '\n', '', 1)"
+                            style="white-space: pre-line;"
+                          />
+                        </t>
+                        <t t-else="">
+                          <span t-field="line.name" t-options="{'widget': 'text'}" />
+                        </t>
+                      </t>
+                      <t t-if="o.move_type not in ('out_invoice','out_refund')">
+                        <span t-field="line.name" t-options="{'widget': 'text'}" />
+                      </t>
                     </td>
                     <td name="td_quantity" class="o_td_quantity text-end">
                       <span t-esc="int(line.quantity)" class="text-nowrap" />
