@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    @authors: Leonidas Pezo <leonidas@acysos.com>
@@ -22,7 +21,7 @@
     "name": "HLC Partner",
     "version": "18.0.1.0.0",
     "author": "Acysos S.L., AvanzOSC",
-    "website": "https://bitbucket.org/hlc_avanzosc/hlc/",
+    "website": "https://github.com/avanzosc/custom-addons",
     "contributors": ["Leonidas Pezo <leonidas@acysos.com>"],
     "category": "",
     "license": "AGPL-3",
