@@ -2,8 +2,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 from odoo import fields, models
 
-import odoo.addons.decimal_precision as dp
-
 
 class ProductInaNota(models.Model):
     _name = "product.ina.nota"
@@ -24,7 +22,7 @@ class ProductInaNota(models.Model):
         string="Componente",
         help="Componente para incluir en la nota o vacio para descripcion" " adicional",
     )
-    cantidad = fields.Float(digits=dp.get_precision("Product Unit of Measure"))
+    cantidad = fields.Float(digits="Product Unit of Measure")
     descripcion = fields.Char(
         help="Utilice este campo para añadir texto adicional", size=65
     )
