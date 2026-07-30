@@ -324,7 +324,7 @@ class OrderoLaser(models.Model):
     def action_view_stock_moves(self):
         products = self.mapped("olaser_ids")
         products += self.mapped("lista_olaser_ids")
-        action = self.env.ref("stock.act_product_stock_move_open").read()[0]
+        action = self.env["ir.actions.actions"]._for_xml_id("stock.stock_move_action")
         if products:
             action["context"] = {"default_product_id": products.ids[0]}
         action["domain"] = [("id", "in", products.ids)]
