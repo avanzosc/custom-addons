@@ -2,8 +2,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 from odoo import api, fields, models
 
-import odoo.addons.decimal_precision as dp
-
 
 class ProductTemplate(models.Model):
     _inherit = "product.template"
@@ -42,7 +40,7 @@ class ProductTemplate(models.Model):
         comodel_name="product.revision", inverse_name="product_id", string="Revision"
     )
     agrupa_pedido = fields.Integer(
-        strig="Semanas para agrupar Ordenes",
+        string="Semanas para agrupar Ordenes",
         help="Semanas para agrupar Compras o Fabricacion",
     )
     netea_mps = fields.Boolean(
@@ -53,7 +51,6 @@ class ProductTemplate(models.Model):
     )
     barcode = fields.Char(
         string="Barcode",
-        oldname="ean13",
         related="default_code",
         readonly=True,
         copy=False,
@@ -128,7 +125,7 @@ class ProductTemplate(models.Model):
     )
     peso_gas = fields.Float(
         string="Peso Gas laser",
-        digits=dp.get_precision("Product Unit of Measure"),
+        digits="Product Unit of Measure",
         copy=False,
         help="Peso del gas utilizado para cortar este producto. Se pondra "
         "solamente en el producto resultante que se introduce en la "
