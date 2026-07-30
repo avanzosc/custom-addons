@@ -160,7 +160,7 @@ class OrderoLaser(models.Model):
         (
             "order_olaser_unique_code",
             "UNIQUE (name)",
-            _("El numero de orden debe ser unico!"),
+            "El numero de orden debe ser unico!",
         ),
     ]
 
