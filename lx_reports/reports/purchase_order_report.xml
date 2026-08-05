@@ -47,22 +47,27 @@
         </div>
       </div>
     </t>
-    <div id="informations" position="replace">
-      <div id="informations" class="row mt32 mb32">
-        <div
-          t-if="o.state in ['purchase','done'] and o.date_approve"
-          class="col-3 bm-2"
-        >
-          <strong>ORDER DATE</strong>
-          <p t-field="o.date_approve" t-options="{'date_only': 'true'}" class="m-0" />
-        </div>
-        <div t-if="o.partner_ref" class="col">
-          <strong>YOUR ORDER REFERENCE</strong>
-          <div t-field="o.partner_ref" />
-        </div>
+
+    <div t-if="o.user_id" position="replace">
+      <div
+        t-if="o.state in ['purchase','done'] and o.date_approve"
+        class="col-auto me-4 text-center"
+      >
+        <strong>ORDER DATE</strong>
+        <p t-field="o.date_approve" t-options="{'date_only': 'true'}" class="m-0" />
       </div>
+    </div>
+    <div t-if="o.partner_ref" position="replace">
+      <div t-if="o.partner_ref" class="col-auto me-4 text-center">
+        <strong>YOUR ORDER REFERENCE</strong>
+        <div t-field="o.partner_ref" />
+      </div>
+    </div>
+    <div t-elif="o.date_order" position="replace" />
+    <div t-if="o.date_planned" position="replace">
       <t t-set="with_discount" t-value="any(line.discount for line in o.order_line)" />
     </div>
+
     <th name="th_price_unit" position="replace">
       <th name="th_price_unit" class="text-end">
         <strong>Unit Price</strong>

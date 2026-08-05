@@ -79,7 +79,7 @@
     <div name="customer_code" position="replace" />
     <div name="invoice_date" position="replace">
       <div
-        class="col"
+        class="col-auto me-4 text-center"
         t-if="o.invoice_date"
         name="invoice_date"
         style="font-size:10pt;"
@@ -101,39 +101,52 @@
     </div>
     <div name="due_date" position="replace">
       <div
-        class="col"
+        class="col-auto me-4 text-center"
         t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'"
         name="due_date"
         style="font-size:10pt;"
       >
-        <strong>EXPIRATION</strong>
+        <strong>DUE DATE</strong>
         <div t-field="o.invoice_date_due" t-options='{"widget": "date"}' />
       </div>
-      <div class="col" t-if="o.invoice_payment_term_id" name="payment_term">
+      <div
+        class="col-auto me-4 text-center"
+        t-if="o.invoice_payment_term_id"
+        name="payment_term"
+      >
         <strong>CONDITIONS </strong>
         <div t-field="o.invoice_payment_term_id.name" />
       </div>
     </div>
+
     <div name="delivery_date" position="replace">
-      <div class="col" t-if="o.delivery_date" name="delivery_date">
+      <div
+        class="col-auto me-4 text-center"
+        t-if="o.delivery_date"
+        name="delivery_date"
+      >
         <strong>DELIVERY DATE</strong>
         <div t-field="o.delivery_date" />
       </div>
     </div>
     <div class="col" name="origin" position="replace">
-      <div class="col" t-if="o.invoice_origin" name="origin">
+      <div class="col-auto me-4 text-center" t-if="o.invoice_origin" name="origin">
         <strong>SOURCE</strong>
         <div t-field="o.invoice_origin" />
       </div>
     </div>
     <div name="reference" position="replace">
-      <div class="col" t-if="o.ref" name="reference">
+      <div class="col-auto me-4 text-center" t-if="o.ref" name="reference">
         <strong>REFERENCE</strong>
         <div t-field="o.ref" />
       </div>
     </div>
     <div name="incoterm_id" position="replace">
-      <div class="col" t-if="o.invoice_incoterm_id" name="incoterm_id">
+      <div
+        class="col-auto me-4 text-center"
+        t-if="o.invoice_incoterm_id"
+        name="incoterm_id"
+      >
         <strong>INCOTERM</strong>
         <div t-if="o.incoterm_location">
           <span t-field="o.invoice_incoterm_id.code" />
