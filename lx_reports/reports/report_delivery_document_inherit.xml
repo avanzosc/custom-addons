@@ -51,44 +51,58 @@
         </div>
       </div>
     </t>
-    <div id="informations" position="replace">
-      <div id="informations" class="row mb-4">
-        <div class="col" t-if="o.date_done" name="div_date_done">
-          <strong>DATE</strong>
-          <div t-field="o.date_done" t-options='{"widget": "date"}' />
-        </div>
-        <div t-if="o.picking_type_id.code == 'outgoing' and o.carrier_id" class="col">
-          <strong>CARRIER</strong>
-          <div t-field="o.carrier_id" />
-        </div>
-        <div class="col" t-if="o.weight" name="div_weight">
-          <strong>WEIGHT</strong>
-          <br />
-          <t t-esc="'%.2f' % o.shipping_weight" />
-          <span t-field="o.weight_uom_name" />
-        </div>
-        <div t-if="o.carrier_tracking_ref" class="col col-3 mw-100 mb-2">
-          <strong>TRACKING NUMBER</strong>
-          <div t-field="o.carrier_tracking_ref" />
-        </div>
-        <div t-if="o.origin" class="col" name="div_origin">
-          <strong>LUXAE ORDER</strong>
-          <div t-field="o.origin" />
-        </div>
-        <div
-          class="col"
-          t-if="o.sudo().sale_id.client_order_ref"
-          name="div_client_order_ref"
-        >
-          <strong>CUSTOMER REFERENCE</strong>
-          <div t-esc="o.sudo().sale_id.client_order_ref" />
-        </div>
-        <div class="col" t-if="o.sudo().sale_id.incoterm" name="div_incoterm">
-          <strong>INCOTERM</strong>
-          <div t-esc="o.sudo().sale_id.incoterm.name" />
-        </div>
+
+    <div id="informations" position="attributes">
+      <attribute name="class">row mb-4</attribute>
+    </div>
+
+    <div name="div_origin" position="replace">
+      <div class="col-auto me-4 text-center" t-if="o.date_done" name="div_date_done">
+        <strong>DATE</strong>
+        <div t-field="o.date_done" t-options='{"widget": "date"}' />
+      </div>
+      <div
+        t-if="o.picking_type_id.code == 'outgoing' and o.carrier_id"
+        class="col-auto me-4 text-center"
+      >
+        <strong>CARRIER</strong>
+        <div t-field="o.carrier_id" />
+      </div>
+      <div class="col-auto me-4 text-center" t-if="o.weight" name="div_weight">
+        <strong>WEIGHT</strong>
+        <br />
+        <t t-esc="'%.2f' % o.shipping_weight" />
+        <span t-field="o.weight_uom_name" />
+      </div>
+      <div t-if="o.carrier_tracking_ref" class="col-auto me-4 text-center">
+        <strong>TRACKING NUMBER</strong>
+        <div t-field="o.carrier_tracking_ref" />
+      </div>
+      <div t-if="o.origin" class="col-auto me-4 text-center" name="div_origin">
+        <strong>LUXAE ORDER</strong>
+        <div t-field="o.origin" />
       </div>
     </div>
+
+    <div name="div_sched_date" position="replace">
+      <div
+        class="col-auto me-4 text-center"
+        t-if="o.sudo().sale_id.client_order_ref"
+        name="div_client_order_ref"
+      >
+        <strong>CUSTOMER REFERENCE</strong>
+        <div t-esc="o.sudo().sale_id.client_order_ref" />
+      </div>
+      <div
+        class="col-auto me-4 text-center"
+        t-if="o.sudo().sale_id.incoterm"
+        name="div_incoterm"
+      >
+        <strong>INCOTERM</strong>
+        <div t-esc="o.sudo().sale_id.incoterm.name" />
+      </div>
+    </div>
+
     <div name="signature" position="replace" />
     <div t-if="not o.signature" position="replace">
       <p style="text-align: justify; font-size:8pt;">

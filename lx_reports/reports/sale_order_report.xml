@@ -80,30 +80,46 @@
     <xpath expr="//div[@t-field='doc.user_id']/.." position="replace" />
 
     <div name="informations_reference" position="before">
-      <div t-if="doc.date_order" class="col" name="informations_date">
+      <div
+        t-if="doc.date_order"
+        class="col-auto me-4 text-center"
+        name="informations_date"
+      >
         <strong t-if="is_proforma">ISSUE DATE</strong>
         <strong t-elif="doc.state in ['draft', 'sent']">QUOTATION DATE</strong>
         <strong t-else="">ORDER DATE</strong>
         <div t-field="doc.date_order" t-options='{"widget": "date"}' />
       </div>
-      <div t-if="doc.commitment_date" class="col" name="commitment_date">
+      <div
+        t-if="doc.commitment_date"
+        class="col-auto me-4 text-center"
+        name="commitment_date"
+      >
         <strong>DELIVERY DATE</strong>
         <div t-field="doc.commitment_date" t-options='{"widget": "date"}' />
       </div>
     </div>
 
     <div name="expiration_date" position="replace">
-      <div t-if="doc.payment_term_id" class="col" name="div-incoterm">
+      <div
+        t-if="doc.payment_term_id"
+        class="col-auto me-4 text-center"
+        name="div-incoterm"
+      >
         <strong>PAYMENT TERMS</strong>
         <div t-field="doc.payment_term_id.name" />
       </div>
-      <div t-if="doc.incoterm and doc.incoterm.name" class="col" name="div-incoterm">
+      <div
+        t-if="doc.incoterm and doc.incoterm.name"
+        class="col-auto me-4 text-center"
+        name="div-incoterm"
+      >
         <strong>INCOTERM</strong>
         <div t-field="doc.incoterm.name" />
       </div>
       <div
         t-if="doc.validity_date and doc.state in ['draft', 'sent']"
-        class="col"
+        class="col-auto me-4 text-center"
         name="expiration_date"
       >
         <strong>EXPIRATION</strong>
@@ -112,7 +128,11 @@
     </div>
 
     <div name="informations_reference" position="replace">
-      <div t-if="doc.client_order_ref" class="col" name="informations_reference">
+      <div
+        t-if="doc.client_order_ref"
+        class="col-auto me-4 text-center"
+        name="informations_reference"
+      >
         <strong>YOUR REFERENCE</strong>
         <div t-field="doc.client_order_ref" />
       </div>
