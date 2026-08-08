@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <template
+    id="portal_catalogs"
+    inherit_id="portal.portal_my_home"
+    name="Portal My Home : catalog entries"
+  >
+    <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+      <t t-if="catalog_count" t-call="portal.portal_docs_entry">
+        <t t-set="title">Product data base download</t>
+        <t t-set="url" t-value="'/my/catalog'" />
+        <t t-set="count" t-value="catalog_count" />
+      </t>
+    </xpath>
+  </template>
+  <template
+    id="portal_my_home_menu_catalog"
+    name="Portal layout : catalog menu entries"
+    inherit_id="portal.portal_breadcrumbs"
+    priority="20"
+  >
+    <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+      <li
+        t-if="page_name == 'catalog'"
+        t-attf-class="breadcrumb-item #{'active ' if not catalog else ''}"
+      >
+        <a
+          t-if="catalog"
+          t-attf-href="/my/catalog?{{ keep_query() }}"
+        >Product data base download</a>
+        <t t-else="">Product data base download</t>
+      </li>
+      <li t-if="catalog" class="breadcrumb-item active">
+        <t t-esc="catalog.name" />
+      </li>
+    </xpath>
+  </template>
+  <template id="portal_my_catalog" name="Portal My catalogs">
+    <t t-call="portal.portal_layout">
+      <t t-call="portal.portal_searchbar">
+        <t t-set="title">Product data base download</t>
+      </t>
+
+      <t t-if="not catalog_ids">
+        <p>There are currently no product data bases for your account.
+                </p>
+      </t>
+      <t t-else="" t-call="portal.portal_table">
+        <thead>
+          <tr class="active">
+            <th style="display: none;">Id</th>
+            <th>Name</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          <t t-foreach="catalog_ids" t-as="catalog">
+            <tr>
+              <td style="display: none;">
+                <t t-esc="catalog.id" />
+              </td>
+              <td>
+                <t t-esc="catalog.name" />
+              </td>
+              <td>
+                <t t-esc="catalog.date_start" />
+              </td>
+              <td>
+                <t t-esc="catalog.date_end" />
+              </td>
+              <td>
+                <t
+                  t-set="report_url"
+                  t-value="keep(report_type='xlsx', catalog_download=catalog.id, download=True)"
+                />
+                <form t-att-action="report_url" method="post">
+                  <input
+                    type="hidden"
+                    name="csrf_token"
+                    t-att-value="request.csrf_token()"
+                  />
+                  <!--<button class="btn btn-secondary" name="btn_download" action="submit">
+                                        <i class="fa fa-download"></i>
+                                    </button>-->
+                  <button class="btn btn-secondary" name="btn_extended" action="submit">
+                    <i class="fa fa-download" />
+                  </button>
+                </form>
+              </td>
+            </tr>
+          </t>
+        </tbody>
+      </t>
+    </t>
+  </template>
+  <template id="portal_catalog" name="Portal Show Catalog">
+    <t t-call="portal.portal_layout">
+      <t t-call="portal.portal_searchbar">
+        <t t-set="title">
+          <t t-esc="catalog.name" />
+        </t>
+      </t>
+      <t t-if="not products">
+        <p>There are currently no products available for this catalog.
+                </p>
+      </t>
+      <t t-else="" t-call="portal.portal_table">
+        <thead>
+          <tr class="active">
+            <th style="display: none;">Id</th>
+            <th>Reference</th>
+            <th>Barcode</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>List Price</th>
+            <th>RRP with Tax</th>
+            <th>Available Stock</th>
+            <th>Product Category</th>
+            <th>
+              <t t-set="report_url" t-value="keep(report_type='xlsx', download=True)" />
+              <form t-att-action="report_url" method="post">
+                <input
+                  type="hidden"
+                  name="csrf_token"
+                  t-att-value="request.csrf_token()"
+                />
+                <button class="btn btn-secondary" action="submit">
+                  <i class="fa fa-download" />
+                </button>
+              </form>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <t t-foreach="products" t-as="product">
+            <t
+              t-set="combination_info"
+              t-value="product.with_context(pricelist=pricelist.id)._get_combination_info()"
+            />
+            <tr>
+              <td style="display: none;">
+                <t t-esc="product.id" />
+              </td>
+              <td>
+                <t t-esc="product.default_code" />
+              </td>
+              <td>
+                <t t-esc="product.barcode" />
+              </td>
+              <td>
+                <t t-esc="product.name" />
+              </td>
+              <td>
+                <t t-esc="product.product_brand_id.name" />
+              </td>
+              <td>
+                <t t-esc="round(combination_info['price'], 2)" />
+              </td>
+              <td>
+                <t
+                  t-esc="combination_info['pvp_price'] if 'pvp_price' in combination_info else product.list_price_tax"
+                />
+              </td>
+              <td>
+                <t
+                  t-esc="combination_info['b2b_virtual_available'] if 'b2b_virtual_available' in combination_info else product.b2b_virtual_available"
+                />
+              </td>
+              <td>
+                <t t-esc="product.categ_id.name" />
+              </td>
+              <td />
+            </tr>
+          </t>
+        </tbody>
+      </t>
+    </t>
+  </template>
+  <!--<template id="website_catalogfilters_filters" name="Website catalog filters filters"
+        inherit_id="portal.portal_searchbar" customize_show="True" active="False">
+        <xpath expr="//div[@class='form-inline ml-lg-2'][1]/span" position="after">
+            <div t-if="product_brand_ids" class="form-inline" id="catalog_filters">
+                &lt;!&ndash; Customers &ndash;&gt;
+                <div class="btn-group catalog-group">
+                    <button id="portal_catalog_filter_brand" data-toggle="dropdown" class="btn btn-secondary btn-sm dropdown-toggle mr-1">
+                        <span>Brands</span>
+                    </button>
+                    <div class="dropdown-menu menu-scroll" aria-labelledby="portal_catalog_filter_brand">
+                        <a t-att-href="request.httprequest.path + '?' + keep_query('*', brand='all')"
+                           t-attf-class="dropdown-item#{brand == 'all' and ' active' or ''}">
+                            <span>All brands</span>
+                        </a>
+                        <t t-foreach="product_brand_ids.sorted(key=lambda r: r.name)" t-as="_brand">
+                            <a t-att-href="request.httprequest.path + '?' + keep_query('*', brand=_brand.id)"
+                               t-attf-class="dropdown-item#{brand == str(_brand.id) and ' active' or ''}">
+                                <span t-esc="_brand.name" />
+                            </a>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>-->
+</odoo>

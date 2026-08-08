@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <record id="catalog_product_record_website_xlsx" model="ir.actions.report">
+    <field name="name">Request for Catalog</field>
+    <field name="model">product.catalog.web</field>
+    <field name="report_type">xlsx</field>
+    <field name="report_name">catalog.product_xlsx</field>
+    <field name="report_file">catalog.product_attr_xlsx</field>
+    <field name="attachment">(object.name + '_test_report.xlsx')</field>
+  </record>
+</odoo>
