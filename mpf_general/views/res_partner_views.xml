@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="mpfluids_base_view_partner_form" model="ir.ui.view">
+    <field name="name">mpfluids.base.view.partner.form</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form" />
+    <field name="priority">100</field>
+    <field name="arch" type="xml">
+      <field name="vat" position="after">
+        <field name="x_studio_comunidad_autnoma" />
+      </field>
+    </field>
+  </record>
+</odoo>
