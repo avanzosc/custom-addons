@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_internal_product_category_user,internal.product.category user,model_internal_product_category,base.group_user,1,1,1,1
+access_product_series_user,product.series user,model_product_series,base.group_user,1,1,1,1
+access_product_season_user,product.season user,model_product_season,base.group_user,1,1,1,1
+access_product_catalog_web_user,product.catalog.web user,model_product_catalog_web,base.group_user,1,1,1,1
