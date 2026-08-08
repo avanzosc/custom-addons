@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_puesto_fichar_user,hr.puesto.fichar user,model_hr_puesto_fichar,base.group_user,1,1,1,1
+access_hr_fichar_historico_user,hr.fichar.historico user,model_hr_fichar_historico,base.group_user,1,1,1,1
+access_mrp_improductivo_user,mrp.improductivo user,model_mrp_improductivo,base.group_user,1,1,1,1
+access_wiz_fichar_orden_user,wiz.fichar.orden user,model_wiz_fichar_orden,base.group_user,1,1,1,1

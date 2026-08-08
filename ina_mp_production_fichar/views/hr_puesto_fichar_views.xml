@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="ina_hr_puesto_fichar_tree" model="ir.ui.view">
+    <field name="name">ina.hr.puesto.fichar.tree</field>
+    <field name="model">hr.puesto.fichar</field>
+    <field name="arch" type="xml">
+      <list string="Puestos para Fichar" editable="bottom">
+        <field name="name" />
+        <field name="user_id" />
+        <field name="centro_id" />
+        <field name="location_id" />
+        <field name="scrap_location_id" />
+      </list>
+    </field>
+  </record>
+
+  <record id="action_ina_hr_puesto_fichar" model="ir.actions.act_window">
+    <field name="name">Puesto para Fichar</field>
+    <field name="res_model">hr.puesto.fichar</field>
+    <field name="view_mode">list</field>
+  </record>
+
+  <menuitem id="menu_hr_presencia_fichar_root" name="Fichar" sequence="90" />
+  <menuitem
+    id="hr_puesto_fichar_menu"
+    name="Puesto para Fichar"
+    action="action_ina_hr_puesto_fichar"
+    parent="menu_hr_presencia_fichar_root"
+    sequence="50"
+  />
+</odoo>

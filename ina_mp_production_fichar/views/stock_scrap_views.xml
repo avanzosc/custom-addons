@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="ina_stock_scrap_fichar_form" model="ir.ui.view">
+    <field name="name">ina.stock.scrap.fichar.form</field>
+    <field name="model">stock.scrap</field>
+    <field name="inherit_id" ref="stock.stock_scrap_form_view2" />
+    <field name="arch" type="xml">
+      <field name="product_id" position="before">
+        <field name="puesto_id" />
+      </field>
+      <field name="scrap_location_id" position="after">
+        <field name="motivo_rechazo" />
+      </field>
+    </field>
+  </record>
+</odoo>
