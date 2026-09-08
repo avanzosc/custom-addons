@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="docu_rma_ver_form" model="ir.ui.view">
+    <field name="name">docu.rma.ver.form</field>
+    <field name="model">docu.rma.ver</field>
+    <field name="arch" type="xml">
+      <form string="Ver Documento RMA">
+        <group invisible="state != 'get'">
+          <field name="name" readonly="1" />
+          <field name="data" filename="name" widget="binary" />
+        </group>
+        <footer>
+          <button string="Cerrar" class="btn-secondary" special="cancel" />
+        </footer>
+      </form>
+    </field>
+  </record>
+</odoo>
