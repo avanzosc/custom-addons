@@ -7,9 +7,7 @@
     "license": "AGPL-3",
     "author": "AvanzOSC",
     "website": "https://github.com/avanzosc/custom-addons",
-    "depends": [
-        "account",
-    ],
+    "depends": ["account", "sale_order_line_product_description"],
     "data": [
         "reports/account_invoice_plegable_report.xml",
         "reports/account_invoice_plegable_with_payments_report.xml",
