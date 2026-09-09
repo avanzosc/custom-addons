@@ -14,9 +14,15 @@
       </t>
     </t>
     <span t-field="line.name" position="replace">
-      <t t-if="line.product_id and line.product_id.name != line.name">
+      <t
+        t-set="product_name_es"
+        t-value="line.product_id.with_context(lang=user.lang).display_name"
+      />
+      <t
+        t-if="line.product_id and line.product_id.no_product_description_to_sale_invoice_lines and product_name_es in line.name"
+      >
         <span
-          t-esc="line.name.replace(line.product_id.name + '\n', '', 1)"
+          t-esc="line.name.replace(product_name_es + '\n', '', 1)"
           style="white-space: pre-line;"
         />
       </t>
@@ -24,5 +30,7 @@
         <span t-field="line.name" />
       </t>
     </span>
+    <th name="th_taxes" position="replace" />
+    <td name="td_taxes" position="replace" />
   </template>
 </odoo>
