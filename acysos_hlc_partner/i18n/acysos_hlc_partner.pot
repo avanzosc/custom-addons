@@ -1,0 +1,87 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * acysos_hlc_partner
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-23 00:00+0000\n"
+"PO-Revision-Date: 2026-07-23 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: acysos_hlc_partner
+#: model:ir.model,name:acysos_hlc_partner.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: acysos_hlc_partner
+#: model:ir.model.fields,field_description:acysos_hlc_partner.field_partner_segment__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: acysos_hlc_partner
+#: model:ir.model.fields,field_description:acysos_hlc_partner.field_partner_segment__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: acysos_hlc_partner
+#: model:ir.model.fields,field_description:acysos_hlc_partner.field_account_invoice_report__current_user_id
+msgid "Current Salesperson"
+msgstr ""
+
+#. module: acysos_hlc_partner
+#: model:ir.model.fields,field_description:acysos_hlc_partner.field_partner_segment__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: acysos_hlc_partner
+#: model:ir.model.fields,field_description:acysos_hlc_partner.field_res_partner__ext_id
+#: model:ir.model.fields,field_description:acysos_hlc_partner.field_res_users__ext_id
+msgid "External id"
+msgstr ""
+
+#. module: acysos_hlc_partner
+#: model:ir.model.fields,field_description:acysos_hlc_partner.field_partner_segment__id
+msgid "ID"
+msgstr ""
+
+#. module: acysos_hlc_partner
+#: model:ir.model.fields,field_description:acysos_hlc_partner.field_partner_segment__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: acysos_hlc_partner
+#: model:ir.model.fields,field_description:acysos_hlc_partner.field_partner_segment__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: acysos_hlc_partner
+#: model:ir.model.fields,field_description:acysos_hlc_partner.field_partner_segment__name
+msgid "Name"
+msgstr ""
+
+#. module: acysos_hlc_partner
+#: model:ir.model,name:acysos_hlc_partner.model_partner_segment
+#: model_terms:ir.ui.view,arch_db:acysos_hlc_partner.partner_segment_view_form
+msgid "Partner Segment"
+msgstr ""
+
+#. module: acysos_hlc_partner
+#: model:ir.actions.act_window,name:acysos_hlc_partner.partner_segment_action
+#: model:ir.ui.menu,name:acysos_hlc_partner.partner_segment_menu_act
+msgid "Partner Segments"
+msgstr ""
+
+#. module: acysos_hlc_partner
+#: model:ir.model.fields,field_description:acysos_hlc_partner.field_account_invoice_report__hlc_segment_id
+#: model:ir.model.fields,field_description:acysos_hlc_partner.field_res_partner__hlc_segment_id
+#: model:ir.model.fields,field_description:acysos_hlc_partner.field_res_users__hlc_segment_id
+#: model_terms:ir.ui.view,arch_db:acysos_hlc_partner.res_partner_view_search
+msgid "Segment"
+msgstr ""
