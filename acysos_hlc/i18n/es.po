@@ -1,0 +1,361 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* acysos_hlc
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-25 08:46+0000\n"
+"PO-Revision-Date: 2026-06-25 08:46+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,help:acysos_hlc.field_product_catalog_web__inventory_availability
+msgid "Adds an inventory availability status on the web product page."
+msgstr "Añade un estado de disponibilidad de inventario en la página web del producto."
+
+#. module: acysos_hlc
+#: model:ir.model.fields.selection,name:acysos_hlc.selection__res_users__is_commercial__all
+msgid "All clients"
+msgstr "Todos los clientes"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_product__b2b_virtual_available
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_template__b2b_virtual_available
+msgid "B2B Quantity"
+msgstr "Cantidad B2B"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_pricelist__block_sale
+msgid "Bloquear ventas"
+msgstr "Bloquear ventas"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_sale_order__catalog_id
+msgid "Catalog"
+msgstr "Catálogo"
+
+#. module: acysos_hlc
+#: model_terms:ir.ui.view,arch_db:acysos_hlc.product_catalog_web_view_form
+msgid "Catalog name"
+msgstr "Nombre del catálogo"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_pricelist__catalog_ids
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_product__catalog_ids
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_template__catalog_ids
+msgid "Catalogs"
+msgstr "Catálogos"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__commitment_date
+msgid "Commitment Date"
+msgstr "Fecha de compromiso"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_internal_product_category__create_uid
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__create_uid
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_season__create_uid
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_series__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_internal_product_category__create_date
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__create_date
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_season__create_date
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_series__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_internal_product_category__display_name
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__display_name
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_season__display_name
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_series__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__date_end
+msgid "End Date"
+msgstr "Fecha fin"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,help:acysos_hlc.field_product_catalog_web__date_end
+msgid "Ending valid for the Catalog"
+msgstr "Fecha final de validez del catálogo"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,help:acysos_hlc.field_product_pricelist__inventory_availability
+msgid ""
+"Esto tiene mayor prioridad sobre el catalog. Dejar vacio para tomar dato del"
+" catalogo"
+msgstr ""
+"Esto tiene mayor prioridad que el catálogo. Dejar vacío para tomar el dato "
+"del catálogo"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_stock_location__for_stock_b2b
+msgid "For B2B stock control"
+msgstr "Para stock B2B"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_internal_product_category__id
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__id
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_season__id
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_series__id
+msgid "ID"
+msgstr "ID"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_product__internal_category_id
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_template__internal_category_id
+msgid "Internal Category"
+msgstr "Categoría interna"
+
+#. module: acysos_hlc
+#: model:ir.model,name:acysos_hlc.model_internal_product_category
+msgid "Internal Product Category"
+msgstr "Categoría interna de producto"
+
+#. module: acysos_hlc
+#: model:ir.model.constraint,message:acysos_hlc.constraint_internal_product_category_internal_category_name_unique
+msgid "Internal product category name must be unique."
+msgstr "El nombre de la categoría interna de producto debe ser único."
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__inventory_availability
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_pricelist__inventory_availability
+msgid "Inventory Availability"
+msgstr "Disponibilidad de inventario"
+
+#. module: acysos_hlc
+#: model:ir.model,name:acysos_hlc.model_stock_location
+msgid "Inventory Locations"
+msgstr "Ubicaciones de inventario"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_res_users__is_commercial
+msgid "Is Commercial"
+msgstr "Es comercial"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_internal_product_category__write_uid
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__write_uid
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_season__write_uid
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_series__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_internal_product_category__write_date
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__write_date
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_season__write_date
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_series__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__logo
+msgid "Logo File"
+msgstr "Archivo de logotipo"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_internal_product_category__name
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__name
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_season__name
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_series__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: acysos_hlc
+#: model:ir.model.fields.selection,name:acysos_hlc.selection__res_users__is_commercial__no
+msgid "No"
+msgstr "No"
+
+#. module: acysos_hlc
+#: model:ir.model.fields.selection,name:acysos_hlc.selection__res_users__is_commercial__own
+msgid "Own clients"
+msgstr "Clientes propios"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_product__list_price_tax
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_template__list_price_tax
+msgid "PVP with tax"
+msgstr "PVP con IVA"
+
+#. module: acysos_hlc
+#: model:ir.model,name:acysos_hlc.model_product_pricelist
+msgid "Pricelist"
+msgstr "Lista de precios"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_pricelist_item__pvp_price
+msgid "Pricelist RRP"
+msgstr "PVP de tarifa"
+
+#. module: acysos_hlc
+#: model:ir.model,name:acysos_hlc.model_product_pricelist_item
+msgid "Pricelist Rule"
+msgstr "Regla de la lista de precios"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__pricelist_ids
+msgid "Pricelist applied"
+msgstr "Tarifa aplicada"
+
+#. module: acysos_hlc
+#: model:ir.model,name:acysos_hlc.model_product_template
+msgid "Product"
+msgstr "Producto"
+
+#. module: acysos_hlc
+#: model:ir.model,name:acysos_hlc.model_product_catalog_web
+#: model:ir.ui.menu,name:acysos_hlc.product_catalog_web_menu_act
+#: model_terms:ir.ui.view,arch_db:acysos_hlc.product_catalog_web_view_form
+msgid "Product Catalog web"
+msgstr "Catálogo de productos web"
+
+#. module: acysos_hlc
+#: model:ir.model,name:acysos_hlc.model_product_season
+msgid "Product Season"
+msgstr "Temporada de producto"
+
+#. module: acysos_hlc
+#: model:ir.model,name:acysos_hlc.model_product_series
+msgid "Product Series"
+msgstr "Series de producto"
+
+#. module: acysos_hlc
+#: model:ir.model,name:acysos_hlc.model_product_product
+msgid "Product Variant"
+msgstr "Variante de producto"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_product__serie_id
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_template__serie_id
+msgid "Product serie"
+msgstr "Serie de producto"
+
+#. module: acysos_hlc
+#: model:ir.model.constraint,message:acysos_hlc.constraint_product_series_series_name_unique
+msgid "Product series name must be unique."
+msgstr "El nombre de la serie de producto debe ser único."
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__product_ids
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_pricelist__product_ids
+#: model_terms:ir.ui.view,arch_db:acysos_hlc.product_catalog_web_view_form
+msgid "Products"
+msgstr "Productos"
+
+#. module: acysos_hlc
+#: model:ir.model,name:acysos_hlc.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__season_ids
+msgid "Seasons"
+msgstr "Temporadas"
+
+#. module: acysos_hlc
+#: model:ir.model.fields.selection,name:acysos_hlc.selection__product_catalog_web__inventory_availability__never
+#: model:ir.model.fields.selection,name:acysos_hlc.selection__product_pricelist__inventory_availability__never
+msgid "Sell regardless of inventory"
+msgstr "Vender independientemente del inventario"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_pricelist__show_pvp
+msgid "Show PVP and hide prices"
+msgstr "Mostrar PVP y ocultar precios"
+
+#. module: acysos_hlc
+#: model:ir.model.fields.selection,name:acysos_hlc.selection__product_catalog_web__inventory_availability__threshold
+#: model:ir.model.fields.selection,name:acysos_hlc.selection__product_pricelist__inventory_availability__threshold
+msgid "Show inventory below a threshold and prevent sales if not enough stock"
+msgstr ""
+"Mostrar inventario por debajo de un umbral e impedir ventas si no hay stock "
+"suficiente"
+
+#. module: acysos_hlc
+#: model:ir.model.fields.selection,name:acysos_hlc.selection__product_catalog_web__inventory_availability__always
+#: model:ir.model.fields.selection,name:acysos_hlc.selection__product_pricelist__inventory_availability__always
+msgid "Show inventory on website and prevent sales if not enough stock"
+msgstr ""
+"Mostrar inventario en el sitio web e impedir ventas si no hay stock "
+"suficiente"
+
+#. module: acysos_hlc
+#: model:ir.model.fields.selection,name:acysos_hlc.selection__product_catalog_web__inventory_availability__custom
+#: model:ir.model.fields.selection,name:acysos_hlc.selection__product_pricelist__inventory_availability__custom
+msgid "Show product-specific notifications"
+msgstr "Mostrar avisos específicos del producto"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__date_start
+msgid "Start Date"
+msgstr "Fecha inicio"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,help:acysos_hlc.field_product_catalog_web__date_start
+msgid "Starting date for the Catalog"
+msgstr "Fecha inicial del catálogo"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,help:acysos_hlc.field_product_catalog_web__commitment_date
+msgid ""
+"This is the delivery date promised to the customer. If set, the delivery "
+"order will be scheduled based on this date rather than product lead times."
+msgstr ""
+"Esta es la fecha de entrega prometida al cliente. Si se establece, la orden "
+"de entrega se planificará según esta fecha en lugar de los plazos de entrega "
+"del producto."
+
+#. module: acysos_hlc
+#: model:ir.model,name:acysos_hlc.model_res_users
+msgid "User"
+msgstr "Usuario"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__visible_slider
+msgid "Visible in Website"
+msgstr "Visible en el sitio web"
+
+#. module: acysos_hlc
+#: model:ir.model.fields,field_description:acysos_hlc.field_product_catalog_web__warehouse_id
+msgid "Warehouse"
+msgstr "Almacén"
+
+#. module: acysos_hlc
+#: model:ir.actions.act_window,name:acysos_hlc.product_catalog_web_action
+msgid "Web catalogs"
+msgstr "Catálogos web"
+
+#. module: acysos_hlc
+#: model_terms:ir.ui.view,arch_db:acysos_hlc.product_catalog_web_view_form
+msgid "e.g. PRE-BOOK"
+msgstr "p. ej. PRE-BOOK"
