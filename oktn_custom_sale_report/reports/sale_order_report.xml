@@ -32,7 +32,7 @@
         t-if="not line.display_type and line.product_type != 'combo' and line_name != line.name"
       >
         <td name="td_name_full" colspan="99">
-          <span t-esc="line_name" />
+          <span t-esc="line_name" style="white-space: pre-line;" />
         </td>
       </tr>
     </td>
