@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <!-- res.partner inherit form view -->
+  <record id="view_partner_form" model="ir.ui.view">
+    <field name="name">res.partner.inherit.view.form</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form" />
+    <field name="arch" type="xml">
+      <field name="lang" position="after">
+        <field name="hlc_segment_id" />
+      </field>
+    </field>
+  </record>
+
+  <record id="res_partner_view_search" model="ir.ui.view">
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_res_partner_filter" />
+    <field name="arch" type="xml">
+      <filter name="group_country" position="after">
+        <filter
+          name="group_hlc_segment"
+          string="Segment"
+          context="{'group_by': 'hlc_segment_id'}"
+        />
+      </filter>
+    </field>
+  </record>
+  <!-- partner.segment form view -->
+  <record id="partner_segment_view_form" model="ir.ui.view">
+    <field name="name">partner.segment.view.form</field>
+    <field name="model">partner.segment</field>
+    <field name="arch" type="xml">
+      <form string="Partner Segment">
+        <sheet>
+          <group>
+            <field name="name" />
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  <!-- partner.segment list view -->
+  <record id="partner_segment_view_tree" model="ir.ui.view">
+    <field name="name">partner.segment.view.tree</field>
+    <field name="model">partner.segment</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="name" />
+      </list>
+    </field>
+  </record>
+  <!-- partner.segment action window -->
+  <record id="partner_segment_action" model="ir.actions.act_window">
+    <field name="name">Partner Segments</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">partner.segment</field>
+    <field name="view_mode">list,form</field>
+    <field name="help" type="html">
+      <p class="oe_view_nocontent_create">
+        <!-- Add Text Here -->
+      </p>
+      <p>
+        <!-- More details about what a user can do with this object will be OK -->
+      </p>
+    </field>
+  </record>
+  <!-- This Menu Item must have a parent and an action -->
+  <menuitem
+    id="partner_segment_menu_act"
+    name="Partner Segments"
+    parent="contacts.res_partner_menu_config"
+    action="partner_segment_action"
+    sequence="4"
+  />
+</odoo>
