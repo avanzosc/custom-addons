@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 10:47+0000\n"
-"PO-Revision-Date: 2026-07-21 10:47+0000\n"
+"POT-Creation-Date: 2026-09-28 06:54+0000\n"
+"PO-Revision-Date: 2026-09-28 06:54+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: model:ir.actions.report,print_report_name:oktn_custom_invoice_report.custom_account_foldable_invoices
 #: model:ir.actions.report,print_report_name:oktn_custom_invoice_report.custom_account_foldable_invoices_without_payment
 msgid "(object._get_report_base_filename())"
-msgstr "(object._get_report_base_filename())"
+msgstr ""
 
 #. module: oktn_custom_invoice_report
 #: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
@@ -64,12 +64,12 @@ msgstr "<span>Descripción</span>"
 #. module: oktn_custom_invoice_report
 #: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
 msgid "<span>Disc.%</span>"
-msgstr ""
+msgstr "<span>Dto.%</span>"
 
 #. module: oktn_custom_invoice_report
 #: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
 msgid "<span>Quantity</span>"
-msgstr "<span>Desc.%</span>"
+msgstr "<span>Cantidad</span>"
 
 #. module: oktn_custom_invoice_report
 #: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
@@ -79,7 +79,7 @@ msgstr "<span>Precio unitario</span>"
 #. module: oktn_custom_invoice_report
 #: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
 msgid "<strong class=\"mr16\">Subtotal</strong>"
-msgstr "<strong class=\"mr16\">Subtotal</strong>"
+msgstr ""
 
 #. module: oktn_custom_invoice_report
 #: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
@@ -151,12 +151,12 @@ msgstr "Facturas Carpas Plegables sin Pago"
 #. module: oktn_custom_invoice_report
 #: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
 msgid "ICE:"
-msgstr "ICE:"
+msgstr ""
 
 #. module: oktn_custom_invoice_report
 #: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
 msgid "INV/2023/00001"
-msgstr "INV/2023/00001"
+msgstr ""
 
 #. module: oktn_custom_invoice_report
 #: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
@@ -171,7 +171,7 @@ msgstr "Factura"
 #. module: oktn_custom_invoice_report
 #: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
 msgid "PROFORMA"
-msgstr "PROFORMA"
+msgstr ""
 
 #. module: oktn_custom_invoice_report
 #: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
@@ -196,7 +196,7 @@ msgstr "Revertido el"
 #. module: oktn_custom_invoice_report
 #: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
 msgid "Scan this QR Code with<br/>your banking application"
-msgstr "Escanee este código de barras con <br/>su aplicación bancaria "
+msgstr "Escanee este código de barras con <br/>su aplicación bancaria"
 
 #. module: oktn_custom_invoice_report
 #: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_report.report_plegables_invoice_document
