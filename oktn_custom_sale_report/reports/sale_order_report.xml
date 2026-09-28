@@ -14,23 +14,55 @@
       </t>
     </t>
     <span t-field="line.name" position="replace">
-      <span t-field="line.product_id.display_name" />
-    </span>
-    <td t-if="not line.is_downpayment" name="td_subtotal" position="after">
-      <t
-        t-set="product_name"
-        t-value="line.product_id.with_context(lang=line.order_id.partner_id.lang).display_name"
-      />
-      <t t-if="product_name in line.name">
-        <t t-set="line_name" t-value="line.name.replace(product_name + '\n', '', 1)" />
+      <t t-if="not line.product_id.no_product_description_to_sale_invoice_lines">
+        <t
+          t-set="product_name"
+          t-value="line.product_id.with_context(lang=line.order_id.partner_id.lang).display_name"
+        />
       </t>
       <t t-else="">
-        <t t-set="line_name" t-value="line.name" />
+        <t
+          t-set="product_name"
+          t-value="line.product_id.with_context(lang=line.order_id.partner_id.lang).display_name"
+        />
+        <t t-if="product_name not in line.name">
+          <t t-set="product_name" t-value="line.name.splitlines()[0]" />
+        </t>
+        <t t-else="">
+          <t t-set="product_name" t-value="line.name.splitlines()[1]" />
+        </t>
       </t>
-
-      <tr
-        t-if="not line.display_type and line.product_type != 'combo' and line_name != line.name"
-      >
+      <span t-esc="product_name" />
+    </span>
+    <td t-if="not line.is_downpayment" name="td_subtotal" position="after">
+      <t t-if="not line.product_id.no_product_description_to_sale_invoice_lines">
+        <t
+          t-set="product_name"
+          t-value="line.product_id.with_context(lang=line.order_id.partner_id.lang).display_name"
+        />
+        <t t-if="product_name in line.name">
+          <t
+            t-set="line_name"
+            t-value="line.name.replace(product_name + '\n', '', 1)"
+          />
+        </t>
+        <t t-else="">
+          <t t-set="line_name" t-value="line.name" />
+        </t>
+      </t>
+      <t t-else="">
+        <t
+          t-set="product_name"
+          t-value="line.product_id.with_context(lang=line.order_id.partner_id.lang).display_name"
+        />
+        <t t-if="product_name not in line.name">
+          <t t-set="line_name" t-value="'\n'.join(line.name.splitlines()[1:])" />
+        </t>
+        <t t-else="">
+          <t t-set="line_name" t-value="'\n'.join(line.name.splitlines()[2:])" />
+        </t>
+      </t>
+      <tr t-if="not line.display_type and line.product_type != 'combo' and line_name">
         <td name="td_name_full" colspan="99">
           <span t-esc="line_name" style="white-space: pre-line;" />
         </td>
