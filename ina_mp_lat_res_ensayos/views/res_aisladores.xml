@@ -10,7 +10,12 @@
         default_order="fecha_ensayo desc"
       >
         <field name="name" widget="char" optional="show" />
-        <field name="num_serie" widget="char" optional="show" />
+        <field
+          name="lot_id"
+          widget="many2one"
+          optional="show"
+          context="{'default_product_id': product_id}"
+        />
         <field name="production_id" optional="show" />
         <field name="product_id" optional="show" />
         <field name="tension" optional="show" />
@@ -26,7 +31,8 @@
     <field name="model">res.aisladores</field>
     <field name="arch" type="xml">
       <search string="Filtros Ensayos Aisladores">
-        <field name="num_serie" />
+        <field name="lot_id" />
+        <field name="name" />
         <field name="product_id" />
         <field name="production_id" />
         <field name="rechazado" />
