@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <record id="stock_scrap_view_form_fichar" model="ir.ui.view">
+    <field name="name">stock.scrap.view.form.fichar</field>
+    <field name="model">stock.scrap</field>
+    <field name="inherit_id" ref="mrp.stock_scrap_view_form2_mrp_inherit_mrp" />
+    <field name="arch" type="xml">
+      <field name="product_id" position="attributes">
+        <attribute name="options">{'no_open': True, 'no_create': True}</attribute>
+      </field>
+      <field name="production_id" position="after">
+        <field name="puesto_id" invisible="not puesto_id" />
+        <field name="motivo_rechazo" invisible="not motivo_rechazo" />
+      </field>
+    </field>
+  </record>
+
+  <record id="stock_scrap_view_form_mrp_fichar" model="ir.ui.view">
+    <field name="name">stock.scrap.view.form.mrp.fichar</field>
+    <field name="model">stock.scrap</field>
+    <field name="inherit_id" ref="mrp.stock_scrap_view_form_mrp_inherit_mrp" />
+    <field name="arch" type="xml">
+      <field name="production_id" position="after">
+        <field name="puesto_id" invisible="not puesto_id" />
+      </field>
+    </field>
+  </record>
+</odoo>
