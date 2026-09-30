@@ -7,34 +7,68 @@
   >
     <span t-field="line.name" position="replace">
       <t t-if="o.move_type in ('out_invoice', 'out_refund')">
-        <t
-          t-set="product_name"
-          t-value="line.product_id.with_context(lang=user.lang).display_name if line.product_id else ''"
-        />
-
-        <t
-          t-if="
-            line.product_id
-            and line.product_id.no_product_description_to_sale_invoice_lines
-            and line.name
-            and product_name
-            and product_name in line.name
-          "
-        >
-          <span
-            t-esc="line.name.replace(product_name + '\n', '', 1)"
-            style="white-space: pre-line;"
+        <t t-if="not line.product_id.no_product_description_to_sale_invoice_lines">
+          <t
+            t-set="product_name"
+            t-value="line.product_id.with_context(lang=line.move_id.partner_id.lang).display_name"
           />
         </t>
-
         <t t-else="">
-          <span t-if="line.name" t-field="line.name" t-options="{'widget': 'text'}" />
+          <t
+            t-set="product_name"
+            t-value="line.product_id.with_context(lang=line.move_id.partner_id.lang).display_name"
+          />
+          <t t-if="product_name not in line.name">
+            <t t-set="product_name" t-value="line.name.splitlines()[0]" />
+          </t>
+          <t t-else="">
+            <t t-set="product_name" t-value="line.name.splitlines()[1]" />
+          </t>
         </t>
+        <span t-esc="product_name" />
       </t>
-
       <t t-if="o.move_type not in ('out_invoice', 'out_refund')">
         <span t-if="line.name" t-field="line.name" t-options="{'widget': 'text'}" />
       </t>
     </span>
+
+    <xpath expr="//t[@name='account_invoice_line_accountable']/.." position="after">
+      <t
+        t-if="o.move_type in ('out_invoice', 'out_refund') and line.display_type == 'product'"
+      >
+        <t t-if="not line.product_id.no_product_description_to_sale_invoice_lines">
+          <t
+            t-set="product_name"
+            t-value="line.product_id.with_context(lang=line.move_id.partner_id.lang).display_name"
+          />
+          <t t-if="product_name in line.name">
+            <t
+              t-set="line_name"
+              t-value="line.name.replace(product_name + '\n', '', 1)"
+            />
+          </t>
+          <t t-else="">
+            <t t-set="line_name" t-value="line.name" />
+          </t>
+        </t>
+        <t t-else="">
+          <t
+            t-set="product_name"
+            t-value="line.product_id.with_context(lang=line.move_id.partner_id.lang).display_name"
+          />
+          <t t-if="product_name not in line.name">
+            <t t-set="line_name" t-value="'\n'.join(line.name.splitlines()[1:])" />
+          </t>
+          <t t-else="">
+            <t t-set="line_name" t-value="'\n'.join(line.name.splitlines()[2:])" />
+          </t>
+        </t>
+        <tr t-if="line.name">
+          <td name="td_name_full" colspan="99">
+            <span t-esc="line_name" style="white-space: pre-line;" />
+          </td>
+        </tr>
+      </t>
+    </xpath>
   </template>
 </odoo>
