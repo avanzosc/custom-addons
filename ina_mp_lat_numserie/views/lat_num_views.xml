@@ -62,7 +62,14 @@
             <page string="Numeros">
               <field name="lineas_ids">
                 <list editable="top" default_order="id DESC">
-                  <field name="numserie" optional="show" />
+                  <field
+                    name="lot_id"
+                    widget="many2one"
+                    options="{'no_create': True}"
+                    context="{'default_product_id': product_id}"
+                    optional="show"
+                  />
+                  <field name="numserie" optional="hide" />
                   <field name="product_id" optional="show" />
                   <field name="production_id" optional="show" />
                   <field name="peso_sf6" optional="show" />

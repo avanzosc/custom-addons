@@ -9,6 +9,7 @@ from odoo import api, fields, models
 class LatNumcentro(models.Model):
     _name = "lat.numcentro"
     _description = "Nunmeros serie Centros"
+    _inherit = ["ina.lat.lot.mixin"]
 
     @api.depends("default_code")
     def _compute_producto(self):
@@ -35,7 +36,13 @@ class LatNumcentro(models.Model):
         comodel_name="lat.numcentro.lineas",
         inverse_name="num_id",
     )
-    numserie = fields.Char(string="Numero de Serie", index=True, required=True)
+    numserie = fields.Char(
+        string="Numero de Serie Antiguo",
+        index=True,
+        readonly=True,
+        help="Numero de serie de los registros que no se pudieron pasar a lote "
+        "por no tener producto.",
+    )
     production_id = fields.Many2one(
         string="Orden de Fabricacion", comodel_name="mrp.production"
     )
@@ -148,8 +155,7 @@ class LatNumcentro(models.Model):
                 message = "La referencia del centro no está en la " f"{r.venta_id.name}"
                 warning["title"] = title
                 warning["message"] = message
-                r.numserie = False
-                r.ov = False
+                r.lot_id = False
                 r.product_id = False
                 return {"warning": warning}
         return {}
@@ -223,32 +229,32 @@ class LatNumcentro(models.Model):
         lineas = self.lineas_ids.filtered(lambda x: x.fichero)
         for linea in lineas:
             patron = "*" + linea.fichero.strip() + "*"
-            encontrado = linea.buscar_dto(ruta_origen, patron)
+            encontrado = self.buscar_dto(ruta_origen, patron)
             if encontrado:
                 linea.otros = True
         # Busco ChkList para Celdas
         ruta_origen = "/media/in/Fabrica/RESULTADOS_ENSAYOS"
-        lineas = self.lineas_ids.filtered(lambda x: x.ensayo == "celdas" and x.numserie)
+        lineas = self.lineas_ids.filtered(lambda x: x.ensayo == "celdas" and x.lot_id)
         for linea in lineas:
             encontrado_html = encontrado_doc = False
-            patron = "*" + linea.numserie.strip() + "_*.html"
+            patron = "*" + linea.lot_id.name.strip() + "_*.html"
             encontrado_html = self.buscar_dto(ruta_origen, patron)
             if encontrado_html:
                 linea.chklis = True
-            patron = "*" + linea.numserie.strip() + "_*.docx"
+            patron = "*" + linea.lot_id.name.strip() + "_*.docx"
             encontrado_doc = self.buscar_dto(ruta_origen, patron)
             if encontrado_doc:
                 linea.chklis = True
         # Imprimo el ensayo de celdas si es ensayo=Celdas
         wizard_informe = self.env["wiz.informe.celdas"]
-        lineas = self.lineas_ids.filtered(lambda x: x.ensayo == "celdas" and x.numserie)
+        lineas = self.lineas_ids.filtered(lambda x: x.ensayo == "celdas" and x.lot_id)
         for linea in lineas:
             wiz_ids = wizard_informe.search([("id", ">=", 0)], limit=1)
             if not wiz_ids:
                 val = {}
                 wiz_ids = wizard_informe.create(val)  # devuelve el id como entero
             wiz_ids.tipo = "celda"
-            wiz_ids.generar_pdf(linea.numserie)
+            wiz_ids.generar_pdf(linea.lot_id)
             linea.infens = True
 
     #  --------------- BUSCAR EL DOCUMENTO ---------------------------------
