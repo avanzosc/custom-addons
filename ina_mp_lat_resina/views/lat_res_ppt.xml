@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="res_ppt_tree_view" model="ir.ui.view">
+    <field name="name">res.ppt.tree.view</field>
+    <field name="model">res.ppt</field>
+    <field name="arch" type="xml">
+      <list string="PPT" editable="bottom">
+        <field
+          name="lot_id"
+          widget="many2one"
+          context="{'default_product_id': product_id3}"
+          optional="show"
+        />
+        <field name="num_serie3" optional="hide" />
+        <field name="production_id3" optional="show" />
+        <field name="product_id3" optional="show" />
+        <field name="n_inyeccion2" optional="show" />
+        <field name="huella" optional="show" />
+        <field name="estanco" optional="show" />
+        <field name="inspeccion" optional="show" />
+        <field name="valido2" optional="show" />
+        <field name="fecha_ensayo2" optional="show" />
+        <field name="nota3" optional="show" />
+      </list>
+    </field>
+  </record>
+
+  <record id="action_res_ppt" model="ir.actions.act_window">
+    <field name="name">Resina PPT</field>
+    <field name="res_model">res.ppt</field>
+    <field name="view_mode">list</field>
+  </record>
+
+  <menuitem
+    name="Resina PPT"
+    action="action_res_ppt"
+    id="menu_res_ppt"
+    parent="ina_mp_lat_resinas"
+    sequence="15"
+  />
+</odoo>
