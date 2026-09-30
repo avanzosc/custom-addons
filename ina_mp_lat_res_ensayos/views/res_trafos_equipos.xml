@@ -7,6 +7,7 @@
       <list string="Trafos Equipos" default_order="id DESC">
         <field name="trafo_id" widget="char" column_invisible="1" />
         <field name="num_serie" optional="show" />
+        <field name="lot_id" widget="many2one" optional="show" />
         <field name="num_serie_equipo" optional="show" />
         <field name="product_id" optional="show" />
         <field name="fecha" widget="date" optional="show" />
@@ -21,6 +22,7 @@
     <field name="arch" type="xml">
       <search string="Filtros Equipos trafos">
         <field name="num_serie" />
+        <field name="lot_id" />
         <field name="num_serie_equipo" />
         <field name="product_id" />
         <separator />
