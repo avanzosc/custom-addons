@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="view_production_lot_form" model="ir.ui.view">
+    <field name="name">stock.lot.form - ina_mp_lat_numserie</field>
+    <field name="model">stock.lot</field>
+    <field name="inherit_id" ref="ina_mp_lat_res_ensayos.view_production_lot_form" />
+    <field name="arch" type="xml">
+      <page name="lat" position="attributes">
+        <attribute
+          name="invisible"
+        >not (lat_aisladores_ids or lat_basescutout_ids or lat_celdas_ids or lat_celdas_conexion_ids or lat_celdas_equipo_ids or lat_enlaces_ids or lat_fusibles_ids or lat_pararrayos_ids or lat_seccionadores_ids or lat_seccionalizadores_ids or lat_trafos_ids or lat_numcentro_ids or lat_numcentro_linea_ids or lat_numserie_ids)</attribute>
+      </page>
+      <page name="lat" position="inside">
+        <group string="Centro" invisible="not lat_numcentro_ids">
+          <field
+            name="lat_numcentro_ids"
+            nolabel="1"
+            colspan="2"
+            readonly="1"
+            context="{'list_view_ref': 'ina_mp_lat_numserie.lat_numcentro_tree', 'form_view_ref': 'ina_mp_lat_numserie.lat_numcentro_num_view'}"
+          />
+        </group>
+        <group string="Montado en Centros" invisible="not lat_numcentro_linea_ids">
+          <field
+            name="lat_numcentro_linea_ids"
+            nolabel="1"
+            colspan="2"
+            readonly="1"
+            context="{'list_view_ref': 'ina_mp_lat_numserie.lat_numcentro_lineas_tree'}"
+          />
+        </group>
+        <group
+          string="Numeros de Serie en Ordenes de Venta"
+          invisible="not lat_numserie_ids"
+        >
+          <field
+            name="lat_numserie_ids"
+            nolabel="1"
+            colspan="2"
+            readonly="1"
+            context="{'list_view_ref': 'ina_mp_lat_numserie.lat_numserie_tree'}"
+          />
+        </group>
+      </page>
+    </field>
+  </record>
+</odoo>

@@ -2,15 +2,34 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 from odoo import api, fields, models
 
+ENSAYO_MODELOS = {
+    "aisladores": "res.aisladores",
+    "celdas": "res.celdas",
+    "centros": "lat.numcentro",
+    "fusibles": "res.fusibles",
+    "pararrayos": "res.pararrayos",
+    "seccionalizadores": "res.seccionalizadores",
+    "selas": "res.seccionadores",
+    "trafos": "res.trafos",
+}
+
 
 class LatNumserie(models.Model):
     _name = "lat.numserie"
     _description = "Numeros de serie para OV"
+    _inherit = ["ina.lat.lot.mixin"]
+    _lat_tracking = "lot"
 
     num_id = fields.Many2one(
         string="Numeros serie dia", comodel_name="lat.num", ondelete="cascade"
     )
-    numserie = fields.Char(string="Numero de Serie", index=True)
+    numserie = fields.Char(
+        string="Numero de Serie Antiguo",
+        index=True,
+        readonly=True,
+        help="Numero de serie de los registros que no se pudieron pasar a lote "
+        "por no tener producto.",
+    )
     product_id = fields.Many2one(string="Producto", comodel_name="product.product")
     venta_id = fields.Many2one(string="Ord. Venta", comodel_name="sale.order")
     production_id = fields.Many2one(
@@ -42,48 +61,39 @@ class LatNumserie(models.Model):
     fichero = fields.Char(string="Fichero Externo")
     peso_sf6 = fields.Integer(string="Peso SF6")
 
-    @api.onchange("numserie")
-    def onchange_numserie(self):
-        if not self.numserie:
+    @api.onchange("lot_id")
+    def onchange_lot_id(self):
+        if not self.lot_id:
             return
         warning = {}
         title = False
         message = False
         for r in self:
-            self.num_id.ensayo = r.num_id.ensayo
-            r.ensayo = r.num_id.ensayo
-            r.product_id = r.production_id = False
-            if r.num_id.ensayo == "celdas":
-                e_obj = self.env["res.celdas"]
-                cond = [("celda_num", "=", r.numserie)]
-            elif r.num_id.ensayo == "fusibles":
-                e_obj = self.env["res.fusibles"]
-                cond = [("num_serie", "=", r.numserie)]
-            elif r.num_id.ensayo == "selas":
-                e_obj = self.env["res.seccionadores"]
-                cond = [("num_serie", "=", r.numserie)]
-            elif r.num_id.ensayo == "pararrayos":
-                e_obj = self.env["res.pararrayos"]
-                cond = [("num_serie", "=", r.numserie)]
-            elif r.num_id.ensayo == "aisladores":
-                e_obj = self.env["res.aisladores"]
-                cond = [("num_serie", "=", r.numserie)]
-            e_ids = e_obj.search(cond, limit=1)
+            r.product_id = r.lot_id.product_id
+            r.production_id = False
+            r.peso_sf6 = 0
+            modelo = ENSAYO_MODELOS.get(r.num_id.ensayo)
+            e_ids = modelo and self.env[modelo].search(
+                [("lot_id", "=", r.lot_id.id)], limit=1
+            )
             if e_ids:
                 r.production_id = e_ids.production_id.id
-                r.product_id = e_ids.product_id.id
-                r.peso_sf6 = 0
                 if r.num_id.ensayo == "celdas":
                     r.peso_sf6 = e_ids.peso_sf6
             else:
-                r.numserie = False
+                r.lot_id = r.product_id = False
                 title = "Aviso"
                 message = "Numero de serie no encontrado"
                 warning["title"] = title
                 warning["message"] = message
                 return {"warning": warning}
             num_ids = self.env["lat.numserie"].search(
-                [("numserie", "=", r.numserie), ("ensayo", "=", r.ensayo)], limit=1
+                [
+                    ("lot_id", "=", r.lot_id.id),
+                    ("ensayo", "=", r.num_id.ensayo),
+                    ("id", "!=", r._origin.id),
+                ],
+                limit=1,
             )
             if num_ids:
                 title = "Aviso"
@@ -94,7 +104,7 @@ class LatNumserie(models.Model):
                 )
                 warning["title"] = title
                 warning["message"] = message
-                r.numserie = False
+                r.lot_id = False
                 return {"warning": warning}
             lin_ids = self.env["sale.order.line"].search(
                 [
@@ -110,11 +120,10 @@ class LatNumserie(models.Model):
                 title = "Aviso"
                 message = (
                     "El producto del número de serie no está en la OV "
-                    f"{r.venta_id.name}"
+                    f"{r.num_id.venta_id.name}"
                 )
                 warning["title"] = title
                 warning["message"] = message
-                r.numserie = False
-                r.product_id = False
+                r.lot_id = r.product_id = False
                 return {"warning": warning}
         return {}
