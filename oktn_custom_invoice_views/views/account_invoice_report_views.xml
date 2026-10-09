@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="view_account_invoice_report_search" model="ir.ui.view">
+    <field name="name">account.invoice.report.search.analytic</field>
+    <field name="model">account.invoice.report</field>
+    <field name="inherit_id" ref="account.view_account_invoice_report_search" />
+    <field name="arch" type="xml">
+      <filter name="status" position="after">
+        <filter
+          name="account_analytic_id"
+          string="Analytic Account"
+          context="{'group_by': 'account_analytic_id'}"
+          groups="analytic.group_analytic_accounting"
+        />
+      </filter>
+    </field>
+  </record>
+</odoo>

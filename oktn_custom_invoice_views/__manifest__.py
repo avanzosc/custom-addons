@@ -16,6 +16,7 @@
     ],
     "data": [
         "views/account_invoice_views.xml",
+        "views/account_invoice_report_views.xml",
         "views/account_move_views.xml",
     ],
     "installable": True,

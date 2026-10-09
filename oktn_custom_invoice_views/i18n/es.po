@@ -16,6 +16,8 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: oktn_custom_invoice_views
+#: model:ir.model.fields,field_description:oktn_custom_invoice_views.field_account_invoice_report__account_analytic_id
+#: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_views.view_account_invoice_report_search
 #: model_terms:ir.ui.view,arch_db:oktn_custom_invoice_views.view_account_invoice_filter
 msgid "Analytic Account"
 msgstr "Cuenta analítica"
