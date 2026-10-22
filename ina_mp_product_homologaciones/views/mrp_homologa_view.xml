@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="ina_mrp_homologa_tree" model="ir.ui.view">
+    <field name="name">ina.mrp.homologa.list</field>
+    <field name="model">product.homologa</field>
+    <field name="arch" type="xml">
+      <list string="Homologaciones" editable="top">
+        <field name="cia" />
+        <field name="product_id" />
+        <field name="product_tmpl_id" column_invisible="1" />
+        <field name="cod_cia" />
+        <field name="den_cia" />
+        <field name="nor_cia" />
+        <field name="categ_id" column_invisible="1" />
+        <field name="tipo_plano" />
+        <field name="plano" invisible="tipo_plano != 'prov'" />
+        <field name="plano_cliente" invisible="tipo_plano != 'clien'" />
+        <field name="planilla" />
+        <field name="manu_instru" />
+        <button
+          type="object"
+          name="action_ver_ficha"
+          string="Ver Producto"
+          icon="fa-eye"
+          groups="ina_mp_product_homologaciones.group_homologa_manager"
+        />
+      </list>
+    </field>
+  </record>
+
+  <record id="ina_mrp_homologa_search_view" model="ir.ui.view">
+    <field name="name">ina.mrp.homologa.search.view</field>
+    <field name="model">product.homologa</field>
+    <field name="arch" type="xml">
+      <search string="Filtros Homologaciones">
+        <field name="cia" />
+        <field name="product_id" />
+        <field name="cod_cia" />
+        <field name="den_cia" />
+        <field name="nor_cia" />
+        <separator />
+        <group expand="0" string="Group By">
+          <filter
+            name="grupo_producto"
+            string="Producto"
+            context="{'group_by': 'product_id'}"
+          />
+          <filter name="grupo_cia" string="Cia" context="{'group_by': 'cia'}" />
+          <filter
+            name="grupo_categoria"
+            string="Categoria"
+            context="{'group_by': 'categ_id'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record id="action_ina_mp_pro_homologacion" model="ir.actions.act_window">
+    <field name="name">Productos Homologados</field>
+    <field name="res_model">product.homologa</field>
+    <field name="view_mode">list</field>
+  </record>
+
+  <menuitem
+    id="ina_menu_product_homologacion"
+    name="Productos Homologados"
+    action="action_ina_mp_pro_homologacion"
+    parent="sale.product_menu_catalog"
+    sequence="100"
+  />
+</odoo>
