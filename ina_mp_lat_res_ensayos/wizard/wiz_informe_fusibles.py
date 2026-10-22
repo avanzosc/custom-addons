@@ -19,7 +19,8 @@ from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen.canvas import Canvas
 from reportlab.platypus import Flowable
 
-from odoo import _, api, exceptions, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 
 class QRFlowable(Flowable):
@@ -65,28 +66,16 @@ class WizInformeFusibles(models.TransientModel):
 
     @api.model
     def _dirty_check(self):
-        ids = self.env.context["active_ids"]
+        ids = self.env.context.get("active_ids", [])
         if len(ids) < 1:
-            raise exceptions.Warning(_("Tienes que seleccionar al menos 1 Fusible"))
+            raise UserError(_("Tienes que seleccionar al menos 1 Fusible"))
 
         return {}
 
     @api.model
-    def fields_view_get(
-        self, view_id=None, view_type="form", toolbar=False, submenu=False
-    ):
-        """Changes the view dynamically
-        @param self: The object pointer.
-        @param cr: A database cursor
-        @param uid: ID of the user currently logged in
-        @param context: A standard dictionary
-        @return: New arch of view.
-        """
-        res = super().fields_view_get(
-            view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=False
-        )
+    def default_get(self, fields_list):
         self._dirty_check()
-        return res
+        return super().default_get(fields_list)
 
     def _puntuacion(self, cadena):
         reemplazo = {",": ".", ".": ","}
@@ -115,7 +104,7 @@ class WizInformeFusibles(models.TransientModel):
                 prime = False
                 produc = r.product_id.id
             if produc != r.product_id.id:
-                raise exceptions.Warning(
+                raise UserError(
                     _(
                         "Los fusibles seleccionados tienen que tener "
                         "la misma referencia."
@@ -262,7 +251,7 @@ class WizInformeFusibles(models.TransientModel):
                     continue
             linea -= 4
             fichero.setFont("Helvetica", 7)
-            fichero.drawString(12 * mm, linea * mm, fus.num_serie)
+            fichero.drawString(12 * mm, linea * mm, fus.lot_id.name or fus.name or "")
             w_n = fus.res_nominal if fus.res_nominal else 0
             s_n = self._puntuacion(str(f"{w_n:,.2f}"))
             fichero.drawRightString(58 * mm, linea * mm, s_n)

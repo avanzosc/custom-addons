@@ -1,6 +1,7 @@
 # Copyright 2026 Inael
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-from odoo import _, exceptions, fields, models
+from odoo import _, fields, models
+from odoo.exceptions import UserError
 
 
 class WizTrafosDuplicar(models.TransientModel):
@@ -12,7 +13,7 @@ class WizTrafosDuplicar(models.TransientModel):
     def action_duplica_trafo(self):
         active_ids = self.env.context.get("active_ids", [])
         if len(active_ids) > 1:
-            raise exceptions.Warning(_("Debes marcar solamente 1 Trafo para Duplicar."))
+            raise UserError(_("Debes marcar solamente 1 Trafo para Duplicar."))
         dup_ids = self.env["res.trafos"].browse(self.env.context.get("active_ids"))
         for r in dup_ids:
             w_name = self.num_serie
@@ -21,7 +22,7 @@ class WizTrafosDuplicar(models.TransientModel):
             nuevo_trafo_id = r.copy(
                 default={
                     "name": w_name,
-                    "num_serie": w_numero,
+                    "lot_id": self._get_lot(r.product_id, w_numero).id,
                 }
             ).id
             for v in dup_ids.lineas_rela_ids:
@@ -36,3 +37,13 @@ class WizTrafosDuplicar(models.TransientModel):
                 v.copy(default={"trafo_id": nuevo_trafo_id, "num_serie": w_numero})
             for v in dup_ids.lineas_equipos_ids:
                 v.copy(default={"trafo_id": nuevo_trafo_id, "num_serie": w_numero})
+
+    def _get_lot(self, product, name):
+        if not product:
+            return self.env["stock.lot"]
+        lot = self.env["stock.lot"].search(
+            [("product_id", "=", product.id), ("name", "=", name)], limit=1
+        )
+        return lot or self.env["stock.lot"].create(
+            {"product_id": product.id, "name": name}
+        )

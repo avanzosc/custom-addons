@@ -6,6 +6,8 @@ from odoo import fields, models
 class ResCeldasEquipos(models.Model):
     _name = "res.celdas.equipos"
     _description = "LAT Resultados de ensayo de Celdas Equipos"
+    _inherit = ["ina.lat.lot.mixin"]
+    _lat_tracking = "lot"
 
     celda_id = fields.Many2one(
         string="Ensayo Celdas", comodel_name="res.celdas", ondelete="cascade"
@@ -26,7 +28,11 @@ class ResCeldasEquipos(models.Model):
             ("t", "T"),
         ],
     )
-    num_serie = fields.Char(string="Num. Serie")
+    num_serie = fields.Char(
+        string="Num. Serie Antiguo",
+        readonly=True,
+        help="Numero de serie de los equipos sin producto, que no tienen lote.",
+    )
     product_id = fields.Many2one(string="Producto", comodel_name="product.product")
     nota = fields.Char()
     premo_num = fields.Float(

@@ -1,3 +1,4 @@
+from . import ina_lat_lot_mixin
 from . import res_aisladores
 from . import res_basescutout
 from . import res_celdas_conexiones
@@ -16,4 +17,5 @@ from . import res_trafos_relacion
 from . import res_trafos_resultados
 from . import res_trafos_vacio
 from . import res_trafos
+from . import stock_lot
 from . import trafos_inspec_docus

@@ -6,6 +6,8 @@ from odoo import fields, models
 class ResCeldasConexiones(models.Model):
     _name = "res.celdas.conexiones"
     _description = "LAT Resultados de ensayo de Celdas Conexiones"
+    _inherit = ["ina.lat.lot.mixin"]
+    _lat_tracking = "lot"
 
     celda_id = fields.Many2one(
         string="Ensayo Celdas", comodel_name="res.celdas", ondelete="cascade"
@@ -33,7 +35,11 @@ class ResCeldasConexiones(models.Model):
             ("t", "T"),
         ],
     )
-    num_serie = fields.Char(string="Num. Serie")
+    num_serie = fields.Char(
+        string="Num. Serie Antiguo",
+        readonly=True,
+        help="Numero de las conexiones sin producto, que no tienen lote.",
+    )
     product_id = fields.Many2one(string="Producto", comodel_name="product.product")
     nota = fields.Char()
     premo_num = fields.Float(

@@ -11,6 +11,11 @@ class ResTrafosRelacion(models.Model):
         string="Numero Trafo", comodel_name="res.trafos", ondelete="cascade"
     )
     num_serie = fields.Char(string="Num. Serie")
+    lot_id = fields.Many2one(
+        string="Numero de Serie",
+        related="trafo_id.lot_id",
+        store=True,
+    )
     at_bt = fields.Char(string="AT/BT")
     posicion = fields.Integer()
     conexion = fields.Integer()
