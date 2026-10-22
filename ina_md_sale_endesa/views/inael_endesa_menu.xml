@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <menuitem
+    action="ina_action_inael_endesa"
+    name="Entregas Endesa Histórico"
+    id="ina_menu_inael_endesa"
+    parent="sale.sale_order_menu"
+    sequence="12"
+  />
+</odoo>

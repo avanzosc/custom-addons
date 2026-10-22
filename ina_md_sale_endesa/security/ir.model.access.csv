@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_inael_endesa_ven,endesa.ven,model_inael_endesa,sales_team.group_sale_manager,1,0,0,0
+access_inael_endesa_cal,endesa.cal,model_inael_endesa,ina_mc_permisos.group_inael_calidad_respon,1,0,0,0
+access_inael_endesa_plan,endesa.plan,model_inael_endesa,ina_mc_permisos.group_inael_planificacion_respon,1,0,0,0
+access_inael_endesa_palomar,endesa.palomar,model_inael_endesa,ina_mc_permisos.group_inael_fabrica_respon,1,0,0,0
