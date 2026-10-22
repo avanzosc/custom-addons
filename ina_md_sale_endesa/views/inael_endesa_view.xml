@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record model="ir.ui.view" id="ina_inael_endesa_tree_view">
+    <field name="name">ina.inael.endesa.tree_view</field>
+    <field name="model">inael.endesa</field>
+    <field name="arch" type="xml">
+      <list string="Entregas Endesa" editable="bottom">
+        <header>
+          <button
+            name="action_actualizar_entregas"
+            type="object"
+            string="Actualizar Entregas"
+            class="btn-primary"
+            display="always"
+            groups="sales_team.group_sale_manager,ina_mc_permisos.group_inael_calidad_respon,ina_mc_permisos.group_inael_planificacion_respon"
+          />
+        </header>
+        <field name="sale_line_id" readonly="1" />
+        <field name="sale_id" readonly="1" />
+        <field name="codigo" readonly="1" />
+        <field name="pedido" readonly="1" />
+        <field name="cantidad" readonly="1" />
+        <field name="entregado" readonly="1" />
+        <field name="entrega_check" readonly="1" />
+        <field name="partner_id_corto" string="Destino" readonly="1" />
+        <field name="default_code" column_invisible="1" />
+        <field name="contrato" readonly="1" />
+        <field name="fecha_planifica" widget="date" />
+        <field
+          name="fecha_necesidad"
+          widget="date"
+          options='{"bg_color": "red: color_fecha == &apos;rojo&apos;; orange: color_fecha == &apos;naranja&apos;; yellow: color_fecha == &apos;amarillo&apos;"}'
+        />
+        <field name="revisar" groups="ina_mc_permisos.group_inael_calidad_respon" />
+        <field name="estado_linea" column_invisible="1" />
+        <field name="ns" />
+        <field name="estado" />
+        <field name="idcal" string="ID" />
+        <field name="entrega" />
+        <field name="fecha_fabricacion" widget="date" readonly="1" />
+        <field name="of" readonly="1" />
+        <field name="color_fecha" column_invisible="1" readonly="1" />
+      </list>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="ina_inael_endesa_search_view">
+    <field name="name">ina.inael.endesa.search.view</field>
+    <field name="model">inael.endesa</field>
+    <field name="arch" type="xml">
+      <search string="Filtros Entregas Endesa">
+        <filter name="enviados" string="Enviados" domain="[('entrega', '=', True)]" />
+        <filter
+          name="noenviados"
+          string="NO Enviados"
+          domain="[('entrega', '=', False)]"
+        />
+        <field name="partner_id" />
+        <field name="default_code" />
+        <field name="sale_id" />
+        <field name="codigo" />
+        <field name="pedido" />
+        <field name="contrato" />
+        <field name="entrega_check" />
+        <field name="entrega" />
+        <separator />
+        <group expand="0" string="Group By">
+          <filter
+            name="groupby_partner"
+            string="Partner"
+            context="{'group_by': 'partner_id'}"
+          />
+          <filter
+            name="groupby_default_code"
+            string="Referencia"
+            context="{'group_by': 'default_code'}"
+          />
+          <filter
+            name="groupby_codigo"
+            string="Codigo"
+            context="{'group_by': 'codigo'}"
+          />
+          <filter
+            name="groupby_entrega_check"
+            string="Entregado"
+            context="{'group_by': 'entrega_check'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record model="ir.actions.act_window" id="ina_action_inael_endesa">
+    <field name="name">Entregas Endesa</field>
+    <field name="res_model">inael.endesa</field>
+    <field name="view_mode">list</field>
+  </record>
+
+  <menuitem
+    action="ina_action_inael_endesa"
+    name="Entregas Endesa"
+    id="ina_menu_inael_endesa"
+    parent="sale.sale_order_menu"
+    sequence="12"
+  />
+
+  <menuitem
+    action="ina_action_inael_endesa"
+    name="Entregas Endesa"
+    id="ina_menu_inael_endesa_root"
+    web_icon="ina_md_sale_endesa,static/description/icon.png"
+    sequence="12"
+  />
+</odoo>
