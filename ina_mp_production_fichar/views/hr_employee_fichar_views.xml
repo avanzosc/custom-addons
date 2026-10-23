@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <record id="hr_entrada_salida_tree" model="ir.ui.view">
+    <field name="name">hr.entrada.salida.list</field>
+    <field name="model">hr.employee.fichar</field>
+    <field name="arch" type="xml">
+      <list
+        string="Entrada - Salida"
+        create="false"
+        delete="false"
+        import="false"
+        export_xlsx="false"
+      >
+        <field name="barcode" readonly="1" />
+        <field name="employee_id" readonly="1" />
+        <field name="name" readonly="1" column_invisible="1" />
+        <field name="tipo" widget="badge" decoration-success="tipo != 'no'" />
+        <field name="entrada_ultima" readonly="1" />
+        <field name="salida_ultima" readonly="1" />
+        <field name="fichar" column_invisible="1" />
+        <field name="puesto_id" readonly="1" column_invisible="1" />
+      </list>
+    </field>
+  </record>
+
+  <record id="hr_entrada_salida_alta_tree" model="ir.ui.view">
+    <field name="name">hr.entrada.salida.alta.list</field>
+    <field name="model">hr.employee.fichar</field>
+    <field name="arch" type="xml">
+      <list string="Entrada - Salida" editable="top">
+        <field name="employee_id" />
+        <field name="barcode" />
+        <field name="name" readonly="1" />
+      </list>
+    </field>
+  </record>
+
+  <record id="hr_fichar_fabri_form" model="ir.ui.view">
+    <field name="name">hr.fichar_fabri.form</field>
+    <field name="model">hr.employee.fichar</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <div class="oe_button_box" name="button_box">
+            <button
+              string="Desechos"
+              type="object"
+              name="button_scrap"
+              class="oe_stat_button"
+              icon="fa-trash"
+              invisible="tipo != 'of' or not workorder_id"
+            />
+            <button
+              string="Material de la Orden"
+              type="object"
+              name="action_ver_a_consumir"
+              class="oe_stat_button"
+              icon="fa-eye"
+              invisible="tipo != 'of' or not workorder_id"
+            />
+          </div>
+          <group col="4">
+            <group string="Empleado">
+              <field name="id" />
+              <field name="name" readonly="1" />
+              <field name="barcode" string="Codigo" readonly="1" />
+              <field name="puesto_id" readonly="1" />
+            </group>
+            <group string="Produccion" invisible="fichar != 'fabrica'">
+              <field name="fichar" invisible="1" />
+              <h3 class="text-primary">
+                <field name="editar_orden" invisible="1" />
+                <field name="tipo" readonly="not editar_orden" />
+                :
+                <field
+                name="workorder_id"
+                invisible="tipo != 'of'"
+                readonly="not editar_orden"
+                options="{'no_open': True, 'no_create': True}"
+              />
+                <field
+                name="repara_id"
+                invisible="tipo != 'repara'"
+                readonly="not editar_orden"
+                options="{'no_open': True, 'no_create': True}"
+              />
+                <field
+                name="laser_id"
+                invisible="tipo != 'laser'"
+                readonly="not editar_orden"
+                options="{'no_open': True, 'no_create': True}"
+              />
+                <field
+                name="improductivo"
+                invisible="tipo != 'impro'"
+                readonly="not editar_orden"
+                options="{'no_open': True, 'no_create': True}"
+              />
+              </h3>
+              <field name="inspeccion_of" invisible="1" />
+              <h3 colspan="2" class="text-danger" invisible="not inspeccion_of">
+                Referencia Critica - Inspeccionar
+              </h3>
+            </group>
+            <group string="Datos Orden" invisible="fichar != 'fabrica'">
+              <field
+                name="ot_product_id"
+                string="Producto"
+                readonly="1"
+                invisible="tipo != 'of'"
+                options="{'no_open': True, 'no_create': True}"
+              />
+              <field
+                name="ot_qty_aproducir"
+                string="Cant. a producir"
+                readonly="1"
+                invisible="tipo != 'of'"
+                class="text-primary"
+              />
+              <field
+                name="ot_qty_comunicada"
+                string="Cant. Comunicada"
+                readonly="1"
+                invisible="tipo != 'of'"
+                class="text-danger"
+              />
+              <field
+                name="ot_qty_producida"
+                string="Cant. Producida"
+                readonly="1"
+                invisible="tipo != 'of'"
+                class="text-success"
+              />
+              <field
+                name="la_product_id"
+                string="Producto"
+                readonly="1"
+                invisible="tipo != 'laser'"
+                options="{'no_open': True, 'no_create': True}"
+              />
+              <field
+                name="la_qty_aproducir"
+                string="Cant. a producir"
+                readonly="1"
+                invisible="tipo != 'laser'"
+                class="text-primary"
+              />
+              <field
+                name="la_qty_producida"
+                string="Cant. Producida"
+                readonly="1"
+                invisible="tipo != 'laser'"
+                class="text-success"
+              />
+              <field name="plano" readonly="1" />
+            </group>
+          </group>
+          <notebook>
+            <page string="Historico" name="historico">
+              <field name="line_ids" readonly="1">
+                <list string="Fichajes" default_order="id desc">
+                  <field name="tipo" />
+                  <field name="orden" />
+                  <field name="fecha_ini" />
+                  <field name="fecha_fin" />
+                  <field name="aceptada" decoration-success="aceptada &gt; 0" />
+                  <field name="rechazada" decoration-danger="rechazada &gt; 0" />
+                  <field name="estado" column_invisible="1" />
+                  <field name="puesto_id" />
+                  <field name="create_uid" string="Usuario" />
+                </list>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="hr_entrada_salida_view_filter" model="ir.ui.view">
+    <field name="name">hr_entrada.salida_view_filter</field>
+    <field name="model">hr.employee.fichar</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="barcode" string="Codigo" />
+      </search>
+    </field>
+  </record>
+
+  <record id="action_hr_entrada_salida" model="ir.actions.act_window">
+    <field name="name">Entrada - Salida</field>
+    <field name="res_model">hr.employee.fichar</field>
+    <field name="view_mode">list,form</field>
+    <field name="view_id" ref="hr_entrada_salida_tree" />
+    <field name="domain">[('fichar', 'in', ('oficina', 'fabrica'))]</field>
+    <field name="limit">80</field>
+  </record>
+
+  <record id="action_hr_entrada_salida_alta" model="ir.actions.act_window">
+    <field name="name">Alta en fichar</field>
+    <field name="res_model">hr.employee.fichar</field>
+    <field name="view_mode">list,form</field>
+    <field name="view_id" ref="hr_entrada_salida_alta_tree" />
+    <field name="domain">[('fichar', 'in', ('oficina', 'fabrica'))]</field>
+  </record>
+
+  <menuitem
+    id="menu_hr_presencia_fichar_root"
+    name="Fichar"
+    web_icon="ina_mp_production_fichar,static/description/icon.svg"
+    sequence="90"
+    groups="ina_mc_permisos.group_inael_produccion_user,ina_mc_permisos.group_inael_almacen_user,ina_mc_permisos.group_inael_fabrica_fichar,ina_mc_permisos.group_inael_fabrica_respon_fichar"
+  />
+
+  <menuitem
+    id="hr_entrada_salida_menu"
+    name="Entrada - Salida"
+    action="action_hr_entrada_salida"
+    parent="menu_hr_presencia_fichar_root"
+    sequence="10"
+  />
+
+  <menuitem
+    id="hr_entrada_salida_alta_menu"
+    name="Alta en fichar"
+    action="action_hr_entrada_salida_alta"
+    parent="menu_hr_presencia_fichar_root"
+    sequence="40"
+    groups="ina_mc_permisos.group_inael_fabrica_respon_fichar"
+  />
+</odoo>

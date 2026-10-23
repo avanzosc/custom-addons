@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <record id="ina_hr_product_product_fichar_view" model="ir.ui.view">
+    <field name="name">ina.hr_product_product.fichar</field>
+    <field name="model">product.product</field>
+    <field name="priority">100</field>
+    <field name="arch" type="xml">
+      <list string="Productos" edit="false" create="false" delete="false">
+        <field name="default_code" />
+        <field name="name" />
+        <field name="qty_available" decoration-danger="virtual_available &lt; 0" />
+        <button
+          type="object"
+          name="action_ver_stock"
+          string="Ver Stock/Ubicacion"
+          icon="fa-eye"
+        />
+        <field name="virtual_available" decoration-danger="virtual_available &lt; 0" />
+        <field name="plano" />
+      </list>
+    </field>
+  </record>
+
+  <record id="ina_hr_product_product_fichar_search" model="ir.ui.view">
+    <field name="name">ina.hr_product.product.fichar.search</field>
+    <field name="model">product.product</field>
+    <field name="priority">100</field>
+    <field name="arch" type="xml">
+      <search string="Filtros Product product Fichar">
+        <field name="default_code" />
+        <field name="name" />
+      </search>
+    </field>
+  </record>
+
+  <record id="action_hr_product_product_fichar" model="ir.actions.act_window">
+    <field name="name">Productos</field>
+    <field name="res_model">product.product</field>
+    <field name="view_mode">list</field>
+    <field name="search_view_id" ref="ina_hr_product_product_fichar_search" />
+    <field name="view_id" ref="ina_hr_product_product_fichar_view" />
+  </record>
+
+  <menuitem
+    id="hr_product_product_fichar_menu"
+    name="Productos"
+    action="action_hr_product_product_fichar"
+    parent="menu_hr_presencia_fichar_root"
+    sequence="60"
+  />
+</odoo>
