@@ -62,28 +62,28 @@ class LatNum(models.Model):
 
         # Busco ChkList para Celdas
         ruta_origen = "/media/in/Fabrica/RESULTADOS_ENSAYOS"
-        lineas = self.lineas_ids.filtered(lambda x: x.ensayo == "celdas" and x.numserie)
+        lineas = self.lineas_ids.filtered(lambda x: x.ensayo == "celdas" and x.lot_id)
         for linea in lineas:
             encontrado_html = encontrado_doc = False
-            patron = "*" + linea.numserie.strip() + "_*.html"
+            patron = "*" + linea.lot_id.name.strip() + "_*.html"
             encontrado_html = self.buscar_dto(ruta_origen, patron)
             if encontrado_html:
                 linea.chklis = True
-            patron = "*" + linea.numserie.strip() + "_*.docx"
+            patron = "*" + linea.lot_id.name.strip() + "_*.docx"
             encontrado_doc = self.buscar_dto(ruta_origen, patron)
             if encontrado_doc:
                 linea.chklis = True
 
         # Imprimo el ensayo de celdas si es ensayo=Celdas
         wizard_informe = self.env["wiz.informe.celdas"]
-        lineas = self.lineas_ids.filtered(lambda x: x.ensayo == "celdas" and x.numserie)
+        lineas = self.lineas_ids.filtered(lambda x: x.ensayo == "celdas" and x.lot_id)
         for linea in lineas:
             wiz_ids = wizard_informe.search([("id", ">=", 0)], limit=1)
             if not wiz_ids:
                 val = {}
                 wiz_ids = wizard_informe.create(val)  # devuelve el id como entero
             wiz_ids.tipo = "celda"
-            wiz_ids.generar_pdf(linea.numserie)
+            wiz_ids.generar_pdf(linea.lot_id)
             linea.infens = True
 
     #  --------------- BUSCAR EL DOCUMENTO ---------------------------------
