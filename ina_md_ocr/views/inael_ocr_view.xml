@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record model="ir.ui.view" id="view_inael_ocr_form">
+    <field name="name">inael.ocr.form</field>
+    <field name="model">inael.ocr</field>
+    <field name="arch" type="xml">
+      <form string="OCRs">
+        <header>
+          <field
+            name="state"
+            widget="statusbar"
+            statusbar_visible="draft,pendi,sinplan,plan,envi,done,cancel"
+          />
+        </header>
+        <sheet>
+          <h1>
+            <field name="name" placeholder="Aqui tienes que poner el objetivo." />
+          </h1>
+          <group col="3">
+            <group string="Datos Generales">
+              <field name="partner_id" />
+              <field name="proyecto" />
+              <field name="matricula" required="1" />
+              <field name="obra" />
+              <field name="codigo_inst" />
+              <field name="instalacion" />
+              <field name="caracteristicas" />
+              <field name="purchase_id" />
+            </group>
+            <group string="Varios">
+              <field name="fecha_entrega" widget="date" />
+              <field name="fecha_planificada" widget="date" />
+              <field name="nota" />
+              <field name="create_date" string="Creado el" widget="date" />
+              <field name="create_uid" string="Creado por" />
+            </group>
+            <group string="Zona">
+              <field name="zona" />
+              <field name="zona2" />
+              <field name="utd" />
+              <field name="mail_enviado_a_ventas" />
+            </group>
+          </group>
+          <notebook>
+            <page string="Datos OCR" name="datos_ocr">
+              <field name="line_ocr_ids">
+                <list string="Datos OCR" editable="bottom">
+                  <field name="pedido" />
+                  <field name="sale_id" widget="many2one" />
+                  <field name="integracion" />
+                  <field name="descri" />
+                  <field name="cod_ib" />
+                  <field name="product_id" widget="many2one" />
+                  <field name="fecha_entrega_ib" widget="date" />
+                  <field name="fecha_entrega_inael" widget="date" />
+                  <field name="instalador" />
+                  <field name="resp_ib" />
+                  <field name="sim" />
+                  <field
+                    name="state"
+                    decoration-success="state == 'done'"
+                    decoration-danger="state == 'pendi'"
+                  />
+                  <field name="nota" />
+                </list>
+              </field>
+            </page>
+            <page string="Documentacion" name="documentacion">
+              <field name="line_documen_ids">
+                <list string="Documentos" editable="bottom">
+                  <field name="fichero" />
+                  <field name="carpeta" readonly="1" />
+                  <field name="nota" />
+                </list>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+        <chatter />
+      </form>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="view_inael_ocr_tree">
+    <field name="name">inael.ocr.list</field>
+    <field name="model">inael.ocr</field>
+    <field name="arch" type="xml">
+      <list decoration-muted="state == 'cancel'" string="OCR" default_order="name">
+        <field name="name" />
+        <field name="proyecto" />
+        <field name="matricula" />
+        <field name="obra" />
+        <field name="codigo_inst" />
+        <field name="instalacion" />
+        <field name="zona" />
+        <field name="caracteristicas" />
+        <field name="fecha_entrega" widget="date" />
+        <field name="fecha_planificada" widget="date" />
+        <field name="nota" />
+        <field name="state" />
+      </list>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="view_inael_ocr_filter">
+    <field name="name">inael.ocr.search</field>
+    <field name="model">inael.ocr</field>
+    <field name="arch" type="xml">
+      <search string="OCR">
+        <field name="name" />
+        <field name="obra" />
+        <field name="zona" />
+        <field name="instalacion" />
+        <field name="state" />
+        <field name="proyecto" />
+        <separator />
+        <group expand="0" string="Group By">
+          <filter name="groupby_zona" string="Zona" context="{'group_by': 'zona'}" />
+          <filter
+            name="groupby_state"
+            string="Estado"
+            context="{'group_by': 'state'}"
+          />
+          <filter
+            name="groupby_codigo_inst"
+            string="Codigo Instalacion"
+            context="{'group_by': 'codigo_inst'}"
+          />
+          <filter
+            name="groupby_fecha_entrega"
+            string="Fecha Entrega"
+            context="{'group_by': 'fecha_entrega'}"
+          />
+          <filter
+            name="groupby_create_uid"
+            string="Creado por"
+            context="{'group_by': 'create_uid'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record model="ir.actions.act_window" id="action_inael_ocr">
+    <field name="name">Orden OCR</field>
+    <field name="res_model">inael.ocr</field>
+    <field name="view_mode">list,form</field>
+    <field name="search_view_id" ref="view_inael_ocr_filter" />
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+        Click para comenzar nueva OCR.
+      </p>
+    </field>
+  </record>
+</odoo>

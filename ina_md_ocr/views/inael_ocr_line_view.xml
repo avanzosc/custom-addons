@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record model="ir.ui.view" id="view_inael_ocr_line_tree">
+    <field name="name">inael.ocr.line.list</field>
+    <field name="model">inael.ocr.line</field>
+    <field name="arch" type="xml">
+      <list string="Componentes OCR">
+        <field name="ocr_id" widget="many2one" />
+        <field name="pedido" />
+        <field name="sale_id" widget="many2one" />
+        <field name="integracion" />
+        <field name="descri" />
+        <field name="cod_ib" />
+        <field name="product_id" widget="many2one" />
+        <field name="fecha_entrega_ib" widget="date" />
+        <field name="fecha_entrega_inael" widget="date" />
+        <field name="instalador" />
+        <field name="resp_ib" />
+        <field name="sim" />
+        <field name="state" />
+      </list>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="view_inael_ocr_line_filter">
+    <field name="name">inael.ocr.line.search</field>
+    <field name="model">inael.ocr.line</field>
+    <field name="arch" type="xml">
+      <search string="OCR">
+        <field name="ocr_id" string="OCR numero" />
+        <field name="pedido" />
+        <field name="sale_id" />
+        <field name="cod_ib" />
+        <field name="product_id" />
+        <field name="state" />
+        <field name="sim" />
+        <separator />
+        <group expand="0" string="Group By">
+          <filter
+            name="groupby_cod_ib"
+            string="Cod. IB"
+            context="{'group_by': 'cod_ib'}"
+          />
+          <filter
+            name="groupby_product_id"
+            string="Producto"
+            context="{'group_by': 'product_id'}"
+          />
+          <filter
+            name="groupby_fecha_entrega_ib"
+            string="Fecha Entrega IB"
+            context="{'group_by': 'fecha_entrega_ib'}"
+          />
+          <filter
+            name="groupby_state"
+            string="Estado"
+            context="{'group_by': 'state'}"
+          />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record model="ir.actions.act_window" id="action_inael_ocr_line">
+    <field name="name">Componentes OCR</field>
+    <field name="res_model">inael.ocr.line</field>
+    <field name="view_mode">list,form</field>
+    <field name="search_view_id" ref="view_inael_ocr_line_filter" />
+  </record>
+</odoo>
