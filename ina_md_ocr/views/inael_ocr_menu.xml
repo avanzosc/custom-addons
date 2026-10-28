@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <menuitem
+    id="menu_mrp_plm_ocr"
+    name="OCRs"
+    parent="mrp.menu_mrp_root"
+    sequence="20"
+  />
+  <menuitem
+    name="Orden OCR"
+    action="action_inael_ocr"
+    id="ina_menu_ocr"
+    parent="menu_mrp_plm_ocr"
+    sequence="10"
+  />
+  <menuitem
+    name="Componentes OCR"
+    action="action_inael_ocr_line"
+    id="ina_menu_ocr_line"
+    parent="menu_mrp_plm_ocr"
+    sequence="15"
+  />
+</odoo>
