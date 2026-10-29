@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <template id="report_package_barcode_moting">
+    <div
+      class="align-center text-center"
+      style="border: 1px solid; width: 75mm; height:51mm ; margin-bottom: 5px;display: inline-table;"
+    >
+      <div class="text-center mt-1" style="height: 20mm;">
+        <strong t-field="o.name" style="font-size: 25px;" />
+      </div>
+      <div class="text-center align-center" style="height: 30mm; line-height: 90%;">
+        <strong t-field="o.owner_id.display_name" />
+        <tr t-foreach="o.quant_ids" t-as="l">
+          <span t-field="l.product_id.display_name" />
+          <br />
+        </tr>
+      </div>
+
+      <div class="text-center align-middle mt-1" style="height: 48mm;">
+        <img
+          t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 600, 100)"
+          alt="Barcode"
+          style="width:90mm;height:25mm"
+        />
+        <p t-field="o.name" />
+      </div>
+    </div>
+  </template>
+
+  <template id="report_simple_label_moting">
+    <div
+      class="align-center text-center"
+      style="border-top: 1px solid transparent; width: 76mm; height:51mm ;display: flex; flex-direction: column;margin-left: -2.4mm; page-break-after: always;"
+    >
+      <div class="text-center mt-1" style="height: 10mm;">
+        <strong
+          t-field="product.default_code"
+          style="padding-top: 1px !important; font-size: 20px !important;"
+        />
+      </div>
+      <div class="text-center align-center" style="height: 15mm; line-height: 80%;">
+        <strong
+          t-field="product.with_context(lang='en_US').name"
+          style="font-size: 9px !important; padding: 0px; margin: 0px; line-height: 80%;"
+        />
+        <t t-if="product.product_template_attribute_value_ids">
+          <strong
+            style="font-size: 9px !important; padding: 0px; margin: 0px; line-height: 80%;"
+            t-esc="'[%s]' % product.with_context(lang='en_US').product_template_attribute_value_ids._get_combination_name()"
+          />
+        </t>
+        <br />
+        <strong
+          t-field="product.with_context(lang='es_ES').name"
+          style="font-size: 9px !important; padding: 0px; margin: 0px; line-height: 80%;"
+        />
+        <t
+          t-if="product.with_context(lang='es_ES').product_template_attribute_value_ids"
+        >
+          <strong
+            style="font-size: 9px !important; padding: 0px; margin: 0px; line-height: 80%;"
+            t-esc="'[%s]' % product.with_context(lang='es_ES').product_template_attribute_value_ids._get_combination_name()"
+          />
+        </t>
+      </div>
+
+      <div class="text-center align-middle mt-1" style="height: 19mm;">
+        <t t-if="product.barcode">
+          <img
+            t-if="len(product.barcode) == 13"
+            t-att-src="'/report/barcode/?barcode_type=EAN13&amp;value=%s&amp;width=600&amp;height=130' % quote_plus(product.barcode)"
+            style="width: 100%; height: 9mm; object-fit: contain;"
+            alt="Barcode"
+          />
+
+          <img
+            t-elif="len(product.barcode) == 8"
+            t-att-src="'/report/barcode/?barcode_type=EAN8&amp;value=%s&amp;width=600&amp;height=130' % quote_plus(product.barcode)"
+            style="width: 100%; height: 9mm; object-fit: contain;"
+            alt="Barcode"
+          />
+
+          <img
+            t-else=""
+            t-att-src="'/report/barcode/?barcode_type=Code128&amp;value=%s&amp;width=600&amp;height=130' % quote_plus(product.barcode)"
+            style="width: 100%; height: 9mm; object-fit: contain;"
+            alt="Barcode"
+          />
+
+          <div>
+            <span t-field="product.barcode" style="font-size: 9px;" />
+          </div>
+        </t>
+
+        <t t-else="">
+          <span class="text-muted">No barcode available</span>
+        </t>
+      </div>
+    </div>
+  </template>
+</odoo>

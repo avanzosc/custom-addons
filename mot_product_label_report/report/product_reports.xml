@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="paperformat_report_product_label1" model="report.paperformat">
+    <field name="name">format - Product label</field>
+    <field name="default" eval="True" />
+    <field name="format">custom</field>
+    <field name="page_height">51</field>
+    <field name="page_width">76</field>
+    <field name="orientation">Portrait</field>
+    <field name="margin_top">2</field>
+    <field name="margin_bottom">0</field>
+    <field name="margin_left">0</field>
+    <field name="margin_right">0</field>
+    <field name="header_line" eval="False" />
+    <field name="header_spacing">0</field>
+    <field name="dpi">80</field>
+  </record>
+
+  <record id="report_product_label1" model="ir.actions.report">
+    <field name="name">Custom Product Label (PDF)</field>
+    <field name="model">product.template</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="paperformat_id" ref="paperformat_report_product_label1" />
+    <field name="report_name">mot_product_label_report.report_etiquetamoting</field>
+    <field name="report_file">mot_product_label_report.report_etiquetamoting</field>
+    <field name="print_report_name">'Product Tags - %s' % (object.name)</field>
+    <field name="binding_model_id" ref="product.model_product_template" />
+    <field name="binding_type">report</field>
+  </record>
+
+  <record id="report_product_label2" model="ir.actions.report">
+    <field name="name">Custom Product Label (PDF)</field>
+    <field name="model">product.product</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="paperformat_id" ref="paperformat_report_product_label1" />
+    <field
+      name="report_name"
+    >mot_product_label_report.report_etiquetamoting_product</field>
+    <field
+      name="report_file"
+    >mot_product_label_report.report_etiquetamoting_product</field>
+    <field name="print_report_name">'Product Tags - %s' % (object.name)</field>
+    <field name="binding_model_id" ref="product.model_product_product" />
+    <field name="binding_type">report</field>
+  </record>
+
+  <record id="report_package_moting_label" model="ir.actions.report">
+    <field name="name">Custom Package Barcode</field>
+    <field name="model">stock.quant.package</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">mot_product_label_report.report_package_moting</field>
+    <field name="report_file">mot_product_label_report.report_package_moting</field>
+    <field
+      name="print_report_name"
+    >'Barcode of the package containing the items - %s' % (object.name)</field>
+    <field name="binding_model_id" ref="stock.model_stock_quant_package" />
+    <field name="binding_type">report</field>
+  </record>
+</odoo>
