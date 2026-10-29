@@ -1,0 +1,50 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mot_product_label_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-29 08:25+0000\n"
+"PO-Revision-Date: 2026-10-29 08:25+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mot_product_label_report
+#: model:ir.actions.report,print_report_name:mot_product_label_report.report_package_moting_label
+msgid "'Barcode of the package containing the items - %s' % (object.name)"
+msgstr ""
+
+#. module: mot_product_label_report
+#: model:ir.actions.report,print_report_name:mot_product_label_report.report_product_label1
+#: model:ir.actions.report,print_report_name:mot_product_label_report.report_product_label2
+msgid "'Product Tags - %s' % (object.name)"
+msgstr ""
+
+#. module: mot_product_label_report
+#: model_terms:ir.ui.view,arch_db:mot_product_label_report.report_simple_label_moting
+msgid "<span class=\"text-muted\">No barcode available</span>"
+msgstr ""
+
+#. module: mot_product_label_report
+#: model_terms:ir.ui.view,arch_db:mot_product_label_report.report_package_barcode_moting
+#: model_terms:ir.ui.view,arch_db:mot_product_label_report.report_package_moting
+#: model_terms:ir.ui.view,arch_db:mot_product_label_report.report_simple_label_moting
+msgid "Barcode"
+msgstr ""
+
+#. module: mot_product_label_report
+#: model:ir.actions.report,name:mot_product_label_report.report_package_moting_label
+msgid "Custom Package Barcode"
+msgstr ""
+
+#. module: mot_product_label_report
+#: model:ir.actions.report,name:mot_product_label_report.report_product_label1
+#: model:ir.actions.report,name:mot_product_label_report.report_product_label2
+msgid "Custom Product Label (PDF)"
+msgstr ""
