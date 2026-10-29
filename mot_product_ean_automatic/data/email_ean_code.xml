@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="email_ean_code" model="mail.template">
+    <field name="name">EAN Code</field>
+    <field name="subject">EAN Code</field>
+    <field name="email_to">${object.get_code_ean_emails()}</field>
+    <field name="body_html" type="xml">
+      <div style="padding: 5px; border-bottom: 1px solid #c3bdbd;">
+        <img
+          src="/logo.png?company=${object.company_id.id}"
+          style="padding: 5px; margin: 0px; height: auto; width: 100px;"
+          alt="${object.company_id.name}"
+        />
+      </div>
+      <div style="margin: 0px; padding: 20px;">
+        <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                    The EAN code ${object.barcode} has been created, ${object.difference_code_ean} remain to finish the sequence
+                    <br /><br />
+                </p>
+      </div>
+    </field>
+    <field name="model_id" ref="product.model_product_product" />
+    <!--<field name="lang">${object.partner_id.lang}</field>-->
+    <field name="auto_delete" eval="True" />
+  </record>
+</odoo>
