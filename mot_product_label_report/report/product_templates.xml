@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <template id="report_etiquetamoting">
+    <t t-call="web.basic_layout">
+      <div class="page">
+        <t t-foreach="docs" t-as="template">
+          <t t-foreach="template.product_variant_ids" t-as="product">
+            <t t-call="mot_product_label_report.report_simple_label_moting">
+              <t t-set="product" t-value="product" />
+            </t>
+          </t>
+        </t>
+      </div>
+    </t>
+  </template>
+  <template id="report_etiquetamoting_product">
+    <t t-call="web.basic_layout">
+      <div class="page">
+        <t t-foreach="docs" t-as="product">
+          <t t-call="mot_product_label_report.report_simple_label_moting">
+            <t t-set="product" t-value="product" />
+          </t>
+        </t>
+      </div>
+    </t>
+  </template>
+  <template id="report_package_moting">
+    <t t-call="web.basic_layout">
+      <t t-foreach="docs" t-as="o">
+        <t>
+          <div class="page">
+            <div class="oe_structure" id="package_oe_structure" />
+            <div
+              class="align-center text-center"
+              style="border: 1px solid; width: 145mm; height:auto ; margin-bottom: 5px;display: flex; flex-direction: column;"
+            >
+              <div class="text-center mt-1" style="height: 20mm;">
+                <strong t-field="o.name" style="font-size: 55px;" />
+              </div>
+              <div class="text-center align-center mt-2" style="min-height: 40mm;">
+                <strong t-field="o.owner_id.display_name" />
+                <tr t-foreach="o.quant_ids" t-as="l">
+                  <strong
+                    t-field="l.product_id.with_context(lang='es_ES').name"
+                    style="font-size: 24px !important;"
+                  />
+                  <t t-if="l.product_id.product_template_attribute_value_ids">
+                    <strong
+                      style="font-size: 24px !important;"
+                      t-esc="'[%s]' % l.product_id.with_context(lang='es_ES').product_template_attribute_value_ids._get_combination_name()"
+                    />
+                  </t>
+                  <br />
+                </tr>
+              </div>
+
+              <div class="text-center align-middle mt-1" style="height: 39mm;">
+                <img
+                  t-att-src="'/report/barcode/?barcode_type=Code128&amp;value=%s&amp;width=700&amp;height=200' % quote_plus(o.name or '')"
+                  alt="Barcode"
+                  style="width: 120mm; height: 30mm; object-fit: contain;"
+                />
+                <p t-field="o.name" />
+              </div>
+            </div>
+          </div>
+        </t>
+      </t>
+    </t>
+  </template>
+</odoo>
