@@ -1,0 +1,232 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mot_product_ean_automatic
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-29 11:09+0000\n"
+"PO-Revision-Date: 2026-10-29 11:09+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mot_product_ean_automatic
+#: model:mail.template,body_html:mot_product_ean_automatic.email_ean_code
+msgid ""
+"<data><div style=\"padding: 5px; border-bottom: 1px solid #c3bdbd;\">\n"
+"                    <img src=\"/logo.png?company=${object.company_id.id}\" style=\"padding: 5px; margin: 0px; height: auto; width: 100px;\" alt=\"${object.company_id.name}\"/>\n"
+"                </div>\n"
+"                <div style=\"margin: 0px; padding: 20px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        The EAN code ${object.barcode} has been created, ${object.difference_code_ean} remain to finish the sequence\n"
+"                        <br/><br/>\n"
+"                    </p>\n"
+"                </div>\n"
+"            </data>"
+msgstr ""
+"<data><div style=\"padding: 5px; border-bottom: 1px solid #c3bdbd;\">\n"
+"                    <img src=\"/logo.png?company=${object.company_id.id}\" style=\"padding: 5px; margin: 0px; height: auto; width: 100px;\" alt=\"${object.company_id.name}\"/>\n"
+"                </div>\n"
+"                <div style=\"margin: 0px; padding: 20px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        El código EAN ${object.barcode} ha sido creado, ${object.difference_code_ean} queda terminar la secuencia\n"
+"                        <br/><br/>\n"
+"                    </p>\n"
+"                </div>\n"
+"            </data>"
+
+#. module: mot_product_ean_automatic
+#: model_terms:ir.ui.view,arch_db:mot_product_ean_automatic.res_config_settings_view_form_inherit
+msgid ""
+"<span class=\"o_form_label\">\n"
+"\t                                Company Number Code\n"
+"\t                            </span>"
+msgstr ""
+"<span class=\"o_form_label\">\n"
+"\t                                Código de número de empresa\n"
+"\t                            </span>"
+
+#. module: mot_product_ean_automatic
+#: model_terms:ir.ui.view,arch_db:mot_product_ean_automatic.res_config_settings_view_form_inherit
+msgid ""
+"<span class=\"o_form_label\">\n"
+"\t                                Country Number Code\n"
+"\t                            </span>"
+msgstr ""
+"<span class=\"o_form_label\">\n"
+"\t                                Código numérico de país\n"
+"\t                            </span>"
+
+#. module: mot_product_ean_automatic
+#: model_terms:ir.ui.view,arch_db:mot_product_ean_automatic.res_config_settings_view_form_inherit
+msgid ""
+"<span class=\"o_form_label\">\n"
+"\t                                Secuencia EAN\n"
+"\t                            </span>"
+msgstr ""
+
+#. module: mot_product_ean_automatic
+#: model_terms:ir.ui.view,arch_db:mot_product_ean_automatic.res_config_settings_view_form_inherit
+msgid ""
+"<span class=\"o_form_label\">\n"
+"\t                                Final Number Sequence\n"
+"\t                            </span>"
+msgstr ""
+"<span class=\"o_form_label\">\n"
+"\t                                Número Final de la Secuencia\n"
+"\t                            </span>"
+
+#. module: mot_product_ean_automatic
+#: model_terms:ir.ui.view,arch_db:mot_product_ean_automatic.res_config_settings_view_form_inherit
+msgid ""
+"<span class=\"o_form_label\">\n"
+"\t                                Number Difference\n"
+"\t                            </span>"
+msgstr ""
+"<span class=\"o_form_label\">\n"
+"\t                                Diferencia numérica\n"
+"\t                            </span>"
+
+#. module: mot_product_ean_automatic
+#. odoo-python
+#: code:addons/mot_product_ean_automatic/models/product_template.py:0
+#: model:ir.model.fields,field_description:mot_product_ean_automatic.field_product_product__automatic_barcode
+#: model:ir.model.fields,field_description:mot_product_ean_automatic.field_product_template__automatic_barcode
+msgid "Automatic Barcode"
+msgstr "Código de barras automático"
+
+#. module: mot_product_ean_automatic
+#. odoo-python
+#: code:addons/mot_product_ean_automatic/models/product_template.py:0
+#: model:ir.model.fields,help:mot_product_ean_automatic.field_product_product__automatic_barcode
+#: model:ir.model.fields,help:mot_product_ean_automatic.field_product_template__automatic_barcode
+msgid "Automatic barcode only"
+msgstr "Solo código de barras automático"
+
+#. module: mot_product_ean_automatic
+#: model:ir.model.fields,field_description:mot_product_ean_automatic.field_res_company__company_code
+#: model:ir.model.fields,field_description:mot_product_ean_automatic.field_res_config_settings__company_number_code
+msgid "Company Number Code"
+msgstr "Código de la Compañía"
+
+#. module: mot_product_ean_automatic
+#: model_terms:ir.ui.view,arch_db:mot_product_ean_automatic.res_config_settings_view_form_inherit
+msgid ""
+"Configure the country prefix used to\n"
+"\t                                generate EAN numbers."
+msgstr ""
+"Configure el prefijo de país utilizado para\n"
+"\t                                generar números EAN."
+
+#. module: mot_product_ean_automatic
+#: model_terms:ir.ui.view,arch_db:mot_product_ean_automatic.res_config_settings_view_form_inherit
+msgid ""
+"Configure the final number in the\n"
+"\t                                generation sequence."
+msgstr ""
+"Configure el número final en la\n"
+"\t                                secuencia de generación."
+
+#. module: mot_product_ean_automatic
+#: model:ir.model.fields,field_description:mot_product_ean_automatic.field_res_company__country_company_code
+#: model:ir.model.fields,field_description:mot_product_ean_automatic.field_res_config_settings__country_number_code
+msgid "Country Number Code"
+msgstr "Código del país"
+
+#. module: mot_product_ean_automatic
+#: model_terms:ir.ui.view,arch_db:mot_product_ean_automatic.res_config_settings_view_form_inherit
+msgid ""
+"Define the company identifier used in\n"
+"\t                                EAN number generation."
+msgstr ""
+"Defina el identificador de la empresa utilizado en\n"
+"\t                                la generación de números EAN."
+
+#. module: mot_product_ean_automatic
+#: model:ir.model.fields,field_description:mot_product_ean_automatic.field_product_product__difference_code_ean
+msgid "Difference code EAN"
+msgstr "Diferencia del código de EAN"
+
+#. module: mot_product_ean_automatic
+#: model:mail.template,name:mot_product_ean_automatic.email_ean_code
+#: model:mail.template,subject:mot_product_ean_automatic.email_ean_code
+msgid "EAN Code"
+msgstr "Código EAN"
+
+#. module: mot_product_ean_automatic
+#: model_terms:ir.ui.view,arch_db:mot_product_ean_automatic.res_config_settings_view_form_inherit
+msgid "EAN Number Configuration"
+msgstr "Configuración del número EAN"
+
+#. module: mot_product_ean_automatic
+#: model:res.groups,name:mot_product_ean_automatic.group_code_ean_product
+msgid "Email Code EAN Product"
+msgstr "Código EAN del producto por correo electrónico"
+
+#. module: mot_product_ean_automatic
+#: model:ir.model.fields,field_description:mot_product_ean_automatic.field_res_config_settings__final_number_sequence
+msgid "Final Number Sequence"
+msgstr "Número Final de la Secuencia"
+
+#. module: mot_product_ean_automatic
+#: model:ir.model.fields,field_description:mot_product_ean_automatic.field_res_config_settings__difference_number
+msgid "Limit Difference Number"
+msgstr "Límite de Diferencia para la Secuencia"
+
+#. module: mot_product_ean_automatic
+#: model:ir.model,name:mot_product_ean_automatic.model_product_template
+msgid "Product"
+msgstr "Producto"
+
+#. module: mot_product_ean_automatic
+#: model:ir.model,name:mot_product_ean_automatic.model_product_product
+msgid "Product Product Inherit"
+msgstr ""
+
+#. module: mot_product_ean_automatic
+#: model:ir.model,name:mot_product_ean_automatic.model_res_company
+msgid "Res Company Inherit"
+msgstr ""
+
+#. module: mot_product_ean_automatic
+#: model:ir.model,name:mot_product_ean_automatic.model_res_config_settings
+msgid "Res Config Setting Inherit"
+msgstr ""
+
+#. module: mot_product_ean_automatic
+#: model_terms:ir.ui.view,arch_db:mot_product_ean_automatic.res_config_settings_view_form_inherit
+msgid ""
+"Select the sequence used to generate\n"
+"\t                                consecutive EAN numbers."
+msgstr ""
+"Seleccione la secuencia utilizada para generar\n"
+"\t                                números EAN consecutivos."
+
+#. module: mot_product_ean_automatic
+#: model:ir.model.fields,field_description:mot_product_ean_automatic.field_res_config_settings__sequence_ean_id
+msgid "Sequence EAN"
+msgstr "Secuencia EAN"
+
+#. module: mot_product_ean_automatic
+#: model_terms:ir.ui.view,arch_db:mot_product_ean_automatic.res_config_settings_view_form_inherit
+msgid ""
+"Set the difference applied when\n"
+"\t                                calculating consecutive numbers."
+msgstr ""
+"Establece la diferencia que se aplica cuando\n"
+"\t                                se calculan números consecutivos."
+
+#. module: mot_product_ean_automatic
+#. odoo-python
+#: code:addons/mot_product_ean_automatic/models/product_product.py:0
+msgid ""
+"The country code or company code fields or the sequence to generate the EAN "
+"by company are not available, please add them in Settings / Companies."
+msgstr ""
+"El código del país o la compañía o la secuencia para generar elEAN no están "
+"disponibles, por favor agréguelos en Configuración/Compañías"
