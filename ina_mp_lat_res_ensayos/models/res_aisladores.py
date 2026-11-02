@@ -6,8 +6,8 @@ from odoo import fields, models
 class ResAisladores(models.Model):
     _name = "res.aisladores"
     _description = "LAT Resultados de ensayo de Aisladores"
+    _inherit = ["ina.lat.lot.mixin"]
 
-    num_serie = fields.Float(string="Número de Serie", index=True, digits=(15, 0))
     name = fields.Float(string="Número", digits=(15, 0))
     production_id = fields.Many2one(
         string="Orden de Fabricacion", comodel_name="mrp.production"

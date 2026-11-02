@@ -14,7 +14,12 @@
         <field name="llenado_ref" optional="show" />
         <field name="mont_num" widget="char" optional="show" />
         <field name="mont_ref" optional="show" />
-        <field name="celda_num" widget="char" optional="show" />
+        <field
+          name="lot_id"
+          widget="many2one"
+          optional="show"
+          context="{'default_product_id': product_id}"
+        />
         <field name="product_id" optional="show" />
         <field name="celda_fecha" optional="show" />
       </list>
@@ -76,7 +81,12 @@
     <field name="arch" type="xml">
       <list string="Celdas Embolsamiento" default_order="id DESC">
         <field name="venta_id" optional="show" />
-        <field name="celda_num" widget="char" optional="show" />
+        <field
+          name="lot_id"
+          widget="many2one"
+          optional="show"
+          context="{'default_product_id': product_id}"
+        />
         <field name="product_id" optional="show" />
         <field name="celda_fecha" optional="show" />
         <field name="conce_max" optional="show" />
@@ -127,7 +137,7 @@
             </group>
             <group string="Celda">
               <field name="name" widget="char" />
-              <field name="celda_num" widget="char" />
+              <field name="lot_id" context="{'default_product_id': product_id}" />
               <field
                 name="product_id"
                 options="{'no_open': True, 'no_create': True} "
@@ -250,7 +260,14 @@
                   <field name="familia" optional="show" />
                   <field name="funcion" optional="show" />
                   <field name="fase" optional="show" />
-                  <field name="num_serie" required="1" optional="show" />
+                  <field
+                    name="lot_id"
+                    widget="many2one"
+                    required="not num_serie"
+                    context="{'default_product_id': product_id}"
+                    optional="show"
+                  />
+                  <field name="num_serie" optional="hide" />
                   <field
                     name="product_id"
                     required="1"
@@ -268,7 +285,14 @@
                   <field name="premo_num" widget="char" optional="show" />
                   <field name="funcion" optional="show" />
                   <field name="fase" optional="show" />
-                  <field name="num_serie" required="1" optional="show" />
+                  <field
+                    name="lot_id"
+                    widget="many2one"
+                    required="not num_serie"
+                    context="{'default_product_id': product_id}"
+                    optional="show"
+                  />
+                  <field name="num_serie" optional="hide" />
                   <field
                     name="product_id"
                     required="1"
@@ -291,7 +315,8 @@
     <field name="model">res.celdas</field>
     <field name="arch" type="xml">
       <search string="Filtros Ensayos celdas">
-        <field name="celda_num" />
+        <field name="lot_id" />
+        <field name="name" />
         <field name="product_id" />
         <field name="premo_num" />
         <field name="mont_num" />

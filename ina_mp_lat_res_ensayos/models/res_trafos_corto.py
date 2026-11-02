@@ -11,6 +11,11 @@ class ResTrafosCorto(models.Model):
         string="Numero Trafo", comodel_name="res.trafos", ondelete="cascade"
     )
     num_serie = fields.Char(string="Num. Serie")
+    lot_id = fields.Many2one(
+        string="Numero de Serie",
+        related="trafo_id.lot_id",
+        store=True,
+    )
     relacion = fields.Char()
     posicion = fields.Integer()
     tension = fields.Float(string="Tension(V)", digits=(9, 2))

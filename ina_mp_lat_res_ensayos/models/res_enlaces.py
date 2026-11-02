@@ -6,6 +6,7 @@ from odoo import fields, models
 class ResEnlaces(models.Model):
     _name = "res.enlaces"
     _description = "LAT Resultados de ensayo de Enlaces"
+    _inherit = ["ina.lat.lot.mixin"]
 
     name = fields.Char(string="Numero Serie")
     production_id = fields.Many2one(

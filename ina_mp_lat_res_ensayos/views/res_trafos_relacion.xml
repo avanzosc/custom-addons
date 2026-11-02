@@ -7,6 +7,7 @@
       <list string="Trafos Relacion" default_order="id DESC">
         <field name="trafo_id" widget="char" column_invisible="1" />
         <field name="num_serie" optional="show" />
+        <field name="lot_id" widget="many2one" optional="show" />
         <field name="at_bt" optional="show" />
         <field name="posicion" optional="show" />
         <field name="conexion" optional="show" />
@@ -26,6 +27,7 @@
     <field name="arch" type="xml">
       <search string="Filtros Ensayos trafos">
         <field name="num_serie" />
+        <field name="lot_id" />
         <separator />
         <group expand="0" string="Group By">
           <filter

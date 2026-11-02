@@ -20,7 +20,8 @@ from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen.canvas import Canvas
 from reportlab.platypus import Flowable
 
-from odoo import _, exceptions, fields, models
+from odoo import _, fields, models
+from odoo.exceptions import UserError
 
 
 class QRFlowable(Flowable):
@@ -74,6 +75,12 @@ class WizInformeCeldas(models.TransientModel):
             lambda x: str(reemplazo[x.string[x.start() : x.end()]]), cadena
         )
 
+    def _numero_serie(self, celda):
+        numero = celda.lot_id.name or f"{celda.name:.0f}"
+        if not numero.isdigit():
+            return numero
+        return self._puntuacion(f"{int(numero):,}")
+
     def add_to_format(self, existing_format, dict_of_properties, workbook):
         new_dict = {}
         for key, value in existing_format.__dict__.items():
@@ -86,15 +93,14 @@ class WizInformeCeldas(models.TransientModel):
         this = self[0]
         ids = self.env.context["active_ids"]
         if len(ids) < 1:
-            raise exceptions.Warning(_("Tienes que seleccionar solamente 1"))
+            raise UserError(_("Tienes que seleccionar solamente 1"))
         self.generar_pdf(False)
         w_usuario = (self.env.user.login).strip()
         fichero_name = "/tmp/celda" + "_" + w_usuario + ".pdf"
         informe_ids = self.env["res.celdas"].browse(self.env.context.get("active_ids"))
         numero_serie = "x"
         for cel in informe_ids:
-            w_n = cel.celda_num if cel.celda_num else 0
-            numero_serie = self._puntuacion(str(f"{w_n:,.0f}"))
+            numero_serie = self._numero_serie(cel)
         if self.tipo == "celda":
             fname = "Informe_celda_" + numero_serie + ".pdf"
         elif self.tipo == "gnf":
@@ -115,7 +121,7 @@ class WizInformeCeldas(models.TransientModel):
             "target": "new",
         }
 
-    def generar_pdf(self, w_celda_numero):
+    def generar_pdf(self, celda_lot):
         w_usuario = (self.env.user.login).strip()
         fichero_name = "/tmp/celda" + "_" + w_usuario + ".pdf"
         #       fichero= (fichero_name)
@@ -125,10 +131,8 @@ class WizInformeCeldas(models.TransientModel):
         fec0 = fields.datetime.now(tz)
         fec = str(fec0)
         fecha_hoy = fec[8:10] + "/" + fec[5:7] + "/" + fec[0:4]
-        if w_celda_numero:
-            informe_ids = self.env["res.celdas"].search(
-                [("celda_num", "=", w_celda_numero)]
-            )
+        if celda_lot:
+            informe_ids = self.env["res.celdas"].search([("lot_id", "=", celda_lot.id)])
         else:
             informe_ids = self.env["res.celdas"].browse(
                 self.env.context.get("active_ids")
@@ -153,8 +157,7 @@ class WizInformeCeldas(models.TransientModel):
             fichero.setLineWidth(1)
             fichero.setFillColor(black)
             linea = 264
-            w_n = cel.celda_num if cel.celda_num else 0
-            numero_serie = self._puntuacion(str(f"{w_n:,.0f}"))
+            numero_serie = self._numero_serie(cel)
             #           fichero.drawRightString(110*mm,linea*mm, shoras )
             w_docu = (
                 "Protocolo de Celdas e Interruptores M.T. de SF6 "
@@ -699,8 +702,8 @@ class WizInformeCeldas(models.TransientModel):
             )  # en 580 tenia 600
         fichero.showPage()
         fichero.save()
-        if w_celda_numero:
-            # copio a comun/Calidad porque viene w_celda_numero que lo envia
+        if celda_lot:
+            # copio a comun/Calidad porque viene celda_lot que lo envia
             # el modulo de numeros de serie
             w_fichero = numero_serie.strip()
             ruta_destino = "/media/in/Comun/odoo/Calidad/Informe_" + w_fichero + ".pdf"
