@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 {
     "name": "Ina Mp Lat Numserie",
-    "version": "18.0.1.0.0",
+    "version": "18.0.1.0.1",
     "category": "Inael mp",
     "license": "AGPL-3",
     "author": "INAEL,jag",
@@ -17,6 +17,7 @@
         "views/lat_numcentro_views.xml",
         "views/lat_numcentro_lineas_views.xml",
         "wizard/wiz_informe_centro_views.xml",
+        "views/stock_lot_views.xml",
     ],
     "installable": True,
 }

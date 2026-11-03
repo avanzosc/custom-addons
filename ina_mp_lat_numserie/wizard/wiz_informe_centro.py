@@ -13,7 +13,8 @@ from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen.canvas import Canvas
 from reportlab.platypus import Flowable
 
-from odoo import _, exceptions, fields, models
+from odoo import _, fields, models
+from odoo.exceptions import UserError
 
 
 class QRFlowable(Flowable):
@@ -78,7 +79,7 @@ class WizInformeCentro(models.TransientModel):
         this = self[0]
         ids = self.env.context["active_ids"]
         if len(ids) < 1:
-            raise exceptions.Warning(_("Tienes que seleccionar solamente 1 "))
+            raise UserError(_("Tienes que seleccionar solamente 1 "))
         self.generar_pdf()
         w_usuario = (self.env.user.login).strip()
         fichero_name = "/tmp/centro" + "_" + w_usuario + ".pdf"
@@ -87,7 +88,7 @@ class WizInformeCentro(models.TransientModel):
         )
         numero_serie = ""
         for cen in informe_ids:
-            numero_serie = cen.numserie
+            numero_serie = cen.lot_id.name or cen.numserie or ""
         fname = "Informe_centro_" + numero_serie + ".pdf"
         modelo = "wiz.informe.centro"
         fichero_salida = fichero_name
@@ -126,7 +127,8 @@ class WizInformeCentro(models.TransientModel):
             fichero.line(140 * mm, 270 * mm, 140 * mm, 257 * mm)
             fichero.setFillColor(black)
             fichero.setFillColor(black)
-            w_docu = "Informe del Centro " + cen.numserie.strip()
+            numero_centro = cen.lot_id.name or cen.numserie or ""
+            w_docu = "Informe del Centro " + numero_centro.strip()
             fichero.setFont("Helvetica-Bold", 14)
             fichero.drawString(5 * mm, 264 * mm, w_docu)
             fichero.setFont("Helvetica", 11)
@@ -354,7 +356,9 @@ class WizInformeCentro(models.TransientModel):
                 elif r.ensayo == "otros":
                     w_t = "Otros"
                 fichero.drawString(8 * mm, linea * mm, w_t)
-                fichero.drawString(30 * mm, linea * mm, r.numserie)
+                fichero.drawString(
+                    30 * mm, linea * mm, r.lot_id.name or r.numserie or ""
+                )
                 fichero.setFont("Helvetica", 7)
                 fichero.drawString(60 * mm, linea * mm, r.product_id.name)
             ########## Listo final
