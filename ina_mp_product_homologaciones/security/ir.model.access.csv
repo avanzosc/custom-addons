@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_cia_ot,ot_cia,model_product_cia,ina_mc_permisos.group_inael_ot_user,1,0,0,0
+access_product_cia_ag,ag_cia,model_product_cia,sales_team.group_sale_salesman,1,0,0,0
+access_product_cia_fab,fab_cia,model_product_cia,ina_mc_permisos.group_inael_fabrica_user,1,0,0,0
+access_product_cia_alm,alm_cia,model_product_cia,ina_mc_permisos.group_inael_almacen_user,1,0,0,0
+access_product_cia_cal,cal_cia,model_product_cia,ina_mc_permisos.group_inael_calidad_user,1,0,0,0
+access_product_cia_com,com_cia,model_product_cia,ina_mc_permisos.group_inael_compras_user,1,0,0,0
+access_product_cia_admin,admin_cia,model_product_cia,base.group_system,1,1,1,1
+access_product_homologa_ag,ag_pro_homo,model_product_homologa,sales_team.group_sale_salesman,1,0,0,0
+access_product_homologa_manager,plm_pro_homo,model_product_homologa,group_homologa_manager,1,1,1,1
+access_product_homologa_co,co_pro_homo,model_product_homologa,ina_mc_permisos.group_inael_compras_user,1,0,0,0
+access_product_homologa_alma,alma_pro_homo,model_product_homologa,ina_mc_permisos.group_inael_almacen_user,1,0,0,0
+access_product_homologa_fab,fab-pro_homo,model_product_homologa,ina_mc_permisos.group_inael_fabrica_user,1,0,0,0
+access_product_homologa_fin,fin_pro_homo,model_product_homologa,ina_mc_permisos.group_inael_finanzas_user,1,0,0,0
+access_product_homologa_pla,pla_pro_homo,model_product_homologa,ina_mc_permisos.group_inael_planificacion_user,1,0,0,0
+access_product_homologa_cal,cal_pro_homo,model_product_homologa,ina_mc_permisos.group_inael_calidad_user,1,0,0,0
