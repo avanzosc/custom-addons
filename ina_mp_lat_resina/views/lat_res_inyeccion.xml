@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="res_inyeccion_tree_view" model="ir.ui.view">
+    <field name="name">res.inyeccion.tree.view</field>
+    <field name="model">res.inyeccion</field>
+    <field name="arch" type="xml">
+      <list string="Inyecciones" editable="bottom">
+        <field
+          name="lot_id"
+          widget="many2one"
+          context="{'default_product_id': product_id}"
+          optional="show"
+        />
+        <field name="num_serie" optional="hide" />
+        <field name="production_id" optional="show" />
+        <field name="product_id" optional="show" />
+        <field name="fecha" optional="show" />
+        <field name="temp_molde" optional="show" />
+        <field name="pres_inyec" optional="show" />
+        <field name="pres_curado" optional="show" />
+        <field name="tim_inyec" optional="show" />
+        <field name="tim_curado" optional="show" />
+        <field name="tim_purga" optional="show" />
+        <field name="nota" optional="show" />
+      </list>
+    </field>
+  </record>
+
+  <record id="action_res_inyeccion" model="ir.actions.act_window">
+    <field name="name">Resina Inyecciones</field>
+    <field name="res_model">res.inyeccion</field>
+    <field name="view_mode">list</field>
+  </record>
+
+  <menuitem
+    name="Ensayos Resinas"
+    id="ina_mp_lat_resinas"
+    parent="ina_mp_lat_res_ensayos.ina_qc_lat"
+    sequence="40"
+  />
+
+  <menuitem
+    name="Resina Inyecciones"
+    action="action_res_inyeccion"
+    id="menu_res_inyeccion"
+    parent="ina_mp_lat_resinas"
+    sequence="5"
+  />
+</odoo>
