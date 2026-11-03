@@ -8,16 +8,9 @@ class ProductProduct(models.Model):
 
     def action_ver_ensayos(self):
         self.ensure_one()
-        action = self.env.ref("ina_mp_ensayos_lat.action_ina_mrp_ensayos_prod")
-
-        return {
-            "name": action.name,
-            "help": action.help,
-            "type": action.type,
-            "view_type": action.view_type,
-            "view_mode": action.view_mode,
-            "target": action.target,
-            "res_model": action.res_model,
-            "context": "{}",
-            "domain": [("product_id", "=", self.id)],
-        }
+        action = self.env["ir.actions.act_window"]._for_xml_id(
+            "ina_mp_ensayos_lat.action_ina_mrp_ensayos_prod"
+        )
+        action["context"] = {"default_product_id": self.id}
+        action["domain"] = [("product_id", "=", self.id)]
+        return action

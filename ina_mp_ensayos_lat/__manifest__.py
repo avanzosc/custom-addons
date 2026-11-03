@@ -20,6 +20,7 @@
         "views/product_template_view.xml",
         "views/product_product_view.xml",
         "wizard/wiz_ensayos_duplica.xml",
+        "views/stock_lot_views.xml",
     ],
     "installable": True,
 }
