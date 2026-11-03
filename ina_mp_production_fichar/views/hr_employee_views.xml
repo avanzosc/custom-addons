@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <record id="view_employee_form" model="ir.ui.view">
+    <field name="model">hr.employee</field>
+    <field name="inherit_id" ref="hr.view_employee_form" />
+    <field name="arch" type="xml">
+      <group name="identification_group" position="inside">
+        <field name="fichar" />
+      </group>
+    </field>
+  </record>
+
+  <record id="view_employee_tree" model="ir.ui.view">
+    <field name="model">hr.employee</field>
+    <field name="inherit_id" ref="hr.view_employee_tree" />
+    <field name="arch" type="xml">
+      <field name="name" position="after">
+        <field name="fichar" />
+      </field>
+    </field>
+  </record>
+</odoo>
