@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="view_production_lot_form" model="ir.ui.view">
+    <field name="name">stock.lot.form - ina_mp_ensayos_lat</field>
+    <field name="model">stock.lot</field>
+    <field name="inherit_id" ref="stock.view_production_lot_form" />
+    <field name="arch" type="xml">
+      <div name="button_box" position="inside">
+        <button
+          name="action_lat_ver_especificaciones"
+          type="object"
+          class="oe_stat_button"
+          icon="fa-flask"
+          invisible="not lat_especificacion_count"
+          groups="ina_mc_permisos.group_inael_lat_user,ina_mc_permisos.group_inael_calidad_respon,ina_mc_permisos.group_inael_fabrica_respon"
+        >
+          <field name="lat_especificacion_count" widget="statinfo" string="Ensayos" />
+        </button>
+      </div>
+    </field>
+  </record>
+</odoo>
