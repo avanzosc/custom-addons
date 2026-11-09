@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="ina_product_prod_cia_view" model="ir.ui.view">
+    <field name="name">ina.product.prod.cia.view</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_form_view" />
+    <field name="arch" type="xml">
+      <notebook position="inside">
+        <page string="Homologaciones" name="homologaciones">
+          <separator string="Compañias Homologadas" />
+          <field name="homologa_ids" readonly="1">
+            <list string="Homologaciones">
+              <field name="cia" />
+              <field name="cod_cia" />
+              <field name="den_cia" />
+              <field name="nor_cia" />
+            </list>
+          </field>
+        </page>
+      </notebook>
+    </field>
+  </record>
+</odoo>

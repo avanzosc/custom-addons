@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="group_homologa_manager" model="res.groups">
+    <field name="name">Responsable Homologaciones</field>
+    <field name="category_id" ref="ina_mc_permisos.module_category_inael_produccion" />
+  </record>
+</odoo>
