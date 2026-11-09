@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="res_pts_tree_view" model="ir.ui.view">
+    <field name="name">res.pts.tree.view</field>
+    <field name="model">res.pts</field>
+    <field name="arch" type="xml">
+      <list string="PTS" editable="bottom">
+        <field
+          name="lot_id"
+          widget="many2one"
+          context="{'default_product_id': product_id2}"
+          optional="show"
+        />
+        <field name="num_serie2" optional="hide" />
+        <field name="production_id2" optional="show" />
+        <field name="product_id2" optional="show" />
+        <field name="n_inyeccion" optional="show" />
+        <field name="n_rosca" optional="show" />
+        <field name="rosca_pasa" optional="show" />
+        <field name="rosca_nopasa" optional="show" />
+        <field name="continuidad" optional="show" />
+        <field name="baja10pc" optional="show" />
+        <field name="baja21kv" optional="show" />
+        <field name="baja31" optional="show" />
+        <field name="tension" optional="show" />
+        <field name="rechazo" optional="show" />
+        <field name="valido" optional="show" />
+        <field name="fecha_ensayo" optional="show" />
+        <field name="nota2" optional="show" />
+      </list>
+    </field>
+  </record>
+
+  <record id="action_res_pts" model="ir.actions.act_window">
+    <field name="name">Resina PTS</field>
+    <field name="res_model">res.pts</field>
+    <field name="view_mode">list</field>
+  </record>
+
+  <menuitem
+    name="Resina PTS"
+    action="action_res_pts"
+    id="menu_res_pts"
+    parent="ina_mp_lat_resinas"
+    sequence="10"
+  />
+</odoo>

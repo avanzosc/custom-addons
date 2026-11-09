@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="res_mezcla_tree_view" model="ir.ui.view">
+    <field name="name">res.mezcla.tree.view</field>
+    <field name="model">res.mezcla</field>
+    <field name="arch" type="xml">
+      <list string="Mezcla" editable="bottom">
+        <field name="production_id4" optional="show" />
+        <field name="fecha2" optional="show" />
+        <field name="peso_comp_a" optional="show" />
+        <field name="peso_comp_b" optional="show" />
+        <field name="peso_colo" optional="show" />
+        <field name="peso_filler" optional="show" />
+        <field name="temp_press" optional="show" />
+        <field name="tim_degas" optional="show" />
+        <field name="nota4" optional="show" />
+      </list>
+    </field>
+  </record>
+
+  <record id="action_res_mezcla" model="ir.actions.act_window">
+    <field name="name">Resina Mezcla</field>
+    <field name="res_model">res.mezcla</field>
+    <field name="view_mode">list</field>
+  </record>
+
+  <menuitem
+    name="Resina Mezcla"
+    action="action_res_mezcla"
+    id="menu_res_mezcla"
+    parent="ina_mp_lat_resinas"
+    sequence="20"
+  />
+</odoo>

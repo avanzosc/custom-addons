@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_inyeccion_lat_user,access res inyeccion lat user,model_res_inyeccion,ina_mc_permisos.group_inael_lat_user,1,1,1,1
+access_res_inyeccion_fabrica_user,access res inyeccion fabrica user,model_res_inyeccion,ina_mc_permisos.group_inael_fabrica_user,1,0,0,0
+access_res_pts_lat_user,access res pts lat user,model_res_pts,ina_mc_permisos.group_inael_lat_user,1,1,1,1
+access_res_pts_fabrica_user,access res pts fabrica user,model_res_pts,ina_mc_permisos.group_inael_fabrica_user,1,0,0,0
+access_res_ppt_lat_user,access res ppt lat user,model_res_ppt,ina_mc_permisos.group_inael_lat_user,1,1,1,1
+access_res_ppt_fabrica_user,access res ppt fabrica user,model_res_ppt,ina_mc_permisos.group_inael_fabrica_user,1,0,0,0
+access_res_mezcla_lat_user,access res mezcla lat user,model_res_mezcla,ina_mc_permisos.group_inael_lat_user,1,1,1,1
+access_res_mezcla_fabrica_user,access res mezcla fabrica user,model_res_mezcla,ina_mc_permisos.group_inael_fabrica_user,1,0,0,0

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="view_production_lot_form" model="ir.ui.view">
+    <field name="name">stock.lot.form - ina_mp_lat_resina</field>
+    <field name="model">stock.lot</field>
+    <field name="inherit_id" ref="stock.view_production_lot_form" />
+    <field name="arch" type="xml">
+      <page name="description" position="before">
+        <page
+          name="lat_resina"
+          string="Ensayos Resinas"
+          groups="ina_mc_permisos.group_inael_lat_user,ina_mc_permisos.group_inael_fabrica_user"
+          invisible="not (lat_inyeccion_ids or lat_pts_ids or lat_ppt_ids)"
+        >
+          <group string="Inyecciones" invisible="not lat_inyeccion_ids">
+            <field
+              name="lat_inyeccion_ids"
+              nolabel="1"
+              colspan="2"
+              readonly="1"
+              context="{'list_view_ref': 'ina_mp_lat_resina.res_inyeccion_tree_view'}"
+            />
+          </group>
+          <group string="PTS" invisible="not lat_pts_ids">
+            <field
+              name="lat_pts_ids"
+              nolabel="1"
+              colspan="2"
+              readonly="1"
+              context="{'list_view_ref': 'ina_mp_lat_resina.res_pts_tree_view'}"
+            />
+          </group>
+          <group string="PPT" invisible="not lat_ppt_ids">
+            <field
+              name="lat_ppt_ids"
+              nolabel="1"
+              colspan="2"
+              readonly="1"
+              context="{'list_view_ref': 'ina_mp_lat_resina.res_ppt_tree_view'}"
+            />
+          </group>
+        </page>
+      </page>
+    </field>
+  </record>
+</odoo>
