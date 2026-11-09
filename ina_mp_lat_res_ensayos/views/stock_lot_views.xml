@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="view_production_lot_form" model="ir.ui.view">
+    <field name="name">stock.lot.form - ina_mp_lat_res_ensayos</field>
+    <field name="model">stock.lot</field>
+    <field name="inherit_id" ref="stock.view_production_lot_form" />
+    <field name="arch" type="xml">
+      <page name="description" position="before">
+        <page
+          name="lat"
+          string="Ensayos LAT"
+          groups="ina_mc_permisos.group_inael_lat_user,ina_mc_permisos.group_inael_calidad_respon,ina_mc_permisos.group_inael_fabrica_respon"
+          invisible="not (lat_aisladores_ids or lat_basescutout_ids or lat_celdas_ids or lat_celdas_conexion_ids or lat_celdas_equipo_ids or lat_enlaces_ids or lat_fusibles_ids or lat_pararrayos_ids or lat_seccionadores_ids or lat_seccionalizadores_ids or lat_trafos_ids)"
+        >
+          <group string="Aisladores" invisible="not lat_aisladores_ids">
+            <field
+              name="lat_aisladores_ids"
+              nolabel="1"
+              colspan="2"
+              readonly="1"
+              context="{'list_view_ref': 'ina_mp_lat_res_ensayos.ina_lat_res_aisladores_tree'}"
+            />
+          </group>
+          <group string="Bases y Cutout" invisible="not lat_basescutout_ids">
+            <field
+              name="lat_basescutout_ids"
+              nolabel="1"
+              colspan="2"
+              readonly="1"
+              context="{'list_view_ref': 'ina_mp_lat_res_ensayos.ina_lat_res_basescutout_tree'}"
+            />
+          </group>
+          <group string="Celdas" invisible="not lat_celdas_ids">
+            <field
+              name="lat_celdas_ids"
+              nolabel="1"
+              colspan="2"
+              readonly="1"
+              context="{'list_view_ref': 'ina_mp_lat_res_ensayos.ina_lat_res_celdas_tree', 'form_view_ref': 'ina_mp_lat_res_ensayos.res_celdas_form'}"
+            />
+          </group>
+          <group string="Conexiones en Celdas" invisible="not lat_celdas_conexion_ids">
+            <field
+              name="lat_celdas_conexion_ids"
+              nolabel="1"
+              colspan="2"
+              readonly="1"
+              context="{'list_view_ref': 'ina_mp_lat_res_ensayos.ina_lat_res_celdas_conexio_tree'}"
+            />
+          </group>
+          <group string="Montado en Celdas" invisible="not lat_celdas_equipo_ids">
+            <field
+              name="lat_celdas_equipo_ids"
+              nolabel="1"
+              colspan="2"
+              readonly="1"
+              context="{'list_view_ref': 'ina_mp_lat_res_ensayos.ina_lat_res_celdas_equipos_tree'}"
+            />
+          </group>
+          <group string="Enlaces" invisible="not lat_enlaces_ids">
+            <field
+              name="lat_enlaces_ids"
+              nolabel="1"
+              colspan="2"
+              readonly="1"
+              context="{'list_view_ref': 'ina_mp_lat_res_ensayos.ina_lat_res_enlaces_tree'}"
+            />
+          </group>
+          <group string="Fusibles" invisible="not lat_fusibles_ids">
+            <field
+              name="lat_fusibles_ids"
+              nolabel="1"
+              colspan="2"
+              readonly="1"
+              context="{'list_view_ref': 'ina_mp_lat_res_ensayos.ina_lat_res_fusibles_tree'}"
+            />
+          </group>
+          <group string="Pararrayos" invisible="not lat_pararrayos_ids">
+            <field
+              name="lat_pararrayos_ids"
+              nolabel="1"
+              colspan="2"
+              readonly="1"
+              context="{'list_view_ref': 'ina_mp_lat_res_ensayos.ina_lat_res_pararrayos_tree'}"
+            />
+          </group>
+          <group string="Seccionadores" invisible="not lat_seccionadores_ids">
+            <field
+              name="lat_seccionadores_ids"
+              nolabel="1"
+              colspan="2"
+              readonly="1"
+              context="{'list_view_ref': 'ina_mp_lat_res_ensayos.ina_lat_res_seccionadores_tree'}"
+            />
+          </group>
+          <group string="Seccionalizadores" invisible="not lat_seccionalizadores_ids">
+            <field
+              name="lat_seccionalizadores_ids"
+              nolabel="1"
+              colspan="2"
+              readonly="1"
+              context="{'list_view_ref': 'ina_mp_lat_res_ensayos.ina_lat_res_seccionalizadores_tree'}"
+            />
+          </group>
+          <group string="Trafos" invisible="not lat_trafos_ids">
+            <field
+              name="lat_trafos_ids"
+              nolabel="1"
+              colspan="2"
+              readonly="1"
+              context="{'list_view_ref': 'ina_mp_lat_res_ensayos.ina_lat_res_trafos_tree', 'form_view_ref': 'ina_mp_lat_res_ensayos.res_trafos_form'}"
+            />
+          </group>
+        </page>
+      </page>
+    </field>
+  </record>
+</odoo>

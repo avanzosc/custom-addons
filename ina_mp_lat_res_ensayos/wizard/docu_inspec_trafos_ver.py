@@ -3,7 +3,8 @@
 import base64
 import os
 
-from odoo import _, api, exceptions, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 
 class DocuInspecTrafosVer(models.TransientModel):
@@ -33,11 +34,11 @@ class DocuInspecTrafosVer(models.TransientModel):
         w_docu = w_docu.strip()
         w_dir = "/media/" + self.carpeta.strip()
         if not w_docu:
-            raise exceptions.Warning(_("No se ha encontrado el documento"))
+            raise UserError(_("No se ha encontrado el documento"))
         this = self[0]
         fichero_name = self.buscar_dto(w_dir, w_docu)
         if not fichero_name:
-            raise exceptions.Warning(_("No se ha encontrado el documento"))
+            raise UserError(_("No se ha encontrado el documento"))
         #       fname = "docu.pdf"   #rodrigo
         docudata = w_docu.split(".")
         if not (len(docudata) > 1):
@@ -60,7 +61,7 @@ class DocuInspecTrafosVer(models.TransientModel):
 
     def buscar_dto(self, directorio, docu):
         if not os.path.isdir(directorio):
-            raise exceptions.Warning(_("No se encuentra la carpeta %s") % directorio)
+            raise UserError(_("No se encuentra la carpeta %s") % directorio)
         docudata = docu.strip().split(".")
         if not (len(docudata) > 1):
             docu = docu + ".pdf"

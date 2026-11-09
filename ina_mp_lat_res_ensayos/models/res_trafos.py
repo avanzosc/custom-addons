@@ -6,9 +6,9 @@ from odoo import fields, models
 class ResTrafos(models.Model):
     _name = "res.trafos"
     _description = "LAT Resultados de ensayo de Trafos"
+    _inherit = ["ina.lat.lot.mixin"]
 
     name = fields.Float(string="Numero", digits=(15, 0))
-    num_serie = fields.Char(string="Num. Serie")
     product_id = fields.Many2one(string="Producto", comodel_name="product.product")
     normas = fields.Char()
     especi_tecnica = fields.Char(string="Especif. Tecnica")

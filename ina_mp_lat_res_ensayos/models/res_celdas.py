@@ -1,11 +1,12 @@
 # Copyright 2026 Inael
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class ResCeldas(models.Model):
     _name = "res.celdas"
     _description = "LAT Resultados de ensayo de Celdas"
+    _inherit = ["ina.lat.lot.mixin"]
 
     name = fields.Float(string="Numero", digits=(15, 0))
     venta_id = fields.Many2one(string="Orden Venta", comodel_name="sale.order")
@@ -18,7 +19,6 @@ class ResCeldas(models.Model):
     llenado_num = fields.Float(string="Num. Llenado", digits=(15, 0))
     llenado_ref = fields.Many2one(string="Ref. Llenado", comodel_name="product.product")
     llenado_fecha = fields.Datetime(string="Fecha Llenado")
-    celda_num = fields.Float(string="Num. Celda", index=True, digits=(15, 0))
     product_id = fields.Many2one(string="Ref. Celda", comodel_name="product.product")
     celda_fecha = fields.Datetime(string="Fecha Celda")
     num_secciona = fields.Integer(string="Numero de Seccionadores")
@@ -44,7 +44,7 @@ class ResCeldas(models.Model):
     ens_disparo1 = fields.Boolean(string="Ensayo disparo 1", default=False)
     ens_disparo2 = fields.Boolean(string="Ensayo disparo 2", default=False)
     tiempo_dis_medido = fields.Float(string="Tiempo disparo medido", digits=(6, 2))
-    i2t_disparo = fields.Float(string="i2t disparo", digit=(8, 2))
+    i2t_disparo = fields.Float(string="i2t disparo", digits=(8, 2))
     fecha_dielectrico = fields.Datetime(string="Fecha ensayo dielectrico")
     ens_dielectrico = fields.Boolean(string="Ensayado dielectrico", default=False)
     conce_max = fields.Float(string="Concentracion maxima", digits=(8, 2))
@@ -83,3 +83,8 @@ class ResCeldas(models.Model):
         comodel_name="res.celdas.equipos",
         inverse_name="celda_id",
     )
+
+    @api.depends("name", "lot_id")
+    def _compute_display_name(self):
+        for celda in self:
+            celda.display_name = celda.lot_id.name or f"{celda.name:.0f}"

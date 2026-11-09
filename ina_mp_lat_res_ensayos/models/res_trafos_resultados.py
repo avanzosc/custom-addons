@@ -11,6 +11,11 @@ class ResTrafosResultados(models.Model):
         string="Numero Trafo", comodel_name="res.trafos", ondelete="cascade"
     )
     num_serie = fields.Char(string="Num. Serie")
+    lot_id = fields.Many2one(
+        string="Numero de Serie",
+        related="trafo_id.lot_id",
+        store=True,
+    )
     relacion = fields.Char()
     ensayo = fields.Char()
     garantia = fields.Float()
