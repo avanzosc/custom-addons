@@ -1,0 +1,248 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mpf_general
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-08 13:00+0000\n"
+"PO-Revision-Date: 2026-01-08 13:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__x_active
+msgid "Activo"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_purchase_order__comunidad_autonoma_nombre
+#: model:ir.model.fields,field_description:mpf_general.field_res_country_state__x_studio_many2one_field_SUgeq
+#: model:ir.model.fields,field_description:mpf_general.field_res_partner__x_studio_comunidad_autnoma
+#: model:ir.model.fields,field_description:mpf_general.field_res_users__x_studio_comunidad_autnoma
+msgid "Comunidad autónoma"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model,name:mpf_general.model_x_comunidad_autonoma
+msgid "Comunidades autónomas"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model,name:mpf_general.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model,name:mpf_general.model_res_country_state
+msgid "Country state"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,help:mpf_general.field_x_comunidad_autonoma__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__id
+msgid "ID"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,help:mpf_general.field_x_comunidad_autonoma__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,help:mpf_general.field_x_comunidad_autonoma__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,help:mpf_general.field_x_comunidad_autonoma__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__x_name
+msgid "Nombre"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,help:mpf_general.field_x_comunidad_autonoma__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,help:mpf_general.field_x_comunidad_autonoma__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model,name:mpf_general.model_purchase_order
+msgid "Purchase Order"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__x_studio_sequence
+msgid "Secuencia"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,help:mpf_general.field_x_comunidad_autonoma__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,help:mpf_general.field_x_comunidad_autonoma__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,field_description:mpf_general.field_x_comunidad_autonoma__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: mpf_general
+#: model:ir.model.fields,help:mpf_general.field_x_comunidad_autonoma__website_message_ids
+msgid "Website communication history"
+msgstr ""
